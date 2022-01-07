@@ -18,6 +18,10 @@
         <module name="Anime_App_Project.Anilist_GraphQl_Request_Creator.main" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="14" />
+    <bytecodeTargetLevel target="14">
+      <module name="Anime_App" target="11" />
+      <module name="Anime_App.main" target="11" />
+      <module name="Anime_App.test" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
