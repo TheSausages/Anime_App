@@ -18,14 +18,6 @@ configurations {
     }
 }
 
-ext {
-    springVersion = "2.5.3"
-    keycloakVersion = "15.0.0"
-    postresconnectorVersion = "42.3.1"
-    lombokVersion = "1.18.22"
-    testcontainersVersion = "1.16.2"
-}
-
 tasks.register("prepareKotlinBuildScriptModel"){}
 
 dependencies {
@@ -46,6 +38,7 @@ dependencies {
     annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
 
     //Other Non-test Dependencies
+    implementation "org.apache.commons:commons-lang3:${commonslang3Version}"
     compileOnly "org.projectlombok:lombok:${lombokVersion}"
     runtimeOnly "org.postgresql:postgresql:${postresconnectorVersion}"
 
@@ -56,6 +49,7 @@ dependencies {
     testImplementation "org.testcontainers:postgresql:${testcontainersVersion}"
     testImplementation 'io.projectreactor:reactor-test:3.4.13'
     testImplementation 'com.github.tomakehurst:wiremock-jre8:2.32.0'
+    testImplementation "org.hamcrest:hamcrest:${hamcrestVersion}"
 
     //Keycloak testing dependencies (container and security mock)
     testImplementation "com.github.dasniko:testcontainers-keycloak:1.9.0"
