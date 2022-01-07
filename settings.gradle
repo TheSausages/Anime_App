@@ -1,0 +1,3 @@
+rootProject.name = 'Anime_App_Project'
+include 'Anime_App_Openapi_Generation', 'Anilist_GraphQl_Request_Creator', 'Anime_App'
+
