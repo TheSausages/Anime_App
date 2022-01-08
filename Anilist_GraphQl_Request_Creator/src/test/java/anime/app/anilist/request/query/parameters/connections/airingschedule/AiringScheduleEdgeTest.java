@@ -3,6 +3,7 @@ package anime.app.anilist.request.query.parameters.connections.airingschedule;
 import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.utils.QueryTitleAndParametersMatcher;
 import anime.app.anilist.request.utils.TestUtils;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Set;
@@ -12,6 +13,22 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
 class AiringScheduleEdgeTest {
+
+	@Test
+	void getAiringScheduleEdge_NullSchedule_ReturnCorrectString() {
+		//given
+		AiringSchedule schedule = null;
+
+		//when
+		Exception thrownException = Assertions.assertThrows(
+				NullPointerException.class,
+				() -> new AiringScheduleEdge(schedule)
+		);
+
+		//then
+		assertThat(thrownException, instanceOf(NullPointerException.class));
+		assertThat(thrownException.getMessage(), notNullValue());
+	}
 
 	@Test
 	void getAiringScheduleEdge_WithoutSchedule_ReturnCorrectString() {

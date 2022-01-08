@@ -3,6 +3,8 @@ package anime.app.anilist.request.query.parameters.connections.airingschedule;
 import anime.app.anilist.request.query.parameters.QueryParameterUtils;
 import lombok.Getter;
 
+import java.util.Objects;
+
 @Getter
 public class AiringScheduleEdge {
 	public final static String airingScheduleEdgeTitle = "airingScheduleEdge";
@@ -16,6 +18,8 @@ public class AiringScheduleEdge {
 	}
 
 	public AiringScheduleEdge(AiringSchedule airingSchedule) {
+		Objects.requireNonNull(airingSchedule, "The schedule cannot be null");
+
 		this.airingScheduleEdgeString = QueryParameterUtils.buildQueryFieldElementString(
 				airingScheduleEdgeTitle, "id", "node " + airingSchedule.getAiringScheduleStringWithoutFieldName()
 		);
