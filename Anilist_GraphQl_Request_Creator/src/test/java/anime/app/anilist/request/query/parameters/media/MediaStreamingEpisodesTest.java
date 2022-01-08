@@ -1,10 +1,15 @@
 package anime.app.anilist.request.query.parameters.media;
 
+import anime.app.anilist.request.query.common.ParameterString;
+import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.Set;
+
+import static anime.app.anilist.request.utils.QueryTitleAndParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
@@ -45,7 +50,7 @@ class MediaStreamingEpisodesTest {
 		@Test
 		void mediaStreamingEpisodesBuilder_Site_ReturnValidString() {
 			//given
-			String expectedEpisodes = "streamingEpisodes {\nsite\n}";
+			Set<ParameterString> expectedStreamingEpisodes = TestUtils.getParameterStringSet("site");
 
 			//when
 			MediaStreamingEpisodes actualEpisodes = MediaStreamingEpisodes.getMediaStreamingEpisodesBuilder()
@@ -56,14 +61,14 @@ class MediaStreamingEpisodesTest {
 			assertThat(actualEpisodes.getStreamingEpisode(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					equalTo(expectedEpisodes)
+					containsTitleAndAllSetElements(MediaStreamingEpisodes.streamingEpisodesTitle, expectedStreamingEpisodes)
 			));
 		}
 
 		@Test
 		void mediaStreamingEpisodesBuilder_Title_ReturnValidString() {
 			//given
-			String expectedEpisodes = "streamingEpisodes {\ntitle\n}";
+			Set<ParameterString> expectedStreamingEpisodes = TestUtils.getParameterStringSet("title");
 
 			//when
 			MediaStreamingEpisodes actualEpisodes = MediaStreamingEpisodes.getMediaStreamingEpisodesBuilder()
@@ -74,14 +79,14 @@ class MediaStreamingEpisodesTest {
 			assertThat(actualEpisodes.getStreamingEpisode(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					equalTo(expectedEpisodes)
+					containsTitleAndAllSetElements(MediaStreamingEpisodes.streamingEpisodesTitle, expectedStreamingEpisodes)
 			));
 		}
 
 		@Test
 		void mediaStreamingEpisodesBuilder_Url_ReturnValidString() {
 			//given
-			String expectedEpisodes = "streamingEpisodes {\nurl\n}";
+			Set<ParameterString> expectedStreamingEpisodes = TestUtils.getParameterStringSet("url");
 
 			//when
 			MediaStreamingEpisodes actualEpisodes = MediaStreamingEpisodes.getMediaStreamingEpisodesBuilder()
@@ -92,14 +97,14 @@ class MediaStreamingEpisodesTest {
 			assertThat(actualEpisodes.getStreamingEpisode(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					equalTo(expectedEpisodes)
+					containsTitleAndAllSetElements(MediaStreamingEpisodes.streamingEpisodesTitle, expectedStreamingEpisodes)
 			));
 		}
 
 		@Test
 		void mediaStreamingEpisodesBuilder_Thumbnail_ReturnValidString() {
 			//given
-			String expectedEpisodes = "streamingEpisodes {\nthumbnail\n}";
+			Set<ParameterString> expectedStreamingEpisodes = TestUtils.getParameterStringSet("thumbnail");
 
 			//when
 			MediaStreamingEpisodes actualEpisodes = MediaStreamingEpisodes.getMediaStreamingEpisodesBuilder()
@@ -110,14 +115,19 @@ class MediaStreamingEpisodesTest {
 			assertThat(actualEpisodes.getStreamingEpisode(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					equalTo(expectedEpisodes)
+					containsTitleAndAllSetElements(MediaStreamingEpisodes.streamingEpisodesTitle, expectedStreamingEpisodes)
 			));
 		}
 
 		@Test
 		void mediaStreamingEpisodesBuilder_AllParameters_ReturnValidString() {
 			//given
-			String expectedEpisodes = "streamingEpisodes {\nsite\nurl\ntitle\nthumbnail\n}";
+			Set<ParameterString> expectedStreamingEpisodes = TestUtils.getParameterStringSet(
+					"site",
+					"url",
+					"title",
+					"thumbnail"
+			);
 
 			//when
 			MediaStreamingEpisodes actualEpisodes = MediaStreamingEpisodes.getMediaStreamingEpisodesBuilder()
@@ -131,7 +141,7 @@ class MediaStreamingEpisodesTest {
 			assertThat(actualEpisodes.getStreamingEpisode(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					equalTo(expectedEpisodes)
+					containsTitleAndAllSetElements(MediaStreamingEpisodes.streamingEpisodesTitle, expectedStreamingEpisodes)
 			));
 		}
 	}

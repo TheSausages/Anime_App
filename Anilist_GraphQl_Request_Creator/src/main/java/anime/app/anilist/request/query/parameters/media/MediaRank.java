@@ -9,7 +9,7 @@ import java.util.Set;
 
 @Getter
 public class MediaRank {
-	private static final String ranking = "ranking";
+	public static final String rankingTitle = "ranking";
 
 	private final String rank;
 
@@ -74,8 +74,8 @@ public class MediaRank {
 				throw new IllegalStateException("Ranking should posses at least 1 parameter!");
 			}
 
-			return new MediaRank(QueryParameterUtils.buildString(
-					ranking,
+			return new MediaRank(QueryParameterUtils.buildQueryFieldElementString(
+					rankingTitle,
 					mediaRank
 			));
 		}

@@ -1,10 +1,15 @@
 package anime.app.anilist.request.query.parameters.media;
 
+import anime.app.anilist.request.query.common.ParameterString;
+import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.Set;
+
+import static anime.app.anilist.request.utils.QueryTitleAndParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
@@ -45,7 +50,7 @@ class MediaRankTest {
 		@Test
 		void mediaRankBuilder_Id_ReturnValidString() {
 			//given
-			String expectedRank = "ranking {\nid\n}";
+			Set<ParameterString> expectedRank = TestUtils.getParameterStringSet("id");
 
 			//when
 			MediaRank actualRank = MediaRank.getMediaRankBuilder().id().build();
@@ -54,14 +59,14 @@ class MediaRankTest {
 			assertThat(actualRank.getRank(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					equalTo(expectedRank)
+					containsTitleAndAllSetElements(MediaRank.rankingTitle, expectedRank)
 			));
 		}
 
 		@Test
 		void mediaRankBuilder_Rank_ReturnValidString() {
 			//given
-			String expectedRank = "ranking {\nrank\n}";
+			Set<ParameterString> expectedRank = TestUtils.getParameterStringSet("rank");
 
 			//when
 			MediaRank actualRank = MediaRank.getMediaRankBuilder().rank().build();
@@ -70,14 +75,14 @@ class MediaRankTest {
 			assertThat(actualRank.getRank(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					equalTo(expectedRank)
+					containsTitleAndAllSetElements(MediaRank.rankingTitle, expectedRank)
 			));
 		}
 
 		@Test
 		void mediaRankBuilder_Type_ReturnValidString() {
 			//given
-			String expectedRank = "ranking {\ntype\n}";
+			Set<ParameterString> expectedRank = TestUtils.getParameterStringSet("type");
 
 			//when
 			MediaRank actualRank = MediaRank.getMediaRankBuilder().type().build();
@@ -86,14 +91,14 @@ class MediaRankTest {
 			assertThat(actualRank.getRank(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					equalTo(expectedRank)
+					containsTitleAndAllSetElements(MediaRank.rankingTitle, expectedRank)
 			));
 		}
 
 		@Test
 		void mediaRankBuilder_Format_ReturnValidString() {
 			//given
-			String expectedRank = "ranking {\nformat\n}";
+			Set<ParameterString> expectedRank = TestUtils.getParameterStringSet("format");
 
 			//when
 			MediaRank actualRank = MediaRank.getMediaRankBuilder().format().build();
@@ -102,14 +107,14 @@ class MediaRankTest {
 			assertThat(actualRank.getRank(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					equalTo(expectedRank)
+					containsTitleAndAllSetElements(MediaRank.rankingTitle, expectedRank)
 			));
 		}
 
 		@Test
 		void mediaRankBuilder_Year_ReturnValidString() {
 			//given
-			String expectedRank = "ranking {\nyear\n}";
+			Set<ParameterString> expectedRank = TestUtils.getParameterStringSet("year");
 
 			//when
 			MediaRank actualRank = MediaRank.getMediaRankBuilder().year().build();
@@ -118,14 +123,14 @@ class MediaRankTest {
 			assertThat(actualRank.getRank(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					equalTo(expectedRank)
+					containsTitleAndAllSetElements(MediaRank.rankingTitle, expectedRank)
 			));
 		}
 
 		@Test
 		void mediaRankBuilder_Season_ReturnValidString() {
 			//given
-			String expectedRank = "ranking {\nseason\n}";
+			Set<ParameterString> expectedRank = TestUtils.getParameterStringSet("season");
 
 			//when
 			MediaRank actualRank = MediaRank.getMediaRankBuilder().season().build();
@@ -134,14 +139,14 @@ class MediaRankTest {
 			assertThat(actualRank.getRank(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					equalTo(expectedRank)
+					containsTitleAndAllSetElements(MediaRank.rankingTitle, expectedRank)
 			));
 		}
 
 		@Test
 		void mediaRankBuilder_AllTime_ReturnValidString() {
 			//given
-			String expectedRank = "ranking {\nallTime\n}";
+			Set<ParameterString> expectedRank = TestUtils.getParameterStringSet("allTime");
 
 			//when
 			MediaRank actualRank = MediaRank.getMediaRankBuilder().allTime().build();
@@ -150,14 +155,14 @@ class MediaRankTest {
 			assertThat(actualRank.getRank(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					equalTo(expectedRank)
+					containsTitleAndAllSetElements(MediaRank.rankingTitle, expectedRank)
 			));
 		}
 
 		@Test
 		void mediaRankBuilder_Context_ReturnValidString() {
 			//given
-			String expectedRank = "ranking {\ncontext\n}";
+			Set<ParameterString> expectedRank = TestUtils.getParameterStringSet("context");
 
 			//when
 			MediaRank actualRank = MediaRank.getMediaRankBuilder().context().build();
@@ -166,14 +171,23 @@ class MediaRankTest {
 			assertThat(actualRank.getRank(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					equalTo(expectedRank)
+					containsTitleAndAllSetElements(MediaRank.rankingTitle, expectedRank)
 			));
 		}
 
 		@Test
 		void mediaRankBuilder_AllParameters_ReturnValidString() {
 			//given
-			String expectedRank = "ranking {\nid\nrank\ntype\nformat\nyear\nseason\nallTime\ncontext\n}";
+			Set<ParameterString> expectedRank = TestUtils.getParameterStringSet(
+					"id",
+					"rank",
+					"type",
+					"format",
+					"year",
+					"season",
+					"allTime",
+					"context"
+			);
 
 			//when
 			MediaRank actualRank = MediaRank.getMediaRankBuilder()
@@ -191,7 +205,7 @@ class MediaRankTest {
 			assertThat(actualRank.getRank(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					equalTo(expectedRank)
+					containsTitleAndAllSetElements(MediaRank.rankingTitle, expectedRank)
 			));
 		}
 	}

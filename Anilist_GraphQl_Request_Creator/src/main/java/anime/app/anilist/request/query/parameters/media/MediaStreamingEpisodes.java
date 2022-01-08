@@ -7,13 +7,12 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class MediaStreamingEpisodes {
-	private static final String streamingEpisodes = "streamingEpisodes";
+	public static final String streamingEpisodesTitle = "streamingEpisodes";
 
 	private final String streamingEpisode;
 
@@ -54,9 +53,9 @@ public class MediaStreamingEpisodes {
 				throw new IllegalStateException("Streaming Episodes should posses at least 1 parameter!");
 			}
 
-			return new MediaStreamingEpisodes(QueryParameterUtils.buildString(
-				streamingEpisodes,
-				mediaStreamingEpisode
+			return new MediaStreamingEpisodes(QueryParameterUtils.buildQueryFieldElementString(
+					streamingEpisodesTitle,
+					mediaStreamingEpisode
 			));
 		}
 

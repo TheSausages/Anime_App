@@ -1,6 +1,6 @@
 package anime.app.anilist.request.query.parameters;
 
-public enum QueryParameters {
+public enum BasicQueryParameters {
 	id("Int"),
 	idMal("Int"),
 	startDate("FuzzyDateInt"),
@@ -67,7 +67,7 @@ public enum QueryParameters {
 
 	private final String parameterType;
 
-	QueryParameters(String type) {
+	BasicQueryParameters(String type) {
 		this.parameterType = type;
 	}
 

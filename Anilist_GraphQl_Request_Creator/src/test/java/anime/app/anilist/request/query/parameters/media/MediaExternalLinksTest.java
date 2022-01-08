@@ -1,13 +1,17 @@
 package anime.app.anilist.request.query.parameters.media;
 
+import anime.app.anilist.request.query.common.ParameterString;
+import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.Set;
+
+import static anime.app.anilist.request.utils.QueryTitleAndParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 class MediaExternalLinksTest {
 
@@ -46,7 +50,7 @@ class MediaExternalLinksTest {
 		@Test
 		void mediaExternalLinksBuilder_Id_ReturnValidString() {
 			//given
-			String expectedLinks = "externalLinks {\nid\n}";
+			Set<ParameterString> expectedLinks = TestUtils.getParameterStringSet("id");
 
 			//when
 			MediaExternalLinks actualLinks = MediaExternalLinks.getMediaExternalLinkBuilder().id().build();
@@ -55,14 +59,14 @@ class MediaExternalLinksTest {
 			assertThat(actualLinks.getExternalLink(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					equalTo(expectedLinks)
+					containsTitleAndAllSetElements(MediaExternalLinks.externalLinksTitle, expectedLinks)
 			));
 		}
 
 		@Test
 		void mediaExternalLinksBuilder_Url_ReturnValidString() {
 			//given
-			String expectedLinks = "externalLinks {\nurl\n}";
+			Set<ParameterString> expectedLinks = TestUtils.getParameterStringSet("url");
 
 			//when
 			MediaExternalLinks actualLinks = MediaExternalLinks.getMediaExternalLinkBuilder().url().build();
@@ -71,14 +75,14 @@ class MediaExternalLinksTest {
 			assertThat(actualLinks.getExternalLink(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					equalTo(expectedLinks)
+					containsTitleAndAllSetElements(MediaExternalLinks.externalLinksTitle, expectedLinks)
 			));
 		}
 
 		@Test
 		void mediaExternalLinksBuilder_Site_ReturnValidString() {
 			//given
-			String expectedLinks = "externalLinks {\nsite\n}";
+			Set<ParameterString> expectedLinks = TestUtils.getParameterStringSet("site");
 
 			//when
 			MediaExternalLinks actualLinks = MediaExternalLinks.getMediaExternalLinkBuilder().site().build();
@@ -87,14 +91,15 @@ class MediaExternalLinksTest {
 			assertThat(actualLinks.getExternalLink(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					equalTo(expectedLinks)
+					containsTitleAndAllSetElements(MediaExternalLinks.externalLinksTitle, expectedLinks)
 			));
 		}
 
 		@Test
 		void mediaExternalLinksBuilder_AllParameters_ReturnValidString() {
 			//given
-			String expectedLinks = "externalLinks {\nid\nurl\nsite\n}";
+			Set<ParameterString> expectedLinks = TestUtils.getParameterStringSet("id", "url", "site");
+
 
 			//when
 			MediaExternalLinks actualLinks = MediaExternalLinks.getMediaExternalLinkBuilder()
@@ -107,7 +112,7 @@ class MediaExternalLinksTest {
 			assertThat(actualLinks.getExternalLink(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					equalTo(expectedLinks)
+					containsTitleAndAllSetElements(MediaExternalLinks.externalLinksTitle, expectedLinks)
 			));
 		}
 	}

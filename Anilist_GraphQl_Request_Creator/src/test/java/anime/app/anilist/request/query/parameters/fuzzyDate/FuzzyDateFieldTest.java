@@ -1,14 +1,17 @@
 package anime.app.anilist.request.query.parameters.fuzzyDate;
 
-import anime.app.anilist.request.query.parameters.media.MediaRank;
+import anime.app.anilist.request.query.common.ParameterString;
+import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.Set;
+
+import static anime.app.anilist.request.utils.QueryTitleAndParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 class FuzzyDateFieldTest {
 	@Test
@@ -65,7 +68,7 @@ class FuzzyDateFieldTest {
 		void fuzzyDateFieldBuilder_Year_ReturnValidString() {
 			//given
 			FuzzyDateFieldParameter parameter = FuzzyDateFieldParameter.dateOfBirth;
-			String expectedFuzzyDateField = "dateOfBirth {\nyear\n}";
+			Set<ParameterString> expectedFuzzyDateField = TestUtils.getParameterStringSet("year");
 
 			//when
 			FuzzyDateField actualFuzzyDateField = FuzzyDateField.getFuzzyDateFieldBuilder(parameter)
@@ -77,7 +80,7 @@ class FuzzyDateFieldTest {
 			assertThat(actualFuzzyDateField.getFuzzyDateString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					equalTo(expectedFuzzyDateField)
+					containsTitleAndAllSetElements(parameter.name(), expectedFuzzyDateField)
 			));
 		}
 
@@ -85,7 +88,7 @@ class FuzzyDateFieldTest {
 		void fuzzyDateFieldBuilder_Month_ReturnValidString() {
 			//given
 			FuzzyDateFieldParameter parameter = FuzzyDateFieldParameter.dateOfBirth;
-			String expectedFuzzyDateField = "dateOfBirth {\nmonth\n}";
+			Set<ParameterString> expectedFuzzyDateField = TestUtils.getParameterStringSet("month");
 
 			//when
 			FuzzyDateField actualFuzzyDateField = FuzzyDateField.getFuzzyDateFieldBuilder(parameter)
@@ -97,7 +100,7 @@ class FuzzyDateFieldTest {
 			assertThat(actualFuzzyDateField.getFuzzyDateString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					equalTo(expectedFuzzyDateField)
+					containsTitleAndAllSetElements(parameter.name(), expectedFuzzyDateField)
 			));
 		}
 
@@ -105,7 +108,7 @@ class FuzzyDateFieldTest {
 		void fuzzyDateFieldBuilder_Day_ReturnValidString() {
 			//given
 			FuzzyDateFieldParameter parameter = FuzzyDateFieldParameter.dateOfBirth;
-			String expectedFuzzyDateField = "dateOfBirth {\nday\n}";
+			Set<ParameterString> expectedFuzzyDateField = TestUtils.getParameterStringSet("day");
 
 			//when
 			FuzzyDateField actualFuzzyDateField = FuzzyDateField.getFuzzyDateFieldBuilder(parameter)
@@ -117,7 +120,7 @@ class FuzzyDateFieldTest {
 			assertThat(actualFuzzyDateField.getFuzzyDateString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					equalTo(expectedFuzzyDateField)
+					containsTitleAndAllSetElements(parameter.name(), expectedFuzzyDateField)
 			));
 		}
 
@@ -125,7 +128,7 @@ class FuzzyDateFieldTest {
 		void fuzzyDateFieldBuilder_AllUsingSingleMethod_ReturnValidString() {
 			//given
 			FuzzyDateFieldParameter parameter = FuzzyDateFieldParameter.dateOfBirth;
-			String expectedFuzzyDateField = "dateOfBirth {\nyear\nmonth\nday\n}";
+			Set<ParameterString> expectedFuzzyDateField = TestUtils.getParameterStringSet("year", "month", "day");
 
 			//when
 			FuzzyDateField actualFuzzyDateField = FuzzyDateField.getFuzzyDateFieldBuilder(parameter)
@@ -136,7 +139,7 @@ class FuzzyDateFieldTest {
 			assertThat(actualFuzzyDateField.getFuzzyDateString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					equalTo(expectedFuzzyDateField)
+					containsTitleAndAllSetElements(parameter.name(), expectedFuzzyDateField)
 			));
 		}
 
@@ -144,7 +147,7 @@ class FuzzyDateFieldTest {
 		void fuzzyDateFieldBuilder_AllUsingMultipleMethods_ReturnValidString() {
 			//given
 			FuzzyDateFieldParameter parameter = FuzzyDateFieldParameter.dateOfBirth;
-			String expectedFuzzyDateField = "dateOfBirth {\nyear\nmonth\nday\n}";
+			Set<ParameterString> expectedFuzzyDateField = TestUtils.getParameterStringSet("year", "month", "day");
 
 			//when
 			FuzzyDateField actualFuzzyDateField = FuzzyDateField.getFuzzyDateFieldBuilder(parameter)
@@ -158,7 +161,7 @@ class FuzzyDateFieldTest {
 			assertThat(actualFuzzyDateField.getFuzzyDateString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					equalTo(expectedFuzzyDateField)
+					containsTitleAndAllSetElements(parameter.name(), expectedFuzzyDateField)
 			));
 		}
 	}

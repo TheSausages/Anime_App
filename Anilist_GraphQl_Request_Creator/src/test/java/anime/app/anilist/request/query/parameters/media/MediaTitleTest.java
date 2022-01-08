@@ -1,10 +1,15 @@
 package anime.app.anilist.request.query.parameters.media;
 
+import anime.app.anilist.request.query.common.ParameterString;
+import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.Set;
+
+import static anime.app.anilist.request.utils.QueryTitleAndParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
@@ -45,7 +50,7 @@ class MediaTitleTest {
 		@Test
 		void mediaTitleBuilder_RomajiLanguage_ReturnValidString() {
 			//given
-			String expectedTitle = "title {\nromaji\n}";
+			Set<ParameterString> expectedTitles = TestUtils.getParameterStringSet("romaji");
 
 			//when
 			MediaTitle actualTitle = MediaTitle.getMediaTitleBuilder().romajiLanguage().build();
@@ -54,14 +59,14 @@ class MediaTitleTest {
 			assertThat(actualTitle.getTitleLanguages(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					equalTo(expectedTitle)
+					containsTitleAndAllSetElements(MediaTitle.titleTitle, expectedTitles)
 			));
 		}
 
 		@Test
 		void mediaTitleBuilder_RomajiLanguageStylised_ReturnValidString() {
 			//given
-			String expectedTitle = "title {\nromaji(stylised: true)\n}";
+			Set<ParameterString> expectedTitles = TestUtils.getParameterStringSet("romaji(stylised: true)");
 
 			//when
 			MediaTitle actualTitle = MediaTitle.getMediaTitleBuilder().romajiLanguageStylized().build();
@@ -70,14 +75,14 @@ class MediaTitleTest {
 			assertThat(actualTitle.getTitleLanguages(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					equalTo(expectedTitle)
+					containsTitleAndAllSetElements(MediaTitle.titleTitle, expectedTitles)
 			));
 		}
 
 		@Test
 		void mediaTitleBuilder_EnglishLanguage_ReturnValidString() {
 			//given
-			String expectedTitle = "title {\nenglish\n}";
+			Set<ParameterString> expectedTitles = TestUtils.getParameterStringSet("english");
 
 			//when
 			MediaTitle actualTitle = MediaTitle.getMediaTitleBuilder().englishLanguage().build();
@@ -86,14 +91,14 @@ class MediaTitleTest {
 			assertThat(actualTitle.getTitleLanguages(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					equalTo(expectedTitle)
+					containsTitleAndAllSetElements(MediaTitle.titleTitle, expectedTitles)
 			));
 		}
 
 		@Test
 		void mediaTitleBuilder_EnglishLanguageStylised_ReturnValidString() {
 			//given
-			String expectedTitle = "title {\nenglish(stylised: true)\n}";
+			Set<ParameterString> expectedTitles = TestUtils.getParameterStringSet("english(stylised: true)");
 
 			//when
 			MediaTitle actualTitle = MediaTitle.getMediaTitleBuilder().englishLanguageStylized().build();
@@ -102,14 +107,14 @@ class MediaTitleTest {
 			assertThat(actualTitle.getTitleLanguages(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					equalTo(expectedTitle)
+					containsTitleAndAllSetElements(MediaTitle.titleTitle, expectedTitles)
 			));
 		}
 
 		@Test
 		void mediaTitleBuilder_NativeLanguage_ReturnValidString() {
 			//given
-			String expectedTitle = "title {\nnative\n}";
+			Set<ParameterString> expectedTitles = TestUtils.getParameterStringSet("native");
 
 			//when
 			MediaTitle actualTitle = MediaTitle.getMediaTitleBuilder().nativeLanguage().build();
@@ -118,14 +123,14 @@ class MediaTitleTest {
 			assertThat(actualTitle.getTitleLanguages(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					equalTo(expectedTitle)
+					containsTitleAndAllSetElements(MediaTitle.titleTitle, expectedTitles)
 			));
 		}
 
 		@Test
 		void mediaTitleBuilder_NativeLanguageStylised_ReturnValidString() {
 			//given
-			String expectedTitle = "title {\nnative(stylised: true)\n}";
+			Set<ParameterString> expectedTitles = TestUtils.getParameterStringSet("native(stylised: true)");
 
 			//when
 			MediaTitle actualTitle = MediaTitle.getMediaTitleBuilder().nativeLanguageStylized().build();
@@ -134,14 +139,14 @@ class MediaTitleTest {
 			assertThat(actualTitle.getTitleLanguages(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					equalTo(expectedTitle)
+					containsTitleAndAllSetElements(MediaTitle.titleTitle, expectedTitles)
 			));
 		}
 
 		@Test
 		void mediaTitleBuilder_OverwriteWhenStylizedIsUsedAfterNonStylized_ReturnValidString() {
 			//given
-			String expectedTitle = "title {\nnative(stylised: true)\n}";
+			Set<ParameterString> expectedTitles = TestUtils.getParameterStringSet("native(stylised: true)");
 
 			//when
 			MediaTitle actualTitle = MediaTitle.getMediaTitleBuilder()
@@ -153,14 +158,14 @@ class MediaTitleTest {
 			assertThat(actualTitle.getTitleLanguages(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					equalTo(expectedTitle)
+					containsTitleAndAllSetElements(MediaTitle.titleTitle, expectedTitles)
 			));
 		}
 
 		@Test
 		void mediaTitleBuilder_OverwriteWhenNonStylizedIsUsedAfterStylized_ReturnValidString() {
 			//given
-			String expectedTitle = "title {\nnative\n}";
+			Set<ParameterString> expectedTitles = TestUtils.getParameterStringSet("native");
 
 			//when
 			MediaTitle actualTitle = MediaTitle.getMediaTitleBuilder()
@@ -172,14 +177,17 @@ class MediaTitleTest {
 			assertThat(actualTitle.getTitleLanguages(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					equalTo(expectedTitle)
+					containsTitleAndAllSetElements(MediaTitle.titleTitle, expectedTitles)
 			));
 		}
 
 		@Test
 		void mediaTitleBuilder_EnglishAndNativeStylised_ReturnValidString() {
 			//given
-			String expectedTitle = "title {\nenglish\nnative(stylised: true)\n}";
+			Set<ParameterString> expectedTitles = TestUtils.getParameterStringSet(
+					"english",
+					"native(stylised: true)"
+			);
 
 			//when
 			MediaTitle actualTitle = MediaTitle
@@ -192,7 +200,7 @@ class MediaTitleTest {
 			assertThat(actualTitle.getTitleLanguages(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					equalTo(expectedTitle)
+					containsTitleAndAllSetElements(MediaTitle.titleTitle, expectedTitles)
 			));
 		}
 	}

@@ -9,7 +9,7 @@ import java.util.Set;
 
 @Getter
 public class MediaExternalLinks {
-	private final static String externalLinks = "externalLinks";
+	public final static String externalLinksTitle = "externalLinks";
 
 	private final String externalLink;
 
@@ -49,8 +49,8 @@ public class MediaExternalLinks {
 				throw new IllegalStateException("External Links should posses at least 1 parameter!");
 			}
 
-			return new MediaExternalLinks(QueryParameterUtils.buildString(
-					externalLinks,
+			return new MediaExternalLinks(QueryParameterUtils.buildQueryFieldElementString(
+					externalLinksTitle,
 					mediaExternalLink
 			));
 		}

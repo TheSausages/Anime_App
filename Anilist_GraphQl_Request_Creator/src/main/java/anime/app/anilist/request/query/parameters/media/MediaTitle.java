@@ -7,14 +7,13 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-import java.util.LinkedHashSet;
 import java.util.Locale;
 import java.util.Set;
 
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class MediaTitle {
-	private static final String title = "title";
+	public static final String titleTitle = "title";
 	private static final String stylised = "(stylised: true)";
 
 	private final String titleLanguages;
@@ -76,8 +75,8 @@ public class MediaTitle {
 				throw new IllegalStateException("At least 1 language must be selected!");
 			}
 
-			return new MediaTitle(QueryParameterUtils.buildString(
-					title,
+			return new MediaTitle(QueryParameterUtils.buildQueryFieldElementString(
+					titleTitle,
 					languages
 			));
 		}
