@@ -15,8 +15,6 @@ public class TestUtils {
 	}
 
 	public static Set<ParameterString> getParameterStringSet(String... elements) {
-		return Arrays.stream(elements)
-				.map(ParameterString::fromString)
-				.collect(Collectors.toSet());
+		return getParameterStringSetWithDivide(QueryTitleAndParametersMatcher.divider, elements);
 	}
 }

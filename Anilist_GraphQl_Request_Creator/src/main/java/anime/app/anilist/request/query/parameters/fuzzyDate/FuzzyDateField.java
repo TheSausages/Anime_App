@@ -23,6 +23,10 @@ public class FuzzyDateField {
 		return new FuzzyDateFieldBuilder(parameter);
 	}
 
+	public String getFuzzyDateStringWithoutFieldName() {
+		return this.getFuzzyDateString().substring(parameter.toString().length() + 1);
+	}
+
 	@Override
 	public String toString() {
 		return fuzzyDateString;

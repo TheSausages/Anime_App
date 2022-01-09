@@ -2,7 +2,6 @@ package anime.app.anilist.request.query.parameters.connections.airingschedule;
 
 import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.media.Media;
-import anime.app.anilist.request.utils.QueryTitleAndParametersMatcher;
 import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -152,8 +151,7 @@ class AiringScheduleTest {
 		@Test
 		void airingScheduleBuilder_Media_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.getParameterStringSetWithDivide(
-					QueryTitleAndParametersMatcher.divider,
+			Set<ParameterString> expectedString = TestUtils.getParameterStringSet(
 					"media {\nformat\n}"
 			);
 

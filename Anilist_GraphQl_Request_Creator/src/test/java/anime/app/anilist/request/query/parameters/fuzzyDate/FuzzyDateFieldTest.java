@@ -31,7 +31,7 @@ class FuzzyDateFieldTest {
 	}
 
 	@Test
-	void getFuzzyDateFieldBuilder_ValidParameter_ThrowException() {
+	void getFuzzyDateFieldBuilder_ValidParameter_ReturnCorrectBuilder() {
 		//given
 		FuzzyDateFieldParameter parameter = FuzzyDateFieldParameter.dateOfBirth;
 
@@ -42,6 +42,23 @@ class FuzzyDateFieldTest {
 		assertThat(builder, allOf(
 				notNullValue(),
 				instanceOf(FuzzyDateField.FuzzyDateFieldBuilder.class)
+		));
+	}
+
+	@Test
+	void getFuzzyDateStringWithoutFieldName_ValidParameter_ReturnCorrectString() {
+		//given
+		FuzzyDateFieldParameter parameter = FuzzyDateFieldParameter.dateOfBirth;
+		Set<ParameterString> expectedFuzzyDateField = TestUtils.getParameterStringSet("year");
+
+		//when
+		FuzzyDateField actualFuzzyDateField = FuzzyDateField.getFuzzyDateFieldBuilder(parameter).year().build();
+
+		//then
+		assertThat(actualFuzzyDateField.getFuzzyDateStringWithoutFieldName(), allOf(
+				notNullValue(),
+				instanceOf(String.class),
+				containsTitleAndAllSetElements(expectedFuzzyDateField)
 		));
 	}
 

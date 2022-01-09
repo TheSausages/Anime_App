@@ -2,7 +2,6 @@ package anime.app.anilist.request.query.parameters.connections.airingschedule;
 
 import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.parameters.connections.PageInfo;
-import anime.app.anilist.request.utils.QueryTitleAndParametersMatcher;
 import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -22,8 +21,7 @@ class AiringScheduleConnectionTest {
 	void getAiringScheduleConnectionWithoutFieldName__ReturnCorrectString() {
 		//given
 		PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-		Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetWithDivide(
-				QueryTitleAndParametersMatcher.divider,
+		Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSet(
 				info.getPageInfoString()
 		);
 
@@ -76,8 +74,7 @@ class AiringScheduleConnectionTest {
 		void airingScheduleConnectionBuilder_Edge_ReturnCorrectString() {
 			//given
 			AiringScheduleEdge edge = new AiringScheduleEdge();
-			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetWithDivide(
-					QueryTitleAndParametersMatcher.divider,
+			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSet(
 					"edges " + edge.getAiringScheduleEdgeWithoutFieldName()
 			);
 
@@ -98,8 +95,7 @@ class AiringScheduleConnectionTest {
 		void airingScheduleConnectionBuilder_Nodes_ReturnCorrectString() {
 			//given
 			AiringSchedule schedule = AiringSchedule.getAiringScheduleBuilder().id().build();
-			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetWithDivide(
-					QueryTitleAndParametersMatcher.divider,
+			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSet(
 					"nodes " + schedule.getAiringScheduleStringWithoutFieldName()
 			);
 
@@ -120,8 +116,7 @@ class AiringScheduleConnectionTest {
 		void airingScheduleConnectionBuilder_PageInfo_ReturnCorrectString() {
 			//given
 			PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetWithDivide(
-					QueryTitleAndParametersMatcher.divider,
+			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSet(
 					info.getPageInfoString()
 			);
 

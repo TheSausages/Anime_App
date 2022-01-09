@@ -1,7 +1,6 @@
 package anime.app.anilist.request.query.parameters.connections.airingschedule;
 
 import anime.app.anilist.request.query.common.ParameterString;
-import anime.app.anilist.request.utils.QueryTitleAndParametersMatcher;
 import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -52,8 +51,7 @@ class AiringScheduleEdgeTest {
 		AiringSchedule schedule = AiringSchedule.getAiringScheduleBuilder()
 				.episode()
 				.build();
-		Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetWithDivide(
-				QueryTitleAndParametersMatcher.divider,
+		Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSet(
 				"id",
 				"node " + schedule.getAiringScheduleStringWithoutFieldName()
 		);
@@ -91,8 +89,7 @@ class AiringScheduleEdgeTest {
 		AiringSchedule schedule = AiringSchedule.getAiringScheduleBuilder()
 				.episode()
 				.build();
-		Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetWithDivide(
-				QueryTitleAndParametersMatcher.divider,
+		Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSet(
 				"id",
 				"node " + schedule.getAiringScheduleStringWithoutFieldName()
 		);
