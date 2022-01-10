@@ -50,7 +50,7 @@ class MediaTitleTest {
 		@Test
 		void mediaTitleBuilder_RomajiLanguage_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedTitles = TestUtils.getParameterStringSet("romaji");
+			Set<ParameterString> expectedTitles = TestUtils.getParameterStringSetField("romaji");
 
 			//when
 			MediaTitle actualTitle = MediaTitle.getMediaTitleBuilder().romajiLanguage().build();
@@ -66,7 +66,7 @@ class MediaTitleTest {
 		@Test
 		void mediaTitleBuilder_RomajiLanguageStylised_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedTitles = TestUtils.getParameterStringSet("romaji(stylised: true)");
+			Set<ParameterString> expectedTitles = TestUtils.getParameterStringSetField("romaji(stylised: true)");
 
 			//when
 			MediaTitle actualTitle = MediaTitle.getMediaTitleBuilder().romajiLanguageStylized().build();
@@ -82,7 +82,7 @@ class MediaTitleTest {
 		@Test
 		void mediaTitleBuilder_EnglishLanguage_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedTitles = TestUtils.getParameterStringSet("english");
+			Set<ParameterString> expectedTitles = TestUtils.getParameterStringSetField("english");
 
 			//when
 			MediaTitle actualTitle = MediaTitle.getMediaTitleBuilder().englishLanguage().build();
@@ -98,7 +98,7 @@ class MediaTitleTest {
 		@Test
 		void mediaTitleBuilder_EnglishLanguageStylised_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedTitles = TestUtils.getParameterStringSet("english(stylised: true)");
+			Set<ParameterString> expectedTitles = TestUtils.getParameterStringSetField("english(stylised: true)");
 
 			//when
 			MediaTitle actualTitle = MediaTitle.getMediaTitleBuilder().englishLanguageStylized().build();
@@ -114,7 +114,7 @@ class MediaTitleTest {
 		@Test
 		void mediaTitleBuilder_NativeLanguage_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedTitles = TestUtils.getParameterStringSet("native");
+			Set<ParameterString> expectedTitles = TestUtils.getParameterStringSetField("native");
 
 			//when
 			MediaTitle actualTitle = MediaTitle.getMediaTitleBuilder().nativeLanguage().build();
@@ -130,7 +130,7 @@ class MediaTitleTest {
 		@Test
 		void mediaTitleBuilder_NativeLanguageStylised_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedTitles = TestUtils.getParameterStringSet("native(stylised: true)");
+			Set<ParameterString> expectedTitles = TestUtils.getParameterStringSetField("native(stylised: true)");
 
 			//when
 			MediaTitle actualTitle = MediaTitle.getMediaTitleBuilder().nativeLanguageStylized().build();
@@ -146,7 +146,7 @@ class MediaTitleTest {
 		@Test
 		void mediaTitleBuilder_OverwriteWhenStylizedIsUsedAfterNonStylized_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedTitles = TestUtils.getParameterStringSet("native(stylised: true)");
+			Set<ParameterString> expectedTitles = TestUtils.getParameterStringSetField("native(stylised: true)");
 
 			//when
 			MediaTitle actualTitle = MediaTitle.getMediaTitleBuilder()
@@ -165,7 +165,7 @@ class MediaTitleTest {
 		@Test
 		void mediaTitleBuilder_OverwriteWhenNonStylizedIsUsedAfterStylized_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedTitles = TestUtils.getParameterStringSet("native");
+			Set<ParameterString> expectedTitles = TestUtils.getParameterStringSetField("native");
 
 			//when
 			MediaTitle actualTitle = MediaTitle.getMediaTitleBuilder()
@@ -184,7 +184,7 @@ class MediaTitleTest {
 		@Test
 		void mediaTitleBuilder_EnglishAndNativeStylised_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedTitles = TestUtils.getParameterStringSet(
+			Set<ParameterString> expectedTitles = TestUtils.getParameterStringSetField(
 					"english",
 					"native(stylised: true)"
 			);

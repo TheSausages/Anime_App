@@ -50,7 +50,7 @@ class AiringScheduleArgumentsTest {
 		@Test
 		void airingScheduleArgumentsBuilder_NotYetAiredWithoutParameter_ReturnCorrectString() {
 			//given
-			Set<ParameterString> arguments = TestUtils.getParameterStringSet("notYetAired: true");
+			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments("notYetAired: true");
 
 			//when
 			AiringScheduleArguments actualArguments = AiringScheduleArguments.getAiringScheduleArgumentsBuilder()
@@ -61,7 +61,7 @@ class AiringScheduleArgumentsTest {
 			assertThat(actualArguments.getAiringScheduleArgumentsString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsAllSetElements(arguments)
+					containsAllSetElements(expectedArguments)
 			));
 		}
 
@@ -69,7 +69,7 @@ class AiringScheduleArgumentsTest {
 		void airingScheduleArgumentsBuilder_NotYetAiredWithParameter_ReturnCorrectString() {
 			//given
 			boolean notYetAired = false;
-			Set<ParameterString> arguments = TestUtils.getParameterStringSet("notYetAired: " + notYetAired);
+			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments("notYetAired: " + notYetAired);
 
 			//when
 			AiringScheduleArguments actualArguments = AiringScheduleArguments.getAiringScheduleArgumentsBuilder()
@@ -80,7 +80,7 @@ class AiringScheduleArgumentsTest {
 			assertThat(actualArguments.getAiringScheduleArgumentsString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsAllSetElements(arguments)
+					containsAllSetElements(expectedArguments)
 			));
 		}
 
@@ -88,7 +88,7 @@ class AiringScheduleArgumentsTest {
 		void airingScheduleArgumentsBuilder_Page_ReturnCorrectString() {
 			//given
 			int page = 1;
-			Set<ParameterString> arguments = TestUtils.getParameterStringSet("page: " + page);
+			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments("page: " + page);
 
 			//when
 			AiringScheduleArguments actualArguments = AiringScheduleArguments.getAiringScheduleArgumentsBuilder()
@@ -99,7 +99,7 @@ class AiringScheduleArgumentsTest {
 			assertThat(actualArguments.getAiringScheduleArgumentsString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsAllSetElements(arguments)
+					containsAllSetElements(expectedArguments)
 			));
 		}
 
@@ -107,7 +107,7 @@ class AiringScheduleArgumentsTest {
 		void airingScheduleArgumentsBuilder_PerPage_ReturnCorrectString() {
 			//given
 			int perPage = 30;
-			Set<ParameterString> arguments = TestUtils.getParameterStringSet("perPage: " + perPage);
+			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments("perPage: " + perPage);
 
 			//when
 			AiringScheduleArguments actualArguments = AiringScheduleArguments.getAiringScheduleArgumentsBuilder()
@@ -118,7 +118,7 @@ class AiringScheduleArgumentsTest {
 			assertThat(actualArguments.getAiringScheduleArgumentsString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsAllSetElements(arguments)
+					containsAllSetElements(expectedArguments)
 			));
 		}
 
@@ -128,7 +128,7 @@ class AiringScheduleArgumentsTest {
 			boolean notYetAired = true;
 			int page = 1;
 			int perPage = 30;
-			Set<ParameterString> arguments = TestUtils.getParameterStringSet(
+			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
 					"notYetAired: " + notYetAired,
 					"page: " + page,
 					"perPage: " + perPage
@@ -145,7 +145,7 @@ class AiringScheduleArgumentsTest {
 			assertThat(actualArguments.getAiringScheduleArgumentsString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsAllSetElements(arguments)
+					containsAllSetElements(expectedArguments)
 			));
 		}
 	}

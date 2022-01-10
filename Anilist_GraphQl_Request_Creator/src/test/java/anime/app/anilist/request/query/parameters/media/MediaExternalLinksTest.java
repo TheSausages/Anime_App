@@ -50,7 +50,7 @@ class MediaExternalLinksTest {
 		@Test
 		void mediaExternalLinksBuilder_Id_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedLinks = TestUtils.getParameterStringSet("id");
+			Set<ParameterString> expectedLinks = TestUtils.getParameterStringSetField("id");
 
 			//when
 			MediaExternalLinks actualLinks = MediaExternalLinks.getMediaExternalLinkBuilder().id().build();
@@ -66,7 +66,7 @@ class MediaExternalLinksTest {
 		@Test
 		void mediaExternalLinksBuilder_Url_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedLinks = TestUtils.getParameterStringSet("url");
+			Set<ParameterString> expectedLinks = TestUtils.getParameterStringSetField("url");
 
 			//when
 			MediaExternalLinks actualLinks = MediaExternalLinks.getMediaExternalLinkBuilder().url().build();
@@ -82,7 +82,7 @@ class MediaExternalLinksTest {
 		@Test
 		void mediaExternalLinksBuilder_Site_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedLinks = TestUtils.getParameterStringSet("site");
+			Set<ParameterString> expectedLinks = TestUtils.getParameterStringSetField("site");
 
 			//when
 			MediaExternalLinks actualLinks = MediaExternalLinks.getMediaExternalLinkBuilder().site().build();
@@ -98,7 +98,7 @@ class MediaExternalLinksTest {
 		@Test
 		void mediaExternalLinksBuilder_AllParameters_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedLinks = TestUtils.getParameterStringSet("id", "url", "site");
+			Set<ParameterString> expectedLinks = TestUtils.getParameterStringSetField("id", "url", "site");
 
 
 			//when

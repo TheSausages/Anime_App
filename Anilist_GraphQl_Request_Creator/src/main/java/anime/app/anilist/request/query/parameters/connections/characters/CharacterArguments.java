@@ -28,13 +28,13 @@ public class CharacterArguments {
 	public static final class CharacterArgumentsBuilder {
 		private final Set<ParameterString> characterMediaArguments = new OverwritingLinkedHashSet<>();
 
-		public CharacterArgumentsBuilder mediaSort(CharacterSort... sorts) {
+		public CharacterArgumentsBuilder sortBy(CharacterSort... sorts) {
 			characterMediaArguments.add(new ParameterString("sort: " + Arrays.toString(sorts)));
 			return this;
 		}
 
 		public CharacterArgumentsBuilder role(CharacterRole characterRole) {
-			characterMediaArguments.add(new ParameterString("role: " + characterRole));
+			characterMediaArguments.add(new ParameterString("role: " + characterRole.name()));
 			return this;
 		}
 

@@ -49,7 +49,7 @@ class FuzzyDateFieldTest {
 	void getFuzzyDateStringWithoutFieldName_ValidParameter_ReturnCorrectString() {
 		//given
 		FuzzyDateFieldParameter parameter = FuzzyDateFieldParameter.dateOfBirth;
-		Set<ParameterString> expectedFuzzyDateField = TestUtils.getParameterStringSet("year");
+		Set<ParameterString> expectedFuzzyDateField = TestUtils.getParameterStringSetField("year");
 
 		//when
 		FuzzyDateField actualFuzzyDateField = FuzzyDateField.getFuzzyDateFieldBuilder(parameter).year().build();
@@ -85,7 +85,7 @@ class FuzzyDateFieldTest {
 		void fuzzyDateFieldBuilder_Year_ReturnValidString() {
 			//given
 			FuzzyDateFieldParameter parameter = FuzzyDateFieldParameter.dateOfBirth;
-			Set<ParameterString> expectedFuzzyDateField = TestUtils.getParameterStringSet("year");
+			Set<ParameterString> expectedFuzzyDateField = TestUtils.getParameterStringSetField("year");
 
 			//when
 			FuzzyDateField actualFuzzyDateField = FuzzyDateField.getFuzzyDateFieldBuilder(parameter)
@@ -105,7 +105,7 @@ class FuzzyDateFieldTest {
 		void fuzzyDateFieldBuilder_Month_ReturnValidString() {
 			//given
 			FuzzyDateFieldParameter parameter = FuzzyDateFieldParameter.dateOfBirth;
-			Set<ParameterString> expectedFuzzyDateField = TestUtils.getParameterStringSet("month");
+			Set<ParameterString> expectedFuzzyDateField = TestUtils.getParameterStringSetField("month");
 
 			//when
 			FuzzyDateField actualFuzzyDateField = FuzzyDateField.getFuzzyDateFieldBuilder(parameter)
@@ -125,7 +125,7 @@ class FuzzyDateFieldTest {
 		void fuzzyDateFieldBuilder_Day_ReturnValidString() {
 			//given
 			FuzzyDateFieldParameter parameter = FuzzyDateFieldParameter.dateOfBirth;
-			Set<ParameterString> expectedFuzzyDateField = TestUtils.getParameterStringSet("day");
+			Set<ParameterString> expectedFuzzyDateField = TestUtils.getParameterStringSetField("day");
 
 			//when
 			FuzzyDateField actualFuzzyDateField = FuzzyDateField.getFuzzyDateFieldBuilder(parameter)
@@ -145,7 +145,7 @@ class FuzzyDateFieldTest {
 		void fuzzyDateFieldBuilder_AllUsingSingleMethod_ReturnValidString() {
 			//given
 			FuzzyDateFieldParameter parameter = FuzzyDateFieldParameter.dateOfBirth;
-			Set<ParameterString> expectedFuzzyDateField = TestUtils.getParameterStringSet("year", "month", "day");
+			Set<ParameterString> expectedFuzzyDateField = TestUtils.getParameterStringSetField("year", "month", "day");
 
 			//when
 			FuzzyDateField actualFuzzyDateField = FuzzyDateField.getFuzzyDateFieldBuilder(parameter)
@@ -164,7 +164,7 @@ class FuzzyDateFieldTest {
 		void fuzzyDateFieldBuilder_AllUsingMultipleMethods_ReturnValidString() {
 			//given
 			FuzzyDateFieldParameter parameter = FuzzyDateFieldParameter.dateOfBirth;
-			Set<ParameterString> expectedFuzzyDateField = TestUtils.getParameterStringSet("year", "month", "day");
+			Set<ParameterString> expectedFuzzyDateField = TestUtils.getParameterStringSetField("year", "month", "day");
 
 			//when
 			FuzzyDateField actualFuzzyDateField = FuzzyDateField.getFuzzyDateFieldBuilder(parameter)

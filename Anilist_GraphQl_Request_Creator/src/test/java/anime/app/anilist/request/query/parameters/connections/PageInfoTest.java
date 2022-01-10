@@ -33,7 +33,7 @@ class PageInfoTest {
 	@Test
 	void getPageInfoStringWithoutFieldName__ReturnCorrectString() {
 		//given
-		Set<ParameterString> elements = TestUtils.getParameterStringSet("perPage");
+		Set<ParameterString> elements = TestUtils.getParameterStringSetField("perPage");
 
 		//when
 		String actualString = PageInfo.getPageInfoBuilder()
@@ -70,7 +70,7 @@ class PageInfoTest {
 		@Test
 		void pageInfoBuilder_Total_ReturnCorrectString() {
 			//given
-			Set<ParameterString> elements = TestUtils.getParameterStringSet("total");
+			Set<ParameterString> elements = TestUtils.getParameterStringSetField("total");
 
 			//when
 			PageInfo actualPageInfo = PageInfo.getPageInfoBuilder().total().build();
@@ -86,7 +86,7 @@ class PageInfoTest {
 		@Test
 		void pageInfoBuilder_PerPage_ReturnCorrectString() {
 			//given
-			Set<ParameterString> elements = TestUtils.getParameterStringSet("perPage");
+			Set<ParameterString> elements = TestUtils.getParameterStringSetField("perPage");
 
 			//when
 			PageInfo actualPageInfo = PageInfo.getPageInfoBuilder().perPage().build();
@@ -102,7 +102,7 @@ class PageInfoTest {
 		@Test
 		void pageInfoBuilder_CurrentPage_ReturnCorrectString() {
 			//given
-			Set<ParameterString> elements = TestUtils.getParameterStringSet("currentPage");
+			Set<ParameterString> elements = TestUtils.getParameterStringSetField("currentPage");
 
 			//when
 			PageInfo actualPageInfo = PageInfo.getPageInfoBuilder().currentPage().build();
@@ -118,7 +118,7 @@ class PageInfoTest {
 		@Test
 		void pageInfoBuilder_LastPage_ReturnCorrectString() {
 			//given
-			Set<ParameterString> elements = TestUtils.getParameterStringSet("lastPage");
+			Set<ParameterString> elements = TestUtils.getParameterStringSetField("lastPage");
 
 			//when
 			PageInfo actualPageInfo = PageInfo.getPageInfoBuilder().lastPage().build();
@@ -134,7 +134,7 @@ class PageInfoTest {
 		@Test
 		void pageInfoBuilder_HasNextPage_ReturnCorrectString() {
 			//given
-			Set<ParameterString> elements = TestUtils.getParameterStringSet("hasNextPage");
+			Set<ParameterString> elements = TestUtils.getParameterStringSetField("hasNextPage");
 
 			//when
 			PageInfo actualPageInfo = PageInfo.getPageInfoBuilder().hasNextPage().build();
@@ -150,7 +150,7 @@ class PageInfoTest {
 		@Test
 		void pageInfoBuilder_AllParameters_ReturnCorrectString() {
 			//given
-			Set<ParameterString> elements = TestUtils.getParameterStringSet(
+			Set<ParameterString> elements = TestUtils.getParameterStringSetField(
 					"total",
 					"perPage",
 					"currentPage",

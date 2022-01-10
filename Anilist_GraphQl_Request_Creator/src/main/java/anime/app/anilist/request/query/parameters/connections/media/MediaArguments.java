@@ -30,7 +30,7 @@ public class MediaArguments {
 	public static final class MediaArgumentsBuilder {
 		private final Set<ParameterString> mediaArguments = new OverwritingLinkedHashSet<>();
 
-		public MediaArgumentsBuilder sort(MediaSort... sorts) {
+		public MediaArgumentsBuilder sortBy(MediaSort... sorts) {
 			mediaArguments.add(ParameterString.fromString("sort: " + Arrays.toString(sorts)));
 			return this;
 		}

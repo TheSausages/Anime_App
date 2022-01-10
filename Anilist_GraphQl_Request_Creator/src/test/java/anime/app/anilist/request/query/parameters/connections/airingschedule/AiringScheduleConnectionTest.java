@@ -21,7 +21,7 @@ class AiringScheduleConnectionTest {
 	void getAiringScheduleConnectionWithoutFieldName__ReturnCorrectString() {
 		//given
 		PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-		Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSet(
+		Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetField(
 				info.getPageInfoString()
 		);
 
@@ -74,7 +74,7 @@ class AiringScheduleConnectionTest {
 		void airingScheduleConnectionBuilder_Edge_ReturnCorrectString() {
 			//given
 			AiringScheduleEdge edge = new AiringScheduleEdge();
-			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSet(
+			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetField(
 					"edges " + edge.getAiringScheduleEdgeWithoutFieldName()
 			);
 
@@ -95,7 +95,7 @@ class AiringScheduleConnectionTest {
 		void airingScheduleConnectionBuilder_Nodes_ReturnCorrectString() {
 			//given
 			AiringSchedule schedule = AiringSchedule.getAiringScheduleBuilder().id().build();
-			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSet(
+			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetField(
 					"nodes " + schedule.getAiringScheduleStringWithoutFieldName()
 			);
 
@@ -116,12 +116,39 @@ class AiringScheduleConnectionTest {
 		void airingScheduleConnectionBuilder_PageInfo_ReturnCorrectString() {
 			//given
 			PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSet(
+			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetField(
 					info.getPageInfoString()
 			);
 
 			//when
 			AiringScheduleConnection actualConnection = AiringScheduleConnection.getAiringScheduleConnectionBuilder()
+					.pageInfo(info)
+					.build();
+
+			//then
+			assertThat(actualConnection.getAiringScheduleConnectionString(), allOf(
+					notNullValue(),
+					instanceOf(String.class),
+					containsTitleAndAllSetElements(airingScheduleConnectionTitle, expectedAiringScheduleEdge)
+			));
+		}
+
+		@Test
+		void airingScheduleConnectionBuilder_AllParameters_ReturnCorrectString() {
+			//given
+			AiringScheduleEdge edge = new AiringScheduleEdge();
+			AiringSchedule schedule = AiringSchedule.getAiringScheduleBuilder().id().build();
+			PageInfo info = PageInfo.getPageInfoBuilder().total().build();
+			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetField(
+					"edges " + edge.getAiringScheduleEdgeWithoutFieldName(),
+					"nodes " + schedule.getAiringScheduleStringWithoutFieldName(),
+					info.getPageInfoString()
+			);
+
+			//when
+			AiringScheduleConnection actualConnection = AiringScheduleConnection.getAiringScheduleConnectionBuilder()
+					.edges(edge)
+					.nodes(schedule)
 					.pageInfo(info)
 					.build();
 

@@ -23,7 +23,7 @@ public class MediaEdge {
 		return this.mediaEdgeString.substring(10);
 	}
 
-	public static MediaEdgeBuilder getMediaConnectionBuilder() {
+	public static MediaEdgeBuilder getMediaEdgeBuilder() {
 		return new MediaEdgeBuilder();
 	}
 
@@ -41,7 +41,7 @@ public class MediaEdge {
 		}
 
 		public MediaEdgeBuilder relationType() {
-			mediaEdge.add(new ParameterString("relationType"));
+			mediaEdge.add(new ParameterString("relationType(version: 2)"));
 			return this;
 		}
 
@@ -51,7 +51,7 @@ public class MediaEdge {
 		}
 
 		public MediaEdgeBuilder isMainStudio() {
-			mediaEdge.add(new ParameterString("isMainStudio\n"));
+			mediaEdge.add(new ParameterString("isMainStudio"));
 			return this;
 		}
 
@@ -126,6 +126,10 @@ public class MediaEdge {
 		}
 */
 		public MediaEdge build() {
+			if (mediaEdge.isEmpty()) {
+				throw new IllegalStateException("Media Edge should posses at least 1 parameter!");
+			}
+
 			return new MediaEdge(QueryParameterUtils.buildQueryFieldElementString(
 					mediaEdgeTitle,
 					mediaEdge
