@@ -239,7 +239,7 @@ class StaffTest {
 		void staffBuilder_DateOfBirth_ReturnCorrectString() {
 			//given
 			FuzzyDateFieldParameter parameter = FuzzyDateFieldParameter.dateOfBirth;
-			FuzzyDateField dateField = FuzzyDateField.getFuzzyDateFieldBuilder(parameter)
+			FuzzyDateField dateField = FuzzyDateField.getFuzzyDateFieldBuilder()
 					.allAndBuild();
 			Set<ParameterString> expectedStaff = TestUtils.getParameterStringSetField(
 					parameter.name() + dateField.getFuzzyDateStringWithoutFieldName()
@@ -262,7 +262,7 @@ class StaffTest {
 		void staffBuilder_DateOfDeath_ReturnCorrectString() {
 			//given
 			FuzzyDateFieldParameter parameter = FuzzyDateFieldParameter.dateOfDeath;
-			FuzzyDateField dateField = FuzzyDateField.getFuzzyDateFieldBuilder(parameter)
+			FuzzyDateField dateField = FuzzyDateField.getFuzzyDateFieldBuilder()
 					.allAndBuild();
 			Set<ParameterString> expectedStaff = TestUtils.getParameterStringSetField(
 					parameter.name() + dateField.getFuzzyDateStringWithoutFieldName()
@@ -535,9 +535,9 @@ class StaffTest {
 			//given
 			FuzzyDateFieldParameter birthParameter = FuzzyDateFieldParameter.dateOfBirth;
 			FuzzyDateFieldParameter deathParameter = FuzzyDateFieldParameter.dateOfDeath;
-			FuzzyDateField birthDateField = FuzzyDateField.getFuzzyDateFieldBuilder(birthParameter)
+			FuzzyDateField birthDateField = FuzzyDateField.getFuzzyDateFieldBuilder()
 					.allAndBuild();
-			FuzzyDateField deathDateField = FuzzyDateField.getFuzzyDateFieldBuilder(deathParameter)
+			FuzzyDateField deathDateField = FuzzyDateField.getFuzzyDateFieldBuilder()
 					.allAndBuild();
 			int page = 1;
 			MediaArguments mediaArguments = MediaArguments.getMediaArgumentsBuilder().onList().build();

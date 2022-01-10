@@ -16,7 +16,13 @@ public class QueryParameterUtils {
 		Objects.requireNonNull(name, "Name cannot be null");
 		Objects.requireNonNull(parameters, "Parameters cannot be null");
 
-		StringBuilder parameterStringBuilder = new StringBuilder(name).append(" {\n");
+		StringBuilder parameterStringBuilder = new StringBuilder(name);
+
+		if (!name.isBlank()) {
+			parameterStringBuilder.append(" ");
+		}
+
+		parameterStringBuilder.append("{\n");
 		parameters.forEach(lan -> parameterStringBuilder.append(lan).append("\n"));
 		parameterStringBuilder.append("}");
 

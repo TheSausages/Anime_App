@@ -18,13 +18,19 @@ public class FuzzyDateField {
 		this.parameter = parameter;
 	}
 
+	public static FuzzyDateFieldBuilder getFuzzyDateFieldBuilder() {
+		return new FuzzyDateFieldBuilder(null);
+	}
+
 	public static FuzzyDateFieldBuilder getFuzzyDateFieldBuilder(FuzzyDateFieldParameter parameter) {
 		Objects.requireNonNull(parameter, "The FieldParameters param cannot be null!");
 		return new FuzzyDateFieldBuilder(parameter);
 	}
 
 	public String getFuzzyDateStringWithoutFieldName() {
-		return this.getFuzzyDateString().substring(parameter.toString().length() + 1);
+		return this.getFuzzyDateString().substring(
+				(Objects.nonNull(parameter) ? parameter.name().length() : 0) + 1
+		);
 	}
 
 	@Override
@@ -66,7 +72,7 @@ public class FuzzyDateField {
 			}
 
 			return new FuzzyDateField(QueryParameterUtils.buildQueryFieldElementString(
-					parameter.name(),
+					Objects.nonNull(parameter) ? parameter.name() : "",
 					fuzzyDate
 			), parameter);
 		}

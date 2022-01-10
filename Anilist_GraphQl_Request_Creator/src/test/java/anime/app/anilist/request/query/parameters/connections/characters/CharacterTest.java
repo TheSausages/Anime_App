@@ -181,9 +181,10 @@ class CharacterTest {
 		@Test
 		void characterBuilder_DateOfBirth_ReturnCorrectString() {
 			//given
-			FuzzyDateField dateField = FuzzyDateField.getFuzzyDateFieldBuilder(FuzzyDateFieldParameter.dateOfBirth).allAndBuild();
+			FuzzyDateFieldParameter parameter = FuzzyDateFieldParameter.dateOfBirth;
+			FuzzyDateField dateField = FuzzyDateField.getFuzzyDateFieldBuilder().allAndBuild();
 			Set<ParameterString> expectedString = TestUtils.getParameterStringSetField(
-					FuzzyDateFieldParameter.dateOfBirth + " " + "{\nyear\nmonth\nday\n}"
+					parameter.name() + " " + dateField.getFuzzyDateStringWithoutFieldName()
 			);
 
 			//when
@@ -316,7 +317,8 @@ class CharacterTest {
 		@Test
 		void characterBuilder_All_ReturnCorrectString() {
 			//given
-			FuzzyDateField dateField = FuzzyDateField.getFuzzyDateFieldBuilder(FuzzyDateFieldParameter.dateOfBirth).allAndBuild();
+			FuzzyDateFieldParameter parameter = FuzzyDateFieldParameter.dateOfBirth;
+			FuzzyDateField dateField = FuzzyDateField.getFuzzyDateFieldBuilder().allAndBuild();
 			int page = 1;
 			MediaArguments arguments = MediaArguments.getMediaArgumentsBuilder().page(page).build();
 			MediaConnection connection = MediaConnection.getMediaConnectionBuilder()
@@ -328,7 +330,7 @@ class CharacterTest {
 					"image {\nlarge\nmedium\n}",
 					"description",
 					"gender",
-					FuzzyDateFieldParameter.dateOfBirth + " " + "{\nyear\nmonth\nday\n}",
+					parameter.name() + " " + dateField.getFuzzyDateStringWithoutFieldName(),
 					"age",
 					"siteUrl",
 					"favourites",
