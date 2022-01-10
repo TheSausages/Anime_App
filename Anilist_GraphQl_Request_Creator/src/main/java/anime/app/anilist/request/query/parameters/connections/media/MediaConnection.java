@@ -23,6 +23,11 @@ public class MediaConnection {
 		return this.mediaConnectionString.substring(mediaConnectionTitle.length() + 1);
 	}
 
+	@Override
+	public String toString() {
+		return mediaConnectionString;
+	}
+
 	public static MediaConnectionBuilder getMediaConnectionBuilder() {
 		return new MediaConnectionBuilder();
 	}

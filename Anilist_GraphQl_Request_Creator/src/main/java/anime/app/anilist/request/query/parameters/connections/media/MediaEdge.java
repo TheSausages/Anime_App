@@ -20,11 +20,16 @@ public class MediaEdge {
 	}
 
 	public String getMediaEdgeWithoutFieldName() {
-		return this.mediaEdgeString.substring(10);
+		return this.mediaEdgeString.substring(mediaEdgeTitle.length() + 1);
 	}
 
 	public static MediaEdgeBuilder getMediaEdgeBuilder() {
 		return new MediaEdgeBuilder();
+	}
+
+	@Override
+	public String toString() {
+		return mediaEdgeString;
 	}
 
 	public static final class MediaEdgeBuilder {

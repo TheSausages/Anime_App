@@ -22,6 +22,11 @@ public class CharacterConnection {
 		return this.characterConnectionString.substring(characterConnectionTitle.length() + 1);
 	}
 
+	@Override
+	public String toString() {
+		return characterConnectionString;
+	}
+
 	public static CharacterConnectionBuilder getCharacterConnectionBuilder() {
 		return new CharacterConnectionBuilder();
 	}
