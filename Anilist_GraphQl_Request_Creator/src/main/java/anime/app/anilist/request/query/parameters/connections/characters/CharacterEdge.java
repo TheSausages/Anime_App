@@ -2,9 +2,15 @@ package anime.app.anilist.request.query.parameters.connections.characters;
 
 import anime.app.anilist.request.query.common.OverwritingLinkedHashSet;
 import anime.app.anilist.request.query.common.ParameterString;
+import anime.app.anilist.request.query.media.Media;
 import anime.app.anilist.request.query.parameters.QueryParameterUtils;
+import anime.app.anilist.request.query.parameters.connections.staff.Staff;
+import anime.app.anilist.request.query.parameters.connections.staff.StaffLanguage;
+import anime.app.anilist.request.query.parameters.connections.staff.StaffRoleType;
+import anime.app.anilist.request.query.parameters.connections.staff.StaffSort;
 import lombok.Getter;
 
+import java.util.Arrays;
 import java.util.Set;
 
 @Getter
@@ -53,50 +59,50 @@ public class CharacterEdge {
 			return this;
 		}
 
-		/*public CharacterEdgeBuilder voiceActors(Staff staff) {
-			characterEdge.add(new ParameterString("voiceActors " + staff.getStaffWithoutFieldName() + "\n"));
+		public CharacterEdgeBuilder voiceActors(Staff staff) {
+			characterEdge.add(ParameterString.fromString("voiceActors " + staff.getStaffWithoutFieldName()));
 			return this;
 		}
 
-		public CharacterEdgeBuilder voiceActors(StaffLanguage language, Staff staff) {
-			characterEdge.add(new ParameterString("voiceActors(language: " + language.name() + ") " + staff.getStaffWithoutFieldName() + "\n"));
+		public CharacterEdgeBuilder voiceActors(Staff staff, StaffLanguage language) {
+			characterEdge.add(ParameterString.fromString("voiceActors(language: " + language.name() + ") " + staff.getStaffWithoutFieldName()));
 			return this;
 		}
 
-		public CharacterEdgeBuilder voiceActors(StaffSort[] staffSort, Staff staff) {
-			characterEdge.add(new ParameterString("voiceActors(sort: " + Arrays.toString(staffSort) + ") " + staff.getStaffWithoutFieldName() + "\n"));
+		public CharacterEdgeBuilder voiceActors(Staff staff, StaffSort... staffSort) {
+			characterEdge.add(ParameterString.fromString("voiceActors(sort: " + Arrays.toString(staffSort) + ") " + staff.getStaffWithoutFieldName()));
 			return this;
 		}
 
-		public CharacterEdgeBuilder voiceActors(StaffLanguage language, StaffSort[] staffSort, Staff staff) {
-			characterEdge.add(new ParameterString("voiceActors(language: " + language.name() + ", sort: " + Arrays.toString(staffSort) + ") " + staff.getStaffWithoutFieldName() + "\n"));
+		public CharacterEdgeBuilder voiceActors(Staff staff, StaffLanguage language, StaffSort... staffSort) {
+			characterEdge.add(ParameterString.fromString("voiceActors(language: " + language.name() + ", sort: " + Arrays.toString(staffSort) + ") " + staff.getStaffWithoutFieldName()));
 			return this;
 		}
 
 		public CharacterEdgeBuilder voiceActorsRoles(StaffRoleType roleType) {
-			characterEdge.add(new ParameterString("voiceActorsRoles " + roleType.getStaffRoleTypeStringWithoutFieldName() + "\n"));
+			characterEdge.add(ParameterString.fromString("voiceActorsRoles " + roleType.getStaffRoleTypeStringWithoutFieldName()));
 			return this;
 		}
 
-		public CharacterEdgeBuilder voiceActorsRoles(StaffLanguage language, StaffRoleType roleType) {
-			characterEdge.add(new ParameterString("voiceActorsRoles(language: " + language.name() + ") " + roleType.getStaffRoleTypeStringWithoutFieldName() + "\n"));
+		public CharacterEdgeBuilder voiceActorsRoles(StaffRoleType roleType, StaffLanguage language) {
+			characterEdge.add(ParameterString.fromString("voiceActorsRoles(language: " + language.name() + ") " + roleType.getStaffRoleTypeStringWithoutFieldName()));
 			return this;
 		}
 
-		public CharacterEdgeBuilder voiceActorsRoles(StaffSort[] staffSort, StaffRoleType roleType) {
-			characterEdge.add(new ParameterString("voiceActorsRoles(sort: " + Arrays.toString(staffSort) + ") " + roleType.getStaffRoleTypeStringWithoutFieldName() + "\n"));
+		public CharacterEdgeBuilder voiceActorsRoles(StaffRoleType roleType, StaffSort... staffSort) {
+			characterEdge.add(ParameterString.fromString("voiceActorsRoles(sort: " + Arrays.toString(staffSort) + ") " + roleType.getStaffRoleTypeStringWithoutFieldName()));
 			return this;
 		}
 
-		public CharacterEdgeBuilder voiceActorsRoles(StaffLanguage language, StaffSort[] staffSort, StaffRoleType roleType) {
-			characterEdge.add(new ParameterString("voiceActorsRoles(language: " + language.name() + ", sort: " + Arrays.toString(staffSort) + ") " + roleType.getStaffRoleTypeStringWithoutFieldName() + "\n"));
+		public CharacterEdgeBuilder voiceActorsRoles(StaffRoleType roleType, StaffLanguage language, StaffSort... staffSort) {
+			characterEdge.add(ParameterString.fromString("voiceActorsRoles(language: " + language.name() + ", sort: " + Arrays.toString(staffSort) + ") " + roleType.getStaffRoleTypeStringWithoutFieldName()));
 			return this;
 		}
 
 		public CharacterEdgeBuilder media(Media media) {
-			characterEdge.add(new ParameterString("media " + media + "\n"));
+			characterEdge.add(ParameterString.fromString("media " + media.getRequestedMediaFields()));
 			return this;
-		}*/
+		}
 
 		public CharacterEdgeBuilder favouriteOrder() {
 			characterEdge.add(ParameterString.fromString("favouriteOrder"));

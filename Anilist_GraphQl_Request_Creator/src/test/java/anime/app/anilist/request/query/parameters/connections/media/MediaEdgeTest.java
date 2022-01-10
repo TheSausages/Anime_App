@@ -3,12 +3,17 @@ package anime.app.anilist.request.query.parameters.connections.media;
 import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.media.Media;
 import anime.app.anilist.request.query.parameters.connections.characters.Character;
+import anime.app.anilist.request.query.parameters.connections.staff.Staff;
+import anime.app.anilist.request.query.parameters.connections.staff.StaffLanguage;
+import anime.app.anilist.request.query.parameters.connections.staff.StaffRoleType;
+import anime.app.anilist.request.query.parameters.connections.staff.StaffSort;
 import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.Set;
 
 import static anime.app.anilist.request.query.parameters.connections.media.MediaEdge.mediaEdgeTitle;
@@ -276,7 +281,6 @@ class MediaEdgeTest {
 		@Test
 		void mediaEdgeBuilder_StaffRole_ReturnCorrectString() {
 			//given
-			Character character = Character.getCharacterBuilder().id().build();
 			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
 					"staffRole"
 			);
@@ -295,10 +299,234 @@ class MediaEdgeTest {
 		}
 
 		@Test
+		void mediaEdgeBuilder_VoiceActor_ReturnCorrectString() {
+			//given
+			Staff staff = Staff.getStaffBuilder().id().build();
+			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
+					"voiceActors " + staff.getStaffWithoutFieldName()
+			);
+
+			//when
+			MediaEdge actualEdge = MediaEdge.getMediaEdgeBuilder()
+					.voiceActors(staff)
+					.build();
+
+			//then
+			assertThat(actualEdge.getMediaEdgeString(), allOf(
+					notNullValue(),
+					instanceOf(String.class),
+					containsTitleAndAllSetElements(mediaEdgeTitle, expectedEdge)
+			));
+		}
+
+		@Test
+		void mediaEdgeBuilder_VoiceActorWithLanguage_ReturnCorrectString() {
+			//given
+			StaffLanguage language = StaffLanguage.ENGLISH;
+			Staff staff = Staff.getStaffBuilder().id().build();
+			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
+					"voiceActors(language: " + language.name() + ") " + staff.getStaffWithoutFieldName()
+			);
+
+			//when
+			MediaEdge actualEdge = MediaEdge.getMediaEdgeBuilder()
+					.voiceActors(staff, language)
+					.build();
+
+			//then
+			assertThat(actualEdge.getMediaEdgeString(), allOf(
+					notNullValue(),
+					instanceOf(String.class),
+					containsTitleAndAllSetElements(mediaEdgeTitle, expectedEdge)
+			));
+		}
+
+		@Test
+		void mediaEdgeBuilder_VoiceActorWithSortSingle_ReturnCorrectString() {
+			//given
+			StaffSort[] sorts = new StaffSort[] {StaffSort.ID};
+			Staff staff = Staff.getStaffBuilder().id().build();
+			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
+					"voiceActors(sort: " + Arrays.toString(sorts) + ") " + staff.getStaffWithoutFieldName()
+			);
+
+			//when
+			MediaEdge actualEdge = MediaEdge.getMediaEdgeBuilder()
+					.voiceActors(staff, sorts)
+					.build();
+
+			//then
+			assertThat(actualEdge.getMediaEdgeString(), allOf(
+					notNullValue(),
+					instanceOf(String.class),
+					containsTitleAndAllSetElements(mediaEdgeTitle, expectedEdge)
+			));
+		}
+
+		@Test
+		void mediaEdgeBuilder_VoiceActorWithSortMany_ReturnCorrectString() {
+			//given
+			StaffSort[] sorts = new StaffSort[] {StaffSort.ID, StaffSort.ROLE};
+			Staff staff = Staff.getStaffBuilder().id().build();
+			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
+					"voiceActors(sort: " + Arrays.toString(sorts) + ") " + staff.getStaffWithoutFieldName()
+			);
+
+			//when
+			MediaEdge actualEdge = MediaEdge.getMediaEdgeBuilder()
+					.voiceActors(staff, sorts)
+					.build();
+
+			//then
+			assertThat(actualEdge.getMediaEdgeString(), allOf(
+					notNullValue(),
+					instanceOf(String.class),
+					containsTitleAndAllSetElements(mediaEdgeTitle, expectedEdge)
+			));
+		}
+
+		@Test
+		void mediaEdgeBuilder_VoiceActorWithSortManyAndLanguage_ReturnCorrectString() {
+			//given
+			StaffSort[] sorts = new StaffSort[] {StaffSort.ID, StaffSort.ROLE};
+			StaffLanguage language = StaffLanguage.ENGLISH;
+			Staff staff = Staff.getStaffBuilder().id().build();
+			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
+					"voiceActors(language: " + language.name() + ", sort: " + Arrays.toString(sorts) + ") " + staff.getStaffWithoutFieldName()
+			);
+
+			//when
+			MediaEdge actualEdge = MediaEdge.getMediaEdgeBuilder()
+					.voiceActors(staff, language, sorts)
+					.build();
+
+			//then
+			assertThat(actualEdge.getMediaEdgeString(), allOf(
+					notNullValue(),
+					instanceOf(String.class),
+					containsTitleAndAllSetElements(mediaEdgeTitle, expectedEdge)
+			));
+		}
+
+		@Test
+		void mediaEdgeBuilder_VoiceActorsRoles_ReturnCorrectString() {
+			//given
+			StaffRoleType type = StaffRoleType.getStaffRoleTypeBuilder().roleNotes().build();
+			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
+					"voiceActorRoles " + type.getStaffRoleTypeStringWithoutFieldName()
+			);
+
+			//when
+			MediaEdge actualEdge = MediaEdge.getMediaEdgeBuilder()
+					.voiceActorsRoles(type)
+					.build();
+
+			//then
+			assertThat(actualEdge.getMediaEdgeString(), allOf(
+					notNullValue(),
+					instanceOf(String.class),
+					containsTitleAndAllSetElements(mediaEdgeTitle, expectedEdge)
+			));
+		}
+
+		@Test
+		void mediaEdgeBuilder_VoiceActorsRolesWithLanguage_ReturnCorrectString() {
+			//given
+			StaffLanguage language = StaffLanguage.ENGLISH;
+			StaffRoleType type = StaffRoleType.getStaffRoleTypeBuilder().roleNotes().build();
+			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
+					"voiceActorRoles(language: " + language.name() + ") " + type.getStaffRoleTypeStringWithoutFieldName()
+			);
+
+			//when
+			MediaEdge actualEdge = MediaEdge.getMediaEdgeBuilder()
+					.voiceActorsRoles(type, language)
+					.build();
+
+			//then
+			assertThat(actualEdge.getMediaEdgeString(), allOf(
+					notNullValue(),
+					instanceOf(String.class),
+					containsTitleAndAllSetElements(mediaEdgeTitle, expectedEdge)
+			));
+		}
+
+		@Test
+		void mediaEdgeBuilder_VoiceActorsRolesWithSortSingle_ReturnCorrectString() {
+			//given
+			StaffSort[] sorts = new StaffSort[] {StaffSort.ID};
+			StaffRoleType type = StaffRoleType.getStaffRoleTypeBuilder().roleNotes().build();
+			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
+					"voiceActorRoles(sort: " + Arrays.toString(sorts) + ") " + type.getStaffRoleTypeStringWithoutFieldName()
+			);
+
+			//when
+			MediaEdge actualEdge = MediaEdge.getMediaEdgeBuilder()
+					.voiceActorsRoles(type, sorts)
+					.build();
+
+			//then
+			assertThat(actualEdge.getMediaEdgeString(), allOf(
+					notNullValue(),
+					instanceOf(String.class),
+					containsTitleAndAllSetElements(mediaEdgeTitle, expectedEdge)
+			));
+		}
+
+		@Test
+		void mediaEdgeBuilder_VoiceActorsRolesWithSortMany_ReturnCorrectString() {
+			//given
+			StaffSort[] sorts = new StaffSort[] {StaffSort.ID, StaffSort.ROLE};
+			StaffRoleType type = StaffRoleType.getStaffRoleTypeBuilder().roleNotes().build();
+			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
+					"voiceActorRoles(sort: " + Arrays.toString(sorts) + ") " + type.getStaffRoleTypeStringWithoutFieldName()
+			);
+
+			//when
+			MediaEdge actualEdge = MediaEdge.getMediaEdgeBuilder()
+					.voiceActorsRoles(type, sorts)
+					.build();
+
+			//then
+			assertThat(actualEdge.getMediaEdgeString(), allOf(
+					notNullValue(),
+					instanceOf(String.class),
+					containsTitleAndAllSetElements(mediaEdgeTitle, expectedEdge)
+			));
+		}
+
+		@Test
+		void mediaEdgeBuilder_VoiceActorsRolesWithSortManyAndLanguage_ReturnCorrectString() {
+			//given
+			StaffSort[] sorts = new StaffSort[] {StaffSort.ID, StaffSort.ROLE};
+			StaffLanguage language = StaffLanguage.ENGLISH;
+			StaffRoleType type = StaffRoleType.getStaffRoleTypeBuilder().roleNotes().build();
+			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
+					"voiceActorRoles(language: " + language.name() + ", sort: " + Arrays.toString(sorts) + ") " + type.getStaffRoleTypeStringWithoutFieldName()
+			);
+
+			//when
+			MediaEdge actualEdge = MediaEdge.getMediaEdgeBuilder()
+					.voiceActorsRoles(type, language, sorts)
+					.build();
+
+			//then
+			assertThat(actualEdge.getMediaEdgeString(), allOf(
+					notNullValue(),
+					instanceOf(String.class),
+					containsTitleAndAllSetElements(mediaEdgeTitle, expectedEdge)
+			));
+		}
+
+		@Test
 		void mediaEdgeBuilder_AllParameters_ReturnCorrectString() {
 			//given
 			Media media = new Media("media(id: ${id}) {\nformat\n}");
+			StaffSort[] sorts = new StaffSort[] {StaffSort.ID, StaffSort.ROLE};
+			StaffLanguage language = StaffLanguage.ENGLISH;
+			Staff staff = Staff.getStaffBuilder().id().build();
 			Character character = Character.getCharacterBuilder().id().build();
+			StaffRoleType type = StaffRoleType.getStaffRoleTypeBuilder().roleNotes().build();
 			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
 					"node " + media.getRequestedMediaFields(),
 					"id",
@@ -309,7 +537,9 @@ class MediaEdgeTest {
 					"characterName",
 					"roleNotes",
 					"dubGroup",
-					"staffRole"
+					"staffRole",
+					"voiceActors(language: " + language.name() + ", sort: " + Arrays.toString(sorts) + ") " + staff.getStaffWithoutFieldName(),
+					"voiceActorRoles(language: " + language.name() + ", sort: " + Arrays.toString(sorts) + ") " + type.getStaffRoleTypeStringWithoutFieldName()
 			);
 
 			//when
@@ -324,6 +554,8 @@ class MediaEdgeTest {
 					.roleNotes()
 					.dubGroup()
 					.staffRole()
+					.voiceActors(staff, language, sorts)
+					.voiceActorsRoles(type, language, sorts)
 					.build();
 
 			//then
