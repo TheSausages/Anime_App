@@ -69,95 +69,95 @@ class CharacterConnectionTest {
 			assertThat(thrownException, instanceOf(IllegalStateException.class));
 			assertThat(thrownException.getMessage(), notNullValue());
 		}
-	}
 
-	@Test
-	void airingScheduleConnectionBuilder_Edge_ReturnCorrectString() {
-		//given
-		CharacterEdge edge = CharacterEdge.getCharacterEdgeBuilder().id().build();
-		Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetField(
-				"edges " + edge.getCharacterEdgeWithoutFieldName()
-		);
+		@Test
+		void airingScheduleConnectionBuilder_Edge_ReturnCorrectString() {
+			//given
+			CharacterEdge edge = CharacterEdge.getCharacterEdgeBuilder().id().build();
+			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetField(
+					"edges " + edge.getCharacterEdgeWithoutFieldName()
+			);
 
-		//when
-		CharacterConnection actualConnection = CharacterConnection.getCharacterConnectionBuilder()
-				.edges(edge)
-				.build();
+			//when
+			CharacterConnection actualConnection = CharacterConnection.getCharacterConnectionBuilder()
+					.edges(edge)
+					.build();
 
-		//then
-		assertThat(actualConnection.getCharacterConnectionString(), allOf(
-				notNullValue(),
-				instanceOf(String.class),
-				containsTitleAndAllSetElements(characterConnectionTitle, expectedAiringScheduleEdge)
-		));
-	}
+			//then
+			assertThat(actualConnection.getCharacterConnectionString(), allOf(
+					notNullValue(),
+					instanceOf(String.class),
+					containsTitleAndAllSetElements(characterConnectionTitle, expectedAiringScheduleEdge)
+			));
+		}
 
-	@Test
-	void airingScheduleConnectionBuilder_Nodes_ReturnCorrectString() {
-		//given
-		Character character = Character.getCharacterBuilder().id().build();
-		Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetField(
-				"nodes " + character.getCharacterStringWithoutFieldName()
-		);
+		@Test
+		void airingScheduleConnectionBuilder_Nodes_ReturnCorrectString() {
+			//given
+			Character character = Character.getCharacterBuilder().id().build();
+			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetField(
+					"nodes " + character.getCharacterStringWithoutFieldName()
+			);
 
-		//when
-		CharacterConnection actualConnection = CharacterConnection.getCharacterConnectionBuilder()
-				.nodes(character)
-				.build();
+			//when
+			CharacterConnection actualConnection = CharacterConnection.getCharacterConnectionBuilder()
+					.nodes(character)
+					.build();
 
-		//then
-		assertThat(actualConnection.getCharacterConnectionString(), allOf(
-				notNullValue(),
-				instanceOf(String.class),
-				containsTitleAndAllSetElements(characterConnectionTitle, expectedAiringScheduleEdge)
-		));
-	}
+			//then
+			assertThat(actualConnection.getCharacterConnectionString(), allOf(
+					notNullValue(),
+					instanceOf(String.class),
+					containsTitleAndAllSetElements(characterConnectionTitle, expectedAiringScheduleEdge)
+			));
+		}
 
-	@Test
-	void airingScheduleConnectionBuilder_PageInfo_ReturnCorrectString() {
-		//given
-		PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-		Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetField(
-				info.getPageInfoString()
-		);
+		@Test
+		void airingScheduleConnectionBuilder_PageInfo_ReturnCorrectString() {
+			//given
+			PageInfo info = PageInfo.getPageInfoBuilder().total().build();
+			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetField(
+					info.getPageInfoString()
+			);
 
-		//when
-		CharacterConnection actualConnection = CharacterConnection.getCharacterConnectionBuilder()
-				.pageInfo(info)
-				.build();
+			//when
+			CharacterConnection actualConnection = CharacterConnection.getCharacterConnectionBuilder()
+					.pageInfo(info)
+					.build();
 
-		//then
-		assertThat(actualConnection.getCharacterConnectionString(), allOf(
-				notNullValue(),
-				instanceOf(String.class),
-				containsTitleAndAllSetElements(characterConnectionTitle, expectedAiringScheduleEdge)
-		));
-	}
+			//then
+			assertThat(actualConnection.getCharacterConnectionString(), allOf(
+					notNullValue(),
+					instanceOf(String.class),
+					containsTitleAndAllSetElements(characterConnectionTitle, expectedAiringScheduleEdge)
+			));
+		}
 
-	@Test
-	void airingScheduleConnectionBuilder_AllParameters_ReturnCorrectString() {
-		//given
-		CharacterEdge edge = CharacterEdge.getCharacterEdgeBuilder().id().build();
-		Character character = Character.getCharacterBuilder().id().build();
-		PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-		Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetField(
-				"edges " + edge.getCharacterEdgeWithoutFieldName(),
-				"nodes " + character.getCharacterStringWithoutFieldName(),
-				info.getPageInfoString()
-		);
+		@Test
+		void airingScheduleConnectionBuilder_AllParameters_ReturnCorrectString() {
+			//given
+			CharacterEdge edge = CharacterEdge.getCharacterEdgeBuilder().id().build();
+			Character character = Character.getCharacterBuilder().id().build();
+			PageInfo info = PageInfo.getPageInfoBuilder().total().build();
+			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetField(
+					"edges " + edge.getCharacterEdgeWithoutFieldName(),
+					"nodes " + character.getCharacterStringWithoutFieldName(),
+					info.getPageInfoString()
+			);
 
-		//when
-		CharacterConnection actualConnection = CharacterConnection.getCharacterConnectionBuilder()
-				.edges(edge)
-				.nodes(character)
-				.pageInfo(info)
-				.build();
+			//when
+			CharacterConnection actualConnection = CharacterConnection.getCharacterConnectionBuilder()
+					.edges(edge)
+					.nodes(character)
+					.pageInfo(info)
+					.build();
 
-		//then
-		assertThat(actualConnection.getCharacterConnectionString(), allOf(
-				notNullValue(),
-				instanceOf(String.class),
-				containsTitleAndAllSetElements(characterConnectionTitle, expectedAiringScheduleEdge)
-		));
+			//then
+			assertThat(actualConnection.getCharacterConnectionString(), allOf(
+					notNullValue(),
+					instanceOf(String.class),
+					containsTitleAndAllSetElements(characterConnectionTitle, expectedAiringScheduleEdge)
+			));
+		}
 	}
 }
