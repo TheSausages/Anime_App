@@ -19,7 +19,7 @@ import static org.hamcrest.Matchers.*;
 class MediaArgumentsTest {
 
 	@Test
-	void getMediaArgumentsBuilder() {
+	void getMediaArgumentsBuilder__ReturnValidBuilder() {
 		//given
 
 		//when

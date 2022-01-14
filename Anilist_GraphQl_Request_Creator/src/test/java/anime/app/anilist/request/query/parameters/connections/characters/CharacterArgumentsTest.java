@@ -17,7 +17,7 @@ import static org.hamcrest.Matchers.*;
 class CharacterArgumentsTest {
 
 	@Test
-	void getCharacterArgumentsBuilder() {
+	void getCharacterArgumentsBuilder__ReturnValidBuilder() {
 		//given
 
 		//when
