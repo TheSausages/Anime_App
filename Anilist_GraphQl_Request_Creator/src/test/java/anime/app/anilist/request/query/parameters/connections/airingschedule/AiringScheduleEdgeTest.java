@@ -68,6 +68,60 @@ class AiringScheduleEdgeTest {
 	}
 
 	@Test
+	void fromAiringSchedule_NullSchedule_ReturnCorrectString() {
+		//given
+		AiringSchedule schedule = null;
+
+		//when
+		Exception thrownException = Assertions.assertThrows(
+				NullPointerException.class,
+				() -> AiringScheduleEdge.fromAiringSchedule(schedule)
+		);
+
+		//then
+		assertThat(thrownException, instanceOf(NullPointerException.class));
+		assertThat(thrownException.getMessage(), notNullValue());
+	}
+
+	@Test
+	void fromNothing_WithoutSchedule_ReturnCorrectString() {
+		//given
+		Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetField("id");
+
+		//when
+		AiringScheduleEdge actualAiringScheduleEdge = AiringScheduleEdge.fromNothing();
+
+		//then
+		assertThat(actualAiringScheduleEdge.getAiringScheduleEdgeString(), allOf(
+				notNullValue(),
+				instanceOf(String.class),
+				containsTitleAndAllSetElements(AiringScheduleEdge.airingScheduleEdgeTitle, expectedAiringScheduleEdge)
+		));
+	}
+
+	@Test
+	void fromAiringSchedule_WithSchedule_ReturnCorrectString() {
+		//given
+		AiringSchedule schedule = AiringSchedule.getAiringScheduleBuilder()
+				.episode()
+				.build();
+		Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetField(
+				"id",
+				"node " + schedule.getAiringScheduleStringWithoutFieldName()
+		);
+
+		//when
+		AiringScheduleEdge actualAiringScheduleEdge = AiringScheduleEdge.fromAiringSchedule(schedule);
+
+		//then
+		assertThat(actualAiringScheduleEdge.getAiringScheduleEdgeString(), allOf(
+				notNullValue(),
+				instanceOf(String.class),
+				containsTitleAndAllSetElements(AiringScheduleEdge.airingScheduleEdgeTitle, expectedAiringScheduleEdge)
+		));
+	}
+
+	@Test
 	void getAiringScheduleEdgeWithoutFieldName_WithoutSchedule_ReturnCorrectString() {
 		//given
 		Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetField("id");

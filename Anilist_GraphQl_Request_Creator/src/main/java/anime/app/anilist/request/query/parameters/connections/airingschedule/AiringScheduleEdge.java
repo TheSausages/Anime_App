@@ -25,6 +25,14 @@ public class AiringScheduleEdge {
 		);
 	}
 
+	public static AiringScheduleEdge fromNothing() {
+		return new AiringScheduleEdge();
+	}
+
+	public static AiringScheduleEdge fromAiringSchedule(AiringSchedule schedule) {
+		return new AiringScheduleEdge(schedule);
+	}
+
 	public String getAiringScheduleEdgeWithoutFieldName() {
 		return this.airingScheduleEdgeString.substring(airingScheduleEdgeTitle.length() + 1);
 	}

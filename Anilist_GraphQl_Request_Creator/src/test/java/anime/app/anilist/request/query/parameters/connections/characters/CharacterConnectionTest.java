@@ -21,7 +21,7 @@ class CharacterConnectionTest {
 	void getCharacterConnectionWithoutFieldName__ReturnCorrectString() {
 		//given
 		PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-		Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetField(
+		Set<ParameterString> expectedConnection = TestUtils.getParameterStringSetField(
 				info.getPageInfoString()
 		);
 
@@ -34,7 +34,7 @@ class CharacterConnectionTest {
 		assertThat(actualConnection.getCharacterConnectionWithoutFieldName(), allOf(
 				notNullValue(),
 				instanceOf(String.class),
-				containsTitleAndAllSetElements(expectedAiringScheduleEdge)
+				containsTitleAndAllSetElements(expectedConnection)
 		));
 	}
 
@@ -74,7 +74,7 @@ class CharacterConnectionTest {
 		void airingScheduleConnectionBuilder_Edge_ReturnCorrectString() {
 			//given
 			CharacterEdge edge = CharacterEdge.getCharacterEdgeBuilder().id().build();
-			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedConnection = TestUtils.getParameterStringSetField(
 					"edges " + edge.getCharacterEdgeWithoutFieldName()
 			);
 
@@ -87,7 +87,7 @@ class CharacterConnectionTest {
 			assertThat(actualConnection.getCharacterConnectionString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterConnectionTitle, expectedAiringScheduleEdge)
+					containsTitleAndAllSetElements(characterConnectionTitle, expectedConnection)
 			));
 		}
 
@@ -95,7 +95,7 @@ class CharacterConnectionTest {
 		void airingScheduleConnectionBuilder_Nodes_ReturnCorrectString() {
 			//given
 			Character character = Character.getCharacterBuilder().id().build();
-			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedConnection = TestUtils.getParameterStringSetField(
 					"nodes " + character.getCharacterStringWithoutFieldName()
 			);
 
@@ -108,7 +108,7 @@ class CharacterConnectionTest {
 			assertThat(actualConnection.getCharacterConnectionString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterConnectionTitle, expectedAiringScheduleEdge)
+					containsTitleAndAllSetElements(characterConnectionTitle, expectedConnection)
 			));
 		}
 
@@ -116,7 +116,7 @@ class CharacterConnectionTest {
 		void airingScheduleConnectionBuilder_PageInfo_ReturnCorrectString() {
 			//given
 			PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedConnection = TestUtils.getParameterStringSetField(
 					info.getPageInfoString()
 			);
 
@@ -129,7 +129,7 @@ class CharacterConnectionTest {
 			assertThat(actualConnection.getCharacterConnectionString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterConnectionTitle, expectedAiringScheduleEdge)
+					containsTitleAndAllSetElements(characterConnectionTitle, expectedConnection)
 			));
 		}
 
@@ -139,7 +139,7 @@ class CharacterConnectionTest {
 			CharacterEdge edge = CharacterEdge.getCharacterEdgeBuilder().id().build();
 			Character character = Character.getCharacterBuilder().id().build();
 			PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedConnection = TestUtils.getParameterStringSetField(
 					"edges " + edge.getCharacterEdgeWithoutFieldName(),
 					"nodes " + character.getCharacterStringWithoutFieldName(),
 					info.getPageInfoString()
@@ -156,7 +156,7 @@ class CharacterConnectionTest {
 			assertThat(actualConnection.getCharacterConnectionString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterConnectionTitle, expectedAiringScheduleEdge)
+					containsTitleAndAllSetElements(characterConnectionTitle, expectedConnection)
 			));
 		}
 	}

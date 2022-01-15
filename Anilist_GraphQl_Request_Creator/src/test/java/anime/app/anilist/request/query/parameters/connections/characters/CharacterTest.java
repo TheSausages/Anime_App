@@ -22,7 +22,7 @@ import static org.hamcrest.Matchers.*;
 class CharacterTest {
 
 	@Test
-	void getCharacterStringWithoutFieldName() {
+	void getCharacterStringWithoutFieldName__ReturnCorrectString() {
 		//given
 		Set<ParameterString> expectedSchedule = TestUtils.getParameterStringSetField("id");
 
