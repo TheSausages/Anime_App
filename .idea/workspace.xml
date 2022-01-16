@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9a85f17e-c8b0-481b-a543-783256245f43" name="Changes" comment="Addition: added media trend, Refactor: small name adjustments">
+      <change afterPath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/Anime.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App_Openapi_Generation/templates/api.mustache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App_Openapi_Generation/templates/model.mustache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App_Openapi_Generation/templates/pojo.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jpa-buddy.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/controllers/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/controllers/TestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App_Openapi_Generation/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App_Openapi_Generation/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App_Openapi_Generation/src/main/java/anime/app/generated/OtherClass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/Anime_App">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/Anime_App/Anilist_GraphQl_Request_Creator">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/Anime_App/Anime_App_Openapi_Generation">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/aaa">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/Anime_App_Openapi_Generation">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Anime_App_Project" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Enum" />
+        <option value="JUnit5 Test Class" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/main" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="JPA Structure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="JPA Structure" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="23NYaSQ9QAdaY640BwC72LrBIyZ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="jdk.selected.JAVA_MODULE" value="14" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../PracaInzynierska/Server" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15527344" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Kacper\IdeaProjects\Anime_App_Project\aaa" />
+      <recent name="C:\Users\Kacper\IdeaProjects\Anime_App_Project\Anime_App_Openapi_Generation\build\generated" />
+      <recent name="C:\Users\Kacper\IdeaProjects\Anime_App_Project\Anilist_GraphQl_Request_Creator\src\main\java\anime\app\anilist\request\query\parameters\connections" />
+      <recent name="C:\Users\Kacper\IdeaProjects\Anime_App_Project\Anilist_GraphQl_Request_Creator\src\main\java\anime\app\anilist\request\query\parameters\connections\staff" />
+      <recent name="C:\Users\Kacper\IdeaProjects\Anime_App_Project\Anilist_GraphQl_Request_Creator\src\main\java\anime\app\anilist\request\query\parameters\connections\characters" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Kacper\IdeaProjects\Anime_App_Project\Anime_App_Openapi_Generation\openapi" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="anime.app.anilist.request.query.parameters.connections.trends" />
+      <recent name="anime.app.anilist.request.query.parameters.connections.staff" />
+      <recent name="anime.app.anilist.request.query.parameters.connections.studio" />
+      <recent name="anime.app.anilist.request.query.common" />
+      <recent name="anime.app.anilist.request.query.parameters" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="anime.app.anilist.request.query.parameters.connections.staff" />
+      <recent name="anime.app.anilist.request.query.parameters.connections.studio" />
+      <recent name="anime.app.anilist.request.query.parameters.media" />
+      <recent name="anime.app.anilist.request.query.parameters" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Gradle.Anime_App_Project [Anime_App:bootRun]">
+    <configuration name="Run All" type="CompoundRunConfigurationType">
+      <toRun name="Anime_App_Project [Anime_App:bootRunMainClassName]" type="GradleRunConfiguration" />
+      <toRun name="Anime_App_Project:Anime_App_Openapi_Generation [build]" type="GradleRunConfiguration" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Anime_App_Project [Anime_App_Openapi_Generation:build]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="Anime_App_Openapi_Generation:build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="Anime_App_Project [Anime_App:bootRun]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="Anime_App:bootRun" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="AnimeAppApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="Anime_App_Project.Anime_App.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="anime.app.AnimeAppApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Compound.Run All" />
+      <item itemvalue="Gradle.Anime_App_Project [Anime_App:bootRun]" />
+      <item itemvalue="Gradle.Anime_App_Project [Anime_App_Openapi_Generation:build]" />
+      <item itemvalue="Spring Boot.AnimeAppApplication" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\Kacper\AppData\Roaming\Subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9a85f17e-c8b0-481b-a543-783256245f43" name="Changes" comment="" />
+      <created>1641576075393</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1641576075393</updated>
+      <workItem from="1641576077176" duration="1086000" />
+      <workItem from="1641577216949" duration="20772000" />
+      <workItem from="1641641373111" duration="15068000" />
+      <workItem from="1641656638895" duration="5000" />
+      <workItem from="1641656749634" duration="1528000" />
+      <workItem from="1641664217622" duration="48000" />
+      <workItem from="1641664387467" duration="785000" />
+      <workItem from="1641731927225" duration="11974000" />
+      <workItem from="1641842984294" duration="11200000" />
+      <workItem from="1641920199580" duration="3924000" />
+      <workItem from="1642198442142" duration="3124000" />
+      <workItem from="1642275005161" duration="4812000" />
+      <workItem from="1642284621299" duration="7773000" />
+      <workItem from="1642292556128" duration="1826000" />
+      <workItem from="1642294428305" duration="1190000" />
+      <workItem from="1642295789216" duration="1358000" />
+      <workItem from="1642297180561" duration="3572000" />
+      <workItem from="1642300791711" duration="1563000" />
+      <workItem from="1642302389834" duration="1042000" />
+      <workItem from="1642330248411" duration="6816000" />
+      <workItem from="1642337161238" duration="1780000" />
+      <workItem from="1642338992244" duration="972000" />
+      <workItem from="1642340017894" duration="8662000" />
+    </task>
+    <task id="LOCAL-00001" summary="Initial commit, added project with 3 modules">
+      <created>1641596733768</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1641596733768</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Refactor: Added some needed files">
+      <created>1641597463233</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1641597463233</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Refactor: Added links to previous Back- and Frontend">
+      <created>1641597693064</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1641597693064</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Refactor: Moved important dependencies versions to main build.gradle">
+      <created>1641598125167</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1641598125167</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Refactor: added utilities to test and made them more general, Addition: added more classes and tests">
+      <created>1641656611846</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1641656611846</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Refactor: added requirement for non-null schedule in AiringScheduleEdge">
+      <created>1641657021622</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1641657021622</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Addition: added Character and its tests, Refactor: Updated TestUtils method and all of its callings">
+      <created>1641739847485</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1641739847485</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Refactor: small update to TestUtils, Addition: added Character classes and part of Media classes">
+      <created>1641844657457</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1641844657457</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Addition: added staff">
+      <created>1641848931548</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1641848931548</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Refactor: added FuzzyDateField creator without a Parameter">
+      <created>1641850049133</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1641850049133</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Refactor: Added missing tests connected to staff">
+      <created>1641852363369</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1641852363369</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Addition: added small tests">
+      <created>1641853555825</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1641853555825</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Addition: added Studio">
+      <created>1641922765860</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1641922765860</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Addition: added last studio classes">
+      <created>1642201228691</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1642201228691</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Addition: added media trend, Refactor: small name adjustments">
+      <created>1642279699809</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1642279699809</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial commit, added project with 3 modules" />
+    <MESSAGE value="Refactor: Added some needed files" />
+    <MESSAGE value="Refactor: Added links to previous Back- and Frontend" />
+    <MESSAGE value="Refactor: Moved important dependencies versions to main build.gradle" />
+    <MESSAGE value="Refactor: added utilities to test and made them more general, Addition: added more classes and tests" />
+    <MESSAGE value="Refactor: added requirement for non-null schedule in AiringScheduleEdge" />
+    <MESSAGE value="Addition: added Character and its tests, Refactor: Updated TestUtils method and all of its callings" />
+    <MESSAGE value="Refactor: small update to TestUtils, Addition: added Character classes and part of Media classes" />
+    <MESSAGE value="Addition: added staff" />
+    <MESSAGE value="Refactor: added FuzzyDateField creator without a Parameter" />
+    <MESSAGE value="Refactor: Added missing tests connected to staff" />
+    <MESSAGE value="Addition: added small tests" />
+    <MESSAGE value="Addition: added Studio" />
+    <MESSAGE value="Addition: added last studio classes" />
+    <MESSAGE value="Addition: added media trend, Refactor: small name adjustments" />
+    <option name="LAST_COMMIT_MESSAGE" value="Addition: added media trend, Refactor: small name adjustments" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/utils/QueryTitleAndParametersMatcher.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/utils/QueryTitleAndParametersMatcher.java</url>
+          <line>31</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Anime_App_Project$Tests_in__Anime_App_Project_Anilist_GraphQl_Request_Creator_test_.ic" NAME="Tests in 'Anime_App_Project.Anilist_GraphQl_Request_Creator.test' Coverage Results" MODIFIED="1641853569188" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>

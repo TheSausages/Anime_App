@@ -1,19 +1,120 @@
 plugins {
     id 'java'
+    id "org.openapi.generator" version "5.3.1"
+    id "com.diffplug.spotless" version "6.2.0"
 }
 
 group 'anime.app.generated'
 version '1.0-SNAPSHOT'
+sourceCompatibility = "14"
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
-    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+    //Add lombok for use in generated classes
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+
+    //Add dependencies used in generated classes.
+    //These can be found in the generated pom.xml file and must be declared here!
+    //This is because the other dependencies inherit these
+    implementation "org.springframework.boot:spring-boot-starter-web:${springVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-validation:${springVersion}"
+    implementation "org.springframework.data:spring-data-commons:2.6.1"
+    implementation "io.springfox:springfox-swagger2:${springFoxVersion}"
+    implementation "io.springfox:springfox-swagger-ui:${springFoxVersion}"
+    implementation 'jakarta.xml.bind:jakarta.xml.bind-api:3.0.1'
+    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${jacksonVersion}"
+    implementation 'org.openapitools:jackson-databind-nullable:0.2.2'
+    implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
+    implementation 'jakarta.validation:jakarta.validation-api:3.0.1'
+
+    //This must also be added, bcs validation doesn't work without it
+    implementation 'javax.validation:validation-api:2.0.1.Final'
+}
+
+compileJava {
+    //Create the generator meta information
+    dependsOn 'generateMetaInformation'
+
+    //Create the files
+    dependsOn 'generateAnime'
+
+    //And apply the prettier
+    dependsOn spotlessApply
 }
 
 test {
     useJUnitPlatform()
+}
+
+//Meta information when generating
+task generateMetaInformation(type: org.openapitools.generator.gradle.plugin.tasks.MetaTask) {
+    generatorName = "spring"
+    packageName = "anime.app.openapi"
+    outputFolder = "$buildDir/meta"
+}
+
+//Generate Anime endpoints
+task generateAnime(type: org.openapitools.generator.gradle.plugin.tasks.GenerateTask) {
+    //Generator information
+    generatorName = "spring"
+    library = "spring-boot"
+
+    //Spec Information
+    validateSpec = true
+    skipValidateSpec = false
+    inputSpec = "$projectDir/openapi/Anime.yaml"
+    templateDir = "$projectDir/templates"
+
+    //Generation and Output information
+    outputDir = "$buildDir/generated"
+    apiPackage = "anime.app.openapi.api"
+    modelPackage = "anime.app.openapi.model"
+    invokerPackage = "anime.app.openapi.invoker"
+    configOptions = [
+            performBeanValidation: "true",
+            delegatePattern: "false",
+            dateLibrary: "java8",
+            interfaceOnly: "true",
+            generateSupportingFiles: "true",
+            additionalModelTypeAnnotations: "@SuperBuilder\n@FieldDefaults(level = AccessLevel.PRIVATE)\n@NoArgsConstructor"
+    ]
+}
+
+//Format the spotless prettier and run it using 'runSpotlessApply'
+spotless {
+    encoding 'UTF-8'
+    enforceCheck true
+
+    java {
+        //Use the generated files as target for spotless
+        target "${buildDir}/generated/src/main/java"
+
+        googleJavaFormat()
+
+        importOrder()
+        removeUnusedImports()
+
+        //Use the prettier to format the generated classes
+        prettier(['prettier': '2.5.1', 'prettier-plugin-java': '1.6.1'])
+                .config(['parser': 'java', 'tabWidth': 4])
+
+        //
+        //custom 'Lambda fix', { it.replace('} )', '})').replace('} ,', '},') }
+    }
+}
+
+//Automatically add the generated prettified classes as SourceSet, so gradle recognises them
+sourceSets {
+    main {
+        java {
+            srcDirs = [
+                    "src/main/java",
+                    "${buildDir}/spotless/spotlessJava/build/generated/src/main/java"
+            ]
+        }
+    }
 }

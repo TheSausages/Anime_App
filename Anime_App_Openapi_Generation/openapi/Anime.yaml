@@ -1,0 +1,360 @@
+openapi: 3.0.0
+info:
+  title: Anime
+  version: '1.0'
+  description: Api used for all operations connected to Anime
+  contact:
+    name: K. Ziejło
+    email: kziejlo@gmail.com
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  '/anime/{animeId}':
+    parameters:
+      - schema:
+          type: integer
+        name: animeId
+        in: path
+        required: true
+    get:
+      summary: Get detailed Anime information using it's ID
+      tags: []
+      responses:
+        '200':
+          description: The Anilist server responded correctly and no other errors occured
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DetailedAnimeDTO'
+              examples:
+                Successfull example:
+                  value:
+                    externalInformation: {}
+                    localAnimeInformation:
+                      animeId: 165794
+                      averageScore: 8.7
+                      nrOfFavourites: 10
+                      nrOfReviews: 3
+                    localAnimeReviews:
+                      - reviewType: simpleReview
+                        id: 1
+                        title: The Review Title
+                        text: The Review text
+                        nrOfUpvotes: 10
+                        nrOfDownvotes: 3
+                        nrOfHelpfull: 8
+                    localUserAnimeInformation:
+                      id:
+                        userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                        animeId: 165794
+                      status: No Status
+                      watchStartDate: '2019-08-24'
+                      watchEndDate: '2019-08-24'
+                      nrOfEpisodesSeen: 5
+                      isFavourite: true
+                      modification: '2019-08-24T14:15:22Z'
+                      grade: 2
+                      review:
+                        reviewType: simpleReview
+                        id: 1
+                        title: The Review Title
+                        text: The Review text
+                        nrOfUpvotes: 10
+                        nrOfDownvotes: 3
+                        nrOfHelpfull: 8
+        '503':
+          description: Service Unavailable - the Anilist service returned an error or didn't return anything.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+              examples:
+                Anilist Error message:
+                  value:
+                    message: Anilist Error Message
+                    status: 503
+      operationId: get-anime-animeId
+      description: Get detailed information on a selected Anime using it's Anilist ID.
+components:
+  schemas:
+    DetailedAnimeDTO:
+      title: DetailedAnimeDTO
+      type: object
+      description: Detailed information on an Anime. Contains both Anilist and local information.
+      x-examples:
+        Detailed Anime Example:
+          externalInformation: {}
+          localAnimeInformation:
+            animeId: 165794
+            averageScore: 8.7
+            nrOfFavourites: 10
+            nrOfReviews: 3
+          localAnimeReviews:
+            - id: 1
+              title: The Review Title
+              text: The Review text
+              nrOfUpvotes: 10
+              nrOfDownvotes: 3
+              nrOfHelpfull: 8
+          localUserAnimeInformation:
+            id:
+              userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+              animeId: 165794
+            status: No Status
+            watchStartDate: '2019-08-24'
+            watchEndDate: '2019-08-24'
+            nrOfEpisodesSeen: 5
+            isFavourite: true
+            modification: '2019-08-24T14:15:22Z'
+            grade: 2
+            review:
+              id: 1
+              title: The Review Title
+              text: The Review text
+              nrOfUpvotes: 10
+              nrOfDownvotes: 3
+              nrOfHelpfull: 8
+      properties:
+        externalInformation:
+          type: object
+          description: Anilist information on the Anime.
+        localAnimeInformation:
+          $ref: '#/components/schemas/LocalAnimeInformationDTO'
+        localAnimeReviews:
+          type: array
+          description: Randomly selected User reviews of the Anime
+          items:
+            $ref: '#/components/schemas/LocalSimpleAnimeReviewDTO'
+        localUserAnimeInformation:
+          $ref: '#/components/schemas/LocalUserAnimeInformationDTO'
+      required:
+        - externalInformation
+        - localAnimeInformation
+        - localAnimeReviews
+    LocalAnimeInformationDTO:
+      title: AnimeDTO
+      type: object
+      x-examples:
+        Anime Example:
+          animeId: 165794
+          averageScore: 8.7
+          nrOfFavourites: 10
+          nrOfReviews: 3
+      description: 'DTO object for the Anime class. Contains local information on the animation, such as the local user''s average score.'
+      properties:
+        animeId:
+          type: integer
+          format: int64
+          minimum: 1
+          description: 'ID of the Anime, the same used in Anilist.'
+        averageScore:
+          type: number
+          minimum: 0
+          maximum: 10
+          format: double
+          description: Average score of the local users.
+        nrOfFavourites:
+          type: integer
+          minimum: 0
+          format: int32
+          description: How many local users favourited the animation
+        nrOfReviews:
+          type: integer
+          minimum: 0
+          format: int32
+          description: How many local users reviewed the animation
+      required:
+        - animeId
+        - averageScore
+        - nrOfFavourites
+        - nrOfReviews
+    LocalSimpleAnimeReviewDTO:
+      title: SimpleAnimeReviewDTO
+      type: object
+      description: DTO for the Anime Review class.
+      x-examples:
+        Anime Review Example:
+          reviewType: simpleReview
+          id: 1
+          title: The Review Title
+          text: The Review text
+          nrOfUpvotes: 10
+          nrOfDownvotes: 3
+          nrOfHelpfull: 8
+      discriminator:
+        propertyName: reviewType
+        mapping:
+          simpleReview: '#/components/schemas/LocalSimpleAnimeReviewDTO'
+          detailedReview: '#/components/schemas/LocalDetailedAnimeReviewDTO'
+      properties:
+        reviewType:
+          type: string
+          enum:
+            - simpleReview
+            - detailedReview
+          description: Discriminator for the Review DTO's
+        id:
+          type: integer
+          format: int64
+          minimum: 1
+          description: Id of the review
+        title:
+          type: string
+          maxLength: 100
+          minLength: 10
+          description: Title of the Review
+        text:
+          type: string
+          minLength: 0
+          maxLength: 300
+          description: Text of the Review
+        nrOfUpvotes:
+          type: integer
+          format: int32
+          minimum: 0
+          description: How many people upvoted the review
+        nrOfDownvotes:
+          type: integer
+          format: int32
+          minimum: 0
+          description: How many people downvoted the review
+        nrOfHelpfull:
+          type: integer
+          format: int32
+          minimum: 0
+          description: How many people found the review helpfull
+      required:
+        - reviewType
+        - id
+        - title
+        - text
+        - nrOfUpvotes
+        - nrOfDownvotes
+        - nrOfHelpfull
+    LocalDetailedAnimeReviewDTO:
+      allOf:
+        - $ref: '#/components/schemas/LocalSimpleAnimeReviewDTO'
+      properties:
+        animeId:
+          type: integer
+          format: int64
+          minimum: 1
+          description: 'ID of the Anime, the same used in Anilist.'
+        animeTitle:
+          type: string
+          description: Anime Title
+      required:
+        - animeId
+        - animeTitle
+      description: 'Detailed DTO of the review. Contains additional information on the anime, such as it''s title.'
+      x-examples:
+        Detailed Anime Review Example:
+          reviewType: detailedReview
+          id: 1
+          title: The Review Title
+          text: The Review text
+          nrOfUpvotes: 10
+          nrOfDownvotes: 3
+          nrOfHelpfull: 8
+          animeId: 789541
+          animeTitle: Anime Title
+      title: ''
+    LocalUserAnimeInformationDTO:
+      title: UserAnimeInformationDTO
+      type: object
+      x-examples:
+        User Anime Information Example:
+          id:
+            userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+            animeId: 195784
+          status: No Status
+          watchStartDate: '2019-08-24'
+          watchEndDate: '2019-08-24'
+          nrOfEpisodesSeen: 5
+          isFavourite: true
+          modification: '2019-08-24T14:15:22Z'
+          grade: 2
+          review:
+            id: 1
+            title: The Review Title
+            text: The Review text
+            nrOfUpvotes: 10
+            nrOfDownvotes: 3
+            nrOfHelpfull: 8
+      description: User's information on a selected Anime.
+      properties:
+        id:
+          type: object
+          description: ID containing both the User and Anime ids
+          required:
+            - userId
+            - animeId
+          properties:
+            userId:
+              type: string
+              format: uuid
+              description: 'User ID, same as in Keycloak'
+            animeId:
+              type: integer
+              format: int64
+              minimum: 1
+              description: 'ID of the Anime, the same used in Anilist.'
+        status:
+          type: string
+          enum:
+            - No Status
+            - Watching
+            - Completed
+            - Dropped
+            - Plan to Watch
+          description: Current User status on the Anime
+        watchStartDate:
+          type: string
+          format: date
+          description: When the User started watching the Anime
+        watchEndDate:
+          type: string
+          format: date
+          description: When the User finished watching the Anime
+        nrOfEpisodesSeen:
+          type: integer
+          description: How many episodes did the User see
+          format: int32
+          minimum: 0
+        isFavourite:
+          type: boolean
+          description: Did the User select the Anime as his/her favourite
+        modification:
+          type: string
+          format: date-time
+          description: Last time the information was modificated
+        grade:
+          type: integer
+          minimum: 1
+          maximum: 10
+          exclusiveMinimum: false
+          exclusiveMaximum: false
+          description: Grade the User gave to the Anime. In scale from 1 to 10
+        review:
+          $ref: '#/components/schemas/LocalSimpleAnimeReviewDTO'
+      required:
+        - id
+        - status
+        - isFavourite
+        - modification
+    ErrorDTO:
+      title: ErrorDTO
+      type: object
+      properties:
+        message:
+          type: string
+          description: Translated error message
+        status:
+          type: integer
+          description: The Error status
+      description: The DTO for backend errors.
+      x-examples:
+        Error Example:
+          message: Error Message
+          status: 503
+  securitySchemes: {}

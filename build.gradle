@@ -9,12 +9,13 @@ subprojects {
         lombokVersion = "1.18.22"
         junitVersion = "5.8.2"
         jacksonVersion = "2.13.1"
-        springVersion = "2.5.3"
+        springVersion = "2.6.2"
         keycloakVersion = "15.0.0"
         postresconnectorVersion = "42.3.1"
         lombokVersion = "1.18.22"
         testcontainersVersion = "1.16.2"
         commonslang3Version = "3.12.0"
         hamcrestVersion = "2.2"
+        springFoxVersion = "3.0.0"
     }
 }
