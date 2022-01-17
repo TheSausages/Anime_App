@@ -19,7 +19,7 @@ dependencies {
 
     //Add dependencies used in generated classes.
     //These can be found in the generated pom.xml file and must be declared here!
-    //This is because the other dependencies inherit these
+    //This is because the other modules inherit these
     implementation "org.springframework.boot:spring-boot-starter-web:${springVersion}"
     implementation "org.springframework.boot:spring-boot-starter-validation:${springVersion}"
     implementation "org.springframework.data:spring-data-commons:2.6.1"
