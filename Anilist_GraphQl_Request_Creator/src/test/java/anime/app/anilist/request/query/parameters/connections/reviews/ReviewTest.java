@@ -51,7 +51,7 @@ class ReviewTest {
 	}
 
 	@Nested
-	@DisplayName("Test review Builder")
+	@DisplayName("Test Review Builder")
 	class ReviewBuilderTest {
 		@Test
 		void reviewBuilder_NoParameterSelected_ThrowException() {

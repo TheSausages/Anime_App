@@ -1,4 +1,4 @@
-package anime.app.anilist.request.query.parameters.connections.reviews;
+package anime.app.anilist.request.query.parameters.connections.recommendation;
 
 import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.utils.TestUtils;
@@ -7,22 +7,21 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
-import static anime.app.anilist.request.query.parameters.connections.reviews.ReviewEdge.reviewEdgeTitle;
 import static anime.app.anilist.request.utils.QueryTitleAndParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
-class ReviewEdgeTest {
+class RecommendationEdgeTest {
 
 	@Test
-	void getReviewEdgeWithoutFieldName_NullReview_ThrowException() {
+	void getRecommendationEdgeWithoutFieldName_NullReview_ThrowException() {
 		//given
-		Review review = null;
+		Recommendation recommendation = null;
 
 		//when
 		Exception thrownException = Assertions.assertThrows(
 				NullPointerException.class,
-				() -> new ReviewEdge(review)
+				() -> new RecommendationEdge(recommendation)
 		);
 
 		//then
@@ -31,18 +30,18 @@ class ReviewEdgeTest {
 	}
 
 	@Test
-	void getReviewEdgeWithoutFieldName_NonNullReview_ReturnCorrectString() {
+	void getRecommendationEdgeWithoutFieldName_NonNullReview_ReturnCorrectString() {
 		//given
-		Review review = Review.getReviewBuilder().id().build();
+		Recommendation recommendation = Recommendation.getRecommendationBuilder().id().build();
 		Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
-				"node " + review.getReviewWithoutFieldName()
+				"node " + recommendation.getRecommendationStringWithoutFieldName()
 		);
 
 		//when
-		ReviewEdge actualEdge = new ReviewEdge(review);
+		RecommendationEdge actualEdge = new RecommendationEdge(recommendation);
 
 		//then
-		assertThat(actualEdge.getReviewEdgeWithoutFieldName(), allOf(
+		assertThat(actualEdge.getRecommendationEdgeWithoutFieldName(), allOf(
 				notNullValue(),
 				instanceOf(String.class),
 				containsTitleAndAllSetElements(expectedEdge)
@@ -50,14 +49,14 @@ class ReviewEdgeTest {
 	}
 
 	@Test
-	void fromReview_NullReview_ThrowException() {
+	void fromRecommendation_NullReview_ThrowException() {
 		//given
-		Review review = null;
+		Recommendation recommendation = null;
 
 		//when
 		Exception thrownException = Assertions.assertThrows(
 				NullPointerException.class,
-				() -> ReviewEdge.fromReview(review)
+				() -> RecommendationEdge.fromRecommendation(recommendation)
 		);
 
 		//then
@@ -66,21 +65,21 @@ class ReviewEdgeTest {
 	}
 
 	@Test
-	void fromReview_NonNullReview_ReturnCorrectString() {
+	void fromRecommendation_NonNullReview_ReturnCorrectString() {
 		//given
-		Review review = Review.getReviewBuilder().id().build();
+		Recommendation recommendation = Recommendation.getRecommendationBuilder().id().build();
 		Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
-				"node " + review.getReviewWithoutFieldName()
+				"node " + recommendation.getRecommendationStringWithoutFieldName()
 		);
 
 		//when
-		ReviewEdge actualEdge = ReviewEdge.fromReview(review);
+		RecommendationEdge actualEdge = RecommendationEdge.fromRecommendation(recommendation);
 
 		//then
-		assertThat(actualEdge.getReviewEdgeString(), allOf(
+		assertThat(actualEdge.getRecommendationEdgeWithoutFieldName(), allOf(
 				notNullValue(),
 				instanceOf(String.class),
-				containsTitleAndAllSetElements(reviewEdgeTitle, expectedEdge)
+				containsTitleAndAllSetElements(expectedEdge)
 		));
 	}
 }

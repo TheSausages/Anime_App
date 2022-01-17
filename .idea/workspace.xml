@@ -4,14 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a85f17e-c8b0-481b-a543-783256245f43" name="Changes" comment="Addition: added AnilistUser and review">
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/configuration/beans/ObjectMapperConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App_Openapi_Generation/templates/typeInfoAnnotation.mustache" afterDir="false" />
+    <list default="true" id="9a85f17e-c8b0-481b-a543-783256245f43" name="Changes" comment="Refactor: fix for double serialization of discriminator in openapi generator">
+      <change afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/recommendation/Recommendation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/recommendation/RecommendationArguments.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/recommendation/RecommendationConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/recommendation/RecommendationEdge.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/recommendation/RecommendationSort.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/connections/recommendation/RecommendationArgumentsTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/connections/recommendation/RecommendationConnectionTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/connections/recommendation/RecommendationEdgeTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/connections/recommendation/RecommendationTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/controllers/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/controllers/TestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App_Openapi_Generation/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App_Openapi_Generation/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App_Openapi_Generation/templates/model.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App_Openapi_Generation/templates/model.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App_Openapi_Generation/templates/pojo.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App_Openapi_Generation/templates/pojo.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/connections/reviews/ReviewArgumentsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/connections/reviews/ReviewArgumentsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/connections/reviews/ReviewConnectionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/connections/reviews/ReviewConnectionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/connections/reviews/ReviewEdgeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/connections/reviews/ReviewEdgeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/connections/reviews/ReviewTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/connections/reviews/ReviewTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,11 +160,11 @@
       <recent name="C:\Users\Kacper\IdeaProjects\Anime_App_Project\Anime_App_Openapi_Generation\openapi" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="anime.app.anilist.request.query.parameters.connections.recommendation" />
       <recent name="anime.app.anilist.request.query.parameters" />
       <recent name="anime.app.anilist.request.query.parameters.connections.reviews" />
       <recent name="anime.app.anilist.request.query.parameters.connections.trends" />
       <recent name="anime.app.anilist.request.query.parameters.connections.staff" />
-      <recent name="anime.app.anilist.request.query.parameters.connections.studio" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="anime.app.configuration.beans" />
@@ -174,33 +181,10 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.Anime_App_Project [Anime_App:bootRun]">
+  <component name="RunManager" selected="Gradle.Tests in 'Anime_App_Project.Anilist_GraphQl_Request_Creator'">
     <configuration name="Run All" type="CompoundRunConfigurationType">
       <toRun name="Anime_App_Project [Anime_App:bootRunMainClassName]" type="GradleRunConfiguration" />
       <toRun name="Anime_App_Project:Anime_App_Openapi_Generation [build]" type="GradleRunConfiguration" />
-      <method v="2" />
-    </configuration>
-    <configuration name="AnilistUserTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":Anilist_GraphQl_Request_Creator:test" />
-            <option value="--tests" />
-            <option value="&quot;anime.app.anilist.request.query.parameters.AnilistUserTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
     <configuration name="Anime_App_Project [Anime_App_Openapi_Generation:build]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
@@ -245,7 +229,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ReviewArgumentsTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="RecommendationArgumentsTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -258,7 +242,7 @@
           <list>
             <option value=":Anilist_GraphQl_Request_Creator:test" />
             <option value="--tests" />
-            <option value="&quot;anime.app.anilist.request.query.parameters.connections.reviews.ReviewArgumentsTest&quot;" />
+            <option value="&quot;anime.app.anilist.request.query.parameters.connections.recommendation.RecommendationArgumentsTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -268,7 +252,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ReviewConnectionTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="RecommendationConnectionTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -281,7 +265,7 @@
           <list>
             <option value=":Anilist_GraphQl_Request_Creator:test" />
             <option value="--tests" />
-            <option value="&quot;anime.app.anilist.request.query.parameters.connections.reviews.ReviewConnectionTest&quot;" />
+            <option value="&quot;anime.app.anilist.request.query.parameters.connections.recommendation.RecommendationConnectionTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -291,7 +275,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ReviewEdgeTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="RecommendationEdgeTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -304,7 +288,7 @@
           <list>
             <option value=":Anilist_GraphQl_Request_Creator:test" />
             <option value="--tests" />
-            <option value="&quot;anime.app.anilist.request.query.parameters.connections.reviews.ReviewEdgeTest&quot;" />
+            <option value="&quot;anime.app.anilist.request.query.parameters.connections.recommendation.RecommendationEdgeTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -314,7 +298,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ReviewTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="RecommendationTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -327,7 +311,28 @@
           <list>
             <option value=":Anilist_GraphQl_Request_Creator:test" />
             <option value="--tests" />
-            <option value="&quot;anime.app.anilist.request.query.parameters.connections.reviews.ReviewTest&quot;" />
+            <option value="&quot;anime.app.anilist.request.query.parameters.connections.recommendation.RecommendationTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="Tests in 'Anime_App_Project.Anilist_GraphQl_Request_Creator'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":Anilist_GraphQl_Request_Creator:test" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -349,19 +354,19 @@
       <item itemvalue="Gradle.Anime_App_Project [Anime_App:bootRun]" />
       <item itemvalue="Gradle.Anime_App_Project [Anime_App_Openapi_Generation:build]" />
       <item itemvalue="Spring Boot.AnimeAppApplication" />
-      <item itemvalue="Gradle.ReviewEdgeTest" />
-      <item itemvalue="Gradle.ReviewConnectionTest" />
-      <item itemvalue="Gradle.ReviewArgumentsTest" />
-      <item itemvalue="Gradle.ReviewTest" />
-      <item itemvalue="Gradle.AnilistUserTest" />
+      <item itemvalue="Gradle.RecommendationEdgeTest" />
+      <item itemvalue="Gradle.RecommendationConnectionTest" />
+      <item itemvalue="Gradle.RecommendationArgumentsTest" />
+      <item itemvalue="Gradle.RecommendationTest" />
+      <item itemvalue="Gradle.Tests in 'Anime_App_Project.Anilist_GraphQl_Request_Creator'" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.AnilistUserTest" />
-        <item itemvalue="Gradle.ReviewTest" />
-        <item itemvalue="Gradle.ReviewArgumentsTest" />
-        <item itemvalue="Gradle.ReviewConnectionTest" />
-        <item itemvalue="Gradle.ReviewEdgeTest" />
+        <item itemvalue="Gradle.Tests in 'Anime_App_Project.Anilist_GraphQl_Request_Creator'" />
+        <item itemvalue="Gradle.RecommendationTest" />
+        <item itemvalue="Gradle.RecommendationArgumentsTest" />
+        <item itemvalue="Gradle.RecommendationConnectionTest" />
+        <item itemvalue="Gradle.RecommendationEdgeTest" />
       </list>
     </recent_temporary>
   </component>
@@ -399,7 +404,8 @@
       <workItem from="1642337161238" duration="1780000" />
       <workItem from="1642338992244" duration="972000" />
       <workItem from="1642340017894" duration="10930000" />
-      <workItem from="1642421749932" duration="8404000" />
+      <workItem from="1642421749932" duration="8625000" />
+      <workItem from="1642430477565" duration="2519000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit, added project with 3 modules">
       <created>1641596733768</created>
@@ -520,7 +526,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642425730179</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Refactor: fix for double serialization of discriminator in openapi generator">
+      <created>1642430443280</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1642430443280</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -555,7 +568,8 @@
     <MESSAGE value="Addition: added media trend, Refactor: small name adjustments" />
     <MESSAGE value="Addition: added api generation for backend with small example" />
     <MESSAGE value="Addition: added AnilistUser and review" />
-    <option name="LAST_COMMIT_MESSAGE" value="Addition: added AnilistUser and review" />
+    <MESSAGE value="Refactor: fix for double serialization of discriminator in openapi generator" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor: fix for double serialization of discriminator in openapi generator" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">

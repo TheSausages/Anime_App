@@ -74,7 +74,7 @@ class ReviewConnectionTest {
 		void reviewConnectionBuilder_Edge_ReturnCorrectString() {
 			//given
 			ReviewEdge edge = ReviewEdge.fromReview(Review.getReviewBuilder().id().build());
-			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedConnection = TestUtils.getParameterStringSetField(
 					"edges " + edge.getReviewEdgeWithoutFieldName()
 			);
 
@@ -87,7 +87,7 @@ class ReviewConnectionTest {
 			assertThat(actualConnection.getReviewConnectionString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(reviewConnectionTitle, expectedAiringScheduleEdge)
+					containsTitleAndAllSetElements(reviewConnectionTitle, expectedConnection)
 			));
 		}
 
@@ -95,7 +95,7 @@ class ReviewConnectionTest {
 		void reviewConnectionBuilder_Nodes_ReturnCorrectString() {
 			//given
 			Review review = Review.getReviewBuilder().id().build();
-			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedConnection = TestUtils.getParameterStringSetField(
 					"nodes " + review.getReviewWithoutFieldName()
 			);
 
@@ -108,7 +108,7 @@ class ReviewConnectionTest {
 			assertThat(actualConnection.getReviewConnectionString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(reviewConnectionTitle, expectedAiringScheduleEdge)
+					containsTitleAndAllSetElements(reviewConnectionTitle, expectedConnection)
 			));
 		}
 
@@ -139,7 +139,7 @@ class ReviewConnectionTest {
 			Review review = Review.getReviewBuilder().id().build();
 			ReviewEdge edge = ReviewEdge.fromReview(review);
 			PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedConnection = TestUtils.getParameterStringSetField(
 					"edges " + edge.getReviewEdgeWithoutFieldName(),
 					"nodes " + review.getReviewWithoutFieldName(),
 					info.getPageInfoString()
@@ -156,7 +156,7 @@ class ReviewConnectionTest {
 			assertThat(actualConnection.getReviewConnectionString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(reviewConnectionTitle, expectedAiringScheduleEdge)
+					containsTitleAndAllSetElements(reviewConnectionTitle, expectedConnection)
 			));
 		}
 	}

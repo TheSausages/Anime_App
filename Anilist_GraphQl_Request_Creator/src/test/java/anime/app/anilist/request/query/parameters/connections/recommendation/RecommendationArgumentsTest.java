@@ -1,4 +1,4 @@
-package anime.app.anilist.request.query.parameters.connections.reviews;
+package anime.app.anilist.request.query.parameters.connections.recommendation;
 
 import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.utils.TestUtils;
@@ -14,33 +14,33 @@ import static anime.app.anilist.request.utils.QueryArgumentMatcher.containsAllSe
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
-class ReviewArgumentsTest {
+class RecommendationArgumentsTest {
 
 	@Test
-	void getReviewArgumentsBuilder__ReturnValidBuilder() {
+	void getRecommendationArgumentBuilder__ReturnValidBuilder() {
 		//given
 
 		//when
-		ReviewArguments.ReviewArgumentsBuilder builder = ReviewArguments.getReviewArgumentsBuilder();
+		RecommendationArguments.RecommendationArgumentsBuilder builder = RecommendationArguments.getRecommendationArgumentBuilder();
 
 		//then
 		assertThat(builder, allOf(
 				notNullValue(),
-				instanceOf(ReviewArguments.ReviewArgumentsBuilder.class)
+				instanceOf(RecommendationArguments.RecommendationArgumentsBuilder.class)
 		));
 	}
 
 	@Nested
-	@DisplayName("Test Review Arguments Builder")
-	class ReviewArgumentsBuilderTest {
+	@DisplayName("Test Recommendation Argument Builder")
+	class RecommendationArgumentsBuilderTest {
 		@Test
-		void reviewArgumentsBuilder_NoParameterSelected_ThrowException() {
+		void recommendationArgumentsBuilder_NoParameterSelected_ThrowException() {
 			//given
 
 			//when
 			Exception thrownException = Assertions.assertThrows(
 					IllegalStateException.class,
-					() -> ReviewArguments.getReviewArgumentsBuilder().build()
+					() -> RecommendationArguments.getRecommendationArgumentBuilder().build()
 			);
 
 			//then
@@ -49,20 +49,20 @@ class ReviewArgumentsTest {
 		}
 
 		@Test
-		void reviewArgumentsBuilder_SortSingle_ReturnCorrectString() {
+		void recommendationArgumentsBuilder_SortSingle_ReturnCorrectString() {
 			//given
-			ReviewSort[] sorts = new ReviewSort[] {ReviewSort.ID};
+			RecommendationSort[] sorts = new RecommendationSort[] {RecommendationSort.ID};
 			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
 					"sort: " + Arrays.toString(sorts)
 			);
 
 			//when
-			ReviewArguments actualArguments = ReviewArguments.getReviewArgumentsBuilder()
+			RecommendationArguments actualArguments = RecommendationArguments.getRecommendationArgumentBuilder()
 					.sort(sorts)
 					.build();
 
 			//then
-			assertThat(actualArguments.getReviewArgumentsString(), allOf(
+			assertThat(actualArguments.getRecommendationArgumentsString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
 					containsAllSetElements(expectedArguments)
@@ -70,20 +70,20 @@ class ReviewArgumentsTest {
 		}
 
 		@Test
-		void reviewArgumentsBuilder_SortMany_ReturnCorrectString() {
+		void recommendationArgumentsBuilder_SortMany_ReturnCorrectString() {
 			//given
-			ReviewSort[] sorts = new ReviewSort[] {ReviewSort.ID, ReviewSort.RATING};
+			RecommendationSort[] sorts = new RecommendationSort[] {RecommendationSort.ID, RecommendationSort.RATING};
 			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
 					"sort: " + Arrays.toString(sorts)
 			);
 
 			//when
-			ReviewArguments actualArguments = ReviewArguments.getReviewArgumentsBuilder()
+			RecommendationArguments actualArguments = RecommendationArguments.getRecommendationArgumentBuilder()
 					.sort(sorts)
 					.build();
 
 			//then
-			assertThat(actualArguments.getReviewArgumentsString(), allOf(
+			assertThat(actualArguments.getRecommendationArgumentsString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
 					containsAllSetElements(expectedArguments)
@@ -91,28 +91,7 @@ class ReviewArgumentsTest {
 		}
 
 		@Test
-		void reviewArgumentsBuilder_Limit_ReturnCorrectString() {
-			//given
-			int limit = 10;
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
-					"limit: " + limit
-			);
-
-			//when
-			ReviewArguments actualArguments = ReviewArguments.getReviewArgumentsBuilder()
-					.limit(limit)
-					.build();
-
-			//then
-			assertThat(actualArguments.getReviewArgumentsString(), allOf(
-					notNullValue(),
-					instanceOf(String.class),
-					containsAllSetElements(expectedArguments)
-			));
-		}
-
-		@Test
-		void reviewArgumentsBuilder_Page_ReturnCorrectString() {
+		void recommendationArgumentsBuilder_Page_ReturnCorrectString() {
 			//given
 			int page = 1;
 			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
@@ -120,12 +99,12 @@ class ReviewArgumentsTest {
 			);
 
 			//when
-			ReviewArguments actualArguments = ReviewArguments.getReviewArgumentsBuilder()
+			RecommendationArguments actualArguments = RecommendationArguments.getRecommendationArgumentBuilder()
 					.page(page)
 					.build();
 
 			//then
-			assertThat(actualArguments.getReviewArgumentsString(), allOf(
+			assertThat(actualArguments.getRecommendationArgumentsString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
 					containsAllSetElements(expectedArguments)
@@ -133,20 +112,20 @@ class ReviewArgumentsTest {
 		}
 
 		@Test
-		void reviewArgumentsBuilder_PerPage_ReturnCorrectString() {
+		void recommendationArgumentsBuilder_PerPage_ReturnCorrectString() {
 			//given
-			int perPage = 30;
+			int perPage = 1;
 			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
 					"perPage: " + perPage
 			);
 
 			//when
-			ReviewArguments actualArguments = ReviewArguments.getReviewArgumentsBuilder()
+			RecommendationArguments actualArguments = RecommendationArguments.getRecommendationArgumentBuilder()
 					.perPage(perPage)
 					.build();
 
 			//then
-			assertThat(actualArguments.getReviewArgumentsString(), allOf(
+			assertThat(actualArguments.getRecommendationArgumentsString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
 					containsAllSetElements(expectedArguments)
@@ -154,29 +133,26 @@ class ReviewArgumentsTest {
 		}
 
 		@Test
-		void reviewArgumentsBuilder_AllParameters_ReturnCorrectString() {
+		void recommendationArgumentsBuilder_AllParameters_ReturnCorrectString() {
 			//given
-			int limit = 10;
+			RecommendationSort[] sorts = new RecommendationSort[] {RecommendationSort.ID, RecommendationSort.RATING};
 			int page = 1;
-			int perPage = 30;
-			ReviewSort[] sorts = new ReviewSort[] {ReviewSort.ID, ReviewSort.RATING};
+			int perPage = 10;
 			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
 					"sort: " + Arrays.toString(sorts),
-					"limit: " + limit,
 					"page: " + page,
 					"perPage: " + perPage
 			);
 
 			//when
-			ReviewArguments actualArguments = ReviewArguments.getReviewArgumentsBuilder()
+			RecommendationArguments actualArguments = RecommendationArguments.getRecommendationArgumentBuilder()
 					.sort(sorts)
-					.limit(limit)
 					.page(page)
 					.perPage(perPage)
 					.build();
 
 			//then
-			assertThat(actualArguments.getReviewArgumentsString(), allOf(
+			assertThat(actualArguments.getRecommendationArgumentsString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
 					containsAllSetElements(expectedArguments)
