@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
-import static anime.app.anilist.request.query.parameters.connections.staff.StaffConnection.staffConnectionTitle;
+import static anime.app.anilist.request.query.parameters.connections.staff.StaffConnection.STAFF_CONNECTION_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleAndParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -89,7 +89,7 @@ class StaffConnectionTest {
 			assertThat(actualConnection.getStaffConnectionString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(staffConnectionTitle, expectedEdge)
+					containsTitleAndAllSetElements(STAFF_CONNECTION_TITLE, expectedEdge)
 			));
 		}
 
@@ -111,7 +111,7 @@ class StaffConnectionTest {
 			assertThat(actualConnection.getStaffConnectionString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(staffConnectionTitle, expectedEdge)
+					containsTitleAndAllSetElements(STAFF_CONNECTION_TITLE, expectedEdge)
 			));
 		}
 
@@ -133,7 +133,7 @@ class StaffConnectionTest {
 			assertThat(actualConnection.getStaffConnectionString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(staffConnectionTitle, expectedConnection)
+					containsTitleAndAllSetElements(STAFF_CONNECTION_TITLE, expectedConnection)
 			));
 		}
 
@@ -161,7 +161,7 @@ class StaffConnectionTest {
 			assertThat(actualConnection.getStaffConnectionString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(staffConnectionTitle, expectedConnection)
+					containsTitleAndAllSetElements(STAFF_CONNECTION_TITLE, expectedConnection)
 			));
 		}
 	}

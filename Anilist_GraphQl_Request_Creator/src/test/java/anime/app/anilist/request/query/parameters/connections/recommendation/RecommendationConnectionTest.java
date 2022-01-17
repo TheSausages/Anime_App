@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
-import static anime.app.anilist.request.query.parameters.connections.recommendation.RecommendationConnection.recommendationConnectionTitle;
+import static anime.app.anilist.request.query.parameters.connections.recommendation.RecommendationConnection.RECOMMENDATION_CONNECTION_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleAndParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -88,7 +88,7 @@ class RecommendationConnectionTest {
 			assertThat(actualConnection.getRecommendationConnectionString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(recommendationConnectionTitle, expectedConnection)
+					containsTitleAndAllSetElements(RECOMMENDATION_CONNECTION_TITLE, expectedConnection)
 			));
 		}
 
@@ -109,7 +109,7 @@ class RecommendationConnectionTest {
 			assertThat(actualConnection.getRecommendationConnectionString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(recommendationConnectionTitle, expectedConnection)
+					containsTitleAndAllSetElements(RECOMMENDATION_CONNECTION_TITLE, expectedConnection)
 			));
 		}
 
@@ -130,7 +130,7 @@ class RecommendationConnectionTest {
 			assertThat(actualConnection.getRecommendationConnectionString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(recommendationConnectionTitle, expectedConnection)
+					containsTitleAndAllSetElements(RECOMMENDATION_CONNECTION_TITLE, expectedConnection)
 			));
 		}
 
@@ -157,7 +157,7 @@ class RecommendationConnectionTest {
 			assertThat(actualConnection.getRecommendationConnectionString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(recommendationConnectionTitle, expectedConnection)
+					containsTitleAndAllSetElements(RECOMMENDATION_CONNECTION_TITLE, expectedConnection)
 			));
 		}
 	}

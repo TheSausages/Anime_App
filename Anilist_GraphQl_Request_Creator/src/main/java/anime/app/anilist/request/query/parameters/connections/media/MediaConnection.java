@@ -12,7 +12,7 @@ import java.util.Set;
 
 @Getter
 public class MediaConnection {
-	public final static String mediaConnectionTitle = "mediaConnection";
+	public final static String MEDIA_CONNECTION_TITLE = "mediaConnection";
 
 	private final String mediaConnectionString;
 
@@ -21,7 +21,7 @@ public class MediaConnection {
 	}
 
 	public String getMediaConnectionWithoutFieldName() {
-		return this.mediaConnectionString.substring(mediaConnectionTitle.length() + 1);
+		return this.mediaConnectionString.substring(MEDIA_CONNECTION_TITLE.length() + 1);
 	}
 
 	@Override
@@ -57,7 +57,7 @@ public class MediaConnection {
 			}
 
 			return new MediaConnection(QueryParameterUtils.buildFieldElement(
-					mediaConnectionTitle,
+					MEDIA_CONNECTION_TITLE,
 					mediaConnections
 			));
 		}

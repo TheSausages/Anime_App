@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
-import static anime.app.anilist.request.query.parameters.connections.trends.MediaTrendConnection.mediaTrendsConnectionTitle;
+import static anime.app.anilist.request.query.parameters.connections.trends.MediaTrendConnection.MEDIA_TRENDS_CONNECTION_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleAndParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -88,7 +88,7 @@ class MediaTrendConnectionTest {
 			assertThat(actualConnection.getMediaConnectionString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(mediaTrendsConnectionTitle, expectedAiringScheduleEdge)
+					containsTitleAndAllSetElements(MEDIA_TRENDS_CONNECTION_TITLE, expectedAiringScheduleEdge)
 			));
 		}
 
@@ -109,7 +109,7 @@ class MediaTrendConnectionTest {
 			assertThat(actualConnection.getMediaConnectionString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(mediaTrendsConnectionTitle, expectedConnection)
+					containsTitleAndAllSetElements(MEDIA_TRENDS_CONNECTION_TITLE, expectedConnection)
 			));
 		}
 
@@ -130,7 +130,7 @@ class MediaTrendConnectionTest {
 			assertThat(actualConnection.getMediaConnectionString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(mediaTrendsConnectionTitle, expectedConnection)
+					containsTitleAndAllSetElements(MEDIA_TRENDS_CONNECTION_TITLE, expectedConnection)
 			));
 		}
 
@@ -157,7 +157,7 @@ class MediaTrendConnectionTest {
 			assertThat(actualConnection.getMediaConnectionString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(mediaTrendsConnectionTitle, expectedAiringScheduleEdge)
+					containsTitleAndAllSetElements(MEDIA_TRENDS_CONNECTION_TITLE, expectedAiringScheduleEdge)
 			));
 		}
 	}

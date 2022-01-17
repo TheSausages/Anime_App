@@ -11,7 +11,7 @@ import java.util.Set;
 
 @Getter
 public class AiringSchedule {
-	public final static String airingScheduleTitle = "airingSchedule";
+	public final static String AIRING_SCHEDULE_TITLE = "airingSchedule";
 
 	private final String airingScheduleString;
 
@@ -20,7 +20,7 @@ public class AiringSchedule {
 	}
 
 	public String getAiringScheduleStringWithoutFieldName() {
-		return this.airingScheduleString.substring(airingScheduleTitle.length() + 1);
+		return this.airingScheduleString.substring(AIRING_SCHEDULE_TITLE.length() + 1);
 	}
 
 	public static AiringScheduleBuilder getAiringScheduleBuilder() {
@@ -71,7 +71,7 @@ public class AiringSchedule {
 			}
 
 			return new AiringSchedule(QueryParameterUtils.buildFieldElement(
-					AiringSchedule.airingScheduleTitle,
+					AiringSchedule.AIRING_SCHEDULE_TITLE,
 					airingSchedule
 			));
 		}

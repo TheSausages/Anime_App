@@ -10,7 +10,7 @@ import java.util.Set;
 
 @Getter
 public class StaffEdge {
-	public static final String staffEdgeTitle = "staffEdge";
+	public static final String STAFF_EDGE_TITLE = "staffEdge";
 
 	private final String staffEdgeString;
 
@@ -23,7 +23,7 @@ public class StaffEdge {
 	}
 
 	public String getStaffEdgeWithoutFieldName() {
-		return this.staffEdgeString.substring(staffEdgeTitle.length() + 1);
+		return this.staffEdgeString.substring(STAFF_EDGE_TITLE.length() + 1);
 	}
 
 	@Override
@@ -60,7 +60,7 @@ public class StaffEdge {
 			}
 
 			return new StaffEdge(QueryParameterUtils.buildFieldElement(
-					staffEdgeTitle,
+					STAFF_EDGE_TITLE,
 					staffEdge
 			));
 		}

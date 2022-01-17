@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
-import static anime.app.anilist.request.query.parameters.connections.characters.Character.characterTitle;
+import static anime.app.anilist.request.query.parameters.connections.characters.Character.CHARACTER_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleAndParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -85,7 +85,7 @@ class CharacterTest {
 			assertThat(character.getCharacterString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterTitle, expectedString)
+					containsTitleAndAllSetElements(CHARACTER_TITLE, expectedString)
 			));
 		}
 
@@ -103,7 +103,7 @@ class CharacterTest {
 			assertThat(character.getCharacterString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterTitle, expectedString)
+					containsTitleAndAllSetElements(CHARACTER_TITLE, expectedString)
 			));
 		}
 
@@ -121,7 +121,7 @@ class CharacterTest {
 			assertThat(character.getCharacterString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterTitle, expectedString)
+					containsTitleAndAllSetElements(CHARACTER_TITLE, expectedString)
 			));
 		}
 
@@ -139,7 +139,7 @@ class CharacterTest {
 			assertThat(character.getCharacterString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterTitle, expectedString)
+					containsTitleAndAllSetElements(CHARACTER_TITLE, expectedString)
 			));
 		}
 
@@ -157,7 +157,7 @@ class CharacterTest {
 			assertThat(character.getCharacterString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterTitle, expectedString)
+					containsTitleAndAllSetElements(CHARACTER_TITLE, expectedString)
 			));
 		}
 
@@ -175,7 +175,7 @@ class CharacterTest {
 			assertThat(character.getCharacterString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterTitle, expectedString)
+					containsTitleAndAllSetElements(CHARACTER_TITLE, expectedString)
 			));
 		}
 
@@ -195,7 +195,7 @@ class CharacterTest {
 			assertThat(character.getCharacterString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterTitle, expectedString)
+					containsTitleAndAllSetElements(CHARACTER_TITLE, expectedString)
 			));
 		}
 
@@ -213,7 +213,7 @@ class CharacterTest {
 			assertThat(character.getCharacterString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterTitle, expectedString)
+					containsTitleAndAllSetElements(CHARACTER_TITLE, expectedString)
 			));
 		}
 
@@ -231,7 +231,7 @@ class CharacterTest {
 			assertThat(character.getCharacterString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterTitle, expectedString)
+					containsTitleAndAllSetElements(CHARACTER_TITLE, expectedString)
 			));
 		}
 
@@ -249,7 +249,7 @@ class CharacterTest {
 			assertThat(character.getCharacterString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterTitle, expectedString)
+					containsTitleAndAllSetElements(CHARACTER_TITLE, expectedString)
 			));
 		}
 
@@ -267,7 +267,7 @@ class CharacterTest {
 			assertThat(character.getCharacterString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterTitle, expectedString)
+					containsTitleAndAllSetElements(CHARACTER_TITLE, expectedString)
 			));
 		}
 
@@ -288,7 +288,7 @@ class CharacterTest {
 			assertThat(character.getCharacterString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterTitle, expectedString)
+					containsTitleAndAllSetElements(CHARACTER_TITLE, expectedString)
 			));
 		}
 
@@ -311,7 +311,7 @@ class CharacterTest {
 			assertThat(character.getCharacterString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterTitle, expectedString)
+					containsTitleAndAllSetElements(CHARACTER_TITLE, expectedString)
 			));
 		}
 
@@ -358,7 +358,7 @@ class CharacterTest {
 			assertThat(character.getCharacterString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterTitle, expectedString)
+					containsTitleAndAllSetElements(CHARACTER_TITLE, expectedString)
 			));
 		}
 	}

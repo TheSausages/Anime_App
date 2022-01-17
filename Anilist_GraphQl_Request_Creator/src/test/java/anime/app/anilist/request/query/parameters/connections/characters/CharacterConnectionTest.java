@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
-import static anime.app.anilist.request.query.parameters.connections.characters.CharacterConnection.characterConnectionTitle;
+import static anime.app.anilist.request.query.parameters.connections.characters.CharacterConnection.CHARACTER_CONNECTION_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleAndParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -87,7 +87,7 @@ class CharacterConnectionTest {
 			assertThat(actualConnection.getCharacterConnectionString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterConnectionTitle, expectedConnection)
+					containsTitleAndAllSetElements(CHARACTER_CONNECTION_TITLE, expectedConnection)
 			));
 		}
 
@@ -108,7 +108,7 @@ class CharacterConnectionTest {
 			assertThat(actualConnection.getCharacterConnectionString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterConnectionTitle, expectedConnection)
+					containsTitleAndAllSetElements(CHARACTER_CONNECTION_TITLE, expectedConnection)
 			));
 		}
 
@@ -129,7 +129,7 @@ class CharacterConnectionTest {
 			assertThat(actualConnection.getCharacterConnectionString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterConnectionTitle, expectedConnection)
+					containsTitleAndAllSetElements(CHARACTER_CONNECTION_TITLE, expectedConnection)
 			));
 		}
 
@@ -156,7 +156,7 @@ class CharacterConnectionTest {
 			assertThat(actualConnection.getCharacterConnectionString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterConnectionTitle, expectedConnection)
+					containsTitleAndAllSetElements(CHARACTER_CONNECTION_TITLE, expectedConnection)
 			));
 		}
 	}

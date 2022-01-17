@@ -11,7 +11,7 @@ import java.util.Set;
 
 @Getter
 public class AiringScheduleConnection {
-	public static final String airingScheduleConnectionTitle = "airingScheduleConnection";
+	public static final String AIRING_SCHEDULE_CONNECTION_TITLE = "airingScheduleConnection";
 
 	private final String airingScheduleConnectionString;
 
@@ -20,7 +20,7 @@ public class AiringScheduleConnection {
 	}
 
 	public String getAiringScheduleConnectionWithoutFieldName() {
-		return this.airingScheduleConnectionString.substring(airingScheduleConnectionTitle.length() + 1);
+		return this.airingScheduleConnectionString.substring(AIRING_SCHEDULE_CONNECTION_TITLE.length() + 1);
 	}
 
 	@Override
@@ -56,7 +56,7 @@ public class AiringScheduleConnection {
 			}
 
 			return new AiringScheduleConnection(QueryParameterUtils.buildFieldElement(
-					airingScheduleConnectionTitle,
+					AIRING_SCHEDULE_CONNECTION_TITLE,
 					airingScheduleConnection
 			));
 		}

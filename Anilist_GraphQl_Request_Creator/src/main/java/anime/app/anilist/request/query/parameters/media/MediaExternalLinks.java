@@ -9,7 +9,7 @@ import java.util.Set;
 
 @Getter
 public class MediaExternalLinks {
-	public final static String externalLinksTitle = "externalLinks";
+	public final static String EXTERNAL_LINKS_TITLE = "externalLinks";
 
 	private final String externalLink;
 
@@ -50,7 +50,7 @@ public class MediaExternalLinks {
 			}
 
 			return new MediaExternalLinks(QueryParameterUtils.buildFieldElement(
-					externalLinksTitle,
+					EXTERNAL_LINKS_TITLE,
 					mediaExternalLink
 			));
 		}

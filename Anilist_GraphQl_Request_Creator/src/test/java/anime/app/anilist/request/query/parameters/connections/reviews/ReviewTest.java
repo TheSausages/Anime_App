@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
-import static anime.app.anilist.request.query.parameters.connections.reviews.Review.reviewTitle;
+import static anime.app.anilist.request.query.parameters.connections.reviews.Review.REVIEW_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleAndParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -84,7 +84,7 @@ class ReviewTest {
 			assertThat(actualReview.getReviewString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(reviewTitle, expectedReview)
+					containsTitleAndAllSetElements(REVIEW_TITLE, expectedReview)
 			));
 		}
 
@@ -104,7 +104,7 @@ class ReviewTest {
 			assertThat(actualReview.getReviewString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(reviewTitle, expectedReview)
+					containsTitleAndAllSetElements(REVIEW_TITLE, expectedReview)
 			));
 		}
 
@@ -124,7 +124,7 @@ class ReviewTest {
 			assertThat(actualReview.getReviewString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(reviewTitle, expectedReview)
+					containsTitleAndAllSetElements(REVIEW_TITLE, expectedReview)
 			));
 		}
 
@@ -144,7 +144,7 @@ class ReviewTest {
 			assertThat(actualReview.getReviewString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(reviewTitle, expectedReview)
+					containsTitleAndAllSetElements(REVIEW_TITLE, expectedReview)
 			));
 		}
 
@@ -164,7 +164,7 @@ class ReviewTest {
 			assertThat(actualReview.getReviewString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(reviewTitle, expectedReview)
+					containsTitleAndAllSetElements(REVIEW_TITLE, expectedReview)
 			));
 		}
 
@@ -184,7 +184,7 @@ class ReviewTest {
 			assertThat(actualReview.getReviewString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(reviewTitle, expectedReview)
+					containsTitleAndAllSetElements(REVIEW_TITLE, expectedReview)
 			));
 		}
 
@@ -204,7 +204,7 @@ class ReviewTest {
 			assertThat(actualReview.getReviewString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(reviewTitle, expectedReview)
+					containsTitleAndAllSetElements(REVIEW_TITLE, expectedReview)
 			));
 		}
 
@@ -225,7 +225,7 @@ class ReviewTest {
 			assertThat(actualReview.getReviewString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(reviewTitle, expectedReview)
+					containsTitleAndAllSetElements(REVIEW_TITLE, expectedReview)
 			));
 		}
 
@@ -245,7 +245,7 @@ class ReviewTest {
 			assertThat(actualReview.getReviewString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(reviewTitle, expectedReview)
+					containsTitleAndAllSetElements(REVIEW_TITLE, expectedReview)
 			));
 		}
 
@@ -265,7 +265,7 @@ class ReviewTest {
 			assertThat(actualReview.getReviewString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(reviewTitle, expectedReview)
+					containsTitleAndAllSetElements(REVIEW_TITLE, expectedReview)
 			));
 		}
 
@@ -285,7 +285,7 @@ class ReviewTest {
 			assertThat(actualReview.getReviewString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(reviewTitle, expectedReview)
+					containsTitleAndAllSetElements(REVIEW_TITLE, expectedReview)
 			));
 		}
 
@@ -305,7 +305,7 @@ class ReviewTest {
 			assertThat(actualReview.getReviewString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(reviewTitle, expectedReview)
+					containsTitleAndAllSetElements(REVIEW_TITLE, expectedReview)
 			));
 		}
 
@@ -325,7 +325,7 @@ class ReviewTest {
 			assertThat(actualReview.getReviewString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(reviewTitle, expectedReview)
+					containsTitleAndAllSetElements(REVIEW_TITLE, expectedReview)
 			));
 		}
 
@@ -345,7 +345,7 @@ class ReviewTest {
 			assertThat(actualReview.getReviewString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(reviewTitle, expectedReview)
+					containsTitleAndAllSetElements(REVIEW_TITLE, expectedReview)
 			));
 		}
 
@@ -365,7 +365,7 @@ class ReviewTest {
 			assertThat(actualReview.getReviewString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(reviewTitle, expectedReview)
+					containsTitleAndAllSetElements(REVIEW_TITLE, expectedReview)
 			));
 		}
 
@@ -386,7 +386,7 @@ class ReviewTest {
 			assertThat(actualReview.getReviewString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(reviewTitle, expectedReview)
+					containsTitleAndAllSetElements(REVIEW_TITLE, expectedReview)
 			));
 		}
 
@@ -407,7 +407,7 @@ class ReviewTest {
 			assertThat(actualReview.getReviewString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(reviewTitle, expectedReview)
+					containsTitleAndAllSetElements(REVIEW_TITLE, expectedReview)
 			));
 		}
 
@@ -457,7 +457,7 @@ class ReviewTest {
 			assertThat(actualReview.getReviewString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(reviewTitle, expectedReview)
+					containsTitleAndAllSetElements(REVIEW_TITLE, expectedReview)
 			));
 		}
 	}

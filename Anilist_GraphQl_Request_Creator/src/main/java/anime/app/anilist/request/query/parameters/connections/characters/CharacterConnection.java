@@ -11,7 +11,7 @@ import java.util.Set;
 
 @Getter
 public class CharacterConnection {
-	public final static String characterConnectionTitle = "characterConnection";
+	public final static String CHARACTER_CONNECTION_TITLE = "characterConnection";
 
 	private final String characterConnectionString;
 
@@ -20,7 +20,7 @@ public class CharacterConnection {
 	}
 
 	public String getCharacterConnectionWithoutFieldName() {
-		return this.characterConnectionString.substring(characterConnectionTitle.length() + 1);
+		return this.characterConnectionString.substring(CHARACTER_CONNECTION_TITLE.length() + 1);
 	}
 
 	@Override
@@ -56,7 +56,7 @@ public class CharacterConnection {
 			}
 
 			return new CharacterConnection(QueryParameterUtils.buildFieldElement(
-					characterConnectionTitle,
+					CHARACTER_CONNECTION_TITLE,
 					characterConnection
 			));
 		}

@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
-import static anime.app.anilist.request.query.parameters.connections.reviews.ReviewConnection.reviewConnectionTitle;
+import static anime.app.anilist.request.query.parameters.connections.reviews.ReviewConnection.REVIEW_CONNECTION_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleAndParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -87,7 +87,7 @@ class ReviewConnectionTest {
 			assertThat(actualConnection.getReviewConnectionString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(reviewConnectionTitle, expectedConnection)
+					containsTitleAndAllSetElements(REVIEW_CONNECTION_TITLE, expectedConnection)
 			));
 		}
 
@@ -108,7 +108,7 @@ class ReviewConnectionTest {
 			assertThat(actualConnection.getReviewConnectionString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(reviewConnectionTitle, expectedConnection)
+					containsTitleAndAllSetElements(REVIEW_CONNECTION_TITLE, expectedConnection)
 			));
 		}
 
@@ -129,7 +129,7 @@ class ReviewConnectionTest {
 			assertThat(actualConnection.getReviewConnectionString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(reviewConnectionTitle, expectedConnection)
+					containsTitleAndAllSetElements(REVIEW_CONNECTION_TITLE, expectedConnection)
 			));
 		}
 
@@ -156,7 +156,7 @@ class ReviewConnectionTest {
 			assertThat(actualConnection.getReviewConnectionString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(reviewConnectionTitle, expectedConnection)
+					containsTitleAndAllSetElements(REVIEW_CONNECTION_TITLE, expectedConnection)
 			));
 		}
 	}

@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
-import static anime.app.anilist.request.query.parameters.connections.trends.MediaTrendEdge.mediaTrendEdgeTitle;
+import static anime.app.anilist.request.query.parameters.connections.trends.MediaTrendEdge.MEDIA_TREND_EDGE_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleAndParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -64,7 +64,7 @@ class MediaTrendEdgeTest {
 		assertThat(actualEdge.getStudioEdgeString(), allOf(
 				notNullValue(),
 				instanceOf(String.class),
-				containsTitleAndAllSetElements(mediaTrendEdgeTitle, expectedEdge)
+				containsTitleAndAllSetElements(MEDIA_TREND_EDGE_TITLE, expectedEdge)
 		));
 	}
 
@@ -99,7 +99,7 @@ class MediaTrendEdgeTest {
 		assertThat(actualEdge.getStudioEdgeString(), allOf(
 				notNullValue(),
 				instanceOf(String.class),
-				containsTitleAndAllSetElements(mediaTrendEdgeTitle, expectedEdge)
+				containsTitleAndAllSetElements(MEDIA_TREND_EDGE_TITLE, expectedEdge)
 		));
 	}
 }

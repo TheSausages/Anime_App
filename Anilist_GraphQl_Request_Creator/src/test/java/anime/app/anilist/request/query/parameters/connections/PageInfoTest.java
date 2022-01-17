@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
-import static anime.app.anilist.request.query.parameters.connections.PageInfo.pageInfoTitle;
+import static anime.app.anilist.request.query.parameters.connections.PageInfo.PAGE_INFO_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleAndParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -79,7 +79,7 @@ class PageInfoTest {
 			assertThat(actualPageInfo.getPageInfoString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(pageInfoTitle, elements)
+					containsTitleAndAllSetElements(PAGE_INFO_TITLE, elements)
 			));
 		}
 
@@ -95,7 +95,7 @@ class PageInfoTest {
 			assertThat(actualPageInfo.getPageInfoString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(pageInfoTitle, elements)
+					containsTitleAndAllSetElements(PAGE_INFO_TITLE, elements)
 			));
 		}
 
@@ -111,7 +111,7 @@ class PageInfoTest {
 			assertThat(actualPageInfo.getPageInfoString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(pageInfoTitle, elements)
+					containsTitleAndAllSetElements(PAGE_INFO_TITLE, elements)
 			));
 		}
 
@@ -127,7 +127,7 @@ class PageInfoTest {
 			assertThat(actualPageInfo.getPageInfoString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(pageInfoTitle, elements)
+					containsTitleAndAllSetElements(PAGE_INFO_TITLE, elements)
 			));
 		}
 
@@ -143,7 +143,7 @@ class PageInfoTest {
 			assertThat(actualPageInfo.getPageInfoString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(pageInfoTitle, elements)
+					containsTitleAndAllSetElements(PAGE_INFO_TITLE, elements)
 			));
 		}
 
@@ -171,7 +171,7 @@ class PageInfoTest {
 			assertThat(actualPageInfo.getPageInfoString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(pageInfoTitle, elements)
+					containsTitleAndAllSetElements(PAGE_INFO_TITLE, elements)
 			));
 		}
 	}

@@ -9,7 +9,7 @@ import java.util.Set;
 
 @Getter
 public class PageInfo {
-	public final static String pageInfoTitle = "pageInfo";
+	public final static String PAGE_INFO_TITLE = "pageInfo";
 
 	private final String pageInfoString;
 
@@ -22,7 +22,7 @@ public class PageInfo {
 	}
 
 	public String getPageInfoStringWithoutFieldName() {
-		return this.pageInfoString.substring(pageInfoTitle.length() + 1);
+		return this.pageInfoString.substring(PAGE_INFO_TITLE.length() + 1);
 	}
 
 	@Override
@@ -64,7 +64,7 @@ public class PageInfo {
 			}
 
 			return new PageInfo(QueryParameterUtils.buildFieldElement(
-					pageInfoTitle,
+					PAGE_INFO_TITLE,
 					info
 			));
 		}

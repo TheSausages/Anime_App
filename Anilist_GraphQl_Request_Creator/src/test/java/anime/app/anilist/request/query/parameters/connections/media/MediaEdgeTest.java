@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.Set;
 
-import static anime.app.anilist.request.query.parameters.connections.media.MediaEdge.mediaEdgeTitle;
+import static anime.app.anilist.request.query.parameters.connections.media.MediaEdge.MEDIA_EDGE_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleAndParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -92,7 +92,7 @@ class MediaEdgeTest {
 			assertThat(actualEdge.getMediaEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(mediaEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(MEDIA_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -112,7 +112,7 @@ class MediaEdgeTest {
 			assertThat(actualEdge.getMediaEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(mediaEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(MEDIA_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -132,7 +132,7 @@ class MediaEdgeTest {
 			assertThat(actualEdge.getMediaEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(mediaEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(MEDIA_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -153,7 +153,7 @@ class MediaEdgeTest {
 			assertThat(actualEdge.getMediaEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(mediaEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(MEDIA_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -173,7 +173,7 @@ class MediaEdgeTest {
 			assertThat(actualEdge.getMediaEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(mediaEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(MEDIA_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -194,7 +194,7 @@ class MediaEdgeTest {
 			assertThat(actualEdge.getMediaEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(mediaEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(MEDIA_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -214,7 +214,7 @@ class MediaEdgeTest {
 			assertThat(actualEdge.getMediaEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(mediaEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(MEDIA_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -234,7 +234,7 @@ class MediaEdgeTest {
 			assertThat(actualEdge.getMediaEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(mediaEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(MEDIA_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -254,7 +254,7 @@ class MediaEdgeTest {
 			assertThat(actualEdge.getMediaEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(mediaEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(MEDIA_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -274,7 +274,7 @@ class MediaEdgeTest {
 			assertThat(actualEdge.getMediaEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(mediaEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(MEDIA_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -294,7 +294,7 @@ class MediaEdgeTest {
 			assertThat(actualEdge.getMediaEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(mediaEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(MEDIA_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -315,7 +315,7 @@ class MediaEdgeTest {
 			assertThat(actualEdge.getMediaEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(mediaEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(MEDIA_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -337,7 +337,7 @@ class MediaEdgeTest {
 			assertThat(actualEdge.getMediaEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(mediaEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(MEDIA_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -359,7 +359,7 @@ class MediaEdgeTest {
 			assertThat(actualEdge.getMediaEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(mediaEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(MEDIA_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -381,7 +381,7 @@ class MediaEdgeTest {
 			assertThat(actualEdge.getMediaEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(mediaEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(MEDIA_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -404,7 +404,7 @@ class MediaEdgeTest {
 			assertThat(actualEdge.getMediaEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(mediaEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(MEDIA_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -425,7 +425,7 @@ class MediaEdgeTest {
 			assertThat(actualEdge.getMediaEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(mediaEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(MEDIA_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -447,7 +447,7 @@ class MediaEdgeTest {
 			assertThat(actualEdge.getMediaEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(mediaEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(MEDIA_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -469,7 +469,7 @@ class MediaEdgeTest {
 			assertThat(actualEdge.getMediaEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(mediaEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(MEDIA_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -491,7 +491,7 @@ class MediaEdgeTest {
 			assertThat(actualEdge.getMediaEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(mediaEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(MEDIA_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -514,7 +514,7 @@ class MediaEdgeTest {
 			assertThat(actualEdge.getMediaEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(mediaEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(MEDIA_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -562,7 +562,7 @@ class MediaEdgeTest {
 			assertThat(actualEdge.getMediaEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(mediaEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(MEDIA_EDGE_TITLE, expectedEdge)
 			));
 		}
 	}

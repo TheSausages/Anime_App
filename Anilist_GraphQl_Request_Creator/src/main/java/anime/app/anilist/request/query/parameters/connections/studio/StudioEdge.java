@@ -10,7 +10,7 @@ import java.util.Set;
 
 @Getter
 public class StudioEdge {
-	public static final String studioEdgeTitle = "studioEdge";
+	public static final String STUDIO_EDGE_TITLE = "studioEdge";
 
 	private final String studioEdgeString;
 
@@ -19,7 +19,7 @@ public class StudioEdge {
 	}
 
 	public String getStudioEdgeWithoutFieldName() {
-		return this.studioEdgeString.substring(studioEdgeTitle.length() + 1);
+		return this.studioEdgeString.substring(STUDIO_EDGE_TITLE.length() + 1);
 	}
 
 	public static StudioEdgeBuilder getStudioEdgedBuilder() {
@@ -60,7 +60,7 @@ public class StudioEdge {
 			}
 
 			return new StudioEdge(QueryParameterUtils.buildFieldElement(
-					studioEdgeTitle,
+					STUDIO_EDGE_TITLE,
 					studioEdge
 			));
 		}

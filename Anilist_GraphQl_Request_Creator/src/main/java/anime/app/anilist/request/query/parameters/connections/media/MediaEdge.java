@@ -17,7 +17,7 @@ import java.util.Set;
 
 @Getter
 public class MediaEdge {
-	public final static String mediaEdgeTitle = "mediaEdge";
+	public final static String MEDIA_EDGE_TITLE = "mediaEdge";
 
 	private final String mediaEdgeString;
 
@@ -26,7 +26,7 @@ public class MediaEdge {
 	}
 
 	public String getMediaEdgeWithoutFieldName() {
-		return this.mediaEdgeString.substring(mediaEdgeTitle.length() + 1);
+		return this.mediaEdgeString.substring(MEDIA_EDGE_TITLE.length() + 1);
 	}
 
 	public static MediaEdgeBuilder getMediaEdgeBuilder() {
@@ -171,7 +171,7 @@ public class MediaEdge {
 			}
 
 			return new MediaEdge(QueryParameterUtils.buildFieldElement(
-					mediaEdgeTitle,
+					MEDIA_EDGE_TITLE,
 					mediaEdge
 			));
 		}

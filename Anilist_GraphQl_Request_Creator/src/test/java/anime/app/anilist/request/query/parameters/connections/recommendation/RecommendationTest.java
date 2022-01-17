@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
-import static anime.app.anilist.request.query.parameters.connections.recommendation.Recommendation.recommendationTitle;
+import static anime.app.anilist.request.query.parameters.connections.recommendation.Recommendation.RECOMMENDATION_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleAndParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -86,7 +86,7 @@ class RecommendationTest {
 			assertThat(actualRecommendation.getRecommendationString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(recommendationTitle, expectedRecommendation)
+					containsTitleAndAllSetElements(RECOMMENDATION_TITLE, expectedRecommendation)
 			));
 		}
 
@@ -106,7 +106,7 @@ class RecommendationTest {
 			assertThat(actualRecommendation.getRecommendationString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(recommendationTitle, expectedRecommendation)
+					containsTitleAndAllSetElements(RECOMMENDATION_TITLE, expectedRecommendation)
 			));
 		}
 
@@ -127,7 +127,7 @@ class RecommendationTest {
 			assertThat(actualRecommendation.getRecommendationString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(recommendationTitle, expectedRecommendation)
+					containsTitleAndAllSetElements(RECOMMENDATION_TITLE, expectedRecommendation)
 			));
 		}
 
@@ -148,7 +148,7 @@ class RecommendationTest {
 			assertThat(actualRecommendation.getRecommendationString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(recommendationTitle, expectedRecommendation)
+					containsTitleAndAllSetElements(RECOMMENDATION_TITLE, expectedRecommendation)
 			));
 		}
 
@@ -169,7 +169,7 @@ class RecommendationTest {
 			assertThat(actualRecommendation.getRecommendationString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(recommendationTitle, expectedRecommendation)
+					containsTitleAndAllSetElements(RECOMMENDATION_TITLE, expectedRecommendation)
 			));
 		}
 
@@ -199,7 +199,7 @@ class RecommendationTest {
 			assertThat(actualRecommendation.getRecommendationString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(recommendationTitle, expectedRecommendation)
+					containsTitleAndAllSetElements(RECOMMENDATION_TITLE, expectedRecommendation)
 			));
 		}
 	}

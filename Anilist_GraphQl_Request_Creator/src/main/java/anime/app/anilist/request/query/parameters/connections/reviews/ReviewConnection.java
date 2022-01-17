@@ -11,7 +11,7 @@ import java.util.Set;
 
 @Getter
 public class ReviewConnection {
-	public final static String reviewConnectionTitle = "reviewConnection";
+	public final static String REVIEW_CONNECTION_TITLE = "reviewConnection";
 
 	private final String reviewConnectionString;
 
@@ -20,7 +20,7 @@ public class ReviewConnection {
 	}
 
 	public String getReviewConnectionWithoutFieldName() {
-		return this.reviewConnectionString.substring(reviewConnectionTitle.length() + 1);
+		return this.reviewConnectionString.substring(REVIEW_CONNECTION_TITLE.length() + 1);
 	}
 
 	@Override
@@ -56,7 +56,7 @@ public class ReviewConnection {
 			}
 
 			return new ReviewConnection(QueryParameterUtils.buildFieldElement(
-					reviewConnectionTitle,
+					REVIEW_CONNECTION_TITLE,
 					reviewConnection
 			));
 		}

@@ -9,7 +9,7 @@ import java.util.Set;
 
 @Getter
 public class MediaRank {
-	public static final String rankingTitle = "ranking";
+	public static final String RANKING_TITLE = "ranking";
 
 	private final String rank;
 
@@ -75,7 +75,7 @@ public class MediaRank {
 			}
 
 			return new MediaRank(QueryParameterUtils.buildFieldElement(
-					rankingTitle,
+					RANKING_TITLE,
 					mediaRank
 			));
 		}

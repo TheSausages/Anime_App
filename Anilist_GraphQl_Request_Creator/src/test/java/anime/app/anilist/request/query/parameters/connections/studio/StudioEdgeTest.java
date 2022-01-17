@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
-import static anime.app.anilist.request.query.parameters.connections.studio.StudioEdge.studioEdgeTitle;
+import static anime.app.anilist.request.query.parameters.connections.studio.StudioEdge.STUDIO_EDGE_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleAndParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -84,7 +84,7 @@ class StudioEdgeTest {
 			assertThat(actualEdge.getStudioEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(studioEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(STUDIO_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -103,7 +103,7 @@ class StudioEdgeTest {
 			assertThat(actualEdge.getStudioEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(studioEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(STUDIO_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -122,7 +122,7 @@ class StudioEdgeTest {
 			assertThat(actualEdge.getStudioEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(studioEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(STUDIO_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -141,7 +141,7 @@ class StudioEdgeTest {
 			assertThat(actualEdge.getStudioEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(studioEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(STUDIO_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -167,7 +167,7 @@ class StudioEdgeTest {
 			assertThat(actualEdge.getStudioEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(studioEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(STUDIO_EDGE_TITLE, expectedEdge)
 			));
 		}
 	}

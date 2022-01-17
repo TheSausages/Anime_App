@@ -61,7 +61,7 @@ class MediaStreamingEpisodesTest {
 			assertThat(actualEpisodes.getStreamingEpisode(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(MediaStreamingEpisodes.streamingEpisodesTitle, expectedStreamingEpisodes)
+					containsTitleAndAllSetElements(MediaStreamingEpisodes.STREAMING_EPISODES_TITLE, expectedStreamingEpisodes)
 			));
 		}
 
@@ -79,7 +79,7 @@ class MediaStreamingEpisodesTest {
 			assertThat(actualEpisodes.getStreamingEpisode(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(MediaStreamingEpisodes.streamingEpisodesTitle, expectedStreamingEpisodes)
+					containsTitleAndAllSetElements(MediaStreamingEpisodes.STREAMING_EPISODES_TITLE, expectedStreamingEpisodes)
 			));
 		}
 
@@ -97,7 +97,7 @@ class MediaStreamingEpisodesTest {
 			assertThat(actualEpisodes.getStreamingEpisode(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(MediaStreamingEpisodes.streamingEpisodesTitle, expectedStreamingEpisodes)
+					containsTitleAndAllSetElements(MediaStreamingEpisodes.STREAMING_EPISODES_TITLE, expectedStreamingEpisodes)
 			));
 		}
 
@@ -115,7 +115,7 @@ class MediaStreamingEpisodesTest {
 			assertThat(actualEpisodes.getStreamingEpisode(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(MediaStreamingEpisodes.streamingEpisodesTitle, expectedStreamingEpisodes)
+					containsTitleAndAllSetElements(MediaStreamingEpisodes.STREAMING_EPISODES_TITLE, expectedStreamingEpisodes)
 			));
 		}
 
@@ -141,7 +141,7 @@ class MediaStreamingEpisodesTest {
 			assertThat(actualEpisodes.getStreamingEpisode(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(MediaStreamingEpisodes.streamingEpisodesTitle, expectedStreamingEpisodes)
+					containsTitleAndAllSetElements(MediaStreamingEpisodes.STREAMING_EPISODES_TITLE, expectedStreamingEpisodes)
 			));
 		}
 	}

@@ -8,7 +8,7 @@ import java.util.Objects;
 
 @Getter
 public class RecommendationEdge {
-	public static final String recommendationEdgeTitle = "recommendationEdgeTitle";
+	public static final String RECOMMENDATION_EDGE_TITLE = "recommendationEdgeTitle";
 
 	private final String recommendationEdgeString;
 
@@ -16,13 +16,13 @@ public class RecommendationEdge {
 		Objects.requireNonNull(recommendation, "Recommendation cannot be null");
 
 		this.recommendationEdgeString = QueryParameterUtils.buildFieldElement(
-				recommendationEdgeTitle,
+				RECOMMENDATION_EDGE_TITLE,
 				QueryParameterUtils.combineIntoField(CommonParameterFieldNames.NODE, recommendation.getRecommendationStringWithoutFieldName())
 		);
 	}
 
 	public String getRecommendationEdgeWithoutFieldName() {
-		return this.recommendationEdgeString.substring(recommendationEdgeTitle.length() + 1);
+		return this.recommendationEdgeString.substring(RECOMMENDATION_EDGE_TITLE.length() + 1);
 	}
 
 	public static RecommendationEdge fromRecommendation(Recommendation recommendation) {

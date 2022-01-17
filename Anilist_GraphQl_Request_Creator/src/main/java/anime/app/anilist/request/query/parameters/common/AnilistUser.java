@@ -9,7 +9,7 @@ import java.util.Set;
 
 @Getter
 public class AnilistUser {
-	public static final String userTitle = "user";
+	public static final String USER_TITLE = "user";
 
 	private final String anilistUserString;
 
@@ -18,7 +18,7 @@ public class AnilistUser {
 	}
 
 	public String getAnilistUserWithoutFieldName() {
-		return this.anilistUserString.substring(userTitle.length() + 1);
+		return this.anilistUserString.substring(USER_TITLE.length() + 1);
 	}
 
 	public static AnilistUserBuilder getUserBuilder() {
@@ -54,7 +54,7 @@ public class AnilistUser {
 			}
 
 			return new AnilistUser(QueryParameterUtils.buildFieldElement(
-					userTitle,
+					USER_TITLE,
 					user
 			));
 		}

@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
-import static anime.app.anilist.request.query.parameters.connections.studio.StudioConnection.studioConnectionTitle;
+import static anime.app.anilist.request.query.parameters.connections.studio.StudioConnection.STUDIO_CONNECTION_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleAndParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -87,7 +87,7 @@ class StudioConnectionTest {
 			assertThat(actualConnection.getStudioConnectionString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(studioConnectionTitle, expectedConnection)
+					containsTitleAndAllSetElements(STUDIO_CONNECTION_TITLE, expectedConnection)
 			));
 		}
 
@@ -108,7 +108,7 @@ class StudioConnectionTest {
 			assertThat(actualConnection.getStudioConnectionString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(studioConnectionTitle, expectedConnection)
+					containsTitleAndAllSetElements(STUDIO_CONNECTION_TITLE, expectedConnection)
 			));
 		}
 

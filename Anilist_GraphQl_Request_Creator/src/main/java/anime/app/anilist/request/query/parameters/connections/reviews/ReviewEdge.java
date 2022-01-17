@@ -8,7 +8,7 @@ import java.util.Objects;
 
 @Getter
 public class ReviewEdge {
-	public static final String reviewEdgeTitle = "reviewEdge";
+	public static final String REVIEW_EDGE_TITLE = "reviewEdge";
 
 	private final String reviewEdgeString;
 
@@ -16,7 +16,7 @@ public class ReviewEdge {
 		Objects.requireNonNull(review, "Review cannot be null");
 
 		this.reviewEdgeString = QueryParameterUtils.buildFieldElement(
-				reviewEdgeTitle,
+				REVIEW_EDGE_TITLE,
 				QueryParameterUtils.combineIntoField(CommonParameterFieldNames.NODE, review.getReviewWithoutFieldName())
 		);
 	}
@@ -26,11 +26,11 @@ public class ReviewEdge {
 	}
 
 	public String getReviewEdgeWithoutFieldName() {
-		return this.reviewEdgeString.substring(reviewEdgeTitle.length() + 1);
+		return this.reviewEdgeString.substring(REVIEW_EDGE_TITLE.length() + 1);
 	}
 
 	@Override
 	public String toString() {
-		return reviewEdgeTitle;
+		return REVIEW_EDGE_TITLE;
 	}
 }

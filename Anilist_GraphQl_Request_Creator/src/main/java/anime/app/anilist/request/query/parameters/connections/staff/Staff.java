@@ -14,7 +14,7 @@ import java.util.Set;
 
 @Getter
 public class Staff {
-	public static final String staffTitle = "staff";
+	public static final String STAFF_TITLE = "staff";
 
 	private final String staffString;
 
@@ -23,7 +23,7 @@ public class Staff {
 	}
 
 	public String getStaffWithoutFieldName() {
-		return this.staffString.substring(staffTitle.length() + 1);
+		return this.staffString.substring(STAFF_TITLE.length() + 1);
 	}
 
 	public static StaffBuilder getStaffBuilder() {
@@ -168,7 +168,7 @@ public class Staff {
 			}
 
 			return new Staff(QueryParameterUtils.buildFieldElement(
-					staffTitle,
+					STAFF_TITLE,
 					staff
 			));
 		}

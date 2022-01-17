@@ -11,7 +11,7 @@ import java.util.Set;
 
 @Getter
 public class MediaTrendConnection {
-	public final static String mediaTrendsConnectionTitle = "mediaTrendsConnection";
+	public final static String MEDIA_TRENDS_CONNECTION_TITLE = "mediaTrendsConnection";
 
 	private final String mediaConnectionString;
 
@@ -20,7 +20,7 @@ public class MediaTrendConnection {
 	}
 
 	public String getMediaConnectionWithoutFieldName() {
-		return this.mediaConnectionString.substring(mediaTrendsConnectionTitle.length() + 1);
+		return this.mediaConnectionString.substring(MEDIA_TRENDS_CONNECTION_TITLE.length() + 1);
 	}
 
 	public static MediaConnectionBuilder getMediaConnectionBuilder() {
@@ -51,7 +51,7 @@ public class MediaTrendConnection {
 			}
 
 			return new MediaTrendConnection(QueryParameterUtils.buildFieldElement(
-					mediaTrendsConnectionTitle,
+					MEDIA_TRENDS_CONNECTION_TITLE,
 					mediaTrendsConnection
 			));
 		}

@@ -12,7 +12,7 @@ import java.util.Set;
 
 @Getter
 public class Studio {
-	public static final String studioTitle = "studio";
+	public static final String STUDIO_TITLE = "studio";
 
 	private final String studioString;
 
@@ -21,7 +21,7 @@ public class Studio {
 	}
 
 	public String getStudioWithoutFieldName() {
-		return this.studioString.substring(studioTitle.length() + 1);
+		return this.studioString.substring(STUDIO_TITLE.length() + 1);
 	}
 
 	public static StudioBuilder getStudioBuilder() {
@@ -81,7 +81,7 @@ public class Studio {
 			}
 
 			return new Studio(QueryParameterUtils.buildFieldElement(
-					studioTitle,
+					STUDIO_TITLE,
 					studio
 			));
 		}

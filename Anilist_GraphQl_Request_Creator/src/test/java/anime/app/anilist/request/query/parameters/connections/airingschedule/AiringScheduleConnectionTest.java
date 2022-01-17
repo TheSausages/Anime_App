@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
-import static anime.app.anilist.request.query.parameters.connections.airingschedule.AiringScheduleConnection.airingScheduleConnectionTitle;
+import static anime.app.anilist.request.query.parameters.connections.airingschedule.AiringScheduleConnection.AIRING_SCHEDULE_CONNECTION_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleAndParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -87,7 +87,7 @@ class AiringScheduleConnectionTest {
 			assertThat(actualConnection.getAiringScheduleConnectionString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(airingScheduleConnectionTitle, expectedAiringScheduleEdge)
+					containsTitleAndAllSetElements(AIRING_SCHEDULE_CONNECTION_TITLE, expectedAiringScheduleEdge)
 			));
 		}
 
@@ -108,7 +108,7 @@ class AiringScheduleConnectionTest {
 			assertThat(actualConnection.getAiringScheduleConnectionString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(airingScheduleConnectionTitle, expectedAiringScheduleEdge)
+					containsTitleAndAllSetElements(AIRING_SCHEDULE_CONNECTION_TITLE, expectedAiringScheduleEdge)
 			));
 		}
 
@@ -129,7 +129,7 @@ class AiringScheduleConnectionTest {
 			assertThat(actualConnection.getAiringScheduleConnectionString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(airingScheduleConnectionTitle, expectedAiringScheduleEdge)
+					containsTitleAndAllSetElements(AIRING_SCHEDULE_CONNECTION_TITLE, expectedAiringScheduleEdge)
 			));
 		}
 
@@ -156,7 +156,7 @@ class AiringScheduleConnectionTest {
 			assertThat(actualConnection.getAiringScheduleConnectionString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(airingScheduleConnectionTitle, expectedAiringScheduleEdge)
+					containsTitleAndAllSetElements(AIRING_SCHEDULE_CONNECTION_TITLE, expectedAiringScheduleEdge)
 			));
 		}
 	}

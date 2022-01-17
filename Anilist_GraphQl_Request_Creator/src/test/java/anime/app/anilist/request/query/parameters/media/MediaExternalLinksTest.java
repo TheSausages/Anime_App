@@ -59,7 +59,7 @@ class MediaExternalLinksTest {
 			assertThat(actualLinks.getExternalLink(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(MediaExternalLinks.externalLinksTitle, expectedLinks)
+					containsTitleAndAllSetElements(MediaExternalLinks.EXTERNAL_LINKS_TITLE, expectedLinks)
 			));
 		}
 
@@ -75,7 +75,7 @@ class MediaExternalLinksTest {
 			assertThat(actualLinks.getExternalLink(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(MediaExternalLinks.externalLinksTitle, expectedLinks)
+					containsTitleAndAllSetElements(MediaExternalLinks.EXTERNAL_LINKS_TITLE, expectedLinks)
 			));
 		}
 
@@ -91,7 +91,7 @@ class MediaExternalLinksTest {
 			assertThat(actualLinks.getExternalLink(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(MediaExternalLinks.externalLinksTitle, expectedLinks)
+					containsTitleAndAllSetElements(MediaExternalLinks.EXTERNAL_LINKS_TITLE, expectedLinks)
 			));
 		}
 
@@ -112,7 +112,7 @@ class MediaExternalLinksTest {
 			assertThat(actualLinks.getExternalLink(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(MediaExternalLinks.externalLinksTitle, expectedLinks)
+					containsTitleAndAllSetElements(MediaExternalLinks.EXTERNAL_LINKS_TITLE, expectedLinks)
 			));
 		}
 	}

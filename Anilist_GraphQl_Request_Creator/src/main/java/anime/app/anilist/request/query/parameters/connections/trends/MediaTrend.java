@@ -11,7 +11,7 @@ import java.util.Set;
 
 @Getter
 public class MediaTrend {
-	public final static String mediaTrendTitle = "mediaTrend";
+	public final static String MEDIA_TREND_TITLE = "mediaTrend";
 
 	private final String mediaTrendString;
 
@@ -20,7 +20,7 @@ public class MediaTrend {
 	}
 
 	public String getMediaTrendWithoutFieldName() {
-		return this.mediaTrendString.substring(mediaTrendTitle.length() + 1);
+		return this.mediaTrendString.substring(MEDIA_TREND_TITLE.length() + 1);
 	}
 
 	public static MediaTrendBuilder getMediaTrendBuilder() {
@@ -86,7 +86,7 @@ public class MediaTrend {
 			}
 
 			return new MediaTrend(QueryParameterUtils.buildFieldElement(
-					mediaTrendTitle,
+					MEDIA_TREND_TITLE,
 					mediaTrend
 			));
 		}

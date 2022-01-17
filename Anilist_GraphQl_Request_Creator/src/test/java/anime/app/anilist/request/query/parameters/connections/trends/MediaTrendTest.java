@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
-import static anime.app.anilist.request.query.parameters.connections.trends.MediaTrend.mediaTrendTitle;
+import static anime.app.anilist.request.query.parameters.connections.trends.MediaTrend.MEDIA_TREND_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleAndParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -79,7 +79,7 @@ class MediaTrendTest {
 			assertThat(actualTrend.getMediaTrendString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(mediaTrendTitle, expectedTrend)
+					containsTitleAndAllSetElements(MEDIA_TREND_TITLE, expectedTrend)
 			));
 		}
 
@@ -95,7 +95,7 @@ class MediaTrendTest {
 			assertThat(actualTrend.getMediaTrendString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(mediaTrendTitle, expectedTrend)
+					containsTitleAndAllSetElements(MEDIA_TREND_TITLE, expectedTrend)
 			));
 		}
 
@@ -111,7 +111,7 @@ class MediaTrendTest {
 			assertThat(actualTrend.getMediaTrendString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(mediaTrendTitle, expectedTrend)
+					containsTitleAndAllSetElements(MEDIA_TREND_TITLE, expectedTrend)
 			));
 		}
 
@@ -127,7 +127,7 @@ class MediaTrendTest {
 			assertThat(actualTrend.getMediaTrendString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(mediaTrendTitle, expectedTrend)
+					containsTitleAndAllSetElements(MEDIA_TREND_TITLE, expectedTrend)
 			));
 		}
 
@@ -143,7 +143,7 @@ class MediaTrendTest {
 			assertThat(actualTrend.getMediaTrendString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(mediaTrendTitle, expectedTrend)
+					containsTitleAndAllSetElements(MEDIA_TREND_TITLE, expectedTrend)
 			));
 		}
 
@@ -159,7 +159,7 @@ class MediaTrendTest {
 			assertThat(actualTrend.getMediaTrendString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(mediaTrendTitle, expectedTrend)
+					containsTitleAndAllSetElements(MEDIA_TREND_TITLE, expectedTrend)
 			));
 		}
 
@@ -175,7 +175,7 @@ class MediaTrendTest {
 			assertThat(actualTrend.getMediaTrendString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(mediaTrendTitle, expectedTrend)
+					containsTitleAndAllSetElements(MEDIA_TREND_TITLE, expectedTrend)
 			));
 		}
 
@@ -191,7 +191,7 @@ class MediaTrendTest {
 			assertThat(actualTrend.getMediaTrendString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(mediaTrendTitle, expectedTrend)
+					containsTitleAndAllSetElements(MEDIA_TREND_TITLE, expectedTrend)
 			));
 		}
 
@@ -208,7 +208,7 @@ class MediaTrendTest {
 			assertThat(actualTrend.getMediaTrendString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(mediaTrendTitle, expectedTrend)
+					containsTitleAndAllSetElements(MEDIA_TREND_TITLE, expectedTrend)
 			));
 		}
 
@@ -245,7 +245,7 @@ class MediaTrendTest {
 			assertThat(actualTrend.getMediaTrendString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(mediaTrendTitle, expectedTrend)
+					containsTitleAndAllSetElements(MEDIA_TREND_TITLE, expectedTrend)
 			));
 		}
 	}

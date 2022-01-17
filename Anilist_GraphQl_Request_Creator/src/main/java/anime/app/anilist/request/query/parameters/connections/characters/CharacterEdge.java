@@ -16,7 +16,7 @@ import java.util.Set;
 
 @Getter
 public class CharacterEdge {
-	public final static String characterEdgeTitle = "characterEdge";
+	public final static String CHARACTER_EDGE_TITLE = "characterEdge";
 
 	private final String characterEdgeString;
 
@@ -29,7 +29,7 @@ public class CharacterEdge {
 	}
 
 	public String getCharacterEdgeWithoutFieldName() {
-		return this.characterEdgeString.substring(characterEdgeTitle.length() + 1);
+		return this.characterEdgeString.substring(CHARACTER_EDGE_TITLE.length() + 1);
 	}
 
 	@Override
@@ -146,7 +146,7 @@ public class CharacterEdge {
 			}
 
 			return new CharacterEdge(QueryParameterUtils.buildFieldElement(
-					characterEdgeTitle,
+					CHARACTER_EDGE_TITLE,
 					characterEdge
 			));
 		}

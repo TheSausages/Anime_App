@@ -12,7 +12,7 @@ import java.util.Set;
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class MediaStreamingEpisodes {
-	public static final String streamingEpisodesTitle = "streamingEpisodes";
+	public static final String STREAMING_EPISODES_TITLE = "streamingEpisodes";
 
 	private final String streamingEpisode;
 
@@ -54,7 +54,7 @@ public class MediaStreamingEpisodes {
 			}
 
 			return new MediaStreamingEpisodes(QueryParameterUtils.buildFieldElement(
-					streamingEpisodesTitle,
+					STREAMING_EPISODES_TITLE,
 					mediaStreamingEpisode
 			));
 		}

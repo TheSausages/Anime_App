@@ -9,7 +9,7 @@ import java.util.Set;
 
 @Getter
 public class StaffRoleType {
-	public final static String staffRoleTypeTitle = "staffRoleType";
+	public final static String STAFF_ROLE_TYPE_TITLE = "staffRoleType";
 
 	private final String staffRoleTypeString;
 
@@ -18,7 +18,7 @@ public class StaffRoleType {
 	}
 
 	public String getStaffRoleTypeStringWithoutFieldName() {
-		return this.staffRoleTypeString.substring(staffRoleTypeTitle.length() + 1);
+		return this.staffRoleTypeString.substring(STAFF_ROLE_TYPE_TITLE.length() + 1);
 	}
 
 	@Override
@@ -54,7 +54,7 @@ public class StaffRoleType {
 			}
 
 			return new StaffRoleType(QueryParameterUtils.buildFieldElement(
-					staffRoleTypeTitle,
+					STAFF_ROLE_TYPE_TITLE,
 					staffRoleType
 			));
 		}

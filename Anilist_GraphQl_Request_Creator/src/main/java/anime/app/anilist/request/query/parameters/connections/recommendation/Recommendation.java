@@ -12,7 +12,7 @@ import java.util.Set;
 
 @Getter
 public class Recommendation {
-	public static final String recommendationTitle = "recommendation";
+	public static final String RECOMMENDATION_TITLE = "recommendation";
 
 	private final String recommendationString;
 
@@ -21,7 +21,7 @@ public class Recommendation {
 	}
 
 	public String getRecommendationStringWithoutFieldName() {
-		return this.recommendationString.substring(recommendationTitle.length() + 1);
+		return this.recommendationString.substring(RECOMMENDATION_TITLE.length() + 1);
 	}
 
 	public static RecommendationBuilder getRecommendationBuilder() {
@@ -67,7 +67,7 @@ public class Recommendation {
 			}
 
 			return new Recommendation(QueryParameterUtils.buildFieldElement(
-					recommendationTitle,
+					RECOMMENDATION_TITLE,
 					recommendation
 			));
 		}

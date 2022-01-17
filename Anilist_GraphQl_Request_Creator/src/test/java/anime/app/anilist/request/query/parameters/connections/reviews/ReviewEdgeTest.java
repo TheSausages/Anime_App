@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
-import static anime.app.anilist.request.query.parameters.connections.reviews.ReviewEdge.reviewEdgeTitle;
+import static anime.app.anilist.request.query.parameters.connections.reviews.ReviewEdge.REVIEW_EDGE_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleAndParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -80,7 +80,7 @@ class ReviewEdgeTest {
 		assertThat(actualEdge.getReviewEdgeString(), allOf(
 				notNullValue(),
 				instanceOf(String.class),
-				containsTitleAndAllSetElements(reviewEdgeTitle, expectedEdge)
+				containsTitleAndAllSetElements(REVIEW_EDGE_TITLE, expectedEdge)
 		));
 	}
 }

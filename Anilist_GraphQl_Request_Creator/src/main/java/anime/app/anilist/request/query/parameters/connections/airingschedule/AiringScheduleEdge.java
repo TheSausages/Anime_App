@@ -8,13 +8,13 @@ import java.util.Objects;
 
 @Getter
 public class AiringScheduleEdge {
-	public final static String airingScheduleEdgeTitle = "airingScheduleEdge";
+	public final static String AIRING_SCHEDULE_EDGE_TITLE = "airingScheduleEdge";
 
 	private final String airingScheduleEdgeString;
 
 	public AiringScheduleEdge() {
 		this.airingScheduleEdgeString = QueryParameterUtils.buildFieldElement(
-				airingScheduleEdgeTitle, "id"
+				AIRING_SCHEDULE_EDGE_TITLE, "id"
 		);
 	}
 
@@ -22,7 +22,7 @@ public class AiringScheduleEdge {
 		Objects.requireNonNull(airingSchedule, "The schedule cannot be null");
 
 		this.airingScheduleEdgeString = QueryParameterUtils.buildFieldElement(
-				airingScheduleEdgeTitle,
+				AIRING_SCHEDULE_EDGE_TITLE,
 				"id",
 				QueryParameterUtils.combineIntoField(CommonParameterFieldNames.NODE, airingSchedule.getAiringScheduleStringWithoutFieldName()).getField()
 		);
@@ -37,6 +37,6 @@ public class AiringScheduleEdge {
 	}
 
 	public String getAiringScheduleEdgeWithoutFieldName() {
-		return this.airingScheduleEdgeString.substring(airingScheduleEdgeTitle.length() + 1);
+		return this.airingScheduleEdgeString.substring(AIRING_SCHEDULE_EDGE_TITLE.length() + 1);
 	}
 }

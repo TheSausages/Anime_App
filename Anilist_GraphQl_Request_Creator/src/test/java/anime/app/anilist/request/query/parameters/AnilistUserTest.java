@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
-import static anime.app.anilist.request.query.parameters.common.AnilistUser.userTitle;
+import static anime.app.anilist.request.query.parameters.common.AnilistUser.USER_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleAndParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -83,7 +83,7 @@ class AnilistUserTest {
 			assertThat(actualUser.getAnilistUserString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(userTitle, expectedUser)
+					containsTitleAndAllSetElements(USER_TITLE, expectedUser)
 			));
 		}
 
@@ -101,7 +101,7 @@ class AnilistUserTest {
 			assertThat(actualUser.getAnilistUserString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(userTitle, expectedUser)
+					containsTitleAndAllSetElements(USER_TITLE, expectedUser)
 			));
 		}
 
@@ -119,7 +119,7 @@ class AnilistUserTest {
 			assertThat(actualUser.getAnilistUserString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(userTitle, expectedUser)
+					containsTitleAndAllSetElements(USER_TITLE, expectedUser)
 			));
 		}
 
@@ -143,7 +143,7 @@ class AnilistUserTest {
 			assertThat(actualUser.getAnilistUserString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(userTitle, expectedUser)
+					containsTitleAndAllSetElements(USER_TITLE, expectedUser)
 			));
 		}
 	}

@@ -11,7 +11,7 @@ import java.util.Set;
 
 @Getter
 public class RecommendationConnection {
-	public final static String recommendationConnectionTitle = "recommendationConnection";
+	public final static String RECOMMENDATION_CONNECTION_TITLE = "recommendationConnection";
 
 	private final String recommendationConnectionString;
 
@@ -20,7 +20,7 @@ public class RecommendationConnection {
 	}
 
 	public String getRecommendationConnectionWithoutFieldName() {
-		return this.recommendationConnectionString.substring(recommendationConnectionTitle.length() + 1);
+		return this.recommendationConnectionString.substring(RECOMMENDATION_CONNECTION_TITLE.length() + 1);
 	}
 
 	public static RecommendationConnectionBuilder getRecommendationConnectionBuilder() {
@@ -56,7 +56,7 @@ public class RecommendationConnection {
 			}
 
 			return new RecommendationConnection(QueryParameterUtils.buildFieldElement(
-					recommendationConnectionTitle,
+					RECOMMENDATION_CONNECTION_TITLE,
 					recommendationConnection
 			));
 		}

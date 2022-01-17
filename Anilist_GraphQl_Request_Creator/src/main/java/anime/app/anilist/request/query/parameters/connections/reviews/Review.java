@@ -12,7 +12,7 @@ import java.util.Set;
 
 @Getter
 public class Review {
-	public static final String reviewTitle = "review";
+	public static final String REVIEW_TITLE = "review";
 
 	private final String reviewString;
 
@@ -21,7 +21,7 @@ public class Review {
 	}
 
 	public String getReviewWithoutFieldName() {
-		return this.reviewString.substring(reviewTitle.length() + 1);
+		return this.reviewString.substring(REVIEW_TITLE.length() + 1);
 	}
 
 	public static ReviewBuilder getReviewBuilder() {
@@ -126,7 +126,7 @@ public class Review {
 			}
 
 			return new Review(QueryParameterUtils.buildFieldElement(
-					reviewTitle,
+					REVIEW_TITLE,
 					review
 			));
 		}

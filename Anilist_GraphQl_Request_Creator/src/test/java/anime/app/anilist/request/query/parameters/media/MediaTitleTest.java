@@ -59,7 +59,7 @@ class MediaTitleTest {
 			assertThat(actualTitle.getTitleLanguages(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(MediaTitle.titleTitle, expectedTitles)
+					containsTitleAndAllSetElements(MediaTitle.TITLE_TITLE, expectedTitles)
 			));
 		}
 
@@ -75,7 +75,7 @@ class MediaTitleTest {
 			assertThat(actualTitle.getTitleLanguages(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(MediaTitle.titleTitle, expectedTitles)
+					containsTitleAndAllSetElements(MediaTitle.TITLE_TITLE, expectedTitles)
 			));
 		}
 
@@ -91,7 +91,7 @@ class MediaTitleTest {
 			assertThat(actualTitle.getTitleLanguages(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(MediaTitle.titleTitle, expectedTitles)
+					containsTitleAndAllSetElements(MediaTitle.TITLE_TITLE, expectedTitles)
 			));
 		}
 
@@ -107,7 +107,7 @@ class MediaTitleTest {
 			assertThat(actualTitle.getTitleLanguages(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(MediaTitle.titleTitle, expectedTitles)
+					containsTitleAndAllSetElements(MediaTitle.TITLE_TITLE, expectedTitles)
 			));
 		}
 
@@ -123,7 +123,7 @@ class MediaTitleTest {
 			assertThat(actualTitle.getTitleLanguages(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(MediaTitle.titleTitle, expectedTitles)
+					containsTitleAndAllSetElements(MediaTitle.TITLE_TITLE, expectedTitles)
 			));
 		}
 
@@ -139,7 +139,7 @@ class MediaTitleTest {
 			assertThat(actualTitle.getTitleLanguages(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(MediaTitle.titleTitle, expectedTitles)
+					containsTitleAndAllSetElements(MediaTitle.TITLE_TITLE, expectedTitles)
 			));
 		}
 
@@ -158,7 +158,7 @@ class MediaTitleTest {
 			assertThat(actualTitle.getTitleLanguages(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(MediaTitle.titleTitle, expectedTitles)
+					containsTitleAndAllSetElements(MediaTitle.TITLE_TITLE, expectedTitles)
 			));
 		}
 
@@ -177,7 +177,7 @@ class MediaTitleTest {
 			assertThat(actualTitle.getTitleLanguages(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(MediaTitle.titleTitle, expectedTitles)
+					containsTitleAndAllSetElements(MediaTitle.TITLE_TITLE, expectedTitles)
 			));
 		}
 
@@ -200,7 +200,7 @@ class MediaTitleTest {
 			assertThat(actualTitle.getTitleLanguages(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(MediaTitle.titleTitle, expectedTitles)
+					containsTitleAndAllSetElements(MediaTitle.TITLE_TITLE, expectedTitles)
 			));
 		}
 	}

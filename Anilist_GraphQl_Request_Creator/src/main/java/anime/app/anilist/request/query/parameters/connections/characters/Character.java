@@ -14,7 +14,7 @@ import java.util.Set;
 
 @Getter
 public class Character {
-	public final static String characterTitle = "character";
+	public final static String CHARACTER_TITLE = "character";
 
 	private final String characterString;
 
@@ -23,7 +23,7 @@ public class Character {
 	}
 
 	public String getCharacterStringWithoutFieldName() {
-		return this.characterString.substring(characterTitle.length() + 1);
+		return this.characterString.substring(CHARACTER_TITLE.length() + 1);
 	}
 
 	public static CharacterBuilder getCharacterBuilder() {
@@ -125,7 +125,7 @@ public class Character {
 			}
 
 			return new Character(QueryParameterUtils.buildFieldElement(
-					characterTitle,
+					CHARACTER_TITLE,
 					character
 			));
 		}

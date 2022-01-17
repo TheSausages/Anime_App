@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.Set;
 
-import static anime.app.anilist.request.query.parameters.connections.characters.CharacterEdge.characterEdgeTitle;
+import static anime.app.anilist.request.query.parameters.connections.characters.CharacterEdge.CHARACTER_EDGE_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleAndParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -90,7 +90,7 @@ class CharacterEdgeTest {
 			assertThat(actualEdge.getCharacterEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(CHARACTER_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -109,7 +109,7 @@ class CharacterEdgeTest {
 			assertThat(actualEdge.getCharacterEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(CHARACTER_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -128,7 +128,7 @@ class CharacterEdgeTest {
 			assertThat(actualEdge.getCharacterEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(CHARACTER_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -147,7 +147,7 @@ class CharacterEdgeTest {
 			assertThat(actualEdge.getCharacterEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(CHARACTER_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -166,7 +166,7 @@ class CharacterEdgeTest {
 			assertThat(actualEdge.getCharacterEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(CHARACTER_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -186,7 +186,7 @@ class CharacterEdgeTest {
 			assertThat(actualEdge.getCharacterEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(CHARACTER_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -207,7 +207,7 @@ class CharacterEdgeTest {
 			assertThat(actualEdge.getCharacterEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(CHARACTER_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -229,7 +229,7 @@ class CharacterEdgeTest {
 			assertThat(actualEdge.getCharacterEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(CHARACTER_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -251,7 +251,7 @@ class CharacterEdgeTest {
 			assertThat(actualEdge.getCharacterEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(CHARACTER_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -273,7 +273,7 @@ class CharacterEdgeTest {
 			assertThat(actualEdge.getCharacterEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(CHARACTER_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -296,7 +296,7 @@ class CharacterEdgeTest {
 			assertThat(actualEdge.getCharacterEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(CHARACTER_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -317,7 +317,7 @@ class CharacterEdgeTest {
 			assertThat(actualEdge.getCharacterEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(CHARACTER_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -339,7 +339,7 @@ class CharacterEdgeTest {
 			assertThat(actualEdge.getCharacterEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(CHARACTER_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -361,7 +361,7 @@ class CharacterEdgeTest {
 			assertThat(actualEdge.getCharacterEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(CHARACTER_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -383,7 +383,7 @@ class CharacterEdgeTest {
 			assertThat(actualEdge.getCharacterEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(CHARACTER_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -406,7 +406,7 @@ class CharacterEdgeTest {
 			assertThat(actualEdge.getCharacterEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(CHARACTER_EDGE_TITLE, expectedEdge)
 			));
 		}
 
@@ -446,7 +446,7 @@ class CharacterEdgeTest {
 			assertThat(actualEdge.getCharacterEdgeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(characterEdgeTitle, expectedEdge)
+					containsTitleAndAllSetElements(CHARACTER_EDGE_TITLE, expectedEdge)
 			));
 		}
 	}

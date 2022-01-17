@@ -59,7 +59,7 @@ class MediaRankTest {
 			assertThat(actualRank.getRank(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(MediaRank.rankingTitle, expectedRank)
+					containsTitleAndAllSetElements(MediaRank.RANKING_TITLE, expectedRank)
 			));
 		}
 
@@ -75,7 +75,7 @@ class MediaRankTest {
 			assertThat(actualRank.getRank(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(MediaRank.rankingTitle, expectedRank)
+					containsTitleAndAllSetElements(MediaRank.RANKING_TITLE, expectedRank)
 			));
 		}
 
@@ -91,7 +91,7 @@ class MediaRankTest {
 			assertThat(actualRank.getRank(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(MediaRank.rankingTitle, expectedRank)
+					containsTitleAndAllSetElements(MediaRank.RANKING_TITLE, expectedRank)
 			));
 		}
 
@@ -107,7 +107,7 @@ class MediaRankTest {
 			assertThat(actualRank.getRank(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(MediaRank.rankingTitle, expectedRank)
+					containsTitleAndAllSetElements(MediaRank.RANKING_TITLE, expectedRank)
 			));
 		}
 
@@ -123,7 +123,7 @@ class MediaRankTest {
 			assertThat(actualRank.getRank(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(MediaRank.rankingTitle, expectedRank)
+					containsTitleAndAllSetElements(MediaRank.RANKING_TITLE, expectedRank)
 			));
 		}
 
@@ -139,7 +139,7 @@ class MediaRankTest {
 			assertThat(actualRank.getRank(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(MediaRank.rankingTitle, expectedRank)
+					containsTitleAndAllSetElements(MediaRank.RANKING_TITLE, expectedRank)
 			));
 		}
 
@@ -155,7 +155,7 @@ class MediaRankTest {
 			assertThat(actualRank.getRank(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(MediaRank.rankingTitle, expectedRank)
+					containsTitleAndAllSetElements(MediaRank.RANKING_TITLE, expectedRank)
 			));
 		}
 
@@ -171,7 +171,7 @@ class MediaRankTest {
 			assertThat(actualRank.getRank(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(MediaRank.rankingTitle, expectedRank)
+					containsTitleAndAllSetElements(MediaRank.RANKING_TITLE, expectedRank)
 			));
 		}
 
@@ -205,7 +205,7 @@ class MediaRankTest {
 			assertThat(actualRank.getRank(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(MediaRank.rankingTitle, expectedRank)
+					containsTitleAndAllSetElements(MediaRank.RANKING_TITLE, expectedRank)
 			));
 		}
 	}

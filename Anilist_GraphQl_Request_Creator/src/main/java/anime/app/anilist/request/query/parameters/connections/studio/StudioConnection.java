@@ -11,7 +11,7 @@ import java.util.Set;
 
 @Getter
 public class StudioConnection {
-	public static final String studioConnectionTitle = "studioConnection";
+	public static final String STUDIO_CONNECTION_TITLE = "studioConnection";
 
 	private final String studioConnectionString;
 
@@ -20,7 +20,7 @@ public class StudioConnection {
 	}
 
 	public String getStudioConnectionWithoutFieldName() {
-		return this.studioConnectionString.substring(studioConnectionTitle.length() + 1);
+		return this.studioConnectionString.substring(STUDIO_CONNECTION_TITLE.length() + 1);
 	}
 
 	public static StudioConnectionBuilder getStudioConnectionBuilder() {
@@ -56,7 +56,7 @@ public class StudioConnection {
 			}
 
 			return new StudioConnection(QueryParameterUtils.buildFieldElement(
-					studioConnectionTitle,
+					STUDIO_CONNECTION_TITLE,
 					studioConnection
 			));
 		}

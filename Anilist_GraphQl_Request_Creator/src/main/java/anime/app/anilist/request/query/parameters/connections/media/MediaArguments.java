@@ -13,10 +13,10 @@ import java.util.Set;
 
 @Getter
 public class MediaArguments {
-	private final String MediaArgumentsString;
+	private final String mediaArgumentsString;
 
 	private MediaArguments(String MediaArgumentsString) {
-		this.MediaArgumentsString = MediaArgumentsString;
+		this.mediaArgumentsString = MediaArgumentsString;
 	}
 
 	public static MediaArgumentsBuilder getMediaArgumentsBuilder() {
@@ -25,7 +25,7 @@ public class MediaArguments {
 
 	@Override
 	public String toString() {
-		return MediaArgumentsString;
+		return mediaArgumentsString;
 	}
 
 	public static final class MediaArgumentsBuilder {

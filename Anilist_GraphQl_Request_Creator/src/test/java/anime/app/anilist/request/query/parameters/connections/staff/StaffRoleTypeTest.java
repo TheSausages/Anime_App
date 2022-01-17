@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
-import static anime.app.anilist.request.query.parameters.connections.staff.StaffRoleType.staffRoleTypeTitle;
+import static anime.app.anilist.request.query.parameters.connections.staff.StaffRoleType.STAFF_ROLE_TYPE_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleAndParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -84,7 +84,7 @@ class StaffRoleTypeTest {
 			assertThat(actualType.getStaffRoleTypeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(staffRoleTypeTitle, expectedType)
+					containsTitleAndAllSetElements(STAFF_ROLE_TYPE_TITLE, expectedType)
 			));
 		}
 
@@ -104,7 +104,7 @@ class StaffRoleTypeTest {
 			assertThat(actualType.getStaffRoleTypeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(staffRoleTypeTitle, expectedType)
+					containsTitleAndAllSetElements(STAFF_ROLE_TYPE_TITLE, expectedType)
 			));
 		}
 
@@ -125,7 +125,7 @@ class StaffRoleTypeTest {
 			assertThat(actualType.getStaffRoleTypeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(staffRoleTypeTitle, expectedType)
+					containsTitleAndAllSetElements(STAFF_ROLE_TYPE_TITLE, expectedType)
 			));
 		}
 
@@ -150,7 +150,7 @@ class StaffRoleTypeTest {
 			assertThat(actualType.getStaffRoleTypeString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(staffRoleTypeTitle, expectedType)
+					containsTitleAndAllSetElements(STAFF_ROLE_TYPE_TITLE, expectedType)
 			));
 		}
 	}

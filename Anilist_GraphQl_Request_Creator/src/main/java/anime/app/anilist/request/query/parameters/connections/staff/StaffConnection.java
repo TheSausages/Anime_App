@@ -11,7 +11,7 @@ import java.util.Set;
 
 @Getter
 public class StaffConnection {
-	public static final String staffConnectionTitle = "staffConnection";
+	public static final String STAFF_CONNECTION_TITLE = "staffConnection";
 
 	private final String staffConnectionString;
 
@@ -20,7 +20,7 @@ public class StaffConnection {
 	}
 
 	public String getStaffConnectionWithoutFieldName() {
-		return this.staffConnectionString.substring(staffConnectionTitle.length() + 1);
+		return this.staffConnectionString.substring(STAFF_CONNECTION_TITLE.length() + 1);
 	}
 
 	public static StaffConnectionBuilder getMediaConnectionBuilder() {
@@ -51,7 +51,7 @@ public class StaffConnection {
 			}
 
 			return new StaffConnection(QueryParameterUtils.buildFieldElement(
-					staffConnectionTitle,
+					STAFF_CONNECTION_TITLE,
 					staffConnection
 			));
 		}

@@ -41,7 +41,7 @@ class AiringScheduleEdgeTest {
 		assertThat(actualAiringScheduleEdge.getAiringScheduleEdgeString(), allOf(
 				notNullValue(),
 				instanceOf(String.class),
-				containsTitleAndAllSetElements(AiringScheduleEdge.airingScheduleEdgeTitle, expectedAiringScheduleEdge)
+				containsTitleAndAllSetElements(AiringScheduleEdge.AIRING_SCHEDULE_EDGE_TITLE, expectedAiringScheduleEdge)
 		));
 	}
 
@@ -63,7 +63,7 @@ class AiringScheduleEdgeTest {
 		assertThat(actualAiringScheduleEdge.getAiringScheduleEdgeString(), allOf(
 				notNullValue(),
 				instanceOf(String.class),
-				containsTitleAndAllSetElements(AiringScheduleEdge.airingScheduleEdgeTitle, expectedAiringScheduleEdge)
+				containsTitleAndAllSetElements(AiringScheduleEdge.AIRING_SCHEDULE_EDGE_TITLE, expectedAiringScheduleEdge)
 		));
 	}
 
@@ -95,7 +95,7 @@ class AiringScheduleEdgeTest {
 		assertThat(actualAiringScheduleEdge.getAiringScheduleEdgeString(), allOf(
 				notNullValue(),
 				instanceOf(String.class),
-				containsTitleAndAllSetElements(AiringScheduleEdge.airingScheduleEdgeTitle, expectedAiringScheduleEdge)
+				containsTitleAndAllSetElements(AiringScheduleEdge.AIRING_SCHEDULE_EDGE_TITLE, expectedAiringScheduleEdge)
 		));
 	}
 
@@ -117,7 +117,7 @@ class AiringScheduleEdgeTest {
 		assertThat(actualAiringScheduleEdge.getAiringScheduleEdgeString(), allOf(
 				notNullValue(),
 				instanceOf(String.class),
-				containsTitleAndAllSetElements(AiringScheduleEdge.airingScheduleEdgeTitle, expectedAiringScheduleEdge)
+				containsTitleAndAllSetElements(AiringScheduleEdge.AIRING_SCHEDULE_EDGE_TITLE, expectedAiringScheduleEdge)
 		));
 	}
 
