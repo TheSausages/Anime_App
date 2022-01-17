@@ -84,7 +84,7 @@ task generateAnime(type: org.openapitools.generator.gradle.plugin.tasks.Generate
     ]
 }
 
-//Format the spotless prettier and run it using 'runSpotlessApply'
+//Format the spotless prettier
 spotless {
     encoding 'UTF-8'
     enforceCheck true
