@@ -2,7 +2,6 @@ package anime.app.controllers;
 
 import anime.app.openapi.api.AnimeApi;
 import anime.app.openapi.model.DetailedAnimeDTO;
-import anime.app.openapi.model.LocalAnimeInformationDTO;
 import anime.app.openapi.model.LocalDetailedAnimeReviewDTO;
 import anime.app.openapi.model.LocalSimpleAnimeReviewDTO;
 import org.springframework.http.ResponseEntity;
@@ -18,22 +17,21 @@ public class TestController implements AnimeApi {
 	}
 
 	@GetMapping("/test")
-	public String test() {
-		LocalAnimeInformationDTO dto = LocalAnimeInformationDTO.builder().animeId(1L).build();
+	public LocalDetailedAnimeReviewDTO test() {
 		LocalDetailedAnimeReviewDTO reviewDTO = LocalDetailedAnimeReviewDTO.builder()
 				.title("title")
 				.animeId(1L)
 				.build();
-		return reviewDTO.toString();
+		return reviewDTO;
 	}
 
 	@PostMapping("/test")
-	public String test2(@RequestBody @Valid LocalDetailedAnimeReviewDTO reviewDTO) {
-		return reviewDTO.toString();
+	public LocalDetailedAnimeReviewDTO test2(@RequestBody @Valid LocalDetailedAnimeReviewDTO reviewDTO) {
+		return reviewDTO;
 	}
 
 	@PutMapping("/test")
-	public String test3(@RequestBody @Valid LocalSimpleAnimeReviewDTO reviewDTO) {
-		return reviewDTO.toString();
+	public LocalSimpleAnimeReviewDTO test3(@RequestBody @Valid LocalSimpleAnimeReviewDTO reviewDTO) {
+		return reviewDTO;
 	}
 }

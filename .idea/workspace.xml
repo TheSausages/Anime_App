@@ -4,21 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a85f17e-c8b0-481b-a543-783256245f43" name="Changes" comment="Addition: added api generation for backend with small example">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/AnilistUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/reviews/Review.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/reviews/ReviewArguments.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/reviews/ReviewConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/reviews/ReviewEdge.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/reviews/ReviewSort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/AnilistUserTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/connections/reviews/ReviewArgumentsTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/connections/reviews/ReviewConnectionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/connections/reviews/ReviewEdgeTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/connections/reviews/ReviewTest.java" afterDir="false" />
+    <list default="true" id="9a85f17e-c8b0-481b-a543-783256245f43" name="Changes" comment="Addition: added AnilistUser and review">
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/configuration/beans/ObjectMapperConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App_Openapi_Generation/templates/typeInfoAnnotation.mustache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/controllers/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/controllers/TestController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Anime_App_Openapi_Generation/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App_Openapi_Generation/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App_Openapi_Generation/templates/model.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App_Openapi_Generation/templates/model.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App_Openapi_Generation/templates/pojo.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App_Openapi_Generation/templates/pojo.mustache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,6 +160,7 @@
       <recent name="anime.app.anilist.request.query.parameters.connections.studio" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="anime.app.configuration.beans" />
       <recent name="anime.app.anilist.request.query.parameters" />
       <recent name="anime.app.anilist.request.query.parameters.connections.staff" />
       <recent name="anime.app.anilist.request.query.parameters.connections.studio" />
@@ -180,7 +174,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.AnilistUserTest">
+  <component name="RunManager" selected="Gradle.Anime_App_Project [Anime_App:bootRun]">
     <configuration name="Run All" type="CompoundRunConfigurationType">
       <toRun name="Anime_App_Project [Anime_App:bootRunMainClassName]" type="GradleRunConfiguration" />
       <toRun name="Anime_App_Project:Anime_App_Openapi_Generation [build]" type="GradleRunConfiguration" />
@@ -405,7 +399,7 @@
       <workItem from="1642337161238" duration="1780000" />
       <workItem from="1642338992244" duration="972000" />
       <workItem from="1642340017894" duration="10930000" />
-      <workItem from="1642421749932" duration="3766000" />
+      <workItem from="1642421749932" duration="8404000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit, added project with 3 modules">
       <created>1641596733768</created>
@@ -519,7 +513,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642348951095</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Addition: added AnilistUser and review">
+      <created>1642425730179</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1642425730179</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -553,7 +554,8 @@
     <MESSAGE value="Addition: added last studio classes" />
     <MESSAGE value="Addition: added media trend, Refactor: small name adjustments" />
     <MESSAGE value="Addition: added api generation for backend with small example" />
-    <option name="LAST_COMMIT_MESSAGE" value="Addition: added api generation for backend with small example" />
+    <MESSAGE value="Addition: added AnilistUser and review" />
+    <option name="LAST_COMMIT_MESSAGE" value="Addition: added AnilistUser and review" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
