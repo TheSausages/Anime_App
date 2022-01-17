@@ -3,6 +3,7 @@ package anime.app.anilist.request.query.parameters.connections.staff;
 import anime.app.anilist.request.query.common.OverwritingLinkedHashSet;
 import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.parameters.QueryParameterUtils;
+import anime.app.anilist.request.query.parameters.common.CommonParameterFieldNames;
 import lombok.Getter;
 
 import java.util.Set;
@@ -34,7 +35,7 @@ public class StaffEdge {
 		private final Set<ParameterString> staffEdge = new OverwritingLinkedHashSet<>();
 
 		public StaffEdgeBuilder node(Staff staff) {
-			staffEdge.add(ParameterString.fromString("node " + staff.getStaffWithoutFieldName()));
+			staffEdge.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.NODE, staff.getStaffWithoutFieldName()));
 			return this;
 		}
 
@@ -58,7 +59,7 @@ public class StaffEdge {
 				throw new IllegalStateException("Staff Edge should posses at least 1 parameter!");
 			}
 
-			return new StaffEdge(QueryParameterUtils.buildQueryFieldElementString(
+			return new StaffEdge(QueryParameterUtils.buildFieldElement(
 					staffEdgeTitle,
 					staffEdge
 			));

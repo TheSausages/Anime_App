@@ -4,21 +4,61 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a85f17e-c8b0-481b-a543-783256245f43" name="Changes" comment="Refactor: fix for double serialization of discriminator in openapi generator">
-      <change afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/recommendation/Recommendation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/recommendation/RecommendationArguments.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/recommendation/RecommendationConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/recommendation/RecommendationEdge.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/recommendation/RecommendationSort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/connections/recommendation/RecommendationArgumentsTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/connections/recommendation/RecommendationConnectionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/connections/recommendation/RecommendationEdgeTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/connections/recommendation/RecommendationTest.java" afterDir="false" />
+    <list default="true" id="9a85f17e-c8b0-481b-a543-783256245f43" name="Changes" comment="Refactor: small correction in review tests, Addition: added Recommendations">
+      <change afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/common/CommonFieldParameter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/common/CommonParameterFieldNames.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/connections/reviews/ReviewArgumentsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/connections/reviews/ReviewArgumentsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/connections/reviews/ReviewConnectionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/connections/reviews/ReviewConnectionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/connections/reviews/ReviewEdgeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/connections/reviews/ReviewEdgeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/AnilistUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/common/AnilistUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/BasicQueryParameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/common/BasicQueryParameters.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/QueryParameterUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/QueryParameterUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/PageInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/PageInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/airingschedule/AiringSchedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/airingschedule/AiringSchedule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/airingschedule/AiringScheduleArguments.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/airingschedule/AiringScheduleArguments.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/airingschedule/AiringScheduleConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/airingschedule/AiringScheduleConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/airingschedule/AiringScheduleEdge.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/airingschedule/AiringScheduleEdge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/characters/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/characters/Character.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/characters/CharacterArguments.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/characters/CharacterArguments.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/characters/CharacterConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/characters/CharacterConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/characters/CharacterEdge.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/characters/CharacterEdge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/media/MediaArguments.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/media/MediaArguments.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/media/MediaConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/media/MediaConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/media/MediaEdge.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/media/MediaEdge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/recommendation/Recommendation.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/recommendation/Recommendation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/recommendation/RecommendationArguments.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/recommendation/RecommendationArguments.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/recommendation/RecommendationConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/recommendation/RecommendationConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/recommendation/RecommendationEdge.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/recommendation/RecommendationEdge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/reviews/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/reviews/Review.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/reviews/ReviewArguments.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/reviews/ReviewArguments.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/reviews/ReviewConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/reviews/ReviewConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/reviews/ReviewEdge.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/reviews/ReviewEdge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/staff/Staff.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/staff/Staff.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/staff/StaffArguments.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/staff/StaffArguments.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/staff/StaffCharacterMediaArguments.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/staff/StaffCharacterMediaArguments.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/staff/StaffCharactersArguments.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/staff/StaffCharactersArguments.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/staff/StaffConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/staff/StaffConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/staff/StaffEdge.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/staff/StaffEdge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/staff/StaffRoleType.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/staff/StaffRoleType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/studio/Studio.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/studio/Studio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/studio/StudioConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/studio/StudioConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/studio/StudioEdge.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/studio/StudioEdge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/trends/MediaTrend.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/trends/MediaTrend.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/trends/MediaTrendConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/trends/MediaTrendConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/trends/MediaTrendEdge.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/trends/MediaTrendEdge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/trends/MediaTrendsArguments.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/connections/trends/MediaTrendsArguments.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/fuzzyDate/FuzzyDateField.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/fuzzyDate/FuzzyDateField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/fuzzyDate/FuzzyDateFieldParameter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/fuzzyDate/FuzzyDateFieldParameter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/media/MediaExternalLinks.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/media/MediaExternalLinks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/media/MediaRank.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/media/MediaRank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/media/MediaStreamingEpisodes.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/media/MediaStreamingEpisodes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/media/MediaTitle.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/main/java/anime/app/anilist/request/query/parameters/media/MediaTitle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/AnilistUserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/AnilistUserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/BasicQueryParametersTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/BasicQueryParametersTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/QueryParameterUtilsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/QueryParameterUtilsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/connections/characters/CharacterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/connections/characters/CharacterTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/connections/recommendation/RecommendationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/connections/recommendation/RecommendationTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/connections/reviews/ReviewTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/connections/reviews/ReviewTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/connections/staff/StaffTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/connections/staff/StaffTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/fuzzyDate/FuzzyDateFieldTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/query/parameters/fuzzyDate/FuzzyDateFieldTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,10 +108,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Enum" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -229,7 +269,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="RecommendationArgumentsTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="CharacterBuilderTest.characterBuilder_MediaWithArguments_ReturnCorrectString" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -242,7 +282,7 @@
           <list>
             <option value=":Anilist_GraphQl_Request_Creator:test" />
             <option value="--tests" />
-            <option value="&quot;anime.app.anilist.request.query.parameters.connections.recommendation.RecommendationArgumentsTest&quot;" />
+            <option value="&quot;anime.app.anilist.request.query.parameters.connections.characters.CharacterTest$CharacterBuilderTest.characterBuilder_MediaWithArguments_ReturnCorrectString&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -252,7 +292,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="RecommendationConnectionTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="CharacterEdgeBuilderTest.characterEdgeBuilder_VoiceActorWithLanguage_ReturnCorrectString" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -265,7 +305,7 @@
           <list>
             <option value=":Anilist_GraphQl_Request_Creator:test" />
             <option value="--tests" />
-            <option value="&quot;anime.app.anilist.request.query.parameters.connections.recommendation.RecommendationConnectionTest&quot;" />
+            <option value="&quot;anime.app.anilist.request.query.parameters.connections.characters.CharacterEdgeTest$CharacterEdgeBuilderTest.characterEdgeBuilder_VoiceActorWithLanguage_ReturnCorrectString&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -275,7 +315,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="RecommendationEdgeTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="CharacterEdgeBuilderTest.characterEdgeBuilder_VoiceActorWithSortMany_ReturnCorrectString" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -288,7 +328,7 @@
           <list>
             <option value=":Anilist_GraphQl_Request_Creator:test" />
             <option value="--tests" />
-            <option value="&quot;anime.app.anilist.request.query.parameters.connections.recommendation.RecommendationEdgeTest&quot;" />
+            <option value="&quot;anime.app.anilist.request.query.parameters.connections.characters.CharacterEdgeTest$CharacterEdgeBuilderTest.characterEdgeBuilder_VoiceActorWithSortMany_ReturnCorrectString&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -298,7 +338,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="RecommendationTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="MediaEdgeBuilderTest.mediaEdgeBuilder_VoiceActorsRolesWithSortMany_ReturnCorrectString" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -311,7 +351,7 @@
           <list>
             <option value=":Anilist_GraphQl_Request_Creator:test" />
             <option value="--tests" />
-            <option value="&quot;anime.app.anilist.request.query.parameters.connections.recommendation.RecommendationTest&quot;" />
+            <option value="&quot;anime.app.anilist.request.query.parameters.connections.media.MediaEdgeTest$MediaEdgeBuilderTest.mediaEdgeBuilder_VoiceActorsRolesWithSortMany_ReturnCorrectString&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -354,19 +394,19 @@
       <item itemvalue="Gradle.Anime_App_Project [Anime_App:bootRun]" />
       <item itemvalue="Gradle.Anime_App_Project [Anime_App_Openapi_Generation:build]" />
       <item itemvalue="Spring Boot.AnimeAppApplication" />
-      <item itemvalue="Gradle.RecommendationEdgeTest" />
-      <item itemvalue="Gradle.RecommendationConnectionTest" />
-      <item itemvalue="Gradle.RecommendationArgumentsTest" />
-      <item itemvalue="Gradle.RecommendationTest" />
       <item itemvalue="Gradle.Tests in 'Anime_App_Project.Anilist_GraphQl_Request_Creator'" />
+      <item itemvalue="Gradle.CharacterBuilderTest.characterBuilder_MediaWithArguments_ReturnCorrectString" />
+      <item itemvalue="Gradle.CharacterEdgeBuilderTest.characterEdgeBuilder_VoiceActorWithLanguage_ReturnCorrectString" />
+      <item itemvalue="Gradle.CharacterEdgeBuilderTest.characterEdgeBuilder_VoiceActorWithSortMany_ReturnCorrectString" />
+      <item itemvalue="Gradle.MediaEdgeBuilderTest.mediaEdgeBuilder_VoiceActorsRolesWithSortMany_ReturnCorrectString" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.Tests in 'Anime_App_Project.Anilist_GraphQl_Request_Creator'" />
-        <item itemvalue="Gradle.RecommendationTest" />
-        <item itemvalue="Gradle.RecommendationArgumentsTest" />
-        <item itemvalue="Gradle.RecommendationConnectionTest" />
-        <item itemvalue="Gradle.RecommendationEdgeTest" />
+        <item itemvalue="Gradle.MediaEdgeBuilderTest.mediaEdgeBuilder_VoiceActorsRolesWithSortMany_ReturnCorrectString" />
+        <item itemvalue="Gradle.CharacterEdgeBuilderTest.characterEdgeBuilder_VoiceActorWithSortMany_ReturnCorrectString" />
+        <item itemvalue="Gradle.CharacterEdgeBuilderTest.characterEdgeBuilder_VoiceActorWithLanguage_ReturnCorrectString" />
+        <item itemvalue="Gradle.CharacterBuilderTest.characterBuilder_MediaWithArguments_ReturnCorrectString" />
       </list>
     </recent_temporary>
   </component>
@@ -405,7 +445,7 @@
       <workItem from="1642338992244" duration="972000" />
       <workItem from="1642340017894" duration="10930000" />
       <workItem from="1642421749932" duration="8625000" />
-      <workItem from="1642430477565" duration="2519000" />
+      <workItem from="1642430477565" duration="12052000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit, added project with 3 modules">
       <created>1641596733768</created>
@@ -533,7 +573,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642430443280</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Refactor: small correction in review tests, Addition: added Recommendations">
+      <created>1642449343885</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1642449343885</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -569,24 +616,9 @@
     <MESSAGE value="Addition: added api generation for backend with small example" />
     <MESSAGE value="Addition: added AnilistUser and review" />
     <MESSAGE value="Refactor: fix for double serialization of discriminator in openapi generator" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor: fix for double serialization of discriminator in openapi generator" />
+    <MESSAGE value="Refactor: small correction in review tests, Addition: added Recommendations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor: small correction in review tests, Addition: added Recommendations" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/utils/QueryTitleAndParametersMatcher.java</url>
-          <line>33</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Anilist_GraphQl_Request_Creator/src/test/java/anime/app/anilist/request/utils/QueryTitleAndParametersMatcher.java</url>
-          <line>31</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Anime_App_Project$Tests_in__Anime_App_Project_Anilist_GraphQl_Request_Creator_test_.ic" NAME="Tests in 'Anime_App_Project.Anilist_GraphQl_Request_Creator.test' Coverage Results" MODIFIED="1641853569188" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

@@ -3,6 +3,7 @@ package anime.app.anilist.request.query.parameters.connections.recommendation;
 import anime.app.anilist.request.query.common.OverwritingLinkedHashSet;
 import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.parameters.QueryParameterUtils;
+import anime.app.anilist.request.query.parameters.common.CommonParameterFieldNames;
 import lombok.Getter;
 
 import java.util.Arrays;
@@ -29,17 +30,17 @@ public class RecommendationArguments {
 		private final Set<ParameterString> recommendationArgumentsArguments = new OverwritingLinkedHashSet<>();
 
 		public RecommendationArgumentsBuilder sort(RecommendationSort... sorts) {
-			recommendationArgumentsArguments.add(ParameterString.fromString("sort: " + Arrays.toString(sorts)));
+			recommendationArgumentsArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.SORT, Arrays.toString(sorts)));
 			return this;
 		}
 
 		public RecommendationArgumentsBuilder page(int page) {
-			recommendationArgumentsArguments.add(ParameterString.fromString("page: " + page));
+			recommendationArgumentsArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.PAGE, page));
 			return this;
 		}
 
 		public RecommendationArgumentsBuilder perPage(int perPage) {
-			recommendationArgumentsArguments.add(ParameterString.fromString("perPage: " + perPage));
+			recommendationArgumentsArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.PER_PAGE, perPage));
 			return this;
 		}
 
@@ -48,7 +49,7 @@ public class RecommendationArguments {
 				throw new IllegalStateException("Recommendation Arguments should posses at least 1 parameter!");
 			}
 
-			return new RecommendationArguments(QueryParameterUtils.buildQueryFieldElementArgumentsString(recommendationArgumentsArguments));
+			return new RecommendationArguments(QueryParameterUtils.buildArguments(recommendationArgumentsArguments));
 		}
 	}
 }

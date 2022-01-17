@@ -3,6 +3,7 @@ package anime.app.anilist.request.query.parameters.connections.studio;
 import anime.app.anilist.request.query.common.OverwritingLinkedHashSet;
 import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.parameters.QueryParameterUtils;
+import anime.app.anilist.request.query.parameters.common.CommonParameterFieldNames;
 import anime.app.anilist.request.query.parameters.connections.PageInfo;
 import lombok.Getter;
 
@@ -35,17 +36,17 @@ public class StudioConnection {
 		private final Set<ParameterString> studioConnection = new OverwritingLinkedHashSet<>();
 
 		public StudioConnectionBuilder edges(StudioEdge studioEdge) {
-			studioConnection.add(ParameterString.fromString("edges " + studioEdge.getStudioEdgeWithoutFieldName()));
+			studioConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.EDGES, studioEdge.getStudioEdgeWithoutFieldName()));
 			return this;
 		}
 
 		public StudioConnectionBuilder nodes(Studio studio) {
-			studioConnection.add(ParameterString.fromString("nodes " + studio.getStudioWithoutFieldName()));
+			studioConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.NODES, studio.getStudioWithoutFieldName()));
 			return this;
 		}
 
 		public StudioConnectionBuilder pageInfo(PageInfo pageInfo) {
-			studioConnection.add(ParameterString.fromString(pageInfo.getPageInfoString()));
+			studioConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.PAGE_INFO, pageInfo.getPageInfoStringWithoutFieldName()));
 			return this;
 		}
 
@@ -54,7 +55,7 @@ public class StudioConnection {
 				throw new IllegalStateException("Studio Connection should posses at least 1 parameter!");
 			}
 
-			return new StudioConnection(QueryParameterUtils.buildQueryFieldElementString(
+			return new StudioConnection(QueryParameterUtils.buildFieldElement(
 					studioConnectionTitle,
 					studioConnection
 			));

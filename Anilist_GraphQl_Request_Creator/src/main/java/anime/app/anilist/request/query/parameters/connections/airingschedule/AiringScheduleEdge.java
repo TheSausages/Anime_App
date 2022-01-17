@@ -1,6 +1,7 @@
 package anime.app.anilist.request.query.parameters.connections.airingschedule;
 
 import anime.app.anilist.request.query.parameters.QueryParameterUtils;
+import anime.app.anilist.request.query.parameters.common.CommonParameterFieldNames;
 import lombok.Getter;
 
 import java.util.Objects;
@@ -12,7 +13,7 @@ public class AiringScheduleEdge {
 	private final String airingScheduleEdgeString;
 
 	public AiringScheduleEdge() {
-		this.airingScheduleEdgeString = QueryParameterUtils.buildQueryFieldElementString(
+		this.airingScheduleEdgeString = QueryParameterUtils.buildFieldElement(
 				airingScheduleEdgeTitle, "id"
 		);
 	}
@@ -20,8 +21,10 @@ public class AiringScheduleEdge {
 	public AiringScheduleEdge(AiringSchedule airingSchedule) {
 		Objects.requireNonNull(airingSchedule, "The schedule cannot be null");
 
-		this.airingScheduleEdgeString = QueryParameterUtils.buildQueryFieldElementString(
-				airingScheduleEdgeTitle, "id", "node " + airingSchedule.getAiringScheduleStringWithoutFieldName()
+		this.airingScheduleEdgeString = QueryParameterUtils.buildFieldElement(
+				airingScheduleEdgeTitle,
+				"id",
+				QueryParameterUtils.combineIntoField(CommonParameterFieldNames.NODE, airingSchedule.getAiringScheduleStringWithoutFieldName()).getField()
 		);
 	}
 

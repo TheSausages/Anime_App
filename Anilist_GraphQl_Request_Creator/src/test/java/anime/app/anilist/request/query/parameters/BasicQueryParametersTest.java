@@ -1,5 +1,6 @@
 package anime.app.anilist.request.query.parameters;
 
+import anime.app.anilist.request.query.parameters.common.BasicQueryParameters;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;

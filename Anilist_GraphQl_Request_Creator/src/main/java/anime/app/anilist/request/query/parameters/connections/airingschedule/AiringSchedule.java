@@ -4,6 +4,7 @@ import anime.app.anilist.request.query.common.OverwritingLinkedHashSet;
 import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.media.Media;
 import anime.app.anilist.request.query.parameters.QueryParameterUtils;
+import anime.app.anilist.request.query.parameters.common.CommonParameterFieldNames;
 import lombok.Getter;
 
 import java.util.Set;
@@ -60,7 +61,7 @@ public class AiringSchedule {
 		}
 
 		public AiringScheduleBuilder media(Media media) {
-			airingSchedule.add(ParameterString.fromString("media " + media.getRequestedMediaFields()));
+			airingSchedule.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.MEDIA, media.getRequestedMediaFields()));
 			return this;
 		}
 
@@ -69,7 +70,7 @@ public class AiringSchedule {
 				throw new IllegalStateException("Airing Schedule should posses at least 1 parameter!");
 			}
 
-			return new AiringSchedule(QueryParameterUtils.buildQueryFieldElementString(
+			return new AiringSchedule(QueryParameterUtils.buildFieldElement(
 					AiringSchedule.airingScheduleTitle,
 					airingSchedule
 			));

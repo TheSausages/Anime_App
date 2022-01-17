@@ -1,6 +1,7 @@
 package anime.app.anilist.request.query.parameters.connections.staff;
 
 import anime.app.anilist.request.query.common.ParameterString;
+import anime.app.anilist.request.query.parameters.QueryParameterUtils;
 import anime.app.anilist.request.query.parameters.connections.PageInfo;
 import anime.app.anilist.request.query.parameters.connections.characters.CharacterConnection;
 import anime.app.anilist.request.query.parameters.connections.media.MediaArguments;
@@ -238,11 +239,11 @@ class StaffTest {
 		@Test
 		void staffBuilder_DateOfBirth_ReturnCorrectString() {
 			//given
-			FuzzyDateFieldParameter parameter = FuzzyDateFieldParameter.dateOfBirth;
+			FuzzyDateFieldParameter parameter = FuzzyDateFieldParameter.DATE_OF_BIRTH;
 			FuzzyDateField dateField = FuzzyDateField.getFuzzyDateFieldBuilder()
 					.allAndBuild();
 			Set<ParameterString> expectedStaff = TestUtils.getParameterStringSetField(
-					parameter.name() + dateField.getFuzzyDateStringWithoutFieldName()
+					QueryParameterUtils.combineIntoField(parameter, dateField.getFuzzyDateStringWithoutFieldName()).getField()
 			);
 
 			//when
@@ -261,11 +262,11 @@ class StaffTest {
 		@Test
 		void staffBuilder_DateOfDeath_ReturnCorrectString() {
 			//given
-			FuzzyDateFieldParameter parameter = FuzzyDateFieldParameter.dateOfDeath;
+			FuzzyDateFieldParameter parameter = FuzzyDateFieldParameter.DATE_OF_DEATH;
 			FuzzyDateField dateField = FuzzyDateField.getFuzzyDateFieldBuilder()
 					.allAndBuild();
 			Set<ParameterString> expectedStaff = TestUtils.getParameterStringSetField(
-					parameter.name() + dateField.getFuzzyDateStringWithoutFieldName()
+					QueryParameterUtils.combineIntoField(parameter, dateField.getFuzzyDateStringWithoutFieldName()).getField()
 			);
 
 			//when
@@ -533,8 +534,8 @@ class StaffTest {
 		@Test
 		void staffBuilder_AllParameters_ReturnCorrectString() {
 			//given
-			FuzzyDateFieldParameter birthParameter = FuzzyDateFieldParameter.dateOfBirth;
-			FuzzyDateFieldParameter deathParameter = FuzzyDateFieldParameter.dateOfDeath;
+			FuzzyDateFieldParameter birthParameter = FuzzyDateFieldParameter.DATE_OF_BIRTH;
+			FuzzyDateFieldParameter deathParameter = FuzzyDateFieldParameter.DATE_OF_DEATH;
 			FuzzyDateField birthDateField = FuzzyDateField.getFuzzyDateFieldBuilder()
 					.allAndBuild();
 			FuzzyDateField deathDateField = FuzzyDateField.getFuzzyDateFieldBuilder()
@@ -560,8 +561,8 @@ class StaffTest {
 					"description",
 					"primaryOccupations",
 					"gender",
-					birthParameter.name() + birthDateField.getFuzzyDateStringWithoutFieldName(),
-					deathParameter.name() + deathDateField.getFuzzyDateStringWithoutFieldName(),
+					QueryParameterUtils.combineIntoField(birthParameter, birthDateField.getFuzzyDateStringWithoutFieldName()).getField(),
+					QueryParameterUtils.combineIntoField(deathParameter, deathDateField.getFuzzyDateStringWithoutFieldName()).getField(),
 					"age",
 					"yearsActive",
 					"homeTown",

@@ -3,6 +3,7 @@ package anime.app.anilist.request.query.parameters.connections.studio;
 import anime.app.anilist.request.query.common.OverwritingLinkedHashSet;
 import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.parameters.QueryParameterUtils;
+import anime.app.anilist.request.query.parameters.common.CommonParameterFieldNames;
 import lombok.Getter;
 
 import java.util.Set;
@@ -34,7 +35,7 @@ public class StudioEdge {
 		private final Set<ParameterString> studioEdge = new OverwritingLinkedHashSet<>();
 
 		public StudioEdgeBuilder node(Studio studio) {
-			studioEdge.add(ParameterString.fromString("node " + studio.getStudioWithoutFieldName()));
+			studioEdge.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.NODE, studio.getStudioWithoutFieldName()));
 			return this;
 		}
 
@@ -58,7 +59,7 @@ public class StudioEdge {
 				throw new IllegalStateException("Studio Edge should posses at least 1 parameter!");
 			}
 
-			return new StudioEdge(QueryParameterUtils.buildQueryFieldElementString(
+			return new StudioEdge(QueryParameterUtils.buildFieldElement(
 					studioEdgeTitle,
 					studioEdge
 			));

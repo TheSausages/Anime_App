@@ -1,6 +1,7 @@
 package anime.app.anilist.request.query.parameters.connections.recommendation;
 
 import anime.app.anilist.request.query.parameters.QueryParameterUtils;
+import anime.app.anilist.request.query.parameters.common.CommonParameterFieldNames;
 import lombok.Getter;
 
 import java.util.Objects;
@@ -14,9 +15,9 @@ public class RecommendationEdge {
 	public RecommendationEdge(Recommendation recommendation) {
 		Objects.requireNonNull(recommendation, "Recommendation cannot be null");
 
-		this.recommendationEdgeString = QueryParameterUtils.buildQueryFieldElementString(
+		this.recommendationEdgeString = QueryParameterUtils.buildFieldElement(
 				recommendationEdgeTitle,
-				"node " + recommendation.getRecommendationStringWithoutFieldName()
+				QueryParameterUtils.combineIntoField(CommonParameterFieldNames.NODE, recommendation.getRecommendationStringWithoutFieldName())
 		);
 	}
 

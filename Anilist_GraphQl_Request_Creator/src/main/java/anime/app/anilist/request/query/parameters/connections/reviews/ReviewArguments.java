@@ -3,6 +3,7 @@ package anime.app.anilist.request.query.parameters.connections.reviews;
 import anime.app.anilist.request.query.common.OverwritingLinkedHashSet;
 import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.parameters.QueryParameterUtils;
+import anime.app.anilist.request.query.parameters.common.CommonParameterFieldNames;
 import lombok.Getter;
 
 import java.util.Arrays;
@@ -29,22 +30,22 @@ public class ReviewArguments {
 		private final Set<ParameterString> reviewArguments = new OverwritingLinkedHashSet<>();
 
 		public ReviewArgumentsBuilder sort(ReviewSort... sorts) {
-			reviewArguments.add(ParameterString.fromString("sort: " + Arrays.toString(sorts)));
+			reviewArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.SORT, Arrays.toString(sorts)));
 			return this;
 		}
 
 		public ReviewArgumentsBuilder limit(int limit) {
-			reviewArguments.add(ParameterString.fromString("limit: " + limit));
+			reviewArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket("limit", limit));
 			return this;
 		}
 
 		public ReviewArgumentsBuilder page(int page) {
-			reviewArguments.add(ParameterString.fromString("page: " + page));
+			reviewArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.PAGE, page));
 			return this;
 		}
 
 		public ReviewArgumentsBuilder perPage(int perPage) {
-			reviewArguments.add(ParameterString.fromString("perPage: " + perPage));
+			reviewArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.PER_PAGE, perPage));
 			return this;
 		}
 
@@ -53,7 +54,7 @@ public class ReviewArguments {
 				throw new IllegalStateException("Review Arguments should posses at least 1 parameter!");
 			}
 
-			return new ReviewArguments(QueryParameterUtils.buildQueryFieldElementArgumentsString(reviewArguments));
+			return new ReviewArguments(QueryParameterUtils.buildArguments(reviewArguments));
 		}
 	}
 }

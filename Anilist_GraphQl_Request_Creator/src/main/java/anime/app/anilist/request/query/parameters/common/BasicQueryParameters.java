@@ -1,4 +1,4 @@
-package anime.app.anilist.request.query.parameters;
+package anime.app.anilist.request.query.parameters.common;
 
 public enum BasicQueryParameters {
 	id("Int"),

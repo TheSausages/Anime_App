@@ -74,7 +74,7 @@ public class MediaRank {
 				throw new IllegalStateException("Ranking should posses at least 1 parameter!");
 			}
 
-			return new MediaRank(QueryParameterUtils.buildQueryFieldElementString(
+			return new MediaRank(QueryParameterUtils.buildFieldElement(
 					rankingTitle,
 					mediaRank
 			));

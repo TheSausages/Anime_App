@@ -71,7 +71,7 @@ public class FuzzyDateField {
 				throw new IllegalStateException("Fuzzy Date should posses at least 1 parameter!");
 			}
 
-			return new FuzzyDateField(QueryParameterUtils.buildQueryFieldElementString(
+			return new FuzzyDateField(QueryParameterUtils.buildFieldElement(
 					Objects.nonNull(parameter) ? parameter.name() : "",
 					fuzzyDate
 			), parameter);

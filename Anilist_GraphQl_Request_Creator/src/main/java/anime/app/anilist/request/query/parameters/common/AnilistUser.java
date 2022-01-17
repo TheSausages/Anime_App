@@ -1,7 +1,8 @@
-package anime.app.anilist.request.query.parameters;
+package anime.app.anilist.request.query.parameters.common;
 
 import anime.app.anilist.request.query.common.OverwritingLinkedHashSet;
 import anime.app.anilist.request.query.common.ParameterString;
+import anime.app.anilist.request.query.parameters.QueryParameterUtils;
 import lombok.Getter;
 
 import java.util.Set;
@@ -43,7 +44,7 @@ public class AnilistUser {
 		}
 
 		public AnilistUserBuilder avatar() {
-			user.add(ParameterString.fromString("avatar {\nlarge\nmedium\n}"));
+			user.add(ParameterString.fromString(QueryParameterUtils.buildFieldElement("avatar", "large", "medium")));
 			return this;
 		}
 
@@ -52,7 +53,7 @@ public class AnilistUser {
 				throw new IllegalStateException("User should posses at least 1 parameter!");
 			}
 
-			return new AnilistUser(QueryParameterUtils.buildQueryFieldElementString(
+			return new AnilistUser(QueryParameterUtils.buildFieldElement(
 					userTitle,
 					user
 			));

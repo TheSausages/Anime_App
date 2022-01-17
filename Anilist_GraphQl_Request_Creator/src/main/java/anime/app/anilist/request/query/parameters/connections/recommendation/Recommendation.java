@@ -3,8 +3,9 @@ package anime.app.anilist.request.query.parameters.connections.recommendation;
 import anime.app.anilist.request.query.common.OverwritingLinkedHashSet;
 import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.media.Media;
-import anime.app.anilist.request.query.parameters.AnilistUser;
 import anime.app.anilist.request.query.parameters.QueryParameterUtils;
+import anime.app.anilist.request.query.parameters.common.AnilistUser;
+import anime.app.anilist.request.query.parameters.common.CommonParameterFieldNames;
 import lombok.Getter;
 
 import java.util.Set;
@@ -46,17 +47,17 @@ public class Recommendation {
 		}
 
 		public RecommendationBuilder media(Media media) {
-			recommendation.add(ParameterString.fromString("media " + media.getRequestedMediaFields()));
+			recommendation.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.MEDIA, media.getRequestedMediaFields()));
 			return this;
 		}
 
 		public RecommendationBuilder mediaRecommendation(Media media) {
-			recommendation.add(ParameterString.fromString("mediaRecommendation " + media.getRequestedMediaFields()));
+			recommendation.add(QueryParameterUtils.combineIntoField("mediaRecommendation", media.getRequestedMediaFields()));
 			return this;
 		}
 
 		public RecommendationBuilder user(AnilistUser user) {
-			recommendation.add(ParameterString.fromString("user " + user.getAnilistUserWithoutFieldName()));
+			recommendation.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.USER, user.getAnilistUserWithoutFieldName()));
 			return this;
 		}
 
@@ -65,7 +66,7 @@ public class Recommendation {
 				throw new IllegalStateException("Recommendation should posses at least 1 parameter!");
 			}
 
-			return new Recommendation(QueryParameterUtils.buildQueryFieldElementString(
+			return new Recommendation(QueryParameterUtils.buildFieldElement(
 					recommendationTitle,
 					recommendation
 			));

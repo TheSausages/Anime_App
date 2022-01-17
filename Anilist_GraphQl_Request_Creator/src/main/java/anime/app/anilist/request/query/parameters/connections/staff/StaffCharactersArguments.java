@@ -3,6 +3,7 @@ package anime.app.anilist.request.query.parameters.connections.staff;
 import anime.app.anilist.request.query.common.OverwritingLinkedHashSet;
 import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.parameters.QueryParameterUtils;
+import anime.app.anilist.request.query.parameters.common.CommonParameterFieldNames;
 import anime.app.anilist.request.query.parameters.connections.characters.CharacterSort;
 import lombok.Getter;
 
@@ -30,17 +31,17 @@ public class StaffCharactersArguments {
 		private final Set<ParameterString> staffCharactersArguments = new OverwritingLinkedHashSet<>();
 
 		public StaffCharactersArgumentsBuilder sort(CharacterSort... sorts) {
-			staffCharactersArguments.add(ParameterString.fromString("sort: " + Arrays.toString(sorts)));
+			staffCharactersArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.SORT, Arrays.toString(sorts)));
 			return this;
 		}
 
 		public StaffCharactersArgumentsBuilder page(int page) {
-			staffCharactersArguments.add(ParameterString.fromString("page: " + page));
+			staffCharactersArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.PAGE, page));
 			return this;
 		}
 
 		public StaffCharactersArgumentsBuilder perPage(int perPage) {
-			staffCharactersArguments.add(ParameterString.fromString("perPage: " + perPage));
+			staffCharactersArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.PER_PAGE, perPage));
 			return this;
 		}
 
@@ -49,7 +50,7 @@ public class StaffCharactersArguments {
 				throw new IllegalStateException("Staff Character Arguments should posses at least 1 parameter!");
 			}
 
-			return new StaffCharactersArguments(QueryParameterUtils.buildQueryFieldElementArgumentsString(
+			return new StaffCharactersArguments(QueryParameterUtils.buildArguments(
 					staffCharactersArguments
 			));
 		}

@@ -3,6 +3,7 @@ package anime.app.anilist.request.query.parameters.connections.airingschedule;
 import anime.app.anilist.request.query.common.OverwritingLinkedHashSet;
 import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.parameters.QueryParameterUtils;
+import anime.app.anilist.request.query.parameters.common.CommonParameterFieldNames;
 import anime.app.anilist.request.query.parameters.connections.PageInfo;
 import lombok.Getter;
 
@@ -35,17 +36,17 @@ public class AiringScheduleConnection {
 		private final Set<ParameterString> airingScheduleConnection = new OverwritingLinkedHashSet<>();
 
 		public AiringScheduleConnectionBuilder edges(AiringScheduleEdge edge) {
-			airingScheduleConnection.add(ParameterString.fromString("edges " + edge.getAiringScheduleEdgeWithoutFieldName()));
+			airingScheduleConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.EDGES, edge.getAiringScheduleEdgeWithoutFieldName()));
 			return this;
 		}
 
 		public AiringScheduleConnectionBuilder nodes(AiringSchedule schedule) {
-			airingScheduleConnection.add(ParameterString.fromString("nodes " + schedule.getAiringScheduleStringWithoutFieldName()));
+			airingScheduleConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.NODES, schedule.getAiringScheduleStringWithoutFieldName()));
 			return this;
 		}
 
 		public AiringScheduleConnectionBuilder pageInfo(PageInfo pageInfo) {
-			airingScheduleConnection.add(ParameterString.fromString(pageInfo.getPageInfoString()));
+			airingScheduleConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.PAGE_INFO, pageInfo.getPageInfoStringWithoutFieldName()));
 			return this;
 		}
 
@@ -54,7 +55,7 @@ public class AiringScheduleConnection {
 				throw new IllegalStateException("Airing Schedule Connection should posses at least 1 parameter!");
 			}
 
-			return new AiringScheduleConnection(QueryParameterUtils.buildQueryFieldElementString(
+			return new AiringScheduleConnection(QueryParameterUtils.buildFieldElement(
 					airingScheduleConnectionTitle,
 					airingScheduleConnection
 			));

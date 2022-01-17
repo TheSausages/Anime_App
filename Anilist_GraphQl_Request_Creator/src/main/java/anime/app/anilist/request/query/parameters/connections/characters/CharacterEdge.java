@@ -4,6 +4,7 @@ import anime.app.anilist.request.query.common.OverwritingLinkedHashSet;
 import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.media.Media;
 import anime.app.anilist.request.query.parameters.QueryParameterUtils;
+import anime.app.anilist.request.query.parameters.common.CommonParameterFieldNames;
 import anime.app.anilist.request.query.parameters.connections.staff.Staff;
 import anime.app.anilist.request.query.parameters.connections.staff.StaffLanguage;
 import anime.app.anilist.request.query.parameters.connections.staff.StaffRoleType;
@@ -40,7 +41,7 @@ public class CharacterEdge {
 		private final Set<ParameterString> characterEdge = new OverwritingLinkedHashSet<>();
 
 		public CharacterEdgeBuilder node(Character character) {
-			characterEdge.add(ParameterString.fromString("node " + character.getCharacterStringWithoutFieldName()));
+			characterEdge.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.NODE, character.getCharacterStringWithoutFieldName()));
 			return this;
 		}
 
@@ -60,47 +61,77 @@ public class CharacterEdge {
 		}
 
 		public CharacterEdgeBuilder voiceActors(Staff staff) {
-			characterEdge.add(ParameterString.fromString("voiceActors " + staff.getStaffWithoutFieldName()));
+			characterEdge.add(QueryParameterUtils.combineIntoField("voiceActors", staff.getStaffWithoutFieldName()));
 			return this;
 		}
 
 		public CharacterEdgeBuilder voiceActors(Staff staff, StaffLanguage language) {
-			characterEdge.add(ParameterString.fromString("voiceActors(language: " + language.name() + ") " + staff.getStaffWithoutFieldName()));
+			characterEdge.add(QueryParameterUtils.combineIntoField(
+					"voiceActors",
+							QueryParameterUtils.combineIntoArgumentWithBracket("language", language.name()),
+							staff.getStaffWithoutFieldName()
+			));
 			return this;
 		}
 
 		public CharacterEdgeBuilder voiceActors(Staff staff, StaffSort... staffSort) {
-			characterEdge.add(ParameterString.fromString("voiceActors(sort: " + Arrays.toString(staffSort) + ") " + staff.getStaffWithoutFieldName()));
+			characterEdge.add(QueryParameterUtils.combineIntoField(
+					"voiceActors",
+					QueryParameterUtils.combineIntoArgumentWithBracket(CommonParameterFieldNames.SORT, Arrays.toString(staffSort)),
+					staff.getStaffWithoutFieldName()
+			));
 			return this;
 		}
 
 		public CharacterEdgeBuilder voiceActors(Staff staff, StaffLanguage language, StaffSort... staffSort) {
-			characterEdge.add(ParameterString.fromString("voiceActors(language: " + language.name() + ", sort: " + Arrays.toString(staffSort) + ") " + staff.getStaffWithoutFieldName()));
+			characterEdge.add(QueryParameterUtils.combineIntoField(
+					"voiceActors",
+					QueryParameterUtils.buildArguments(
+							QueryParameterUtils.combineIntoArgumentWithoutBracket("language", language.name()),
+							QueryParameterUtils.combineIntoArgumentWithoutBracket("sort", Arrays.toString(staffSort))
+					),
+					staff.getStaffWithoutFieldName()
+			));
 			return this;
 		}
 
 		public CharacterEdgeBuilder voiceActorsRoles(StaffRoleType roleType) {
-			characterEdge.add(ParameterString.fromString("voiceActorsRoles " + roleType.getStaffRoleTypeStringWithoutFieldName()));
+			characterEdge.add(QueryParameterUtils.combineIntoField("voiceActorsRoles", roleType.getStaffRoleTypeStringWithoutFieldName()));
 			return this;
 		}
 
 		public CharacterEdgeBuilder voiceActorsRoles(StaffRoleType roleType, StaffLanguage language) {
-			characterEdge.add(ParameterString.fromString("voiceActorsRoles(language: " + language.name() + ") " + roleType.getStaffRoleTypeStringWithoutFieldName()));
+			characterEdge.add(QueryParameterUtils.combineIntoField(
+					"voiceActorsRoles",
+					QueryParameterUtils.combineIntoArgumentWithBracket("language", language.name()),
+					roleType.getStaffRoleTypeStringWithoutFieldName()
+			));
 			return this;
 		}
 
 		public CharacterEdgeBuilder voiceActorsRoles(StaffRoleType roleType, StaffSort... staffSort) {
-			characterEdge.add(ParameterString.fromString("voiceActorsRoles(sort: " + Arrays.toString(staffSort) + ") " + roleType.getStaffRoleTypeStringWithoutFieldName()));
+			characterEdge.add(QueryParameterUtils.combineIntoField(
+					"voiceActorsRoles",
+					QueryParameterUtils.combineIntoArgumentWithBracket(CommonParameterFieldNames.SORT, Arrays.toString(staffSort)),
+					roleType.getStaffRoleTypeStringWithoutFieldName()
+			));
 			return this;
 		}
 
 		public CharacterEdgeBuilder voiceActorsRoles(StaffRoleType roleType, StaffLanguage language, StaffSort... staffSort) {
-			characterEdge.add(ParameterString.fromString("voiceActorsRoles(language: " + language.name() + ", sort: " + Arrays.toString(staffSort) + ") " + roleType.getStaffRoleTypeStringWithoutFieldName()));
+			characterEdge.add(QueryParameterUtils.combineIntoField(
+					"voiceActorsRoles",
+					QueryParameterUtils.buildArguments(
+							QueryParameterUtils.combineIntoArgumentWithoutBracket("language", language.name()),
+							QueryParameterUtils.combineIntoArgumentWithoutBracket("sort", Arrays.toString(staffSort))
+					),
+					roleType.getStaffRoleTypeStringWithoutFieldName()
+			));
 			return this;
 		}
 
 		public CharacterEdgeBuilder media(Media media) {
-			characterEdge.add(ParameterString.fromString("media " + media.getRequestedMediaFields()));
+			characterEdge.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.MEDIA, media.getRequestedMediaFields()));
 			return this;
 		}
 
@@ -114,7 +145,7 @@ public class CharacterEdge {
 				throw new IllegalStateException("Character Edge should posses at least 1 parameter!");
 			}
 
-			return new CharacterEdge(QueryParameterUtils.buildQueryFieldElementString(
+			return new CharacterEdge(QueryParameterUtils.buildFieldElement(
 					characterEdgeTitle,
 					characterEdge
 			));

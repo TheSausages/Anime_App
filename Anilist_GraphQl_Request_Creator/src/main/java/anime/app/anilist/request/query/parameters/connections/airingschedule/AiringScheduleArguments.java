@@ -3,6 +3,7 @@ package anime.app.anilist.request.query.parameters.connections.airingschedule;
 import anime.app.anilist.request.query.common.OverwritingLinkedHashSet;
 import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.parameters.QueryParameterUtils;
+import anime.app.anilist.request.query.parameters.common.CommonParameterFieldNames;
 import lombok.Getter;
 
 import java.util.Set;
@@ -28,22 +29,22 @@ public class AiringScheduleArguments {
 		private final Set<ParameterString> airingScheduleArguments = new OverwritingLinkedHashSet<>();
 
 		public AiringScheduleArgumentsBuilder notYetAired() {
-			airingScheduleArguments.add(ParameterString.fromString("notYetAired: true"));
+			airingScheduleArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket("notYetAired", true));
 			return this;
 		}
 
 		public AiringScheduleArgumentsBuilder notYetAired(boolean didNotAir) {
-			airingScheduleArguments.add(ParameterString.fromString("notYetAired: " + didNotAir));
+			airingScheduleArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket("notYetAired", didNotAir));
 			return this;
 		}
 
 		public AiringScheduleArgumentsBuilder page(int page) {
-			airingScheduleArguments.add(ParameterString.fromString("page: " + page));
+			airingScheduleArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.PAGE, page));
 			return this;
 		}
 
 		public AiringScheduleArgumentsBuilder perPage(int perPage) {
-			airingScheduleArguments.add(ParameterString.fromString("perPage: " + perPage));
+			airingScheduleArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.PER_PAGE, perPage));
 			return this;
 		}
 
@@ -53,7 +54,7 @@ public class AiringScheduleArguments {
 			}
 
 			return new AiringScheduleArguments(
-					QueryParameterUtils.buildQueryFieldElementArgumentsString(airingScheduleArguments)
+					QueryParameterUtils.buildArguments(airingScheduleArguments)
 			);
 		}
 	}

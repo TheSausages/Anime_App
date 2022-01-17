@@ -26,7 +26,7 @@ class QueryParameterUtilsTest {
 			//when
 			Exception thrownException = Assertions.assertThrows(
 					NullPointerException.class,
-					() -> QueryParameterUtils.buildQueryFieldElementString(title, parameterStrings)
+					() -> QueryParameterUtils.buildFieldElement(title, parameterStrings)
 			);
 
 			//then
@@ -43,7 +43,7 @@ class QueryParameterUtilsTest {
 			//when
 			Exception thrownException = Assertions.assertThrows(
 					NullPointerException.class,
-					() -> QueryParameterUtils.buildQueryFieldElementString(name, parameterStrings)
+					() -> QueryParameterUtils.buildFieldElement(name, parameterStrings)
 			);
 
 			//then
@@ -58,7 +58,7 @@ class QueryParameterUtilsTest {
 			String title =  "Title";
 
 			//when
-			String actualString = QueryParameterUtils.buildQueryFieldElementString(title, parameterStrings);
+			String actualString = QueryParameterUtils.buildFieldElement(title, parameterStrings);
 
 			//then
 			assertThat(actualString, allOf(
@@ -78,7 +78,7 @@ class QueryParameterUtilsTest {
 			String title =  "Title";
 
 			//when
-			String actualString = QueryParameterUtils.buildQueryFieldElementString(title, parameterStrings);
+			String actualString = QueryParameterUtils.buildFieldElement(title, parameterStrings);
 
 			//then
 			assertThat(actualString, allOf(
@@ -100,7 +100,7 @@ class QueryParameterUtilsTest {
 			//when
 			Exception thrownException = Assertions.assertThrows(
 					NullPointerException.class,
-					() -> QueryParameterUtils.buildQueryFieldElementArgumentsString(argumentStrings)
+					() -> QueryParameterUtils.buildArguments(argumentStrings)
 			);
 
 			//then
@@ -114,7 +114,7 @@ class QueryParameterUtilsTest {
 			Set<ParameterString> argumentStrings = Set.of(ParameterString.fromString("element: true"));
 
 			//when
-			String actualString = QueryParameterUtils.buildQueryFieldElementArgumentsString(argumentStrings);
+			String actualString = QueryParameterUtils.buildArguments(argumentStrings);
 
 			//then
 			assertThat(actualString, allOf(
@@ -133,7 +133,7 @@ class QueryParameterUtilsTest {
 			);
 
 			//when
-			String actualString = QueryParameterUtils.buildQueryFieldElementArgumentsString(argumentStrings);
+			String actualString = QueryParameterUtils.buildArguments(argumentStrings);
 
 			//then
 			assertThat(actualString, allOf(

@@ -1,6 +1,7 @@
 package anime.app.anilist.request.query.parameters.connections.reviews;
 
 import anime.app.anilist.request.query.parameters.QueryParameterUtils;
+import anime.app.anilist.request.query.parameters.common.CommonParameterFieldNames;
 import lombok.Getter;
 
 import java.util.Objects;
@@ -14,9 +15,9 @@ public class ReviewEdge {
 	public ReviewEdge(Review review) {
 		Objects.requireNonNull(review, "Review cannot be null");
 
-		this.reviewEdgeString = QueryParameterUtils.buildQueryFieldElementString(
+		this.reviewEdgeString = QueryParameterUtils.buildFieldElement(
 				reviewEdgeTitle,
-				"node " + review.getReviewWithoutFieldName()
+				QueryParameterUtils.combineIntoField(CommonParameterFieldNames.NODE, review.getReviewWithoutFieldName())
 		);
 	}
 

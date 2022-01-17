@@ -3,6 +3,7 @@ package anime.app.anilist.request.query.parameters.connections.trends;
 import anime.app.anilist.request.query.common.OverwritingLinkedHashSet;
 import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.parameters.QueryParameterUtils;
+import anime.app.anilist.request.query.parameters.common.CommonParameterFieldNames;
 import anime.app.anilist.request.query.parameters.connections.PageInfo;
 import lombok.Getter;
 
@@ -30,17 +31,17 @@ public class MediaTrendConnection {
 		private final Set<ParameterString> mediaTrendsConnection = new OverwritingLinkedHashSet<>();
 
 		public MediaConnectionBuilder edges(MediaTrendEdge mediaTrendEdge) {
-			mediaTrendsConnection.add(ParameterString.fromString("edges " + mediaTrendEdge.getStudioEdgeWithoutFieldName()));
+			mediaTrendsConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.EDGES, mediaTrendEdge.getStudioEdgeWithoutFieldName()));
 			return this;
 		}
 
 		public MediaConnectionBuilder nodes(MediaTrend mediaTrend) {
-			mediaTrendsConnection.add(ParameterString.fromString("nodes " + mediaTrend.getMediaTrendWithoutFieldName()));
+			mediaTrendsConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.NODES, mediaTrend.getMediaTrendWithoutFieldName()));
 			return this;
 		}
 
 		public MediaConnectionBuilder pageInfo(PageInfo pageInfo) {
-			mediaTrendsConnection.add(ParameterString.fromString(pageInfo.getPageInfoString()));
+			mediaTrendsConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.PAGE_INFO, pageInfo.getPageInfoStringWithoutFieldName()));
 			return this;
 		}
 
@@ -49,7 +50,7 @@ public class MediaTrendConnection {
 				throw new IllegalStateException("Trends Connection should posses at least 1 parameter!");
 			}
 
-			return new MediaTrendConnection(QueryParameterUtils.buildQueryFieldElementString(
+			return new MediaTrendConnection(QueryParameterUtils.buildFieldElement(
 					mediaTrendsConnectionTitle,
 					mediaTrendsConnection
 			));

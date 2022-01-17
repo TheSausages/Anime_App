@@ -3,6 +3,7 @@ package anime.app.anilist.request.query.parameters.connections.staff;
 import anime.app.anilist.request.query.common.OverwritingLinkedHashSet;
 import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.parameters.QueryParameterUtils;
+import anime.app.anilist.request.query.parameters.common.CommonParameterFieldNames;
 import lombok.Getter;
 
 import java.util.Arrays;
@@ -29,17 +30,17 @@ public class StaffArguments {
 		private final Set<ParameterString> staffMediaArguments = new OverwritingLinkedHashSet<>();
 
 		public StaffArgumentsBuilder sort(StaffSort[] sorts) {
-			staffMediaArguments.add(ParameterString.fromString("sort: " + Arrays.toString(sorts)));
+			staffMediaArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.SORT, Arrays.toString(sorts)));
 			return this;
 		}
 
 		public StaffArgumentsBuilder page(int page) {
-			staffMediaArguments.add(ParameterString.fromString("page: " + page));
+			staffMediaArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.PAGE, page));
 			return this;
 		}
 
 		public StaffArgumentsBuilder perPage(int perPage) {
-			staffMediaArguments.add(ParameterString.fromString("perPage: " + perPage));
+			staffMediaArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.PER_PAGE, perPage));
 			return this;
 		}
 
@@ -48,7 +49,7 @@ public class StaffArguments {
 				throw new IllegalStateException("Staff Arguments should posses at least 1 parameter!");
 			}
 
-			return new StaffArguments(QueryParameterUtils.buildQueryFieldElementArgumentsString(staffMediaArguments));
+			return new StaffArguments(QueryParameterUtils.buildArguments(staffMediaArguments));
 		}
 	}
 }

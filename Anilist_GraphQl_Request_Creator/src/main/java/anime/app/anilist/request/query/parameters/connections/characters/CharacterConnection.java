@@ -3,6 +3,7 @@ package anime.app.anilist.request.query.parameters.connections.characters;
 import anime.app.anilist.request.query.common.OverwritingLinkedHashSet;
 import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.parameters.QueryParameterUtils;
+import anime.app.anilist.request.query.parameters.common.CommonParameterFieldNames;
 import anime.app.anilist.request.query.parameters.connections.PageInfo;
 import lombok.Getter;
 
@@ -35,18 +36,17 @@ public class CharacterConnection {
 		private final Set<ParameterString> characterConnection = new OverwritingLinkedHashSet<>();
 
 		public CharacterConnectionBuilder edges(CharacterEdge characterEdge) {
-
-			characterConnection.add(ParameterString.fromString("edges " + characterEdge.getCharacterEdgeWithoutFieldName()));
+			characterConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.EDGES, characterEdge.getCharacterEdgeWithoutFieldName()));
 			return this;
 		}
 
 		public CharacterConnectionBuilder nodes(Character character) {
-			characterConnection.add(ParameterString.fromString("nodes " + character.getCharacterStringWithoutFieldName()));
+			characterConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.NODES, character.getCharacterStringWithoutFieldName()));
 			return this;
 		}
 
 		public CharacterConnectionBuilder pageInfo(PageInfo pageInfo) {
-			characterConnection.add(ParameterString.fromString(pageInfo.getPageInfoString()));
+			characterConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.PAGE_INFO, pageInfo.getPageInfoStringWithoutFieldName()));
 			return this;
 		}
 
@@ -55,7 +55,7 @@ public class CharacterConnection {
 				throw new IllegalStateException("Character Connection should posses at least 1 parameter!");
 			}
 
-			return new CharacterConnection(QueryParameterUtils.buildQueryFieldElementString(
+			return new CharacterConnection(QueryParameterUtils.buildFieldElement(
 					characterConnectionTitle,
 					characterConnection
 			));

@@ -3,8 +3,9 @@ package anime.app.anilist.request.query.parameters.connections.reviews;
 import anime.app.anilist.request.query.common.OverwritingLinkedHashSet;
 import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.media.Media;
-import anime.app.anilist.request.query.parameters.AnilistUser;
 import anime.app.anilist.request.query.parameters.QueryParameterUtils;
+import anime.app.anilist.request.query.parameters.common.AnilistUser;
+import anime.app.anilist.request.query.parameters.common.CommonParameterFieldNames;
 import lombok.Getter;
 
 import java.util.Set;
@@ -66,12 +67,11 @@ public class Review {
 		}
 
 		public ReviewBuilder bodyAsHtml() {
-			review.add(ParameterString.fromString("body(asHtml: true)"));
-			return this;
+			return bodyAsHtml(true);
 		}
 
 		public ReviewBuilder bodyAsHtml(boolean asHtml) {
-			review.add(ParameterString.fromString("body(asHtml: " + asHtml + ")"));
+			review.add(ParameterString.fromString("body" + QueryParameterUtils.combineIntoArgumentWithBracket("asHtml", asHtml)));
 			return this;
 		}
 
@@ -111,12 +111,12 @@ public class Review {
 		}
 
 		public ReviewBuilder user(AnilistUser anilistUser) {
-			review.add(ParameterString.fromString("user " + anilistUser.getAnilistUserWithoutFieldName()));
+			review.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.USER, anilistUser.getAnilistUserWithoutFieldName()));
 			return this;
 		}
 
 		public ReviewBuilder media(Media media) {
-			review.add(ParameterString.fromString("media " + media.getRequestedMediaFields()));
+			review.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.MEDIA, media.getRequestedMediaFields()));
 			return this;
 		}
 
@@ -125,7 +125,7 @@ public class Review {
 				throw new IllegalStateException("Review should posses at least 1 parameter!");
 			}
 
-			return new Review(QueryParameterUtils.buildQueryFieldElementString(
+			return new Review(QueryParameterUtils.buildFieldElement(
 					reviewTitle,
 					review
 			));

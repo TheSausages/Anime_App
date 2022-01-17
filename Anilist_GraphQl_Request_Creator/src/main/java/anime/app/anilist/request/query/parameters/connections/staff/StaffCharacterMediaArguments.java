@@ -3,6 +3,7 @@ package anime.app.anilist.request.query.parameters.connections.staff;
 import anime.app.anilist.request.query.common.OverwritingLinkedHashSet;
 import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.parameters.QueryParameterUtils;
+import anime.app.anilist.request.query.parameters.common.CommonParameterFieldNames;
 import anime.app.anilist.request.query.parameters.connections.characters.CharacterSort;
 import lombok.Getter;
 
@@ -30,27 +31,26 @@ public class StaffCharacterMediaArguments {
 		private final Set<ParameterString> staffCharacterMediaArguments = new OverwritingLinkedHashSet<>();
 
 		public StaffCharacterMediaArgumentsBuilder sort(CharacterSort... sorts) {
-			staffCharacterMediaArguments.add(ParameterString.fromString("sort: " + Arrays.toString(sorts)));
+			staffCharacterMediaArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.SORT, Arrays.toString(sorts)));
 			return this;
 		}
 
 		public StaffCharacterMediaArgumentsBuilder onList() {
-			staffCharacterMediaArguments.add(ParameterString.fromString("onList: true"));
-			return this;
+			return onList(true);
 		}
 
 		public StaffCharacterMediaArgumentsBuilder onList(boolean onList) {
-			staffCharacterMediaArguments.add(ParameterString.fromString("onList: " + onList));
+			staffCharacterMediaArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket("onList", onList));
 			return this;
 		}
 
 		public StaffCharacterMediaArgumentsBuilder page(int page) {
-			staffCharacterMediaArguments.add(ParameterString.fromString("page: " + page));
+			staffCharacterMediaArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.PAGE, page));
 			return this;
 		}
 
 		public StaffCharacterMediaArgumentsBuilder perPage(int perPage) {
-			staffCharacterMediaArguments.add(ParameterString.fromString("perPage: " + perPage));
+			staffCharacterMediaArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.PER_PAGE, perPage));
 			return this;
 		}
 
@@ -59,7 +59,7 @@ public class StaffCharacterMediaArguments {
 				throw new IllegalStateException("Staff Media Character Arguments should posses at least 1 parameter!");
 			}
 
-			return new StaffCharacterMediaArguments(QueryParameterUtils.buildQueryFieldElementArgumentsString(
+			return new StaffCharacterMediaArguments(QueryParameterUtils.buildArguments(
 					staffCharacterMediaArguments
 			));
 		}

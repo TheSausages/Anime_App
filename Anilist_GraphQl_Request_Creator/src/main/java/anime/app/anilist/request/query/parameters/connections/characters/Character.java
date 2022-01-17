@@ -3,6 +3,7 @@ package anime.app.anilist.request.query.parameters.connections.characters;
 import anime.app.anilist.request.query.common.OverwritingLinkedHashSet;
 import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.parameters.QueryParameterUtils;
+import anime.app.anilist.request.query.parameters.common.CommonParameterFieldNames;
 import anime.app.anilist.request.query.parameters.connections.media.MediaArguments;
 import anime.app.anilist.request.query.parameters.connections.media.MediaConnection;
 import anime.app.anilist.request.query.parameters.fuzzyDate.FuzzyDateField;
@@ -43,22 +44,34 @@ public class Character {
 		}
 
 		public CharacterBuilder name() {
-			character.add(ParameterString.fromString("name {\nfirst\nmiddle\nlast\nfull\nnative\nalternative\nalternativeSpoiler\n}"));
+			character.add(ParameterString.fromString(QueryParameterUtils.buildFieldElement(
+					"name",
+					"first",
+					"middle",
+					"last",
+					"full",
+					"native",
+					"alternative",
+					"alternativeSpoiler"
+			)));
 			return this;
 		}
 
 		public CharacterBuilder image() {
-			character.add(ParameterString.fromString("image {\nlarge\nmedium\n}"));
+			character.add(ParameterString.fromString(QueryParameterUtils.buildFieldElement(
+					"image",
+					"large",
+					"medium"
+			)));
 			return this;
 		}
 
 		public CharacterBuilder description() {
-			character.add(ParameterString.fromString("description"));
-			return this;
+			return description(false);
 		}
 
 		public CharacterBuilder description(boolean asHtml) {
-			character.add(ParameterString.fromString("description(asHtml: " + asHtml + ")"));
+			character.add(ParameterString.fromString("description" + QueryParameterUtils.combineIntoArgumentWithBracket("asHtml", asHtml)));
 			return this;
 		}
 
@@ -68,7 +81,7 @@ public class Character {
 		}
 
 		public CharacterBuilder dateOfBirth(FuzzyDateField fuzzyDateField) {
-			character.add(ParameterString.fromString(FuzzyDateFieldParameter.dateOfBirth + " " + fuzzyDateField.getFuzzyDateStringWithoutFieldName()));
+			character.add(QueryParameterUtils.combineIntoField(FuzzyDateFieldParameter.DATE_OF_BIRTH, fuzzyDateField.getFuzzyDateStringWithoutFieldName()));
 			return this;
 		}
 
@@ -93,12 +106,16 @@ public class Character {
 		}
 
 		public CharacterBuilder media(MediaConnection mediaConnection) {
-			character.add(ParameterString.fromString("media " + mediaConnection.getMediaConnectionWithoutFieldName()));
+			character.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.MEDIA, mediaConnection.getMediaConnectionWithoutFieldName()));
 			return this;
 		}
 
 		public CharacterBuilder media(MediaArguments mediaArguments, MediaConnection mediaConnection) {
-			character.add(ParameterString.fromString("media" + mediaArguments.getMediaArgumentsString() + " " + mediaConnection.getMediaConnectionWithoutFieldName()));
+			character.add(QueryParameterUtils.combineIntoField(
+					CommonParameterFieldNames.MEDIA,
+					mediaArguments.getMediaArgumentsString(),
+					mediaConnection.getMediaConnectionWithoutFieldName()
+			));
 			return this;
 		}
 
@@ -107,7 +124,7 @@ public class Character {
 				throw new IllegalStateException("Character should posses at least 1 parameter!");
 			}
 
-			return new Character(QueryParameterUtils.buildQueryFieldElementString(
+			return new Character(QueryParameterUtils.buildFieldElement(
 					characterTitle,
 					character
 			));

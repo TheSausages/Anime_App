@@ -4,6 +4,7 @@ import anime.app.anilist.request.query.common.OverwritingLinkedHashSet;
 import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.media.Media;
 import anime.app.anilist.request.query.parameters.QueryParameterUtils;
+import anime.app.anilist.request.query.parameters.common.CommonParameterFieldNames;
 import anime.app.anilist.request.query.parameters.connections.PageInfo;
 import lombok.Getter;
 
@@ -36,17 +37,17 @@ public class MediaConnection {
 		private final Set<ParameterString> mediaConnections = new OverwritingLinkedHashSet<>();
 
 		public MediaConnectionBuilder edge(MediaEdge mediaEdge) {
-			mediaConnections.add(new ParameterString("edges " + mediaEdge.getMediaEdgeWithoutFieldName()));
+			mediaConnections.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.EDGES, mediaEdge.getMediaEdgeWithoutFieldName()));
 			return this;
 		}
 
 		public MediaConnectionBuilder nodes(Media media) {
-			mediaConnections.add(ParameterString.fromString("nodes " + media.getRequestedMediaFields()));
+			mediaConnections.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.NODES, media.getRequestedMediaFields()));
 			return this;
 		}
 
 		public MediaConnectionBuilder pageInfo(PageInfo pageInfo) {
-			mediaConnections.add(ParameterString.fromString(pageInfo.getPageInfoString()));
+			mediaConnections.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.PAGE_INFO, pageInfo.getPageInfoStringWithoutFieldName()));
 			return this;
 		}
 
@@ -55,7 +56,7 @@ public class MediaConnection {
 				throw new IllegalStateException("Media Connection should posses at least 1 parameter!");
 			}
 
-			return new MediaConnection(QueryParameterUtils.buildQueryFieldElementString(
+			return new MediaConnection(QueryParameterUtils.buildFieldElement(
 					mediaConnectionTitle,
 					mediaConnections
 			));

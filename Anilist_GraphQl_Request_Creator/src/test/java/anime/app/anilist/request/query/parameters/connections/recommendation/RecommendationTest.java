@@ -2,7 +2,7 @@ package anime.app.anilist.request.query.parameters.connections.recommendation;
 
 import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.media.Media;
-import anime.app.anilist.request.query.parameters.AnilistUser;
+import anime.app.anilist.request.query.parameters.common.AnilistUser;
 import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

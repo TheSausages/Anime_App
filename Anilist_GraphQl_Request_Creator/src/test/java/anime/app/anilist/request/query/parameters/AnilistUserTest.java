@@ -1,6 +1,7 @@
 package anime.app.anilist.request.query.parameters;
 
 import anime.app.anilist.request.query.common.ParameterString;
+import anime.app.anilist.request.query.parameters.common.AnilistUser;
 import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -9,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
-import static anime.app.anilist.request.query.parameters.AnilistUser.userTitle;
+import static anime.app.anilist.request.query.parameters.common.AnilistUser.userTitle;
 import static anime.app.anilist.request.utils.QueryTitleAndParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;

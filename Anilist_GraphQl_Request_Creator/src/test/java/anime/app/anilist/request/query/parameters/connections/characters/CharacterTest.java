@@ -1,6 +1,7 @@
 package anime.app.anilist.request.query.parameters.connections.characters;
 
 import anime.app.anilist.request.query.common.ParameterString;
+import anime.app.anilist.request.query.parameters.QueryParameterUtils;
 import anime.app.anilist.request.query.parameters.connections.PageInfo;
 import anime.app.anilist.request.query.parameters.connections.media.MediaArguments;
 import anime.app.anilist.request.query.parameters.connections.media.MediaConnection;
@@ -128,7 +129,7 @@ class CharacterTest {
 		void characterBuilder_DescriptionWithoutArgument_ReturnCorrectString() {
 			//given
 			Set<ParameterString> expectedString = TestUtils.getParameterStringSetField(
-					"description"
+					"description(asHtml: false)"
 			);
 
 			//when
@@ -181,10 +182,10 @@ class CharacterTest {
 		@Test
 		void characterBuilder_DateOfBirth_ReturnCorrectString() {
 			//given
-			FuzzyDateFieldParameter parameter = FuzzyDateFieldParameter.dateOfBirth;
+			FuzzyDateFieldParameter parameter = FuzzyDateFieldParameter.DATE_OF_BIRTH;
 			FuzzyDateField dateField = FuzzyDateField.getFuzzyDateFieldBuilder().allAndBuild();
 			Set<ParameterString> expectedString = TestUtils.getParameterStringSetField(
-					parameter.name() + " " + dateField.getFuzzyDateStringWithoutFieldName()
+					QueryParameterUtils.combineIntoField(parameter, dateField.getFuzzyDateStringWithoutFieldName()).getField()
 			);
 
 			//when
@@ -317,7 +318,7 @@ class CharacterTest {
 		@Test
 		void characterBuilder_All_ReturnCorrectString() {
 			//given
-			FuzzyDateFieldParameter parameter = FuzzyDateFieldParameter.dateOfBirth;
+			FuzzyDateFieldParameter parameter = FuzzyDateFieldParameter.DATE_OF_BIRTH;
 			FuzzyDateField dateField = FuzzyDateField.getFuzzyDateFieldBuilder().allAndBuild();
 			int page = 1;
 			MediaArguments arguments = MediaArguments.getMediaArgumentsBuilder().page(page).build();
@@ -328,9 +329,9 @@ class CharacterTest {
 					"id",
 					"name {\nfirst\nmiddle\nlast\nfull\nnative\nalternative\nalternativeSpoiler\n}",
 					"image {\nlarge\nmedium\n}",
-					"description",
+					"description(asHtml: false)",
 					"gender",
-					parameter.name() + " " + dateField.getFuzzyDateStringWithoutFieldName(),
+					QueryParameterUtils.combineIntoField(parameter, dateField.getFuzzyDateStringWithoutFieldName()).getField(),
 					"age",
 					"siteUrl",
 					"favourites",

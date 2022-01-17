@@ -4,6 +4,7 @@ import anime.app.anilist.request.query.common.OverwritingLinkedHashSet;
 import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.media.Media;
 import anime.app.anilist.request.query.parameters.QueryParameterUtils;
+import anime.app.anilist.request.query.parameters.common.CommonParameterFieldNames;
 import anime.app.anilist.request.query.parameters.connections.characters.Character;
 import anime.app.anilist.request.query.parameters.connections.staff.Staff;
 import anime.app.anilist.request.query.parameters.connections.staff.StaffLanguage;
@@ -41,7 +42,7 @@ public class MediaEdge {
 		private final Set<ParameterString> mediaEdge = new OverwritingLinkedHashSet<>();
 
 		public MediaEdgeBuilder node(Media media) {
-			mediaEdge.add(ParameterString.fromString("node " + media.getRequestedMediaFields()));
+			mediaEdge.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.NODE, media.getRequestedMediaFields()));
 			return this;
 		}
 
@@ -51,12 +52,11 @@ public class MediaEdge {
 		}
 
 		public MediaEdgeBuilder relationType() {
-			mediaEdge.add(ParameterString.fromString("relationType(version: 2)"));
-			return this;
+			return relationType(2);
 		}
 
 		public MediaEdgeBuilder relationType(int version) {
-			mediaEdge.add(ParameterString.fromString("relationType(version: " + version + ")"));
+			mediaEdge.add(ParameterString.fromString("relationType" + QueryParameterUtils.combineIntoArgumentWithBracket("version", version)));
 			return this;
 		}
 
@@ -66,7 +66,7 @@ public class MediaEdge {
 		}
 
 		public MediaEdgeBuilder characters(Character character) {
-			mediaEdge.add(ParameterString.fromString("characters " + character.getCharacterStringWithoutFieldName()));
+			mediaEdge.add(QueryParameterUtils.combineIntoField("characters", character.getCharacterStringWithoutFieldName()));
 			return this;
 		}
 
@@ -96,42 +96,72 @@ public class MediaEdge {
 		}
 
 		public MediaEdgeBuilder voiceActors(Staff staff) {
-			mediaEdge.add(ParameterString.fromString("voiceActors " + staff.getStaffWithoutFieldName()));
+			mediaEdge.add(QueryParameterUtils.combineIntoField("voiceActors", staff.getStaffWithoutFieldName()));
 			return this;
 		}
 
 		public MediaEdgeBuilder voiceActors(Staff staff, StaffLanguage language) {
-			mediaEdge.add(ParameterString.fromString("voiceActors(language: " + language.name() + ") " + staff.getStaffWithoutFieldName()));
+			mediaEdge.add(QueryParameterUtils.combineIntoField(
+					"voiceActors",
+					QueryParameterUtils.combineIntoArgumentWithBracket("language", language.name()),
+					staff.getStaffWithoutFieldName()
+			));
 			return this;
 		}
 
 		public MediaEdgeBuilder voiceActors(Staff staff, StaffSort... staffSort) {
-			mediaEdge.add(ParameterString.fromString("voiceActors(sort: " + Arrays.toString(staffSort) + ") " + staff.getStaffWithoutFieldName()));
+			mediaEdge.add(QueryParameterUtils.combineIntoField(
+					"voiceActors",
+					QueryParameterUtils.combineIntoArgumentWithBracket(CommonParameterFieldNames.SORT, Arrays.toString(staffSort)),
+					staff.getStaffWithoutFieldName()
+			));
 			return this;
 		}
 
 		public MediaEdgeBuilder voiceActors(Staff staff, StaffLanguage language, StaffSort... staffSort) {
-			mediaEdge.add(ParameterString.fromString("voiceActors(language: " + language.name() + ", sort: " + Arrays.toString(staffSort) + ") " + staff.getStaffWithoutFieldName()));
+			mediaEdge.add(QueryParameterUtils.combineIntoField(
+					"voiceActors",
+					QueryParameterUtils.buildArguments(
+							QueryParameterUtils.combineIntoArgumentWithoutBracket("language", language.name()),
+							QueryParameterUtils.combineIntoArgumentWithoutBracket("sort", Arrays.toString(staffSort))
+					),
+					staff.getStaffWithoutFieldName()
+			));
 			return this;
 		}
 
 		public MediaEdgeBuilder voiceActorsRoles(StaffRoleType roleType) {
-			mediaEdge.add(ParameterString.fromString("voiceActorRoles " + roleType.getStaffRoleTypeStringWithoutFieldName()));
+			mediaEdge.add(QueryParameterUtils.combineIntoField("voiceActorRoles", roleType.getStaffRoleTypeStringWithoutFieldName()));
 			return this;
 		}
 
 		public MediaEdgeBuilder voiceActorsRoles(StaffRoleType roleType, StaffLanguage language) {
-			mediaEdge.add(ParameterString.fromString("voiceActorRoles(language: " + language.name() + ") " + roleType.getStaffRoleTypeStringWithoutFieldName()));
+			mediaEdge.add(QueryParameterUtils.combineIntoField(
+					"voiceActorRoles",
+					QueryParameterUtils.combineIntoArgumentWithBracket("language", language.name()),
+					roleType.getStaffRoleTypeStringWithoutFieldName()
+			));
 			return this;
 		}
 
 		public MediaEdgeBuilder voiceActorsRoles(StaffRoleType roleType, StaffSort... staffSort) {
-			mediaEdge.add(ParameterString.fromString("voiceActorRoles(sort: " + Arrays.toString(staffSort) + ") " + roleType.getStaffRoleTypeStringWithoutFieldName()));
+			mediaEdge.add(QueryParameterUtils.combineIntoField(
+					"voiceActorRoles",
+					QueryParameterUtils.combineIntoArgumentWithBracket(CommonParameterFieldNames.SORT, Arrays.toString(staffSort)),
+					roleType.getStaffRoleTypeStringWithoutFieldName()
+			));
 			return this;
 		}
 
 		public MediaEdgeBuilder voiceActorsRoles(StaffRoleType roleType, StaffLanguage language, StaffSort... staffSort) {
-			mediaEdge.add(ParameterString.fromString("voiceActorRoles(language: " + language.name() + ", sort: " + Arrays.toString(staffSort) + ") " + roleType.getStaffRoleTypeStringWithoutFieldName()));
+			mediaEdge.add(QueryParameterUtils.combineIntoField(
+					"voiceActorRoles",
+					QueryParameterUtils.buildArguments(
+							QueryParameterUtils.combineIntoArgumentWithoutBracket("language", language.name()),
+							QueryParameterUtils.combineIntoArgumentWithoutBracket("sort", Arrays.toString(staffSort))
+					),
+					roleType.getStaffRoleTypeStringWithoutFieldName()
+			));
 			return this;
 		}
 
@@ -140,7 +170,7 @@ public class MediaEdge {
 				throw new IllegalStateException("Media Edge should posses at least 1 parameter!");
 			}
 
-			return new MediaEdge(QueryParameterUtils.buildQueryFieldElementString(
+			return new MediaEdge(QueryParameterUtils.buildFieldElement(
 					mediaEdgeTitle,
 					mediaEdge
 			));

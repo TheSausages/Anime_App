@@ -1,5 +1,6 @@
 package anime.app.anilist.request.query.parameters.connections.trends;
 
+import anime.app.anilist.request.query.parameters.QueryParameterUtils;
 import lombok.Getter;
 
 import java.util.Objects;
@@ -13,7 +14,7 @@ public class MediaTrendEdge {
 	public MediaTrendEdge(MediaTrend mediaTrend) {
 		Objects.requireNonNull(mediaTrend, "Media trend cannot be null");
 
-		this.studioEdgeString = mediaTrendEdgeTitle + " " + mediaTrend.getMediaTrendWithoutFieldName();
+		this.studioEdgeString = QueryParameterUtils.combineIntoField(mediaTrendEdgeTitle, mediaTrend.getMediaTrendWithoutFieldName()).getField();
 	}
 
 	public static MediaTrendEdge fromMediaTrend(MediaTrend trend) {

@@ -3,6 +3,7 @@ package anime.app.anilist.request.query.parameters.connections.characters;
 import anime.app.anilist.request.query.common.OverwritingLinkedHashSet;
 import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.parameters.QueryParameterUtils;
+import anime.app.anilist.request.query.parameters.common.CommonParameterFieldNames;
 import lombok.Getter;
 
 import java.util.Arrays;
@@ -29,22 +30,22 @@ public class CharacterArguments {
 		private final Set<ParameterString> characterMediaArguments = new OverwritingLinkedHashSet<>();
 
 		public CharacterArgumentsBuilder sortBy(CharacterSort... sorts) {
-			characterMediaArguments.add(new ParameterString("sort: " + Arrays.toString(sorts)));
+			characterMediaArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.SORT, Arrays.toString(sorts)));
 			return this;
 		}
 
 		public CharacterArgumentsBuilder role(CharacterRole characterRole) {
-			characterMediaArguments.add(new ParameterString("role: " + characterRole.name()));
+			characterMediaArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.ROLE, characterRole.name()));
 			return this;
 		}
 
 		public CharacterArgumentsBuilder page(int page) {
-			characterMediaArguments.add(new ParameterString("page: " + page));
+			characterMediaArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.PAGE, page));
 			return this;
 		}
 
 		public CharacterArgumentsBuilder perPage(int perPage) {
-			characterMediaArguments.add(new ParameterString("perPage: " + perPage));
+			characterMediaArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.PER_PAGE, perPage));
 			return this;
 		}
 
@@ -53,7 +54,7 @@ public class CharacterArguments {
 				throw new IllegalStateException("Character Arguments should posses at least 1 parameter!");
 			}
 
-			return new CharacterArguments(QueryParameterUtils.buildQueryFieldElementArgumentsString(characterMediaArguments));
+			return new CharacterArguments(QueryParameterUtils.buildArguments(characterMediaArguments));
 		}
 	}
 }

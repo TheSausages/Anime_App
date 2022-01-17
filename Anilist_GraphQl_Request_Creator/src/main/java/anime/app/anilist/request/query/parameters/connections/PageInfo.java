@@ -63,7 +63,7 @@ public class PageInfo {
 				throw new IllegalStateException("Page Info should posses at least 1 parameter!");
 			}
 
-			return new PageInfo(QueryParameterUtils.buildQueryFieldElementString(
+			return new PageInfo(QueryParameterUtils.buildFieldElement(
 					pageInfoTitle,
 					info
 			));

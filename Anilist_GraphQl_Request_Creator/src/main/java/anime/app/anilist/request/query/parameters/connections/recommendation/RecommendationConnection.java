@@ -3,6 +3,7 @@ package anime.app.anilist.request.query.parameters.connections.recommendation;
 import anime.app.anilist.request.query.common.OverwritingLinkedHashSet;
 import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.parameters.QueryParameterUtils;
+import anime.app.anilist.request.query.parameters.common.CommonParameterFieldNames;
 import anime.app.anilist.request.query.parameters.connections.PageInfo;
 import lombok.Getter;
 
@@ -35,17 +36,17 @@ public class RecommendationConnection {
 		private final Set<ParameterString> recommendationConnection = new OverwritingLinkedHashSet<>();
 
 		public RecommendationConnectionBuilder edges(RecommendationEdge edge) {
-			recommendationConnection.add(ParameterString.fromString("edges " + edge.getRecommendationEdgeWithoutFieldName()));
+			recommendationConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.EDGES, edge.getRecommendationEdgeWithoutFieldName()));
 			return this;
 		}
 
 		public RecommendationConnectionBuilder nodes(Recommendation recommendation) {
-			recommendationConnection.add(ParameterString.fromString("nodes " + recommendation.getRecommendationStringWithoutFieldName()));
+			recommendationConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.NODES, recommendation.getRecommendationStringWithoutFieldName()));
 			return this;
 		}
 
 		public RecommendationConnectionBuilder pageInfo(PageInfo pageInfo) {
-			recommendationConnection.add(ParameterString.fromString("pageInfo " + pageInfo.getPageInfoStringWithoutFieldName()));
+			recommendationConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.PAGE_INFO, pageInfo.getPageInfoStringWithoutFieldName()));
 			return this;
 		}
 
@@ -54,7 +55,7 @@ public class RecommendationConnection {
 				throw new IllegalStateException("Recommendation Connection should posses at least 1 parameter!");
 			}
 
-			return new RecommendationConnection(QueryParameterUtils.buildQueryFieldElementString(
+			return new RecommendationConnection(QueryParameterUtils.buildFieldElement(
 					recommendationConnectionTitle,
 					recommendationConnection
 			));

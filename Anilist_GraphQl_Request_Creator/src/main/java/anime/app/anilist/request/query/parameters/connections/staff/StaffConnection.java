@@ -3,6 +3,7 @@ package anime.app.anilist.request.query.parameters.connections.staff;
 import anime.app.anilist.request.query.common.OverwritingLinkedHashSet;
 import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.parameters.QueryParameterUtils;
+import anime.app.anilist.request.query.parameters.common.CommonParameterFieldNames;
 import anime.app.anilist.request.query.parameters.connections.PageInfo;
 import lombok.Getter;
 
@@ -30,17 +31,17 @@ public class StaffConnection {
 		private final Set<ParameterString> staffConnection = new OverwritingLinkedHashSet<>();
 
 		public StaffConnectionBuilder edges(StaffEdge edge) {
-			staffConnection.add(ParameterString.fromString("edges " + edge.getStaffEdgeWithoutFieldName()));
+			staffConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.EDGES, edge.getStaffEdgeWithoutFieldName()));
 			return this;
 		}
 
 		public StaffConnectionBuilder nodes(Staff staff) {
-			staffConnection.add(ParameterString.fromString("nodes " + staff.getStaffWithoutFieldName()));
+			staffConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.NODES, staff.getStaffWithoutFieldName()));
 			return this;
 		}
 
 		public StaffConnectionBuilder pageInfo(PageInfo pageInfo) {
-			staffConnection.add(ParameterString.fromString(pageInfo.getPageInfoString()));
+			staffConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.PAGE_INFO, pageInfo.getPageInfoStringWithoutFieldName()));
 			return this;
 		}
 
@@ -49,7 +50,7 @@ public class StaffConnection {
 				throw new IllegalStateException("Staff Connection should posses at least 1 parameter!");
 			}
 
-			return new StaffConnection(QueryParameterUtils.buildQueryFieldElementString(
+			return new StaffConnection(QueryParameterUtils.buildFieldElement(
 					staffConnectionTitle,
 					staffConnection
 			));
