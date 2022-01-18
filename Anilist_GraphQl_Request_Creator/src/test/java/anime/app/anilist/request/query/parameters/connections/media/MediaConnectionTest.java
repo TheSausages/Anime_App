@@ -1,9 +1,11 @@
 package anime.app.anilist.request.query.parameters.connections.media;
 
 import anime.app.anilist.request.query.common.ParameterString;
+import anime.app.anilist.request.query.media.Field;
 import anime.app.anilist.request.query.media.Media;
 import anime.app.anilist.request.query.parameters.connections.PageInfo;
 import anime.app.anilist.request.query.parameters.connections.characters.CharacterEdge;
+import anime.app.anilist.request.query.parameters.media.MediaFormat;
 import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -21,7 +23,7 @@ class MediaConnectionTest {
 	@Test
 	void getMediaConnectionWithoutFieldName__ReturnCorrectString() {
 		//given
-		Media media = new Media("media(id: ${id}) {\nformat\n}");
+		Media media = Media.getMediaBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
 		Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
 				"nodes " + media.getRequestedMediaFields()
 		);
@@ -97,7 +99,7 @@ class MediaConnectionTest {
 		@Test
 		void mediaConnectionBuilder_Nodes_ReturnCorrectString() {
 			//given
-			Media media = new Media("media(id: ${id}) {\nformat\n}");
+			Media media = Media.getMediaBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
 			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
 					"nodes " + media.getRequestedMediaFields()
 			);
@@ -142,7 +144,7 @@ class MediaConnectionTest {
 		void mediaConnectionBuilder_AllParameters_ReturnCorrectString() {
 			//given
 			MediaEdge edge = MediaEdge.getMediaEdgeBuilder().id().build();
-			Media media = new Media("media(id: ${id}) {\nformat\n}");
+			Media media = Media.getMediaBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
 			PageInfo pageInfo = PageInfo.getPageInfoBuilder().perPage().build();
 			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
 					pageInfo.getPageInfoString(),

@@ -1,8 +1,10 @@
 package anime.app.anilist.request.query.parameters.connections.recommendation;
 
 import anime.app.anilist.request.query.common.ParameterString;
+import anime.app.anilist.request.query.media.Field;
 import anime.app.anilist.request.query.media.Media;
 import anime.app.anilist.request.query.parameters.common.AnilistUser;
+import anime.app.anilist.request.query.parameters.media.MediaFormat;
 import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -113,7 +115,7 @@ class RecommendationTest {
 		@Test
 		void recommendationBuilder_Media_ReturnCorrectString() {
 			//given
-			Media media = new Media("media(id: ${id}) {\nformat\n}");
+			Media media = Media.getMediaBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
 			Set<ParameterString> expectedRecommendation = TestUtils.getParameterStringSetField(
 					"media " + media.getRequestedMediaFields()
 			);
@@ -134,7 +136,7 @@ class RecommendationTest {
 		@Test
 		void recommendationBuilder_MediaRecommendation_ReturnCorrectString() {
 			//given
-			Media media = new Media("media(id: ${id}) {\nformat\n}");
+			Media media = Media.getMediaBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
 			Set<ParameterString> expectedRecommendation = TestUtils.getParameterStringSetField(
 					"mediaRecommendation " + media.getRequestedMediaFields()
 			);
@@ -177,7 +179,7 @@ class RecommendationTest {
 		void recommendationBuilder_AllParameters_ReturnCorrectString() {
 			//given
 			AnilistUser user = AnilistUser.getUserBuilder().id().build();
-			Media media = new Media("media(id: ${id}) {\nformat\n}");
+			Media media = Media.getMediaBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
 			Set<ParameterString> expectedRecommendation = TestUtils.getParameterStringSetField(
 					"id",
 					"rating",

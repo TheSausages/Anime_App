@@ -1,12 +1,14 @@
 package anime.app.anilist.request.query.parameters.connections.media;
 
 import anime.app.anilist.request.query.common.ParameterString;
+import anime.app.anilist.request.query.media.Field;
 import anime.app.anilist.request.query.media.Media;
 import anime.app.anilist.request.query.parameters.connections.characters.Character;
 import anime.app.anilist.request.query.parameters.connections.staff.Staff;
 import anime.app.anilist.request.query.parameters.connections.staff.StaffLanguage;
 import anime.app.anilist.request.query.parameters.connections.staff.StaffRoleType;
 import anime.app.anilist.request.query.parameters.connections.staff.StaffSort;
+import anime.app.anilist.request.query.parameters.media.MediaFormat;
 import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -78,7 +80,7 @@ class MediaEdgeTest {
 		@Test
 		void mediaEdgeBuilder_Node_ReturnCorrectString() {
 			//given
-			Media media = new Media("media(id: ${id}) {\nformat\n}");
+			Media media = Media.getMediaBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
 			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
 					"node " + media.getRequestedMediaFields()
 			);
@@ -521,7 +523,7 @@ class MediaEdgeTest {
 		@Test
 		void mediaEdgeBuilder_AllParameters_ReturnCorrectString() {
 			//given
-			Media media = new Media("media(id: ${id}) {\nformat\n}");
+			Media media = Media.getMediaBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
 			StaffSort[] sorts = new StaffSort[] {StaffSort.ID, StaffSort.ROLE};
 			StaffLanguage language = StaffLanguage.ENGLISH;
 			Staff staff = Staff.getStaffBuilder().id().build();

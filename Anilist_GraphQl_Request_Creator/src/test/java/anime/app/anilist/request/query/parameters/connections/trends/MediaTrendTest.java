@@ -1,7 +1,11 @@
 package anime.app.anilist.request.query.parameters.connections.trends;
 
 import anime.app.anilist.request.query.common.ParameterString;
+import anime.app.anilist.request.query.media.Field;
 import anime.app.anilist.request.query.media.Media;
+import anime.app.anilist.request.query.parameters.QueryParameterUtils;
+import anime.app.anilist.request.query.parameters.common.CommonParameterFieldNames;
+import anime.app.anilist.request.query.parameters.media.MediaFormat;
 import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -198,8 +202,10 @@ class MediaTrendTest {
 		@Test
 		void mediaTrendBuilder_Media_ReturnCorrectString() {
 			//given
-			Media media = new Media("media(id: ${id}) {\nformat\n}");
-			Set<ParameterString> expectedTrend = TestUtils.getParameterStringSetField("media {\nformat\n}");
+			Media media = Media.getMediaBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
+			Set<ParameterString> expectedTrend = TestUtils.getParameterStringSetField(
+					QueryParameterUtils.combineIntoField(CommonParameterFieldNames.MEDIA, media.getRequestedMediaFields()).getField()
+			);
 
 			//when
 			MediaTrend actualTrend = MediaTrend.getMediaTrendBuilder().media(media).build();
@@ -215,7 +221,7 @@ class MediaTrendTest {
 		@Test
 		void mediaTrendBuilder_AllParameters_ReturnCorrectString() {
 			//given
-			Media media = new Media("media(id: ${id}) {\nformat\n}");
+			Media media = Media.getMediaBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
 			Set<ParameterString> expectedTrend = TestUtils.getParameterStringSetField(
 					"mediaId",
 					"date",
@@ -225,7 +231,7 @@ class MediaTrendTest {
 					"inProgress",
 					"releasing",
 					"episode",
-					"media {\nformat\n}"
+					QueryParameterUtils.combineIntoField(CommonParameterFieldNames.MEDIA, media.getRequestedMediaFields()).getField()
 			);
 
 			//when

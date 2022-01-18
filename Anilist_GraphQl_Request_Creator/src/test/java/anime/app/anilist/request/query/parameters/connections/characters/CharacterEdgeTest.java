@@ -1,11 +1,15 @@
 package anime.app.anilist.request.query.parameters.connections.characters;
 
 import anime.app.anilist.request.query.common.ParameterString;
+import anime.app.anilist.request.query.media.Field;
 import anime.app.anilist.request.query.media.Media;
+import anime.app.anilist.request.query.parameters.QueryParameterUtils;
+import anime.app.anilist.request.query.parameters.common.CommonParameterFieldNames;
 import anime.app.anilist.request.query.parameters.connections.staff.Staff;
 import anime.app.anilist.request.query.parameters.connections.staff.StaffLanguage;
 import anime.app.anilist.request.query.parameters.connections.staff.StaffRoleType;
 import anime.app.anilist.request.query.parameters.connections.staff.StaffSort;
+import anime.app.anilist.request.query.parameters.media.MediaFormat;
 import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -173,9 +177,9 @@ class CharacterEdgeTest {
 		@Test
 		void characterEdgeBuilder_Media_ReturnCorrectString() {
 			//given
-			Media media = new Media("media(id: ${id}) {\nformat\n}");
+			Media media = Media.getMediaBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
 			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
-					"media {\nformat\n}"
+					QueryParameterUtils.combineIntoField(CommonParameterFieldNames.MEDIA, media.getRequestedMediaFields()).getField()
 			);
 
 			//when
@@ -418,14 +422,14 @@ class CharacterEdgeTest {
 			StaffSort[] sorts = new StaffSort[] {StaffSort.ID, StaffSort.ROLE};
 			StaffLanguage language = StaffLanguage.ENGLISH;
 			StaffRoleType type = StaffRoleType.getStaffRoleTypeBuilder().roleNotes().build();
-			Media media = new Media("media(id: ${id}) {\nformat\n}");
+			Media media = Media.getMediaBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
 			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
 					"node " + character.getCharacterStringWithoutFieldName(),
 					"id",
 					"role",
 					"name",
 					"favouriteOrder",
-					"media {\nformat\n}",
+					QueryParameterUtils.combineIntoField(CommonParameterFieldNames.MEDIA, media.getRequestedMediaFields()).getField(),
 					"voiceActors(language: " + language.name() + ", sort: " + Arrays.toString(sorts) + ") " + staff.getStaffWithoutFieldName(),
 					"voiceActorsRoles(language: " + language.name() + ", sort: " + Arrays.toString(sorts) + ") " + type.getStaffRoleTypeStringWithoutFieldName()
 			);

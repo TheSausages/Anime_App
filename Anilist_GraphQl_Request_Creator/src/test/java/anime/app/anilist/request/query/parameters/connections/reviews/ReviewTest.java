@@ -1,8 +1,10 @@
 package anime.app.anilist.request.query.parameters.connections.reviews;
 
 import anime.app.anilist.request.query.common.ParameterString;
+import anime.app.anilist.request.query.media.Field;
 import anime.app.anilist.request.query.media.Media;
 import anime.app.anilist.request.query.parameters.common.AnilistUser;
+import anime.app.anilist.request.query.parameters.media.MediaFormat;
 import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -393,7 +395,7 @@ class ReviewTest {
 		@Test
 		void reviewBuilder_Media_ReturnCorrectString() {
 			//given
-			Media media = new Media("media(id: ${id}) {\nformat\n}");
+			Media media = Media.getMediaBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
 			Set<ParameterString> expectedReview = TestUtils.getParameterStringSetField(
 					"media " +media.getRequestedMediaFields()
 			);
@@ -415,7 +417,7 @@ class ReviewTest {
 		void reviewBuilder_AllParameters_ReturnCorrectString() {
 			//given
 			AnilistUser anilistUser = AnilistUser.getUserBuilder().id().build();
-			Media media = new Media("media(id: ${id}) {\nformat\n}");
+			Media media = Media.getMediaBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
 			Set<ParameterString> expectedReview = TestUtils.getParameterStringSetField(
 					"id",
 					"userId",
