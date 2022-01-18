@@ -29,7 +29,7 @@ public class FuzzyDateField {
 
 	public String getFuzzyDateStringWithoutFieldName() {
 		return this.getFuzzyDateString().substring(
-				(Objects.nonNull(parameter) ? parameter.name().length() : 0) + 1
+				(Objects.nonNull(parameter) ? parameter.getFieldName().length() : 0) + 1
 		);
 	}
 
@@ -72,7 +72,7 @@ public class FuzzyDateField {
 			}
 
 			return new FuzzyDateField(QueryParameterUtils.buildFieldElement(
-					Objects.nonNull(parameter) ? parameter.name() : "",
+					Objects.nonNull(parameter) ? parameter.getFieldName() : "",
 					fuzzyDate
 			), parameter);
 		}

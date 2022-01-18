@@ -130,7 +130,7 @@ class FuzzyDateFieldTest {
 			assertThat(actualFuzzyDateField.getFuzzyDateString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(parameter.name(), expectedFuzzyDateField)
+					containsTitleAndAllSetElements(parameter.getFieldName(), expectedFuzzyDateField)
 			));
 		}
 
@@ -168,7 +168,7 @@ class FuzzyDateFieldTest {
 			assertThat(actualFuzzyDateField.getFuzzyDateString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(parameter.name(), expectedFuzzyDateField)
+					containsTitleAndAllSetElements(parameter.getFieldName(), expectedFuzzyDateField)
 			));
 		}
 
@@ -206,7 +206,7 @@ class FuzzyDateFieldTest {
 			assertThat(actualFuzzyDateField.getFuzzyDateString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(parameter.name(), expectedFuzzyDateField)
+					containsTitleAndAllSetElements(parameter.getFieldName(), expectedFuzzyDateField)
 			));
 		}
 
@@ -242,7 +242,7 @@ class FuzzyDateFieldTest {
 			assertThat(actualFuzzyDateField.getFuzzyDateString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(parameter.name(), expectedFuzzyDateField)
+					containsTitleAndAllSetElements(parameter.getFieldName(), expectedFuzzyDateField)
 			));
 		}
 
@@ -284,7 +284,7 @@ class FuzzyDateFieldTest {
 			assertThat(actualFuzzyDateField.getFuzzyDateString(), allOf(
 					notNullValue(),
 					instanceOf(String.class),
-					containsTitleAndAllSetElements(parameter.name(), expectedFuzzyDateField)
+					containsTitleAndAllSetElements(parameter.getFieldName(), expectedFuzzyDateField)
 			));
 		}
 	}

@@ -68,7 +68,7 @@ public class QueryParameterUtils {
 	}
 
 	public static <T> ParameterString combineIntoArgumentWithBracket(String fieldName, T argument) {
-		return ParameterString.fromString("(" + fieldName + ": " + argument.toString() + ")");
+		return ParameterString.fromString("(" + combineIntoArgumentWithoutBracket(fieldName, argument) + ")");
 	}
 
 	public static <T> ParameterString combineIntoArgumentWithBracket(CommonFieldParameter fieldName, T argument) {

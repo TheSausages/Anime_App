@@ -1,5 +1,8 @@
 package anime.app.anilist.request.query.parameters.common;
 
+import lombok.Getter;
+
+@Getter
 public enum CommonParameterFieldNames implements CommonFieldParameter {
 	MEDIA("media"),
 	SORT("sort"),
@@ -17,10 +20,5 @@ public enum CommonParameterFieldNames implements CommonFieldParameter {
 
 	CommonParameterFieldNames(String fieldName) {
 		this.fieldName = fieldName;
-	}
-
-	@Override
-	public String getFieldName() {
-		return fieldName;
 	}
 }

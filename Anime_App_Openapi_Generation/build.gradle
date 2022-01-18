@@ -80,6 +80,7 @@ task generateAnime(type: org.openapitools.generator.gradle.plugin.tasks.Generate
             dateLibrary: "java8",
             interfaceOnly: "true",
             generateSupportingFiles: "true",
+            //imports for these must be manually added in model.mustache
             additionalModelTypeAnnotations: "@SuperBuilder\n@FieldDefaults(level = AccessLevel.PRIVATE)\n@NoArgsConstructor"
     ]
 }

@@ -9,70 +9,19 @@ import static org.hamcrest.Matchers.*;
 class BasicQueryParametersTest {
 
 	@Test
-	void getType_DefaultParameterType_ReturnSameValue() {
+	void getField__ReturnCorrectField() {
 		//given
-		String expectedValue = "MediaFormat";
-		BasicQueryParameters basicParam = BasicQueryParameters.format;
+		BasicQueryParameters parameter = BasicQueryParameters.ID;
+		String expectedField = "id";
 
 		//when
-		String value = basicParam.getType();
+		String actualField = parameter.getFieldName();
 
 		//then
-		assertThat(value, allOf(
+		assertThat(actualField, allOf(
 				notNullValue(),
 				instanceOf(String.class),
-				equalTo(expectedValue)
-		));
-	}
-
-	@Test
-	void getType_Int_ReturnCorrectValue() {
-		//given
-		String expectedValue = "int";
-		BasicQueryParameters basicParam = BasicQueryParameters.averageScore;
-
-		//when
-		String value = basicParam.getType();
-
-		//then
-		assertThat(value, allOf(
-				notNullValue(),
-				instanceOf(String.class),
-				equalTo(expectedValue)
-		));
-	}
-
-	@Test
-	void getType_Boolean_ReturnCorrectValue() {
-		//given
-		String expectedValue = "int";
-		BasicQueryParameters basicParam = BasicQueryParameters.averageScore;
-
-		//when
-		String value = basicParam.getType();
-
-		//then
-		assertThat(value, allOf(
-				notNullValue(),
-				instanceOf(String.class),
-				equalTo(expectedValue)
-		));
-	}
-
-	@Test
-	void getType_IntArray_ReturnCorrectValue() {
-		//given
-		String expectedValue = "int";
-		BasicQueryParameters basicParam = BasicQueryParameters.averageScore;
-
-		//when
-		String value = basicParam.getType();
-
-		//then
-		assertThat(value, allOf(
-				notNullValue(),
-				instanceOf(String.class),
-				equalTo(expectedValue)
+				equalTo(expectedField)
 		));
 	}
 }
