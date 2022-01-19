@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Set;
 
 import static anime.app.anilist.request.utils.QueryArgumentMatcher.containsAllSetElements;
-import static anime.app.anilist.request.utils.QueryTitleAndParametersMatcher.containsTitleAndAllSetElements;
+import static anime.app.anilist.request.utils.QueryTitleWithParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 

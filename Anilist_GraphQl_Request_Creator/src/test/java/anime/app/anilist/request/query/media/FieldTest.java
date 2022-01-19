@@ -34,7 +34,7 @@ import java.util.Arrays;
 import java.util.Set;
 
 import static anime.app.anilist.request.query.media.Field.FIELD_TITLE;
-import static anime.app.anilist.request.utils.QueryTitleAndParametersMatcher.containsTitleAndAllSetElements;
+import static anime.app.anilist.request.utils.QueryTitleWithParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
@@ -51,6 +51,27 @@ class FieldTest {
 		assertThat(builder, allOf(
 				notNullValue(),
 				instanceOf(Field.FieldBuilder.class)
+		));
+	}
+
+	@Test
+	void getFieldWithoutFieldName__ReturnCorrectString() {
+		//given
+		BasicQueryParameters parameters = BasicQueryParameters.ID;
+		Set<ParameterString> expectedField = TestUtils.getParameterStringSetField(
+				parameters.getFieldName()
+		);
+
+		//when
+		Field actualField = Field.getFieldBuilder()
+				.parameter(BasicQueryParameters.ID)
+				.build();
+
+		//then
+		assertThat(actualField.getFieldWithoutFieldName(), allOf(
+				notNullValue(),
+				instanceOf(String.class),
+				containsTitleAndAllSetElements(expectedField)
 		));
 	}
 

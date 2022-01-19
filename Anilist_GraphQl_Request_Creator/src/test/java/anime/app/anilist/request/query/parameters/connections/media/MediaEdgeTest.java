@@ -19,7 +19,7 @@ import java.util.Arrays;
 import java.util.Set;
 
 import static anime.app.anilist.request.query.parameters.connections.media.MediaEdge.MEDIA_EDGE_TITLE;
-import static anime.app.anilist.request.utils.QueryTitleAndParametersMatcher.containsTitleAndAllSetElements;
+import static anime.app.anilist.request.utils.QueryTitleWithParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
@@ -80,7 +80,7 @@ class MediaEdgeTest {
 		@Test
 		void mediaEdgeBuilder_Node_ReturnCorrectString() {
 			//given
-			Media media = Media.getMediaBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
+			Media media = Media.getMediaArgumentBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
 			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
 					"node " + media.getRequestedMediaFields()
 			);
@@ -523,7 +523,7 @@ class MediaEdgeTest {
 		@Test
 		void mediaEdgeBuilder_AllParameters_ReturnCorrectString() {
 			//given
-			Media media = Media.getMediaBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
+			Media media = Media.getMediaArgumentBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
 			StaffSort[] sorts = new StaffSort[] {StaffSort.ID, StaffSort.ROLE};
 			StaffLanguage language = StaffLanguage.ENGLISH;
 			Staff staff = Staff.getStaffBuilder().id().build();

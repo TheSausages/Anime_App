@@ -20,7 +20,7 @@ import java.util.Arrays;
 import java.util.Set;
 
 import static anime.app.anilist.request.query.parameters.connections.characters.CharacterEdge.CHARACTER_EDGE_TITLE;
-import static anime.app.anilist.request.utils.QueryTitleAndParametersMatcher.containsTitleAndAllSetElements;
+import static anime.app.anilist.request.utils.QueryTitleWithParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
@@ -177,7 +177,7 @@ class CharacterEdgeTest {
 		@Test
 		void characterEdgeBuilder_Media_ReturnCorrectString() {
 			//given
-			Media media = Media.getMediaBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
+			Media media = Media.getMediaArgumentBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
 			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
 					QueryParameterUtils.combineIntoField(CommonParameterFieldNames.MEDIA, media.getRequestedMediaFields()).getField()
 			);
@@ -422,7 +422,7 @@ class CharacterEdgeTest {
 			StaffSort[] sorts = new StaffSort[] {StaffSort.ID, StaffSort.ROLE};
 			StaffLanguage language = StaffLanguage.ENGLISH;
 			StaffRoleType type = StaffRoleType.getStaffRoleTypeBuilder().roleNotes().build();
-			Media media = Media.getMediaBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
+			Media media = Media.getMediaArgumentBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
 			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
 					"node " + character.getCharacterStringWithoutFieldName(),
 					"id",

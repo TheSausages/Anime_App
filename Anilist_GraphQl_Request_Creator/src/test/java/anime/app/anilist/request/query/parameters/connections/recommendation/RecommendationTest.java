@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Set;
 
 import static anime.app.anilist.request.query.parameters.connections.recommendation.Recommendation.RECOMMENDATION_TITLE;
-import static anime.app.anilist.request.utils.QueryTitleAndParametersMatcher.containsTitleAndAllSetElements;
+import static anime.app.anilist.request.utils.QueryTitleWithParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
@@ -115,7 +115,7 @@ class RecommendationTest {
 		@Test
 		void recommendationBuilder_Media_ReturnCorrectString() {
 			//given
-			Media media = Media.getMediaBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
+			Media media = Media.getMediaArgumentBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
 			Set<ParameterString> expectedRecommendation = TestUtils.getParameterStringSetField(
 					"media " + media.getRequestedMediaFields()
 			);
@@ -136,7 +136,7 @@ class RecommendationTest {
 		@Test
 		void recommendationBuilder_MediaRecommendation_ReturnCorrectString() {
 			//given
-			Media media = Media.getMediaBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
+			Media media = Media.getMediaArgumentBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
 			Set<ParameterString> expectedRecommendation = TestUtils.getParameterStringSetField(
 					"mediaRecommendation " + media.getRequestedMediaFields()
 			);
@@ -179,7 +179,7 @@ class RecommendationTest {
 		void recommendationBuilder_AllParameters_ReturnCorrectString() {
 			//given
 			AnilistUser user = AnilistUser.getUserBuilder().id().build();
-			Media media = Media.getMediaBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
+			Media media = Media.getMediaArgumentBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
 			Set<ParameterString> expectedRecommendation = TestUtils.getParameterStringSetField(
 					"id",
 					"rating",

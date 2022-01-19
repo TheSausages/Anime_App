@@ -15,7 +15,7 @@ public class TestUtils {
 	}
 
 	public static Set<ParameterString> getParameterStringSetField(String... elements) {
-		return getParameterStringSetWithDivide(QueryTitleAndParametersMatcher.divider, elements);
+		return getParameterStringSetWithDivide(QueryTitleWithParametersMatcher.divider, elements);
 	}
 
 	public static Set<ParameterString> getParameterStringSetArguments(String... elements) {

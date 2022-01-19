@@ -8,13 +8,13 @@ import org.hamcrest.TypeSafeMatcher;
 import java.util.List;
 import java.util.Set;
 
-public class QueryTitleAndParametersMatcher extends TypeSafeMatcher<String> {
+public class QueryTitleWithParametersMatcher extends TypeSafeMatcher<String> {
 	public final static String divider = "\n";
 
 	private final Set<String> elements;
 	private final String title;
 
-	QueryTitleAndParametersMatcher(String title, Set<String> elements) {
+	QueryTitleWithParametersMatcher(String title, Set<String> elements) {
 		this.title = title;
 		this.elements = elements;
 	}
@@ -40,10 +40,10 @@ public class QueryTitleAndParametersMatcher extends TypeSafeMatcher<String> {
 	}
 
 	public static Matcher<String> containsTitleAndAllSetElements(Set<ParameterString> elements) {
-		return new QueryTitleAndParametersMatcher("", QueryArgumentMatcher.fromParameterStringSetToStringSet(elements));
+		return new QueryTitleWithParametersMatcher("", QueryArgumentMatcher.fromParameterStringSetToStringSet(elements));
 	}
 
 	public static Matcher<String> containsTitleAndAllSetElements(String title, Set<ParameterString> elements) {
-		return new QueryTitleAndParametersMatcher(title, QueryArgumentMatcher.fromParameterStringSetToStringSet(elements));
+		return new QueryTitleWithParametersMatcher(title, QueryArgumentMatcher.fromParameterStringSetToStringSet(elements));
 	}
 }

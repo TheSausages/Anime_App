@@ -40,6 +40,10 @@ public class Field {
 		this.field = field;
 	}
 
+	public String getFieldWithoutFieldName() {
+		return field.substring(FIELD_TITLE.length() + 1);
+	}
+
 	public static FieldBuilder getFieldBuilder() {
 		return new FieldBuilder();
 	}

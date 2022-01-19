@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
-import static anime.app.anilist.request.utils.QueryTitleAndParametersMatcher.containsTitleAndAllSetElements;
+import static anime.app.anilist.request.utils.QueryTitleWithParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
@@ -23,7 +23,7 @@ class MediaConnectionTest {
 	@Test
 	void getMediaConnectionWithoutFieldName__ReturnCorrectString() {
 		//given
-		Media media = Media.getMediaBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
+		Media media = Media.getMediaArgumentBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
 		Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
 				"nodes " + media.getRequestedMediaFields()
 		);
@@ -99,7 +99,7 @@ class MediaConnectionTest {
 		@Test
 		void mediaConnectionBuilder_Nodes_ReturnCorrectString() {
 			//given
-			Media media = Media.getMediaBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
+			Media media = Media.getMediaArgumentBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
 			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
 					"nodes " + media.getRequestedMediaFields()
 			);
@@ -144,7 +144,7 @@ class MediaConnectionTest {
 		void mediaConnectionBuilder_AllParameters_ReturnCorrectString() {
 			//given
 			MediaEdge edge = MediaEdge.getMediaEdgeBuilder().id().build();
-			Media media = Media.getMediaBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
+			Media media = Media.getMediaArgumentBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
 			PageInfo pageInfo = PageInfo.getPageInfoBuilder().perPage().build();
 			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
 					pageInfo.getPageInfoString(),

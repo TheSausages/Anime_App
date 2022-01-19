@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Set;
 
 import static anime.app.anilist.request.query.parameters.connections.staff.StaffConnection.STAFF_CONNECTION_TITLE;
-import static anime.app.anilist.request.utils.QueryTitleAndParametersMatcher.containsTitleAndAllSetElements;
+import static anime.app.anilist.request.utils.QueryTitleWithParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
