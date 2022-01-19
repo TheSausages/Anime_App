@@ -320,7 +320,7 @@ class FieldTest {
 		void fieldBuilder_SourceNoParameter_ReturnCorrectString() {
 			//given
 			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
-					"source(version: 2)"
+					"source(version: 3)"
 			);
 
 			//when

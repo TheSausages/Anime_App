@@ -137,7 +137,7 @@ public class Field {
 		}
 
 		public FieldBuilder source() {
-			return source(2);
+			return source(3);
 		}
 
 		public FieldBuilder source(int version) {
