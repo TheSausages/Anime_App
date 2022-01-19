@@ -1,6 +1,5 @@
 package anime.app.anilist.request.query.parameters.connections.characters;
 
-import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.parameters.connections.PageInfo;
 import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
@@ -8,7 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.Set;
+import java.util.List;
 
 import static anime.app.anilist.request.query.parameters.connections.characters.CharacterConnection.CHARACTER_CONNECTION_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleWithParametersMatcher.containsTitleAndAllSetElements;
@@ -21,7 +20,7 @@ class CharacterConnectionTest {
 	void getCharacterConnectionWithoutFieldName__ReturnCorrectString() {
 		//given
 		PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-		Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
+		List<String>  expectedConnection = TestUtils.buildFieldParameterStringSet(
 				info.getPageInfoString()
 		);
 
@@ -74,7 +73,7 @@ class CharacterConnectionTest {
 		void airingScheduleConnectionBuilder_Edge_ReturnCorrectString() {
 			//given
 			CharacterEdge edge = CharacterEdge.getCharacterEdgeBuilder().id().build();
-			Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedConnection = TestUtils.buildFieldParameterStringSet(
 					"edges " + edge.getCharacterEdgeWithoutFieldName()
 			);
 
@@ -95,7 +94,7 @@ class CharacterConnectionTest {
 		void airingScheduleConnectionBuilder_Nodes_ReturnCorrectString() {
 			//given
 			Character character = Character.getCharacterBuilder().id().build();
-			Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedConnection = TestUtils.buildFieldParameterStringSet(
 					"nodes " + character.getCharacterStringWithoutFieldName()
 			);
 
@@ -116,7 +115,7 @@ class CharacterConnectionTest {
 		void airingScheduleConnectionBuilder_PageInfo_ReturnCorrectString() {
 			//given
 			PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-			Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedConnection = TestUtils.buildFieldParameterStringSet(
 					info.getPageInfoString()
 			);
 
@@ -139,7 +138,7 @@ class CharacterConnectionTest {
 			CharacterEdge edge = CharacterEdge.getCharacterEdgeBuilder().id().build();
 			Character character = Character.getCharacterBuilder().id().build();
 			PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-			Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedConnection = TestUtils.buildFieldParameterStringSet(
 					"edges " + edge.getCharacterEdgeWithoutFieldName(),
 					"nodes " + character.getCharacterStringWithoutFieldName(),
 					info.getPageInfoString()

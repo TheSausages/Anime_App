@@ -1,13 +1,12 @@
 package anime.app.anilist.request.query.parameters.connections.studio;
 
-import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.Set;
+import java.util.List;
 
 import static anime.app.anilist.request.query.parameters.connections.studio.StudioEdge.STUDIO_EDGE_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleWithParametersMatcher.containsTitleAndAllSetElements;
@@ -19,7 +18,7 @@ class StudioEdgeTest {
 	@Test
 	void getStudioEdgeWithoutFieldName__ReturnCorrectString() {
 		//given
-		Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+		List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 				"id"
 		);
 
@@ -72,7 +71,7 @@ class StudioEdgeTest {
 		void studioEdgeBuilder_Node_ReturnCorrectString() {
 			//given
 			Studio studio = Studio.getStudioBuilder().id().build();
-			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"node " + studio.getStudioWithoutFieldName()
 			);
 
@@ -91,7 +90,7 @@ class StudioEdgeTest {
 		@Test
 		void studioEdgeBuilder_Id_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"id"
 			);
 
@@ -110,7 +109,7 @@ class StudioEdgeTest {
 		@Test
 		void studioEdgeBuilder_IsMain_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"isMain"
 			);
 
@@ -129,7 +128,7 @@ class StudioEdgeTest {
 		@Test
 		void studioEdgeBuilder_FavouriteOrder_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"favouriteOrder"
 			);
 
@@ -149,7 +148,7 @@ class StudioEdgeTest {
 		void studioEdgeBuilder_AllParameters_ReturnCorrectString() {
 			//given
 			Studio studio = Studio.getStudioBuilder().id().build();
-			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"id",
 					"isMain",
 					"favouriteOrder",

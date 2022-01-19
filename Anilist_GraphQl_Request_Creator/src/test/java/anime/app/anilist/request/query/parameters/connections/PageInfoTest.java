@@ -1,13 +1,12 @@
 package anime.app.anilist.request.query.parameters.connections;
 
-import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.Set;
+import java.util.List;
 
 import static anime.app.anilist.request.query.parameters.connections.PageInfo.PAGE_INFO_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleWithParametersMatcher.containsTitleAndAllSetElements;
@@ -33,7 +32,7 @@ class PageInfoTest {
 	@Test
 	void getPageInfoStringWithoutFieldName__ReturnCorrectString() {
 		//given
-		Set<ParameterString> elements = TestUtils.buildFieldParameterStringSet("perPage");
+		List<String> elements = TestUtils.buildFieldParameterStringSet("perPage");
 
 		//when
 		String actualString = PageInfo.getPageInfoBuilder()
@@ -70,7 +69,7 @@ class PageInfoTest {
 		@Test
 		void pageInfoBuilder_Total_ReturnCorrectString() {
 			//given
-			Set<ParameterString> elements = TestUtils.buildFieldParameterStringSet("total");
+			List<String> elements = TestUtils.buildFieldParameterStringSet("total");
 
 			//when
 			PageInfo actualPageInfo = PageInfo.getPageInfoBuilder().total().build();
@@ -86,7 +85,7 @@ class PageInfoTest {
 		@Test
 		void pageInfoBuilder_PerPage_ReturnCorrectString() {
 			//given
-			Set<ParameterString> elements = TestUtils.buildFieldParameterStringSet("perPage");
+			List<String> elements = TestUtils.buildFieldParameterStringSet("perPage");
 
 			//when
 			PageInfo actualPageInfo = PageInfo.getPageInfoBuilder().perPage().build();
@@ -102,7 +101,7 @@ class PageInfoTest {
 		@Test
 		void pageInfoBuilder_CurrentPage_ReturnCorrectString() {
 			//given
-			Set<ParameterString> elements = TestUtils.buildFieldParameterStringSet("currentPage");
+			List<String> elements = TestUtils.buildFieldParameterStringSet("currentPage");
 
 			//when
 			PageInfo actualPageInfo = PageInfo.getPageInfoBuilder().currentPage().build();
@@ -118,7 +117,7 @@ class PageInfoTest {
 		@Test
 		void pageInfoBuilder_LastPage_ReturnCorrectString() {
 			//given
-			Set<ParameterString> elements = TestUtils.buildFieldParameterStringSet("lastPage");
+			List<String> elements = TestUtils.buildFieldParameterStringSet("lastPage");
 
 			//when
 			PageInfo actualPageInfo = PageInfo.getPageInfoBuilder().lastPage().build();
@@ -134,7 +133,7 @@ class PageInfoTest {
 		@Test
 		void pageInfoBuilder_HasNextPage_ReturnCorrectString() {
 			//given
-			Set<ParameterString> elements = TestUtils.buildFieldParameterStringSet("hasNextPage");
+			List<String> elements = TestUtils.buildFieldParameterStringSet("hasNextPage");
 
 			//when
 			PageInfo actualPageInfo = PageInfo.getPageInfoBuilder().hasNextPage().build();
@@ -150,7 +149,7 @@ class PageInfoTest {
 		@Test
 		void pageInfoBuilder_AllParameters_ReturnCorrectString() {
 			//given
-			Set<ParameterString> elements = TestUtils.buildFieldParameterStringSet(
+			List<String> elements = TestUtils.buildFieldParameterStringSet(
 					"total",
 					"perPage",
 					"currentPage",

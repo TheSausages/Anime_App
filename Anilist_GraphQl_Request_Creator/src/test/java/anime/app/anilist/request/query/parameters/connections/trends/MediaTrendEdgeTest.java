@@ -1,11 +1,10 @@
 package anime.app.anilist.request.query.parameters.connections.trends;
 
-import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.Set;
+import java.util.List;
 
 import static anime.app.anilist.request.query.parameters.connections.trends.MediaTrendEdge.MEDIA_TREND_EDGE_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleWithParametersMatcher.containsTitleAndAllSetElements;
@@ -18,7 +17,7 @@ class MediaTrendEdgeTest {
 	void getStudioEdgeWithoutFieldName__ReturnCorrectString() {
 		//given
 		MediaTrend trend = MediaTrend.getMediaTrendBuilder().mediaId().build();
-		Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+		List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 				"mediaId"
 		);
 
@@ -53,7 +52,7 @@ class MediaTrendEdgeTest {
 	void fromMediaTrend_NonNullArgument_ReturnCorrectString() {
 		//given
 		MediaTrend trend = MediaTrend.getMediaTrendBuilder().mediaId().build();
-		Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+		List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 				"mediaId"
 		);
 
@@ -88,7 +87,7 @@ class MediaTrendEdgeTest {
 	void constructor_NonNullArgument_ReturnCorrectString() {
 		//given
 		MediaTrend trend = MediaTrend.getMediaTrendBuilder().mediaId().build();
-		Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+		List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 				"mediaId"
 		);
 

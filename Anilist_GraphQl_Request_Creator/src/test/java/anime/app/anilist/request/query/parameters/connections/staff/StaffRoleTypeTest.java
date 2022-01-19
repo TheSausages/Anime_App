@@ -1,13 +1,12 @@
 package anime.app.anilist.request.query.parameters.connections.staff;
 
-import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.Set;
+import java.util.List;
 
 import static anime.app.anilist.request.query.parameters.connections.staff.StaffRoleType.STAFF_ROLE_TYPE_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleWithParametersMatcher.containsTitleAndAllSetElements;
@@ -19,7 +18,7 @@ class StaffRoleTypeTest {
 	@Test
 	void getStaffRoleTypeStringWithoutFieldName__ReturnCorrectString() {
 		//given
-		Set<ParameterString> expectedType = TestUtils.buildFieldParameterStringSet(
+		List<String> expectedType = TestUtils.buildFieldParameterStringSet(
 				"roleNotes"
 		);
 
@@ -71,7 +70,7 @@ class StaffRoleTypeTest {
 		@Test
 		void staffRoleTypeBuilder_RoleNotes_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedType = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedType = TestUtils.buildFieldParameterStringSet(
 					"roleNotes"
 			);
 
@@ -91,7 +90,7 @@ class StaffRoleTypeTest {
 		@Test
 		void staffRoleTypeBuilder_DubGroups_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedType = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedType = TestUtils.buildFieldParameterStringSet(
 					"dubGroup"
 			);
 
@@ -112,7 +111,7 @@ class StaffRoleTypeTest {
 		void staffRoleTypeBuilder_VoiceActor_ReturnCorrectString() {
 			//given
 			Staff staff = Staff.getStaffBuilder().id().build();
-			Set<ParameterString> expectedType = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedType = TestUtils.buildFieldParameterStringSet(
 					"voiceActor " + staff.getStaffWithoutFieldName()
 			);
 
@@ -133,7 +132,7 @@ class StaffRoleTypeTest {
 		void staffRoleTypeBuilder_AllParameters_ReturnCorrectString() {
 			//given
 			Staff staff = Staff.getStaffBuilder().id().build();
-			Set<ParameterString> expectedType = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedType = TestUtils.buildFieldParameterStringSet(
 					"roleNotes",
 					"dubGroup",
 					"voiceActor " + staff.getStaffWithoutFieldName()

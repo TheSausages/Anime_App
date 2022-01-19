@@ -1,6 +1,5 @@
 package anime.app.anilist.request.query.parameters.connections.trends;
 
-import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.parameters.connections.PageInfo;
 import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
@@ -8,7 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.Set;
+import java.util.List;
 
 import static anime.app.anilist.request.query.parameters.connections.trends.MediaTrendConnection.MEDIA_TRENDS_CONNECTION_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleWithParametersMatcher.containsTitleAndAllSetElements;
@@ -21,7 +20,7 @@ class MediaTrendConnectionTest {
 	void getMediaConnectionWithoutFieldName__ReturnCorrectString() {
 		//given
 		PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-		Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
+		List<String> expectedConnection = TestUtils.buildFieldParameterStringSet(
 				info.getPageInfoString()
 		);
 
@@ -75,7 +74,7 @@ class MediaTrendConnectionTest {
 			//given
 			MediaTrend trend = MediaTrend.getMediaTrendBuilder().mediaId().build();
 			MediaTrendEdge edge = MediaTrendEdge.fromMediaTrend(trend);
-			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet(
 					"edges " + edge.getStudioEdgeWithoutFieldName()
 			);
 
@@ -96,7 +95,7 @@ class MediaTrendConnectionTest {
 		void mediaConnectionBuilder_Nodes_ReturnCorrectString() {
 			//given
 			MediaTrend trend = MediaTrend.getMediaTrendBuilder().mediaId().build();
-			Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedConnection = TestUtils.buildFieldParameterStringSet(
 					"nodes " + trend.getMediaTrendWithoutFieldName()
 			);
 
@@ -117,7 +116,7 @@ class MediaTrendConnectionTest {
 		void mediaConnectionBuilder_PageInfo_ReturnCorrectString() {
 			//given
 			PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-			Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedConnection = TestUtils.buildFieldParameterStringSet(
 					info.getPageInfoString()
 			);
 
@@ -140,7 +139,7 @@ class MediaTrendConnectionTest {
 			MediaTrend trend = MediaTrend.getMediaTrendBuilder().mediaId().build();
 			MediaTrendEdge edge = MediaTrendEdge.fromMediaTrend(trend);
 			PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet(
+			List<String>expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet(
 					"edges " + edge.getStudioEdgeWithoutFieldName(),
 					"nodes " + trend.getMediaTrendWithoutFieldName(),
 					info.getPageInfoString()

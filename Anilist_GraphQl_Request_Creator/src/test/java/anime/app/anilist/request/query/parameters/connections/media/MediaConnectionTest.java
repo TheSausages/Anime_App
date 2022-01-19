@@ -1,6 +1,5 @@
 package anime.app.anilist.request.query.parameters.connections.media;
 
-import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.media.Field;
 import anime.app.anilist.request.query.media.Media;
 import anime.app.anilist.request.query.parameters.connections.PageInfo;
@@ -12,7 +11,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.Set;
+import java.util.List;
 
 import static anime.app.anilist.request.utils.QueryTitleWithParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -24,7 +23,7 @@ class MediaConnectionTest {
 	void getMediaConnectionWithoutFieldName__ReturnCorrectString() {
 		//given
 		Media media = Media.getMediaArgumentBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
-		Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+		List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 				"nodes " + media.getRequestedMediaFields()
 		);
 
@@ -78,7 +77,7 @@ class MediaConnectionTest {
 		void mediaConnectionBuilder_Edge_ReturnCorrectString() {
 			//given
 			MediaEdge edge = MediaEdge.getMediaEdgeBuilder().id().build();
-			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"edges " + edge.getMediaEdgeWithoutFieldName()
 			);
 
@@ -100,7 +99,7 @@ class MediaConnectionTest {
 		void mediaConnectionBuilder_Nodes_ReturnCorrectString() {
 			//given
 			Media media = Media.getMediaArgumentBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
-			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"nodes " + media.getRequestedMediaFields()
 			);
 
@@ -122,7 +121,7 @@ class MediaConnectionTest {
 		void mediaConnectionBuilder_PageInfo_ReturnCorrectString() {
 			//given
 			PageInfo pageInfo = PageInfo.getPageInfoBuilder().perPage().build();
-			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					pageInfo.getPageInfoString()
 			);
 
@@ -146,7 +145,7 @@ class MediaConnectionTest {
 			MediaEdge edge = MediaEdge.getMediaEdgeBuilder().id().build();
 			Media media = Media.getMediaArgumentBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
 			PageInfo pageInfo = PageInfo.getPageInfoBuilder().perPage().build();
-			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					pageInfo.getPageInfoString(),
 					"nodes " + media.getRequestedMediaFields(),
 					"edges " + edge.getMediaEdgeWithoutFieldName()
@@ -155,6 +154,8 @@ class MediaConnectionTest {
 
 			//when
 			MediaConnection actualConnection = MediaConnection.getMediaConnectionBuilder()
+					.edge(edge)
+					.nodes(media)
 					.pageInfo(pageInfo)
 					.build();
 

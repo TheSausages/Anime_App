@@ -1,6 +1,5 @@
 package anime.app.anilist.request.query.parameters.connections.characters;
 
-import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.parameters.QueryParameterUtils;
 import anime.app.anilist.request.query.parameters.connections.PageInfo;
 import anime.app.anilist.request.query.parameters.connections.media.MediaArguments;
@@ -13,7 +12,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.Set;
+import java.util.List;
 
 import static anime.app.anilist.request.query.parameters.connections.characters.Character.CHARACTER_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleWithParametersMatcher.containsTitleAndAllSetElements;
@@ -25,7 +24,7 @@ class CharacterTest {
 	@Test
 	void getCharacterStringWithoutFieldName__ReturnCorrectString() {
 		//given
-		Set<ParameterString> expectedSchedule = TestUtils.buildFieldParameterStringSet("id");
+		List<String> expectedSchedule = TestUtils.buildFieldParameterStringSet("id");
 
 		//when
 		String actualString = Character.getCharacterBuilder()
@@ -76,7 +75,7 @@ class CharacterTest {
 		@Test
 		void characterBuilder_Id_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet("id");
+			List<String> expectedString = TestUtils.buildFieldParameterStringSet("id");
 
 			//when
 			Character character = Character.getCharacterBuilder().id().build();
@@ -92,7 +91,7 @@ class CharacterTest {
 		@Test
 		void characterBuilder_Name_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedString = TestUtils.buildFieldParameterStringSet(
 					"name {\nfirst\nmiddle\nlast\nfull\nnative\nalternative\nalternativeSpoiler\n}"
 			);
 
@@ -110,7 +109,7 @@ class CharacterTest {
 		@Test
 		void characterBuilder_Image_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedString = TestUtils.buildFieldParameterStringSet(
 					"image {\nlarge\nmedium\n}"
 			);
 
@@ -128,7 +127,7 @@ class CharacterTest {
 		@Test
 		void characterBuilder_DescriptionWithoutArgument_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedString = TestUtils.buildFieldParameterStringSet(
 					"description(asHtml: false)"
 			);
 
@@ -146,7 +145,7 @@ class CharacterTest {
 		@Test
 		void characterBuilder_DescriptionWithArgument_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedString = TestUtils.buildFieldParameterStringSet(
 					"description(asHtml: true)"
 			);
 
@@ -164,7 +163,7 @@ class CharacterTest {
 		@Test
 		void characterBuilder_Gender_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedString = TestUtils.buildFieldParameterStringSet(
 					"gender"
 			);
 
@@ -184,7 +183,7 @@ class CharacterTest {
 			//given
 			FuzzyDateFieldParameter parameter = FuzzyDateFieldParameter.DATE_OF_BIRTH;
 			FuzzyDateField dateField = FuzzyDateField.getFuzzyDateFieldBuilder().allAndBuild();
-			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedString = TestUtils.buildFieldParameterStringSet(
 					QueryParameterUtils.combineIntoStringField(parameter, dateField.getFuzzyDateStringWithoutFieldName()).getField()
 			);
 
@@ -202,7 +201,7 @@ class CharacterTest {
 		@Test
 		void characterBuilder_Age_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedString = TestUtils.buildFieldParameterStringSet(
 					"age"
 			);
 
@@ -220,7 +219,7 @@ class CharacterTest {
 		@Test
 		void characterBuilder_AnilistSiteUrl_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedString = TestUtils.buildFieldParameterStringSet(
 					"siteUrl"
 			);
 
@@ -238,7 +237,7 @@ class CharacterTest {
 		@Test
 		void characterBuilder_Favourites_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedString = TestUtils.buildFieldParameterStringSet(
 					"favourites"
 			);
 
@@ -256,7 +255,7 @@ class CharacterTest {
 		@Test
 		void characterBuilder_ModNotes_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedString = TestUtils.buildFieldParameterStringSet(
 					"modNotes"
 			);
 
@@ -277,7 +276,7 @@ class CharacterTest {
 			MediaConnection connection = MediaConnection.getMediaConnectionBuilder()
 					.pageInfo(PageInfo.getPageInfoBuilder().currentPage().build())
 					.build();
-			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedString = TestUtils.buildFieldParameterStringSet(
 					"media " + connection.getMediaConnectionWithoutFieldName()
 			);
 
@@ -300,7 +299,7 @@ class CharacterTest {
 			MediaConnection connection = MediaConnection.getMediaConnectionBuilder()
 					.pageInfo(PageInfo.getPageInfoBuilder().currentPage().build())
 					.build();
-			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedString = TestUtils.buildFieldParameterStringSet(
 					"media(page: " + page + ") " + connection.getMediaConnectionWithoutFieldName()
 			);
 
@@ -325,7 +324,7 @@ class CharacterTest {
 			MediaConnection connection = MediaConnection.getMediaConnectionBuilder()
 					.pageInfo(PageInfo.getPageInfoBuilder().currentPage().build())
 					.build();
-			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedString = TestUtils.buildFieldParameterStringSet(
 					"id",
 					"name {\nfirst\nmiddle\nlast\nfull\nnative\nalternative\nalternativeSpoiler\n}",
 					"image {\nlarge\nmedium\n}",

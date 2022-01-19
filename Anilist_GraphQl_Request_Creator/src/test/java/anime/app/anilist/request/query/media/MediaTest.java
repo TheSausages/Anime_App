@@ -1,6 +1,5 @@
 package anime.app.anilist.request.query.media;
 
-import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.parameters.common.BasicQueryParameters;
 import anime.app.anilist.request.query.parameters.fuzzyDate.FuzzyDateValue;
 import anime.app.anilist.request.query.parameters.media.*;
@@ -15,10 +14,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import static anime.app.anilist.request.query.media.Media.MEDIA_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleWithArgumentsAndParametersMatcher.containsTitleWithArgumentsAndParameters;
@@ -51,7 +47,7 @@ class MediaTest {
 	@DisplayName("Test Media Builder")
 	class MediaBuilderTest {
 		private final Field field = Field.getFieldBuilder().parameter(BasicQueryParameters.ID).build();
-		private final Set<ParameterString> expectedField = TestUtils.buildFieldParameterStringSet(
+		private final List<String> expectedField = TestUtils.buildFieldParameterStringSet(
 				"id"
 		);
 
@@ -80,7 +76,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$id: Int"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"id: $id"
 			);
 
@@ -116,7 +112,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$idMal: Int"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"idMal: $idMal"
 			);
 
@@ -152,7 +148,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$startDate: FuzzyDateInt"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"startDate: $startDate"
 			);
 
@@ -188,7 +184,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$endDate: FuzzyDateInt"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"endDate: $endDate"
 			);
 
@@ -224,7 +220,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$season: MediaSeason"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"season: $season"
 			);
 
@@ -260,7 +256,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$season: MediaSeason"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"season: $season"
 			);
 
@@ -296,7 +292,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$seasonYear: Int"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"seasonYear: $seasonYear"
 			);
 
@@ -332,7 +328,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$type: MediaType"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"type: $type"
 			);
 
@@ -368,7 +364,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$format: MediaFormat"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"format: $format"
 			);
 
@@ -404,7 +400,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$status: MediaStatus"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"status: $status"
 			);
 
@@ -440,7 +436,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$episodes: Int"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"episodes: $episodes"
 			);
 
@@ -476,7 +472,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$duration: Int"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"duration: $duration"
 			);
 
@@ -512,7 +508,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$chapters: Int"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"chapters: $chapters"
 			);
 
@@ -548,7 +544,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$volumes: Int"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"volumes: $volumes"
 			);
 
@@ -584,7 +580,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$isAdult: Boolean"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"isAdult: $isAdult"
 			);
 
@@ -620,7 +616,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$genre: String"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"genre: $genre"
 			);
 
@@ -656,7 +652,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$tag: String"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"tag: $tag"
 			);
 
@@ -692,7 +688,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$onList: Boolean"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"onList: $onList"
 			);
 
@@ -728,7 +724,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$licensedBy: String"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"licensedBy: $licensedBy"
 			);
 
@@ -764,7 +760,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$averageScore: Int"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"averageScore: $averageScore"
 			);
 
@@ -800,7 +796,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$source: MediaSource"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"source: $source"
 			);
 
@@ -852,7 +848,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$countryOfOrigin: CountryCode"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"countryOfOrigin: $countryOfOrigin"
 			);
 
@@ -888,7 +884,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$countryOfOrigin: CountryCode"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"countryOfOrigin: $countryOfOrigin"
 			);
 
@@ -924,7 +920,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$popularity: Int"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"popularity: $popularity"
 			);
 
@@ -960,7 +956,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$search: String"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"search: $search"
 			);
 
@@ -996,7 +992,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$id_not: Int"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"id_not: $id_not"
 			);
 
@@ -1032,7 +1028,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$id_in: [Int]"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"id_in: $id_in"
 			);
 
@@ -1068,7 +1064,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$id_in: [Int]"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"id_in: $id_in"
 			);
 
@@ -1104,7 +1100,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$id_not_in: [Int]"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"id_not_in: $id_not_in"
 			);
 
@@ -1140,7 +1136,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$id_not_in: [Int]"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"id_not_in: $id_not_in"
 			);
 
@@ -1176,7 +1172,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$idMal_not: Int"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"idMal_not: $idMal_not"
 			);
 
@@ -1212,7 +1208,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$idMal_in: [Int]"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"idMal_in: $idMal_in"
 			);
 
@@ -1248,7 +1244,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$idMal_in: [Int]"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"idMal_in: $idMal_in"
 			);
 
@@ -1284,7 +1280,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$idMal_not_in: [Int]"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"idMal_not_in: $idMal_not_in"
 			);
 
@@ -1320,7 +1316,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$idMal_not_in: [Int]"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"idMal_not_in: $idMal_not_in"
 			);
 
@@ -1356,7 +1352,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$startDate_greater: FuzzyDateInt"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"startDate_greater: $startDate_greater"
 			);
 
@@ -1392,7 +1388,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$endDate_greater: FuzzyDateInt"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"endDate_greater: $endDate_greater"
 			);
 
@@ -1428,7 +1424,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$startDate_lesser: FuzzyDateInt"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"startDate_lesser: $startDate_lesser"
 			);
 
@@ -1464,7 +1460,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$endDate_lesser: FuzzyDateInt"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"endDate_lesser: $endDate_lesser"
 			);
 
@@ -1500,7 +1496,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$format_not: MediaFormat"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"format_not: $format_not"
 			);
 
@@ -1536,7 +1532,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$format_in: [MediaFormat]"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"format_in: $format_in"
 			);
 
@@ -1572,7 +1568,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$format_in: [MediaFormat]"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"format_in: $format_in"
 			);
 
@@ -1608,7 +1604,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$format_not_in: [MediaFormat]"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"format_not_in: $format_not_in"
 			);
 
@@ -1644,7 +1640,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$format_not_in: [MediaFormat]"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"format_not_in: $format_not_in"
 			);
 
@@ -1680,7 +1676,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$status_not: MediaStatus"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"status_not: $status_not"
 			);
 
@@ -1716,7 +1712,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$status_in: [MediaStatus]"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"status_in: $status_in"
 			);
 
@@ -1752,7 +1748,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$status_in: [MediaStatus]"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"status_in: $status_in"
 			);
 
@@ -1788,7 +1784,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$status_not_in: [MediaStatus]"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"status_not_in: $status_not_in"
 			);
 
@@ -1824,7 +1820,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$status_not_in: [MediaStatus]"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"status_not_in: $status_not_in"
 			);
 
@@ -1860,7 +1856,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$episodes_greater: Int"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String>expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"episodes_greater: $episodes_greater"
 			);
 
@@ -1896,7 +1892,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$episodes_lesser: Int"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"episodes_lesser: $episodes_lesser"
 			);
 
@@ -1932,7 +1928,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$duration_greater: Int"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"duration_greater: $duration_greater"
 			);
 
@@ -1968,7 +1964,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$duration_lesser: Int"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"duration_lesser: $duration_lesser"
 			);
 
@@ -2004,7 +2000,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$chapters_greater: Int"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"chapters_greater: $chapters_greater"
 			);
 
@@ -2040,7 +2036,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$chapters_lesser: Int"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"chapters_lesser: $chapters_lesser"
 			);
 
@@ -2076,7 +2072,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$volumes_greater: Int"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"volumes_greater: $volumes_greater"
 			);
 
@@ -2112,7 +2108,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$volumes_lesser: Int"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"volumes_lesser: $volumes_lesser"
 			);
 
@@ -2148,7 +2144,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$genre_in: [String]"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"genre_in: $genre_in"
 			);
 
@@ -2184,7 +2180,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$genre_in: [String]"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String>expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"genre_in: $genre_in"
 			);
 
@@ -2220,7 +2216,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$genre_not_in: [String]"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"genre_not_in: $genre_not_in"
 			);
 
@@ -2256,7 +2252,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$genre_not_in: [String]"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"genre_not_in: $genre_not_in"
 			);
 
@@ -2292,7 +2288,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$tag_in: [String]"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"tag_in: $tag_in"
 			);
 
@@ -2328,7 +2324,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$tag_in: [String]"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"tag_in: $tag_in"
 			);
 
@@ -2364,7 +2360,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$tag_not_in: [String]"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"tag_not_in: $tag_not_in"
 			);
 
@@ -2400,7 +2396,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$tag_not_in: [String]"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"tag_not_in: $tag_not_in"
 			);
 
@@ -2436,7 +2432,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$licensedBy_in: [String]"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"licensedBy_in: $licensedBy_in"
 			);
 
@@ -2472,7 +2468,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$licensedBy_in: [String]"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"licensedBy_in: $licensedBy_in"
 			);
 
@@ -2508,7 +2504,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$averageScore_not: Int"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"averageScore_not: $averageScore_not"
 			);
 
@@ -2544,7 +2540,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$averageScore_greater: Int"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"averageScore_greater: $averageScore_greater"
 			);
 
@@ -2580,7 +2576,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$averageScore_lesser: Int"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"averageScore_lesser: $averageScore_lesser"
 			);
 
@@ -2616,7 +2612,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$popularity_not: Int"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"popularity_not: $popularity_not"
 			);
 
@@ -2652,7 +2648,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$popularity_greater: Int"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"popularity_greater: $popularity_greater"
 			);
 
@@ -2688,7 +2684,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$popularity_lesser: Int"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"popularity_lesser: $popularity_lesser"
 			);
 
@@ -2724,7 +2720,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$source_in: [MediaSource]"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"source_in: $source_in"
 			);
 
@@ -2760,7 +2756,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$source_in: [MediaSource]"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"source_in: $source_in"
 			);
 
@@ -2796,7 +2792,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$sort: [MediaSort]"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String>expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"sort: $sort"
 			);
 
@@ -2832,7 +2828,7 @@ class MediaTest {
 			Set<String> expectedQueryParameters = Set.of(
 					"$sort: [MediaSort]"
 			);
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String>expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"sort: $sort"
 			);
 

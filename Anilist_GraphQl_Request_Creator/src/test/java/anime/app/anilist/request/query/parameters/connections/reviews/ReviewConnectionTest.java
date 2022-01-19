@@ -1,6 +1,5 @@
 package anime.app.anilist.request.query.parameters.connections.reviews;
 
-import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.parameters.connections.PageInfo;
 import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
@@ -8,7 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.Set;
+import java.util.List;
 
 import static anime.app.anilist.request.query.parameters.connections.reviews.ReviewConnection.REVIEW_CONNECTION_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleWithParametersMatcher.containsTitleAndAllSetElements;
@@ -21,7 +20,7 @@ class ReviewConnectionTest {
 	void getReviewConnectionWithoutFieldName__ReturnCorrectString() {
 		//given
 		PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-		Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
+		List<String> expectedConnection = TestUtils.buildFieldParameterStringSet(
 				info.getPageInfoString()
 		);
 
@@ -74,7 +73,7 @@ class ReviewConnectionTest {
 		void reviewConnectionBuilder_Edge_ReturnCorrectString() {
 			//given
 			ReviewEdge edge = ReviewEdge.fromReview(Review.getReviewBuilder().id().build());
-			Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedConnection = TestUtils.buildFieldParameterStringSet(
 					"edges " + edge.getReviewEdgeWithoutFieldName()
 			);
 
@@ -95,7 +94,7 @@ class ReviewConnectionTest {
 		void reviewConnectionBuilder_Nodes_ReturnCorrectString() {
 			//given
 			Review review = Review.getReviewBuilder().id().build();
-			Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedConnection = TestUtils.buildFieldParameterStringSet(
 					"nodes " + review.getReviewWithoutFieldName()
 			);
 
@@ -116,7 +115,7 @@ class ReviewConnectionTest {
 		void reviewConnectionBuilder_PageInfo_ReturnCorrectString() {
 			//given
 			PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-			Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedConnection = TestUtils.buildFieldParameterStringSet(
 					info.getPageInfoString()
 			);
 
@@ -139,7 +138,7 @@ class ReviewConnectionTest {
 			Review review = Review.getReviewBuilder().id().build();
 			ReviewEdge edge = ReviewEdge.fromReview(review);
 			PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-			Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedConnection = TestUtils.buildFieldParameterStringSet(
 					"edges " + edge.getReviewEdgeWithoutFieldName(),
 					"nodes " + review.getReviewWithoutFieldName(),
 					info.getPageInfoString()

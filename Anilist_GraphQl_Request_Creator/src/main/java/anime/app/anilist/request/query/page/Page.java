@@ -58,7 +58,7 @@ public class Page extends QueryElement {
 		Objects.requireNonNull(media, "Media cannot be null");
 		Objects.requireNonNull(pageInfo, "PageInfo cannot be null");
 
-		return new Page(page, perPage, media);
+		return new Page(page, perPage, media, pageInfo);
 	}
 
 	public static Page fromMedia(int page, int perPage, Media media) {

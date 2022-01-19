@@ -13,9 +13,9 @@ import java.util.stream.Stream;
 public class QueryArgumentMatcher extends TypeSafeMatcher<String> {
 	public final static String divider = ", ";
 
-	private final Set<String> elements;
+	private final List<String> elements;
 
-	QueryArgumentMatcher(Set<String> elements) {
+	QueryArgumentMatcher(List<String> elements) {
 		this.elements = elements;
 	}
 
@@ -36,11 +36,11 @@ public class QueryArgumentMatcher extends TypeSafeMatcher<String> {
 		description.appendText("contains elements " + elements);
 	}
 
-	public static Matcher<String> containsAllSetElements(Set<ParameterString> elements) {
-		return new QueryArgumentMatcher(fromParameterStringSetToStringSet(elements));
+	public static Matcher<String> containsAllSetElements(List<String> elements) {
+		return new QueryArgumentMatcher(elements);
 	}
 
-	public static Set<String> fromParameterStringSetToStringSet(Set<ParameterString> set) {
-		return set.stream().map(ParameterString::getField).collect(Collectors.toSet());
+	public static Matcher<String> containsAllSetElements(Set<ParameterString> elements) {
+		return new QueryArgumentMatcher(elements.stream().map(ParameterString::getField).collect(Collectors.toList()));
 	}
 }

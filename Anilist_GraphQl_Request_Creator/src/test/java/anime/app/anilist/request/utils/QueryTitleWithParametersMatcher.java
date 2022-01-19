@@ -7,14 +7,15 @@ import org.hamcrest.TypeSafeMatcher;
 
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class QueryTitleWithParametersMatcher extends TypeSafeMatcher<String> {
 	public final static String divider = "\n";
 
-	private final Set<String> elements;
+	private final List<String> elements;
 	private final String title;
 
-	QueryTitleWithParametersMatcher(String title, Set<String> elements) {
+	QueryTitleWithParametersMatcher(String title, List<String> elements) {
 		this.title = title;
 		this.elements = elements;
 	}
@@ -39,11 +40,15 @@ public class QueryTitleWithParametersMatcher extends TypeSafeMatcher<String> {
 		description.appendText("starts with " + title + " and contains " + elements);
 	}
 
-	public static Matcher<String> containsTitleAndAllSetElements(Set<ParameterString> elements) {
-		return new QueryTitleWithParametersMatcher("", QueryArgumentMatcher.fromParameterStringSetToStringSet(elements));
+	public static Matcher<String> containsTitleAndAllSetElements(List<String> elements) {
+		return new QueryTitleWithParametersMatcher("", elements);
 	}
 
-	public static Matcher<String> containsTitleAndAllSetElements(String title, Set<ParameterString> elements) {
-		return new QueryTitleWithParametersMatcher(title, QueryArgumentMatcher.fromParameterStringSetToStringSet(elements));
+	public static Matcher<String> containsTitleAndAllSetElements(String title, List<String> elements) {
+		return new QueryTitleWithParametersMatcher(title, elements);
 	}
+	public static Matcher<String> containsTitleAndAllSetElements(String title, Set<ParameterString> elements) {
+		return new QueryTitleWithParametersMatcher(title, elements.stream().map(ParameterString::getField).collect(Collectors.toList()));
+	}
+
 }

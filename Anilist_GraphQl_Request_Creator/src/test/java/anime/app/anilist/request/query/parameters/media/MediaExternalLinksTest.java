@@ -1,13 +1,12 @@
 package anime.app.anilist.request.query.parameters.media;
 
-import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.Set;
+import java.util.List;
 
 import static anime.app.anilist.request.utils.QueryTitleWithParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -50,7 +49,7 @@ class MediaExternalLinksTest {
 		@Test
 		void mediaExternalLinksBuilder_Id_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedLinks = TestUtils.buildFieldParameterStringSet("id");
+			List<String> expectedLinks = TestUtils.buildFieldParameterStringSet("id");
 
 			//when
 			MediaExternalLinks actualLinks = MediaExternalLinks.getMediaExternalLinkBuilder().id().build();
@@ -66,7 +65,7 @@ class MediaExternalLinksTest {
 		@Test
 		void mediaExternalLinksBuilder_Url_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedLinks = TestUtils.buildFieldParameterStringSet("url");
+			List<String> expectedLinks = TestUtils.buildFieldParameterStringSet("url");
 
 			//when
 			MediaExternalLinks actualLinks = MediaExternalLinks.getMediaExternalLinkBuilder().url().build();
@@ -82,7 +81,7 @@ class MediaExternalLinksTest {
 		@Test
 		void mediaExternalLinksBuilder_Site_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedLinks = TestUtils.buildFieldParameterStringSet("site");
+			List<String> expectedLinks = TestUtils.buildFieldParameterStringSet("site");
 
 			//when
 			MediaExternalLinks actualLinks = MediaExternalLinks.getMediaExternalLinkBuilder().site().build();
@@ -98,7 +97,7 @@ class MediaExternalLinksTest {
 		@Test
 		void mediaExternalLinksBuilder_AllParameters_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedLinks = TestUtils.buildFieldParameterStringSet("id", "url", "site");
+			List<String> expectedLinks = TestUtils.buildFieldParameterStringSet("id", "url", "site");
 
 
 			//when

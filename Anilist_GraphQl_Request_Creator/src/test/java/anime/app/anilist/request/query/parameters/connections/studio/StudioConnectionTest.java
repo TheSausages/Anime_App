@@ -1,6 +1,5 @@
 package anime.app.anilist.request.query.parameters.connections.studio;
 
-import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.parameters.connections.PageInfo;
 import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
@@ -8,7 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.Set;
+import java.util.List;
 
 import static anime.app.anilist.request.query.parameters.connections.studio.StudioConnection.STUDIO_CONNECTION_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleWithParametersMatcher.containsTitleAndAllSetElements;
@@ -21,7 +20,7 @@ class StudioConnectionTest {
 	void getStudioConnectionWithoutFieldName__ReturnCorrectString() {
 		//given
 		PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-		Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
+		List<String> expectedConnection = TestUtils.buildFieldParameterStringSet(
 				info.getPageInfoString()
 		);
 
@@ -74,7 +73,7 @@ class StudioConnectionTest {
 		void studioConnectionBuilder_Edge_ReturnCorrectString() {
 			//given
 			StudioEdge edge = StudioEdge.getStudioEdgedBuilder().id().build();
-			Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedConnection = TestUtils.buildFieldParameterStringSet(
 					"edges " + edge.getStudioEdgeWithoutFieldName()
 			);
 
@@ -95,7 +94,7 @@ class StudioConnectionTest {
 		void studioConnectionBuilder_Nodes_ReturnCorrectString() {
 			//given
 			Studio studio = Studio.getStudioBuilder().id().build();
-			Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedConnection = TestUtils.buildFieldParameterStringSet(
 					"nodes " + studio.getStudioWithoutFieldName()
 			);
 
@@ -116,7 +115,7 @@ class StudioConnectionTest {
 		void studioConnectionBuilder_PageInfo_ReturnCorrectString() {
 			//given
 			PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-			Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedConnection = TestUtils.buildFieldParameterStringSet(
 					info.getPageInfoString()
 			);
 
@@ -139,7 +138,7 @@ class StudioConnectionTest {
 			StudioEdge edge = StudioEdge.getStudioEdgedBuilder().id().build();
 			Studio studio = Studio.getStudioBuilder().id().build();
 			PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-			Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedConnection = TestUtils.buildFieldParameterStringSet(
 					"edges " + edge.getStudioEdgeWithoutFieldName(),
 					"nodes " + studio.getStudioWithoutFieldName(),
 					info.getPageInfoString()
@@ -147,6 +146,8 @@ class StudioConnectionTest {
 
 			//when
 			StudioConnection actualConnection = StudioConnection.getStudioConnectionBuilder()
+					.edges(edge)
+					.nodes(studio)
 					.pageInfo(info)
 					.build();
 

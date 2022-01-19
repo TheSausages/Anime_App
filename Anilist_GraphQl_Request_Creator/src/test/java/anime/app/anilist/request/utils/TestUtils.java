@@ -1,29 +1,28 @@
 package anime.app.anilist.request.utils;
 
-import anime.app.anilist.request.query.common.ParameterString;
-
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Set;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class TestUtils {
-	public static Set<ParameterString> buildParameterStringWithDivider(String divider, String... elements) {
+	public static List<String> buildParameterStringWithDivider(String divider, String... elements) {
 		return Arrays.stream(elements)
 				.flatMap(str -> Arrays.stream(str.split(divider)))
-				.map(ParameterString::fromString)
-				.collect(Collectors.toSet());
+				.collect(Collectors.toList());
 	}
 
-	public static Set<ParameterString> buildFieldParameterStringSet(String... elements) {
+	public static List<String> buildFieldParameterStringSet(String... elements) {
 		return buildParameterStringWithDivider(QueryTitleWithParametersMatcher.divider, elements);
 	}
 
-	public static Set<ParameterString> buildArgumentParameterStringSet(String... elements) {
+	public static List<String> buildArgumentParameterStringSet(String... elements) {
 		return buildParameterStringWithDivider(QueryArgumentMatcher.divider, elements);
 	}
 
 	public static boolean containsOnly(Collection<String> shouldContain, Collection<String> actuallyContains) {
+		if (shouldContain.size() != actuallyContains.size()) return false;
+
 		for (String containedString : actuallyContains) {
 			if (!shouldContain.contains(containedString)) return false;
 		}

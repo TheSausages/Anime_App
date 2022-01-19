@@ -1,6 +1,5 @@
 package anime.app.anilist.request.query.parameters.connections.trends;
 
-import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.media.Field;
 import anime.app.anilist.request.query.media.Media;
 import anime.app.anilist.request.query.parameters.QueryParameterUtils;
@@ -12,7 +11,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.Set;
+import java.util.List;
 
 import static anime.app.anilist.request.query.parameters.connections.trends.MediaTrend.MEDIA_TREND_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleWithParametersMatcher.containsTitleAndAllSetElements;
@@ -24,7 +23,7 @@ class MediaTrendTest {
 	@Test
 	void getStudioEdgeWithoutFieldName__ReturnCorrectString() {
 		//given
-		Set<ParameterString> expectedTrend = TestUtils.buildFieldParameterStringSet("mediaId");
+		List<String> expectedTrend = TestUtils.buildFieldParameterStringSet("mediaId");
 
 		//when
 		MediaTrend actualTrend = MediaTrend.getMediaTrendBuilder()
@@ -74,7 +73,7 @@ class MediaTrendTest {
 		@Test
 		void mediaTrendBuilder_MediaId_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedTrend = TestUtils.buildFieldParameterStringSet("mediaId");
+			List<String> expectedTrend = TestUtils.buildFieldParameterStringSet("mediaId");
 
 			//when
 			MediaTrend actualTrend = MediaTrend.getMediaTrendBuilder().mediaId().build();
@@ -90,7 +89,7 @@ class MediaTrendTest {
 		@Test
 		void mediaTrendBuilder_Date_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedTrend = TestUtils.buildFieldParameterStringSet("date");
+			List<String> expectedTrend = TestUtils.buildFieldParameterStringSet("date");
 
 			//when
 			MediaTrend actualTrend = MediaTrend.getMediaTrendBuilder().date().build();
@@ -106,7 +105,7 @@ class MediaTrendTest {
 		@Test
 		void mediaTrendBuilder_Trending_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedTrend = TestUtils.buildFieldParameterStringSet("trending");
+			List<String>expectedTrend = TestUtils.buildFieldParameterStringSet("trending");
 
 			//when
 			MediaTrend actualTrend = MediaTrend.getMediaTrendBuilder().trending().build();
@@ -122,7 +121,7 @@ class MediaTrendTest {
 		@Test
 		void mediaTrendBuilder_AverageScore_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedTrend = TestUtils.buildFieldParameterStringSet("averageScore");
+			List<String> expectedTrend = TestUtils.buildFieldParameterStringSet("averageScore");
 
 			//when
 			MediaTrend actualTrend = MediaTrend.getMediaTrendBuilder().averageScore().build();
@@ -138,7 +137,7 @@ class MediaTrendTest {
 		@Test
 		void mediaTrendBuilder_Popularity_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedTrend = TestUtils.buildFieldParameterStringSet("popularity");
+			List<String> expectedTrend = TestUtils.buildFieldParameterStringSet("popularity");
 
 			//when
 			MediaTrend actualTrend = MediaTrend.getMediaTrendBuilder().popularity().build();
@@ -154,7 +153,7 @@ class MediaTrendTest {
 		@Test
 		void mediaTrendBuilder_InProgress_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedTrend = TestUtils.buildFieldParameterStringSet("inProgress");
+			List<String> expectedTrend = TestUtils.buildFieldParameterStringSet("inProgress");
 
 			//when
 			MediaTrend actualTrend = MediaTrend.getMediaTrendBuilder().inProgress().build();
@@ -170,7 +169,7 @@ class MediaTrendTest {
 		@Test
 		void mediaTrendBuilder_Releasing_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedTrend = TestUtils.buildFieldParameterStringSet("releasing");
+			List<String> expectedTrend = TestUtils.buildFieldParameterStringSet("releasing");
 
 			//when
 			MediaTrend actualTrend = MediaTrend.getMediaTrendBuilder().releasing().build();
@@ -186,7 +185,7 @@ class MediaTrendTest {
 		@Test
 		void mediaTrendBuilder_Episode_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedTrend = TestUtils.buildFieldParameterStringSet("episode");
+			List<String> expectedTrend = TestUtils.buildFieldParameterStringSet("episode");
 
 			//when
 			MediaTrend actualTrend = MediaTrend.getMediaTrendBuilder().episode().build();
@@ -203,7 +202,7 @@ class MediaTrendTest {
 		void mediaTrendBuilder_Media_ReturnCorrectString() {
 			//given
 			Media media = Media.getMediaArgumentBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
-			Set<ParameterString> expectedTrend = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedTrend = TestUtils.buildFieldParameterStringSet(
 					QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.MEDIA, media.getRequestedMediaFields()).getField()
 			);
 
@@ -222,7 +221,7 @@ class MediaTrendTest {
 		void mediaTrendBuilder_AllParameters_ReturnCorrectString() {
 			//given
 			Media media = Media.getMediaArgumentBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
-			Set<ParameterString> expectedTrend = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedTrend = TestUtils.buildFieldParameterStringSet(
 					"mediaId",
 					"date",
 					"trending",

@@ -1,11 +1,10 @@
 package anime.app.anilist.request.query.parameters.connections.recommendation;
 
-import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.Set;
+import java.util.List;
 
 import static anime.app.anilist.request.utils.QueryTitleWithParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -33,7 +32,7 @@ class RecommendationEdgeTest {
 	void getRecommendationEdgeWithoutFieldName_NonNullReview_ReturnCorrectString() {
 		//given
 		Recommendation recommendation = Recommendation.getRecommendationBuilder().id().build();
-		Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+		List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 				"node " + recommendation.getRecommendationStringWithoutFieldName()
 		);
 
@@ -68,7 +67,7 @@ class RecommendationEdgeTest {
 	void fromRecommendation_NonNullReview_ReturnCorrectString() {
 		//given
 		Recommendation recommendation = Recommendation.getRecommendationBuilder().id().build();
-		Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+		List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 				"node " + recommendation.getRecommendationStringWithoutFieldName()
 		);
 

@@ -1,6 +1,5 @@
 package anime.app.anilist.request.query.parameters.connections.characters;
 
-import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.media.Field;
 import anime.app.anilist.request.query.media.Media;
 import anime.app.anilist.request.query.parameters.QueryParameterUtils;
@@ -17,7 +16,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-import java.util.Set;
+import java.util.List;
 
 import static anime.app.anilist.request.query.parameters.connections.characters.CharacterEdge.CHARACTER_EDGE_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleWithParametersMatcher.containsTitleAndAllSetElements;
@@ -43,7 +42,7 @@ class CharacterEdgeTest {
 	@Test
 	void getCharacterEdgeWithoutFieldName__ReturnCorrectString() {
 		//given
-		Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+		List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 				"id"
 		);
 
@@ -82,7 +81,7 @@ class CharacterEdgeTest {
 		void characterEdgeBuilder_Node_ReturnCorrectString() {
 			//given
 			Character character = Character.getCharacterBuilder().id().build();
-			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"node " + character.getCharacterStringWithoutFieldName()
 			);
 
@@ -101,7 +100,7 @@ class CharacterEdgeTest {
 		@Test
 		void characterEdgeBuilder_Id_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"id"
 			);
 
@@ -120,7 +119,7 @@ class CharacterEdgeTest {
 		@Test
 		void characterEdgeBuilder_Role_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"role"
 			);
 
@@ -139,7 +138,7 @@ class CharacterEdgeTest {
 		@Test
 		void characterEdgeBuilder_Name_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"name"
 			);
 
@@ -158,7 +157,7 @@ class CharacterEdgeTest {
 		@Test
 		void characterEdgeBuilder_FavouriteOrder_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"favouriteOrder"
 			);
 
@@ -178,7 +177,7 @@ class CharacterEdgeTest {
 		void characterEdgeBuilder_Media_ReturnCorrectString() {
 			//given
 			Media media = Media.getMediaArgumentBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
-			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.MEDIA, media.getRequestedMediaFields()).getField()
 			);
 
@@ -198,7 +197,7 @@ class CharacterEdgeTest {
 		void characterEdgeBuilder_VoiceActor_ReturnCorrectString() {
 			//given
 			Staff staff = Staff.getStaffBuilder().id().build();
-			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"voiceActors " + staff.getStaffWithoutFieldName()
 			);
 
@@ -220,7 +219,7 @@ class CharacterEdgeTest {
 			//given
 			StaffLanguage language = StaffLanguage.ENGLISH;
 			Staff staff = Staff.getStaffBuilder().id().build();
-			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"voiceActors(language: " + language.name() + ") " + staff.getStaffWithoutFieldName()
 			);
 
@@ -242,7 +241,7 @@ class CharacterEdgeTest {
 			//given
 			StaffSort[] sorts = new StaffSort[] {StaffSort.ID};
 			Staff staff = Staff.getStaffBuilder().id().build();
-			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"voiceActors(sort: " + Arrays.toString(sorts) + ") " + staff.getStaffWithoutFieldName()
 			);
 
@@ -264,7 +263,7 @@ class CharacterEdgeTest {
 			//given
 			StaffSort[] sorts = new StaffSort[] {StaffSort.ID, StaffSort.ROLE};
 			Staff staff = Staff.getStaffBuilder().id().build();
-			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"voiceActors(sort: " + Arrays.toString(sorts) + ") " + staff.getStaffWithoutFieldName()
 			);
 
@@ -287,7 +286,7 @@ class CharacterEdgeTest {
 			StaffSort[] sorts = new StaffSort[] {StaffSort.ID, StaffSort.ROLE};
 			StaffLanguage language = StaffLanguage.ENGLISH;
 			Staff staff = Staff.getStaffBuilder().id().build();
-			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"voiceActors(language: " + language.name() + ", sort: " + Arrays.toString(sorts) + ") " + staff.getStaffWithoutFieldName()
 			);
 
@@ -308,7 +307,7 @@ class CharacterEdgeTest {
 		void characterEdgeBuilder_VoiceActorsRoles_ReturnCorrectString() {
 			//given
 			StaffRoleType type = StaffRoleType.getStaffRoleTypeBuilder().roleNotes().build();
-			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"voiceActorsRoles " + type.getStaffRoleTypeStringWithoutFieldName()
 			);
 
@@ -330,7 +329,7 @@ class CharacterEdgeTest {
 			//given
 			StaffLanguage language = StaffLanguage.ENGLISH;
 			StaffRoleType type = StaffRoleType.getStaffRoleTypeBuilder().roleNotes().build();
-			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"voiceActorsRoles(language: " + language.name() + ") " + type.getStaffRoleTypeStringWithoutFieldName()
 			);
 
@@ -352,7 +351,7 @@ class CharacterEdgeTest {
 			//given
 			StaffSort[] sorts = new StaffSort[] {StaffSort.ID};
 			StaffRoleType type = StaffRoleType.getStaffRoleTypeBuilder().roleNotes().build();
-			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"voiceActorsRoles(sort: " + Arrays.toString(sorts) + ") " + type.getStaffRoleTypeStringWithoutFieldName()
 			);
 
@@ -374,7 +373,7 @@ class CharacterEdgeTest {
 			//given
 			StaffSort[] sorts = new StaffSort[] {StaffSort.ID, StaffSort.ROLE};
 			StaffRoleType type = StaffRoleType.getStaffRoleTypeBuilder().roleNotes().build();
-			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"voiceActorsRoles(sort: " + Arrays.toString(sorts) + ") " + type.getStaffRoleTypeStringWithoutFieldName()
 			);
 
@@ -397,7 +396,7 @@ class CharacterEdgeTest {
 			StaffSort[] sorts = new StaffSort[] {StaffSort.ID, StaffSort.ROLE};
 			StaffLanguage language = StaffLanguage.ENGLISH;
 			StaffRoleType type = StaffRoleType.getStaffRoleTypeBuilder().roleNotes().build();
-			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"voiceActorsRoles(language: " + language.name() + ", sort: " + Arrays.toString(sorts) + ") " + type.getStaffRoleTypeStringWithoutFieldName()
 			);
 
@@ -423,7 +422,7 @@ class CharacterEdgeTest {
 			StaffLanguage language = StaffLanguage.ENGLISH;
 			StaffRoleType type = StaffRoleType.getStaffRoleTypeBuilder().roleNotes().build();
 			Media media = Media.getMediaArgumentBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
-			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"node " + character.getCharacterStringWithoutFieldName(),
 					"id",
 					"role",

@@ -1,6 +1,5 @@
 package anime.app.anilist.request.query.page;
 
-import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.media.Field;
 import anime.app.anilist.request.query.media.Media;
 import anime.app.anilist.request.query.parameters.common.BasicQueryParameters;
@@ -9,6 +8,7 @@ import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
@@ -78,7 +78,7 @@ class PageTest {
 		Set<String> expectedQueryParameters = Set.of(
 				"$page: Int", "$perPage: Int"
 		);
-		Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+		List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 				"page: $page, perPage: $perPage"
 		);
 
@@ -141,7 +141,7 @@ class PageTest {
 		Set<String> expectedQueryParameters = Set.of(
 				"$page: Int", "$perPage: Int"
 		);
-		Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+		List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 				"page: $page, perPage: $perPage"
 		);
 

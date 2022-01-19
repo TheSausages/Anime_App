@@ -1,6 +1,5 @@
 package anime.app.anilist.request.query.parameters.connections.staff;
 
-import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -8,7 +7,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-import java.util.Set;
+import java.util.List;
 
 import static anime.app.anilist.request.utils.QueryArgumentMatcher.containsAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -52,7 +51,7 @@ class StaffArgumentsTest {
 		void staffArgumentsBuilder_SortSingle_ReturnCorrectString() {
 			//given
 			StaffSort[] sorts = new StaffSort[] {StaffSort.ID};
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"sort: " + Arrays.toString(sorts)
 			);
 
@@ -73,7 +72,7 @@ class StaffArgumentsTest {
 		void staffArgumentsBuilder_SortMultiple_ReturnCorrectString() {
 			//given
 			StaffSort[] sorts = new StaffSort[] {StaffSort.ID, StaffSort.ID_DESC};
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"sort: " + Arrays.toString(sorts)
 			);
 
@@ -94,7 +93,7 @@ class StaffArgumentsTest {
 		void staffArgumentsBuilder_Page_ReturnCorrectString() {
 			//given
 			int page = 1;
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"page: " + page
 			);
 
@@ -115,7 +114,7 @@ class StaffArgumentsTest {
 		void staffArgumentsBuilder_PerPage_ReturnCorrectString() {
 			//given
 			int perPage = 1;
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"perPage: " + perPage
 			);
 
@@ -138,7 +137,7 @@ class StaffArgumentsTest {
 			int page = 1;
 			int perPage = 30;
 			StaffSort[] sorts = new StaffSort[] {StaffSort.ID, StaffSort.ID_DESC};
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"page: " + page,
 					"perPage: " + perPage,
 					"sort: " + Arrays.toString(sorts)

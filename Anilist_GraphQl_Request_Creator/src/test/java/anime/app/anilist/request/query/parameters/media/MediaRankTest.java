@@ -1,13 +1,12 @@
 package anime.app.anilist.request.query.parameters.media;
 
-import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.Set;
+import java.util.List;
 
 import static anime.app.anilist.request.utils.QueryTitleWithParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -50,7 +49,7 @@ class MediaRankTest {
 		@Test
 		void mediaRankBuilder_Id_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedRank = TestUtils.buildFieldParameterStringSet("id");
+			List<String> expectedRank = TestUtils.buildFieldParameterStringSet("id");
 
 			//when
 			MediaRank actualRank = MediaRank.getMediaRankBuilder().id().build();
@@ -66,7 +65,7 @@ class MediaRankTest {
 		@Test
 		void mediaRankBuilder_Rank_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedRank = TestUtils.buildFieldParameterStringSet("rank");
+			List<String> expectedRank = TestUtils.buildFieldParameterStringSet("rank");
 
 			//when
 			MediaRank actualRank = MediaRank.getMediaRankBuilder().rank().build();
@@ -82,7 +81,7 @@ class MediaRankTest {
 		@Test
 		void mediaRankBuilder_Type_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedRank = TestUtils.buildFieldParameterStringSet("type");
+			List<String> expectedRank = TestUtils.buildFieldParameterStringSet("type");
 
 			//when
 			MediaRank actualRank = MediaRank.getMediaRankBuilder().type().build();
@@ -98,7 +97,7 @@ class MediaRankTest {
 		@Test
 		void mediaRankBuilder_Format_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedRank = TestUtils.buildFieldParameterStringSet("format");
+			List<String> expectedRank = TestUtils.buildFieldParameterStringSet("format");
 
 			//when
 			MediaRank actualRank = MediaRank.getMediaRankBuilder().format().build();
@@ -114,7 +113,7 @@ class MediaRankTest {
 		@Test
 		void mediaRankBuilder_Year_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedRank = TestUtils.buildFieldParameterStringSet("year");
+			List<String> expectedRank = TestUtils.buildFieldParameterStringSet("year");
 
 			//when
 			MediaRank actualRank = MediaRank.getMediaRankBuilder().year().build();
@@ -130,7 +129,7 @@ class MediaRankTest {
 		@Test
 		void mediaRankBuilder_Season_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedRank = TestUtils.buildFieldParameterStringSet("season");
+			List<String> expectedRank = TestUtils.buildFieldParameterStringSet("season");
 
 			//when
 			MediaRank actualRank = MediaRank.getMediaRankBuilder().season().build();
@@ -146,7 +145,7 @@ class MediaRankTest {
 		@Test
 		void mediaRankBuilder_AllTime_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedRank = TestUtils.buildFieldParameterStringSet("allTime");
+			List<String> expectedRank = TestUtils.buildFieldParameterStringSet("allTime");
 
 			//when
 			MediaRank actualRank = MediaRank.getMediaRankBuilder().allTime().build();
@@ -162,7 +161,7 @@ class MediaRankTest {
 		@Test
 		void mediaRankBuilder_Context_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedRank = TestUtils.buildFieldParameterStringSet("context");
+			List<String> expectedRank = TestUtils.buildFieldParameterStringSet("context");
 
 			//when
 			MediaRank actualRank = MediaRank.getMediaRankBuilder().context().build();
@@ -178,7 +177,7 @@ class MediaRankTest {
 		@Test
 		void mediaRankBuilder_AllParameters_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedRank = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedRank = TestUtils.buildFieldParameterStringSet(
 					"id",
 					"rank",
 					"type",

@@ -1,6 +1,5 @@
 package anime.app.anilist.request.query.parameters.connections.reviews;
 
-import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.media.Field;
 import anime.app.anilist.request.query.media.Media;
 import anime.app.anilist.request.query.parameters.common.AnilistUser;
@@ -11,7 +10,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.Set;
+import java.util.List;
 
 import static anime.app.anilist.request.query.parameters.connections.reviews.Review.REVIEW_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleWithParametersMatcher.containsTitleAndAllSetElements;
@@ -23,7 +22,7 @@ class ReviewTest {
 	@Test
 	void getReviewWithoutFieldName__ReturnCorrectString() {
 		//given
-		Set<ParameterString> expectedReview = TestUtils.buildFieldParameterStringSet("id");
+		List<String> expectedReview = TestUtils.buildFieldParameterStringSet("id");
 
 		//when
 		Review actualReview = Review.getReviewBuilder()
@@ -73,7 +72,7 @@ class ReviewTest {
 		@Test
 		void reviewBuilder_Id_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedReview = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedReview = TestUtils.buildFieldParameterStringSet(
 					"id"
 			);
 
@@ -93,7 +92,7 @@ class ReviewTest {
 		@Test
 		void reviewBuilder_UserId_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedReview = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedReview = TestUtils.buildFieldParameterStringSet(
 					"userId"
 			);
 
@@ -113,7 +112,7 @@ class ReviewTest {
 		@Test
 		void reviewBuilder_MediaId_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedReview = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedReview = TestUtils.buildFieldParameterStringSet(
 					"mediaId"
 			);
 
@@ -133,7 +132,7 @@ class ReviewTest {
 		@Test
 		void reviewBuilder_MediaType_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedReview = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedReview = TestUtils.buildFieldParameterStringSet(
 					"mediaType"
 			);
 
@@ -153,7 +152,7 @@ class ReviewTest {
 		@Test
 		void reviewBuilder_Summary_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedReview = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedReview = TestUtils.buildFieldParameterStringSet(
 					"summary"
 			);
 
@@ -173,7 +172,7 @@ class ReviewTest {
 		@Test
 		void reviewBuilder_Body_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedReview = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedReview = TestUtils.buildFieldParameterStringSet(
 					"body"
 			);
 
@@ -193,7 +192,7 @@ class ReviewTest {
 		@Test
 		void reviewBuilder_BodyAsHtmlNoParameter_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedReview = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedReview = TestUtils.buildFieldParameterStringSet(
 					"body(asHtml: true)"
 			);
 
@@ -214,7 +213,7 @@ class ReviewTest {
 		void reviewBuilder_BodyAsHtmlWithParameter_ReturnCorrectString() {
 			//given
 			boolean asHtml = false;
-			Set<ParameterString> expectedReview = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedReview = TestUtils.buildFieldParameterStringSet(
 					"body(asHtml: " + asHtml + ")"
 			);
 
@@ -234,7 +233,7 @@ class ReviewTest {
 		@Test
 		void reviewBuilder_Rating_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedReview = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedReview = TestUtils.buildFieldParameterStringSet(
 					"rating"
 			);
 
@@ -254,7 +253,7 @@ class ReviewTest {
 		@Test
 		void reviewBuilder_RatingAmount_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedReview = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedReview = TestUtils.buildFieldParameterStringSet(
 					"ratingAmount"
 			);
 
@@ -274,7 +273,7 @@ class ReviewTest {
 		@Test
 		void reviewBuilder_Score_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedReview = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedReview = TestUtils.buildFieldParameterStringSet(
 					"score"
 			);
 
@@ -294,7 +293,7 @@ class ReviewTest {
 		@Test
 		void reviewBuilder_IsPrivate_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedReview = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedReview = TestUtils.buildFieldParameterStringSet(
 					"private"
 			);
 
@@ -314,7 +313,7 @@ class ReviewTest {
 		@Test
 		void reviewBuilder_SiteUrl_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedReview = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedReview = TestUtils.buildFieldParameterStringSet(
 					"siteUrl"
 			);
 
@@ -334,7 +333,7 @@ class ReviewTest {
 		@Test
 		void reviewBuilder_CreatedAt_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedReview = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedReview = TestUtils.buildFieldParameterStringSet(
 					"createdAt"
 			);
 
@@ -354,7 +353,7 @@ class ReviewTest {
 		@Test
 		void reviewBuilder_UpdatedAt_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedReview = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedReview = TestUtils.buildFieldParameterStringSet(
 					"updatedAt"
 			);
 
@@ -375,7 +374,7 @@ class ReviewTest {
 		void reviewBuilder_User_ReturnCorrectString() {
 			//given
 			AnilistUser anilistUser = AnilistUser.getUserBuilder().id().build();
-			Set<ParameterString> expectedReview = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedReview = TestUtils.buildFieldParameterStringSet(
 					"user " + anilistUser.getAnilistUserWithoutFieldName()
 			);
 
@@ -396,7 +395,7 @@ class ReviewTest {
 		void reviewBuilder_Media_ReturnCorrectString() {
 			//given
 			Media media = Media.getMediaArgumentBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
-			Set<ParameterString> expectedReview = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedReview = TestUtils.buildFieldParameterStringSet(
 					"media " +media.getRequestedMediaFields()
 			);
 
@@ -418,7 +417,7 @@ class ReviewTest {
 			//given
 			AnilistUser anilistUser = AnilistUser.getUserBuilder().id().build();
 			Media media = Media.getMediaArgumentBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
-			Set<ParameterString> expectedReview = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedReview = TestUtils.buildFieldParameterStringSet(
 					"id",
 					"userId",
 					"mediaId",

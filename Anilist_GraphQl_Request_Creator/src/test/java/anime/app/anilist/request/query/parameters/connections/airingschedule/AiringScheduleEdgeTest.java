@@ -1,11 +1,10 @@
 package anime.app.anilist.request.query.parameters.connections.airingschedule;
 
-import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.Set;
+import java.util.List;
 
 import static anime.app.anilist.request.utils.QueryTitleWithParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -32,7 +31,7 @@ class AiringScheduleEdgeTest {
 	@Test
 	void getAiringScheduleEdge_WithoutSchedule_ReturnCorrectString() {
 		//given
-		Set<ParameterString> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet("id");
+		List<String> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet("id");
 
 		//when
 		AiringScheduleEdge actualAiringScheduleEdge = new AiringScheduleEdge();
@@ -51,7 +50,7 @@ class AiringScheduleEdgeTest {
 		AiringSchedule schedule = AiringSchedule.getAiringScheduleBuilder()
 				.episode()
 				.build();
-		Set<ParameterString> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet(
+		List<String> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet(
 				"id",
 				"node " + schedule.getAiringScheduleStringWithoutFieldName()
 		);
@@ -86,7 +85,7 @@ class AiringScheduleEdgeTest {
 	@Test
 	void fromNothing_WithoutSchedule_ReturnCorrectString() {
 		//given
-		Set<ParameterString> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet("id");
+		List<String> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet("id");
 
 		//when
 		AiringScheduleEdge actualAiringScheduleEdge = AiringScheduleEdge.fromNothing();
@@ -105,7 +104,7 @@ class AiringScheduleEdgeTest {
 		AiringSchedule schedule = AiringSchedule.getAiringScheduleBuilder()
 				.episode()
 				.build();
-		Set<ParameterString> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet(
+		List<String> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet(
 				"id",
 				"node " + schedule.getAiringScheduleStringWithoutFieldName()
 		);
@@ -124,7 +123,7 @@ class AiringScheduleEdgeTest {
 	@Test
 	void getAiringScheduleEdgeWithoutFieldName_WithoutSchedule_ReturnCorrectString() {
 		//given
-		Set<ParameterString> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet("id");
+		List<String> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet("id");
 
 		//when
 		AiringScheduleEdge actualAiringScheduleEdge = new AiringScheduleEdge();
@@ -143,7 +142,7 @@ class AiringScheduleEdgeTest {
 		AiringSchedule schedule = AiringSchedule.getAiringScheduleBuilder()
 				.episode()
 				.build();
-		Set<ParameterString> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet(
+		List<String> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet(
 				"id",
 				"node " + schedule.getAiringScheduleStringWithoutFieldName()
 		);

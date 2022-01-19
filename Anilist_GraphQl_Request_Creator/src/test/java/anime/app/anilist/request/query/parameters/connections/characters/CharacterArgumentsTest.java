@@ -1,6 +1,5 @@
 package anime.app.anilist.request.query.parameters.connections.characters;
 
-import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -8,7 +7,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-import java.util.Set;
+import java.util.List;
 
 import static anime.app.anilist.request.utils.QueryArgumentMatcher.containsAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -52,7 +51,7 @@ class CharacterArgumentsTest {
 		void characterArgumentsBuilder_CharacterSortSingle_ReturnCorrectString() {
 			//given
 			CharacterSort[] sorts = new CharacterSort[] {CharacterSort.ID};
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet("sort: " + Arrays.toString(sorts));
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet("sort: " + Arrays.toString(sorts));
 
 			//when
 			CharacterArguments actualArguments = CharacterArguments.getCharacterArgumentsBuilder()
@@ -71,7 +70,7 @@ class CharacterArgumentsTest {
 		void characterArgumentsBuilder_CharacterSortMany_ReturnCorrectString() {
 			//given
 			CharacterSort[] sorts = new CharacterSort[] {CharacterSort.ID, CharacterSort.ROLE};
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"sort: " + Arrays.toString(sorts)
 			);
 
@@ -92,7 +91,7 @@ class CharacterArgumentsTest {
 		void characterArgumentsBuilder_CharacterRole_ReturnCorrectString() {
 			//given
 			CharacterRole role = CharacterRole.MAIN;
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet("role: " + role.name());
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet("role: " + role.name());
 
 			//when
 			CharacterArguments actualArguments = CharacterArguments.getCharacterArgumentsBuilder()
@@ -111,7 +110,7 @@ class CharacterArgumentsTest {
 		void characterArgumentsBuilder_Page_ReturnCorrectString() {
 			//given
 			int page = 1;
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet("page: " + page);
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet("page: " + page);
 
 			//when
 			CharacterArguments actualArguments = CharacterArguments.getCharacterArgumentsBuilder()
@@ -130,7 +129,7 @@ class CharacterArgumentsTest {
 		void characterArgumentsBuilder_PerPage_ReturnCorrectString() {
 			//given
 			int perPage = 1;
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet("perPage: " + perPage);
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet("perPage: " + perPage);
 
 			//when
 			CharacterArguments actualArguments = CharacterArguments.getCharacterArgumentsBuilder()
@@ -152,7 +151,7 @@ class CharacterArgumentsTest {
 			CharacterRole role = CharacterRole.MAIN;
 			int page = 1;
 			int perPage = 1;
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"sort: " + Arrays.toString(sorts),
 					"role: " + role.name(),
 					"page: " + page,

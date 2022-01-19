@@ -1,6 +1,5 @@
 package anime.app.anilist.request.query.parameters.connections.airingschedule;
 
-import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.media.Field;
 import anime.app.anilist.request.query.media.Media;
 import anime.app.anilist.request.query.parameters.QueryParameterUtils;
@@ -12,7 +11,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.Set;
+import java.util.List;
 
 import static anime.app.anilist.request.query.parameters.connections.airingschedule.AiringSchedule.AIRING_SCHEDULE_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleWithParametersMatcher.containsTitleAndAllSetElements;
@@ -24,7 +23,7 @@ class AiringScheduleTest {
 	@Test
 	void getAiringScheduleStringWithoutFieldName__ReturnCorrectString() {
 		//given
-		Set<ParameterString> expectedSchedule = TestUtils.buildFieldParameterStringSet("id");
+		List<String> expectedSchedule = TestUtils.buildFieldParameterStringSet("id");
 
 		//when
 		String actualString = AiringSchedule.getAiringScheduleBuilder()
@@ -75,7 +74,7 @@ class AiringScheduleTest {
 		@Test
 		void airingScheduleBuilder_Id_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet("id");
+			List<String> expectedString = TestUtils.buildFieldParameterStringSet("id");
 
 			//when
 			AiringSchedule actualSchedule = AiringSchedule.getAiringScheduleBuilder().id().build();
@@ -91,7 +90,7 @@ class AiringScheduleTest {
 		@Test
 		void airingScheduleBuilder_AiringAt_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet("airingAt");
+			List<String> expectedString = TestUtils.buildFieldParameterStringSet("airingAt");
 
 			//when
 			AiringSchedule actualSchedule = AiringSchedule.getAiringScheduleBuilder().airingAt().build();
@@ -107,7 +106,7 @@ class AiringScheduleTest {
 		@Test
 		void airingScheduleBuilder_TimeUntilAiring_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet("timeUntilAiring");
+			List<String> expectedString = TestUtils.buildFieldParameterStringSet("timeUntilAiring");
 
 			//when
 			AiringSchedule actualSchedule = AiringSchedule.getAiringScheduleBuilder().timeUntilAiring().build();
@@ -123,7 +122,7 @@ class AiringScheduleTest {
 		@Test
 		void airingScheduleBuilder_Episode_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet("episode");
+			List<String> expectedString = TestUtils.buildFieldParameterStringSet("episode");
 
 			//when
 			AiringSchedule actualSchedule = AiringSchedule.getAiringScheduleBuilder().episode().build();
@@ -139,7 +138,7 @@ class AiringScheduleTest {
 		@Test
 		void airingScheduleBuilder_MediaId_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet("mediaId");
+			List<String> expectedString = TestUtils.buildFieldParameterStringSet("mediaId");
 
 			//when
 			AiringSchedule actualSchedule = AiringSchedule.getAiringScheduleBuilder().mediaId().build();
@@ -156,7 +155,7 @@ class AiringScheduleTest {
 		void airingScheduleBuilder_Media_ReturnCorrectString() {
 			//given
 			Media media = Media.getMediaArgumentBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
-			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedString = TestUtils.buildFieldParameterStringSet(
 					QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.MEDIA, media.getRequestedMediaFields()).getField()
 			);
 
@@ -176,7 +175,7 @@ class AiringScheduleTest {
 		@Test
 		void airingScheduleBuilder_All_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedString = TestUtils.buildFieldParameterStringSet(
 					"id",
 					"airingAt",
 					"timeUntilAiring",

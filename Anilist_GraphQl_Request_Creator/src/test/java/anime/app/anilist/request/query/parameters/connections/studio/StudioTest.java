@@ -1,6 +1,5 @@
 package anime.app.anilist.request.query.parameters.connections.studio;
 
-import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.parameters.connections.PageInfo;
 import anime.app.anilist.request.query.parameters.connections.media.MediaArguments;
 import anime.app.anilist.request.query.parameters.connections.media.MediaConnection;
@@ -10,7 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.Set;
+import java.util.List;
 
 import static anime.app.anilist.request.query.parameters.connections.studio.Studio.STUDIO_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleWithParametersMatcher.containsTitleAndAllSetElements;
@@ -22,7 +21,7 @@ class StudioTest {
 	@Test
 	void getStudioWithoutFieldName__ReturnCorrectString() {
 		//given
-		Set<ParameterString> expectedSchedule = TestUtils.buildFieldParameterStringSet("id");
+		List<String> expectedSchedule = TestUtils.buildFieldParameterStringSet("id");
 
 		//when
 		String actualString = Studio.getStudioBuilder()
@@ -73,7 +72,7 @@ class StudioTest {
 		@Test
 		void studioBuilder_Id_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet("id");
+			List<String> expectedString = TestUtils.buildFieldParameterStringSet("id");
 
 			//when
 			Studio actualStudio = Studio.getStudioBuilder().id().build();
@@ -89,7 +88,7 @@ class StudioTest {
 		@Test
 		void studioBuilder_Name_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet("name");
+			List<String> expectedString = TestUtils.buildFieldParameterStringSet("name");
 
 			//when
 			Studio actualStudio = Studio.getStudioBuilder().name().build();
@@ -105,7 +104,7 @@ class StudioTest {
 		@Test
 		void studioBuilder_IsAnimationStudio_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet("isAnimationStudio");
+			List<String> expectedString = TestUtils.buildFieldParameterStringSet("isAnimationStudio");
 
 			//when
 			Studio actualStudio = Studio.getStudioBuilder().isAnimationStudio().build();
@@ -121,7 +120,7 @@ class StudioTest {
 		@Test
 		void studioBuilder_SiteUrl_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet("siteUrl");
+			List<String> expectedString = TestUtils.buildFieldParameterStringSet("siteUrl");
 
 			//when
 			Studio actualStudio = Studio.getStudioBuilder().siteUrl().build();
@@ -137,7 +136,7 @@ class StudioTest {
 		@Test
 		void studioBuilder_Favourites_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet("favourites");
+			List<String> expectedString = TestUtils.buildFieldParameterStringSet("favourites");
 
 			//when
 			Studio actualStudio = Studio.getStudioBuilder().favourites().build();
@@ -155,7 +154,7 @@ class StudioTest {
 			//given
 			PageInfo info = PageInfo.getPageInfoBuilder().perPage().build();
 			MediaConnection connection = MediaConnection.getMediaConnectionBuilder().pageInfo(info).build();
-			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedString = TestUtils.buildFieldParameterStringSet(
 					"media " + connection.getMediaConnectionWithoutFieldName()
 			);
 
@@ -176,7 +175,7 @@ class StudioTest {
 			PageInfo info = PageInfo.getPageInfoBuilder().perPage().build();
 			MediaConnection connection = MediaConnection.getMediaConnectionBuilder().pageInfo(info).build();
 			MediaArguments arguments = MediaArguments.getMediaArgumentsBuilder().onList().build();
-			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedString = TestUtils.buildFieldParameterStringSet(
 					"media" + arguments.getMediaArgumentsString() + " " + connection.getMediaConnectionWithoutFieldName()
 			);
 
@@ -197,7 +196,7 @@ class StudioTest {
 			PageInfo info = PageInfo.getPageInfoBuilder().perPage().build();
 			MediaConnection connection = MediaConnection.getMediaConnectionBuilder().pageInfo(info).build();
 			MediaArguments arguments = MediaArguments.getMediaArgumentsBuilder().onList().build();
-			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedString = TestUtils.buildFieldParameterStringSet(
 					"id",
 					"name",
 					"isAnimationStudio",

@@ -1,6 +1,5 @@
 package anime.app.anilist.request.query.parameters.connections.staff;
 
-import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.parameters.connections.characters.CharacterSort;
 import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
@@ -9,7 +8,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-import java.util.Set;
+import java.util.List;
 
 import static anime.app.anilist.request.utils.QueryArgumentMatcher.containsAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -53,7 +52,7 @@ class StaffCharactersArgumentsTest {
 		void staffCharactersArgumentsBuilder_SortSingle_ReturnCorrectString() {
 			//given
 			CharacterSort[] sorts = new CharacterSort[] {CharacterSort.ID};
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"sort: " + Arrays.toString(sorts)
 			);
 
@@ -74,7 +73,7 @@ class StaffCharactersArgumentsTest {
 		void staffCharactersArgumentsBuilder_SortMany_ReturnCorrectString() {
 			//given
 			CharacterSort[] sorts = new CharacterSort[] {CharacterSort.ID, CharacterSort.ROLE};
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"sort: " + Arrays.toString(sorts)
 			);
 
@@ -95,7 +94,7 @@ class StaffCharactersArgumentsTest {
 		void staffCharactersArgumentsBuilder_Page_ReturnCorrectString() {
 			//given
 			int page = 1;
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"page: " + page
 			);
 
@@ -116,7 +115,7 @@ class StaffCharactersArgumentsTest {
 		void staffCharactersArgumentsBuilder_PerPage_ReturnCorrectString() {
 			//given
 			int perPage = 1;
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"perPage: " + perPage
 			);
 
@@ -139,7 +138,7 @@ class StaffCharactersArgumentsTest {
 			CharacterSort[] sorts = new CharacterSort[] {CharacterSort.ID, CharacterSort.ROLE};
 			int page = 1;
 			int perPage = 1;
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"sort: " + Arrays.toString(sorts),
 					"page: " + page,
 					"perPage: " + perPage

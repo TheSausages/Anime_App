@@ -1,13 +1,12 @@
 package anime.app.anilist.request.query.parameters.media;
 
-import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.Set;
+import java.util.List;
 
 import static anime.app.anilist.request.utils.QueryTitleWithParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -50,7 +49,7 @@ class MediaStreamingEpisodesTest {
 		@Test
 		void mediaStreamingEpisodesBuilder_Site_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedStreamingEpisodes = TestUtils.buildFieldParameterStringSet("site");
+			List<String> expectedStreamingEpisodes = TestUtils.buildFieldParameterStringSet("site");
 
 			//when
 			MediaStreamingEpisodes actualEpisodes = MediaStreamingEpisodes.getMediaStreamingEpisodesBuilder()
@@ -68,7 +67,7 @@ class MediaStreamingEpisodesTest {
 		@Test
 		void mediaStreamingEpisodesBuilder_Title_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedStreamingEpisodes = TestUtils.buildFieldParameterStringSet("title");
+			List<String> expectedStreamingEpisodes = TestUtils.buildFieldParameterStringSet("title");
 
 			//when
 			MediaStreamingEpisodes actualEpisodes = MediaStreamingEpisodes.getMediaStreamingEpisodesBuilder()
@@ -86,7 +85,7 @@ class MediaStreamingEpisodesTest {
 		@Test
 		void mediaStreamingEpisodesBuilder_Url_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedStreamingEpisodes = TestUtils.buildFieldParameterStringSet("url");
+			List<String> expectedStreamingEpisodes = TestUtils.buildFieldParameterStringSet("url");
 
 			//when
 			MediaStreamingEpisodes actualEpisodes = MediaStreamingEpisodes.getMediaStreamingEpisodesBuilder()
@@ -104,7 +103,7 @@ class MediaStreamingEpisodesTest {
 		@Test
 		void mediaStreamingEpisodesBuilder_Thumbnail_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedStreamingEpisodes = TestUtils.buildFieldParameterStringSet("thumbnail");
+			List<String> expectedStreamingEpisodes = TestUtils.buildFieldParameterStringSet("thumbnail");
 
 			//when
 			MediaStreamingEpisodes actualEpisodes = MediaStreamingEpisodes.getMediaStreamingEpisodesBuilder()
@@ -122,7 +121,7 @@ class MediaStreamingEpisodesTest {
 		@Test
 		void mediaStreamingEpisodesBuilder_AllParameters_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedStreamingEpisodes = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedStreamingEpisodes = TestUtils.buildFieldParameterStringSet(
 					"site",
 					"url",
 					"title",

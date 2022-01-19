@@ -1,20 +1,18 @@
 package anime.app.anilist.request.utils;
 
-import anime.app.anilist.request.query.common.ParameterString;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 
 import java.util.List;
-import java.util.Set;
 
 public class QueryTitleWithArgumentsAndParametersMatcher extends TypeSafeMatcher<String> {
 
-	private final Set<String> elements;
-	private final Set<String> arguments;
+	private final List<String> elements;
+	private final List<String> arguments;
 	private final String title;
 
-	QueryTitleWithArgumentsAndParametersMatcher(String title, Set<String> arguments, Set<String> elements) {
+	QueryTitleWithArgumentsAndParametersMatcher(String title, List<String> arguments, List<String> elements) {
 		this.elements = elements;
 		this.arguments = arguments;
 		this.title = title;
@@ -50,11 +48,11 @@ public class QueryTitleWithArgumentsAndParametersMatcher extends TypeSafeMatcher
 		description.appendText("starts with " + title + ",\n contains " + arguments + " arguments,\n contains " + elements + " elements");
 	}
 
-	public static Matcher<String> containsTitleWithArgumentsAndParameters(String title, Set<ParameterString> arguments, Set<ParameterString> elements) {
+	public static Matcher<String> containsTitleWithArgumentsAndParameters(String title, List<String> arguments, List<String> elements) {
 		return new QueryTitleWithArgumentsAndParametersMatcher(
 				title,
-				QueryArgumentMatcher.fromParameterStringSetToStringSet(arguments),
-				QueryArgumentMatcher.fromParameterStringSetToStringSet(elements)
+				arguments,
+				elements
 		);
 	}
 }

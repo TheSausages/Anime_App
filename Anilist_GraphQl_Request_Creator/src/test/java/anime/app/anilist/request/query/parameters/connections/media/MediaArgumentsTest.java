@@ -1,6 +1,5 @@
 package anime.app.anilist.request.query.parameters.connections.media;
 
-import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.parameters.media.MediaSort;
 import anime.app.anilist.request.query.parameters.media.MediaType;
 import anime.app.anilist.request.utils.TestUtils;
@@ -10,7 +9,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-import java.util.Set;
+import java.util.List;
 
 import static anime.app.anilist.request.utils.QueryArgumentMatcher.containsAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -54,7 +53,7 @@ class MediaArgumentsTest {
 		void mediaArgumentsBuilder_SortBySingle_ReturnCorrectString() {
 			//given
 			MediaSort[] sorts = new MediaSort[] {MediaSort.ID};
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet("sort: " + Arrays.toString(sorts));
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet("sort: " + Arrays.toString(sorts));
 
 			//when
 			MediaArguments actualArguments = MediaArguments.getMediaArgumentsBuilder()
@@ -73,7 +72,7 @@ class MediaArgumentsTest {
 		void mediaArgumentsBuilder_SortByMany_ReturnCorrectString() {
 			//given
 			MediaSort[] sorts = new MediaSort[] {MediaSort.ID, MediaSort.CHAPTERS};
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet("sort: " + Arrays.toString(sorts));
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet("sort: " + Arrays.toString(sorts));
 
 			//when
 			MediaArguments actualArguments = MediaArguments.getMediaArgumentsBuilder()
@@ -92,7 +91,7 @@ class MediaArgumentsTest {
 		void mediaArgumentsBuilder_Type_ReturnCorrectString() {
 			//given
 			MediaType type = MediaType.ANIME;
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet("type: " + type.name());
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet("type: " + type.name());
 
 			//when
 			MediaArguments actualArguments = MediaArguments.getMediaArgumentsBuilder()
@@ -110,7 +109,7 @@ class MediaArgumentsTest {
 		@Test
 		void mediaArgumentsBuilder_OnListWithoutArgument_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet("onList: true");
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet("onList: true");
 
 			//when
 			MediaArguments actualArguments = MediaArguments.getMediaArgumentsBuilder()
@@ -129,7 +128,7 @@ class MediaArgumentsTest {
 		void mediaArgumentsBuilder_OnListWithArgument_ReturnCorrectString() {
 			//given
 			boolean onList = false;
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet("onList: " + onList);
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet("onList: " + onList);
 
 			//when
 			MediaArguments actualArguments = MediaArguments.getMediaArgumentsBuilder()
@@ -148,7 +147,7 @@ class MediaArgumentsTest {
 		void mediaArgumentsBuilder_Page_ReturnCorrectString() {
 			//given
 			int page = 1;
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet("page: " + page);
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet("page: " + page);
 
 			//when
 			MediaArguments actualArguments = MediaArguments.getMediaArgumentsBuilder()
@@ -167,7 +166,7 @@ class MediaArgumentsTest {
 		void mediaArgumentsBuilder_PerPage_ReturnCorrectString() {
 			//given
 			int perPage = 1;
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet("perPage: " + perPage);
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet("perPage: " + perPage);
 
 			//when
 			MediaArguments actualArguments = MediaArguments.getMediaArgumentsBuilder()
@@ -189,7 +188,7 @@ class MediaArgumentsTest {
 			MediaType type = MediaType.ANIME;
 			int page  = 1;
 			int perPage = 1;
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"sort: " + Arrays.toString(sorts),
 					"type: " + type.name(),
 					"onList: true",

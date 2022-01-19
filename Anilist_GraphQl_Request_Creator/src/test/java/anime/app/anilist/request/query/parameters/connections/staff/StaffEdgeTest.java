@@ -1,13 +1,12 @@
 package anime.app.anilist.request.query.parameters.connections.staff;
 
-import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.Set;
+import java.util.List;
 
 import static anime.app.anilist.request.query.parameters.connections.staff.StaffEdge.STAFF_EDGE_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleWithParametersMatcher.containsTitleAndAllSetElements;
@@ -33,7 +32,7 @@ class StaffEdgeTest {
 	@Test
 	void getStaffEdgeWithoutFieldName__ReturnCorrectString() {
 		//given
-		Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+		List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 				"id"
 		);
 
@@ -72,7 +71,7 @@ class StaffEdgeTest {
 		void characterEdgeBuilder_Node_ReturnCorrectString() {
 			//given
 			Staff staff = Staff.getStaffBuilder().id().build();
-			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"node " + staff.getStaffWithoutFieldName()
 			);
 
@@ -91,7 +90,7 @@ class StaffEdgeTest {
 		@Test
 		void characterEdgeBuilder_Id_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+			List<String>expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"id"
 			);
 
@@ -110,7 +109,7 @@ class StaffEdgeTest {
 		@Test
 		void characterEdgeBuilder_Role_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"role"
 			);
 
@@ -129,7 +128,7 @@ class StaffEdgeTest {
 		@Test
 		void characterEdgeBuilder_FavouriteOrder_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"favouriteOrder"
 			);
 
@@ -149,7 +148,7 @@ class StaffEdgeTest {
 		void characterEdgeBuilder_AllParameters_ReturnCorrectString() {
 			//given
 			Staff staff = Staff.getStaffBuilder().id().build();
-			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"id",
 					"role",
 					"favouriteOrder",

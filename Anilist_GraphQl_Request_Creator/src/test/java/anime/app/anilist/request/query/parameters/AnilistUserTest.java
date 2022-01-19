@@ -1,6 +1,5 @@
 package anime.app.anilist.request.query.parameters;
 
-import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.parameters.common.AnilistUser;
 import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
@@ -8,7 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.Set;
+import java.util.List;
 
 import static anime.app.anilist.request.query.parameters.common.AnilistUser.USER_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleWithParametersMatcher.containsTitleAndAllSetElements;
@@ -20,7 +19,7 @@ class AnilistUserTest {
 	@Test
 	void getAnilistUserWithoutFieldName__ReturnCorrectString() {
 		//given
-		Set<ParameterString> expectedUser = TestUtils.buildFieldParameterStringSet(
+		List<String> expectedUser = TestUtils.buildFieldParameterStringSet(
 				"id"
 		);
 
@@ -72,7 +71,7 @@ class AnilistUserTest {
 		@Test
 		void anilistUserBuilder_Id_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedUser = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedUser = TestUtils.buildFieldParameterStringSet(
 					"id"
 			);
 
@@ -90,7 +89,7 @@ class AnilistUserTest {
 		@Test
 		void anilistUserBuilder_Name_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedUser = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedUser = TestUtils.buildFieldParameterStringSet(
 					"name"
 			);
 
@@ -108,7 +107,7 @@ class AnilistUserTest {
 		@Test
 		void anilistUserBuilder_Avatar_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedUser = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedUser = TestUtils.buildFieldParameterStringSet(
 					"avatar {\nlarge\nmedium\n}"
 			);
 
@@ -126,7 +125,7 @@ class AnilistUserTest {
 		@Test
 		void anilistUserBuilder_AllParameters_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedUser = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedUser = TestUtils.buildFieldParameterStringSet(
 					"id",
 					"name",
 					"avatar {\nlarge\nmedium\n}"

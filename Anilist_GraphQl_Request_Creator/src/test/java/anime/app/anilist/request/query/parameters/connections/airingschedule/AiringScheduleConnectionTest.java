@@ -1,6 +1,5 @@
 package anime.app.anilist.request.query.parameters.connections.airingschedule;
 
-import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.parameters.connections.PageInfo;
 import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
@@ -8,7 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.Set;
+import java.util.List;
 
 import static anime.app.anilist.request.query.parameters.connections.airingschedule.AiringScheduleConnection.AIRING_SCHEDULE_CONNECTION_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleWithParametersMatcher.containsTitleAndAllSetElements;
@@ -21,7 +20,7 @@ class AiringScheduleConnectionTest {
 	void getAiringScheduleConnectionWithoutFieldName__ReturnCorrectString() {
 		//given
 		PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-		Set<ParameterString> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet(
+		List<String> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet(
 				info.getPageInfoString()
 		);
 
@@ -74,7 +73,7 @@ class AiringScheduleConnectionTest {
 		void airingScheduleConnectionBuilder_Edge_ReturnCorrectString() {
 			//given
 			AiringScheduleEdge edge = new AiringScheduleEdge();
-			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet(
 					"edges " + edge.getAiringScheduleEdgeWithoutFieldName()
 			);
 
@@ -95,7 +94,7 @@ class AiringScheduleConnectionTest {
 		void airingScheduleConnectionBuilder_Nodes_ReturnCorrectString() {
 			//given
 			AiringSchedule schedule = AiringSchedule.getAiringScheduleBuilder().id().build();
-			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet(
 					"nodes " + schedule.getAiringScheduleStringWithoutFieldName()
 			);
 
@@ -116,7 +115,7 @@ class AiringScheduleConnectionTest {
 		void airingScheduleConnectionBuilder_PageInfo_ReturnCorrectString() {
 			//given
 			PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet(
 					info.getPageInfoString()
 			);
 
@@ -139,7 +138,7 @@ class AiringScheduleConnectionTest {
 			AiringScheduleEdge edge = new AiringScheduleEdge();
 			AiringSchedule schedule = AiringSchedule.getAiringScheduleBuilder().id().build();
 			PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet(
 					"edges " + edge.getAiringScheduleEdgeWithoutFieldName(),
 					"nodes " + schedule.getAiringScheduleStringWithoutFieldName(),
 					info.getPageInfoString()

@@ -1,11 +1,10 @@
 package anime.app.anilist.request.query.parameters.connections.reviews;
 
-import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.Set;
+import java.util.List;
 
 import static anime.app.anilist.request.query.parameters.connections.reviews.ReviewEdge.REVIEW_EDGE_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleWithParametersMatcher.containsTitleAndAllSetElements;
@@ -34,7 +33,7 @@ class ReviewEdgeTest {
 	void getReviewEdgeWithoutFieldName_NonNullReview_ReturnCorrectString() {
 		//given
 		Review review = Review.getReviewBuilder().id().build();
-		Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+		List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 				"node " + review.getReviewWithoutFieldName()
 		);
 
@@ -69,7 +68,7 @@ class ReviewEdgeTest {
 	void fromReview_NonNullReview_ReturnCorrectString() {
 		//given
 		Review review = Review.getReviewBuilder().id().build();
-		Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
+		List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
 				"node " + review.getReviewWithoutFieldName()
 		);
 

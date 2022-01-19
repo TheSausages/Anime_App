@@ -1,6 +1,5 @@
 package anime.app.anilist.request.query.media;
 
-import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.parameters.common.BasicQueryParameters;
 import anime.app.anilist.request.query.parameters.connections.PageInfo;
 import anime.app.anilist.request.query.parameters.connections.airingschedule.AiringScheduleArguments;
@@ -31,7 +30,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-import java.util.Set;
+import java.util.List;
 
 import static anime.app.anilist.request.query.media.Field.FIELD_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleWithParametersMatcher.containsTitleAndAllSetElements;
@@ -58,7 +57,7 @@ class FieldTest {
 	void getFieldWithoutFieldName__ReturnCorrectString() {
 		//given
 		BasicQueryParameters parameters = BasicQueryParameters.ID;
-		Set<ParameterString> expectedField = TestUtils.buildFieldParameterStringSet(
+		List<String> expectedField = TestUtils.buildFieldParameterStringSet(
 				parameters.getFieldName()
 		);
 
@@ -97,7 +96,7 @@ class FieldTest {
 		void fieldBuilder_Parameter_ReturnCorrectString() {
 			//given
 			BasicQueryParameters parameters = BasicQueryParameters.ID;
-			Set<ParameterString> expectedField = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
 					parameters.getFieldName()
 			);
 
@@ -118,7 +117,7 @@ class FieldTest {
 		void fieldBuilder_Title_ReturnCorrectString() {
 			//given
 			MediaTitle title = MediaTitle.getMediaTitleBuilder().englishLanguage().build();
-			Set<ParameterString> expectedField = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
 					title.getTitleLanguages()
 			);
 
@@ -138,7 +137,7 @@ class FieldTest {
 		@Test
 		void fieldBuilder_Trailer_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedField = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
 					"trailer {\nid\nsite\nthumbnail\n}"
 			);
 
@@ -158,7 +157,7 @@ class FieldTest {
 		@Test
 		void fieldBuilder_CoverImage_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedField = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
 					"coverImage {\nextraLarge\nlarge\nmedium\ncolor\n}"
 			);
 
@@ -178,7 +177,7 @@ class FieldTest {
 		@Test
 		void fieldBuilder_Tags_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedField = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
 					"tags {\nid\nname\ndescription\ncategory\nrank\nisGeneralSpoiler\nisMediaSpoiler\nisAdult\n}"
 			);
 
@@ -198,7 +197,7 @@ class FieldTest {
 		@Test
 		void fieldBuilder_NextAiringEpisode_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedField = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
 					"nextAiringEpisode {\nid\nairingAt\ntimeUntilAiring\nepisode\nmediaId\n}"
 			);
 
@@ -218,7 +217,7 @@ class FieldTest {
 		@Test
 		void fieldBuilder_StatusNoParameter_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedField = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
 					"status(version: 2)"
 			);
 
@@ -239,7 +238,7 @@ class FieldTest {
 		void fieldBuilder_StatusWithParameter_ReturnCorrectString() {
 			//given
 			int status = 1;
-			Set<ParameterString> expectedField = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
 					"status(version: " + status + ")"
 			);
 
@@ -259,7 +258,7 @@ class FieldTest {
 		@Test
 		void fieldBuilder_Description_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedField = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
 					"description(asHtml: false)"
 			);
 
@@ -279,7 +278,7 @@ class FieldTest {
 		@Test
 		void fieldBuilder_DescriptionAsHtmlNoParameter_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedField = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
 					"description(asHtml: true)"
 			);
 
@@ -300,7 +299,7 @@ class FieldTest {
 		void fieldBuilder_DescriptionAsHtmlWithParameter_ReturnCorrectString() {
 			//given
 			boolean asHtml = false;
-			Set<ParameterString> expectedField = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
 					"description(asHtml: " + asHtml + ")"
 			);
 
@@ -320,7 +319,7 @@ class FieldTest {
 		@Test
 		void fieldBuilder_SourceNoParameter_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedField = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
 					"source(version: 2)"
 			);
 
@@ -341,7 +340,7 @@ class FieldTest {
 		void fieldBuilder_SourceWithParameter_ReturnCorrectString() {
 			//given
 			int source = 1;
-			Set<ParameterString> expectedField = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
 					"source(version: " + source + ")"
 			);
 
@@ -364,7 +363,7 @@ class FieldTest {
 			MediaExternalLinks links = MediaExternalLinks.getMediaExternalLinkBuilder()
 					.id()
 					.build();
-			Set<ParameterString> expectedField = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
 					links.getExternalLink()
 			);
 
@@ -385,7 +384,7 @@ class FieldTest {
 		void fieldBuilder_Ranking_ReturnCorrectString() {
 			//given
 			MediaRank rank = MediaRank.getMediaRankBuilder().id().build();
-			Set<ParameterString> expectedField = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
 					rank.getRank()
 			);
 
@@ -444,7 +443,7 @@ class FieldTest {
 			FuzzyDateField fuzzyDateField = FuzzyDateField
 					.getFuzzyDateFieldBuilder(FuzzyDateFieldParameter.START_DATE)
 					.allAndBuild();
-			Set<ParameterString> expectedField = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
 					fuzzyDateField.getFuzzyDateString()
 			);
 
@@ -503,7 +502,7 @@ class FieldTest {
 			FuzzyDateField fuzzyDateField = FuzzyDateField
 					.getFuzzyDateFieldBuilder(FuzzyDateFieldParameter.END_DATE)
 					.allAndBuild();
-			Set<ParameterString> expectedField = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
 					fuzzyDateField.getFuzzyDateString()
 			);
 
@@ -526,7 +525,7 @@ class FieldTest {
 			MediaStreamingEpisodes episodes = MediaStreamingEpisodes.getMediaStreamingEpisodesBuilder()
 					.title()
 					.build();
-			Set<ParameterString> expectedField = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
 					episodes.getStreamingEpisode()
 			);
 
@@ -550,7 +549,7 @@ class FieldTest {
 			MediaConnection connection = MediaConnection.getMediaConnectionBuilder()
 					.pageInfo(info)
 					.build();
-			Set<ParameterString> expectedField = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
 					"relations " + connection.getMediaConnectionWithoutFieldName()
 			);
 
@@ -574,7 +573,7 @@ class FieldTest {
 			CharacterConnection connection = CharacterConnection.getCharacterConnectionBuilder()
 					.pageInfo(info)
 					.build();
-			Set<ParameterString> expectedField = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
 					"characters " + connection.getCharacterConnectionWithoutFieldName()
 			);
 
@@ -601,7 +600,7 @@ class FieldTest {
 			CharacterConnection connection = CharacterConnection.getCharacterConnectionBuilder()
 					.pageInfo(info)
 					.build();
-			Set<ParameterString> expectedField = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
 					"characters" + arguments.getCharacterArgumentsString() + " " + connection.getCharacterConnectionWithoutFieldName()
 			);
 
@@ -625,7 +624,7 @@ class FieldTest {
 			StaffConnection connection = StaffConnection.getMediaConnectionBuilder()
 					.pageInfo(info)
 					.build();
-			Set<ParameterString> expectedField = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
 					"staff " + connection.getStaffConnectionWithoutFieldName()
 			);
 
@@ -652,7 +651,7 @@ class FieldTest {
 			StaffConnection connection = StaffConnection.getMediaConnectionBuilder()
 					.pageInfo(info)
 					.build();
-			Set<ParameterString> expectedField = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
 					"staff" + arguments.getStaffArgumentsString() + " " + connection.getStaffConnectionWithoutFieldName()
 			);
 
@@ -676,7 +675,7 @@ class FieldTest {
 			StudioConnection connection = StudioConnection.getStudioConnectionBuilder()
 					.pageInfo(info)
 					.build();
-			Set<ParameterString> expectedField = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
 					"studios " + connection.getStudioConnectionWithoutFieldName()
 			);
 
@@ -701,7 +700,7 @@ class FieldTest {
 			StudioConnection connection = StudioConnection.getStudioConnectionBuilder()
 					.pageInfo(info)
 					.build();
-			Set<ParameterString> expectedField = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
 					"studios(sort: " + Arrays.toString(sorts) +") " + connection.getStudioConnectionWithoutFieldName()
 			);
 
@@ -726,7 +725,7 @@ class FieldTest {
 			StudioConnection connection = StudioConnection.getStudioConnectionBuilder()
 					.pageInfo(info)
 					.build();
-			Set<ParameterString> expectedField = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
 					"studios(sort: " + Arrays.toString(sorts) +") " + connection.getStudioConnectionWithoutFieldName()
 			);
 
@@ -750,7 +749,7 @@ class FieldTest {
 			AiringScheduleConnection connection = AiringScheduleConnection.getAiringScheduleConnectionBuilder()
 					.pageInfo(info)
 					.build();
-			Set<ParameterString> expectedField = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
 					"airingSchedule " + connection.getAiringScheduleConnectionWithoutFieldName()
 			);
 
@@ -777,7 +776,7 @@ class FieldTest {
 			AiringScheduleConnection connection = AiringScheduleConnection.getAiringScheduleConnectionBuilder()
 					.pageInfo(info)
 					.build();
-			Set<ParameterString> expectedField = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
 					"airingSchedule" + arguments.getAiringScheduleArgumentsString() + " " + connection.getAiringScheduleConnectionWithoutFieldName()
 			);
 
@@ -801,7 +800,7 @@ class FieldTest {
 			MediaTrendConnection connection =MediaTrendConnection.getMediaConnectionBuilder()
 					.pageInfo(info)
 					.build();
-			Set<ParameterString> expectedField = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
 					"trends " + connection.getMediaConnectionWithoutFieldName()
 			);
 
@@ -828,7 +827,7 @@ class FieldTest {
 			MediaTrendConnection connection =MediaTrendConnection.getMediaConnectionBuilder()
 					.pageInfo(info)
 					.build();
-			Set<ParameterString> expectedField = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
 					"trends" + arguments.getMediaTrendsArgumentsString() + " " + connection.getMediaConnectionWithoutFieldName()
 			);
 
@@ -852,7 +851,7 @@ class FieldTest {
 			ReviewConnection connection = ReviewConnection.getReviewConnectionBuilder()
 					.pageInfo(info)
 					.build();
-			Set<ParameterString> expectedField = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
 					"reviews " + connection.getReviewConnectionWithoutFieldName()
 			);
 
@@ -879,7 +878,7 @@ class FieldTest {
 			ReviewConnection connection = ReviewConnection.getReviewConnectionBuilder()
 					.pageInfo(info)
 					.build();
-			Set<ParameterString> expectedField = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
 					"reviews" + arguments.getReviewArgumentsString() + " " + connection.getReviewConnectionWithoutFieldName()
 			);
 
@@ -903,7 +902,7 @@ class FieldTest {
 			RecommendationConnection connection = RecommendationConnection.getRecommendationConnectionBuilder()
 					.pageInfo(info)
 					.build();
-			Set<ParameterString> expectedField = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
 					"recommendation " + connection.getRecommendationConnectionWithoutFieldName()
 			);
 
@@ -930,7 +929,7 @@ class FieldTest {
 			RecommendationConnection connection = RecommendationConnection.getRecommendationConnectionBuilder()
 					.pageInfo(info)
 					.build();
-			Set<ParameterString> expectedField = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
 					"recommendation" + arguments.getRecommendationArgumentsString() + " " + connection.getRecommendationConnectionWithoutFieldName()
 			);
 
@@ -1028,14 +1027,14 @@ class FieldTest {
 					.pageInfo(info)
 					.build();
 
-			Set<ParameterString> expectedField = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
 					parameters.getFieldName(),
 					title.getTitleLanguages(),
 					"trailer {\nid\nsite\nthumbnail\n}",
 					"coverImage {\nextraLarge\nlarge\nmedium\ncolor\n}",
 
 					//Tags is left out, bcs the testing method doesn't work well when the ParameterString field (here 'description' in tags) exists 2 times
-					//"tags {\nid\nname\ndescription\ncategory\nrank\nisGeneralSpoiler\nisMediaSpoiler\nisAdult\n}",
+					"tags {\nid\nname\ndescription\ncategory\nrank\nisGeneralSpoiler\nisMediaSpoiler\nisAdult\n}",
 					"nextAiringEpisode {\nid\nairingAt\ntimeUntilAiring\nepisode\nmediaId\n}",
 					"status(version: " + status + ")",
 					"description(asHtml: false)",
@@ -1061,7 +1060,7 @@ class FieldTest {
 					.title(title)
 					.trailer()
 					.coverImage()
-					//.tags()
+					.tags()
 					.nextAiringEpisode()
 					.status(status)
 					.descriptionAsHtml(asHtml)

@@ -1,6 +1,5 @@
 package anime.app.anilist.request.query.parameters.connections.staff;
 
-import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.query.parameters.QueryParameterUtils;
 import anime.app.anilist.request.query.parameters.connections.PageInfo;
 import anime.app.anilist.request.query.parameters.connections.characters.CharacterConnection;
@@ -14,7 +13,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.Set;
+import java.util.List;
 
 import static anime.app.anilist.request.query.parameters.connections.staff.Staff.STAFF_TITLE;
 import static anime.app.anilist.request.utils.QueryTitleWithParametersMatcher.containsTitleAndAllSetElements;
@@ -26,7 +25,7 @@ class StaffTest {
 	@Test
 	void getStaffWithoutFieldName__ReturnCorrectString() {
 		//given
-		Set<ParameterString> expectedStaff = TestUtils.buildFieldParameterStringSet(
+		List<String> expectedStaff = TestUtils.buildFieldParameterStringSet(
 				"id"
 		);
 
@@ -78,7 +77,7 @@ class StaffTest {
 		@Test
 		void staffBuilder_Id_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedStaff = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedStaff = TestUtils.buildFieldParameterStringSet(
 					"id"
 			);
 
@@ -98,7 +97,7 @@ class StaffTest {
 		@Test
 		void staffBuilder_Name_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedStaff = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedStaff = TestUtils.buildFieldParameterStringSet(
 					"name {\nfirst\nmiddle\nlast\nfull\nnative\n}"
 			);
 
@@ -118,7 +117,7 @@ class StaffTest {
 		@Test
 		void staffBuilder_LanguageV2_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedStaff = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedStaff = TestUtils.buildFieldParameterStringSet(
 					"languageV2"
 			);
 
@@ -138,7 +137,7 @@ class StaffTest {
 		@Test
 		void staffBuilder_Image_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedStaff = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedStaff = TestUtils.buildFieldParameterStringSet(
 					"image {\nlarge\nmedium\n}"
 			);
 
@@ -158,7 +157,7 @@ class StaffTest {
 		@Test
 		void staffBuilder_DescriptionNoParameter_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedStaff = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedStaff = TestUtils.buildFieldParameterStringSet(
 					"description"
 			);
 
@@ -179,7 +178,7 @@ class StaffTest {
 		void staffBuilder_DescriptionWithParameter_ReturnCorrectString() {
 			//given
 			boolean asHtml = true;
-			Set<ParameterString> expectedStaff = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedStaff = TestUtils.buildFieldParameterStringSet(
 					"description(asHtml: true)"
 			);
 
@@ -199,7 +198,7 @@ class StaffTest {
 		@Test
 		void staffBuilder_PrimaryOccupation_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedStaff = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedStaff = TestUtils.buildFieldParameterStringSet(
 					"primaryOccupations"
 			);
 
@@ -219,7 +218,7 @@ class StaffTest {
 		@Test
 		void staffBuilder_Gender_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedStaff = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedStaff = TestUtils.buildFieldParameterStringSet(
 					"gender"
 			);
 
@@ -242,7 +241,7 @@ class StaffTest {
 			FuzzyDateFieldParameter parameter = FuzzyDateFieldParameter.DATE_OF_BIRTH;
 			FuzzyDateField dateField = FuzzyDateField.getFuzzyDateFieldBuilder()
 					.allAndBuild();
-			Set<ParameterString> expectedStaff = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedStaff = TestUtils.buildFieldParameterStringSet(
 					QueryParameterUtils.combineIntoStringField(parameter, dateField.getFuzzyDateStringWithoutFieldName()).getField()
 			);
 
@@ -265,7 +264,7 @@ class StaffTest {
 			FuzzyDateFieldParameter parameter = FuzzyDateFieldParameter.DATE_OF_DEATH;
 			FuzzyDateField dateField = FuzzyDateField.getFuzzyDateFieldBuilder()
 					.allAndBuild();
-			Set<ParameterString> expectedStaff = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedStaff = TestUtils.buildFieldParameterStringSet(
 					QueryParameterUtils.combineIntoStringField(parameter, dateField.getFuzzyDateStringWithoutFieldName()).getField()
 			);
 
@@ -285,7 +284,7 @@ class StaffTest {
 		@Test
 		void staffBuilder_Age_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedStaff = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedStaff = TestUtils.buildFieldParameterStringSet(
 					"age"
 			);
 
@@ -305,7 +304,7 @@ class StaffTest {
 		@Test
 		void staffBuilder_YearsActive_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedStaff = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedStaff = TestUtils.buildFieldParameterStringSet(
 					"yearsActive"
 			);
 
@@ -325,7 +324,7 @@ class StaffTest {
 		@Test
 		void staffBuilder_HomeTown_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedStaff = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedStaff = TestUtils.buildFieldParameterStringSet(
 					"homeTown"
 			);
 
@@ -345,7 +344,7 @@ class StaffTest {
 		@Test
 		void staffBuilder_SiteUrl_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedStaff = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedStaff = TestUtils.buildFieldParameterStringSet(
 					"siteUrl"
 			);
 
@@ -365,7 +364,7 @@ class StaffTest {
 		@Test
 		void staffBuilder_Favourites_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedStaff = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedStaff = TestUtils.buildFieldParameterStringSet(
 					"favourites"
 			);
 
@@ -389,7 +388,7 @@ class StaffTest {
 			MediaConnection connection = MediaConnection.getMediaConnectionBuilder()
 					.pageInfo(info)
 					.build();
-			Set<ParameterString> expectedStaff = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedStaff = TestUtils.buildFieldParameterStringSet(
 					"staffMedia " + connection.getMediaConnectionWithoutFieldName()
 			);
 
@@ -414,7 +413,7 @@ class StaffTest {
 			MediaConnection connection = MediaConnection.getMediaConnectionBuilder()
 					.pageInfo(info)
 					.build();
-			Set<ParameterString> expectedStaff = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedStaff = TestUtils.buildFieldParameterStringSet(
 					"staffMedia" + arguments.getMediaArgumentsString() + " " + connection.getMediaConnectionWithoutFieldName()
 			);
 
@@ -436,7 +435,7 @@ class StaffTest {
 			//given
 			PageInfo info = PageInfo.getPageInfoBuilder().lastPage().build();
 			CharacterConnection connection = CharacterConnection.getCharacterConnectionBuilder().pageInfo(info).build();
-			Set<ParameterString> expectedStaff = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedStaff = TestUtils.buildFieldParameterStringSet(
 					"characters " + connection.getCharacterConnectionWithoutFieldName()
 			);
 
@@ -462,7 +461,7 @@ class StaffTest {
 					.build();
 			PageInfo info = PageInfo.getPageInfoBuilder().lastPage().build();
 			CharacterConnection connection = CharacterConnection.getCharacterConnectionBuilder().pageInfo(info).build();
-			Set<ParameterString> expectedStaff = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedStaff = TestUtils.buildFieldParameterStringSet(
 					"characters" + arguments.getCharacterArgumentsString() + " " + connection.getCharacterConnectionWithoutFieldName()
 			);
 
@@ -486,7 +485,7 @@ class StaffTest {
 			MediaConnection connection = MediaConnection.getMediaConnectionBuilder()
 					.pageInfo(info)
 					.build();
-			Set<ParameterString> expectedStaff = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedStaff = TestUtils.buildFieldParameterStringSet(
 					"characterMedia " + connection.getMediaConnectionWithoutFieldName()
 			);
 
@@ -514,7 +513,7 @@ class StaffTest {
 			MediaConnection connection = MediaConnection.getMediaConnectionBuilder()
 					.pageInfo(info)
 					.build();
-			Set<ParameterString> expectedStaff = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedStaff = TestUtils.buildFieldParameterStringSet(
 					"characterMedia" + arguments.getCharacterMediaArgumentsString() + " " + connection.getMediaConnectionWithoutFieldName()
 			);
 
@@ -553,7 +552,7 @@ class StaffTest {
 			MediaConnection mediaConnection = MediaConnection.getMediaConnectionBuilder()
 					.pageInfo(info)
 					.build();
-			Set<ParameterString> expectedStaff = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedStaff = TestUtils.buildFieldParameterStringSet(
 					"id",
 					"name {\nfirst\nmiddle\nlast\nfull\nnative\n}",
 					"languageV2",

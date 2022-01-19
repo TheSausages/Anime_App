@@ -1,13 +1,12 @@
 package anime.app.anilist.request.query.parameters.media;
 
-import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.Set;
+import java.util.List;
 
 import static anime.app.anilist.request.utils.QueryTitleWithParametersMatcher.containsTitleAndAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -50,7 +49,7 @@ class MediaTitleTest {
 		@Test
 		void mediaTitleBuilder_RomajiLanguage_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedTitles = TestUtils.buildFieldParameterStringSet("romaji");
+			List<String> expectedTitles = TestUtils.buildFieldParameterStringSet("romaji");
 
 			//when
 			MediaTitle actualTitle = MediaTitle.getMediaTitleBuilder().romajiLanguage().build();
@@ -66,7 +65,7 @@ class MediaTitleTest {
 		@Test
 		void mediaTitleBuilder_RomajiLanguageStylised_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedTitles = TestUtils.buildFieldParameterStringSet("romaji(stylised: true)");
+			List<String> expectedTitles = TestUtils.buildFieldParameterStringSet("romaji(stylised: true)");
 
 			//when
 			MediaTitle actualTitle = MediaTitle.getMediaTitleBuilder().romajiLanguageStylized().build();
@@ -82,7 +81,7 @@ class MediaTitleTest {
 		@Test
 		void mediaTitleBuilder_EnglishLanguage_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedTitles = TestUtils.buildFieldParameterStringSet("english");
+			List<String> expectedTitles = TestUtils.buildFieldParameterStringSet("english");
 
 			//when
 			MediaTitle actualTitle = MediaTitle.getMediaTitleBuilder().englishLanguage().build();
@@ -98,7 +97,7 @@ class MediaTitleTest {
 		@Test
 		void mediaTitleBuilder_EnglishLanguageStylised_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedTitles = TestUtils.buildFieldParameterStringSet("english(stylised: true)");
+			List<String> expectedTitles = TestUtils.buildFieldParameterStringSet("english(stylised: true)");
 
 			//when
 			MediaTitle actualTitle = MediaTitle.getMediaTitleBuilder().englishLanguageStylized().build();
@@ -114,7 +113,7 @@ class MediaTitleTest {
 		@Test
 		void mediaTitleBuilder_NativeLanguage_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedTitles = TestUtils.buildFieldParameterStringSet("native");
+			List<String> expectedTitles = TestUtils.buildFieldParameterStringSet("native");
 
 			//when
 			MediaTitle actualTitle = MediaTitle.getMediaTitleBuilder().nativeLanguage().build();
@@ -130,7 +129,7 @@ class MediaTitleTest {
 		@Test
 		void mediaTitleBuilder_NativeLanguageStylised_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedTitles = TestUtils.buildFieldParameterStringSet("native(stylised: true)");
+			List<String> expectedTitles = TestUtils.buildFieldParameterStringSet("native(stylised: true)");
 
 			//when
 			MediaTitle actualTitle = MediaTitle.getMediaTitleBuilder().nativeLanguageStylized().build();
@@ -146,7 +145,7 @@ class MediaTitleTest {
 		@Test
 		void mediaTitleBuilder_OverwriteWhenStylizedIsUsedAfterNonStylized_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedTitles = TestUtils.buildFieldParameterStringSet("native(stylised: true)");
+			List<String> expectedTitles = TestUtils.buildFieldParameterStringSet("native(stylised: true)");
 
 			//when
 			MediaTitle actualTitle = MediaTitle.getMediaTitleBuilder()
@@ -165,7 +164,7 @@ class MediaTitleTest {
 		@Test
 		void mediaTitleBuilder_OverwriteWhenNonStylizedIsUsedAfterStylized_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedTitles = TestUtils.buildFieldParameterStringSet("native");
+			List<String> expectedTitles = TestUtils.buildFieldParameterStringSet("native");
 
 			//when
 			MediaTitle actualTitle = MediaTitle.getMediaTitleBuilder()
@@ -184,7 +183,7 @@ class MediaTitleTest {
 		@Test
 		void mediaTitleBuilder_EnglishAndNativeStylised_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedTitles = TestUtils.buildFieldParameterStringSet(
+			List<String> expectedTitles = TestUtils.buildFieldParameterStringSet(
 					"english",
 					"native(stylised: true)"
 			);

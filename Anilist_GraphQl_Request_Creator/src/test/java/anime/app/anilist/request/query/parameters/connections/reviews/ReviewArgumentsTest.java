@@ -1,6 +1,5 @@
 package anime.app.anilist.request.query.parameters.connections.reviews;
 
-import anime.app.anilist.request.query.common.ParameterString;
 import anime.app.anilist.request.utils.TestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -8,7 +7,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-import java.util.Set;
+import java.util.List;
 
 import static anime.app.anilist.request.utils.QueryArgumentMatcher.containsAllSetElements;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -52,7 +51,7 @@ class ReviewArgumentsTest {
 		void reviewArgumentsBuilder_SortSingle_ReturnCorrectString() {
 			//given
 			ReviewSort[] sorts = new ReviewSort[] {ReviewSort.ID};
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"sort: " + Arrays.toString(sorts)
 			);
 
@@ -73,7 +72,7 @@ class ReviewArgumentsTest {
 		void reviewArgumentsBuilder_SortMany_ReturnCorrectString() {
 			//given
 			ReviewSort[] sorts = new ReviewSort[] {ReviewSort.ID, ReviewSort.RATING};
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"sort: " + Arrays.toString(sorts)
 			);
 
@@ -94,7 +93,7 @@ class ReviewArgumentsTest {
 		void reviewArgumentsBuilder_Limit_ReturnCorrectString() {
 			//given
 			int limit = 10;
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"limit: " + limit
 			);
 
@@ -115,7 +114,7 @@ class ReviewArgumentsTest {
 		void reviewArgumentsBuilder_Page_ReturnCorrectString() {
 			//given
 			int page = 1;
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"page: " + page
 			);
 
@@ -136,7 +135,7 @@ class ReviewArgumentsTest {
 		void reviewArgumentsBuilder_PerPage_ReturnCorrectString() {
 			//given
 			int perPage = 30;
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"perPage: " + perPage
 			);
 
@@ -160,7 +159,7 @@ class ReviewArgumentsTest {
 			int page = 1;
 			int perPage = 30;
 			ReviewSort[] sorts = new ReviewSort[] {ReviewSort.ID, ReviewSort.RATING};
-			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"sort: " + Arrays.toString(sorts),
 					"limit: " + limit,
 					"page: " + page,
