@@ -22,7 +22,7 @@ class StudioTest {
 	@Test
 	void getStudioWithoutFieldName__ReturnCorrectString() {
 		//given
-		Set<ParameterString> expectedSchedule = TestUtils.getParameterStringSetField("id");
+		Set<ParameterString> expectedSchedule = TestUtils.buildFieldParameterStringSet("id");
 
 		//when
 		String actualString = Studio.getStudioBuilder()
@@ -73,7 +73,7 @@ class StudioTest {
 		@Test
 		void studioBuilder_Id_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.getParameterStringSetField("id");
+			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet("id");
 
 			//when
 			Studio actualStudio = Studio.getStudioBuilder().id().build();
@@ -89,7 +89,7 @@ class StudioTest {
 		@Test
 		void studioBuilder_Name_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.getParameterStringSetField("name");
+			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet("name");
 
 			//when
 			Studio actualStudio = Studio.getStudioBuilder().name().build();
@@ -105,7 +105,7 @@ class StudioTest {
 		@Test
 		void studioBuilder_IsAnimationStudio_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.getParameterStringSetField("isAnimationStudio");
+			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet("isAnimationStudio");
 
 			//when
 			Studio actualStudio = Studio.getStudioBuilder().isAnimationStudio().build();
@@ -121,7 +121,7 @@ class StudioTest {
 		@Test
 		void studioBuilder_SiteUrl_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.getParameterStringSetField("siteUrl");
+			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet("siteUrl");
 
 			//when
 			Studio actualStudio = Studio.getStudioBuilder().siteUrl().build();
@@ -137,7 +137,7 @@ class StudioTest {
 		@Test
 		void studioBuilder_Favourites_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.getParameterStringSetField("favourites");
+			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet("favourites");
 
 			//when
 			Studio actualStudio = Studio.getStudioBuilder().favourites().build();
@@ -155,7 +155,7 @@ class StudioTest {
 			//given
 			PageInfo info = PageInfo.getPageInfoBuilder().perPage().build();
 			MediaConnection connection = MediaConnection.getMediaConnectionBuilder().pageInfo(info).build();
-			Set<ParameterString> expectedString = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet(
 					"media " + connection.getMediaConnectionWithoutFieldName()
 			);
 
@@ -176,7 +176,7 @@ class StudioTest {
 			PageInfo info = PageInfo.getPageInfoBuilder().perPage().build();
 			MediaConnection connection = MediaConnection.getMediaConnectionBuilder().pageInfo(info).build();
 			MediaArguments arguments = MediaArguments.getMediaArgumentsBuilder().onList().build();
-			Set<ParameterString> expectedString = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet(
 					"media" + arguments.getMediaArgumentsString() + " " + connection.getMediaConnectionWithoutFieldName()
 			);
 
@@ -197,7 +197,7 @@ class StudioTest {
 			PageInfo info = PageInfo.getPageInfoBuilder().perPage().build();
 			MediaConnection connection = MediaConnection.getMediaConnectionBuilder().pageInfo(info).build();
 			MediaArguments arguments = MediaArguments.getMediaArgumentsBuilder().onList().build();
-			Set<ParameterString> expectedString = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet(
 					"id",
 					"name",
 					"isAnimationStudio",

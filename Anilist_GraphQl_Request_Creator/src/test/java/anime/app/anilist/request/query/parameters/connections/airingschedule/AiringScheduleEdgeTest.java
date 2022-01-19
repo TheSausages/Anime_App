@@ -32,7 +32,7 @@ class AiringScheduleEdgeTest {
 	@Test
 	void getAiringScheduleEdge_WithoutSchedule_ReturnCorrectString() {
 		//given
-		Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetField("id");
+		Set<ParameterString> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet("id");
 
 		//when
 		AiringScheduleEdge actualAiringScheduleEdge = new AiringScheduleEdge();
@@ -51,7 +51,7 @@ class AiringScheduleEdgeTest {
 		AiringSchedule schedule = AiringSchedule.getAiringScheduleBuilder()
 				.episode()
 				.build();
-		Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetField(
+		Set<ParameterString> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet(
 				"id",
 				"node " + schedule.getAiringScheduleStringWithoutFieldName()
 		);
@@ -86,7 +86,7 @@ class AiringScheduleEdgeTest {
 	@Test
 	void fromNothing_WithoutSchedule_ReturnCorrectString() {
 		//given
-		Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetField("id");
+		Set<ParameterString> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet("id");
 
 		//when
 		AiringScheduleEdge actualAiringScheduleEdge = AiringScheduleEdge.fromNothing();
@@ -105,7 +105,7 @@ class AiringScheduleEdgeTest {
 		AiringSchedule schedule = AiringSchedule.getAiringScheduleBuilder()
 				.episode()
 				.build();
-		Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetField(
+		Set<ParameterString> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet(
 				"id",
 				"node " + schedule.getAiringScheduleStringWithoutFieldName()
 		);
@@ -124,7 +124,7 @@ class AiringScheduleEdgeTest {
 	@Test
 	void getAiringScheduleEdgeWithoutFieldName_WithoutSchedule_ReturnCorrectString() {
 		//given
-		Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetField("id");
+		Set<ParameterString> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet("id");
 
 		//when
 		AiringScheduleEdge actualAiringScheduleEdge = new AiringScheduleEdge();
@@ -143,7 +143,7 @@ class AiringScheduleEdgeTest {
 		AiringSchedule schedule = AiringSchedule.getAiringScheduleBuilder()
 				.episode()
 				.build();
-		Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetField(
+		Set<ParameterString> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet(
 				"id",
 				"node " + schedule.getAiringScheduleStringWithoutFieldName()
 		);

@@ -35,7 +35,7 @@ public class StaffEdge {
 		private final Set<ParameterString> staffEdge = new OverwritingLinkedHashSet<>();
 
 		public StaffEdgeBuilder node(Staff staff) {
-			staffEdge.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.NODE, staff.getStaffWithoutFieldName()));
+			staffEdge.add(QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.NODE, staff.getStaffWithoutFieldName()));
 			return this;
 		}
 
@@ -59,7 +59,7 @@ public class StaffEdge {
 				throw new IllegalStateException("Staff Edge should posses at least 1 parameter!");
 			}
 
-			return new StaffEdge(QueryParameterUtils.buildFieldElement(
+			return new StaffEdge(QueryParameterUtils.buildStringField(
 					STAFF_EDGE_TITLE,
 					staffEdge
 			));

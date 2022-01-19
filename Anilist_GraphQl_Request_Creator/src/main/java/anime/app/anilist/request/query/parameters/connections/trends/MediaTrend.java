@@ -76,7 +76,7 @@ public class MediaTrend {
 		}
 
 		public MediaTrendBuilder media(Media media) {
-			mediaTrend.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.MEDIA, media.getRequestedMediaFields()));
+			mediaTrend.add(QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.MEDIA, media.getRequestedMediaFields()));
 			return this;
 		}
 
@@ -85,7 +85,7 @@ public class MediaTrend {
 				throw new IllegalStateException("Media Trend should posses at least 1 parameter!");
 			}
 
-			return new MediaTrend(QueryParameterUtils.buildFieldElement(
+			return new MediaTrend(QueryParameterUtils.buildStringField(
 					MEDIA_TREND_TITLE,
 					mediaTrend
 			));

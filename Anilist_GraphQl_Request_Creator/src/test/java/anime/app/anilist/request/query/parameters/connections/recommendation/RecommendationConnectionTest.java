@@ -21,7 +21,7 @@ class RecommendationConnectionTest {
 	void getRecommendationConnectionWithoutFieldName__ReturnCorrectString() {
 		//given
 		PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-		Set<ParameterString> expectedConnection = TestUtils.getParameterStringSetField(
+		Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
 				info.getPageInfoString()
 		);
 
@@ -75,7 +75,7 @@ class RecommendationConnectionTest {
 			//given
 			Recommendation recommendation = Recommendation.getRecommendationBuilder().id().build();
 			RecommendationEdge edge = RecommendationEdge.fromRecommendation(recommendation);
-			Set<ParameterString> expectedConnection = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
 					"edges " + edge.getRecommendationEdgeWithoutFieldName()
 			);
 
@@ -96,7 +96,7 @@ class RecommendationConnectionTest {
 		void recommendationBuilder_Nodes_ReturnCorrectString() {
 			//given
 			Recommendation recommendation = Recommendation.getRecommendationBuilder().id().build();
-			Set<ParameterString> expectedConnection = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
 					"nodes " + recommendation.getRecommendationStringWithoutFieldName()
 			);
 
@@ -117,7 +117,7 @@ class RecommendationConnectionTest {
 		void recommendationBuilder_PageInfo_ReturnCorrectString() {
 			//given
 			PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-			Set<ParameterString> expectedConnection = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
 					info.getPageInfoString()
 			);
 
@@ -140,7 +140,7 @@ class RecommendationConnectionTest {
 			Recommendation recommendation = Recommendation.getRecommendationBuilder().id().build();
 			RecommendationEdge edge = RecommendationEdge.fromRecommendation(recommendation);
 			PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-			Set<ParameterString> expectedConnection = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
 					"edges " + edge.getRecommendationEdgeWithoutFieldName(),
 					"nodes " + recommendation.getRecommendationStringWithoutFieldName(),
 					info.getPageInfoString()

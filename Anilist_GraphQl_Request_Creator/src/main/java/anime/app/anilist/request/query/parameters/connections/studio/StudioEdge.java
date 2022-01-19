@@ -35,7 +35,7 @@ public class StudioEdge {
 		private final Set<ParameterString> studioEdge = new OverwritingLinkedHashSet<>();
 
 		public StudioEdgeBuilder node(Studio studio) {
-			studioEdge.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.NODE, studio.getStudioWithoutFieldName()));
+			studioEdge.add(QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.NODE, studio.getStudioWithoutFieldName()));
 			return this;
 		}
 
@@ -59,7 +59,7 @@ public class StudioEdge {
 				throw new IllegalStateException("Studio Edge should posses at least 1 parameter!");
 			}
 
-			return new StudioEdge(QueryParameterUtils.buildFieldElement(
+			return new StudioEdge(QueryParameterUtils.buildStringField(
 					STUDIO_EDGE_TITLE,
 					studioEdge
 			));

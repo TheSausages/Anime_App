@@ -44,7 +44,7 @@ public class Character {
 		}
 
 		public CharacterBuilder name() {
-			character.add(ParameterString.fromString(QueryParameterUtils.buildFieldElement(
+			character.add(ParameterString.fromString(QueryParameterUtils.buildStringField(
 					"name",
 					"first",
 					"middle",
@@ -58,7 +58,7 @@ public class Character {
 		}
 
 		public CharacterBuilder image() {
-			character.add(ParameterString.fromString(QueryParameterUtils.buildFieldElement(
+			character.add(ParameterString.fromString(QueryParameterUtils.buildStringField(
 					"image",
 					"large",
 					"medium"
@@ -71,7 +71,7 @@ public class Character {
 		}
 
 		public CharacterBuilder description(boolean asHtml) {
-			character.add(ParameterString.fromString("description" + QueryParameterUtils.combineIntoArgumentWithBracket("asHtml", asHtml)));
+			character.add(ParameterString.fromString("description" + QueryParameterUtils.combineIntoStringArgumentWithBracket("asHtml", asHtml)));
 			return this;
 		}
 
@@ -81,7 +81,7 @@ public class Character {
 		}
 
 		public CharacterBuilder dateOfBirth(FuzzyDateField fuzzyDateField) {
-			character.add(QueryParameterUtils.combineIntoField(FuzzyDateFieldParameter.DATE_OF_BIRTH, fuzzyDateField.getFuzzyDateStringWithoutFieldName()));
+			character.add(QueryParameterUtils.combineIntoStringField(FuzzyDateFieldParameter.DATE_OF_BIRTH, fuzzyDateField.getFuzzyDateStringWithoutFieldName()));
 			return this;
 		}
 
@@ -106,12 +106,12 @@ public class Character {
 		}
 
 		public CharacterBuilder media(MediaConnection mediaConnection) {
-			character.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.MEDIA, mediaConnection.getMediaConnectionWithoutFieldName()));
+			character.add(QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.MEDIA, mediaConnection.getMediaConnectionWithoutFieldName()));
 			return this;
 		}
 
 		public CharacterBuilder media(MediaArguments mediaArguments, MediaConnection mediaConnection) {
-			character.add(QueryParameterUtils.combineIntoField(
+			character.add(QueryParameterUtils.combineIntoStringField(
 					CommonParameterFieldNames.MEDIA,
 					mediaArguments.getMediaArgumentsString(),
 					mediaConnection.getMediaConnectionWithoutFieldName()
@@ -124,7 +124,7 @@ public class Character {
 				throw new IllegalStateException("Character should posses at least 1 parameter!");
 			}
 
-			return new Character(QueryParameterUtils.buildFieldElement(
+			return new Character(QueryParameterUtils.buildStringField(
 					CHARACTER_TITLE,
 					character
 			));

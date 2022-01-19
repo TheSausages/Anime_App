@@ -19,7 +19,7 @@ class StudioEdgeTest {
 	@Test
 	void getStudioEdgeWithoutFieldName__ReturnCorrectString() {
 		//given
-		Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
+		Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
 				"id"
 		);
 
@@ -72,7 +72,7 @@ class StudioEdgeTest {
 		void studioEdgeBuilder_Node_ReturnCorrectString() {
 			//given
 			Studio studio = Studio.getStudioBuilder().id().build();
-			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"node " + studio.getStudioWithoutFieldName()
 			);
 
@@ -91,7 +91,7 @@ class StudioEdgeTest {
 		@Test
 		void studioEdgeBuilder_Id_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"id"
 			);
 
@@ -110,7 +110,7 @@ class StudioEdgeTest {
 		@Test
 		void studioEdgeBuilder_IsMain_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"isMain"
 			);
 
@@ -129,7 +129,7 @@ class StudioEdgeTest {
 		@Test
 		void studioEdgeBuilder_FavouriteOrder_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"favouriteOrder"
 			);
 
@@ -149,7 +149,7 @@ class StudioEdgeTest {
 		void studioEdgeBuilder_AllParameters_ReturnCorrectString() {
 			//given
 			Studio studio = Studio.getStudioBuilder().id().build();
-			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"id",
 					"isMain",
 					"favouriteOrder",

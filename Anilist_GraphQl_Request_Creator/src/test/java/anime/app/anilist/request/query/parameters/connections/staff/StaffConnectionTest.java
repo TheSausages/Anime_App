@@ -21,7 +21,7 @@ class StaffConnectionTest {
 	void getStaffConnectionWithoutFieldName__ReturnCorrectString() {
 		//given
 		PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-		Set<ParameterString> expectedConnection = TestUtils.getParameterStringSetField(
+		Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
 				info.getPageInfoString()
 		);
 
@@ -75,7 +75,7 @@ class StaffConnectionTest {
 		void staffConnectionBuilder_Edge_ReturnCorrectString() {
 			//given
 			StaffEdge edge = StaffEdge.getStaffEdgeBuilder().id().build();
-			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"edges " + edge.getStaffEdgeWithoutFieldName()
 			);
 
@@ -97,7 +97,7 @@ class StaffConnectionTest {
 		void staffConnectionBuilder_Nodes_ReturnCorrectString() {
 			//given
 			Staff staff = Staff.getStaffBuilder().id().build();
-			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"nodes " + staff.getStaffWithoutFieldName()
 			);
 
@@ -119,7 +119,7 @@ class StaffConnectionTest {
 		void staffConnectionBuilder_PageInfo_ReturnCorrectString() {
 			//given
 			PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-			Set<ParameterString> expectedConnection = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
 					info.getPageInfoString()
 			);
 
@@ -143,7 +143,7 @@ class StaffConnectionTest {
 			StaffEdge edge = StaffEdge.getStaffEdgeBuilder().id().build();
 			Staff staff = Staff.getStaffBuilder().id().build();
 			PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-			Set<ParameterString> expectedConnection = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
 					"edges " + edge.getStaffEdgeWithoutFieldName(),
 					"nodes " + staff.getStaffWithoutFieldName(),
 					info.getPageInfoString()

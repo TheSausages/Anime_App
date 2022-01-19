@@ -21,7 +21,7 @@ class CharacterConnectionTest {
 	void getCharacterConnectionWithoutFieldName__ReturnCorrectString() {
 		//given
 		PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-		Set<ParameterString> expectedConnection = TestUtils.getParameterStringSetField(
+		Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
 				info.getPageInfoString()
 		);
 
@@ -74,7 +74,7 @@ class CharacterConnectionTest {
 		void airingScheduleConnectionBuilder_Edge_ReturnCorrectString() {
 			//given
 			CharacterEdge edge = CharacterEdge.getCharacterEdgeBuilder().id().build();
-			Set<ParameterString> expectedConnection = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
 					"edges " + edge.getCharacterEdgeWithoutFieldName()
 			);
 
@@ -95,7 +95,7 @@ class CharacterConnectionTest {
 		void airingScheduleConnectionBuilder_Nodes_ReturnCorrectString() {
 			//given
 			Character character = Character.getCharacterBuilder().id().build();
-			Set<ParameterString> expectedConnection = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
 					"nodes " + character.getCharacterStringWithoutFieldName()
 			);
 
@@ -116,7 +116,7 @@ class CharacterConnectionTest {
 		void airingScheduleConnectionBuilder_PageInfo_ReturnCorrectString() {
 			//given
 			PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-			Set<ParameterString> expectedConnection = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
 					info.getPageInfoString()
 			);
 
@@ -139,7 +139,7 @@ class CharacterConnectionTest {
 			CharacterEdge edge = CharacterEdge.getCharacterEdgeBuilder().id().build();
 			Character character = Character.getCharacterBuilder().id().build();
 			PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-			Set<ParameterString> expectedConnection = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
 					"edges " + edge.getCharacterEdgeWithoutFieldName(),
 					"nodes " + character.getCharacterStringWithoutFieldName(),
 					info.getPageInfoString()

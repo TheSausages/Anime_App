@@ -30,22 +30,22 @@ public class ReviewArguments {
 		private final Set<ParameterString> reviewArguments = new OverwritingLinkedHashSet<>();
 
 		public ReviewArgumentsBuilder sort(ReviewSort... sorts) {
-			reviewArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.SORT, Arrays.toString(sorts)));
+			reviewArguments.add(QueryParameterUtils.combineIntoStringArgumentNoBracket(CommonParameterFieldNames.SORT, Arrays.toString(sorts)));
 			return this;
 		}
 
 		public ReviewArgumentsBuilder limit(int limit) {
-			reviewArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket("limit", limit));
+			reviewArguments.add(QueryParameterUtils.combineIntoStringArgumentNoBracket("limit", limit));
 			return this;
 		}
 
 		public ReviewArgumentsBuilder page(int page) {
-			reviewArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.PAGE, page));
+			reviewArguments.add(QueryParameterUtils.combineIntoStringArgumentNoBracket(CommonParameterFieldNames.PAGE, page));
 			return this;
 		}
 
 		public ReviewArgumentsBuilder perPage(int perPage) {
-			reviewArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.PER_PAGE, perPage));
+			reviewArguments.add(QueryParameterUtils.combineIntoStringArgumentNoBracket(CommonParameterFieldNames.PER_PAGE, perPage));
 			return this;
 		}
 
@@ -54,7 +54,7 @@ public class ReviewArguments {
 				throw new IllegalStateException("Review Arguments should posses at least 1 parameter!");
 			}
 
-			return new ReviewArguments(QueryParameterUtils.buildArguments(reviewArguments));
+			return new ReviewArguments(QueryParameterUtils.buildStringArguments(reviewArguments));
 		}
 	}
 }

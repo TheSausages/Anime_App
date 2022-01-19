@@ -52,7 +52,7 @@ class RecommendationArgumentsTest {
 		void recommendationArgumentsBuilder_SortSingle_ReturnCorrectString() {
 			//given
 			RecommendationSort[] sorts = new RecommendationSort[] {RecommendationSort.ID};
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"sort: " + Arrays.toString(sorts)
 			);
 
@@ -73,7 +73,7 @@ class RecommendationArgumentsTest {
 		void recommendationArgumentsBuilder_SortMany_ReturnCorrectString() {
 			//given
 			RecommendationSort[] sorts = new RecommendationSort[] {RecommendationSort.ID, RecommendationSort.RATING};
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"sort: " + Arrays.toString(sorts)
 			);
 
@@ -94,7 +94,7 @@ class RecommendationArgumentsTest {
 		void recommendationArgumentsBuilder_Page_ReturnCorrectString() {
 			//given
 			int page = 1;
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"page: " + page
 			);
 
@@ -115,7 +115,7 @@ class RecommendationArgumentsTest {
 		void recommendationArgumentsBuilder_PerPage_ReturnCorrectString() {
 			//given
 			int perPage = 1;
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"perPage: " + perPage
 			);
 
@@ -138,7 +138,7 @@ class RecommendationArgumentsTest {
 			RecommendationSort[] sorts = new RecommendationSort[] {RecommendationSort.ID, RecommendationSort.RATING};
 			int page = 1;
 			int perPage = 10;
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"sort: " + Arrays.toString(sorts),
 					"page: " + page,
 					"perPage: " + perPage

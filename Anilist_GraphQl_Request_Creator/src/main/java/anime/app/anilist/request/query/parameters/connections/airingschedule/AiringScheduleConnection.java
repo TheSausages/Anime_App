@@ -36,17 +36,17 @@ public class AiringScheduleConnection {
 		private final Set<ParameterString> airingScheduleConnection = new OverwritingLinkedHashSet<>();
 
 		public AiringScheduleConnectionBuilder edges(AiringScheduleEdge edge) {
-			airingScheduleConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.EDGES, edge.getAiringScheduleEdgeWithoutFieldName()));
+			airingScheduleConnection.add(QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.EDGES, edge.getAiringScheduleEdgeWithoutFieldName()));
 			return this;
 		}
 
 		public AiringScheduleConnectionBuilder nodes(AiringSchedule schedule) {
-			airingScheduleConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.NODES, schedule.getAiringScheduleStringWithoutFieldName()));
+			airingScheduleConnection.add(QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.NODES, schedule.getAiringScheduleStringWithoutFieldName()));
 			return this;
 		}
 
 		public AiringScheduleConnectionBuilder pageInfo(PageInfo pageInfo) {
-			airingScheduleConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.PAGE_INFO, pageInfo.getPageInfoStringWithoutFieldName()));
+			airingScheduleConnection.add(QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.PAGE_INFO, pageInfo.getPageInfoStringWithoutFieldName()));
 			return this;
 		}
 
@@ -55,7 +55,7 @@ public class AiringScheduleConnection {
 				throw new IllegalStateException("Airing Schedule Connection should posses at least 1 parameter!");
 			}
 
-			return new AiringScheduleConnection(QueryParameterUtils.buildFieldElement(
+			return new AiringScheduleConnection(QueryParameterUtils.buildStringField(
 					AIRING_SCHEDULE_CONNECTION_TITLE,
 					airingScheduleConnection
 			));

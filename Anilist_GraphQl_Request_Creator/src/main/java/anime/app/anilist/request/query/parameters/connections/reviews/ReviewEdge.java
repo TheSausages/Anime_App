@@ -15,9 +15,9 @@ public class ReviewEdge {
 	public ReviewEdge(Review review) {
 		Objects.requireNonNull(review, "Review cannot be null");
 
-		this.reviewEdgeString = QueryParameterUtils.buildFieldElement(
+		this.reviewEdgeString = QueryParameterUtils.buildStringField(
 				REVIEW_EDGE_TITLE,
-				QueryParameterUtils.combineIntoField(CommonParameterFieldNames.NODE, review.getReviewWithoutFieldName())
+				QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.NODE, review.getReviewWithoutFieldName())
 		);
 	}
 

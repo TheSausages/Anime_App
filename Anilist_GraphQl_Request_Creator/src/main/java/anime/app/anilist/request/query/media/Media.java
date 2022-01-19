@@ -38,6 +38,10 @@ public class Media extends QueryElement {
 		return elementString.substring(elementString.indexOf(")") + 2);
 	}
 
+	public String getRequestedMediaFieldsWithArguments() {
+		return elementString.substring(elementString.indexOf("("));
+	}
+
 	public static MediaArgumentBuilder getMediaArgumentBuilder(Field field) {
 		Objects.requireNonNull(field, "Field for media cannot be null");
 
@@ -495,9 +499,9 @@ public class Media extends QueryElement {
 			}
 
 			return new Media(
-					QueryParameterUtils.combineIntoField(
+					QueryParameterUtils.combineIntoStringField(
 							MEDIA_TITLE,
-							QueryParameterUtils.buildArguments(mediaParameters),
+							QueryParameterUtils.buildStringArguments(mediaParameters),
 							field.getFieldWithoutFieldName()
 					).getField(),
 					queryParameters.stream().map(ParameterString::getField).collect(Collectors.toSet()),

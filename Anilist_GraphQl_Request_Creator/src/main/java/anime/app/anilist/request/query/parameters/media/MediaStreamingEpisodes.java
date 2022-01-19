@@ -53,7 +53,7 @@ public class MediaStreamingEpisodes {
 				throw new IllegalStateException("Streaming Episodes should posses at least 1 parameter!");
 			}
 
-			return new MediaStreamingEpisodes(QueryParameterUtils.buildFieldElement(
+			return new MediaStreamingEpisodes(QueryParameterUtils.buildStringField(
 					STREAMING_EPISODES_TITLE,
 					mediaStreamingEpisode
 			));

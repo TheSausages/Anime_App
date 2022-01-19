@@ -36,17 +36,17 @@ public class RecommendationConnection {
 		private final Set<ParameterString> recommendationConnection = new OverwritingLinkedHashSet<>();
 
 		public RecommendationConnectionBuilder edges(RecommendationEdge edge) {
-			recommendationConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.EDGES, edge.getRecommendationEdgeWithoutFieldName()));
+			recommendationConnection.add(QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.EDGES, edge.getRecommendationEdgeWithoutFieldName()));
 			return this;
 		}
 
 		public RecommendationConnectionBuilder nodes(Recommendation recommendation) {
-			recommendationConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.NODES, recommendation.getRecommendationStringWithoutFieldName()));
+			recommendationConnection.add(QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.NODES, recommendation.getRecommendationStringWithoutFieldName()));
 			return this;
 		}
 
 		public RecommendationConnectionBuilder pageInfo(PageInfo pageInfo) {
-			recommendationConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.PAGE_INFO, pageInfo.getPageInfoStringWithoutFieldName()));
+			recommendationConnection.add(QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.PAGE_INFO, pageInfo.getPageInfoStringWithoutFieldName()));
 			return this;
 		}
 
@@ -55,7 +55,7 @@ public class RecommendationConnection {
 				throw new IllegalStateException("Recommendation Connection should posses at least 1 parameter!");
 			}
 
-			return new RecommendationConnection(QueryParameterUtils.buildFieldElement(
+			return new RecommendationConnection(QueryParameterUtils.buildStringField(
 					RECOMMENDATION_CONNECTION_TITLE,
 					recommendationConnection
 			));

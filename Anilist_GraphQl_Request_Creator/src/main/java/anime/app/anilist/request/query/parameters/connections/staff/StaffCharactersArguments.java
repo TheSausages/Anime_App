@@ -31,17 +31,17 @@ public class StaffCharactersArguments {
 		private final Set<ParameterString> staffCharactersArguments = new OverwritingLinkedHashSet<>();
 
 		public StaffCharactersArgumentsBuilder sort(CharacterSort... sorts) {
-			staffCharactersArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.SORT, Arrays.toString(sorts)));
+			staffCharactersArguments.add(QueryParameterUtils.combineIntoStringArgumentNoBracket(CommonParameterFieldNames.SORT, Arrays.toString(sorts)));
 			return this;
 		}
 
 		public StaffCharactersArgumentsBuilder page(int page) {
-			staffCharactersArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.PAGE, page));
+			staffCharactersArguments.add(QueryParameterUtils.combineIntoStringArgumentNoBracket(CommonParameterFieldNames.PAGE, page));
 			return this;
 		}
 
 		public StaffCharactersArgumentsBuilder perPage(int perPage) {
-			staffCharactersArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.PER_PAGE, perPage));
+			staffCharactersArguments.add(QueryParameterUtils.combineIntoStringArgumentNoBracket(CommonParameterFieldNames.PER_PAGE, perPage));
 			return this;
 		}
 
@@ -50,7 +50,7 @@ public class StaffCharactersArguments {
 				throw new IllegalStateException("Staff Character Arguments should posses at least 1 parameter!");
 			}
 
-			return new StaffCharactersArguments(QueryParameterUtils.buildArguments(
+			return new StaffCharactersArguments(QueryParameterUtils.buildStringArguments(
 					staffCharactersArguments
 			));
 		}

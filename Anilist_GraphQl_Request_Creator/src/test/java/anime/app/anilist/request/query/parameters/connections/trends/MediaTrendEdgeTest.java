@@ -18,7 +18,7 @@ class MediaTrendEdgeTest {
 	void getStudioEdgeWithoutFieldName__ReturnCorrectString() {
 		//given
 		MediaTrend trend = MediaTrend.getMediaTrendBuilder().mediaId().build();
-		Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
+		Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
 				"mediaId"
 		);
 
@@ -53,7 +53,7 @@ class MediaTrendEdgeTest {
 	void fromMediaTrend_NonNullArgument_ReturnCorrectString() {
 		//given
 		MediaTrend trend = MediaTrend.getMediaTrendBuilder().mediaId().build();
-		Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
+		Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
 				"mediaId"
 		);
 
@@ -88,7 +88,7 @@ class MediaTrendEdgeTest {
 	void constructor_NonNullArgument_ReturnCorrectString() {
 		//given
 		MediaTrend trend = MediaTrend.getMediaTrendBuilder().mediaId().build();
-		Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
+		Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
 				"mediaId"
 		);
 

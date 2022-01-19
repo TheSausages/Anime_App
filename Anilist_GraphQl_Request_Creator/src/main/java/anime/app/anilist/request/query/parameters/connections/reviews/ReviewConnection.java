@@ -36,17 +36,17 @@ public class ReviewConnection {
 		private final Set<ParameterString> reviewConnection = new OverwritingLinkedHashSet<>();
 
 		public ReviewConnectionBuilder edge(ReviewEdge reviewEdge) {
-			reviewConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.EDGES, reviewEdge.getReviewEdgeWithoutFieldName()));
+			reviewConnection.add(QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.EDGES, reviewEdge.getReviewEdgeWithoutFieldName()));
 			return this;
 		}
 
 		public ReviewConnectionBuilder nodes(Review review) {
-			reviewConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.NODES, review.getReviewWithoutFieldName()));
+			reviewConnection.add(QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.NODES, review.getReviewWithoutFieldName()));
 			return this;
 		}
 
 		public ReviewConnectionBuilder pageInfo(PageInfo pageInfo) {
-			reviewConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.PAGE_INFO, pageInfo.getPageInfoStringWithoutFieldName()));
+			reviewConnection.add(QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.PAGE_INFO, pageInfo.getPageInfoStringWithoutFieldName()));
 			return this;
 		}
 
@@ -55,7 +55,7 @@ public class ReviewConnection {
 				throw new IllegalStateException("Review Connection should posses at least 1 parameter!");
 			}
 
-			return new ReviewConnection(QueryParameterUtils.buildFieldElement(
+			return new ReviewConnection(QueryParameterUtils.buildStringField(
 					REVIEW_CONNECTION_TITLE,
 					reviewConnection
 			));

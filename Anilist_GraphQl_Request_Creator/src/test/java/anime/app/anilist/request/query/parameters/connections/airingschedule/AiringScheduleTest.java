@@ -24,7 +24,7 @@ class AiringScheduleTest {
 	@Test
 	void getAiringScheduleStringWithoutFieldName__ReturnCorrectString() {
 		//given
-		Set<ParameterString> expectedSchedule = TestUtils.getParameterStringSetField("id");
+		Set<ParameterString> expectedSchedule = TestUtils.buildFieldParameterStringSet("id");
 
 		//when
 		String actualString = AiringSchedule.getAiringScheduleBuilder()
@@ -75,7 +75,7 @@ class AiringScheduleTest {
 		@Test
 		void airingScheduleBuilder_Id_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.getParameterStringSetField("id");
+			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet("id");
 
 			//when
 			AiringSchedule actualSchedule = AiringSchedule.getAiringScheduleBuilder().id().build();
@@ -91,7 +91,7 @@ class AiringScheduleTest {
 		@Test
 		void airingScheduleBuilder_AiringAt_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.getParameterStringSetField("airingAt");
+			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet("airingAt");
 
 			//when
 			AiringSchedule actualSchedule = AiringSchedule.getAiringScheduleBuilder().airingAt().build();
@@ -107,7 +107,7 @@ class AiringScheduleTest {
 		@Test
 		void airingScheduleBuilder_TimeUntilAiring_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.getParameterStringSetField("timeUntilAiring");
+			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet("timeUntilAiring");
 
 			//when
 			AiringSchedule actualSchedule = AiringSchedule.getAiringScheduleBuilder().timeUntilAiring().build();
@@ -123,7 +123,7 @@ class AiringScheduleTest {
 		@Test
 		void airingScheduleBuilder_Episode_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.getParameterStringSetField("episode");
+			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet("episode");
 
 			//when
 			AiringSchedule actualSchedule = AiringSchedule.getAiringScheduleBuilder().episode().build();
@@ -139,7 +139,7 @@ class AiringScheduleTest {
 		@Test
 		void airingScheduleBuilder_MediaId_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.getParameterStringSetField("mediaId");
+			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet("mediaId");
 
 			//when
 			AiringSchedule actualSchedule = AiringSchedule.getAiringScheduleBuilder().mediaId().build();
@@ -156,8 +156,8 @@ class AiringScheduleTest {
 		void airingScheduleBuilder_Media_ReturnCorrectString() {
 			//given
 			Media media = Media.getMediaArgumentBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
-			Set<ParameterString> expectedString = TestUtils.getParameterStringSetField(
-					QueryParameterUtils.combineIntoField(CommonParameterFieldNames.MEDIA, media.getRequestedMediaFields()).getField()
+			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet(
+					QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.MEDIA, media.getRequestedMediaFields()).getField()
 			);
 
 			//when
@@ -176,7 +176,7 @@ class AiringScheduleTest {
 		@Test
 		void airingScheduleBuilder_All_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet(
 					"id",
 					"airingAt",
 					"timeUntilAiring",

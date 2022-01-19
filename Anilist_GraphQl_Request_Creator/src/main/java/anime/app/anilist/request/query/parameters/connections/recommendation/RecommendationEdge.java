@@ -15,9 +15,9 @@ public class RecommendationEdge {
 	public RecommendationEdge(Recommendation recommendation) {
 		Objects.requireNonNull(recommendation, "Recommendation cannot be null");
 
-		this.recommendationEdgeString = QueryParameterUtils.buildFieldElement(
+		this.recommendationEdgeString = QueryParameterUtils.buildStringField(
 				RECOMMENDATION_EDGE_TITLE,
-				QueryParameterUtils.combineIntoField(CommonParameterFieldNames.NODE, recommendation.getRecommendationStringWithoutFieldName())
+				QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.NODE, recommendation.getRecommendationStringWithoutFieldName())
 		);
 	}
 

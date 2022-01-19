@@ -25,7 +25,7 @@ class CharacterTest {
 	@Test
 	void getCharacterStringWithoutFieldName__ReturnCorrectString() {
 		//given
-		Set<ParameterString> expectedSchedule = TestUtils.getParameterStringSetField("id");
+		Set<ParameterString> expectedSchedule = TestUtils.buildFieldParameterStringSet("id");
 
 		//when
 		String actualString = Character.getCharacterBuilder()
@@ -76,7 +76,7 @@ class CharacterTest {
 		@Test
 		void characterBuilder_Id_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.getParameterStringSetField("id");
+			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet("id");
 
 			//when
 			Character character = Character.getCharacterBuilder().id().build();
@@ -92,7 +92,7 @@ class CharacterTest {
 		@Test
 		void characterBuilder_Name_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet(
 					"name {\nfirst\nmiddle\nlast\nfull\nnative\nalternative\nalternativeSpoiler\n}"
 			);
 
@@ -110,7 +110,7 @@ class CharacterTest {
 		@Test
 		void characterBuilder_Image_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet(
 					"image {\nlarge\nmedium\n}"
 			);
 
@@ -128,7 +128,7 @@ class CharacterTest {
 		@Test
 		void characterBuilder_DescriptionWithoutArgument_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet(
 					"description(asHtml: false)"
 			);
 
@@ -146,7 +146,7 @@ class CharacterTest {
 		@Test
 		void characterBuilder_DescriptionWithArgument_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet(
 					"description(asHtml: true)"
 			);
 
@@ -164,7 +164,7 @@ class CharacterTest {
 		@Test
 		void characterBuilder_Gender_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet(
 					"gender"
 			);
 
@@ -184,8 +184,8 @@ class CharacterTest {
 			//given
 			FuzzyDateFieldParameter parameter = FuzzyDateFieldParameter.DATE_OF_BIRTH;
 			FuzzyDateField dateField = FuzzyDateField.getFuzzyDateFieldBuilder().allAndBuild();
-			Set<ParameterString> expectedString = TestUtils.getParameterStringSetField(
-					QueryParameterUtils.combineIntoField(parameter, dateField.getFuzzyDateStringWithoutFieldName()).getField()
+			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet(
+					QueryParameterUtils.combineIntoStringField(parameter, dateField.getFuzzyDateStringWithoutFieldName()).getField()
 			);
 
 			//when
@@ -202,7 +202,7 @@ class CharacterTest {
 		@Test
 		void characterBuilder_Age_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet(
 					"age"
 			);
 
@@ -220,7 +220,7 @@ class CharacterTest {
 		@Test
 		void characterBuilder_AnilistSiteUrl_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet(
 					"siteUrl"
 			);
 
@@ -238,7 +238,7 @@ class CharacterTest {
 		@Test
 		void characterBuilder_Favourites_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet(
 					"favourites"
 			);
 
@@ -256,7 +256,7 @@ class CharacterTest {
 		@Test
 		void characterBuilder_ModNotes_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedString = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet(
 					"modNotes"
 			);
 
@@ -277,7 +277,7 @@ class CharacterTest {
 			MediaConnection connection = MediaConnection.getMediaConnectionBuilder()
 					.pageInfo(PageInfo.getPageInfoBuilder().currentPage().build())
 					.build();
-			Set<ParameterString> expectedString = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet(
 					"media " + connection.getMediaConnectionWithoutFieldName()
 			);
 
@@ -300,7 +300,7 @@ class CharacterTest {
 			MediaConnection connection = MediaConnection.getMediaConnectionBuilder()
 					.pageInfo(PageInfo.getPageInfoBuilder().currentPage().build())
 					.build();
-			Set<ParameterString> expectedString = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet(
 					"media(page: " + page + ") " + connection.getMediaConnectionWithoutFieldName()
 			);
 
@@ -325,13 +325,13 @@ class CharacterTest {
 			MediaConnection connection = MediaConnection.getMediaConnectionBuilder()
 					.pageInfo(PageInfo.getPageInfoBuilder().currentPage().build())
 					.build();
-			Set<ParameterString> expectedString = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedString = TestUtils.buildFieldParameterStringSet(
 					"id",
 					"name {\nfirst\nmiddle\nlast\nfull\nnative\nalternative\nalternativeSpoiler\n}",
 					"image {\nlarge\nmedium\n}",
 					"description(asHtml: false)",
 					"gender",
-					QueryParameterUtils.combineIntoField(parameter, dateField.getFuzzyDateStringWithoutFieldName()).getField(),
+					QueryParameterUtils.combineIntoStringField(parameter, dateField.getFuzzyDateStringWithoutFieldName()).getField(),
 					"age",
 					"siteUrl",
 					"favourites",

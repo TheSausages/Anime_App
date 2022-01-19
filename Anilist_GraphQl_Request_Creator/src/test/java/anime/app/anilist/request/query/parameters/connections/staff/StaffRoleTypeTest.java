@@ -19,7 +19,7 @@ class StaffRoleTypeTest {
 	@Test
 	void getStaffRoleTypeStringWithoutFieldName__ReturnCorrectString() {
 		//given
-		Set<ParameterString> expectedType = TestUtils.getParameterStringSetField(
+		Set<ParameterString> expectedType = TestUtils.buildFieldParameterStringSet(
 				"roleNotes"
 		);
 
@@ -71,7 +71,7 @@ class StaffRoleTypeTest {
 		@Test
 		void staffRoleTypeBuilder_RoleNotes_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedType = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedType = TestUtils.buildFieldParameterStringSet(
 					"roleNotes"
 			);
 
@@ -91,7 +91,7 @@ class StaffRoleTypeTest {
 		@Test
 		void staffRoleTypeBuilder_DubGroups_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedType = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedType = TestUtils.buildFieldParameterStringSet(
 					"dubGroup"
 			);
 
@@ -112,7 +112,7 @@ class StaffRoleTypeTest {
 		void staffRoleTypeBuilder_VoiceActor_ReturnCorrectString() {
 			//given
 			Staff staff = Staff.getStaffBuilder().id().build();
-			Set<ParameterString> expectedType = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedType = TestUtils.buildFieldParameterStringSet(
 					"voiceActor " + staff.getStaffWithoutFieldName()
 			);
 
@@ -133,7 +133,7 @@ class StaffRoleTypeTest {
 		void staffRoleTypeBuilder_AllParameters_ReturnCorrectString() {
 			//given
 			Staff staff = Staff.getStaffBuilder().id().build();
-			Set<ParameterString> expectedType = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedType = TestUtils.buildFieldParameterStringSet(
 					"roleNotes",
 					"dubGroup",
 					"voiceActor " + staff.getStaffWithoutFieldName()

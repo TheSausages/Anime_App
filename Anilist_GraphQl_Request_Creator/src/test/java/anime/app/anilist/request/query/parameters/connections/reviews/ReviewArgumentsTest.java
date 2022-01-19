@@ -52,7 +52,7 @@ class ReviewArgumentsTest {
 		void reviewArgumentsBuilder_SortSingle_ReturnCorrectString() {
 			//given
 			ReviewSort[] sorts = new ReviewSort[] {ReviewSort.ID};
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"sort: " + Arrays.toString(sorts)
 			);
 
@@ -73,7 +73,7 @@ class ReviewArgumentsTest {
 		void reviewArgumentsBuilder_SortMany_ReturnCorrectString() {
 			//given
 			ReviewSort[] sorts = new ReviewSort[] {ReviewSort.ID, ReviewSort.RATING};
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"sort: " + Arrays.toString(sorts)
 			);
 
@@ -94,7 +94,7 @@ class ReviewArgumentsTest {
 		void reviewArgumentsBuilder_Limit_ReturnCorrectString() {
 			//given
 			int limit = 10;
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"limit: " + limit
 			);
 
@@ -115,7 +115,7 @@ class ReviewArgumentsTest {
 		void reviewArgumentsBuilder_Page_ReturnCorrectString() {
 			//given
 			int page = 1;
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"page: " + page
 			);
 
@@ -136,7 +136,7 @@ class ReviewArgumentsTest {
 		void reviewArgumentsBuilder_PerPage_ReturnCorrectString() {
 			//given
 			int perPage = 30;
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"perPage: " + perPage
 			);
 
@@ -160,7 +160,7 @@ class ReviewArgumentsTest {
 			int page = 1;
 			int perPage = 30;
 			ReviewSort[] sorts = new ReviewSort[] {ReviewSort.ID, ReviewSort.RATING};
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"sort: " + Arrays.toString(sorts),
 					"limit: " + limit,
 					"page: " + page,

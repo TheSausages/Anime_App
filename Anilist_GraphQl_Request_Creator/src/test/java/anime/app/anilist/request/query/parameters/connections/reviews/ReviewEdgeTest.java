@@ -34,7 +34,7 @@ class ReviewEdgeTest {
 	void getReviewEdgeWithoutFieldName_NonNullReview_ReturnCorrectString() {
 		//given
 		Review review = Review.getReviewBuilder().id().build();
-		Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
+		Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
 				"node " + review.getReviewWithoutFieldName()
 		);
 
@@ -69,7 +69,7 @@ class ReviewEdgeTest {
 	void fromReview_NonNullReview_ReturnCorrectString() {
 		//given
 		Review review = Review.getReviewBuilder().id().build();
-		Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
+		Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
 				"node " + review.getReviewWithoutFieldName()
 		);
 

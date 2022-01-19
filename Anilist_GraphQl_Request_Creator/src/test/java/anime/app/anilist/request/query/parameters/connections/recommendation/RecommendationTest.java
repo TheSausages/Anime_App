@@ -23,7 +23,7 @@ class RecommendationTest {
 	@Test
 	void getRecommendationStringWithoutFieldName__ReturnCorrectString() {
 		//given
-		Set<ParameterString> expectedRecommendation = TestUtils.getParameterStringSetField(
+		Set<ParameterString> expectedRecommendation = TestUtils.buildFieldParameterStringSet(
 				"id"
 		);
 
@@ -75,7 +75,7 @@ class RecommendationTest {
 		@Test
 		void recommendationBuilder_Id_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedRecommendation = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedRecommendation = TestUtils.buildFieldParameterStringSet(
 					"id"
 			);
 
@@ -95,7 +95,7 @@ class RecommendationTest {
 		@Test
 		void recommendationBuilder_Rating_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedRecommendation = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedRecommendation = TestUtils.buildFieldParameterStringSet(
 					"rating"
 			);
 
@@ -116,7 +116,7 @@ class RecommendationTest {
 		void recommendationBuilder_Media_ReturnCorrectString() {
 			//given
 			Media media = Media.getMediaArgumentBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
-			Set<ParameterString> expectedRecommendation = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedRecommendation = TestUtils.buildFieldParameterStringSet(
 					"media " + media.getRequestedMediaFields()
 			);
 
@@ -137,7 +137,7 @@ class RecommendationTest {
 		void recommendationBuilder_MediaRecommendation_ReturnCorrectString() {
 			//given
 			Media media = Media.getMediaArgumentBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
-			Set<ParameterString> expectedRecommendation = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedRecommendation = TestUtils.buildFieldParameterStringSet(
 					"mediaRecommendation " + media.getRequestedMediaFields()
 			);
 
@@ -158,7 +158,7 @@ class RecommendationTest {
 		void recommendationBuilder_AnilistUser_ReturnCorrectString() {
 			//given
 			AnilistUser user = AnilistUser.getUserBuilder().id().build();
-			Set<ParameterString> expectedRecommendation = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedRecommendation = TestUtils.buildFieldParameterStringSet(
 					"user " + user.getAnilistUserWithoutFieldName()
 			);
 
@@ -180,7 +180,7 @@ class RecommendationTest {
 			//given
 			AnilistUser user = AnilistUser.getUserBuilder().id().build();
 			Media media = Media.getMediaArgumentBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
-			Set<ParameterString> expectedRecommendation = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedRecommendation = TestUtils.buildFieldParameterStringSet(
 					"id",
 					"rating",
 					"media " + media.getRequestedMediaFields(),

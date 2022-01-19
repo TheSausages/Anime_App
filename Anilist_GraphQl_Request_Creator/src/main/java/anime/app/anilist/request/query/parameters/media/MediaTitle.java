@@ -78,7 +78,7 @@ public class MediaTitle {
 				throw new IllegalStateException("At least 1 language must be selected!");
 			}
 
-			return new MediaTitle(QueryParameterUtils.buildFieldElement(
+			return new MediaTitle(QueryParameterUtils.buildStringField(
 					TITLE_TITLE,
 					languages
 			));

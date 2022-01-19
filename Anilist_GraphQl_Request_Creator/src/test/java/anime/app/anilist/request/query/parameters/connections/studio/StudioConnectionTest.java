@@ -21,7 +21,7 @@ class StudioConnectionTest {
 	void getStudioConnectionWithoutFieldName__ReturnCorrectString() {
 		//given
 		PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-		Set<ParameterString> expectedConnection = TestUtils.getParameterStringSetField(
+		Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
 				info.getPageInfoString()
 		);
 
@@ -74,7 +74,7 @@ class StudioConnectionTest {
 		void studioConnectionBuilder_Edge_ReturnCorrectString() {
 			//given
 			StudioEdge edge = StudioEdge.getStudioEdgedBuilder().id().build();
-			Set<ParameterString> expectedConnection = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
 					"edges " + edge.getStudioEdgeWithoutFieldName()
 			);
 
@@ -95,7 +95,7 @@ class StudioConnectionTest {
 		void studioConnectionBuilder_Nodes_ReturnCorrectString() {
 			//given
 			Studio studio = Studio.getStudioBuilder().id().build();
-			Set<ParameterString> expectedConnection = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
 					"nodes " + studio.getStudioWithoutFieldName()
 			);
 
@@ -116,7 +116,7 @@ class StudioConnectionTest {
 		void studioConnectionBuilder_PageInfo_ReturnCorrectString() {
 			//given
 			PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-			Set<ParameterString> expectedConnection = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
 					info.getPageInfoString()
 			);
 
@@ -139,7 +139,7 @@ class StudioConnectionTest {
 			StudioEdge edge = StudioEdge.getStudioEdgedBuilder().id().build();
 			Studio studio = Studio.getStudioBuilder().id().build();
 			PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-			Set<ParameterString> expectedConnection = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
 					"edges " + edge.getStudioEdgeWithoutFieldName(),
 					"nodes " + studio.getStudioWithoutFieldName(),
 					info.getPageInfoString()

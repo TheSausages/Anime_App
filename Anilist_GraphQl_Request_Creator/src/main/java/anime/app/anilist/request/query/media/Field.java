@@ -67,7 +67,7 @@ public class Field {
 		}
 
 		public FieldBuilder trailer() {
-			fieldParameters.add(ParameterString.fromString(QueryParameterUtils.buildFieldElement(
+			fieldParameters.add(ParameterString.fromString(QueryParameterUtils.buildStringField(
 					"trailer",
 					"id",
 					"site",
@@ -77,7 +77,7 @@ public class Field {
 		}
 
 		public FieldBuilder coverImage() {
-			fieldParameters.add(ParameterString.fromString(QueryParameterUtils.buildFieldElement(
+			fieldParameters.add(ParameterString.fromString(QueryParameterUtils.buildStringField(
 					"coverImage",
 					"extraLarge",
 					"large",
@@ -88,7 +88,7 @@ public class Field {
 		}
 
 		public FieldBuilder tags() {
-			fieldParameters.add(ParameterString.fromString(QueryParameterUtils.buildFieldElement(
+			fieldParameters.add(ParameterString.fromString(QueryParameterUtils.buildStringField(
 					"tags",
 					"id",
 					"name",
@@ -103,7 +103,7 @@ public class Field {
 		}
 
 		public FieldBuilder nextAiringEpisode() {
-			fieldParameters.add(ParameterString.fromString(QueryParameterUtils.buildFieldElement(
+			fieldParameters.add(ParameterString.fromString(QueryParameterUtils.buildStringField(
 					"nextAiringEpisode",
 					"id",
 					"airingAt",
@@ -119,7 +119,7 @@ public class Field {
 		}
 
 		public FieldBuilder status(int version) {
-			fieldParameters.add(ParameterString.fromString("status" + QueryParameterUtils.combineIntoArgumentWithBracket("version", version)));
+			fieldParameters.add(ParameterString.fromString("status" + QueryParameterUtils.combineIntoStringArgumentWithBracket("version", version)));
 			return this;
 		}
 
@@ -132,7 +132,7 @@ public class Field {
 		}
 
 		public FieldBuilder descriptionAsHtml(boolean asHtml) {
-			fieldParameters.add(ParameterString.fromString("description" + QueryParameterUtils.combineIntoArgumentWithBracket("asHtml", asHtml)));
+			fieldParameters.add(ParameterString.fromString("description" + QueryParameterUtils.combineIntoStringArgumentWithBracket("asHtml", asHtml)));
 			return this;
 		}
 
@@ -141,7 +141,7 @@ public class Field {
 		}
 
 		public FieldBuilder source(int version) {
-			fieldParameters.add(ParameterString.fromString("source" + QueryParameterUtils.combineIntoArgumentWithBracket("version", version)));
+			fieldParameters.add(ParameterString.fromString("source" + QueryParameterUtils.combineIntoStringArgumentWithBracket("version", version)));
 			return this;
 		}
 
@@ -179,50 +179,50 @@ public class Field {
 		}
 
 		public FieldBuilder relations(MediaConnection connection) {
-			fieldParameters.add(QueryParameterUtils.combineIntoField("relations", connection.getMediaConnectionWithoutFieldName()));
+			fieldParameters.add(QueryParameterUtils.combineIntoStringField("relations", connection.getMediaConnectionWithoutFieldName()));
 			return this;
 		}
 
 		public FieldBuilder characters(CharacterConnection characterConnection) {
-			fieldParameters.add(QueryParameterUtils.combineIntoField("characters", characterConnection.getCharacterConnectionWithoutFieldName()));
+			fieldParameters.add(QueryParameterUtils.combineIntoStringField("characters", characterConnection.getCharacterConnectionWithoutFieldName()));
 			return this;
 		}
 
 		public FieldBuilder characters(CharacterConnection characterConnection, CharacterArguments characterArguments) {
 			fieldParameters.add(
-					QueryParameterUtils.combineIntoField("characters", characterArguments.getCharacterArgumentsString(), characterConnection.getCharacterConnectionWithoutFieldName())
+					QueryParameterUtils.combineIntoStringField("characters", characterArguments.getCharacterArgumentsString(), characterConnection.getCharacterConnectionWithoutFieldName())
 			);
 			return this;
 		}
 
 		public FieldBuilder staff(StaffConnection staffConnection) {
-			fieldParameters.add(QueryParameterUtils.combineIntoField("staff", staffConnection.getStaffConnectionWithoutFieldName()));
+			fieldParameters.add(QueryParameterUtils.combineIntoStringField("staff", staffConnection.getStaffConnectionWithoutFieldName()));
 			return this;
 		}
 
 		public FieldBuilder staff(StaffConnection staffConnection, StaffArguments staffArguments) {
 			fieldParameters.add(
-					QueryParameterUtils.combineIntoField("staff", staffArguments.getStaffArgumentsString(), staffConnection.getStaffConnectionWithoutFieldName())
+					QueryParameterUtils.combineIntoStringField("staff", staffArguments.getStaffArgumentsString(), staffConnection.getStaffConnectionWithoutFieldName())
 			);
 			return this;
 		}
 
 		public FieldBuilder studios(StudioConnection studioConnection) {
-			fieldParameters.add(QueryParameterUtils.combineIntoField("studios", studioConnection.getStudioConnectionWithoutFieldName()));
+			fieldParameters.add(QueryParameterUtils.combineIntoStringField("studios", studioConnection.getStudioConnectionWithoutFieldName()));
 			return this;
 		}
 
 		public FieldBuilder studios(StudioConnection studioConnection, StudioSort... sorts) {
-			fieldParameters.add(QueryParameterUtils.combineIntoField(
+			fieldParameters.add(QueryParameterUtils.combineIntoStringField(
 					"studios",
-					QueryParameterUtils.combineIntoArgumentWithBracket("sort",  Arrays.toString(sorts)),
+					QueryParameterUtils.combineIntoStringArgumentWithBracket("sort",  Arrays.toString(sorts)),
 					studioConnection.getStudioConnectionWithoutFieldName()
 			));
 			return this;
 		}
 
 		public FieldBuilder airingSchedule(AiringScheduleConnection airingScheduleConnection) {
-			fieldParameters.add(QueryParameterUtils.combineIntoField(
+			fieldParameters.add(QueryParameterUtils.combineIntoStringField(
 					"airingSchedule",
 					airingScheduleConnection.getAiringScheduleConnectionWithoutFieldName()
 			));
@@ -230,7 +230,7 @@ public class Field {
 		}
 
 		public FieldBuilder airingSchedule(AiringScheduleConnection airingScheduleConnection, AiringScheduleArguments airingScheduleArguments) {
-			fieldParameters.add(QueryParameterUtils.combineIntoField(
+			fieldParameters.add(QueryParameterUtils.combineIntoStringField(
 					"airingSchedule",
 					airingScheduleArguments.getAiringScheduleArgumentsString(),
 					airingScheduleConnection.getAiringScheduleConnectionWithoutFieldName()
@@ -239,12 +239,12 @@ public class Field {
 		}
 
 		public FieldBuilder trends(MediaTrendConnection connection) {
-			fieldParameters.add(QueryParameterUtils.combineIntoField("trends", connection.getMediaConnectionWithoutFieldName()));
+			fieldParameters.add(QueryParameterUtils.combineIntoStringField("trends", connection.getMediaConnectionWithoutFieldName()));
 			return this;
 		}
 
 		public FieldBuilder trends(MediaTrendConnection connection, MediaTrendsArguments arguments) {
-			fieldParameters.add(QueryParameterUtils.combineIntoField(
+			fieldParameters.add(QueryParameterUtils.combineIntoStringField(
 					"trends",
 					arguments.getMediaTrendsArgumentsString(),
 					connection.getMediaConnectionWithoutFieldName()
@@ -253,12 +253,12 @@ public class Field {
 		}
 
 		public FieldBuilder reviews(ReviewConnection reviewConnection) {
-			fieldParameters.add(QueryParameterUtils.combineIntoField("reviews", reviewConnection.getReviewConnectionWithoutFieldName()));
+			fieldParameters.add(QueryParameterUtils.combineIntoStringField("reviews", reviewConnection.getReviewConnectionWithoutFieldName()));
 			return this;
 		}
 
 		public FieldBuilder reviews(ReviewConnection reviewConnection, ReviewArguments reviewArguments) {
-			fieldParameters.add(QueryParameterUtils.combineIntoField(
+			fieldParameters.add(QueryParameterUtils.combineIntoStringField(
 					"reviews",
 					reviewArguments.getReviewArgumentsString(),
 					reviewConnection.getReviewConnectionWithoutFieldName()
@@ -267,12 +267,12 @@ public class Field {
 		}
 
 		public FieldBuilder recommendation(RecommendationConnection recommendationConnection) {
-			fieldParameters.add(QueryParameterUtils.combineIntoField("recommendation", recommendationConnection.getRecommendationConnectionWithoutFieldName()));
+			fieldParameters.add(QueryParameterUtils.combineIntoStringField("recommendation", recommendationConnection.getRecommendationConnectionWithoutFieldName()));
 			return this;
 		}
 
 		public FieldBuilder recommendation(RecommendationConnection recommendationConnection, RecommendationArguments recommendationArguments) {
-			fieldParameters.add(QueryParameterUtils.combineIntoField(
+			fieldParameters.add(QueryParameterUtils.combineIntoStringField(
 					"recommendation",
 					recommendationArguments.getRecommendationArgumentsString(),
 					recommendationConnection.getRecommendationConnectionWithoutFieldName()
@@ -285,7 +285,7 @@ public class Field {
 				throw new IllegalStateException("Field must have at least 1 Parameter");
 			}
 
-			return new Field(QueryParameterUtils.buildFieldElement(
+			return new Field(QueryParameterUtils.buildStringField(
 					FIELD_TITLE,
 					fieldParameters
 			));

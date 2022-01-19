@@ -21,7 +21,7 @@ class ReviewConnectionTest {
 	void getReviewConnectionWithoutFieldName__ReturnCorrectString() {
 		//given
 		PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-		Set<ParameterString> expectedConnection = TestUtils.getParameterStringSetField(
+		Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
 				info.getPageInfoString()
 		);
 
@@ -74,7 +74,7 @@ class ReviewConnectionTest {
 		void reviewConnectionBuilder_Edge_ReturnCorrectString() {
 			//given
 			ReviewEdge edge = ReviewEdge.fromReview(Review.getReviewBuilder().id().build());
-			Set<ParameterString> expectedConnection = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
 					"edges " + edge.getReviewEdgeWithoutFieldName()
 			);
 
@@ -95,7 +95,7 @@ class ReviewConnectionTest {
 		void reviewConnectionBuilder_Nodes_ReturnCorrectString() {
 			//given
 			Review review = Review.getReviewBuilder().id().build();
-			Set<ParameterString> expectedConnection = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
 					"nodes " + review.getReviewWithoutFieldName()
 			);
 
@@ -116,7 +116,7 @@ class ReviewConnectionTest {
 		void reviewConnectionBuilder_PageInfo_ReturnCorrectString() {
 			//given
 			PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-			Set<ParameterString> expectedConnection = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
 					info.getPageInfoString()
 			);
 
@@ -139,7 +139,7 @@ class ReviewConnectionTest {
 			Review review = Review.getReviewBuilder().id().build();
 			ReviewEdge edge = ReviewEdge.fromReview(review);
 			PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-			Set<ParameterString> expectedConnection = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
 					"edges " + edge.getReviewEdgeWithoutFieldName(),
 					"nodes " + review.getReviewWithoutFieldName(),
 					info.getPageInfoString()

@@ -52,7 +52,7 @@ class CharacterArgumentsTest {
 		void characterArgumentsBuilder_CharacterSortSingle_ReturnCorrectString() {
 			//given
 			CharacterSort[] sorts = new CharacterSort[] {CharacterSort.ID};
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments("sort: " + Arrays.toString(sorts));
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet("sort: " + Arrays.toString(sorts));
 
 			//when
 			CharacterArguments actualArguments = CharacterArguments.getCharacterArgumentsBuilder()
@@ -71,7 +71,7 @@ class CharacterArgumentsTest {
 		void characterArgumentsBuilder_CharacterSortMany_ReturnCorrectString() {
 			//given
 			CharacterSort[] sorts = new CharacterSort[] {CharacterSort.ID, CharacterSort.ROLE};
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"sort: " + Arrays.toString(sorts)
 			);
 
@@ -92,7 +92,7 @@ class CharacterArgumentsTest {
 		void characterArgumentsBuilder_CharacterRole_ReturnCorrectString() {
 			//given
 			CharacterRole role = CharacterRole.MAIN;
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments("role: " + role.name());
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet("role: " + role.name());
 
 			//when
 			CharacterArguments actualArguments = CharacterArguments.getCharacterArgumentsBuilder()
@@ -111,7 +111,7 @@ class CharacterArgumentsTest {
 		void characterArgumentsBuilder_Page_ReturnCorrectString() {
 			//given
 			int page = 1;
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments("page: " + page);
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet("page: " + page);
 
 			//when
 			CharacterArguments actualArguments = CharacterArguments.getCharacterArgumentsBuilder()
@@ -130,7 +130,7 @@ class CharacterArgumentsTest {
 		void characterArgumentsBuilder_PerPage_ReturnCorrectString() {
 			//given
 			int perPage = 1;
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments("perPage: " + perPage);
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet("perPage: " + perPage);
 
 			//when
 			CharacterArguments actualArguments = CharacterArguments.getCharacterArgumentsBuilder()
@@ -152,7 +152,7 @@ class CharacterArgumentsTest {
 			CharacterRole role = CharacterRole.MAIN;
 			int page = 1;
 			int perPage = 1;
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"sort: " + Arrays.toString(sorts),
 					"role: " + role.name(),
 					"page: " + page,

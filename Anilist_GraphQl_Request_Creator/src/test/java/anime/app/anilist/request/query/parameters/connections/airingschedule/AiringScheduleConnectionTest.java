@@ -21,7 +21,7 @@ class AiringScheduleConnectionTest {
 	void getAiringScheduleConnectionWithoutFieldName__ReturnCorrectString() {
 		//given
 		PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-		Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetField(
+		Set<ParameterString> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet(
 				info.getPageInfoString()
 		);
 
@@ -74,7 +74,7 @@ class AiringScheduleConnectionTest {
 		void airingScheduleConnectionBuilder_Edge_ReturnCorrectString() {
 			//given
 			AiringScheduleEdge edge = new AiringScheduleEdge();
-			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet(
 					"edges " + edge.getAiringScheduleEdgeWithoutFieldName()
 			);
 
@@ -95,7 +95,7 @@ class AiringScheduleConnectionTest {
 		void airingScheduleConnectionBuilder_Nodes_ReturnCorrectString() {
 			//given
 			AiringSchedule schedule = AiringSchedule.getAiringScheduleBuilder().id().build();
-			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet(
 					"nodes " + schedule.getAiringScheduleStringWithoutFieldName()
 			);
 
@@ -116,7 +116,7 @@ class AiringScheduleConnectionTest {
 		void airingScheduleConnectionBuilder_PageInfo_ReturnCorrectString() {
 			//given
 			PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet(
 					info.getPageInfoString()
 			);
 
@@ -139,7 +139,7 @@ class AiringScheduleConnectionTest {
 			AiringScheduleEdge edge = new AiringScheduleEdge();
 			AiringSchedule schedule = AiringSchedule.getAiringScheduleBuilder().id().build();
 			PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet(
 					"edges " + edge.getAiringScheduleEdgeWithoutFieldName(),
 					"nodes " + schedule.getAiringScheduleStringWithoutFieldName(),
 					info.getPageInfoString()

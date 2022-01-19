@@ -32,12 +32,12 @@ public class MediaArguments {
 		private final Set<ParameterString> mediaArguments = new OverwritingLinkedHashSet<>();
 
 		public MediaArgumentsBuilder sortBy(MediaSort... sorts) {
-			mediaArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.SORT, Arrays.toString(sorts)));
+			mediaArguments.add(QueryParameterUtils.combineIntoStringArgumentNoBracket(CommonParameterFieldNames.SORT, Arrays.toString(sorts)));
 			return this;
 		}
 
 		public MediaArgumentsBuilder type(MediaType type) {
-			mediaArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket("type", type.name()));
+			mediaArguments.add(QueryParameterUtils.combineIntoStringArgumentNoBracket("type", type.name()));
 			return this;
 		}
 
@@ -46,17 +46,17 @@ public class MediaArguments {
 		}
 
 		public MediaArgumentsBuilder onList(boolean onList) {
-			mediaArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket("onList", onList));
+			mediaArguments.add(QueryParameterUtils.combineIntoStringArgumentNoBracket("onList", onList));
 			return this;
 		}
 
 		public MediaArgumentsBuilder page(int page) {
-			mediaArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.PAGE, page));
+			mediaArguments.add(QueryParameterUtils.combineIntoStringArgumentNoBracket(CommonParameterFieldNames.PAGE, page));
 			return this;
 		}
 
 		public MediaArgumentsBuilder perPage(int perPage) {
-			mediaArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.PER_PAGE, perPage));
+			mediaArguments.add(QueryParameterUtils.combineIntoStringArgumentNoBracket(CommonParameterFieldNames.PER_PAGE, perPage));
 			return this;
 		}
 
@@ -65,7 +65,7 @@ public class MediaArguments {
 				throw new IllegalStateException("Media Arguments should posses at least 1 parameter!");
 			}
 
-			return new MediaArguments(QueryParameterUtils.buildArguments(mediaArguments));
+			return new MediaArguments(QueryParameterUtils.buildStringArguments(mediaArguments));
 		}
 	}
 }

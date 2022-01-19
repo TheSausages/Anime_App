@@ -34,7 +34,7 @@ public class StaffRoleType {
 		private final Set<ParameterString> staffRoleType = new OverwritingLinkedHashSet<>();
 
 		public StaffRoleTypeBuilder voiceActor(Staff staff) {
-			staffRoleType.add(QueryParameterUtils.combineIntoField("voiceActor", staff.getStaffWithoutFieldName()));
+			staffRoleType.add(QueryParameterUtils.combineIntoStringField("voiceActor", staff.getStaffWithoutFieldName()));
 			return this;
 		}
 
@@ -53,7 +53,7 @@ public class StaffRoleType {
 				throw new IllegalStateException("Staff Role Type should posses at least 1 parameter!");
 			}
 
-			return new StaffRoleType(QueryParameterUtils.buildFieldElement(
+			return new StaffRoleType(QueryParameterUtils.buildStringField(
 					STAFF_ROLE_TYPE_TITLE,
 					staffRoleType
 			));

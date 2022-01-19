@@ -54,7 +54,7 @@ class StaffCharacterMediaArgumentsTest {
 		void staffCharacterMediaArgumentsBuilder_SortSingle_ReturnCorrectString() {
 			//given
 			CharacterSort[] sorts = new CharacterSort[] {CharacterSort.ID};
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"sort: " + Arrays.toString(sorts)
 			);
 
@@ -75,7 +75,7 @@ class StaffCharacterMediaArgumentsTest {
 		void staffCharactersArgumentsBuilder_SortMany_ReturnCorrectString() {
 			//given
 			CharacterSort[] sorts = new CharacterSort[] {CharacterSort.ID, CharacterSort.ROLE};
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"sort: " + Arrays.toString(sorts)
 			);
 
@@ -95,7 +95,7 @@ class StaffCharacterMediaArgumentsTest {
 		@Test
 		void staffCharacterMediaArgumentsBuilder_OnListNoArgument_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"onList: true"
 			);
 
@@ -116,7 +116,7 @@ class StaffCharacterMediaArgumentsTest {
 		void staffCharacterMediaArgumentsBuilder_OnListWithArgument_ReturnCorrectString() {
 			//given
 			boolean onList = false;
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"onList: " + onList
 			);
 
@@ -137,7 +137,7 @@ class StaffCharacterMediaArgumentsTest {
 		void staffCharacterMediaArgumentsBuilder_Page_ReturnCorrectString() {
 			//given
 			int page = 1;
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"page: " + page
 			);
 
@@ -158,7 +158,7 @@ class StaffCharacterMediaArgumentsTest {
 		void staffCharacterMediaArgumentsBuilder_PerPage_ReturnCorrectString() {
 			//given
 			int perPage = 1;
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"perPage: " + perPage
 			);
 
@@ -181,7 +181,7 @@ class StaffCharacterMediaArgumentsTest {
 			CharacterSort[] sorts = new CharacterSort[] {CharacterSort.ID, CharacterSort.ROLE};
 			int page = 1;
 			int perPage = 1;
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"sort: " + Arrays.toString(sorts),
 					"page: " + page,
 					"perPage: " + perPage

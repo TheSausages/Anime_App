@@ -37,17 +37,17 @@ public class MediaConnection {
 		private final Set<ParameterString> mediaConnections = new OverwritingLinkedHashSet<>();
 
 		public MediaConnectionBuilder edge(MediaEdge mediaEdge) {
-			mediaConnections.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.EDGES, mediaEdge.getMediaEdgeWithoutFieldName()));
+			mediaConnections.add(QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.EDGES, mediaEdge.getMediaEdgeWithoutFieldName()));
 			return this;
 		}
 
 		public MediaConnectionBuilder nodes(Media media) {
-			mediaConnections.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.NODES, media.getRequestedMediaFields()));
+			mediaConnections.add(QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.NODES, media.getRequestedMediaFields()));
 			return this;
 		}
 
 		public MediaConnectionBuilder pageInfo(PageInfo pageInfo) {
-			mediaConnections.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.PAGE_INFO, pageInfo.getPageInfoStringWithoutFieldName()));
+			mediaConnections.add(QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.PAGE_INFO, pageInfo.getPageInfoStringWithoutFieldName()));
 			return this;
 		}
 
@@ -56,7 +56,7 @@ public class MediaConnection {
 				throw new IllegalStateException("Media Connection should posses at least 1 parameter!");
 			}
 
-			return new MediaConnection(QueryParameterUtils.buildFieldElement(
+			return new MediaConnection(QueryParameterUtils.buildStringField(
 					MEDIA_CONNECTION_TITLE,
 					mediaConnections
 			));

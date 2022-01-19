@@ -44,7 +44,7 @@ public class AnilistUser {
 		}
 
 		public AnilistUserBuilder avatar() {
-			user.add(ParameterString.fromString(QueryParameterUtils.buildFieldElement("avatar", "large", "medium")));
+			user.add(ParameterString.fromString(QueryParameterUtils.buildStringField("avatar", "large", "medium")));
 			return this;
 		}
 
@@ -53,7 +53,7 @@ public class AnilistUser {
 				throw new IllegalStateException("User should posses at least 1 parameter!");
 			}
 
-			return new AnilistUser(QueryParameterUtils.buildFieldElement(
+			return new AnilistUser(QueryParameterUtils.buildStringField(
 					USER_TITLE,
 					user
 			));

@@ -50,7 +50,7 @@ class MediaStreamingEpisodesTest {
 		@Test
 		void mediaStreamingEpisodesBuilder_Site_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedStreamingEpisodes = TestUtils.getParameterStringSetField("site");
+			Set<ParameterString> expectedStreamingEpisodes = TestUtils.buildFieldParameterStringSet("site");
 
 			//when
 			MediaStreamingEpisodes actualEpisodes = MediaStreamingEpisodes.getMediaStreamingEpisodesBuilder()
@@ -68,7 +68,7 @@ class MediaStreamingEpisodesTest {
 		@Test
 		void mediaStreamingEpisodesBuilder_Title_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedStreamingEpisodes = TestUtils.getParameterStringSetField("title");
+			Set<ParameterString> expectedStreamingEpisodes = TestUtils.buildFieldParameterStringSet("title");
 
 			//when
 			MediaStreamingEpisodes actualEpisodes = MediaStreamingEpisodes.getMediaStreamingEpisodesBuilder()
@@ -86,7 +86,7 @@ class MediaStreamingEpisodesTest {
 		@Test
 		void mediaStreamingEpisodesBuilder_Url_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedStreamingEpisodes = TestUtils.getParameterStringSetField("url");
+			Set<ParameterString> expectedStreamingEpisodes = TestUtils.buildFieldParameterStringSet("url");
 
 			//when
 			MediaStreamingEpisodes actualEpisodes = MediaStreamingEpisodes.getMediaStreamingEpisodesBuilder()
@@ -104,7 +104,7 @@ class MediaStreamingEpisodesTest {
 		@Test
 		void mediaStreamingEpisodesBuilder_Thumbnail_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedStreamingEpisodes = TestUtils.getParameterStringSetField("thumbnail");
+			Set<ParameterString> expectedStreamingEpisodes = TestUtils.buildFieldParameterStringSet("thumbnail");
 
 			//when
 			MediaStreamingEpisodes actualEpisodes = MediaStreamingEpisodes.getMediaStreamingEpisodesBuilder()
@@ -122,7 +122,7 @@ class MediaStreamingEpisodesTest {
 		@Test
 		void mediaStreamingEpisodesBuilder_AllParameters_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedStreamingEpisodes = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedStreamingEpisodes = TestUtils.buildFieldParameterStringSet(
 					"site",
 					"url",
 					"title",

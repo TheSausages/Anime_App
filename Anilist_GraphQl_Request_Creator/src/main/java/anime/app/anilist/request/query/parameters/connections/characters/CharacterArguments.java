@@ -30,22 +30,22 @@ public class CharacterArguments {
 		private final Set<ParameterString> characterMediaArguments = new OverwritingLinkedHashSet<>();
 
 		public CharacterArgumentsBuilder sortBy(CharacterSort... sorts) {
-			characterMediaArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.SORT, Arrays.toString(sorts)));
+			characterMediaArguments.add(QueryParameterUtils.combineIntoStringArgumentNoBracket(CommonParameterFieldNames.SORT, Arrays.toString(sorts)));
 			return this;
 		}
 
 		public CharacterArgumentsBuilder role(CharacterRole characterRole) {
-			characterMediaArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.ROLE, characterRole.name()));
+			characterMediaArguments.add(QueryParameterUtils.combineIntoStringArgumentNoBracket(CommonParameterFieldNames.ROLE, characterRole.name()));
 			return this;
 		}
 
 		public CharacterArgumentsBuilder page(int page) {
-			characterMediaArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.PAGE, page));
+			characterMediaArguments.add(QueryParameterUtils.combineIntoStringArgumentNoBracket(CommonParameterFieldNames.PAGE, page));
 			return this;
 		}
 
 		public CharacterArgumentsBuilder perPage(int perPage) {
-			characterMediaArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.PER_PAGE, perPage));
+			characterMediaArguments.add(QueryParameterUtils.combineIntoStringArgumentNoBracket(CommonParameterFieldNames.PER_PAGE, perPage));
 			return this;
 		}
 
@@ -54,7 +54,7 @@ public class CharacterArguments {
 				throw new IllegalStateException("Character Arguments should posses at least 1 parameter!");
 			}
 
-			return new CharacterArguments(QueryParameterUtils.buildArguments(characterMediaArguments));
+			return new CharacterArguments(QueryParameterUtils.buildStringArguments(characterMediaArguments));
 		}
 	}
 }

@@ -29,22 +29,22 @@ public class AiringScheduleArguments {
 		private final Set<ParameterString> airingScheduleArguments = new OverwritingLinkedHashSet<>();
 
 		public AiringScheduleArgumentsBuilder notYetAired() {
-			airingScheduleArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket("notYetAired", true));
+			airingScheduleArguments.add(QueryParameterUtils.combineIntoStringArgumentNoBracket("notYetAired", true));
 			return this;
 		}
 
 		public AiringScheduleArgumentsBuilder notYetAired(boolean didNotAir) {
-			airingScheduleArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket("notYetAired", didNotAir));
+			airingScheduleArguments.add(QueryParameterUtils.combineIntoStringArgumentNoBracket("notYetAired", didNotAir));
 			return this;
 		}
 
 		public AiringScheduleArgumentsBuilder page(int page) {
-			airingScheduleArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.PAGE, page));
+			airingScheduleArguments.add(QueryParameterUtils.combineIntoStringArgumentNoBracket(CommonParameterFieldNames.PAGE, page));
 			return this;
 		}
 
 		public AiringScheduleArgumentsBuilder perPage(int perPage) {
-			airingScheduleArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.PER_PAGE, perPage));
+			airingScheduleArguments.add(QueryParameterUtils.combineIntoStringArgumentNoBracket(CommonParameterFieldNames.PER_PAGE, perPage));
 			return this;
 		}
 
@@ -54,7 +54,7 @@ public class AiringScheduleArguments {
 			}
 
 			return new AiringScheduleArguments(
-					QueryParameterUtils.buildArguments(airingScheduleArguments)
+					QueryParameterUtils.buildStringArguments(airingScheduleArguments)
 			);
 		}
 	}

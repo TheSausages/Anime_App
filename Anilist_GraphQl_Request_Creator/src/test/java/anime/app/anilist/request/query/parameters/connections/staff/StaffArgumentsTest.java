@@ -52,7 +52,7 @@ class StaffArgumentsTest {
 		void staffArgumentsBuilder_SortSingle_ReturnCorrectString() {
 			//given
 			StaffSort[] sorts = new StaffSort[] {StaffSort.ID};
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"sort: " + Arrays.toString(sorts)
 			);
 
@@ -73,7 +73,7 @@ class StaffArgumentsTest {
 		void staffArgumentsBuilder_SortMultiple_ReturnCorrectString() {
 			//given
 			StaffSort[] sorts = new StaffSort[] {StaffSort.ID, StaffSort.ID_DESC};
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"sort: " + Arrays.toString(sorts)
 			);
 
@@ -94,7 +94,7 @@ class StaffArgumentsTest {
 		void staffArgumentsBuilder_Page_ReturnCorrectString() {
 			//given
 			int page = 1;
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"page: " + page
 			);
 
@@ -115,7 +115,7 @@ class StaffArgumentsTest {
 		void staffArgumentsBuilder_PerPage_ReturnCorrectString() {
 			//given
 			int perPage = 1;
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"perPage: " + perPage
 			);
 
@@ -138,7 +138,7 @@ class StaffArgumentsTest {
 			int page = 1;
 			int perPage = 30;
 			StaffSort[] sorts = new StaffSort[] {StaffSort.ID, StaffSort.ID_DESC};
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"page: " + page,
 					"perPage: " + perPage,
 					"sort: " + Arrays.toString(sorts)

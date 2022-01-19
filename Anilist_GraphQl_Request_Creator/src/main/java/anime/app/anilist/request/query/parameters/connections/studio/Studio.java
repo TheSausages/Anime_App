@@ -52,12 +52,12 @@ public class Studio {
 		}
 
 		public StudioBuilder media(MediaConnection mediaConnection) {
-			studio.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.MEDIA, mediaConnection.getMediaConnectionWithoutFieldName()));
+			studio.add(QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.MEDIA, mediaConnection.getMediaConnectionWithoutFieldName()));
 			return this;
 		}
 
 		public StudioBuilder media(MediaConnection mediaConnection, MediaArguments mediaArguments) {
-			studio.add(QueryParameterUtils.combineIntoField(
+			studio.add(QueryParameterUtils.combineIntoStringField(
 					CommonParameterFieldNames.MEDIA,
 					mediaArguments.getMediaArgumentsString(),
 					mediaConnection.getMediaConnectionWithoutFieldName()
@@ -80,7 +80,7 @@ public class Studio {
 				throw new IllegalStateException("Studio should posses at least 1 parameter!");
 			}
 
-			return new Studio(QueryParameterUtils.buildFieldElement(
+			return new Studio(QueryParameterUtils.buildStringField(
 					STUDIO_TITLE,
 					studio
 			));

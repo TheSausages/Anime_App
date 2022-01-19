@@ -42,7 +42,7 @@ public class MediaEdge {
 		private final Set<ParameterString> mediaEdge = new OverwritingLinkedHashSet<>();
 
 		public MediaEdgeBuilder node(Media media) {
-			mediaEdge.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.NODE, media.getRequestedMediaFields()));
+			mediaEdge.add(QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.NODE, media.getRequestedMediaFields()));
 			return this;
 		}
 
@@ -56,7 +56,7 @@ public class MediaEdge {
 		}
 
 		public MediaEdgeBuilder relationType(int version) {
-			mediaEdge.add(ParameterString.fromString("relationType" + QueryParameterUtils.combineIntoArgumentWithBracket("version", version)));
+			mediaEdge.add(ParameterString.fromString("relationType" + QueryParameterUtils.combineIntoStringArgumentWithBracket("version", version)));
 			return this;
 		}
 
@@ -66,7 +66,7 @@ public class MediaEdge {
 		}
 
 		public MediaEdgeBuilder characters(Character character) {
-			mediaEdge.add(QueryParameterUtils.combineIntoField("characters", character.getCharacterStringWithoutFieldName()));
+			mediaEdge.add(QueryParameterUtils.combineIntoStringField("characters", character.getCharacterStringWithoutFieldName()));
 			return this;
 		}
 
@@ -96,34 +96,34 @@ public class MediaEdge {
 		}
 
 		public MediaEdgeBuilder voiceActors(Staff staff) {
-			mediaEdge.add(QueryParameterUtils.combineIntoField("voiceActors", staff.getStaffWithoutFieldName()));
+			mediaEdge.add(QueryParameterUtils.combineIntoStringField("voiceActors", staff.getStaffWithoutFieldName()));
 			return this;
 		}
 
 		public MediaEdgeBuilder voiceActors(Staff staff, StaffLanguage language) {
-			mediaEdge.add(QueryParameterUtils.combineIntoField(
+			mediaEdge.add(QueryParameterUtils.combineIntoStringField(
 					"voiceActors",
-					QueryParameterUtils.combineIntoArgumentWithBracket("language", language.name()),
+					QueryParameterUtils.combineIntoStringArgumentWithBracket("language", language.name()),
 					staff.getStaffWithoutFieldName()
 			));
 			return this;
 		}
 
 		public MediaEdgeBuilder voiceActors(Staff staff, StaffSort... staffSort) {
-			mediaEdge.add(QueryParameterUtils.combineIntoField(
+			mediaEdge.add(QueryParameterUtils.combineIntoStringField(
 					"voiceActors",
-					QueryParameterUtils.combineIntoArgumentWithBracket(CommonParameterFieldNames.SORT, Arrays.toString(staffSort)),
+					QueryParameterUtils.combineIntoStringArgumentWithBracket(CommonParameterFieldNames.SORT, Arrays.toString(staffSort)),
 					staff.getStaffWithoutFieldName()
 			));
 			return this;
 		}
 
 		public MediaEdgeBuilder voiceActors(Staff staff, StaffLanguage language, StaffSort... staffSort) {
-			mediaEdge.add(QueryParameterUtils.combineIntoField(
+			mediaEdge.add(QueryParameterUtils.combineIntoStringField(
 					"voiceActors",
-					QueryParameterUtils.buildArguments(
-							QueryParameterUtils.combineIntoArgumentWithoutBracket("language", language.name()),
-							QueryParameterUtils.combineIntoArgumentWithoutBracket("sort", Arrays.toString(staffSort))
+					QueryParameterUtils.buildStringArguments(
+							QueryParameterUtils.combineIntoStringArgumentNoBracket("language", language.name()),
+							QueryParameterUtils.combineIntoStringArgumentNoBracket("sort", Arrays.toString(staffSort))
 					),
 					staff.getStaffWithoutFieldName()
 			));
@@ -131,34 +131,34 @@ public class MediaEdge {
 		}
 
 		public MediaEdgeBuilder voiceActorsRoles(StaffRoleType roleType) {
-			mediaEdge.add(QueryParameterUtils.combineIntoField("voiceActorRoles", roleType.getStaffRoleTypeStringWithoutFieldName()));
+			mediaEdge.add(QueryParameterUtils.combineIntoStringField("voiceActorRoles", roleType.getStaffRoleTypeStringWithoutFieldName()));
 			return this;
 		}
 
 		public MediaEdgeBuilder voiceActorsRoles(StaffRoleType roleType, StaffLanguage language) {
-			mediaEdge.add(QueryParameterUtils.combineIntoField(
+			mediaEdge.add(QueryParameterUtils.combineIntoStringField(
 					"voiceActorRoles",
-					QueryParameterUtils.combineIntoArgumentWithBracket("language", language.name()),
+					QueryParameterUtils.combineIntoStringArgumentWithBracket("language", language.name()),
 					roleType.getStaffRoleTypeStringWithoutFieldName()
 			));
 			return this;
 		}
 
 		public MediaEdgeBuilder voiceActorsRoles(StaffRoleType roleType, StaffSort... staffSort) {
-			mediaEdge.add(QueryParameterUtils.combineIntoField(
+			mediaEdge.add(QueryParameterUtils.combineIntoStringField(
 					"voiceActorRoles",
-					QueryParameterUtils.combineIntoArgumentWithBracket(CommonParameterFieldNames.SORT, Arrays.toString(staffSort)),
+					QueryParameterUtils.combineIntoStringArgumentWithBracket(CommonParameterFieldNames.SORT, Arrays.toString(staffSort)),
 					roleType.getStaffRoleTypeStringWithoutFieldName()
 			));
 			return this;
 		}
 
 		public MediaEdgeBuilder voiceActorsRoles(StaffRoleType roleType, StaffLanguage language, StaffSort... staffSort) {
-			mediaEdge.add(QueryParameterUtils.combineIntoField(
+			mediaEdge.add(QueryParameterUtils.combineIntoStringField(
 					"voiceActorRoles",
-					QueryParameterUtils.buildArguments(
-							QueryParameterUtils.combineIntoArgumentWithoutBracket("language", language.name()),
-							QueryParameterUtils.combineIntoArgumentWithoutBracket("sort", Arrays.toString(staffSort))
+					QueryParameterUtils.buildStringArguments(
+							QueryParameterUtils.combineIntoStringArgumentNoBracket("language", language.name()),
+							QueryParameterUtils.combineIntoStringArgumentNoBracket("sort", Arrays.toString(staffSort))
 					),
 					roleType.getStaffRoleTypeStringWithoutFieldName()
 			));
@@ -170,7 +170,7 @@ public class MediaEdge {
 				throw new IllegalStateException("Media Edge should posses at least 1 parameter!");
 			}
 
-			return new MediaEdge(QueryParameterUtils.buildFieldElement(
+			return new MediaEdge(QueryParameterUtils.buildStringField(
 					MEDIA_EDGE_TITLE,
 					mediaEdge
 			));

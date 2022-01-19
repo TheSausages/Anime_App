@@ -21,7 +21,7 @@ class MediaTrendConnectionTest {
 	void getMediaConnectionWithoutFieldName__ReturnCorrectString() {
 		//given
 		PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-		Set<ParameterString> expectedConnection = TestUtils.getParameterStringSetField(
+		Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
 				info.getPageInfoString()
 		);
 
@@ -75,7 +75,7 @@ class MediaTrendConnectionTest {
 			//given
 			MediaTrend trend = MediaTrend.getMediaTrendBuilder().mediaId().build();
 			MediaTrendEdge edge = MediaTrendEdge.fromMediaTrend(trend);
-			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet(
 					"edges " + edge.getStudioEdgeWithoutFieldName()
 			);
 
@@ -96,7 +96,7 @@ class MediaTrendConnectionTest {
 		void mediaConnectionBuilder_Nodes_ReturnCorrectString() {
 			//given
 			MediaTrend trend = MediaTrend.getMediaTrendBuilder().mediaId().build();
-			Set<ParameterString> expectedConnection = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
 					"nodes " + trend.getMediaTrendWithoutFieldName()
 			);
 
@@ -117,7 +117,7 @@ class MediaTrendConnectionTest {
 		void mediaConnectionBuilder_PageInfo_ReturnCorrectString() {
 			//given
 			PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-			Set<ParameterString> expectedConnection = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedConnection = TestUtils.buildFieldParameterStringSet(
 					info.getPageInfoString()
 			);
 
@@ -140,7 +140,7 @@ class MediaTrendConnectionTest {
 			MediaTrend trend = MediaTrend.getMediaTrendBuilder().mediaId().build();
 			MediaTrendEdge edge = MediaTrendEdge.fromMediaTrend(trend);
 			PageInfo info = PageInfo.getPageInfoBuilder().total().build();
-			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedAiringScheduleEdge = TestUtils.buildFieldParameterStringSet(
 					"edges " + edge.getStudioEdgeWithoutFieldName(),
 					"nodes " + trend.getMediaTrendWithoutFieldName(),
 					info.getPageInfoString()

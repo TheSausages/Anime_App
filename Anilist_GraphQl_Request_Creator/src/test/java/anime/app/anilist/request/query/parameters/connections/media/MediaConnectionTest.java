@@ -24,7 +24,7 @@ class MediaConnectionTest {
 	void getMediaConnectionWithoutFieldName__ReturnCorrectString() {
 		//given
 		Media media = Media.getMediaArgumentBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
-		Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
+		Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
 				"nodes " + media.getRequestedMediaFields()
 		);
 
@@ -78,7 +78,7 @@ class MediaConnectionTest {
 		void mediaConnectionBuilder_Edge_ReturnCorrectString() {
 			//given
 			MediaEdge edge = MediaEdge.getMediaEdgeBuilder().id().build();
-			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"edges " + edge.getMediaEdgeWithoutFieldName()
 			);
 
@@ -100,7 +100,7 @@ class MediaConnectionTest {
 		void mediaConnectionBuilder_Nodes_ReturnCorrectString() {
 			//given
 			Media media = Media.getMediaArgumentBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
-			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"nodes " + media.getRequestedMediaFields()
 			);
 
@@ -122,7 +122,7 @@ class MediaConnectionTest {
 		void mediaConnectionBuilder_PageInfo_ReturnCorrectString() {
 			//given
 			PageInfo pageInfo = PageInfo.getPageInfoBuilder().perPage().build();
-			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					pageInfo.getPageInfoString()
 			);
 
@@ -146,7 +146,7 @@ class MediaConnectionTest {
 			MediaEdge edge = MediaEdge.getMediaEdgeBuilder().id().build();
 			Media media = Media.getMediaArgumentBuilder(Field.getFieldBuilder().status().build()).format(MediaFormat.TV).build();
 			PageInfo pageInfo = PageInfo.getPageInfoBuilder().perPage().build();
-			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					pageInfo.getPageInfoString(),
 					"nodes " + media.getRequestedMediaFields(),
 					"edges " + edge.getMediaEdgeWithoutFieldName()

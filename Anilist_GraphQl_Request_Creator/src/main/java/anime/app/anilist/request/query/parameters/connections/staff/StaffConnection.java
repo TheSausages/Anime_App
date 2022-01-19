@@ -31,17 +31,17 @@ public class StaffConnection {
 		private final Set<ParameterString> staffConnection = new OverwritingLinkedHashSet<>();
 
 		public StaffConnectionBuilder edges(StaffEdge edge) {
-			staffConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.EDGES, edge.getStaffEdgeWithoutFieldName()));
+			staffConnection.add(QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.EDGES, edge.getStaffEdgeWithoutFieldName()));
 			return this;
 		}
 
 		public StaffConnectionBuilder nodes(Staff staff) {
-			staffConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.NODES, staff.getStaffWithoutFieldName()));
+			staffConnection.add(QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.NODES, staff.getStaffWithoutFieldName()));
 			return this;
 		}
 
 		public StaffConnectionBuilder pageInfo(PageInfo pageInfo) {
-			staffConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.PAGE_INFO, pageInfo.getPageInfoStringWithoutFieldName()));
+			staffConnection.add(QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.PAGE_INFO, pageInfo.getPageInfoStringWithoutFieldName()));
 			return this;
 		}
 
@@ -50,7 +50,7 @@ public class StaffConnection {
 				throw new IllegalStateException("Staff Connection should posses at least 1 parameter!");
 			}
 
-			return new StaffConnection(QueryParameterUtils.buildFieldElement(
+			return new StaffConnection(QueryParameterUtils.buildStringField(
 					STAFF_CONNECTION_TITLE,
 					staffConnection
 			));

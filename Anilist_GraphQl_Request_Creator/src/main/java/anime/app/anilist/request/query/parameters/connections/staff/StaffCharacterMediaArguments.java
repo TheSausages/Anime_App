@@ -31,7 +31,7 @@ public class StaffCharacterMediaArguments {
 		private final Set<ParameterString> staffCharacterMediaArguments = new OverwritingLinkedHashSet<>();
 
 		public StaffCharacterMediaArgumentsBuilder sort(CharacterSort... sorts) {
-			staffCharacterMediaArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.SORT, Arrays.toString(sorts)));
+			staffCharacterMediaArguments.add(QueryParameterUtils.combineIntoStringArgumentNoBracket(CommonParameterFieldNames.SORT, Arrays.toString(sorts)));
 			return this;
 		}
 
@@ -40,17 +40,17 @@ public class StaffCharacterMediaArguments {
 		}
 
 		public StaffCharacterMediaArgumentsBuilder onList(boolean onList) {
-			staffCharacterMediaArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket("onList", onList));
+			staffCharacterMediaArguments.add(QueryParameterUtils.combineIntoStringArgumentNoBracket("onList", onList));
 			return this;
 		}
 
 		public StaffCharacterMediaArgumentsBuilder page(int page) {
-			staffCharacterMediaArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.PAGE, page));
+			staffCharacterMediaArguments.add(QueryParameterUtils.combineIntoStringArgumentNoBracket(CommonParameterFieldNames.PAGE, page));
 			return this;
 		}
 
 		public StaffCharacterMediaArgumentsBuilder perPage(int perPage) {
-			staffCharacterMediaArguments.add(QueryParameterUtils.combineIntoArgumentWithoutBracket(CommonParameterFieldNames.PER_PAGE, perPage));
+			staffCharacterMediaArguments.add(QueryParameterUtils.combineIntoStringArgumentNoBracket(CommonParameterFieldNames.PER_PAGE, perPage));
 			return this;
 		}
 
@@ -59,7 +59,7 @@ public class StaffCharacterMediaArguments {
 				throw new IllegalStateException("Staff Media Character Arguments should posses at least 1 parameter!");
 			}
 
-			return new StaffCharacterMediaArguments(QueryParameterUtils.buildArguments(
+			return new StaffCharacterMediaArguments(QueryParameterUtils.buildStringArguments(
 					staffCharacterMediaArguments
 			));
 		}

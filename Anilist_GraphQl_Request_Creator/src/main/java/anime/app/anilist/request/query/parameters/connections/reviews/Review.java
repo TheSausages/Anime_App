@@ -71,7 +71,7 @@ public class Review {
 		}
 
 		public ReviewBuilder bodyAsHtml(boolean asHtml) {
-			review.add(ParameterString.fromString("body" + QueryParameterUtils.combineIntoArgumentWithBracket("asHtml", asHtml)));
+			review.add(ParameterString.fromString("body" + QueryParameterUtils.combineIntoStringArgumentWithBracket("asHtml", asHtml)));
 			return this;
 		}
 
@@ -111,12 +111,12 @@ public class Review {
 		}
 
 		public ReviewBuilder user(AnilistUser anilistUser) {
-			review.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.USER, anilistUser.getAnilistUserWithoutFieldName()));
+			review.add(QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.USER, anilistUser.getAnilistUserWithoutFieldName()));
 			return this;
 		}
 
 		public ReviewBuilder media(Media media) {
-			review.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.MEDIA, media.getRequestedMediaFields()));
+			review.add(QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.MEDIA, media.getRequestedMediaFields()));
 			return this;
 		}
 
@@ -125,7 +125,7 @@ public class Review {
 				throw new IllegalStateException("Review should posses at least 1 parameter!");
 			}
 
-			return new Review(QueryParameterUtils.buildFieldElement(
+			return new Review(QueryParameterUtils.buildStringField(
 					REVIEW_TITLE,
 					review
 			));

@@ -40,8 +40,9 @@ public class QueryTitleWithArgumentsAndParametersMatcher extends TypeSafeMatcher
 		//Check field
 		//Get rid of everything except the field
 		item = item.substring(indexOfClosingArgumentBracket + 4, item.length() - 2);
+		var a = List.of(item.split(QueryTitleWithParametersMatcher.divider));
 
-		return elements.containsAll(List.of(item.split(QueryTitleWithParametersMatcher.divider)));
+		return TestUtils.containsOnly(elements, List.of(item.split(QueryTitleWithParametersMatcher.divider)));
 	}
 
 	@Override

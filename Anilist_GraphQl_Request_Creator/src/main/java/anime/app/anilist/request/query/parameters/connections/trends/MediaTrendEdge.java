@@ -14,7 +14,7 @@ public class MediaTrendEdge {
 	public MediaTrendEdge(MediaTrend mediaTrend) {
 		Objects.requireNonNull(mediaTrend, "Media trend cannot be null");
 
-		this.studioEdgeString = QueryParameterUtils.combineIntoField(MEDIA_TREND_EDGE_TITLE, mediaTrend.getMediaTrendWithoutFieldName()).getField();
+		this.studioEdgeString = QueryParameterUtils.combineIntoStringField(MEDIA_TREND_EDGE_TITLE, mediaTrend.getMediaTrendWithoutFieldName()).getField();
 	}
 
 	public static MediaTrendEdge fromMediaTrend(MediaTrend trend) {

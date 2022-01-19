@@ -31,7 +31,7 @@ public class QueryTitleWithParametersMatcher extends TypeSafeMatcher<String> {
 		//delete first, second and last element (these are newline, '{' and '}')
 		item = item.substring(2, item.length() - 1);
 
-		return elements.containsAll(List.of(item.split(divider)));
+		return TestUtils.containsOnly(elements, List.of(item.split(QueryTitleWithParametersMatcher.divider)));
 	}
 
 	@Override

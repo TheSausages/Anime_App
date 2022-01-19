@@ -33,7 +33,7 @@ class RecommendationEdgeTest {
 	void getRecommendationEdgeWithoutFieldName_NonNullReview_ReturnCorrectString() {
 		//given
 		Recommendation recommendation = Recommendation.getRecommendationBuilder().id().build();
-		Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
+		Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
 				"node " + recommendation.getRecommendationStringWithoutFieldName()
 		);
 
@@ -68,7 +68,7 @@ class RecommendationEdgeTest {
 	void fromRecommendation_NonNullReview_ReturnCorrectString() {
 		//given
 		Recommendation recommendation = Recommendation.getRecommendationBuilder().id().build();
-		Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
+		Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
 				"node " + recommendation.getRecommendationStringWithoutFieldName()
 		);
 

@@ -54,7 +54,7 @@ class MediaArgumentsTest {
 		void mediaArgumentsBuilder_SortBySingle_ReturnCorrectString() {
 			//given
 			MediaSort[] sorts = new MediaSort[] {MediaSort.ID};
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments("sort: " + Arrays.toString(sorts));
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet("sort: " + Arrays.toString(sorts));
 
 			//when
 			MediaArguments actualArguments = MediaArguments.getMediaArgumentsBuilder()
@@ -73,7 +73,7 @@ class MediaArgumentsTest {
 		void mediaArgumentsBuilder_SortByMany_ReturnCorrectString() {
 			//given
 			MediaSort[] sorts = new MediaSort[] {MediaSort.ID, MediaSort.CHAPTERS};
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments("sort: " + Arrays.toString(sorts));
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet("sort: " + Arrays.toString(sorts));
 
 			//when
 			MediaArguments actualArguments = MediaArguments.getMediaArgumentsBuilder()
@@ -92,7 +92,7 @@ class MediaArgumentsTest {
 		void mediaArgumentsBuilder_Type_ReturnCorrectString() {
 			//given
 			MediaType type = MediaType.ANIME;
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments("type: " + type.name());
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet("type: " + type.name());
 
 			//when
 			MediaArguments actualArguments = MediaArguments.getMediaArgumentsBuilder()
@@ -110,7 +110,7 @@ class MediaArgumentsTest {
 		@Test
 		void mediaArgumentsBuilder_OnListWithoutArgument_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments("onList: true");
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet("onList: true");
 
 			//when
 			MediaArguments actualArguments = MediaArguments.getMediaArgumentsBuilder()
@@ -129,7 +129,7 @@ class MediaArgumentsTest {
 		void mediaArgumentsBuilder_OnListWithArgument_ReturnCorrectString() {
 			//given
 			boolean onList = false;
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments("onList: " + onList);
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet("onList: " + onList);
 
 			//when
 			MediaArguments actualArguments = MediaArguments.getMediaArgumentsBuilder()
@@ -148,7 +148,7 @@ class MediaArgumentsTest {
 		void mediaArgumentsBuilder_Page_ReturnCorrectString() {
 			//given
 			int page = 1;
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments("page: " + page);
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet("page: " + page);
 
 			//when
 			MediaArguments actualArguments = MediaArguments.getMediaArgumentsBuilder()
@@ -167,7 +167,7 @@ class MediaArgumentsTest {
 		void mediaArgumentsBuilder_PerPage_ReturnCorrectString() {
 			//given
 			int perPage = 1;
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments("perPage: " + perPage);
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet("perPage: " + perPage);
 
 			//when
 			MediaArguments actualArguments = MediaArguments.getMediaArgumentsBuilder()
@@ -189,7 +189,7 @@ class MediaArgumentsTest {
 			MediaType type = MediaType.ANIME;
 			int page  = 1;
 			int perPage = 1;
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"sort: " + Arrays.toString(sorts),
 					"type: " + type.name(),
 					"onList: true",

@@ -31,17 +31,17 @@ public class MediaTrendConnection {
 		private final Set<ParameterString> mediaTrendsConnection = new OverwritingLinkedHashSet<>();
 
 		public MediaConnectionBuilder edges(MediaTrendEdge mediaTrendEdge) {
-			mediaTrendsConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.EDGES, mediaTrendEdge.getStudioEdgeWithoutFieldName()));
+			mediaTrendsConnection.add(QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.EDGES, mediaTrendEdge.getStudioEdgeWithoutFieldName()));
 			return this;
 		}
 
 		public MediaConnectionBuilder nodes(MediaTrend mediaTrend) {
-			mediaTrendsConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.NODES, mediaTrend.getMediaTrendWithoutFieldName()));
+			mediaTrendsConnection.add(QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.NODES, mediaTrend.getMediaTrendWithoutFieldName()));
 			return this;
 		}
 
 		public MediaConnectionBuilder pageInfo(PageInfo pageInfo) {
-			mediaTrendsConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.PAGE_INFO, pageInfo.getPageInfoStringWithoutFieldName()));
+			mediaTrendsConnection.add(QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.PAGE_INFO, pageInfo.getPageInfoStringWithoutFieldName()));
 			return this;
 		}
 
@@ -50,7 +50,7 @@ public class MediaTrendConnection {
 				throw new IllegalStateException("Trends Connection should posses at least 1 parameter!");
 			}
 
-			return new MediaTrendConnection(QueryParameterUtils.buildFieldElement(
+			return new MediaTrendConnection(QueryParameterUtils.buildStringField(
 					MEDIA_TRENDS_CONNECTION_TITLE,
 					mediaTrendsConnection
 			));

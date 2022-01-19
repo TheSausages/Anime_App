@@ -44,7 +44,7 @@ public class Staff {
 		}
 
 		public StaffBuilder name() {
-			staff.add(ParameterString.fromString(QueryParameterUtils.buildFieldElement(
+			staff.add(ParameterString.fromString(QueryParameterUtils.buildStringField(
 					"name",
 					"first",
 					"middle",
@@ -61,7 +61,7 @@ public class Staff {
 		}
 
 		public StaffBuilder image() {
-			staff.add(ParameterString.fromString(QueryParameterUtils.buildFieldElement("image", "large", "medium")));
+			staff.add(ParameterString.fromString(QueryParameterUtils.buildStringField("image", "large", "medium")));
 			return this;
 		}
 
@@ -71,7 +71,7 @@ public class Staff {
 		}
 
 		public StaffBuilder description(boolean asHtml) {
-			staff.add(ParameterString.fromString("description" + QueryParameterUtils.combineIntoArgumentWithBracket("asHtml", asHtml)));
+			staff.add(ParameterString.fromString("description" + QueryParameterUtils.combineIntoStringArgumentWithBracket("asHtml", asHtml)));
 			return this;
 		}
 
@@ -86,12 +86,12 @@ public class Staff {
 		}
 
 		public StaffBuilder dateOfBirth(FuzzyDateField fuzzyDateField) {
-			staff.add(QueryParameterUtils.combineIntoField(FuzzyDateFieldParameter.DATE_OF_BIRTH, fuzzyDateField.getFuzzyDateStringWithoutFieldName()));
+			staff.add(QueryParameterUtils.combineIntoStringField(FuzzyDateFieldParameter.DATE_OF_BIRTH, fuzzyDateField.getFuzzyDateStringWithoutFieldName()));
 			return this;
 		}
 
 		public StaffBuilder dateOfDeath(FuzzyDateField fuzzyDateField) {
-			staff.add(QueryParameterUtils.combineIntoField(FuzzyDateFieldParameter.DATE_OF_DEATH, fuzzyDateField.getFuzzyDateStringWithoutFieldName()));
+			staff.add(QueryParameterUtils.combineIntoStringField(FuzzyDateFieldParameter.DATE_OF_DEATH, fuzzyDateField.getFuzzyDateStringWithoutFieldName()));
 			return this;
 		}
 
@@ -116,12 +116,12 @@ public class Staff {
 		}
 
 		public StaffBuilder staffMedia(MediaConnection mediaConnection) {
-			staff.add(QueryParameterUtils.combineIntoField("staffMedia", mediaConnection.getMediaConnectionWithoutFieldName()));
+			staff.add(QueryParameterUtils.combineIntoStringField("staffMedia", mediaConnection.getMediaConnectionWithoutFieldName()));
 			return this;
 		}
 
 		public StaffBuilder staffMedia(MediaArguments mediaArguments, MediaConnection mediaConnection) {
-			staff.add(QueryParameterUtils.combineIntoField(
+			staff.add(QueryParameterUtils.combineIntoStringField(
 					"staffMedia",
 					mediaArguments.getMediaArgumentsString(),
 					mediaConnection.getMediaConnectionWithoutFieldName()
@@ -130,12 +130,12 @@ public class Staff {
 		}
 
 		public StaffBuilder characters(CharacterConnection characterConnection) {
-			staff.add(QueryParameterUtils.combineIntoField("characters", characterConnection.getCharacterConnectionWithoutFieldName()));
+			staff.add(QueryParameterUtils.combineIntoStringField("characters", characterConnection.getCharacterConnectionWithoutFieldName()));
 			return this;
 		}
 
 		public StaffBuilder characters(StaffCharactersArguments staffCharactersArguments, CharacterConnection characterConnection) {
-			staff.add(QueryParameterUtils.combineIntoField(
+			staff.add(QueryParameterUtils.combineIntoStringField(
 					"characters",
 					staffCharactersArguments.getCharacterArgumentsString(),
 					characterConnection.getCharacterConnectionWithoutFieldName()
@@ -144,12 +144,12 @@ public class Staff {
 		}
 
 		public StaffBuilder characterMedia(MediaConnection connection) {
-			staff.add(QueryParameterUtils.combineIntoField("characterMedia", connection.getMediaConnectionWithoutFieldName()));
+			staff.add(QueryParameterUtils.combineIntoStringField("characterMedia", connection.getMediaConnectionWithoutFieldName()));
 			return this;
 		}
 
 		public StaffBuilder characterMedia(StaffCharacterMediaArguments arguments, MediaConnection connection) {
-			staff.add(QueryParameterUtils.combineIntoField(
+			staff.add(QueryParameterUtils.combineIntoStringField(
 					"characterMedia",
 					arguments.getCharacterMediaArgumentsString(),
 					connection.getMediaConnectionWithoutFieldName()
@@ -167,7 +167,7 @@ public class Staff {
 				throw new IllegalStateException("Staff should posses at least 1 parameter!");
 			}
 
-			return new Staff(QueryParameterUtils.buildFieldElement(
+			return new Staff(QueryParameterUtils.buildStringField(
 					STAFF_TITLE,
 					staff
 			));

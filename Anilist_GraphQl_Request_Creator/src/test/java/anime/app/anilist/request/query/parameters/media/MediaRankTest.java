@@ -50,7 +50,7 @@ class MediaRankTest {
 		@Test
 		void mediaRankBuilder_Id_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedRank = TestUtils.getParameterStringSetField("id");
+			Set<ParameterString> expectedRank = TestUtils.buildFieldParameterStringSet("id");
 
 			//when
 			MediaRank actualRank = MediaRank.getMediaRankBuilder().id().build();
@@ -66,7 +66,7 @@ class MediaRankTest {
 		@Test
 		void mediaRankBuilder_Rank_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedRank = TestUtils.getParameterStringSetField("rank");
+			Set<ParameterString> expectedRank = TestUtils.buildFieldParameterStringSet("rank");
 
 			//when
 			MediaRank actualRank = MediaRank.getMediaRankBuilder().rank().build();
@@ -82,7 +82,7 @@ class MediaRankTest {
 		@Test
 		void mediaRankBuilder_Type_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedRank = TestUtils.getParameterStringSetField("type");
+			Set<ParameterString> expectedRank = TestUtils.buildFieldParameterStringSet("type");
 
 			//when
 			MediaRank actualRank = MediaRank.getMediaRankBuilder().type().build();
@@ -98,7 +98,7 @@ class MediaRankTest {
 		@Test
 		void mediaRankBuilder_Format_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedRank = TestUtils.getParameterStringSetField("format");
+			Set<ParameterString> expectedRank = TestUtils.buildFieldParameterStringSet("format");
 
 			//when
 			MediaRank actualRank = MediaRank.getMediaRankBuilder().format().build();
@@ -114,7 +114,7 @@ class MediaRankTest {
 		@Test
 		void mediaRankBuilder_Year_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedRank = TestUtils.getParameterStringSetField("year");
+			Set<ParameterString> expectedRank = TestUtils.buildFieldParameterStringSet("year");
 
 			//when
 			MediaRank actualRank = MediaRank.getMediaRankBuilder().year().build();
@@ -130,7 +130,7 @@ class MediaRankTest {
 		@Test
 		void mediaRankBuilder_Season_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedRank = TestUtils.getParameterStringSetField("season");
+			Set<ParameterString> expectedRank = TestUtils.buildFieldParameterStringSet("season");
 
 			//when
 			MediaRank actualRank = MediaRank.getMediaRankBuilder().season().build();
@@ -146,7 +146,7 @@ class MediaRankTest {
 		@Test
 		void mediaRankBuilder_AllTime_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedRank = TestUtils.getParameterStringSetField("allTime");
+			Set<ParameterString> expectedRank = TestUtils.buildFieldParameterStringSet("allTime");
 
 			//when
 			MediaRank actualRank = MediaRank.getMediaRankBuilder().allTime().build();
@@ -162,7 +162,7 @@ class MediaRankTest {
 		@Test
 		void mediaRankBuilder_Context_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedRank = TestUtils.getParameterStringSetField("context");
+			Set<ParameterString> expectedRank = TestUtils.buildFieldParameterStringSet("context");
 
 			//when
 			MediaRank actualRank = MediaRank.getMediaRankBuilder().context().build();
@@ -178,7 +178,7 @@ class MediaRankTest {
 		@Test
 		void mediaRankBuilder_AllParameters_ReturnValidString() {
 			//given
-			Set<ParameterString> expectedRank = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedRank = TestUtils.buildFieldParameterStringSet(
 					"id",
 					"rank",
 					"type",

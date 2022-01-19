@@ -13,7 +13,7 @@ public class AiringScheduleEdge {
 	private final String airingScheduleEdgeString;
 
 	public AiringScheduleEdge() {
-		this.airingScheduleEdgeString = QueryParameterUtils.buildFieldElement(
+		this.airingScheduleEdgeString = QueryParameterUtils.buildStringField(
 				AIRING_SCHEDULE_EDGE_TITLE, "id"
 		);
 	}
@@ -21,10 +21,10 @@ public class AiringScheduleEdge {
 	public AiringScheduleEdge(AiringSchedule airingSchedule) {
 		Objects.requireNonNull(airingSchedule, "The schedule cannot be null");
 
-		this.airingScheduleEdgeString = QueryParameterUtils.buildFieldElement(
+		this.airingScheduleEdgeString = QueryParameterUtils.buildStringField(
 				AIRING_SCHEDULE_EDGE_TITLE,
 				"id",
-				QueryParameterUtils.combineIntoField(CommonParameterFieldNames.NODE, airingSchedule.getAiringScheduleStringWithoutFieldName()).getField()
+				QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.NODE, airingSchedule.getAiringScheduleStringWithoutFieldName()).getField()
 		);
 	}
 

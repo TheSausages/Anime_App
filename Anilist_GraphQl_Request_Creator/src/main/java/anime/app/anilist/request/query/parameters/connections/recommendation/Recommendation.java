@@ -47,17 +47,17 @@ public class Recommendation {
 		}
 
 		public RecommendationBuilder media(Media media) {
-			recommendation.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.MEDIA, media.getRequestedMediaFields()));
+			recommendation.add(QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.MEDIA, media.getRequestedMediaFields()));
 			return this;
 		}
 
 		public RecommendationBuilder mediaRecommendation(Media media) {
-			recommendation.add(QueryParameterUtils.combineIntoField("mediaRecommendation", media.getRequestedMediaFields()));
+			recommendation.add(QueryParameterUtils.combineIntoStringField("mediaRecommendation", media.getRequestedMediaFields()));
 			return this;
 		}
 
 		public RecommendationBuilder user(AnilistUser user) {
-			recommendation.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.USER, user.getAnilistUserWithoutFieldName()));
+			recommendation.add(QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.USER, user.getAnilistUserWithoutFieldName()));
 			return this;
 		}
 
@@ -66,7 +66,7 @@ public class Recommendation {
 				throw new IllegalStateException("Recommendation should posses at least 1 parameter!");
 			}
 
-			return new Recommendation(QueryParameterUtils.buildFieldElement(
+			return new Recommendation(QueryParameterUtils.buildStringField(
 					RECOMMENDATION_TITLE,
 					recommendation
 			));

@@ -52,7 +52,7 @@ class MediaTrendsArgumentsTest {
 		void mediaTrendsArgumentsBuilder_MediaTrendSortSingle_ReturnCorrectString() {
 			//given
 			MediaTrendSort[] sorts = new MediaTrendSort[] {MediaTrendSort.ID};
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments("sort: " + Arrays.toString(sorts));
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet("sort: " + Arrays.toString(sorts));
 
 			//when
 			MediaTrendsArguments actualArguments = MediaTrendsArguments.getMediaTrendsArgumentsBuilder()
@@ -71,7 +71,7 @@ class MediaTrendsArgumentsTest {
 		void mediaTrendsArgumentsBuilder_MediaTrendSortMany_ReturnCorrectString() {
 			//given
 			MediaTrendSort[] sorts = new MediaTrendSort[] {MediaTrendSort.ID, MediaTrendSort.MEDIA_ID};
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments("sort: " + Arrays.toString(sorts));
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet("sort: " + Arrays.toString(sorts));
 
 			//when
 			MediaTrendsArguments actualArguments = MediaTrendsArguments.getMediaTrendsArgumentsBuilder()
@@ -89,7 +89,7 @@ class MediaTrendsArgumentsTest {
 		@Test
 		void mediaTrendsArgumentsBuilder_ReleasingNoArgument_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments("releasing: true");
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet("releasing: true");
 
 			//when
 			MediaTrendsArguments actualArguments = MediaTrendsArguments.getMediaTrendsArgumentsBuilder()
@@ -107,7 +107,7 @@ class MediaTrendsArgumentsTest {
 		@Test
 		void mediaTrendsArgumentsBuilder_ReleasingWithArgument_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments("releasing: false");
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet("releasing: false");
 
 			//when
 			MediaTrendsArguments actualArguments = MediaTrendsArguments.getMediaTrendsArgumentsBuilder()
@@ -126,7 +126,7 @@ class MediaTrendsArgumentsTest {
 		void mediaTrendsArgumentsBuilder_Page_ReturnCorrectString() {
 			//given
 			int page = 1;
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments("page: " + page);
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet("page: " + page);
 
 			//when
 			MediaTrendsArguments actualArguments = MediaTrendsArguments.getMediaTrendsArgumentsBuilder()
@@ -145,7 +145,7 @@ class MediaTrendsArgumentsTest {
 		void mediaTrendsArgumentsBuilder_PerPage_ReturnCorrectString() {
 			//given
 			int perPage = 30;
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments("perPage: " + perPage);
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet("perPage: " + perPage);
 
 			//when
 			MediaTrendsArguments actualArguments = MediaTrendsArguments.getMediaTrendsArgumentsBuilder()
@@ -166,7 +166,7 @@ class MediaTrendsArgumentsTest {
 			int page = 1;
 			int perPage =  30;
 			MediaTrendSort[] sorts = new MediaTrendSort[] {MediaTrendSort.ID, MediaTrendSort.MEDIA_ID};
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"releasing: true",
 					"page: " + page,
 					"perPage: " + perPage,

@@ -33,7 +33,7 @@ class StaffEdgeTest {
 	@Test
 	void getStaffEdgeWithoutFieldName__ReturnCorrectString() {
 		//given
-		Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
+		Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
 				"id"
 		);
 
@@ -72,7 +72,7 @@ class StaffEdgeTest {
 		void characterEdgeBuilder_Node_ReturnCorrectString() {
 			//given
 			Staff staff = Staff.getStaffBuilder().id().build();
-			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"node " + staff.getStaffWithoutFieldName()
 			);
 
@@ -91,7 +91,7 @@ class StaffEdgeTest {
 		@Test
 		void characterEdgeBuilder_Id_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"id"
 			);
 
@@ -110,7 +110,7 @@ class StaffEdgeTest {
 		@Test
 		void characterEdgeBuilder_Role_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"role"
 			);
 
@@ -129,7 +129,7 @@ class StaffEdgeTest {
 		@Test
 		void characterEdgeBuilder_FavouriteOrder_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"favouriteOrder"
 			);
 
@@ -149,7 +149,7 @@ class StaffEdgeTest {
 		void characterEdgeBuilder_AllParameters_ReturnCorrectString() {
 			//given
 			Staff staff = Staff.getStaffBuilder().id().build();
-			Set<ParameterString> expectedEdge = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedEdge = TestUtils.buildFieldParameterStringSet(
 					"id",
 					"role",
 					"favouriteOrder",

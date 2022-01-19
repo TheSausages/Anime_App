@@ -53,7 +53,7 @@ class StaffCharactersArgumentsTest {
 		void staffCharactersArgumentsBuilder_SortSingle_ReturnCorrectString() {
 			//given
 			CharacterSort[] sorts = new CharacterSort[] {CharacterSort.ID};
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"sort: " + Arrays.toString(sorts)
 			);
 
@@ -74,7 +74,7 @@ class StaffCharactersArgumentsTest {
 		void staffCharactersArgumentsBuilder_SortMany_ReturnCorrectString() {
 			//given
 			CharacterSort[] sorts = new CharacterSort[] {CharacterSort.ID, CharacterSort.ROLE};
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"sort: " + Arrays.toString(sorts)
 			);
 
@@ -95,7 +95,7 @@ class StaffCharactersArgumentsTest {
 		void staffCharactersArgumentsBuilder_Page_ReturnCorrectString() {
 			//given
 			int page = 1;
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"page: " + page
 			);
 
@@ -116,7 +116,7 @@ class StaffCharactersArgumentsTest {
 		void staffCharactersArgumentsBuilder_PerPage_ReturnCorrectString() {
 			//given
 			int perPage = 1;
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"perPage: " + perPage
 			);
 
@@ -139,7 +139,7 @@ class StaffCharactersArgumentsTest {
 			CharacterSort[] sorts = new CharacterSort[] {CharacterSort.ID, CharacterSort.ROLE};
 			int page = 1;
 			int perPage = 1;
-			Set<ParameterString> expectedArguments = TestUtils.getParameterStringSetArguments(
+			Set<ParameterString> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"sort: " + Arrays.toString(sorts),
 					"page: " + page,
 					"perPage: " + perPage

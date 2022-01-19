@@ -28,7 +28,7 @@ public class QueryArgumentMatcher extends TypeSafeMatcher<String> {
 				.map(String::strip)
 				.collect(Collectors.toList());
 
-		return elements.containsAll(dividedItem);
+		return TestUtils.containsOnly(elements, dividedItem);
 	}
 
 	@Override

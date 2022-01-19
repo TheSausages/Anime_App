@@ -26,7 +26,7 @@ class QueryParameterUtilsTest {
 			//when
 			Exception thrownException = Assertions.assertThrows(
 					NullPointerException.class,
-					() -> QueryParameterUtils.buildFieldElement(title, parameterStrings)
+					() -> QueryParameterUtils.buildStringField(title, parameterStrings)
 			);
 
 			//then
@@ -43,7 +43,7 @@ class QueryParameterUtilsTest {
 			//when
 			Exception thrownException = Assertions.assertThrows(
 					NullPointerException.class,
-					() -> QueryParameterUtils.buildFieldElement(name, parameterStrings)
+					() -> QueryParameterUtils.buildStringField(name, parameterStrings)
 			);
 
 			//then
@@ -58,7 +58,7 @@ class QueryParameterUtilsTest {
 			String title =  "Title";
 
 			//when
-			String actualString = QueryParameterUtils.buildFieldElement(title, parameterStrings);
+			String actualString = QueryParameterUtils.buildStringField(title, parameterStrings);
 
 			//then
 			assertThat(actualString, allOf(
@@ -78,7 +78,7 @@ class QueryParameterUtilsTest {
 			String title =  "Title";
 
 			//when
-			String actualString = QueryParameterUtils.buildFieldElement(title, parameterStrings);
+			String actualString = QueryParameterUtils.buildStringField(title, parameterStrings);
 
 			//then
 			assertThat(actualString, allOf(
@@ -100,7 +100,7 @@ class QueryParameterUtilsTest {
 			//when
 			Exception thrownException = Assertions.assertThrows(
 					NullPointerException.class,
-					() -> QueryParameterUtils.buildArguments(argumentStrings)
+					() -> QueryParameterUtils.buildStringArguments(argumentStrings)
 			);
 
 			//then
@@ -114,7 +114,7 @@ class QueryParameterUtilsTest {
 			Set<ParameterString> argumentStrings = Set.of(ParameterString.fromString("element: true"));
 
 			//when
-			String actualString = QueryParameterUtils.buildArguments(argumentStrings);
+			String actualString = QueryParameterUtils.buildStringArguments(argumentStrings);
 
 			//then
 			assertThat(actualString, allOf(
@@ -133,7 +133,7 @@ class QueryParameterUtilsTest {
 			);
 
 			//when
-			String actualString = QueryParameterUtils.buildArguments(argumentStrings);
+			String actualString = QueryParameterUtils.buildStringArguments(argumentStrings);
 
 			//then
 			assertThat(actualString, allOf(

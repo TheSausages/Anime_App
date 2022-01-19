@@ -49,7 +49,7 @@ public class MediaExternalLinks {
 				throw new IllegalStateException("External Links should posses at least 1 parameter!");
 			}
 
-			return new MediaExternalLinks(QueryParameterUtils.buildFieldElement(
+			return new MediaExternalLinks(QueryParameterUtils.buildStringField(
 					EXTERNAL_LINKS_TITLE,
 					mediaExternalLink
 			));

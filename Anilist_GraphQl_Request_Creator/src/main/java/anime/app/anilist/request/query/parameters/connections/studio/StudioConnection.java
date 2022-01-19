@@ -36,17 +36,17 @@ public class StudioConnection {
 		private final Set<ParameterString> studioConnection = new OverwritingLinkedHashSet<>();
 
 		public StudioConnectionBuilder edges(StudioEdge studioEdge) {
-			studioConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.EDGES, studioEdge.getStudioEdgeWithoutFieldName()));
+			studioConnection.add(QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.EDGES, studioEdge.getStudioEdgeWithoutFieldName()));
 			return this;
 		}
 
 		public StudioConnectionBuilder nodes(Studio studio) {
-			studioConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.NODES, studio.getStudioWithoutFieldName()));
+			studioConnection.add(QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.NODES, studio.getStudioWithoutFieldName()));
 			return this;
 		}
 
 		public StudioConnectionBuilder pageInfo(PageInfo pageInfo) {
-			studioConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.PAGE_INFO, pageInfo.getPageInfoStringWithoutFieldName()));
+			studioConnection.add(QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.PAGE_INFO, pageInfo.getPageInfoStringWithoutFieldName()));
 			return this;
 		}
 
@@ -55,7 +55,7 @@ public class StudioConnection {
 				throw new IllegalStateException("Studio Connection should posses at least 1 parameter!");
 			}
 
-			return new StudioConnection(QueryParameterUtils.buildFieldElement(
+			return new StudioConnection(QueryParameterUtils.buildStringField(
 					STUDIO_CONNECTION_TITLE,
 					studioConnection
 			));

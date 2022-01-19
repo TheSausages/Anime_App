@@ -36,17 +36,17 @@ public class CharacterConnection {
 		private final Set<ParameterString> characterConnection = new OverwritingLinkedHashSet<>();
 
 		public CharacterConnectionBuilder edges(CharacterEdge characterEdge) {
-			characterConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.EDGES, characterEdge.getCharacterEdgeWithoutFieldName()));
+			characterConnection.add(QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.EDGES, characterEdge.getCharacterEdgeWithoutFieldName()));
 			return this;
 		}
 
 		public CharacterConnectionBuilder nodes(Character character) {
-			characterConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.NODES, character.getCharacterStringWithoutFieldName()));
+			characterConnection.add(QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.NODES, character.getCharacterStringWithoutFieldName()));
 			return this;
 		}
 
 		public CharacterConnectionBuilder pageInfo(PageInfo pageInfo) {
-			characterConnection.add(QueryParameterUtils.combineIntoField(CommonParameterFieldNames.PAGE_INFO, pageInfo.getPageInfoStringWithoutFieldName()));
+			characterConnection.add(QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.PAGE_INFO, pageInfo.getPageInfoStringWithoutFieldName()));
 			return this;
 		}
 
@@ -55,7 +55,7 @@ public class CharacterConnection {
 				throw new IllegalStateException("Character Connection should posses at least 1 parameter!");
 			}
 
-			return new CharacterConnection(QueryParameterUtils.buildFieldElement(
+			return new CharacterConnection(QueryParameterUtils.buildStringField(
 					CHARACTER_CONNECTION_TITLE,
 					characterConnection
 			));

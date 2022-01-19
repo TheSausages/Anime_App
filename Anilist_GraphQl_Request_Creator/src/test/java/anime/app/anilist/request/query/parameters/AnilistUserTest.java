@@ -20,7 +20,7 @@ class AnilistUserTest {
 	@Test
 	void getAnilistUserWithoutFieldName__ReturnCorrectString() {
 		//given
-		Set<ParameterString> expectedUser = TestUtils.getParameterStringSetField(
+		Set<ParameterString> expectedUser = TestUtils.buildFieldParameterStringSet(
 				"id"
 		);
 
@@ -72,7 +72,7 @@ class AnilistUserTest {
 		@Test
 		void anilistUserBuilder_Id_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedUser = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedUser = TestUtils.buildFieldParameterStringSet(
 					"id"
 			);
 
@@ -90,7 +90,7 @@ class AnilistUserTest {
 		@Test
 		void anilistUserBuilder_Name_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedUser = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedUser = TestUtils.buildFieldParameterStringSet(
 					"name"
 			);
 
@@ -108,7 +108,7 @@ class AnilistUserTest {
 		@Test
 		void anilistUserBuilder_Avatar_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedUser = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedUser = TestUtils.buildFieldParameterStringSet(
 					"avatar {\nlarge\nmedium\n}"
 			);
 
@@ -126,7 +126,7 @@ class AnilistUserTest {
 		@Test
 		void anilistUserBuilder_AllParameters_ReturnCorrectString() {
 			//given
-			Set<ParameterString> expectedUser = TestUtils.getParameterStringSetField(
+			Set<ParameterString> expectedUser = TestUtils.buildFieldParameterStringSet(
 					"id",
 					"name",
 					"avatar {\nlarge\nmedium\n}"
