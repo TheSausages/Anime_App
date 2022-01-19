@@ -16,6 +16,7 @@ paths:
         name: animeId
         in: path
         required: true
+        description: The Anilist ID of the anime
     get:
       summary: Get detailed Anime information using it's ID
       tags: []
@@ -29,7 +30,111 @@ paths:
               examples:
                 Successfull example:
                   value:
-                    externalInformation: {}
+                    externalInformation:
+                      id: 123987
+                      season: SPRING
+                      seasonYear: 2021
+                      episodes: 12
+                      duration: 25
+                      genres:
+                        - MECHA
+                        - ROMANCE
+                      averageScore: 95
+                      format: TV
+                      type: ANIME
+                      favourites: 59687
+                      isAdult: true
+                      title:
+                        english: English Title
+                        romaji: Romaji Title
+                        native: Native Title
+                      status: FINISHED
+                      coverImage:
+                        extraLarge: LinkToExtraLarge
+                        large: LinkToLarge
+                        medium: LinkToMedium
+                        color: LinkToColor
+                      description: Some Description
+                      source: ORIGINAL
+                      startDate: 20201010
+                      endDate: 20211010
+                      nextAiringEpisode:
+                        id: 6325
+                        airingAt: 184585
+                        timeUntilAiring: 60504
+                        episode: 10
+                        mediaId: 123987
+                      relations:
+                        edges:
+                          id: 123
+                          type: MANGA
+                          title:
+                            english: English Title
+                            romaji: Romaji Title
+                            native: Native Title
+                          coverImage:
+                            extraLarge: LinkToExtraLarge
+                            large: LinkToLarge
+                            medium: LinkToMedium
+                            color: LinkToColor
+                          status: FINISHED
+                        id: 7895
+                        relationType: ADAPTATION
+                      characters:
+                        edges:
+                          node:
+                            id: 963
+                            image:
+                              large: LinkToLarge
+                              medium: LinkToMedium
+                            name:
+                              first: FirstName
+                              middle: MiddleName
+                              last: LastName
+                              full: FullName
+                              native: NativeName
+                              alternative: AlternativeName
+                              alternativeSpoiler: AlternativeNameWithSpoiler
+                          id: 78965
+                          role: MAIN
+                          name: CharacterName
+                          voiceActors:
+                            id: 78654
+                            name:
+                              first: Kacper
+                              middle: Damian
+                              last: Curys
+                              full: Kacper Damian Curys
+                              native: Kacper Damian Curyś
+                            image:
+                              large: LinkToLarge
+                              medium: LinkToMedium
+                            languageV2: JAPANESE
+                        pageInfo:
+                          total: 50
+                          perPage: 25
+                          currentPage: 1
+                          lastPage: 50
+                          hasNextPage: true
+                      staff:
+                        nodes:
+                          name:
+                            first: Kacper
+                            middle: Damian
+                            last: Curys
+                            full: Kacper Damian Curys
+                            native: Kacper Damian Curyś
+                          image:
+                            large: LinkToLarge
+                            medium: LinkToMedium
+                          primaryOccupation:
+                            - Voice Actor
+                        pageInfo:
+                          total: 10
+                          perPage: 50
+                          currentPage: 10
+                          lastPage: 10
+                          hasNextPage: false
                     localAnimeInformation:
                       animeId: 165794
                       averageScore: 8.7
@@ -75,15 +180,120 @@ paths:
                     status: 503
       operationId: get-anime-animeId
       description: Get detailed information on a selected Anime using it's Anilist ID.
+      parameters: []
 components:
   schemas:
     DetailedAnimeDTO:
-      title: DetailedAnimeDTO
+      title: Detailed Anime DTO
       type: object
       description: Detailed information on an Anime. Contains both Anilist and local information.
       x-examples:
         Detailed Anime Example:
-          externalInformation: {}
+          externalInformation:
+            id: 123987
+            season: SPRING
+            seasonYear: 2021
+            episodes: 12
+            duration: 25
+            genres:
+              - MECHA
+              - ROMANCE
+            averageScore: 95
+            format: TV
+            type: ANIME
+            favourites: 59687
+            isAdult: true
+            title:
+              english: English Title
+              romaji: Romaji Title
+              native: Native Title
+            status: FINISHED
+            coverImage:
+              extraLarge: LinkToExtraLarge
+              large: LinkToLarge
+              medium: LinkToMedium
+              color: LinkToColor
+            description: Some Description
+            source: ORIGINAL
+            startDate: 20201010
+            endDate: 20211010
+            nextAiringEpisode:
+              id: 6325
+              airingAt: 184585
+              timeUntilAiring: 60504
+              episode: 10
+              mediaId: 123987
+            relations:
+              edges:
+                id: 123
+                type: MANGA
+                title:
+                  english: English Title
+                  romaji: Romaji Title
+                  native: Native Title
+                coverImage:
+                  extraLarge: LinkToExtraLarge
+                  large: LinkToLarge
+                  medium: LinkToMedium
+                  color: LinkToColor
+                status: FINISHED
+              id: 7895
+              relationType: ADAPTATION
+            characters:
+              edges:
+                node:
+                  id: 963
+                  image:
+                    large: LinkToLarge
+                    medium: LinkToMedium
+                  name:
+                    first: FirstName
+                    middle: MiddleName
+                    last: LastName
+                    full: FullName
+                    native: NativeName
+                    alternative: AlternativeName
+                    alternativeSpoiler: AlternativeNameWithSpoiler
+                id: 78965
+                role: MAIN
+                name: CharacterName
+                voiceActors:
+                  id: 78654
+                  name:
+                    first: Kacper
+                    middle: Damian
+                    last: Curys
+                    full: Kacper Damian Curys
+                    native: Kacper Damian Curyś
+                  image:
+                    large: LinkToLarge
+                    medium: LinkToMedium
+                  languageV2: JAPANESE
+              pageInfo:
+                total: 50
+                perPage: 25
+                currentPage: 1
+                lastPage: 50
+                hasNextPage: true
+            staff:
+              nodes:
+                name:
+                  first: Kacper
+                  middle: Damian
+                  last: Curys
+                  full: Kacper Damian Curys
+                  native: Kacper Damian Curyś
+                image:
+                  large: LinkToLarge
+                  medium: LinkToMedium
+                primaryOccupation:
+                  - Voice Actor
+              pageInfo:
+                total: 10
+                perPage: 50
+                currentPage: 10
+                lastPage: 10
+                hasNextPage: false
           localAnimeInformation:
             animeId: 165794
             averageScore: 8.7
@@ -116,8 +326,7 @@ components:
               nrOfHelpfull: 8
       properties:
         externalInformation:
-          type: object
-          description: Anilist information on the Anime.
+          $ref: '#/components/schemas/DetailedAnilistAnimeInformationDTO'
         localAnimeInformation:
           $ref: '#/components/schemas/LocalAnimeInformationDTO'
         localAnimeReviews:
@@ -132,7 +341,7 @@ components:
         - localAnimeInformation
         - localAnimeReviews
     LocalAnimeInformationDTO:
-      title: AnimeDTO
+      title: Local Anime Information DTO
       type: object
       x-examples:
         Anime Example:
@@ -169,7 +378,7 @@ components:
         - nrOfFavourites
         - nrOfReviews
     LocalSimpleAnimeReviewDTO:
-      title: SimpleAnimeReviewDTO
+      title: Simple Anime Review DTO
       type: object
       description: DTO for the Anime Review class.
       x-examples:
@@ -258,7 +467,7 @@ components:
           nrOfHelpfull: 8
           animeId: 789541
           animeTitle: Anime Title
-      title: ''
+      title: Local Detailed Anime Review DTO
     LocalUserAnimeInformationDTO:
       title: UserAnimeInformationDTO
       type: object
@@ -343,7 +552,7 @@ components:
         - isFavourite
         - modification
     ErrorDTO:
-      title: ErrorDTO
+      title: Error DTO
       type: object
       properties:
         message:
@@ -357,4 +566,585 @@ components:
         Error Example:
           message: Error Message
           status: 503
+    DetailedAnilistAnimeInformationDTO:
+      title: Detailed Anilist Anime Information DTO
+      type: object
+      x-examples:
+        Detailed Anilist Anime Information DTO Example:
+          id: 123987
+          season: SPRING
+          seasonYear: 2021
+          episodes: 12
+          duration: 25
+          genres:
+            - MECHA
+            - ROMANCE
+          averageScore: 95
+          format: TV
+          type: ANIME
+          favourites: 59687
+          isAdult: true
+          title:
+            english: English Title
+            romaji: Romaji Title
+            native: Native Title
+          status: FINISHED
+          coverImage:
+            extraLarge: LinkToExtraLarge
+            large: LinkToLarge
+            medium: LinkToMedium
+            color: LinkToColor
+          description: Some Description
+          source: ORIGINAL
+          startDate: 20201010
+          endDate: 20211010
+          nextAiringEpisode:
+            id: 6325
+            airingAt: 184585
+            timeUntilAiring: 60504
+            episode: 10
+            mediaId: 123987
+          relations:
+            edges:
+              id: 123
+              type: MANGA
+              title:
+                english: English Title
+                romaji: Romaji Title
+                native: Native Title
+              coverImage:
+                extraLarge: LinkToExtraLarge
+                large: LinkToLarge
+                medium: LinkToMedium
+                color: LinkToColor
+              status: FINISHED
+            id: 7895
+            relationType: ADAPTATION
+          characters:
+            edges:
+              node:
+                id: 963
+                image:
+                  large: LinkToLarge
+                  medium: LinkToMedium
+                name:
+                  first: FirstName
+                  middle: MiddleName
+                  last: LastName
+                  full: FullName
+                  native: NativeName
+                  alternative: AlternativeName
+                  alternativeSpoiler: AlternativeNameWithSpoiler
+              id: 78965
+              role: MAIN
+              name: CharacterName
+              voiceActors:
+                id: 78654
+                name:
+                  first: Kacper
+                  middle: Damian
+                  last: Curys
+                  full: Kacper Damian Curys
+                  native: Kacper Damian Curyś
+                image:
+                  large: LinkToLarge
+                  medium: LinkToMedium
+                languageV2: JAPANESE
+            pageInfo:
+              total: 50
+              perPage: 25
+              currentPage: 1
+              lastPage: 50
+              hasNextPage: true
+          staff:
+            nodes:
+              name:
+                first: Kacper
+                middle: Damian
+                last: Curys
+                full: Kacper Damian Curys
+                native: Kacper Damian Curyś
+              image:
+                large: LinkToLarge
+                medium: LinkToMedium
+              primaryOccupation:
+                - Voice Actor
+            pageInfo:
+              total: 10
+              perPage: 50
+              currentPage: 10
+              lastPage: 10
+              hasNextPage: false
+      description: Contains detailed information about a selected Anime. The data is requested from Anilist.
+      properties:
+        id:
+          type: integer
+          description: ID of the searcher Anime
+        season:
+          $ref: '#/components/schemas/AnilistMediaSeason'
+        seasonYear:
+          type: integer
+          description: Year of the season
+          format: int32
+          minimum: 1950
+        episodes:
+          type: number
+          description: Number of episodes
+        duration:
+          type: integer
+          description: Duration of episodes
+        genres:
+          type: array
+          description: Genres of the media
+          items:
+            type: string
+        averageScore:
+          type: integer
+          description: Average score of Anilist users
+        format:
+          $ref: '#/components/schemas/AnilistMediaFormat'
+        type:
+          $ref: '#/components/schemas/AnilistMediaType'
+        favourites:
+          type: number
+          description: Number of Anilist users that favourited the media
+        isAdult:
+          type: boolean
+          description: Is the media intended for adults
+        title:
+          $ref: '#/components/schemas/AnilistMediaTitle'
+        status:
+          $ref: '#/components/schemas/AnilistMediaStatus'
+        coverImage:
+          $ref: '#/components/schemas/AnilistCoverImage'
+        description:
+          type: string
+          description: Description of the media. In form of preformatted html text
+        source:
+          $ref: '#/components/schemas/AnilistMediaSource'
+        startDate:
+          $ref: '#/components/schemas/AnilistFuzzyDateInt'
+        endDate:
+          $ref: '#/components/schemas/AnilistFuzzyDateInt'
+        nextAiringEpisode:
+          type: object
+          description: information on the next airing episode
+          required:
+            - id
+            - airingAt
+            - timeUntilAiring
+            - episode
+            - mediaId
+          properties:
+            id:
+              type: integer
+              description: ID of the next airing episode
+            airingAt:
+              type: integer
+              description: When is the next airing episode airing (in seconds)
+            timeUntilAiring:
+              type: integer
+              description: Time left until next airing episode (in seconds)
+            episode:
+              type: integer
+              description: Next airing episode number
+            mediaId:
+              type: integer
+              description: ID of the media
+        relations:
+          type: object
+          description: Information on each relation for the media
+          required:
+            - edges
+            - id
+            - relationType
+          properties:
+            edges:
+              type: object
+              description: Information on edges of the relation connection
+              required:
+                - id
+                - type
+                - title
+                - coverImage
+                - status
+              properties:
+                id:
+                  type: integer
+                  format: int32
+                  description: ID of the relation
+                type:
+                  $ref: '#/components/schemas/AnilistMediaType'
+                title:
+                  $ref: '#/components/schemas/AnilistMediaTitle'
+                coverImage:
+                  $ref: '#/components/schemas/AnilistCoverImage'
+                status:
+                  $ref: '#/components/schemas/AnilistMediaStatus'
+            id:
+              type: integer
+              format: int32
+              description: ID of the relation
+            relationType:
+              $ref: '#/components/schemas/AnilistMediaRelation'
+        characters:
+          type: object
+          description: Information on the characters
+          properties:
+            edges:
+              type: object
+              description: Information on edges of the character connection
+              properties:
+                node:
+                  type: object
+                  description: Information on each edge
+                  properties:
+                    id:
+                      type: integer
+                      format: int32
+                      description: ID of the character
+                    image:
+                      $ref: '#/components/schemas/AnilistImage'
+                    name:
+                      type: object
+                      properties:
+                        first:
+                          type: string
+                          description: First name of the character
+                        middle:
+                          type: string
+                          description: Middle (second) name of the character
+                        last:
+                          type: string
+                          description: Last name of the character
+                        full:
+                          type: string
+                          description: Full name of the character
+                        native:
+                          type: string
+                          description: Native name of the character
+                        alternative:
+                          type: string
+                          description: Alternative name of the character
+                        alternativeSpoiler:
+                          type: string
+                          description: First name of the character that can contain spoilers
+                      required:
+                        - first
+                        - full
+                id:
+                  type: integer
+                  format: int32
+                  description: ID of the edge
+                role:
+                  type: string
+                  enum:
+                    - MAIN
+                    - SUPPORTING
+                    - BACKGROUND
+                  description: Role of the character
+                name:
+                  type: string
+                  description: Name of the Edge
+                voiceActors:
+                  type: object
+                  description: Information on the voice actor of the character
+                  properties:
+                    id:
+                      type: integer
+                      format: int32
+                      description: ID of the voice actor
+                    name:
+                      $ref: '#/components/schemas/AnilistMediaStaffName'
+                    image:
+                      $ref: '#/components/schemas/AnilistImage'
+                    languageV2:
+                      type: string
+                      description: Language of the voice actor
+            pageInfo:
+              $ref: '#/components/schemas/AnilistPageInfo'
+        staff:
+          type: object
+          description: Information on the media staff members
+          properties:
+            nodes:
+              type: object
+              description: Information on each staff
+              properties:
+                name:
+                  $ref: '#/components/schemas/AnilistMediaStaffName'
+                image:
+                  $ref: '#/components/schemas/AnilistImage'
+                primaryOccupation:
+                  type: array
+                  description: Primary occupation of the staff
+                  items:
+                    type: string
+            pageInfo:
+              $ref: '#/components/schemas/AnilistPageInfo'
+      required:
+        - id
+        - season
+        - seasonYear
+        - episodes
+        - duration
+        - genres
+        - averageScore
+        - format
+        - type
+        - favourites
+        - isAdult
+        - title
+        - status
+        - coverImage
+        - description
+        - source
+        - startDate
+        - endDate
+        - nextAiringEpisode
+        - relations
+        - characters
+        - staff
+    AnilistMediaSeason:
+      type: string
+      enum:
+        - SPRING
+        - SUMMER
+        - FALL
+        - WINTER
+      title: Media Season
+      description: Enum containing the posible Media Season (from Anilist).
+      x-examples:
+        Media Season Example: SPRING
+    AnilistMediaFormat:
+      type: string
+      title: Media Format
+      enum:
+        - TV
+        - TV_SHORT
+        - SPECIAL
+        - OVA
+        - ONA
+        - MUSIC
+        - MANGA
+        - NOVAL
+        - ONE_SHOW
+      description: Enum containing the posible Media Formats (from Anilist).
+      x-examples:
+        Media Format Example: TV
+    AnilistMediaType:
+      type: string
+      title: Media Type
+      enum:
+        - ANIME
+        - MANGA
+      description: Enum containing the posible Media types (from Anilist).
+      x-examples:
+        Media Type Example: ANIME
+    AnilistMediaTitle:
+      title: Media Title
+      type: object
+      description: 'Class containing the posible fields for the Media Title (from Anilist). Because it''s posiible some media will only have selected language titles, no title can be requested.'
+      properties:
+        english:
+          type: string
+          description: 'The english language title '
+        romaji:
+          type: string
+          description: The romaji language (japanese with latin alphabet) title
+        native:
+          type: string
+          description: native language title
+      x-examples:
+        Complete Media Title Example:
+          english: English Title
+          romaji: Romaji Title
+          native: Native Title
+        Only Native Media Title Example:
+          native: Native Title
+    AnilistMediaStatus:
+      type: string
+      title: Media Status
+      enum:
+        - FINISHED
+        - RELEASING
+        - NOT_YET_RELEASED
+        - CANCELLED
+        - HIATUS
+      description: Enum containing the posible Media Statuses (from Anilist).
+      x-examples:
+        Media Status Example: FINISHED
+    AnilistCoverImage:
+      title: Cover Image
+      type: object
+      description: 'Class containing the posible fields for the Media Title (from Anilist). Each of the fields is a link to Anilist, with which the image can be requested.'
+      x-examples:
+        Cover Image Example:
+          extraLarge: LinkToExtraLarge
+          large: LinkToLarge
+          medium: LinkToMedium
+          color: LinkToColor
+      properties:
+        extraLarge:
+          type: string
+          description: Link to the largest possible size
+        large:
+          type: string
+          description: Link to a large size image
+        medium:
+          type: string
+          description: Link to a medium size image
+        color:
+          type: string
+          description: 'The average #hex color number of the image'
+      required:
+        - extraLarge
+        - large
+        - medium
+    AnilistMediaSource:
+      type: string
+      title: Media Source
+      enum:
+        - ORIGINAL
+        - MANGA
+        - LIGHT_NOVEL
+        - VISUAL_NOVEL
+        - VIDEO_GAME
+        - OTHER
+        - NOVEL
+        - DOUJINSHI
+        - ANIME
+        - WEB_NOVEL
+        - LIVE_ACTION
+        - GAME
+        - COMIC
+        - MULTIMEDIA_PROJECT
+        - PICTURE_BOOK
+      description: Enum containing the posible Media Sources (from Anilist).
+      x-examples:
+        Media Source Example: ORIGINAL
+    AnilistFuzzyDateInt:
+      type: number
+      title: Fuzzy Date Int
+      minimum: 10000000
+      maximum: 99999999
+      description: |-
+        Int field used to represent dates in the Anilist service. Created as: YYYYMMDD (as numbers). 
+        Ex: 26 September 1999 will be 19990926.
+      x-examples:
+        Fuzzy Date Int Example - 26 September 1999: 19990926
+    AnilistPageInfo:
+      title: Page Info
+      type: object
+      description: Class containing the fields for Page Information data from Anilist. Each field is required.
+      x-examples:
+        Page Info Example:
+          total: 26
+          perPage: 50
+          currentPage: 10
+          lastPage: 26
+          hasNextPage: true
+      properties:
+        total:
+          type: integer
+          format: int32
+          description: The total number of pages
+          minimum: 1
+        perPage:
+          type: integer
+          format: int32
+          description: How many elements are there per page
+          minimum: 1
+          maximum: 50
+        currentPage:
+          type: integer
+          format: int32
+          description: What is the current page
+          minimum: 0
+        lastPage:
+          type: integer
+          format: int32
+          description: What is the last page (the number)
+          minimum: 1
+        hasNextPage:
+          type: boolean
+          description: Does the next page exist
+      required:
+        - total
+        - perPage
+        - currentPage
+        - lastPage
+        - hasNextPage
+    AnilistImage:
+      title: Image
+      type: object
+      description: Class containing fields for a non-cover image from Anilist. Both fields are links to the Anilist service.
+      properties:
+        large:
+          type: string
+          description: Link to the large image
+        medium:
+          type: string
+          description: Link to the small image
+      required:
+        - large
+        - medium
+      x-examples:
+        Image Example:
+          large: LinkToLarge
+          medium: LinkToMedium
+    AnilistMediaStaffName:
+      title: Media Staff Name
+      type: object
+      description: Class containing fields for names of media staff members. Both fields are links to the Anilist service.
+      x-examples:
+        Media Staff Name Example:
+          first: Kacper
+          middle: Damian
+          last: Curys
+          full: Kacper Damian Curys
+          native: Kacper Damian Curyś
+      properties:
+        first:
+          type: string
+          description: First name
+          minLength: 1
+        middle:
+          type: string
+          description: Middle (second) name
+        last:
+          type: string
+          description: Last name
+          minLength: 1
+        full:
+          type: string
+          description: Full name
+          minLength: 1
+        native:
+          type: string
+          description: The name in native letters
+      required:
+        - first
+        - last
+        - full
+    AnilistMediaRelation:
+      type: string
+      title: Media Relation
+      enum:
+        - ADAPTATION
+        - PREQUEL
+        - SEQUEL
+        - PARENT
+        - SIDE_STROY
+        - CHARACTER
+        - SUMMARY
+        - ALTERNATIVE
+        - SPIN_OFF
+        - OTHER
+        - SOURCE
+        - COMPILATION
+        - CONTAINS
+      description: Enum containing the posible Media relations (from Anilist).
+      x-examples:
+        Media Relation Example: ADAPTATION
   securitySchemes: {}
