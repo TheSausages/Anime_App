@@ -14,7 +14,7 @@ import java.text.SimpleDateFormat;
  * <ul>
  *     <li>The {@link DefaultPrettyPrinter} enabled</li>
  *     <li>Use the {@link JavaTimeModule}</li>
- *     <li>The date format is <i>dd.MM.yyyy</i></li>
+ *     <li>The date format is <i>dd-MM-yyyy</i></li>
  * </ul>
  */
 @Configuration
@@ -35,7 +35,7 @@ public class ObjectMapperConfiguration {
 					.enable(SerializationFeature.INDENT_OUTPUT)
 					.setDefaultPrettyPrinter(new DefaultPrettyPrinter())
 					.registerModule(new JavaTimeModule())
-					.setDateFormat(new SimpleDateFormat("dd.MM.yyyy"));
+					.setDateFormat(new SimpleDateFormat("dd-MM-yyyy"));
 		}
 	}
 }

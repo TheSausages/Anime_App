@@ -2,12 +2,21 @@ openapi: 3.0.0
 info:
   title: Anime
   version: '1.0'
-  description: Api used for all operations connected to Anime
+  description: Api used for operation that have something to do with a local User (besides updating User Anime and Forum information)
   contact:
     name: K. Ziejło
     email: kziejlo@gmail.com
 servers:
   - url: 'http://localhost:3000'
+tags:
+  - name: anime
+    description: The endpoint has something to do with Anime Data
+  - name: detailedAnime
+    description: The endpoint return detailed information on the Anime
+  - name: ranking
+    description: The endpoint return information from a predefined ranking
+  - name: user
+    description: The endpoint has something to do with a Users data
 paths:
   '/anime/{animeId}':
     parameters:
@@ -19,10 +28,13 @@ paths:
         description: The Anilist ID of the anime
     get:
       summary: Get detailed Anime information using it's ID
-      tags: []
+      tags:
+        - anime
+        - detailedAnime
+        - user
       responses:
         '200':
-          description: The Anilist server responded correctly and no other errors occured
+          description: OK - The Anilist server responded correctly and no other errors occured.
           content:
             application/json:
               schema:
@@ -172,15 +184,377 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorDTO'
+                $ref: './CommonModels.yaml#/components/schemas/ErrorDTO'
               examples:
-                Anilist Error message:
+                Anilist Error Example:
                   value:
                     message: Anilist Error Message
                     status: 503
       operationId: get-anime-animeId
       description: Get detailed information on a selected Anime using it's Anilist ID.
       parameters: []
+  /anime/currentSeason:
+    get:
+      summary: Current season Anime endpoint
+      tags:
+        - anime
+      responses:
+        '200':
+          description: OK - The Anilist server responded correctly and no other errors occured. The Page contains top airing Anime ranked by Anilist popularity score.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnilistPageDTO'
+              examples:
+                Successfull Example:
+                  value:
+                    media:
+                      - id: 789654
+                        coverImage:
+                          extraLarge: LinkToCoverImage
+                          large: LinkToLarge
+                          medium: LinkToMedium
+                          color: LinkToColor
+                        title:
+                          english: EnglishTitle
+                          romaji: RomajiTitle
+                          native: NativeTitle
+                    pageInfo:
+                      total: 10
+                      perPage: 5
+                      currentPage: 1
+                      lastPage: 10
+                      hasNextPage: true
+        '503':
+          description: Service Unavailable - the Anilist service returned an error or didn't return anything.
+          content:
+            application/json:
+              schema:
+                $ref: './CommonModels.yaml#/components/schemas/ErrorDTO'
+              examples:
+                Anilist Error Example:
+                  value:
+                    message: Anilist Error Message
+                    status: 503
+      operationId: get-anime-currentSeason
+      description: Get the first page of Anime that air in the current season.
+  '/anime/ranking/topAllTime/{pageNumber}':
+    parameters:
+      - schema:
+          type: string
+        name: pageNumber
+        in: path
+        required: true
+        description: Page number of top anime of all time ranking
+    get:
+      summary: Top Anime of all time endpoint
+      tags:
+        - anime
+        - ranking
+      responses:
+        '200':
+          description: OK - The Anilist server responded correctly and no other errors occured. The Page contains top Anime of all time ranked by Anilist score.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnilistPageDTO'
+              examples:
+                Successfull Example:
+                  value:
+                    media:
+                      - id: 789654
+                        coverImage:
+                          extraLarge: LinkToCoverImage
+                          large: LinkToLarge
+                          medium: LinkToMedium
+                          color: LinkToColor
+                        title:
+                          english: EnglishTitle
+                          romaji: RomajiTitle
+                          native: NativeTitle
+                    pageInfo:
+                      total: 10
+                      perPage: 5
+                      currentPage: 1
+                      lastPage: 10
+                      hasNextPage: true
+        '503':
+          description: Service Unavailable - the Anilist service returned an error or didn't return anything.
+          content:
+            application/json:
+              schema:
+                $ref: './CommonModels.yaml#/components/schemas/ErrorDTO'
+              examples:
+                Anilist Error Example:
+                  value:
+                    message: Anilist Error Message
+                    status: 503
+      operationId: get-anime-ranking-topAllTime-pageNumber
+      description: Get a page of Anime from the top Anime of all time ranking.
+  '/anime/ranking/topAiring/{pageNumber}':
+    parameters:
+      - schema:
+          type: string
+        name: pageNumber
+        in: path
+        required: true
+        description: Page number of top airing anime ranking
+    get:
+      summary: Top airing Anime endpoint
+      tags:
+        - anime
+        - ranking
+      responses:
+        '200':
+          description: OK - The Anilist server responded correctly and no other errors occured. The Page contains top airing Anime ranked by Anilist score.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnilistPageDTO'
+        '503':
+          description: Service Unavailable - the Anilist service returned an error or didn't return anything.
+          content:
+            application/json:
+              schema:
+                $ref: './CommonModels.yaml#/components/schemas/ErrorDTO'
+              examples:
+                Anilist Error DTO:
+                  value:
+                    message: Anilist Error Message
+                    status: 503
+      operationId: get-anime-ranking-topAiring-pageNumber
+      description: Get a page of Anime from the top airing Anime ranking.
+  '/anime/ranking/topMovies/{pageNumber}':
+    parameters:
+      - schema:
+          type: string
+        name: pageNumber
+        in: path
+        required: true
+        description: Page number of top anime movies of all time ranking
+    get:
+      summary: Top Anime movies of all time endpoint
+      tags:
+        - anime
+        - ranking
+      responses:
+        '200':
+          description: OK - The Anilist server responded correctly and no other errors occured. The Page contains top Anime Movies of all time ranked by Anilist score.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnilistPageDTO'
+              examples:
+                Successfull Example:
+                  value:
+                    media:
+                      - id: 789654
+                        coverImage:
+                          extraLarge: LinkToCoverImage
+                          large: LinkToLarge
+                          medium: LinkToMedium
+                          color: LinkToColor
+                        title:
+                          english: EnglishTitle
+                          romaji: RomajiTitle
+                          native: NativeTitle
+                    pageInfo:
+                      total: 10
+                      perPage: 5
+                      currentPage: 1
+                      lastPage: 10
+                      hasNextPage: true
+        '503':
+          description: Service Unavailable - the Anilist service returned an error or didn't return anything.
+          content:
+            application/json:
+              schema:
+                $ref: './CommonModels.yaml#/components/schemas/ErrorDTO'
+              examples:
+                Anilist Error Example:
+                  value:
+                    message: Anilist Error Message
+                    status: 503
+      operationId: get-anime-ranking-topMovies-pageNumber
+      description: Get a page of Anime from the top Anime Movies of all time ranking.
+  '/anime/search/{pageNumber}':
+    parameters:
+      - schema:
+          type: string
+        name: pageNumber
+        in: path
+        required: true
+        description: Page number of anime that meet the conditions from the query
+    post:
+      summary: Search Anime using query endpoint
+      operationId: post-anime-search-pageNumber
+      tags:
+        - anime
+      responses:
+        '200':
+          description: OK - The Anilist server responded correctly and no other errors occured. Also the Query contained valid information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnilistPageDTO'
+              examples:
+                Successfull Example:
+                  value:
+                    media:
+                      - id: 789654
+                        coverImage:
+                          extraLarge: LinkToCoverImage
+                          large: LinkToLarge
+                          medium: LinkToMedium
+                          color: LinkToColor
+                        title:
+                          english: EnglishTitle
+                          romaji: RomajiTitle
+                          native: NativeTitle
+                    pageInfo:
+                      total: 10
+                      perPage: 5
+                      currentPage: 1
+                      lastPage: 10
+                      hasNextPage: true
+        '422':
+          description: Unprocessable Entity - Some error was found in the Query request body.
+        '503':
+          description: Service Unavailable - the Anilist service returned an error or didn't return anything.
+          content:
+            application/json:
+              schema:
+                $ref: './CommonModels.yaml#/components/schemas/ErrorDTO'
+              examples:
+                Anilist Error Example:
+                  value:
+                    message: Anilist Error Message
+                    status: 503
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnimeQueryDTO'
+            examples:
+              Query Example:
+                value:
+                  title: Title
+                  maxStartDate: '2019-08-26'
+                  minStartDate: '2019-08-24'
+                  minEndDate: '2019-09-24'
+                  maxEndDate: '2019-10-26'
+                  maxNrOfEpisodes: 15
+                  minNrOfEpisodes: 0
+                  maxAverageScore: 50
+                  minAverageScore: 80
+                  seasonYear:
+                    season: SPRING
+                    year: 1900
+                  status: FINISHED
+                  format: TV
+        description: The request body contains the query used to create an Anilist request.
+      description: Get a page of Anime that meet the condiitons in the query.
+  /anime/userInformation:
+    put:
+      summary: Update the User information on an Anime
+      operationId: put-anime-userInformation
+      tags:
+        - anime
+        - user
+      responses:
+        '200':
+          description: OK - The backend responds with the updated information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LocalUserAnimeInformationDTO'
+              examples:
+                Successfull Example:
+                  value:
+                    id:
+                      userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                      animeId: 195784
+                    status: No Status
+                    watchStartDate: '2019-08-24'
+                    watchEndDate: '2019-08-24'
+                    nrOfEpisodesSeen: 5
+                    isFavourite: true
+                    modification: '2019-08-24T14:15:22Z'
+                    grade: 2
+                    review:
+                      reviewType: simpleReview
+                      id: 1
+                      title: The Review Title
+                      text: The Review text
+                      nrOfUpvotes: 10
+                      nrOfDownvotes: 3
+                      nrOfHelpfull: 8
+        '401':
+          description: Unauthorized - The user didn't authenticate correctly
+          content:
+            application/json:
+              schema:
+                $ref: './CommonModels.yaml#/components/schemas/ErrorDTO'
+              examples:
+                Unauthenticated Error Example:
+                  value:
+                    message: Authentication Error
+                    status: 401
+        '409':
+          description: Conflict - User tried to update the data of another User
+          content:
+            application/json:
+              schema:
+                $ref: './CommonModels.yaml#/components/schemas/ErrorDTO'
+              examples:
+                Conflict Error Example:
+                  value:
+                    message: Conflict Error
+                    status: 409
+        '422':
+          description: Unprocessable Entity - Some error was found in the DTO. Ex. The review text is too long.
+          content:
+            application/json:
+              schema:
+                $ref: './CommonModels.yaml#/components/schemas/ErrorDTO'
+              examples:
+                Unprocessable Entity Error Example:
+                  value:
+                    message: Unprocessable Entity Error
+                    status: 422
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LocalUserAnimeInformationDTO'
+            examples:
+              Anime User Information Example:
+                value:
+                  id:
+                    userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                    animeId: 195784
+                  status: No Status
+                  watchStartDate: '2019-08-24'
+                  watchEndDate: '2019-08-24'
+                  nrOfEpisodesSeen: 5
+                  isFavourite: true
+                  modification: '2019-08-24T14:15:22Z'
+                  grade: 2
+                  review:
+                    reviewType: simpleReview
+                    id: 1
+                    title: The Review Title
+                    text: The Review text
+                    nrOfUpvotes: 10
+                    nrOfDownvotes: 3
+                    nrOfHelpfull: 8
+        description: The DTO contains information on an Anime by a local user.
+      description: Get a page of Anime that meet the condiitons in the query.
+      parameters: []
+      security:
+        - BearerToken: []
 components:
   schemas:
     DetailedAnimeDTO:
@@ -484,6 +858,7 @@ components:
           modification: '2019-08-24T14:15:22Z'
           grade: 2
           review:
+            reviewType: simpleReview
             id: 1
             title: The Review Title
             text: The Review text
@@ -551,21 +926,404 @@ components:
         - status
         - isFavourite
         - modification
-    ErrorDTO:
-      title: Error DTO
+    AnimeQueryDTO:
+      title: Anime Query DTO
       type: object
-      properties:
-        message:
-          type: string
-          description: Translated error message
-        status:
-          type: integer
-          description: The Error status
-      description: The DTO for backend errors.
+      description: Query used to search for Anime using conditions set by the user.
       x-examples:
-        Error Example:
-          message: Error Message
-          status: 503
+        Anime Query DTO Example:
+          title: Title
+          maxStartDate: '2019-08-26'
+          minStartDate: '2019-08-24'
+          minEndDate: '2019-09-24'
+          maxEndDate: '2019-10-26'
+          maxNrOfEpisodes: 15
+          minNrOfEpisodes: 0
+          maxAverageScore: 50
+          minAverageScore: 80
+          seasonYear:
+            season: SPRING
+            year: 1900
+          status: FINISHED
+          format: TV
+      properties:
+        title:
+          type: string
+          description: What should the title contain
+        maxStartDate:
+          type: string
+          format: date
+          description: Max date when the Anime started airing
+        minStartDate:
+          type: string
+          format: date
+          description: Mix date when the Anime started airing
+        minEndDate:
+          type: string
+          format: date
+          description: Min date when the Anime finished airing
+        maxEndDate:
+          type: string
+          format: date
+          description: Max date when the Anime finished airing
+        maxNrOfEpisodes:
+          type: integer
+          minimum: 0
+          format: int32
+          description: Max nr. of episodes the Anime has aired till now
+        minNrOfEpisodes:
+          type: integer
+          format: int32
+          minimum: 0
+          description: Min nr. of episodes the Anime has aired till now
+        maxAverageScore:
+          type: integer
+          format: int32
+          maximum: 100
+          minimum: 0
+          description: Max average score of Anilist users that the anime can have
+        minAverageScore:
+          type: integer
+          minimum: 0
+          maximum: 100
+          format: int32
+          description: Min average score of Anilist users that the anime can have
+        seasonYear:
+          type: object
+          description: What season did the anime air
+          properties:
+            season:
+              $ref: '#/components/schemas/AnilistMediaSeason'
+            year:
+              type: integer
+              format: int32
+              description: The year of the season
+              minimum: 1900
+        status:
+          $ref: '#/components/schemas/AnilistMediaStatus'
+        format:
+          $ref: '#/components/schemas/AnilistMediaFormat'
+    AnilistResponseDTO-Media:
+      title: Anilist Response DTO - Media
+      type: object
+      description: |-
+        Class representing the response received from Anilist.
+
+        Because Openapi-Generator doesn't support oneOf (as of 20.01.2021) the Anilist Response has been changed into 2 classes - after the implementation change into single class with oneOf.
+      properties:
+        data:
+          $ref: '#/components/schemas/AnilistMediaDTO'
+      x-examples:
+        Anilist Response DTO - Media Example:
+          data:
+            Media:
+              id: 123987
+              season: SPRING
+              seasonYear: 2021
+              episodes: 12
+              duration: 25
+              genres:
+                - MECHA
+                - ROMANCE
+              averageScore: 95
+              format: TV
+              type: ANIME
+              favourites: 59687
+              isAdult: true
+              title:
+                english: English Title
+                romaji: Romaji Title
+                native: Native Title
+              status: FINISHED
+              coverImage:
+                extraLarge: LinkToExtraLarge
+                large: LinkToLarge
+                medium: LinkToMedium
+                color: LinkToColor
+              description: Some Description
+              source: ORIGINAL
+              startDate: 20201010
+              endDate: 20211010
+              nextAiringEpisode:
+                id: 6325
+                airingAt: 184585
+                timeUntilAiring: 60504
+                episode: 10
+                mediaId: 123987
+              relations:
+                edges:
+                  id: 123
+                  type: MANGA
+                  title:
+                    english: English Title
+                    romaji: Romaji Title
+                    native: Native Title
+                  coverImage:
+                    extraLarge: LinkToExtraLarge
+                    large: LinkToLarge
+                    medium: LinkToMedium
+                    color: LinkToColor
+                  status: FINISHED
+                id: 7895
+                relationType: ADAPTATION
+              characters:
+                edges:
+                  node:
+                    id: 963
+                    image:
+                      large: LinkToLarge
+                      medium: LinkToMedium
+                    name:
+                      first: FirstName
+                      middle: MiddleName
+                      last: LastName
+                      full: FullName
+                      native: NativeName
+                      alternative: AlternativeName
+                      alternativeSpoiler: AlternativeNameWithSpoiler
+                  id: 78965
+                  role: MAIN
+                  name: CharacterName
+                  voiceActors:
+                    id: 78654
+                    name:
+                      first: Kacper
+                      middle: Damian
+                      last: Curys
+                      full: Kacper Damian Curys
+                      native: Kacper Damian Curyś
+                    image:
+                      large: LinkToLarge
+                      medium: LinkToMedium
+                    languageV2: JAPANESE
+                pageInfo:
+                  total: 50
+                  perPage: 25
+                  currentPage: 1
+                  lastPage: 50
+                  hasNextPage: true
+              staff:
+                nodes:
+                  name:
+                    first: Kacper
+                    middle: Damian
+                    last: Curys
+                    full: Kacper Damian Curys
+                    native: Kacper Damian Curyś
+                  image:
+                    large: LinkToLarge
+                    medium: LinkToMedium
+                  primaryOccupation:
+                    - Voice Actor
+                pageInfo:
+                  total: 10
+                  perPage: 50
+                  currentPage: 10
+                  lastPage: 10
+                  hasNextPage: false
+    AnilistResponseDTO-Page:
+      title: Anilist Response DTO - Page
+      type: object
+      description: |-
+        Class representing the response received from Anilist.
+
+        Because Openapi-Generator doesn't support oneOf (as of 20.01.2021) the Anilist Response has been changed into 2 classes - after the implementation change into single class with oneOf.
+      properties:
+        data:
+          $ref: '#/components/schemas/AnilistPageCoverDTO'
+      x-examples:
+        Anilist Response DTO - Page Example:
+          data:
+            Page:
+              media:
+                - id: 789654
+                  coverImage:
+                    extraLarge: LinkToCoverImage
+                    large: LinkToLarge
+                    medium: LinkToMedium
+                    color: LinkToColor
+                  title:
+                    english: EnglishTitle
+                    romaji: RomajiTitle
+                    native: NativeTitle
+              pageInfo:
+                total: 10
+                perPage: 5
+                currentPage: 1
+                lastPage: 10
+                hasNextPage: true
+    AnilistMediaDTO:
+      title: Anilist Media DTO
+      type: object
+      description: Class containing information on a Anilist Media.
+      properties:
+        Media:
+          $ref: '#/components/schemas/DetailedAnilistAnimeInformationDTO'
+      x-examples:
+        Anilist Media DTO Example:
+          Media:
+            id: 123987
+            season: SPRING
+            seasonYear: 2021
+            episodes: 12
+            duration: 25
+            genres:
+              - MECHA
+              - ROMANCE
+            averageScore: 95
+            format: TV
+            type: ANIME
+            favourites: 59687
+            isAdult: true
+            title:
+              english: English Title
+              romaji: Romaji Title
+              native: Native Title
+            status: FINISHED
+            coverImage:
+              extraLarge: LinkToExtraLarge
+              large: LinkToLarge
+              medium: LinkToMedium
+              color: LinkToColor
+            description: Some Description
+            source: ORIGINAL
+            startDate: 20201010
+            endDate: 20211010
+            nextAiringEpisode:
+              id: 6325
+              airingAt: 184585
+              timeUntilAiring: 60504
+              episode: 10
+              mediaId: 123987
+            relations:
+              edges:
+                id: 123
+                type: MANGA
+                title:
+                  english: English Title
+                  romaji: Romaji Title
+                  native: Native Title
+                coverImage:
+                  extraLarge: LinkToExtraLarge
+                  large: LinkToLarge
+                  medium: LinkToMedium
+                  color: LinkToColor
+                status: FINISHED
+              id: 7895
+              relationType: ADAPTATION
+            characters:
+              edges:
+                node:
+                  id: 963
+                  image:
+                    large: LinkToLarge
+                    medium: LinkToMedium
+                  name:
+                    first: FirstName
+                    middle: MiddleName
+                    last: LastName
+                    full: FullName
+                    native: NativeName
+                    alternative: AlternativeName
+                    alternativeSpoiler: AlternativeNameWithSpoiler
+                id: 78965
+                role: MAIN
+                name: CharacterName
+                voiceActors:
+                  id: 78654
+                  name:
+                    first: Kacper
+                    middle: Damian
+                    last: Curys
+                    full: Kacper Damian Curys
+                    native: Kacper Damian Curyś
+                  image:
+                    large: LinkToLarge
+                    medium: LinkToMedium
+                  languageV2: JAPANESE
+              pageInfo:
+                total: 50
+                perPage: 25
+                currentPage: 1
+                lastPage: 50
+                hasNextPage: true
+            staff:
+              nodes:
+                name:
+                  first: Kacper
+                  middle: Damian
+                  last: Curys
+                  full: Kacper Damian Curys
+                  native: Kacper Damian Curyś
+                image:
+                  large: LinkToLarge
+                  medium: LinkToMedium
+                primaryOccupation:
+                  - Voice Actor
+              pageInfo:
+                total: 10
+                perPage: 50
+                currentPage: 10
+                lastPage: 10
+                hasNextPage: false
+    AnilistPageDTO:
+      title: Anilist Page DTO
+      type: object
+      x-examples:
+        Anilist Page DTO Example:
+          media:
+            - id: 789654
+              coverImage:
+                extraLarge: LinkToCoverImage
+                large: LinkToLarge
+                medium: LinkToMedium
+                color: LinkToColor
+              title:
+                english: EnglishTitle
+                romaji: RomajiTitle
+                native: NativeTitle
+          pageInfo:
+            total: 10
+            perPage: 5
+            currentPage: 1
+            lastPage: 10
+            hasNextPage: true
+      description: Class containing information on a Anilist Page containing a selected number of media.
+      properties:
+        media:
+          description: Array of medias that fullfill the requirements
+          type: array
+          items:
+            $ref: '#/components/schemas/AnilistBasicAnimeInformation'
+        pageInfo:
+          $ref: '#/components/schemas/AnilistPageInfo'
+    AnilistPageCoverDTO:
+      title: Anilist Page Cover DTO
+      type: object
+      description: Inner field of the Page DTO. Is always present.
+      properties:
+        Page:
+          $ref: '#/components/schemas/AnilistPageDTO'
+      x-examples:
+        Anilist Page Cover DTO Example:
+          Page:
+            media:
+              - id: 789654
+                coverImage:
+                  extraLarge: LinkToCoverImage
+                  large: LinkToLarge
+                  medium: LinkToMedium
+                  color: LinkToColor
+                title:
+                  english: EnglishTitle
+                  romaji: RomajiTitle
+                  native: NativeTitle
+            pageInfo:
+              total: 10
+              perPage: 5
+              currentPage: 1
+              lastPage: 10
+              hasNextPage: true
     DetailedAnilistAnimeInformationDTO:
       title: Detailed Anilist Anime Information DTO
       type: object
@@ -905,17 +1663,31 @@ components:
         - relations
         - characters
         - staff
-    AnilistMediaSeason:
-      type: string
-      enum:
-        - SPRING
-        - SUMMER
-        - FALL
-        - WINTER
-      title: Media Season
-      description: Enum containing the posible Media Season (from Anilist).
+    AnilistBasicAnimeInformation:
+      title: Anilist Basic Anime Information
+      type: object
+      description: Class containing basic information on an Anime. Usually used to create links to detailed information on the Anime.
+      properties:
+        id:
+          type: integer
+          format: int32
+          description: ID of the anime
+        coverImage:
+          $ref: '#/components/schemas/AnilistCoverImage'
+        title:
+          $ref: '#/components/schemas/AnilistMediaTitle'
       x-examples:
-        Media Season Example: SPRING
+        Anilist Basic Anime Information Example:
+          id: 789654
+          coverImage:
+            extraLarge: LinkToCoverImage
+            large: LinkToLarge
+            medium: LinkToMedium
+            color: LinkToColor
+          title:
+            english: EnglishTitle
+            romaji: RomajiTitle
+            native: NativeTitle
     AnilistMediaFormat:
       type: string
       title: Media Format
@@ -932,6 +1704,17 @@ components:
       description: Enum containing the posible Media Formats (from Anilist).
       x-examples:
         Media Format Example: TV
+    AnilistMediaSeason:
+      type: string
+      enum:
+        - SPRING
+        - SUMMER
+        - FALL
+        - WINTER
+      title: Media Season
+      description: Enum containing the posible Media Season (from Anilist).
+      x-examples:
+        Media Season Example: SPRING
     AnilistMediaType:
       type: string
       title: Media Type
@@ -1147,4 +1930,9 @@ components:
       description: Enum containing the posible Media relations (from Anilist).
       x-examples:
         Media Relation Example: ADAPTATION
-  securitySchemes: {}
+  securitySchemes:
+    BearerToken:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Uses a token created by Keykloak to authenticate the User. The token needs to be reloaded every 15 minutes

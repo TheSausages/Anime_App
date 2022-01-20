@@ -35,19 +35,19 @@ dependencies {
     implementation 'javax.validation:validation-api:2.0.1.Final'
 }
 
+test {
+    useJUnitPlatform()
+}
+
 compileJava {
     //Create the generator meta information
     dependsOn 'generateMetaInformation'
 
     //Create the files
-    dependsOn 'generateAnime'
+    dependsOn 'generateYmlFiles'
 
     //And apply the prettier
     dependsOn spotlessApply
-}
-
-test {
-    useJUnitPlatform()
 }
 
 //Meta information when generating
@@ -57,32 +57,49 @@ task generateMetaInformation(type: org.openapitools.generator.gradle.plugin.task
     outputFolder = "$buildDir/meta"
 }
 
-//Generate Anime endpoints
-task generateAnime(type: org.openapitools.generator.gradle.plugin.tasks.GenerateTask) {
-    //Generator information
-    generatorName = "spring"
-    library = "spring-boot"
+//Go thought every file and generate the data
+task generateYmlFiles() {
+    for (Tuple2<String, String> data : [
+            new Tuple2<>("CommonModels.yaml", "Common"),
+            new Tuple2<>("Anime.yaml", "Anime"),
+            new Tuple2<>("User.yaml", "User")
+    ]) {
+        generateClassesFromOpenApiSpecification(data.getV1(), data.getV2());
+    }
+}
 
-    //Spec Information
-    validateSpec = true
-    skipValidateSpec = false
-    inputSpec = "$projectDir/openapi/Anime.yaml"
-    templateDir = "$projectDir/templates"
+//Generate the data with the same generator and other configuration
+void generateClassesFromOpenApiSpecification(String ymlFileName, String taskName) {
+    String fullTaskName = "generate${taskName}"
+    task(fullTaskName, type: org.openapitools.generator.gradle.plugin.tasks.GenerateTask) {
+        //Generator information
+        generatorName = "spring"
+        library = "spring-boot"
 
-    //Generation and Output information
-    outputDir = "$buildDir/generated"
-    apiPackage = "anime.app.openapi.api"
-    modelPackage = "anime.app.openapi.model"
-    invokerPackage = "anime.app.openapi.invoker"
-    configOptions = [
-            performBeanValidation: "true",
-            delegatePattern: "false",
-            dateLibrary: "java8",
-            interfaceOnly: "true",
-            generateSupportingFiles: "true",
-            //imports for these must be manually added in model.mustache
-            additionalModelTypeAnnotations: "@SuperBuilder\n@FieldDefaults(level = AccessLevel.PRIVATE)\n@NoArgsConstructor"
-    ]
+        //Spec Information
+        validateSpec = true
+        skipValidateSpec = false
+        inputSpec = "$projectDir/openapi/${ymlFileName}"
+        templateDir = "$projectDir/templates/java"
+
+        //Generation and Output information
+        outputDir = "$buildDir/generated"
+        apiPackage = "anime.app.openapi.api"
+        invokerPackage = "anime.app.openapi.invoker"
+        //Models must be in one package, because when they aren't cross-referencing them between different files generated many class files
+        modelPackage = "anime.app.openapi.model"
+        configOptions = [
+                performBeanValidation: "true",
+                delegatePattern: "false",
+                dateLibrary: "java8",
+                interfaceOnly: "true",
+                generateSupportingFiles: "true",
+                //imports for these must be manually added in model.mustache
+                additionalModelTypeAnnotations: "@SuperBuilder\n@FieldDefaults(level = AccessLevel.PRIVATE)\n@NoArgsConstructor"
+        ]
+    }
+
+    compileJava.dependsOn(fullTaskName)
 }
 
 //Format the spotless prettier

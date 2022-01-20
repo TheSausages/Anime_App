@@ -1,0 +1,26 @@
+openapi: 3.0.0
+info:
+  title: CommonModels
+  version: '1.0'
+  description: Api containing common models for other apis
+  contact:
+    name: K. Ziejło
+    email: kziejlo@gmail.com
+paths: {}
+components:
+  schemas:
+    ErrorDTO:
+      title: Error DTO
+      type: object
+      properties:
+        message:
+          type: string
+          description: Translated error message
+        status:
+          type: integer
+          description: The Error status
+      description: The DTO for backend errors.
+      x-examples:
+        Error Example:
+          message: Error Message
+          status: 503

@@ -1,0 +1,130 @@
+openapi: 3.0.0
+info:
+  title: User
+  version: '1.0'
+  description: Api used for operation that have something to do with a local User (besides updating User Anime and Forum information)
+  contact:
+    name: K. Ziejło
+    email: kziejlo@gmail.com
+servers:
+  - url: 'http://localhost:3000'
+tags:
+  - name: keycloak
+    description: The endpoint has something to do with a keycloak operation
+  - name: profile
+    description: The endpoint has something to do with a user profile
+paths:
+  /auth/login:
+    post:
+      summary: Login endpoint
+      operationId: post-user-login
+      tags:
+        - keycloak
+      responses:
+        '200':
+          description: OK - The login was successfull
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationTokenDTO'
+              examples:
+                Successfull Login Example:
+                  value:
+                    accessToken: Access Token String
+                    expiresIn: 3600
+                    refreshToken: Refresh Token String
+                    tokenType: Bearer
+        '401':
+          description: Unauthorized - The credentials were not correct
+          content:
+            application/json:
+              schema:
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
+              examples:
+                Credential Not Correct Error:
+                  value:
+                    message: Credentials not correct
+                    status: 401
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginCredentialsDTO'
+            examples:
+              Login Credentials Example:
+                value:
+                  username: username
+                  password: pa$$word
+        description: User data used to log in the user.
+      description: Endpoint used to log in the user.
+    parameters: []
+components:
+  schemas:
+    LoginCredentialsDTO:
+      title: Login Credentials DTO
+      type: object
+      x-examples:
+        Login Credentials Example:
+          username: username
+          password: pa$$word
+      description: Class containing user credentials used to log in.
+      properties:
+        username:
+          type: string
+          minLength: 1
+          description: The username
+        password:
+          type: string
+          format: password
+          description: The password. Is encrypted between comunnication
+      required:
+        - username
+        - password
+    AuthenticationTokenDTO:
+      title: Authentication Token DTO
+      type: object
+      x-examples:
+        Authentication Token Example:
+          access_token: Access Token String
+          expires_in: 3600
+          refresh_token: Refresh Token String
+          token_type: Bearer
+      description: Class containing necessery information to authenticate a user when requesting something from the backend. The access token needs to be renewed before it expires.
+      properties:
+        accessToken:
+          type: string
+          minLength: 1
+          description: The bearer access token
+        expiresIn:
+          type: integer
+          minimum: 1
+          format: int32
+          description: How long does the token stay valid
+        refreshToken:
+          type: string
+          minLength: 1
+          description: Token used to refresh the access token
+        tokenType:
+          type: string
+          minLength: 1
+          description: What type of token is the access token
+      required:
+        - accessToken
+        - expiresIn
+        - refreshToken
+        - tokenType
+    RefreshTokenDTO:
+      title: Refresh Token DTO
+      type: object
+      x-examples:
+        Refresh Token Example:
+          refreshToken: Refresh Token String
+      description: Class containing the refresh token. Used when refreshing the access token.
+      properties:
+        refreshToken:
+          type: string
+          minLength: 1
+          description: Token used to refresh the access token
+      required:
+        - refreshToken
