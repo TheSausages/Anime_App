@@ -1121,6 +1121,8 @@ components:
                   currentPage: 10
                   lastPage: 10
                   hasNextPage: false
+      required:
+        - data
     AnilistResponseDTO-Page:
       title: Anilist Response DTO - Page
       type: object
@@ -1152,6 +1154,8 @@ components:
                 currentPage: 1
                 lastPage: 10
                 hasNextPage: true
+      required:
+        - data
     AnilistMediaDTO:
       title: Anilist Media DTO
       type: object
@@ -1266,6 +1270,8 @@ components:
                 currentPage: 10
                 lastPage: 10
                 hasNextPage: false
+      required:
+        - Media
     AnilistPageDTO:
       title: Anilist Page DTO
       type: object
@@ -1297,6 +1303,9 @@ components:
             $ref: '#/components/schemas/AnilistBasicAnimeInformation'
         pageInfo:
           $ref: '#/components/schemas/AnilistPageInfo'
+      required:
+        - media
+        - pageInfo
     AnilistPageCoverDTO:
       title: Anilist Page Cover DTO
       type: object
@@ -1324,6 +1333,8 @@ components:
               currentPage: 1
               lastPage: 10
               hasNextPage: true
+      required:
+        - Page
     DetailedAnilistAnimeInformationDTO:
       title: Detailed Anilist Anime Information DTO
       type: object
@@ -1688,6 +1699,10 @@ components:
             english: EnglishTitle
             romaji: RomajiTitle
             native: NativeTitle
+      required:
+        - id
+        - coverImage
+        - title
     AnilistMediaFormat:
       type: string
       title: Media Format
@@ -1932,7 +1947,4 @@ components:
         Media Relation Example: ADAPTATION
   securitySchemes:
     BearerToken:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
-      description: Uses a token created by Keykloak to authenticate the User. The token needs to be reloaded every 15 minutes
+      $ref: ./CommonModels.yaml#/components/securitySchemes/BearerToken

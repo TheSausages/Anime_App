@@ -128,3 +128,6 @@ components:
           description: Token used to refresh the access token
       required:
         - refreshToken
+  securitySchemes:
+    BearerToken:
+      $ref: ./CommonModels.yaml#/components/securitySchemes/BearerToken
