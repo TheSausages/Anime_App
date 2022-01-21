@@ -1,6 +1,7 @@
 package anime.app.controllers;
 
 import anime.app.openapi.api.AnimeApi;
+import anime.app.openapi.model.CommonModelsSimpleUserDTO;
 import anime.app.openapi.model.DetailedAnimeDTO;
 import anime.app.openapi.model.LocalDetailedAnimeReviewDTO;
 import anime.app.openapi.model.LocalSimpleAnimeReviewDTO;
@@ -12,17 +13,17 @@ import javax.validation.Valid;
 @RestController
 public class TestController implements AnimeApi {
 	@Override
-	public ResponseEntity<DetailedAnimeDTO> getAnimeAnimeId(Integer animeId) {
+	public ResponseEntity<DetailedAnimeDTO> getAnimeAnimeId(Long animeId) {
 		return AnimeApi.super.getAnimeAnimeId(animeId);
 	}
 
 	@GetMapping("/test")
 	public LocalDetailedAnimeReviewDTO test() {
-		LocalDetailedAnimeReviewDTO reviewDTO = LocalDetailedAnimeReviewDTO.builder()
+		CommonModelsSimpleUserDTO dto = new CommonModelsSimpleUserDTO();
+		return LocalDetailedAnimeReviewDTO.builder()
 				.title("title")
 				.animeId(1L)
 				.build();
-		return reviewDTO;
 	}
 
 	@PostMapping("/test")

@@ -22,6 +22,8 @@ paths:
     parameters:
       - schema:
           type: integer
+          minimum: 0
+          format: int64
         name: animeId
         in: path
         required: true
@@ -184,7 +186,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './CommonModels.yaml#/components/schemas/ErrorDTO'
+                $ref: '#/components/schemas/CommonModels_ErrorDTO'
               examples:
                 Anilist Error Example:
                   value:
@@ -230,7 +232,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './CommonModels.yaml#/components/schemas/ErrorDTO'
+                $ref: '#/components/schemas/CommonModels_ErrorDTO'
               examples:
                 Anilist Error Example:
                   value:
@@ -241,7 +243,9 @@ paths:
   '/anime/ranking/topAllTime/{pageNumber}':
     parameters:
       - schema:
-          type: string
+          type: integer
+          format: int64
+          minimum: 0
         name: pageNumber
         in: path
         required: true
@@ -283,7 +287,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './CommonModels.yaml#/components/schemas/ErrorDTO'
+                $ref: '#/components/schemas/CommonModels_ErrorDTO'
               examples:
                 Anilist Error Example:
                   value:
@@ -294,7 +298,9 @@ paths:
   '/anime/ranking/topAiring/{pageNumber}':
     parameters:
       - schema:
-          type: string
+          type: integer
+          minimum: 0
+          format: int64
         name: pageNumber
         in: path
         required: true
@@ -316,7 +322,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './CommonModels.yaml#/components/schemas/ErrorDTO'
+                $ref: '#/components/schemas/CommonModels_ErrorDTO'
               examples:
                 Anilist Error DTO:
                   value:
@@ -327,7 +333,9 @@ paths:
   '/anime/ranking/topMovies/{pageNumber}':
     parameters:
       - schema:
-          type: string
+          type: integer
+          minimum: 0
+          format: int64
         name: pageNumber
         in: path
         required: true
@@ -369,7 +377,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './CommonModels.yaml#/components/schemas/ErrorDTO'
+                $ref: '#/components/schemas/CommonModels_ErrorDTO'
               examples:
                 Anilist Error Example:
                   value:
@@ -380,7 +388,9 @@ paths:
   '/anime/search/{pageNumber}':
     parameters:
       - schema:
-          type: string
+          type: integer
+          format: int64
+          minimum: 0
         name: pageNumber
         in: path
         required: true
@@ -424,7 +434,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './CommonModels.yaml#/components/schemas/ErrorDTO'
+                $ref: '#/components/schemas/CommonModels_ErrorDTO'
               examples:
                 Anilist Error Example:
                   value:
@@ -495,7 +505,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './CommonModels.yaml#/components/schemas/ErrorDTO'
+                $ref: '#/components/schemas/CommonModels_ErrorDTO'
               examples:
                 Unauthenticated Error Example:
                   value:
@@ -506,7 +516,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './CommonModels.yaml#/components/schemas/ErrorDTO'
+                $ref: '#/components/schemas/CommonModels_ErrorDTO'
               examples:
                 Conflict Error Example:
                   value:
@@ -517,7 +527,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './CommonModels.yaml#/components/schemas/ErrorDTO'
+                $ref: '#/components/schemas/CommonModels_ErrorDTO'
               examples:
                 Unprocessable Entity Error Example:
                   value:
@@ -553,8 +563,6 @@ paths:
         description: The DTO contains information on an Anime by a local user.
       description: Get a page of Anime that meet the condiitons in the query.
       parameters: []
-      security:
-        - BearerToken: []
 components:
   schemas:
     DetailedAnimeDTO:
@@ -726,10 +734,7 @@ components:
       description: 'DTO object for the Anime class. Contains local information on the animation, such as the local user''s average score.'
       properties:
         animeId:
-          type: integer
-          format: int64
-          minimum: 1
-          description: 'ID of the Anime, the same used in Anilist.'
+          $ref: '#/components/schemas/AnimeId'
         averageScore:
           type: number
           minimum: 0
@@ -869,20 +874,15 @@ components:
       properties:
         id:
           type: object
-          description: ID containing both the User and Anime ids
+          description: Class containing basic information on a user
           required:
             - userId
             - animeId
           properties:
             userId:
-              type: string
-              format: uuid
-              description: 'User ID, same as in Keycloak'
+              $ref: '#/components/schemas/CommonModels_UserID'
             animeId:
-              type: integer
-              format: int64
-              minimum: 1
-              description: 'ID of the Anime, the same used in Anilist.'
+              $ref: '#/components/schemas/AnimeId'
         status:
           type: string
           enum:
@@ -926,6 +926,14 @@ components:
         - status
         - isFavourite
         - modification
+    AnimeId:
+      type: integer
+      title: Anime Id
+      format: int64
+      minimum: 0
+      description: 'ID of the Anime, the same used in Anilist.'
+      x-examples:
+        Anime Id Example: 159753
     AnimeQueryDTO:
       title: Anime Query DTO
       type: object
@@ -1010,9 +1018,6 @@ components:
         Class representing the response received from Anilist.
 
         Because Openapi-Generator doesn't support oneOf (as of 20.01.2021) the Anilist Response has been changed into 2 classes - after the implementation change into single class with oneOf.
-      properties:
-        data:
-          $ref: '#/components/schemas/AnilistMediaDTO'
       x-examples:
         Anilist Response DTO - Media Example:
           data:
@@ -1121,6 +1126,9 @@ components:
                   currentPage: 10
                   lastPage: 10
                   hasNextPage: false
+      properties:
+        data:
+          $ref: '#/components/schemas/AnilistMediaDTO'
       required:
         - data
     AnilistResponseDTO-Page:
@@ -1130,9 +1138,6 @@ components:
         Class representing the response received from Anilist.
 
         Because Openapi-Generator doesn't support oneOf (as of 20.01.2021) the Anilist Response has been changed into 2 classes - after the implementation change into single class with oneOf.
-      properties:
-        data:
-          $ref: '#/components/schemas/AnilistPageCoverDTO'
       x-examples:
         Anilist Response DTO - Page Example:
           data:
@@ -1154,15 +1159,15 @@ components:
                 currentPage: 1
                 lastPage: 10
                 hasNextPage: true
+      properties:
+        data:
+          $ref: '#/components/schemas/AnilistPageCoverDTO'
       required:
         - data
     AnilistMediaDTO:
       title: Anilist Media DTO
       type: object
       description: Class containing information on a Anilist Media.
-      properties:
-        Media:
-          $ref: '#/components/schemas/DetailedAnilistAnimeInformationDTO'
       x-examples:
         Anilist Media DTO Example:
           Media:
@@ -1270,6 +1275,9 @@ components:
                 currentPage: 10
                 lastPage: 10
                 hasNextPage: false
+      properties:
+        Media:
+          $ref: '#/components/schemas/DetailedAnilistAnimeInformationDTO'
       required:
         - Media
     AnilistPageDTO:
@@ -1310,9 +1318,6 @@ components:
       title: Anilist Page Cover DTO
       type: object
       description: Inner field of the Page DTO. Is always present.
-      properties:
-        Page:
-          $ref: '#/components/schemas/AnilistPageDTO'
       x-examples:
         Anilist Page Cover DTO Example:
           Page:
@@ -1333,6 +1338,9 @@ components:
               currentPage: 1
               lastPage: 10
               hasNextPage: true
+      properties:
+        Page:
+          $ref: '#/components/schemas/AnilistPageDTO'
       required:
         - Page
     DetailedAnilistAnimeInformationDTO:
@@ -1678,15 +1686,6 @@ components:
       title: Anilist Basic Anime Information
       type: object
       description: Class containing basic information on an Anime. Usually used to create links to detailed information on the Anime.
-      properties:
-        id:
-          type: integer
-          format: int32
-          description: ID of the anime
-        coverImage:
-          $ref: '#/components/schemas/AnilistCoverImage'
-        title:
-          $ref: '#/components/schemas/AnilistMediaTitle'
       x-examples:
         Anilist Basic Anime Information Example:
           id: 789654
@@ -1699,6 +1698,15 @@ components:
             english: EnglishTitle
             romaji: RomajiTitle
             native: NativeTitle
+      properties:
+        id:
+          type: integer
+          format: int32
+          description: ID of the anime
+        coverImage:
+          $ref: '#/components/schemas/AnilistCoverImage'
+        title:
+          $ref: '#/components/schemas/AnilistMediaTitle'
       required:
         - id
         - coverImage
@@ -1945,6 +1953,36 @@ components:
       description: Enum containing the posible Media relations (from Anilist).
       x-examples:
         Media Relation Example: ADAPTATION
+    CommonModels_ErrorDTO:
+      title: Error DTO
+      type: object
+      description: The DTO for backend errors.
+      x-examples:
+        Error Example:
+          message: Error Message
+          status: 503
+      properties:
+        message:
+          type: string
+          description: Translated error message
+        status:
+          type: integer
+          description: The Error status
+      required:
+        - message
+        - status
+    CommonModels_UserID:
+      type: string
+      title: User ID
+      format: uuid
+      description: 'User ID, same as in Keycloak'
+      minLength: 36
+      maxLength: 36
+      x-examples:
+        User Id Example: 497f6eca-6276-4993-bfeb-53cbbbba6f08
   securitySchemes:
     BearerToken:
-      $ref: ./CommonModels.yaml#/components/securitySchemes/BearerToken
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Uses a token created by Keykloak to authenticate the User. The token needs to be reloaded every 15 minutes

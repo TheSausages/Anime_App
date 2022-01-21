@@ -1,0 +1,1420 @@
+openapi: 3.0.0
+info:
+  title: Forum
+  version: '1.0'
+  contact:
+    name: K. Ziejło
+    email: kziejlo@gmail.com
+  description: Api containing endpoints connected to the forum
+servers:
+  - url: 'http://localhost:3000'
+tags:
+  - name: tags
+    description: Has something to do with tags
+  - name: categories
+    description: Has something to do with forum categories
+  - name: thread
+    description: Has something to do with threads
+  - name: post
+    description: Has something to do with posts
+paths:
+  /forum/tags:
+    get:
+      summary: Get all tags Endpoint
+      tags:
+        - tags
+      responses:
+        '200':
+          description: OK - No errors occured
+          content:
+            application/json:
+              schema:
+                type: array
+                description: Set of all tags in the database
+                uniqueItems: true
+                minItems: 0
+                items:
+                  $ref: '#/components/schemas/TagDTO'
+              examples:
+                Successfull Example:
+                  value:
+                    - id: 5
+                      name: Tag Name
+                      importance: LOW
+                      color: 'rgb(458, 789, 321)'
+        '401':
+          description: Unauthorized - The user didn't authenticate correctly
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+              examples:
+                Authentication Error Example:
+                  value:
+                    message: Authentication Error
+                    status: 401
+      operationId: get-forum-tags
+      description: Endpoint used to get all tags from the database.
+      security:
+        - BearerToken: []
+  /forum/categories:
+    get:
+      summary: Get all forum categories Endpoint
+      tags:
+        - categories
+      responses:
+        '200':
+          description: OK - No error occured
+          content:
+            application/json:
+              schema:
+                type: array
+                uniqueItems: true
+                minItems: 0
+                description: Set of all categories in the database
+                items:
+                  $ref: '#/components/schemas/ForumCategoryDTO'
+        '401':
+          description: Unauthorized - The user didn't authenticate correctly
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+              examples:
+                Authentication Error Example:
+                  value:
+                    message: Authentication Error
+                    status: 401
+      operationId: get-forum-categories
+      description: Endpoint used to get all forum categories from the database.
+  '/forum/search/{pageNumber}':
+    get:
+      summary: Search forum Endpoint
+      tags:
+        - thread
+      responses:
+        '200':
+          description: OK - No error occured
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SimpleThreadPageDTO'
+              examples:
+                Page of Simple Thread DTO Example:
+                  value:
+                    content:
+                      - id: 8
+                        title: Thread Title
+                        nrOfPosts: 4
+                        status: OPEN
+                        creation: '2019-08-24T14:15:22Z'
+                        modification: '2019-08-24T14:15:22Z'
+                        creator:
+                          userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                          username: Username
+                        category:
+                          id: 15
+                          name: Category Name
+                          description: Category Description
+                        tags:
+                          - id: 9
+                            name: Tag Name
+                            importance: LOW
+                            color: 'rgb(789, 654, 321)'
+                        userStatus:
+                          id:
+                            userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                            ThreadId: 8
+                          watching: true
+                          blocked: false
+                    nrOfElements: 1
+                    pageSize: 1
+                    pageNumber: 1
+                    totalPages: 1
+                    last: true
+                    empty: false
+        '401':
+          description: Unauthorized - The user didn't authenticate correctly
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+              examples:
+                Authentication Error Example:
+                  value:
+                    message: Authentication Error
+                    status: 401
+        '404':
+          description: Not Found - One of the tags or the category was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+              examples:
+                Not Found Error:
+                  value:
+                    message: Not Found Error
+                    status: 404
+      operationId: get-forum-search
+      security:
+        - BearerToken: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ForumQueryDTO'
+            examples:
+              Forum Query Example:
+                value:
+                  minCreation: '2019-08-24'
+                  maxCreation: '2019-08-26'
+                  minModification: '2019-08-25'
+                  maxModification: '2019-08-27'
+                  maxNrOfPosts: 1
+                  minNrOfPosts: 3
+                  category: 5
+                  title: Title contains
+                  creator: Username contains
+                  status: OPEN
+                  tags:
+                    - 1
+        description: Query containing data used to search for threads
+      description: Endpoint used to search for threads in the database using a query.
+    parameters:
+      - schema:
+          type: integer
+          format: int64
+          minimum: 0
+        name: pageNumber
+        in: path
+        required: true
+        description: Number of the requested threads page
+  '/forum/newest/{pageNumber}':
+    parameters:
+      - schema:
+          type: integer
+          format: int64
+          minimum: 0
+        name: pageNumber
+        in: path
+        description: Number of the requested threads page
+        required: true
+    get:
+      summary: Get newest threads Endpoint
+      tags:
+        - thread
+      responses:
+        '200':
+          description: OK - No error occured
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SimpleThreadPageDTO'
+              examples:
+                Page of Simple Thread DTO Example:
+                  value:
+                    content:
+                      - id: 8
+                        title: Thread Title
+                        nrOfPosts: 4
+                        status: OPEN
+                        creation: '2019-08-24T14:15:22Z'
+                        modification: '2019-08-24T14:15:22Z'
+                        creator:
+                          userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                          username: Username
+                        category:
+                          id: 15
+                          name: Category Name
+                          description: Category Description
+                        tags:
+                          - id: 9
+                            name: Tag Name
+                            importance: LOW
+                            color: 'rgb(789, 654, 321)'
+                        userStatus:
+                          id:
+                            userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                            ThreadId: 8
+                          watching: true
+                          blocked: false
+                    nrOfElements: 1
+                    pageSize: 1
+                    pageNumber: 1
+                    totalPages: 1
+                    last: true
+                    empty: false
+        '401':
+          description: Unauthorized - The user didn't authenticate correctly
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+              examples:
+                Authentication Error Example:
+                  value:
+                    message: Authentication Error
+                    status: 401
+      operationId: get-forum-newest-pageNumber
+      description: Endpoint used to get a page of threads sorted by newest elements
+      security:
+        - BearerToken: []
+  '/forum/thread/{threadId}':
+    parameters:
+      - schema:
+          type: integer
+          format: int64
+          minimum: 0
+        name: threadId
+        in: path
+        required: true
+        description: Id of the requested thread
+    get:
+      summary: Get thread by it's Id Endpoint
+      tags:
+        - thread
+      responses:
+        '200':
+          description: OK - The thread is returned correctly
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompleteThreadDTO'
+              examples:
+                Successfull Example:
+                  value:
+                    text: Thread Text
+                    posts:
+                      - content:
+                          - id: 8
+                            title: Post Title
+                            text: Post Text
+                            creation: '2019-08-24'
+                            modification: '2019-08-26'
+                            creator:
+                              userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                              username: Username
+                            nrOfPlus: 6
+                            nrOfMinus: 1
+                            userStatus:
+                              id:
+                                userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                                postId: 8
+                              liked: true
+                              disliked: false
+                              reported: false
+                        nrOfElements: 1
+                        pageSize: 50
+                        pageNumber: 1
+                        totalPages: 1
+                        last: true
+                        empty: false
+                    id: 8
+                    title: Thread Title
+                    nrOfPosts: 4
+                    status: OPEN
+                    creation: '2019-08-24T14:15:22Z'
+                    modification: '2019-08-24T14:15:22Z'
+                    creator:
+                      userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                      username: Username
+                    category:
+                      id: 15
+                      name: Category Name
+                      description: Category Description
+                    tags:
+                      - id: 9
+                        name: Tag Name
+                        importance: LOW
+                        color: 'rgb(789, 654, 321)'
+                    userStatus:
+                      id:
+                        userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                        ThreadId: 8
+                      watching: true
+                      blocked: false
+        '401':
+          description: Unauthorized - The user didn't authenticate correctly
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+              examples:
+                Authentication Error Example:
+                  value:
+                    message: Authentication Error
+                    status: 401
+        '404':
+          description: Not Found - the thread was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+              examples:
+                Not Found Error Example:
+                  value:
+                    message: Not Found Error
+                    status: 404
+      operationId: get-forum-thread-threadId
+      description: Endpoint do get a thread by it's Id
+      security:
+        - BearerToken: []
+  /forum/thread/status:
+    put:
+      summary: Update user thread status Endpoint
+      tags:
+        - thread
+      responses:
+        '204':
+          description: No Content - the status was successfully updated
+        '401':
+          description: Unauthorized - The user didn't authenticate correctly or tried to update the status of another user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+              examples:
+                Authentication Error Example:
+                  value:
+                    message: Authentication Error
+                    status: 401
+        '404':
+          description: Not Found - The thread could not be found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+              examples:
+                Thread Not Found Example:
+                  value:
+                    message: Not Found Error
+                    status: 404
+      operationId: get-forum-thread-status
+      description: Endpoint used to update the user status on a thread
+      security:
+        - BearerToken: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ThreadUserStatusDTO'
+            examples:
+              Update Status Example:
+                value:
+                  id:
+                    userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                    threadId: 5
+                  watching: true
+                  blocked: false
+        description: Data containing all necessery information to update the status
+  /forum/thread:
+    post:
+      summary: Create new thread Endpoint
+      tags:
+        - thread
+      responses:
+        '201':
+          description: Created - the thread was successfully created
+        '401':
+          description: Unauthorized - The user didn't authenticate correctly
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+              examples:
+                Authentication Error Example:
+                  value:
+                    message: Authentication Error
+                    status: 401
+      operationId: get-forum-thread
+      description: Endpoint used to create a new Thread
+      security:
+        - BearerToken: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateThreadDTO'
+            examples:
+              Create Thread Example:
+                value:
+                  title: Thread Title
+                  text: Thread Text
+                  category: 1
+                  tags:
+                    - 2
+        description: Body containing all necessery data to create a new thread
+    put:
+      tags:
+        - thread
+      summary: Update thread using it's Id Endpoint
+      operationId: put-forum-thread-threadId
+      responses:
+        '204':
+          description: No Content - the thread was successfully updated
+      description: Endpoint to update a thread using it's id
+      security:
+        - BearerToken: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateThreadDTO'
+            examples:
+              Update Thread Example:
+                value:
+                  id: 1
+                  status: OPEN
+                  title: Thread Title
+                  text: Thread Text
+                  category: 1
+                  tags:
+                    - 2
+        description: Data used to update a thread
+  '/forum/post/{threadId}/{pageNumber}':
+    parameters:
+      - schema:
+          type: integer
+          format: int64
+          minimum: 0
+        name: threadId
+        in: path
+        required: true
+        description: Id of the thread for which we want the posts
+      - schema:
+          type: integer
+          format: int64
+          minimum: 0
+        name: pageNumber
+        in: path
+        required: true
+        description: What page of posts is needed
+    get:
+      summary: Get a page of posts for a thread
+      tags:
+        - post
+      responses:
+        '200':
+          description: OK - The posts where correctly found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostPageDTO'
+              examples:
+                Page of Posts Example:
+                  value:
+                    content:
+                      - id: 8
+                        title: Post Title
+                        text: Post Text
+                        creation: '2019-08-24'
+                        modification: '2019-08-26'
+                        creator:
+                          userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                          username: Username
+                        nrOfLikes: 6
+                        nrOfDislikes: 1
+                        userStatus:
+                          id:
+                            userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                            postId: 8
+                          liked: true
+                          disliked: false
+                          reported: false
+                    nrOfElements: 1
+                    pageSize: 50
+                    pageNumber: 1
+                    totalPages: 1
+                    last: true
+                    empty: false
+        '401':
+          description: Unauthorized - The user didn't authenticate correctly
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+              examples:
+                Authentication Error Example:
+                  value:
+                    message: Authentication Error
+                    status: 401
+      operationId: get-forum-thread-threadId-pageNumber
+      description: Endpoint to get a post page for a thread
+      security:
+        - BearerToken: []
+  /forum/post/status:
+    put:
+      summary: Update user post status Endpoint
+      tags:
+        - post
+      responses:
+        '204':
+          description: No Content - The status was succesasfully updated
+        '400':
+          description: Bad Request - The status belongs to another post
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+              examples:
+                Wrong Post Id Example:
+                  value:
+                    message: bad Request Error
+                    status: 400
+        '401':
+          description: 'Unauthorized - The user didn''t authenticate correctly, or the post belongs to another user'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+              examples:
+                Authentication Error Example:
+                  value:
+                    message: Authentication Error
+                    status: 401
+        '404':
+          description: Not Found - The post could not be found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+              examples:
+                Post Not Found Example:
+                  value:
+                    message: Not Found Error
+                    status: 404
+      operationId: get-forum-post-status
+      security:
+        - BearerToken: []
+      description: Endpoint used to update the user status on a post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostUserStatusDTO'
+            examples:
+              Update Post Example:
+                value:
+                  id:
+                    userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                    postId: 5
+                  liked: true
+                  disliked: false
+                  reported: false
+        description: Data containing all necessery information to update the status
+  /forum/post:
+    parameters: []
+    post:
+      summary: Create a post for a thread Endpoint
+      tags:
+        - post
+      responses:
+        '201':
+          description: Created - The post was successfully created
+        '401':
+          description: Unauthorized - The user didn't authenticate correctly
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+              examples:
+                Authentication Error Example:
+                  value:
+                    message: Authentication Error
+                    status: 401
+      operationId: get-forum-thread-threadId-post
+      description: Endpoint used to create a new post and connect it to a selected thread
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePostDTO'
+            examples:
+              Create Post Example:
+                value:
+                  title: Post Title
+                  text: Post Text
+                  thread: 1
+        description: Data used to create a new post
+    put:
+      tags:
+        - post
+      summary: Update existing post Endpoint
+      operationId: put-forum-thread-threadId-post
+      responses:
+        '204':
+          description: No Content - the post was successfully created
+      description: Endpoint used to update an existing post.
+      security:
+        - BearerToken: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePostDTO'
+            examples:
+              Update Post Example:
+                value:
+                  id: 8
+                  title: Post Title
+                  text: Post Text
+        description: Data used to update the thread
+components:
+  securitySchemes:
+    BearerToken:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Uses a token created by Keykloak to authenticate the User. The token needs to be reloaded every 15 minutes
+  schemas:
+    SimpleThreadDTO:
+      title: Simple Thread DTO
+      type: object
+      description: Class containing basic information on a thread.
+      x-examples:
+        Simple Thread Example:
+          id: 8
+          title: Thread Title
+          nrOfPosts: 4
+          status: OPEN
+          creation: '2019-08-24T14:15:22Z'
+          modification: '2019-08-24T14:15:22Z'
+          creator:
+            userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+            username: Username
+          category:
+            id: 15
+            name: Category Name
+            description: Category Description
+          tags:
+            - id: 9
+              name: Tag Name
+              importance: LOW
+              color: 'rgb(789, 654, 321)'
+          userStatus:
+            id:
+              userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+              ThreadId: 8
+            watching: true
+            blocked: false
+      properties:
+        id:
+          $ref: '#/components/schemas/ThreadId'
+        title:
+          type: string
+          minLength: 1
+          description: Title of the thread
+        nrOfPosts:
+          type: integer
+          format: int32
+          minimum: 0
+          description: How many posts does the thread have
+        status:
+          $ref: '#/components/schemas/ThreadStatus'
+        creation:
+          type: string
+          format: date-time
+          description: When was the thread created
+        modification:
+          type: string
+          format: date-time
+          description: When was the thread modificated last time
+        creator:
+          $ref: '#/components/schemas/CommonModels_SimpleUserDTO'
+        category:
+          $ref: '#/components/schemas/ForumCategoryDTO'
+        tags:
+          type: array
+          minItems: 1
+          description: What does does the thread have
+          items:
+            $ref: '#/components/schemas/TagDTO'
+        userStatus:
+          $ref: '#/components/schemas/ThreadUserStatusDTO'
+      required:
+        - id
+        - title
+        - nrOfPosts
+        - status
+        - creation
+        - modification
+        - creator
+        - category
+        - tags
+        - userStatus
+    CompleteThreadDTO:
+      title: Complete Thread DTO
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/SimpleThreadDTO'
+      properties:
+        text:
+          type: string
+          description: Text of the thread
+          minLength: 1
+          maxLength: 600
+        posts:
+          type: array
+          description: 'First page of the thread''s posts, sorted by date'
+          items:
+            $ref: '#/components/schemas/PostDTO'
+      x-examples:
+        Complete Thread Example:
+          text: Thread Text
+          posts:
+            - content:
+                - id: 8
+                  title: Post Title
+                  text: Post Text
+                  creation: '2019-08-24'
+                  modification: '2019-08-26'
+                  creator:
+                    userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                    username: Username
+                  nrOfPlus: 6
+                  nrOfMinus: 1
+                  userStatus:
+                    id:
+                      userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                      postId: 8
+                    liked: true
+                    disliked: false
+                    reported: false
+              nrOfElements: 1
+              pageSize: 50
+              pageNumber: 1
+              totalPages: 1
+              last: true
+              empty: false
+          id: 8
+          title: Thread Title
+          nrOfPosts: 4
+          status: OPEN
+          creation: '2019-08-24T14:15:22Z'
+          modification: '2019-08-24T14:15:22Z'
+          creator:
+            userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+            username: Username
+          category:
+            id: 15
+            name: Category Name
+            description: Category Description
+          tags:
+            - id: 9
+              name: Tag Name
+              importance: LOW
+              color: 'rgb(789, 654, 321)'
+          userStatus:
+            id:
+              userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+              ThreadId: 8
+            watching: true
+            blocked: false
+    CreateThreadDTO:
+      title: Create Thread DTO
+      type: object
+      description: Class used during the creation of threads
+      properties:
+        title:
+          type: string
+          maxLength: 80
+        text:
+          type: string
+          maxLength: 600
+        category:
+          $ref: '#/components/schemas/ForumCategoryId'
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagId'
+      required:
+        - title
+        - text
+        - category
+      x-examples:
+        Create Thread Example:
+          title: Thread Title
+          text: Thread Text
+          category: 1
+          tags:
+            - 2
+    UpdateThreadDTO:
+      title: Update Thread DTO
+      type: object
+      description: Class used during the updating of threads.
+      allOf:
+        - $ref: '#/components/schemas/CreateThreadDTO'
+      properties:
+        id:
+          $ref: '#/components/schemas/ThreadId'
+        status:
+          $ref: '#/components/schemas/ThreadStatus'
+      required:
+        - id
+        - status
+      x-examples:
+        Update Thread Example:
+          id: 1
+          status: OPEN
+          title: Thread Title
+          text: Thread Text
+          category: 1
+          tags:
+            - 2
+    SimpleThreadPageDTO:
+      title: Simple Thread Page DTO
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/CommonModels_DomainPageDTO'
+      properties:
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/SimpleThreadDTO'
+      description: Domain Page extension for Simple Threads.
+      x-examples:
+        Simple Thread Page Example:
+          content:
+            - id: 8
+              title: Thread Title
+              nrOfPosts: 4
+              status: OPEN
+              creation: '2019-08-24T14:15:22Z'
+              modification: '2019-08-24T14:15:22Z'
+              creator:
+                userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                username: Username
+              category:
+                id: 15
+                name: Category Name
+                description: Category Description
+              tags:
+                - id: 9
+                  name: Tag Name
+                  importance: LOW
+                  color: 'rgb(789, 654, 321)'
+              userStatus:
+                id:
+                  userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                  ThreadId: 8
+                watching: true
+                blocked: false
+          nrOfElements: 1
+          pageSize: 1
+          pageNumber: 1
+          totalPages: 1
+          last: true
+          empty: false
+    PostDTO:
+      title: Post DTO
+      type: object
+      description: Class containing all necessery information on a user.
+      x-examples:
+        Post Example:
+          id: 8
+          title: Post Title
+          text: Post Text
+          creation: '2019-08-24'
+          modification: '2019-08-26'
+          creator:
+            userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+            username: Username
+          nrOfLikes: 6
+          nrOfDislikes: 1
+          userStatus:
+            id:
+              userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+              postId: 8
+            liked: true
+            disliked: false
+            reported: false
+      properties:
+        id:
+          $ref: '#/components/schemas/PostId'
+        title:
+          type: string
+          maxLength: 80
+          description: Title of the post
+        text:
+          type: string
+          maxLength: 600
+          description: Text of the post
+        creation:
+          type: string
+          format: date
+          description: When was the post created
+        modification:
+          type: string
+          format: date
+          description: When was the post modificated
+        creator:
+          $ref: '#/components/schemas/CommonModels_SimpleUserDTO'
+        nrOfLikes:
+          type: integer
+          format: int32
+          minimum: 0
+          description: How many people liked the post
+        nrOfDislikes:
+          type: integer
+          format: int32
+          minimum: 0
+          description: How many people disliked the post
+        userStatus:
+          $ref: '#/components/schemas/PostUserStatusDTO'
+      required:
+        - id
+        - title
+        - text
+        - creation
+        - modification
+        - creator
+        - nrOfLikes
+        - nrOfDislikes
+    CreatePostDTO:
+      title: Create Post DTO
+      type: object
+      description: Class used to create a new thread
+      x-examples:
+        Create Post Example:
+          title: Post Title
+          text: Post Text
+          thread: 1
+      properties:
+        title:
+          type: string
+          minLength: 10
+          maxLength: 80
+        text:
+          type: string
+          maxLength: 600
+        thread:
+          $ref: '#/components/schemas/ThreadId'
+    UpdatePostDTO:
+      title: Update Post DTO
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/CreatePostDTO'
+      properties:
+        id:
+          $ref: '#/components/schemas/PostId'
+      required:
+        - id
+      description: Class used to update an existing post.
+      x-examples:
+        Update Post Exaple:
+          id: 8
+          title: Post Title
+          text: Post Text
+          thread: 1
+    PostPageDTO:
+      title: Post Page DTO
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/CommonModels_DomainPageDTO'
+      properties:
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/PostDTO'
+      description: Domain Page extension for Posts
+      x-examples:
+        Post Page Example:
+          content:
+            - id: 8
+              title: Post Title
+              text: Post Text
+              creation: '2019-08-24'
+              modification: '2019-08-26'
+              creator:
+                userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                username: Username
+              nrOfLikes: 6
+              nrOfDislikes: 1
+              userStatus:
+                id:
+                  userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                  postId: 8
+                liked: true
+                disliked: false
+                reported: false
+          nrOfElements: 1
+          pageSize: 50
+          pageNumber: 1
+          totalPages: 1
+          last: true
+          empty: false
+    PostWithThreadInformationDTO:
+      title: Post With Thread Information DTO
+      type: object
+      x-examples:
+        Post With Thread Information Example:
+          post:
+            id: 8
+            title: Post Title
+            text: Post Text
+            creation: '2019-08-24'
+            modification: '2019-08-26'
+            creator:
+              userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+              username: Username
+            nrOfPlus: 6
+            nrOfMinus: 1
+            userStatus:
+              id:
+                userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                postId: 8
+              liked: true
+              disliked: false
+              reported: false
+          threadInformation:
+            id: 7
+            title: Thread Title
+      description: Class containing complete post information with selected Thread Information.
+      properties:
+        post:
+          $ref: '#/components/schemas/PostDTO'
+        threadInformation:
+          type: object
+          required:
+            - id
+            - title
+          description: Basic information on a Thread
+          properties:
+            id:
+              $ref: '#/components/schemas/ThreadId'
+            title:
+              type: string
+              minLength: 1
+              description: Title of the thread
+      required:
+        - post
+        - threadInformation
+    ForumQueryDTO:
+      title: Forum Query DTO
+      type: object
+      description: Query used to search for threads in the database.
+      x-examples:
+        Forum Query Example:
+          minCreation: '2019-08-24'
+          maxCreation: '2019-08-26'
+          minModification: '2019-08-25'
+          maxModification: '2019-08-27'
+          maxNrOfPosts: 1
+          minNrOfPosts: 3
+          category: 5
+          title: Title contains
+          creator: Username contains
+          status: OPEN
+          tags:
+            - 1
+      properties:
+        minCreation:
+          type: string
+          format: date
+          description: Min creation date of the thread
+        maxCreation:
+          type: string
+          format: date
+          description: Max creation date of the thread
+        minModification:
+          type: string
+          format: date
+          description: Min modification date of the thread
+        maxModification:
+          type: string
+          format: date
+          description: Max modification date of the thread
+        maxNrOfPosts:
+          type: integer
+          format: int32
+          minimum: 0
+          description: Max nr. of posts that the thread has
+        minNrOfPosts:
+          type: integer
+          minimum: 0
+          format: int32
+          description: Min nr. of posts that the thread has
+        category:
+          $ref: '#/components/schemas/ForumCategoryId'
+        title:
+          type: string
+          description: What does the title of the thread contain
+        creator:
+          type: string
+          description: What does the creators username contain
+        status:
+          $ref: '#/components/schemas/ThreadStatus'
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagId'
+    ForumCategoryDTO:
+      title: Forum Category DTO
+      type: object
+      description: Class containing information on a forum category.
+      x-examples:
+        Forum Category Example:
+          id: 4
+          name: Category Name
+          description: Category Description
+      properties:
+        id:
+          $ref: '#/components/schemas/ForumCategoryId'
+        name:
+          type: string
+          minLength: 1
+          maxLength: 45
+          description: Forum Category name
+        description:
+          type: string
+          maxLength: 150
+          description: Foprum Category description
+      required:
+        - id
+        - name
+    TagDTO:
+      title: Tag DTO
+      type: object
+      description: Class containing information on a tag.
+      x-examples:
+        Tag Example:
+          id: 5
+          name: Tag Name
+          importance: LOW
+          color: 'rgb(458, 789, 321)'
+      properties:
+        id:
+          $ref: '#/components/schemas/TagId'
+        name:
+          type: string
+          minLength: 1
+          maxLength: 45
+          description: tag name
+        importance:
+          $ref: '#/components/schemas/TagImportance'
+        color:
+          $ref: '#/components/schemas/Color'
+      required:
+        - id
+        - name
+        - importance
+        - color
+    ThreadUserStatusDTO:
+      title: Thread User Status DTO
+      type: object
+      description: Class containing the opinion of a user on a thread.
+      x-examples:
+        Thread User Status Example:
+          id:
+            userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+            threadId: 5
+          watching: true
+          blocked: false
+      properties:
+        id:
+          type: object
+          required:
+            - userId
+            - threadId
+          description: ID containing information to which thread and user does the status reference
+          properties:
+            userId:
+              $ref: '#/components/schemas/CommonModels_UserID'
+            threadId:
+              $ref: '#/components/schemas/ThreadId'
+        watching:
+          type: boolean
+          description: Is the user watching the post
+        blocked:
+          type: boolean
+          description: Did the user block the post
+      required:
+        - id
+        - watching
+        - blocked
+    PostUserStatusDTO:
+      title: Post User Status DTO
+      type: object
+      description: Class containing the opinion of a user on a post.
+      x-examples:
+        Post User Status Example:
+          id:
+            userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+            postId: 5
+          liked: true
+          disliked: false
+          reported: false
+      properties:
+        id:
+          type: object
+          required:
+            - userId
+            - postId
+          description: ID containing information to which post and user does the status reference
+          properties:
+            userId:
+              $ref: '#/components/schemas/CommonModels_UserID'
+            postId:
+              $ref: '#/components/schemas/PostId'
+        liked:
+          type: boolean
+          description: Does the user like the post
+        disliked:
+          type: boolean
+          description: Does the user dislike the post
+        reported:
+          type: boolean
+          description: Did the user report the post
+      required:
+        - id
+        - liked
+        - disliked
+        - reported
+    ThreadId:
+      type: integer
+      title: Thread Id
+      format: int64
+      minimum: 0
+      description: Id of the Thread database entity.
+      x-examples:
+        Thread Id Example: 5
+    PostId:
+      type: integer
+      title: Post Id
+      format: int64
+      minimum: 0
+      x-examples:
+        Post Id Example: 5
+      description: Id of the Post database entity.
+    TagId:
+      type: integer
+      title: Tag Id
+      description: Id of the Tag database entity.
+      minimum: 0
+      format: int64
+    ForumCategoryId:
+      type: integer
+      title: Forum Category Id
+      format: int64
+      minimum: 0
+      description: ID of the Forum Category database entity
+      x-examples:
+        Forum Category Example: 14
+    ThreadStatus:
+      type: string
+      title: ThreadStatus
+      enum:
+        - OPEN
+        - CLOSED
+      x-examples:
+        Thread Status Example: OPEN
+      description: Enum containing the possible thread statuses.
+    TagImportance:
+      type: string
+      title: Tag Importance
+      enum:
+        - LOW
+        - MEDIUM
+        - HIGH
+        - ADMIN
+      description: Enum containing the possible importance levels for tags.
+      x-examples:
+        Tag Importance Example: LOW
+    Color:
+      type: string
+      title: Color
+      pattern: '/rgb\((\d{1,3}), (\d{1,3}), (\d{1,3})\)/'
+      description: Small schema that declared the color format
+    CommonModels_DomainPageDTO:
+      title: Page DTO
+      type: object
+      description: 'Class representing the Spring domain page DTO. This should be extended (and add the field: content: array[(Some Class)]) in order to get the desired content.'
+      x-examples:
+        Page Example:
+          content:
+            - name: Generic object
+          nrOfElements: 1
+          pageSize: 50
+          pageNumber: 1
+          totalPages: 1
+          last: true
+          empty: false
+      properties:
+        nrOfElements:
+          type: integer
+          format: int32
+          minimum: 0
+          description: How many elements does the page contain
+        pageSize:
+          type: integer
+          format: int32
+          minimum: 0
+          description: Size of the page
+        pageNumber:
+          type: integer
+          format: int32
+          minimum: 0
+          description: Number of the page
+        totalPages:
+          type: integer
+          format: int64
+          minimum: 0
+          description: How many total pates are there
+        last:
+          type: boolean
+          description: Is this the last page
+        empty:
+          type: boolean
+          description: Is the page empty
+      required:
+        - nrOfElements
+        - pageSize
+        - pageNumber
+        - totalPages
+        - last
+        - empty
+    CommonModels_ErrorDTO:
+      title: Error DTO
+      type: object
+      description: The DTO for backend errors.
+      x-examples:
+        Error Example:
+          message: Error Message
+          status: 503
+      properties:
+        message:
+          type: string
+          description: Translated error message
+        status:
+          type: integer
+          description: The Error status
+      required:
+        - message
+        - status
+    CommonModels_SimpleUserDTO:
+      title: Simple User DTO
+      type: object
+      description: Class containing basic information on a user
+      x-examples:
+        Simple User Example:
+          userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+          username: Username
+      properties:
+        userId:
+          $ref: '#/components/schemas/CommonModels_UserID'
+        username:
+          type: string
+          description: 'ID of the Anime, the same used in Anilist.'
+          minLength: 6
+      required:
+        - userId
+        - username
+    CommonModels_UserID:
+      type: string
+      title: User ID
+      format: uuid
+      description: 'User ID, same as in Keycloak'
+      minLength: 36
+      maxLength: 36
+      x-examples:
+        User Id Example: 497f6eca-6276-4993-bfeb-53cbbbba6f08

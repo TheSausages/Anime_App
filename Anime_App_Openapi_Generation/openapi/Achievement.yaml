@@ -1,0 +1,143 @@
+openapi: 3.0.0
+info:
+  title: Achievement
+  version: '1.0'
+  contact:
+    name: K. Ziejło
+    email: kziejlo@gmail.com
+  description: Api containing endpoints connected to emittion of achievements
+servers:
+  - url: 'http://localhost:3000'
+tags:
+  - name: achievement
+    description: Has something to do with the emission of achievements
+paths:
+  /achievement/subscribe:
+    get:
+      summary: Subscribe to achievement emission
+      tags:
+        - achievement
+      responses:
+        '200':
+          description: Created - created a SseEmitter for the user
+          content:
+            text/event-stream:
+              schema:
+                type: SseEmitter
+        '401':
+          description: Unauthorized - the user didn't authenticate correctly
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+              examples:
+                Authentication Error Example:
+                  value:
+                    message: Authentication Error
+                    status: 401
+      operationId: get-achievements-subscribe
+      description: Endpoint to get the SseEmitter used to emit achievements
+  /achievement/cancel:
+    get:
+      summary: Cancel subscription emmision
+      tags:
+        - achievement
+      responses:
+        '200':
+          description: OK - The Sse Emitter was successfully deleted
+        '401':
+          description: Unauthorized - the user didn't authenticate correctly
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+              examples:
+                Authentication Error Example:
+                  value:
+                    message: Authentication Error
+                    status: 401
+      operationId: get-achievement-cancel
+      description: Endpoint to cancel user's subscription to the achievement service (delete users SseEmitter)
+components:
+  schemas:
+    AchievementDTO:
+      title: Achievement DTO
+      type: object
+      x-examples:
+        Achievement Example:
+          id: 5
+          name: Achievement Name
+          description: Achievement Description
+          icon:
+            - byte 1
+            - byte 2
+          points: 10
+          nrOfUsersPosses: 3
+      description: Class containg all necessery information on an Achievement.
+      properties:
+        id:
+          $ref: '#/components/schemas/AchievementId'
+        name:
+          type: string
+          minLength: 1
+          description: Name of the achievement
+        description:
+          type: string
+          minLength: 1
+          description: Description of the achievement
+        icon:
+          type: array
+          minItems: 1
+          description: Byte array containing the icon of the achievement
+          items:
+            type: string
+            format: byte
+        points:
+          type: integer
+          format: int32
+          minimum: 1
+          description: How many points does the achievement give
+        nrOfUsersPosses:
+          type: integer
+          format: int64
+          minimum: 0
+          description: How many people posses the achievement
+      required:
+        - id
+        - name
+        - description
+        - icon
+        - points
+        - nrOfUsersPosses
+    AchievementId:
+      type: integer
+      title: Achievement Id
+      format: int64
+      minimum: 0
+      description: ID of the Achievement database entity
+      x-examples:
+        Achievement Id Example: 45
+    CommonModels_ErrorDTO:
+      title: Error DTO
+      type: object
+      description: The DTO for backend errors.
+      x-examples:
+        Error Example:
+          message: Error Message
+          status: 503
+      properties:
+        message:
+          type: string
+          description: Translated error message
+        status:
+          type: integer
+          description: The Error status
+      required:
+        - message
+        - status
+  securitySchemes:
+    BearerToken:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Uses a token created by Keykloak to authenticate the User. The token needs to be reloaded every 15 minutes

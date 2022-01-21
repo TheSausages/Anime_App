@@ -61,8 +61,13 @@ task generateMetaInformation(type: org.openapitools.generator.gradle.plugin.task
 task generateYmlFiles() {
     for (Tuple2<String, String> data : [
             new Tuple2<>("CommonModels.yaml", "Common"),
+            //This file contains a error that is fix in 'SseEmitter fix' in the spotless task (line 127)
+            //It is used, because openapi doesn't support streaming apis yet
+            //The typeMappings and languageSpecificPrimitives generator solution is not used in order to replace additional properties at the same time
+            new Tuple2<>("Achievement.yaml", "Achievement"),
             new Tuple2<>("Anime.yaml", "Anime"),
-            new Tuple2<>("User.yaml", "User")
+            new Tuple2<>("User.yaml", "User"),
+            new Tuple2<>("Forum.yaml", "Forum"),
     ]) {
         generateClassesFromOpenApiSpecification(data.getV1(), data.getV2());
     }
@@ -120,8 +125,30 @@ spotless {
         prettier(['prettier': '2.5.1', 'prettier-plugin-java': '1.6.1'])
                 .config(['parser': 'java', 'tabWidth': 4])
 
-        //
-        //custom 'Lambda fix', { it.replace('} )', '})').replace('} ,', '},') }
+        /*custom 'Add Generics fix', { it
+            .replace('DomainPageDTO {', 'DomainPageDTO<T> {')
+        }*/
+
+        //Fix for replacing nonexting SseEmitter with the Spring SseEmitter
+        custom 'SseEmitter fix', { it
+                //replace the import of the SseEmitter
+                .replace('import anime.app.openapi.model.SseEmitter;', 'import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;')
+
+                //replace produces in RequestMapping, so it only uses the stream
+                .replace(
+                        'produces = { "text/event-stream", "application/json" }',
+                        'produces = { "text/event-stream" }'
+                )
+
+                //replace the returned answer, as it doesnt use Response Entity
+                .replace('default ResponseEntity<SseEmitter> getAchievementsSubscribe() {\n' +
+                        '        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);\n' +
+                        '    }',
+                        'default SseEmitter getAchievementsSubscribe() {\n' +
+                        '        return null;\n' +
+                        '    }'
+                )
+        }
     }
 }
 

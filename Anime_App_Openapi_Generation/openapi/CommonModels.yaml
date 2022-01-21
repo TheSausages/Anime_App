@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   title: CommonModels
   version: '1.0'
-  description: Api containing common elements (ex. models, security schemes) for other apis
+  description: 'Api containing common elements (ex. models, security schemes) for other apis'
   contact:
     name: K. Ziejło
     email: kziejlo@gmail.com
@@ -12,6 +12,11 @@ components:
     ErrorDTO:
       title: Error DTO
       type: object
+      description: The DTO for backend errors.
+      x-examples:
+        Error Example:
+          message: Error Message
+          status: 503
       properties:
         message:
           type: string
@@ -19,14 +24,84 @@ components:
         status:
           type: integer
           description: The Error status
-      description: The DTO for backend errors.
-      x-examples:
-        Error Example:
-          message: Error Message
-          status: 503
       required:
         - message
         - status
+    SimpleUserDTO:
+      title: Simple User DTO
+      type: object
+      description: Class containing basic information on a user
+      x-examples:
+        Simple User Example:
+          userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+          username: Username
+      properties:
+        userId:
+          $ref: '#/components/schemas/UserID'
+        username:
+          type: string
+          description: 'ID of the Anime, the same used in Anilist.'
+          minLength: 6
+      required:
+        - userId
+        - username
+    UserID:
+      type: string
+      title: User ID
+      format: uuid
+      description: 'User ID, same as in Keycloak'
+      minLength: 36
+      maxLength: 36
+      x-examples:
+        User Id Example: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+    DomainPageDTO:
+      title: Page DTO
+      type: object
+      description: 'Class representing the Spring domain page DTO. This should be extended (and add the field: content: array[(Some Class)]) in order to get the desired content.'
+      x-examples:
+        Page Example:
+          content:
+            - name: Generic object
+          nrOfElements: 1
+          pageSize: 50
+          pageNumber: 1
+          totalPages: 1
+          last: true
+          empty: false
+      properties:
+        nrOfElements:
+          type: integer
+          format: int32
+          minimum: 0
+          description: How many elements does the page contain
+        pageSize:
+          type: integer
+          format: int32
+          minimum: 0
+          description: Size of the page
+        pageNumber:
+          type: integer
+          format: int32
+          minimum: 0
+          description: Number of the page
+        totalPages:
+          type: integer
+          format: int64
+          minimum: 0
+          description: How many total pates are there
+        last:
+          type: boolean
+          description: Is this the last page
+        empty:
+          type: boolean
+          description: Is the page empty
+      required:
+        - nrOfElements
+        - pageSize
+        - pageNumber
+        - totalPages
+        - last
+        - empty
   securitySchemes:
     BearerToken:
       type: http
