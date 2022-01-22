@@ -1,7 +1,6 @@
 package anime.app.controllers;
 
 import anime.app.openapi.api.AnimeApi;
-import anime.app.openapi.model.CommonModelsSimpleUserDTO;
 import anime.app.openapi.model.DetailedAnimeDTO;
 import anime.app.openapi.model.LocalDetailedAnimeReviewDTO;
 import anime.app.openapi.model.LocalSimpleAnimeReviewDTO;
@@ -19,7 +18,6 @@ public class TestController implements AnimeApi {
 
 	@GetMapping("/test")
 	public LocalDetailedAnimeReviewDTO test() {
-		CommonModelsSimpleUserDTO dto = new CommonModelsSimpleUserDTO();
 		return LocalDetailedAnimeReviewDTO.builder()
 				.title("title")
 				.animeId(1L)

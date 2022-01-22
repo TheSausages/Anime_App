@@ -186,7 +186,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
               examples:
                 Anilist Error Example:
                   value:
@@ -232,7 +232,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
               examples:
                 Anilist Error Example:
                   value:
@@ -287,7 +287,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
               examples:
                 Anilist Error Example:
                   value:
@@ -322,7 +322,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
               examples:
                 Anilist Error DTO:
                   value:
@@ -377,7 +377,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
               examples:
                 Anilist Error Example:
                   value:
@@ -434,7 +434,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
               examples:
                 Anilist Error Example:
                   value:
@@ -505,7 +505,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
               examples:
                 Unauthenticated Error Example:
                   value:
@@ -516,7 +516,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
               examples:
                 Conflict Error Example:
                   value:
@@ -527,7 +527,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
               examples:
                 Unprocessable Entity Error Example:
                   value:
@@ -880,7 +880,7 @@ components:
             - animeId
           properties:
             userId:
-              $ref: '#/components/schemas/CommonModels_UserID'
+              $ref: ./CommonModels.yaml#/components/schemas/UserID
             animeId:
               $ref: '#/components/schemas/AnimeId'
         status:
@@ -1953,36 +1953,6 @@ components:
       description: Enum containing the posible Media relations (from Anilist).
       x-examples:
         Media Relation Example: ADAPTATION
-    CommonModels_ErrorDTO:
-      title: Error DTO
-      type: object
-      description: The DTO for backend errors.
-      x-examples:
-        Error Example:
-          message: Error Message
-          status: 503
-      properties:
-        message:
-          type: string
-          description: Translated error message
-        status:
-          type: integer
-          description: The Error status
-      required:
-        - message
-        - status
-    CommonModels_UserID:
-      type: string
-      title: User ID
-      format: uuid
-      description: 'User ID, same as in Keycloak'
-      minLength: 36
-      maxLength: 36
-      x-examples:
-        User Id Example: 497f6eca-6276-4993-bfeb-53cbbbba6f08
   securitySchemes:
     BearerToken:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
-      description: Uses a token created by Keykloak to authenticate the User. The token needs to be reloaded every 15 minutes
+      $ref: ./CommonModels.yaml#/components/securitySchemes/BearerToken

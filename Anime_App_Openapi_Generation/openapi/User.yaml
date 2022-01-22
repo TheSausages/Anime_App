@@ -39,7 +39,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
               examples:
                 Credential Not Correct Error:
                   value:
@@ -73,7 +73,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
               examples:
                 Authentication Error Example:
                   value:
@@ -84,7 +84,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
               examples:
                 Unproccesable Entity Error Example:
                   value:
@@ -136,7 +136,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
               examples:
                 Authentication Error Example:
                   value:
@@ -180,7 +180,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
               examples:
                 Data Already Taken Error Example:
                   value:
@@ -191,7 +191,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
               examples:
                 Unprocessable Entity Error Example:
                   value:
@@ -202,7 +202,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
               examples:
                 Local Registration Error Example:
                   value:
@@ -238,17 +238,19 @@ paths:
         description: ID of the user for which we request the profile
     get:
       summary: Get user profile Endpoint
-      tags: [ profile ]
+      tags:
+        - profile
       responses:
         '200':
           description: OK - The user was found and a profile was successfully created
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CompleteUserDTO'
+                $ref: './CommonModels.yaml#/components/schemas/CompleteUserDTO'
               examples:
                 Successfull Example:
                   value:
+                    userType: completeUser
                     userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
                     username: Username
                     achievements:
@@ -280,13 +282,15 @@ paths:
                           nrOfDownvotes: 3
                           nrOfHelpfull: 8
                     threads:
-                      - id: 8
+                      - threadComplexityType: simpleThread
+                        id: 8
                         title: Thread Title
                         nrOfPosts: 4
                         status: OPEN
                         creation: '2019-08-24T14:15:22Z'
                         modification: '2019-08-24T14:15:22Z'
                         creator:
+                          userType: simpleUser
                           userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
                           username: Username
                         category:
@@ -311,6 +315,7 @@ paths:
                         creation: '2019-08-24'
                         modification: '2019-08-26'
                         creator:
+                          userType: simpleUser
                           userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
                           username: Username
                         nrOfPlus: 6
@@ -330,7 +335,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
               examples:
                 Not Found Error Example:
                   value:
@@ -341,17 +346,19 @@ paths:
   /user/current:
     get:
       summary: Get current user profile Endpoint
-      tags: [ profile ]
+      tags:
+        - profile
       responses:
         '200':
           description: OK - The profile was successfully created
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CompleteUserDTO'
+                $ref: './CommonModels.yaml#/components/schemas/CompleteUserDTO'
               examples:
                 Successfull Example:
                   value:
+                    userType: completeUser
                     userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
                     username: Username
                     achievements:
@@ -383,13 +390,15 @@ paths:
                           nrOfDownvotes: 3
                           nrOfHelpfull: 8
                     threads:
-                      - id: 8
+                      - threadComplexityType: simpleThread
+                        id: 7
                         title: Thread Title
                         nrOfPosts: 4
                         status: OPEN
                         creation: '2019-08-24T14:15:22Z'
                         modification: '2019-08-24T14:15:22Z'
                         creator:
+                          userType: simpleUser
                           userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
                           username: Username
                         category:
@@ -414,6 +423,7 @@ paths:
                         creation: '2019-08-24'
                         modification: '2019-08-26'
                         creator:
+                          userType: simpleUser
                           userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
                           username: Username
                         nrOfPlus: 6
@@ -433,7 +443,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
               examples:
                 Authentication Error Example:
                   value:
@@ -546,737 +556,6 @@ components:
           password: Pa$$word
           matchingPassword: Pa$$word
           email: user@example.com
-    CompleteUserDTO:
-      title: Complete User DTO
-      allOf:
-        - $ref: '#/components/schemas/CommonModels_SimpleUserDTO'
-      properties:
-        achievements:
-          description: Set containing some achievements of the user
-          type: array
-          uniqueItems: true
-          items:
-            $ref: '#/components/schemas/Achievement_AchievementDTO'
-        animeInfos:
-          description: Set containing some anime Information of the user
-          type: array
-          uniqueItems: true
-          items:
-            $ref: '#/components/schemas/Anime_LocalUserAnimeInformationDTO'
-        threads:
-          description: Set containing some threads created by the user
-          type: array
-          uniqueItems: true
-          items:
-            $ref: '#/components/schemas/Forum_SimpleThreadDTO'
-        posts:
-          description: Set containing some posts created by the user
-          type: array
-          uniqueItems: true
-          items:
-            $ref: '#/components/schemas/Forum_PostWithThreadInformationDTO'
-      required:
-        - achievements
-        - animeInfos
-        - threads
-        - posts
-      description: Class containg complete information on a user.
-      x-examples:
-        Complete User Example:
-          userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
-          username: Username
-          achievements:
-            - id: 5
-              name: Achievement Name
-              description: Achievement Description
-              icon:
-                - byte 1
-                - byte 2
-              points: 10
-              nrOfUsersPosses: 3
-          animeInfos:
-            - id:
-                userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
-                animeId: 195784
-              status: No Status
-              watchStartDate: '2019-08-24'
-              watchEndDate: '2019-08-24'
-              nrOfEpisodesSeen: 5
-              isFavourite: true
-              modification: '2019-08-24T14:15:22Z'
-              grade: 2
-              review:
-                reviewType: simpleReview
-                id: 1
-                title: The Review Title
-                text: The Review text
-                nrOfUpvotes: 10
-                nrOfDownvotes: 3
-                nrOfHelpfull: 8
-          threads:
-            - id: 8
-              title: Thread Title
-              nrOfPosts: 4
-              status: OPEN
-              creation: '2019-08-24T14:15:22Z'
-              modification: '2019-08-24T14:15:22Z'
-              creator:
-                userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
-                username: Username
-              category:
-                id: 15
-                name: Category Name
-                description: Category Description
-              tags:
-                - id: 9
-                  name: Tag Name
-                  importance: LOW
-                  color: 'rgb(789, 654, 321)'
-              userStatus:
-                id:
-                  userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
-                  ThreadId: 8
-                watching: true
-                blocked: false
-          posts:
-            - id: 8
-              title: Post Title
-              text: Post Text
-              creation: '2019-08-24'
-              modification: '2019-08-26'
-              creator:
-                userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
-                username: Username
-              nrOfPlus: 6
-              nrOfMinus: 1
-              userStatus:
-                id:
-                  userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
-                  postId: 8
-                liked: true
-                disliked: false
-                reported: false
-            - threadInformation:
-                id: 7
-                title: Thread Title
-    Achievement_AchievementDTO:
-      title: Achievement DTO
-      type: object
-      x-examples:
-        Achievement Example:
-          id: 5
-          name: Achievement Name
-          description: Achievement Description
-          icon:
-            - byte 1
-            - byte 2
-          points: 10
-          nrOfUsersPosses: 3
-      description: Class containg all necessery information on an Achievement.
-      properties:
-        id:
-          $ref: '#/components/schemas/Achievement_AchievementId'
-        name:
-          type: string
-          minLength: 1
-          description: Name of the achievement
-        description:
-          type: string
-          minLength: 1
-          description: Description of the achievement
-        icon:
-          type: array
-          minItems: 1
-          description: Byte array containing the icon of the achievement
-          items:
-            type: string
-            format: byte
-        points:
-          type: integer
-          format: int32
-          minimum: 1
-          description: How many points does the achievement give
-        nrOfUsersPosses:
-          type: integer
-          format: int64
-          minimum: 0
-          description: How many people posses the achievement
-      required:
-        - id
-        - name
-        - description
-        - icon
-        - points
-        - nrOfUsersPosses
-    Achievement_AchievementId:
-      type: integer
-      title: Achievement Id
-      format: int64
-      minimum: 0
-      description: ID of the Achievement database entity
-      x-examples:
-        Achievement Id Example: 45
-    Anime_AnimeId:
-      type: integer
-      title: Anime Id
-      format: int64
-      minimum: 0
-      description: 'ID of the Anime, the same used in Anilist.'
-      x-examples:
-        Anime Id Example: 159753
-    Anime_LocalSimpleAnimeReviewDTO:
-      title: Simple Anime Review DTO
-      type: object
-      description: DTO for the Anime Review class.
-      x-examples:
-        Anime Review Example:
-          reviewType: simpleReview
-          id: 1
-          title: The Review Title
-          text: The Review text
-          nrOfUpvotes: 10
-          nrOfDownvotes: 3
-          nrOfHelpfull: 8
-      discriminator:
-        propertyName: reviewType
-        mapping:
-          simpleReview: '#/components/schemas/LocalSimpleAnimeReviewDTO'
-          detailedReview: '#/components/schemas/LocalDetailedAnimeReviewDTO'
-      properties:
-        reviewType:
-          type: string
-          enum:
-            - simpleReview
-            - detailedReview
-          description: Discriminator for the Review DTO's
-        id:
-          type: integer
-          format: int64
-          minimum: 1
-          description: Id of the review
-        title:
-          type: string
-          maxLength: 100
-          minLength: 10
-          description: Title of the Review
-        text:
-          type: string
-          minLength: 0
-          maxLength: 300
-          description: Text of the Review
-        nrOfUpvotes:
-          type: integer
-          format: int32
-          minimum: 0
-          description: How many people upvoted the review
-        nrOfDownvotes:
-          type: integer
-          format: int32
-          minimum: 0
-          description: How many people downvoted the review
-        nrOfHelpfull:
-          type: integer
-          format: int32
-          minimum: 0
-          description: How many people found the review helpfull
-      required:
-        - reviewType
-        - id
-        - title
-        - text
-        - nrOfUpvotes
-        - nrOfDownvotes
-        - nrOfHelpfull
-    Anime_LocalUserAnimeInformationDTO:
-      title: UserAnimeInformationDTO
-      type: object
-      x-examples:
-        User Anime Information Example:
-          id:
-            userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
-            animeId: 195784
-          status: No Status
-          watchStartDate: '2019-08-24'
-          watchEndDate: '2019-08-24'
-          nrOfEpisodesSeen: 5
-          isFavourite: true
-          modification: '2019-08-24T14:15:22Z'
-          grade: 2
-          review:
-            reviewType: simpleReview
-            id: 1
-            title: The Review Title
-            text: The Review text
-            nrOfUpvotes: 10
-            nrOfDownvotes: 3
-            nrOfHelpfull: 8
-      description: User's information on a selected Anime.
-      properties:
-        id:
-          type: object
-          description: Class containing basic information on a user
-          required:
-            - userId
-            - animeId
-          properties:
-            userId:
-              $ref: '#/components/schemas/CommonModels_UserID'
-            animeId:
-              $ref: '#/components/schemas/Anime_AnimeId'
-        status:
-          type: string
-          enum:
-            - No Status
-            - Watching
-            - Completed
-            - Dropped
-            - Plan to Watch
-          description: Current User status on the Anime
-        watchStartDate:
-          type: string
-          format: date
-          description: When the User started watching the Anime
-        watchEndDate:
-          type: string
-          format: date
-          description: When the User finished watching the Anime
-        nrOfEpisodesSeen:
-          type: integer
-          description: How many episodes did the User see
-          format: int32
-          minimum: 0
-        isFavourite:
-          type: boolean
-          description: Did the User select the Anime as his/her favourite
-        modification:
-          type: string
-          format: date-time
-          description: Last time the information was modificated
-        grade:
-          type: integer
-          minimum: 1
-          maximum: 10
-          exclusiveMinimum: false
-          exclusiveMaximum: false
-          description: Grade the User gave to the Anime. In scale from 1 to 10
-        review:
-          $ref: '#/components/schemas/Anime_LocalSimpleAnimeReviewDTO'
-      required:
-        - id
-        - status
-        - isFavourite
-        - modification
-    CommonModels_ErrorDTO:
-      title: Error DTO
-      type: object
-      description: The DTO for backend errors.
-      x-examples:
-        Error Example:
-          message: Error Message
-          status: 503
-      properties:
-        message:
-          type: string
-          description: Translated error message
-        status:
-          type: integer
-          description: The Error status
-      required:
-        - message
-        - status
-    CommonModels_SimpleUserDTO:
-      title: Simple User DTO
-      type: object
-      description: Class containing basic information on a user
-      x-examples:
-        Simple User Example:
-          userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
-          username: Username
-      properties:
-        userId:
-          $ref: '#/components/schemas/CommonModels_UserID'
-        username:
-          type: string
-          description: 'ID of the Anime, the same used in Anilist.'
-          minLength: 6
-      required:
-        - userId
-        - username
-    CommonModels_UserID:
-      type: string
-      title: User ID
-      format: uuid
-      description: 'User ID, same as in Keycloak'
-      minLength: 36
-      maxLength: 36
-      x-examples:
-        User Id Example: 497f6eca-6276-4993-bfeb-53cbbbba6f08
-    Forum_Color:
-      type: string
-      title: Color
-      pattern: '/rgb\((\d{1,3}), (\d{1,3}), (\d{1,3})\)/'
-      description: Small schema that declared the color format
-    Forum_ForumCategoryDTO:
-      title: Forum Category DTO
-      type: object
-      description: Class containing information on a forum category.
-      x-examples:
-        Forum Category Example:
-          id: 4
-          name: Category Name
-          description: Category Description
-      properties:
-        id:
-          $ref: '#/components/schemas/Forum_ForumCategoryId'
-        name:
-          type: string
-          minLength: 1
-          maxLength: 45
-          description: Forum Category name
-        description:
-          type: string
-          maxLength: 150
-          description: Foprum Category description
-      required:
-        - id
-        - name
-    Forum_ForumCategoryId:
-      type: integer
-      title: Forum Category Id
-      format: int64
-      minimum: 0
-      description: ID of the Forum Category database entity
-      x-examples:
-        Forum Category Example: 14
-    Forum_PostDTO:
-      title: Post DTO
-      type: object
-      description: Class containing all necessery information on a user.
-      x-examples:
-        Post Example:
-          id: 8
-          title: Post Title
-          text: Post Text
-          creation: '2019-08-24'
-          modification: '2019-08-26'
-          creator:
-            userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
-            username: Username
-          nrOfLikes: 6
-          nrOfDislikes: 1
-          userStatus:
-            id:
-              userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
-              postId: 8
-            liked: true
-            disliked: false
-            reported: false
-      properties:
-        id:
-          $ref: '#/components/schemas/Forum_PostId'
-        title:
-          type: string
-          maxLength: 80
-          description: Title of the post
-        text:
-          type: string
-          maxLength: 600
-          description: Text of the post
-        creation:
-          type: string
-          format: date
-          description: When was the post created
-        modification:
-          type: string
-          format: date
-          description: When was the post modificated
-        creator:
-          $ref: '#/components/schemas/CommonModels_SimpleUserDTO'
-        nrOfLikes:
-          type: integer
-          format: int32
-          minimum: 0
-          description: How many people liked the post
-        nrOfDislikes:
-          type: integer
-          format: int32
-          minimum: 0
-          description: How many people disliked the post
-        userStatus:
-          $ref: '#/components/schemas/Forum_PostUserStatusDTO'
-      required:
-        - id
-        - title
-        - text
-        - creation
-        - modification
-        - creator
-        - nrOfLikes
-        - nrOfDislikes
-    Forum_PostId:
-      type: integer
-      title: Post Id
-      format: int64
-      minimum: 0
-      x-examples:
-        Post Id Example: 5
-      description: Id of the Post database entity.
-    Forum_PostUserStatusDTO:
-      title: Post User Status DTO
-      type: object
-      description: Class containing the opinion of a user on a post.
-      x-examples:
-        Post User Status Example:
-          id:
-            userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
-            postId: 5
-          liked: true
-          disliked: false
-          reported: false
-      properties:
-        id:
-          type: object
-          required:
-            - userId
-            - postId
-          description: ID containing information to which post and user does the status reference
-          properties:
-            userId:
-              $ref: '#/components/schemas/CommonModels_UserID'
-            postId:
-              $ref: '#/components/schemas/Forum_PostId'
-        liked:
-          type: boolean
-          description: Does the user like the post
-        disliked:
-          type: boolean
-          description: Does the user dislike the post
-        reported:
-          type: boolean
-          description: Did the user report the post
-      required:
-        - id
-        - liked
-        - disliked
-        - reported
-    Forum_PostWithThreadInformationDTO:
-      title: Post With Thread Information DTO
-      type: object
-      x-examples:
-        Post With Thread Information Example:
-          post:
-            id: 8
-            title: Post Title
-            text: Post Text
-            creation: '2019-08-24'
-            modification: '2019-08-26'
-            creator:
-              userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
-              username: Username
-            nrOfPlus: 6
-            nrOfMinus: 1
-            userStatus:
-              id:
-                userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
-                postId: 8
-              liked: true
-              disliked: false
-              reported: false
-          threadInformation:
-            id: 7
-            title: Thread Title
-      description: Class containing complete post information with selected Thread Information.
-      properties:
-        post:
-          $ref: '#/components/schemas/Forum_PostDTO'
-        threadInformation:
-          type: object
-          required:
-            - id
-            - title
-          description: Basic information on a Thread
-          properties:
-            id:
-              $ref: '#/components/schemas/Forum_ThreadId'
-            title:
-              type: string
-              minLength: 1
-              description: Title of the thread
-      required:
-        - post
-        - threadInformation
-    Forum_SimpleThreadDTO:
-      title: Simple Thread DTO
-      type: object
-      description: Class containing basic information on a thread.
-      x-examples:
-        Simple Thread Example:
-          id: 8
-          title: Thread Title
-          nrOfPosts: 4
-          status: OPEN
-          creation: '2019-08-24T14:15:22Z'
-          modification: '2019-08-24T14:15:22Z'
-          creator:
-            userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
-            username: Username
-          category:
-            id: 15
-            name: Category Name
-            description: Category Description
-          tags:
-            - id: 9
-              name: Tag Name
-              importance: LOW
-              color: 'rgb(789, 654, 321)'
-          userStatus:
-            id:
-              userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
-              ThreadId: 8
-            watching: true
-            blocked: false
-      properties:
-        id:
-          $ref: '#/components/schemas/Forum_ThreadId'
-        title:
-          type: string
-          minLength: 1
-          description: Title of the thread
-        nrOfPosts:
-          type: integer
-          format: int32
-          minimum: 0
-          description: How many posts does the thread have
-        status:
-          $ref: '#/components/schemas/Forum_ThreadStatus'
-        creation:
-          type: string
-          format: date-time
-          description: When was the thread created
-        modification:
-          type: string
-          format: date-time
-          description: When was the thread modificated last time
-        creator:
-          $ref: '#/components/schemas/CommonModels_SimpleUserDTO'
-        category:
-          $ref: '#/components/schemas/Forum_ForumCategoryDTO'
-        tags:
-          type: array
-          minItems: 1
-          description: What does does the thread have
-          items:
-            $ref: '#/components/schemas/Forum_TagDTO'
-        userStatus:
-          $ref: '#/components/schemas/Forum_ThreadUserStatusDTO'
-      required:
-        - id
-        - title
-        - nrOfPosts
-        - status
-        - creation
-        - modification
-        - creator
-        - category
-        - tags
-        - userStatus
-    Forum_TagDTO:
-      title: Tag DTO
-      type: object
-      description: Class containing information on a tag.
-      x-examples:
-        Tag Example:
-          id: 5
-          name: Tag Name
-          importance: LOW
-          color: 'rgb(458, 789, 321)'
-      properties:
-        id:
-          $ref: '#/components/schemas/Forum_TagId'
-        name:
-          type: string
-          minLength: 1
-          maxLength: 45
-          description: tag name
-        importance:
-          $ref: '#/components/schemas/Forum_TagImportance'
-        color:
-          $ref: '#/components/schemas/Forum_Color'
-      required:
-        - id
-        - name
-        - importance
-        - color
-    Forum_TagId:
-      type: integer
-      title: Tag Id
-      description: Id of the Tag database entity.
-      minimum: 0
-      format: int64
-    Forum_TagImportance:
-      type: string
-      title: Tag Importance
-      enum:
-        - LOW
-        - MEDIUM
-        - HIGH
-        - ADMIN
-      description: Enum containing the possible importance levels for tags.
-      x-examples:
-        Tag Importance Example: LOW
-    Forum_ThreadId:
-      type: integer
-      title: Thread Id
-      format: int64
-      minimum: 0
-      description: Id of the Thread database entity.
-      x-examples:
-        Thread Id Example: 5
-    Forum_ThreadStatus:
-      type: string
-      title: ThreadStatus
-      enum:
-        - OPEN
-        - CLOSED
-      x-examples:
-        Thread Status Example: OPEN
-      description: Enum containing the possible thread statuses.
-    Forum_ThreadUserStatusDTO:
-      title: Thread User Status DTO
-      type: object
-      description: Class containing the opinion of a user on a thread.
-      x-examples:
-        Thread User Status Example:
-          id:
-            userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
-            threadId: 5
-          watching: true
-          blocked: false
-      properties:
-        id:
-          type: object
-          required:
-            - userId
-            - threadId
-          description: ID containing information to which thread and user does the status reference
-          properties:
-            userId:
-              $ref: '#/components/schemas/CommonModels_UserID'
-            threadId:
-              $ref: '#/components/schemas/Forum_ThreadId'
-        watching:
-          type: boolean
-          description: Is the user watching the post
-        blocked:
-          type: boolean
-          description: Did the user block the post
-      required:
-        - id
-        - watching
-        - blocked
   securitySchemes:
     BearerToken:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
-      description: Uses a token created by Keykloak to authenticate the User. The token needs to be reloaded every 15 minutes
+      $ref: ./CommonModels.yaml#/components/securitySchemes/BearerToken

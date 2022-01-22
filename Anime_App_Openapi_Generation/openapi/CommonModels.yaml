@@ -33,9 +33,20 @@ components:
       description: Class containing basic information on a user
       x-examples:
         Simple User Example:
+          userType: simpleUser
           userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
           username: Username
+      discriminator:
+        propertyName: userType
+        mapping:
+          simpleUser: '#/components/schemas/SimpleUserDTO'
+          completeUser: '#/components/schemas/CompleteUserDTO'
       properties:
+        userType:
+          type: string
+          enum:
+            - simpleUser
+            - completeUser
         userId:
           $ref: '#/components/schemas/UserID'
         username:
@@ -43,8 +54,126 @@ components:
           description: 'ID of the Anime, the same used in Anilist.'
           minLength: 6
       required:
+        - userType
         - userId
         - username
+    CompleteUserDTO:
+      title: Complete User DTO
+      allOf:
+        - $ref: ./CommonModels.yaml#/components/schemas/SimpleUserDTO
+      properties:
+        achievements:
+          description: Set containing some achievements of the user
+          type: array
+          uniqueItems: true
+          items:
+            $ref: ./Achievement.yaml#/components/schemas/AchievementDTO
+        animeInfos:
+          description: Set containing some anime Information of the user
+          type: array
+          uniqueItems: true
+          items:
+            $ref: ./Anime.yaml#/components/schemas/LocalUserAnimeInformationDTO
+        threads:
+          description: Set containing some threads created by the user
+          type: array
+          uniqueItems: true
+          items:
+            $ref: ./Forum.yaml#/components/schemas/SimpleThreadDTO
+        posts:
+          description: Set containing some posts created by the user
+          type: array
+          uniqueItems: true
+          items:
+            $ref: ./Forum.yaml#/components/schemas/PostWithThreadInformationDTO
+      required:
+        - achievements
+        - animeInfos
+        - threads
+        - posts
+      description: Class containg complete information on a user.
+      x-examples:
+        Complete User Example:
+          userType: completeUser
+          userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+          username: Username
+          achievements:
+            - id: 5
+              name: Achievement Name
+              description: Achievement Description
+              icon:
+                - byte 1
+                - byte 2
+              points: 10
+              nrOfUsersPosses: 3
+          animeInfos:
+            - id:
+                userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                animeId: 195784
+              status: No Status
+              watchStartDate: '2019-08-24'
+              watchEndDate: '2019-08-24'
+              nrOfEpisodesSeen: 5
+              isFavourite: true
+              modification: '2019-08-24T14:15:22Z'
+              grade: 2
+              review:
+                reviewType: simpleReview
+                id: 1
+                title: The Review Title
+                text: The Review text
+                nrOfUpvotes: 10
+                nrOfDownvotes: 3
+                nrOfHelpfull: 8
+          threads:
+            - threadComplexityType: simpleThread
+              id: 7
+              title: Thread Title
+              nrOfPosts: 4
+              status: OPEN
+              creation: '2019-08-24T14:15:22Z'
+              modification: '2019-08-24T14:15:22Z'
+              creator:
+                userType: simpleUser
+                userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                username: Username
+              category:
+                id: 15
+                name: Category Name
+                description: Category Description
+              tags:
+                - id: 9
+                  name: Tag Name
+                  importance: LOW
+                  color: 'rgb(789, 654, 321)'
+              userStatus:
+                id:
+                  userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                  ThreadId: 8
+                watching: true
+                blocked: false
+          posts:
+            - id: 8
+              title: Post Title
+              text: Post Text
+              creation: '2019-08-24'
+              modification: '2019-08-26'
+              creator:
+                userType: simpleUser
+                userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                username: Username
+              nrOfPlus: 6
+              nrOfMinus: 1
+              userStatus:
+                id:
+                  userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                  postId: 8
+                liked: true
+                disliked: false
+                reported: false
+            - threadInformation:
+                id: 7
+                title: Thread Title
     UserID:
       type: string
       title: User ID
@@ -60,6 +189,7 @@ components:
       description: 'Class representing the Spring domain page DTO. This should be extended (and add the field: content: array[(Some Class)]) in order to get the desired content.'
       x-examples:
         Page Example:
+          domainPageType: "somePageType"
           content:
             - name: Generic object
           nrOfElements: 1
@@ -68,7 +198,17 @@ components:
           totalPages: 1
           last: true
           empty: false
+      discriminator:
+        propertyName: domainPageType
+        mapping:
+          simpleThreadPage: '#/components/schemas/SimpleThreadPageDTO'
+          postPage: '#/components/schemas/PostPageDTO'
       properties:
+        domainPageType:
+          type: string
+          enum:
+            - simpleThreadPage
+            - postPage
         nrOfElements:
           type: integer
           format: int32
@@ -96,12 +236,102 @@ components:
           type: boolean
           description: Is the page empty
       required:
+        - domainPageType
         - nrOfElements
         - pageSize
         - pageNumber
         - totalPages
         - last
         - empty
+    SimpleThreadPageDTO:
+      title: Simple Thread Page DTO
+      allOf:
+        - $ref: ./CommonModels.yaml#/components/schemas/DomainPageDTO
+      properties:
+        content:
+          description: Set containing simple thread objetcs
+          uniqueItems: true
+          type: array
+          items:
+            $ref: ./Forum.yaml#/components/schemas/SimpleThreadDTO
+      description: Domain Page extension for Simple Threads.
+      required:
+        - content
+      x-examples:
+        Simple Thread Page Example:
+          domainPageType: simpleThreadPage
+          content:
+            - id: 8
+              title: Thread Title
+              nrOfPosts: 4
+              status: OPEN
+              creation: '2019-08-24T14:15:22Z'
+              modification: '2019-08-24T14:15:22Z'
+              creator:
+                userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                username: Username
+              category:
+                id: 15
+                name: Category Name
+                description: Category Description
+              tags:
+                - id: 9
+                  name: Tag Name
+                  importance: LOW
+                  color: 'rgb(789, 654, 321)'
+              userStatus:
+                id:
+                  userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                  ThreadId: 8
+                watching: true
+                blocked: false
+          nrOfElements: 1
+          pageSize: 1
+          pageNumber: 1
+          totalPages: 1
+          last: true
+          empty: false
+    PostPageDTO:
+      title: Post Page DTO
+      allOf:
+        - $ref: ./CommonModels.yaml#/components/schemas/DomainPageDTO
+      properties:
+        content:
+          description: Set containing posts
+          uniqueItems: true
+          type: array
+          items:
+            $ref: ./Forum.yaml#/components/schemas/PostDTO
+      required:
+        - content
+      description: Domain Page extension for Posts
+      x-examples:
+        Post Page Example:
+          domainPageType: postPage
+          content:
+            - id: 8
+              title: Post Title
+              text: Post Text
+              creation: '2019-08-24'
+              modification: '2019-08-26'
+              creator:
+                userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                username: Username
+              nrOfLikes: 6
+              nrOfDislikes: 1
+              userStatus:
+                id:
+                  userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                  postId: 8
+                liked: true
+                disliked: false
+                reported: false
+          nrOfElements: 1
+          pageSize: 50
+          pageNumber: 1
+          totalPages: 1
+          last: true
+          empty: false
   securitySchemes:
     BearerToken:
       type: http

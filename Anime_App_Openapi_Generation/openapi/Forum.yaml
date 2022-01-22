@@ -47,7 +47,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
               examples:
                 Authentication Error Example:
                   value:
@@ -79,7 +79,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
               examples:
                 Authentication Error Example:
                   value:
@@ -98,18 +98,21 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SimpleThreadPageDTO'
+                $ref: './CommonModels.yaml#/components/schemas/SimpleThreadPageDTO'
               examples:
                 Page of Simple Thread DTO Example:
                   value:
+                    domainPageType: simpleThreadPage
                     content:
-                      - id: 8
+                      - threadComplexityType: simpleThread
+                        id: 8
                         title: Thread Title
                         nrOfPosts: 4
                         status: OPEN
                         creation: '2019-08-24T14:15:22Z'
                         modification: '2019-08-24T14:15:22Z'
                         creator:
+                          userType: simpleUser
                           userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
                           username: Username
                         category:
@@ -138,7 +141,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
               examples:
                 Authentication Error Example:
                   value:
@@ -149,7 +152,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
               examples:
                 Not Found Error:
                   value:
@@ -209,18 +212,21 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SimpleThreadPageDTO'
+                $ref: './CommonModels.yaml#/components/schemas/SimpleThreadPageDTO'
               examples:
                 Page of Simple Thread DTO Example:
                   value:
+                    domainPageType: simpleThreadPage
                     content:
-                      - id: 8
+                      - threadComplexityType: simpleThread
+                        id: 8
                         title: Thread Title
                         nrOfPosts: 4
                         status: OPEN
                         creation: '2019-08-24T14:15:22Z'
                         modification: '2019-08-24T14:15:22Z'
                         creator:
+                          userType: simpleUser
                           userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
                           username: Username
                         category:
@@ -249,7 +255,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
               examples:
                 Authentication Error Example:
                   value:
@@ -309,6 +315,7 @@ paths:
                         totalPages: 1
                         last: true
                         empty: false
+                    threadComplexityType: completeThread
                     id: 8
                     title: Thread Title
                     nrOfPosts: 4
@@ -316,6 +323,7 @@ paths:
                     creation: '2019-08-24T14:15:22Z'
                     modification: '2019-08-24T14:15:22Z'
                     creator:
+                      userType: simpleUser
                       userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
                       username: Username
                     category:
@@ -338,7 +346,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
               examples:
                 Authentication Error Example:
                   value:
@@ -349,7 +357,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
               examples:
                 Not Found Error Example:
                   value:
@@ -372,7 +380,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
               examples:
                 Authentication Error Example:
                   value:
@@ -383,7 +391,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
               examples:
                 Thread Not Found Example:
                   value:
@@ -420,7 +428,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
               examples:
                 Authentication Error Example:
                   value:
@@ -438,6 +446,7 @@ paths:
             examples:
               Create Thread Example:
                 value:
+                  editThreadComplexityType: createThread
                   title: Thread Title
                   text: Thread Text
                   category: 1
@@ -463,6 +472,7 @@ paths:
             examples:
               Update Thread Example:
                 value:
+                  editThreadComplexityType: updateThread
                   id: 1
                   status: OPEN
                   title: Thread Title
@@ -499,10 +509,11 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PostPageDTO'
+                $ref: './CommonModels.yaml#/components/schemas/PostPageDTO'
               examples:
                 Page of Posts Example:
                   value:
+                    domainPageType: postPage
                     content:
                       - id: 8
                         title: Post Title
@@ -510,6 +521,7 @@ paths:
                         creation: '2019-08-24'
                         modification: '2019-08-26'
                         creator:
+                          userType: simpleUser
                           userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
                           username: Username
                         nrOfLikes: 6
@@ -532,7 +544,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
               examples:
                 Authentication Error Example:
                   value:
@@ -555,7 +567,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
               examples:
                 Wrong Post Id Example:
                   value:
@@ -566,7 +578,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
               examples:
                 Authentication Error Example:
                   value:
@@ -577,7 +589,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
               examples:
                 Post Not Found Example:
                   value:
@@ -616,7 +628,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
               examples:
                 Authentication Error Example:
                   value:
@@ -632,6 +644,7 @@ paths:
             examples:
               Create Post Example:
                 value:
+                  editPostComplexityType: createPost
                   title: Post Title
                   text: Post Text
                   thread: 1
@@ -655,17 +668,16 @@ paths:
             examples:
               Update Post Example:
                 value:
+                  editPostComplexityType: updatePost
                   id: 8
                   title: Post Title
                   text: Post Text
+                  thread: 1
         description: Data used to update the thread
 components:
   securitySchemes:
     BearerToken:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
-      description: Uses a token created by Keykloak to authenticate the User. The token needs to be reloaded every 15 minutes
+      $ref: ./CommonModels.yaml#/components/securitySchemes/BearerToken
   schemas:
     SimpleThreadDTO:
       title: Simple Thread DTO
@@ -673,6 +685,7 @@ components:
       description: Class containing basic information on a thread.
       x-examples:
         Simple Thread Example:
+          threadComplexityType: simpleThread
           id: 8
           title: Thread Title
           nrOfPosts: 4
@@ -697,7 +710,18 @@ components:
               ThreadId: 8
             watching: true
             blocked: false
+      discriminator:
+        propertyName: threadComplexityType
+        mapping:
+          simpleThread: '#/components/schemas/SimpleThreadDTO'
+          completeThread: '#/components/schemas/CompleteThreadDTO'
       properties:
+        threadComplexityType:
+          type: string
+          enum:
+            - simpleThread
+            - completeThread
+          description: Discriminator for the Thread DTO
         id:
           $ref: '#/components/schemas/ThreadId'
         title:
@@ -720,7 +744,7 @@ components:
           format: date-time
           description: When was the thread modificated last time
         creator:
-          $ref: '#/components/schemas/CommonModels_SimpleUserDTO'
+          $ref: ./CommonModels.yaml#/components/schemas/SimpleUserDTO
         category:
           $ref: '#/components/schemas/ForumCategoryDTO'
         tags:
@@ -732,6 +756,7 @@ components:
         userStatus:
           $ref: '#/components/schemas/ThreadUserStatusDTO'
       required:
+        - threadComplexityType
         - id
         - title
         - nrOfPosts
@@ -780,12 +805,14 @@ components:
                     liked: true
                     disliked: false
                     reported: false
+              domainPageType: simplePage
               nrOfElements: 1
               pageSize: 50
               pageNumber: 1
               totalPages: 1
               last: true
               empty: false
+          threadComplexityType: completeThread
           id: 8
           title: Thread Title
           nrOfPosts: 4
@@ -814,7 +841,17 @@ components:
       title: Create Thread DTO
       type: object
       description: Class used during the creation of threads
+      discriminator:
+        propertyName: editThreadComplexityType
+        mapping:
+          createThread: '#/components/schemas/CreateThreadDTO'
+          updateThread: '#/components/schemas/UpdateThreadDTO'
       properties:
+        editThreadComplexityType:
+          type: string
+          enum:
+            - createThread
+            - updateThread
         title:
           type: string
           maxLength: 80
@@ -828,11 +865,13 @@ components:
           items:
             $ref: '#/components/schemas/TagId'
       required:
+        - editThreadComplexityType
         - title
         - text
         - category
       x-examples:
         Create Thread Example:
+          editThreadComplexityType: createThread
           title: Thread Title
           text: Thread Text
           category: 1
@@ -854,6 +893,7 @@ components:
         - status
       x-examples:
         Update Thread Example:
+          editThreadComplexityType: updateThread
           id: 1
           status: OPEN
           title: Thread Title
@@ -861,50 +901,6 @@ components:
           category: 1
           tags:
             - 2
-    SimpleThreadPageDTO:
-      title: Simple Thread Page DTO
-      type: object
-      allOf:
-        - $ref: '#/components/schemas/CommonModels_DomainPageDTO'
-      properties:
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/SimpleThreadDTO'
-      description: Domain Page extension for Simple Threads.
-      x-examples:
-        Simple Thread Page Example:
-          content:
-            - id: 8
-              title: Thread Title
-              nrOfPosts: 4
-              status: OPEN
-              creation: '2019-08-24T14:15:22Z'
-              modification: '2019-08-24T14:15:22Z'
-              creator:
-                userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
-                username: Username
-              category:
-                id: 15
-                name: Category Name
-                description: Category Description
-              tags:
-                - id: 9
-                  name: Tag Name
-                  importance: LOW
-                  color: 'rgb(789, 654, 321)'
-              userStatus:
-                id:
-                  userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
-                  ThreadId: 8
-                watching: true
-                blocked: false
-          nrOfElements: 1
-          pageSize: 1
-          pageNumber: 1
-          totalPages: 1
-          last: true
-          empty: false
     PostDTO:
       title: Post DTO
       type: object
@@ -948,7 +944,7 @@ components:
           format: date
           description: When was the post modificated
         creator:
-          $ref: '#/components/schemas/CommonModels_SimpleUserDTO'
+          $ref: ./CommonModels.yaml#/components/schemas/SimpleUserDTO
         nrOfLikes:
           type: integer
           format: int32
@@ -976,10 +972,21 @@ components:
       description: Class used to create a new thread
       x-examples:
         Create Post Example:
+          editPostComplexityType: createPost
           title: Post Title
           text: Post Text
           thread: 1
+      discriminator:
+        propertyName: editPostComplexityType
+        mapping:
+          createPost: '#/components/schemas/CreatePostDTO'
+          updatePost: '#/components/schemas/UpdatePostDTO'
       properties:
+        editPostComplexityType:
+          type: string
+          enum:
+            - createPost
+            - updatePost
         title:
           type: string
           minLength: 10
@@ -989,6 +996,11 @@ components:
           maxLength: 600
         thread:
           $ref: '#/components/schemas/ThreadId'
+      required:
+        - editPostComplexityType
+        - title
+        - text
+        - thread
     UpdatePostDTO:
       title: Update Post DTO
       type: object
@@ -1002,47 +1014,11 @@ components:
       description: Class used to update an existing post.
       x-examples:
         Update Post Exaple:
+          editPostComplexityType: updatePost
           id: 8
           title: Post Title
           text: Post Text
           thread: 1
-    PostPageDTO:
-      title: Post Page DTO
-      type: object
-      allOf:
-        - $ref: '#/components/schemas/CommonModels_DomainPageDTO'
-      properties:
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/PostDTO'
-      description: Domain Page extension for Posts
-      x-examples:
-        Post Page Example:
-          content:
-            - id: 8
-              title: Post Title
-              text: Post Text
-              creation: '2019-08-24'
-              modification: '2019-08-26'
-              creator:
-                userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
-                username: Username
-              nrOfLikes: 6
-              nrOfDislikes: 1
-              userStatus:
-                id:
-                  userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
-                  postId: 8
-                liked: true
-                disliked: false
-                reported: false
-          nrOfElements: 1
-          pageSize: 50
-          pageNumber: 1
-          totalPages: 1
-          last: true
-          empty: false
     PostWithThreadInformationDTO:
       title: Post With Thread Information DTO
       type: object
@@ -1219,7 +1195,7 @@ components:
           description: ID containing information to which thread and user does the status reference
           properties:
             userId:
-              $ref: '#/components/schemas/CommonModels_UserID'
+              $ref: ./CommonModels.yaml#/components/schemas/UserID
             threadId:
               $ref: '#/components/schemas/ThreadId'
         watching:
@@ -1253,7 +1229,7 @@ components:
           description: ID containing information to which post and user does the status reference
           properties:
             userId:
-              $ref: '#/components/schemas/CommonModels_UserID'
+              $ref: ./CommonModels.yaml#/components/schemas/UserID
             postId:
               $ref: '#/components/schemas/PostId'
         liked:
@@ -1325,96 +1301,3 @@ components:
       title: Color
       pattern: '/rgb\((\d{1,3}), (\d{1,3}), (\d{1,3})\)/'
       description: Small schema that declared the color format
-    CommonModels_DomainPageDTO:
-      title: Page DTO
-      type: object
-      description: 'Class representing the Spring domain page DTO. This should be extended (and add the field: content: array[(Some Class)]) in order to get the desired content.'
-      x-examples:
-        Page Example:
-          content:
-            - name: Generic object
-          nrOfElements: 1
-          pageSize: 50
-          pageNumber: 1
-          totalPages: 1
-          last: true
-          empty: false
-      properties:
-        nrOfElements:
-          type: integer
-          format: int32
-          minimum: 0
-          description: How many elements does the page contain
-        pageSize:
-          type: integer
-          format: int32
-          minimum: 0
-          description: Size of the page
-        pageNumber:
-          type: integer
-          format: int32
-          minimum: 0
-          description: Number of the page
-        totalPages:
-          type: integer
-          format: int64
-          minimum: 0
-          description: How many total pates are there
-        last:
-          type: boolean
-          description: Is this the last page
-        empty:
-          type: boolean
-          description: Is the page empty
-      required:
-        - nrOfElements
-        - pageSize
-        - pageNumber
-        - totalPages
-        - last
-        - empty
-    CommonModels_ErrorDTO:
-      title: Error DTO
-      type: object
-      description: The DTO for backend errors.
-      x-examples:
-        Error Example:
-          message: Error Message
-          status: 503
-      properties:
-        message:
-          type: string
-          description: Translated error message
-        status:
-          type: integer
-          description: The Error status
-      required:
-        - message
-        - status
-    CommonModels_SimpleUserDTO:
-      title: Simple User DTO
-      type: object
-      description: Class containing basic information on a user
-      x-examples:
-        Simple User Example:
-          userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
-          username: Username
-      properties:
-        userId:
-          $ref: '#/components/schemas/CommonModels_UserID'
-        username:
-          type: string
-          description: 'ID of the Anime, the same used in Anilist.'
-          minLength: 6
-      required:
-        - userId
-        - username
-    CommonModels_UserID:
-      type: string
-      title: User ID
-      format: uuid
-      description: 'User ID, same as in Keycloak'
-      minLength: 36
-      maxLength: 36
-      x-examples:
-        User Id Example: 497f6eca-6276-4993-bfeb-53cbbbba6f08

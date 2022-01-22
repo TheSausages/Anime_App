@@ -15,8 +15,7 @@ paths:
   /achievement/subscribe:
     get:
       summary: Subscribe to achievement emission
-      tags:
-        - achievement
+      tags: [ achievement ]
       responses:
         '200':
           description: Created - created a SseEmitter for the user
@@ -29,7 +28,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
               examples:
                 Authentication Error Example:
                   value:
@@ -40,8 +39,7 @@ paths:
   /achievement/cancel:
     get:
       summary: Cancel subscription emmision
-      tags:
-        - achievement
+      tags: [ achievement ]
       responses:
         '200':
           description: OK - The Sse Emitter was successfully deleted
@@ -50,7 +48,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommonModels_ErrorDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
               examples:
                 Authentication Error Example:
                   value:
@@ -117,27 +115,6 @@ components:
       description: ID of the Achievement database entity
       x-examples:
         Achievement Id Example: 45
-    CommonModels_ErrorDTO:
-      title: Error DTO
-      type: object
-      description: The DTO for backend errors.
-      x-examples:
-        Error Example:
-          message: Error Message
-          status: 503
-      properties:
-        message:
-          type: string
-          description: Translated error message
-        status:
-          type: integer
-          description: The Error status
-      required:
-        - message
-        - status
   securitySchemes:
     BearerToken:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
-      description: Uses a token created by Keykloak to authenticate the User. The token needs to be reloaded every 15 minutes
+      $ref: ./CommonModels.yaml#/components/securitySchemes/BearerToken

@@ -46,6 +46,9 @@ compileJava {
     //Create the files
     dependsOn 'generateYmlFiles'
 
+    //delete the files
+    dependsOn 'gzdeleteDoubleFiles'
+
     //And apply the prettier
     dependsOn spotlessApply
 }
@@ -64,9 +67,9 @@ task generateYmlFiles() {
             //This file contains a error that is fix in 'SseEmitter fix' in the spotless task (line 127)
             //It is used, because openapi doesn't support streaming apis yet
             //The typeMappings and languageSpecificPrimitives generator solution is not used in order to replace additional properties at the same time
+            new Tuple2<>("User.yaml", "User"),
             new Tuple2<>("Achievement.yaml", "Achievement"),
             new Tuple2<>("Anime.yaml", "Anime"),
-            new Tuple2<>("User.yaml", "User"),
             new Tuple2<>("Forum.yaml", "Forum"),
     ]) {
         generateClassesFromOpenApiSpecification(data.getV1(), data.getV2());
@@ -96,7 +99,7 @@ void generateClassesFromOpenApiSpecification(String ymlFileName, String taskName
         configOptions = [
                 performBeanValidation: "true",
                 delegatePattern: "false",
-                dateLibrary: "java8",
+                dateLibrary: "java8-localdatetime",
                 interfaceOnly: "true",
                 generateSupportingFiles: "true",
                 //imports for these must be manually added in model.mustache
@@ -125,9 +128,17 @@ spotless {
         prettier(['prettier': '2.5.1', 'prettier-plugin-java': '1.6.1'])
                 .config(['parser': 'java', 'tabWidth': 4])
 
-        /*custom 'Add Generics fix', { it
-            .replace('DomainPageDTO {', 'DomainPageDTO<T> {')
-        }*/
+        //Fox for double generated classes (for now - when not needed anymore delete this and the gzdeleteDoubleFiles (line 169))
+        custom 'Double models fix', { it
+                .replace('ForumCategoryDTO1', 'ForumCategoryDTO')
+                .replace('PostDTO1', 'PostDTO')
+                .replace('PostUserStatusDTO1', 'PostUserStatusDTO')
+                .replace('PostWithThreadInformationDTO1', 'PostWithThreadInformationDTO')
+                .replace('SimpleThreadDTO1', 'SimpleThreadDTO')
+                .replace('SimpleUserDTO1', 'SimpleUserDTO')
+                .replace('TagDTO1', 'TagDTO')
+                .replace('ThreadUserStatusDTO1', 'ThreadUserStatusDTO')
+        }
 
         //Fix for replacing nonexting SseEmitter with the Spring SseEmitter
         custom 'SseEmitter fix', { it
@@ -149,6 +160,15 @@ spotless {
                         '    }'
                 )
         }
+    }
+}
+
+//Delete files that should not exist
+//for now - when not needed anymore delete this and the Double models fix in spotless (line 132)
+//starts with gz to execute after generation but before spotless - for now
+task gzdeleteDoubleFiles(type: Delete) {
+    delete fileTree(dir: "${buildDir}/generated/src/main/java/anime/app/openapi/model").matching {
+        include "**1.java"
     }
 }
 
