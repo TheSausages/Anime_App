@@ -192,54 +192,9 @@ paths:
                   value:
                     message: Anilist Error Message
                     status: 503
-      operationId: get-anime-animeId
+      operationId: get-anime-by-animeId
       description: Get detailed information on a selected Anime using it's Anilist ID.
       parameters: []
-  /anime/currentSeason:
-    get:
-      summary: Current season Anime endpoint
-      tags:
-        - anime
-      responses:
-        '200':
-          description: OK - The Anilist server responded correctly and no other errors occured. The Page contains top airing Anime ranked by Anilist popularity score.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AnilistPageDTO'
-              examples:
-                Successfull Example:
-                  value:
-                    media:
-                      - id: 789654
-                        coverImage:
-                          extraLarge: LinkToCoverImage
-                          large: LinkToLarge
-                          medium: LinkToMedium
-                          color: LinkToColor
-                        title:
-                          english: EnglishTitle
-                          romaji: RomajiTitle
-                          native: NativeTitle
-                    pageInfo:
-                      total: 10
-                      perPage: 5
-                      currentPage: 1
-                      lastPage: 10
-                      hasNextPage: true
-        '503':
-          description: Service Unavailable - the Anilist service returned an error or didn't return anything.
-          content:
-            application/json:
-              schema:
-                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
-              examples:
-                Anilist Error Example:
-                  value:
-                    message: Anilist Error Message
-                    status: 503
-      operationId: get-anime-currentSeason
-      description: Get the first page of Anime that air in the current season.
   '/anime/ranking/topAllTime/{pageNumber}':
     parameters:
       - schema:
@@ -293,7 +248,7 @@ paths:
                   value:
                     message: Anilist Error Message
                     status: 503
-      operationId: get-anime-ranking-topAllTime-pageNumber
+      operationId: get-top-anime-of-all-time
       description: Get a page of Anime from the top Anime of all time ranking.
   '/anime/ranking/topAiring/{pageNumber}':
     parameters:
@@ -328,7 +283,7 @@ paths:
                   value:
                     message: Anilist Error Message
                     status: 503
-      operationId: get-anime-ranking-topAiring-pageNumber
+      operationId: get-top-airing-anime
       description: Get a page of Anime from the top airing Anime ranking.
   '/anime/ranking/topMovies/{pageNumber}':
     parameters:
@@ -383,7 +338,7 @@ paths:
                   value:
                     message: Anilist Error Message
                     status: 503
-      operationId: get-anime-ranking-topMovies-pageNumber
+      operationId: get-top-anime-movies
       description: Get a page of Anime from the top Anime Movies of all time ranking.
   '/anime/search/{pageNumber}':
     parameters:
@@ -397,7 +352,7 @@ paths:
         description: Page number of anime that meet the conditions from the query
     post:
       summary: Search Anime using query endpoint
-      operationId: post-anime-search-pageNumber
+      operationId: search-for-anime-using-query
       tags:
         - anime
       responses:
@@ -429,6 +384,15 @@ paths:
                       hasNextPage: true
         '422':
           description: Unprocessable Entity - Some error was found in the Query request body.
+          content:
+            application/json:
+              schema:
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
+              examples:
+                Unproccessable Entity Example:
+                  value:
+                    message: Unproccessable Entity Error Message
+                    status: 422
         '503':
           description: Service Unavailable - the Anilist service returned an error or didn't return anything.
           content:
@@ -468,7 +432,7 @@ paths:
   /anime/userInformation:
     put:
       summary: Update the User information on an Anime
-      operationId: put-anime-userInformation
+      operationId: update-user-anime-information
       tags:
         - anime
         - user

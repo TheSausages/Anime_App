@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a85f17e-c8b0-481b-a543-783256245f43" name="Changes" comment="Refactor: Updated openapi to use discriminator correctly">
+    <list default="true" id="9a85f17e-c8b0-481b-a543-783256245f43" name="Changes" comment="Refactor: Small update to build.gradle for openapi module">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/controllers/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/controllers/TestController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Anime_App_Openapi_Generation/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App_Openapi_Generation/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/Achievement.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/Achievement.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/Anime.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/Anime.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/CommonModels.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/CommonModels.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/Forum.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/Forum.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/User.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/User.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +171,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.Anime_App_Project [Anime_App:bootRun]">
+  <component name="RunManager" selected="Gradle.Anime_App_Project [Anime_App_Openapi_Generation:build]">
     <configuration name="Run All" type="CompoundRunConfigurationType">
       <toRun name="Anime_App_Project [Anime_App:bootRunMainClassName]" type="GradleRunConfiguration" />
       <toRun name="Anime_App_Project:Anime_App_Openapi_Generation [build]" type="GradleRunConfiguration" />
@@ -329,7 +335,7 @@
       <option name="generatorPath" value="https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/5.0.0/openapi-generator-cli-5.0.0.jar" />
       <option name="jdkPath" value="" />
       <option name="language" value="java" />
-      <option name="specificationPath" value="C:\Users\Kacper\IdeaProjects\Anime_App_Project\Anime_App_Openapi_Generation\openapi\CommonModels.yaml" />
+      <option name="specificationPath" value="C:\Users\Kacper\IdeaProjects\Anime_App_Project\Anime_App_Openapi_Generation\openapi\Forum.yaml" />
       <method v="2" />
     </configuration>
     <list>
@@ -401,7 +407,7 @@
       <workItem from="1642762171687" duration="11088000" />
       <workItem from="1642802129236" duration="6946000" />
       <workItem from="1642849733295" duration="5575000" />
-      <workItem from="1643471973667" duration="2400000" />
+      <workItem from="1643471973667" duration="6244000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit, added project with 3 modules">
       <created>1641596733768</created>
@@ -641,7 +647,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642854296045</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Refactor: Small update to build.gradle for openapi module">
+      <created>1643477185520</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1643477185520</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -659,7 +672,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactor: added FuzzyDateField creator without a Parameter" />
     <MESSAGE value="Refactor: Added missing tests connected to staff" />
     <MESSAGE value="Addition: added small tests" />
     <MESSAGE value="Addition: added Studio" />
@@ -684,7 +696,8 @@
     <MESSAGE value="Refactor: small update to existing api files" />
     <MESSAGE value="Refactor: Updated openapi for more endpoints" />
     <MESSAGE value="Refactor: Updated openapi to use discriminator correctly" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor: Updated openapi to use discriminator correctly" />
+    <MESSAGE value="Refactor: Small update to build.gradle for openapi module" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor: Small update to build.gradle for openapi module" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">

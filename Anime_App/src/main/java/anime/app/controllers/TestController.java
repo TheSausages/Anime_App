@@ -12,8 +12,8 @@ import javax.validation.Valid;
 @RestController
 public class TestController implements AnimeApi {
 	@Override
-	public ResponseEntity<DetailedAnimeDTO> getAnimeAnimeId(Long animeId) {
-		return AnimeApi.super.getAnimeAnimeId(animeId);
+	public ResponseEntity<DetailedAnimeDTO> getAnimeByAnimeId(Long animeId) {
+		return AnimeApi.super.getAnimeByAnimeId(animeId);
 	}
 
 	@GetMapping("/test")

@@ -189,7 +189,7 @@ components:
       description: 'Class representing the Spring domain page DTO. This should be extended (and add the field: content: array[(Some Class)]) in order to get the desired content.'
       x-examples:
         Page Example:
-          domainPageType: "somePageType"
+          domainPageType: somePageType
           content:
             - name: Generic object
           nrOfElements: 1
@@ -202,13 +202,15 @@ components:
         propertyName: domainPageType
         mapping:
           simpleThreadPage: '#/components/schemas/SimpleThreadPageDTO'
-          postPage: '#/components/schemas/PostPageDTO'
+          simplePostPage: '#/components/schemas/SimplePostPageDTO'
+          completePostPage: '#/components/schemas/CompletePostPageDTO'
       properties:
         domainPageType:
           type: string
           enum:
             - simpleThreadPage
-            - postPage
+            - simplePostPage
+            - completePostPage
         nrOfElements:
           type: integer
           format: int32
@@ -245,18 +247,17 @@ components:
         - empty
     SimpleThreadPageDTO:
       title: Simple Thread Page DTO
+      type: object
       allOf:
-        - $ref: ./CommonModels.yaml#/components/schemas/DomainPageDTO
+        - $ref: '#/components/schemas/DomainPageDTO'
       properties:
         content:
-          description: Set containing simple thread objetcs
-          uniqueItems: true
           type: array
           items:
             $ref: ./Forum.yaml#/components/schemas/SimpleThreadDTO
-      description: Domain Page extension for Simple Threads.
       required:
         - content
+      description: Domain Page extension for Simple Threads.
       x-examples:
         Simple Thread Page Example:
           domainPageType: simpleThreadPage
@@ -291,23 +292,22 @@ components:
           totalPages: 1
           last: true
           empty: false
-    PostPageDTO:
-      title: Post Page DTO
+    SimplePostPageDTO:
+      title: Simple Post Page DTO
+      type: object
       allOf:
-        - $ref: ./CommonModels.yaml#/components/schemas/DomainPageDTO
+        - $ref: '#/components/schemas/DomainPageDTO'
       properties:
         content:
-          description: Set containing posts
-          uniqueItems: true
           type: array
           items:
-            $ref: ./Forum.yaml#/components/schemas/PostDTO
+            $ref: ./Forum.yaml#/components/schemas/SimplePostDTO
       required:
         - content
-      description: Domain Page extension for Posts
+      description: Domain Page extension for Simple Posts.
       x-examples:
-        Post Page Example:
-          domainPageType: postPage
+        Simple Post Page Example:
+          domainPageType: simplePostPage
           content:
             - id: 8
               title: Post Title
@@ -332,6 +332,70 @@ components:
           totalPages: 1
           last: true
           empty: false
+    CompletePostPageDTO:
+      title: Complete Post Page DTO
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/DomainPageDTO'
+      properties:
+        content:
+          type: array
+          items:
+            $ref: ./Forum.yaml#/components/schemas/CompletePostDTO
+      required:
+        - content
+      description: Domain Page extension for Complete Posts.
+      x-examples:
+        Complete Post Page Example:
+          responses:
+            content:
+              - responses: {}
+                id: 8
+                title: Post Title
+                text: Post Text
+                creation: '2019-08-24'
+                modification: '2019-08-26'
+                creator:
+                  userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                  username: Username
+                nrOfLikes: 6
+                nrOfDislikes: 1
+                status: OPEN
+                userStatus:
+                  id:
+                    userType: simpleUser
+                    userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                    postId: 8
+                  liked: true
+                  disliked: false
+                  reported: false
+            domainPageType: completePostPage
+            nrOfElements: 1
+            pageSize: 1
+            pageNumber: 0
+            totalPages: 1
+            last: true
+            empty: false
+          id: 8
+          title: Post Title
+          text: Post Text
+          creation: '2019-08-24'
+          modification: '2019-08-26'
+          creator:
+            userType: simpleUser
+            userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+            username: Username
+          nrOfLikes: 6
+          nrOfDislikes: 1
+          status: NO_PROBLEM
+          userStatus:
+            id:
+              userType: simpleUser
+              userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+              postId: 8
+            liked: true
+            disliked: false
+            reported: false
   securitySchemes:
     BearerToken:
       type: http

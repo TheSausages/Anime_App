@@ -17,7 +17,7 @@ paths:
   /auth/login:
     post:
       summary: Login endpoint
-      operationId: post-user-login
+      operationId: login-using-credentials
       tags:
         - keycloak
       responses:
@@ -62,7 +62,7 @@ paths:
   /auth/logout:
     post:
       summary: Logout endpoint
-      operationId: post-auth-logout
+      operationId: logout-using-refresh-token
       tags:
         - keycloak
       responses:
@@ -91,6 +91,7 @@ paths:
                     message: Authentication Error
                     status: 401
       requestBody:
+        required: true
         content:
           application/json:
             schema:
@@ -114,7 +115,7 @@ paths:
   /auth/refresh:
     post:
       summary: Refresh access token endpoint
-      operationId: post-auth-refresh
+      operationId: refresh-access-token
       tags:
         - keycloak
       responses:
@@ -146,6 +147,7 @@ paths:
       security:
         - BearerToken: []
       requestBody:
+        required: true
         content:
           application/json:
             schema:
@@ -158,7 +160,7 @@ paths:
   /auth/register:
     post:
       summary: Registration endpoint
-      operationId: post-auth-register
+      operationId: register-user
       tags:
         - keycloak
       responses:
@@ -214,6 +216,7 @@ paths:
                     status: 500
       description: Endpoint used to register a new user in both the keycloak and local service
       requestBody:
+        required: true
         content:
           application/json:
             schema:
@@ -341,7 +344,7 @@ paths:
                   value:
                     message: Not Found Error
                     status: 404
-      operationId: get-user-userId
+      operationId: get-user-profile-by-userId
       description: Endpoint used to get a complete user profile using their ID.
   /user/current:
     get:
@@ -449,7 +452,7 @@ paths:
                   value:
                     message: Authentication Error
                     status: 401
-      operationId: get-user-current
+      operationId: get-current-user-profile
       description: Endpoint to get the authenticated profile information
       security:
         - BearerToken: []

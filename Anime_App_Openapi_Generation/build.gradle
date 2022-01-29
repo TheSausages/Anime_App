@@ -152,10 +152,10 @@ spotless {
                 )
 
                 //replace the returned answer, as it doesnt use Response Entity
-                .replace('default ResponseEntity<SseEmitter> getAchievementsSubscribe() {\n' +
+                .replace('default ResponseEntity<SseEmitter> subscribeToAchievements() {\n' +
                         '        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);\n' +
                         '    }',
-                        'default SseEmitter getAchievementsSubscribe() {\n' +
+                        'default SseEmitter subscribeToAchievements() {\n' +
                         '        return null;\n' +
                         '    }'
                 )

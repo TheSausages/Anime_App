@@ -87,6 +87,8 @@ paths:
                     status: 401
       operationId: get-forum-categories
       description: Endpoint used to get all forum categories from the database.
+      security:
+        - BearerToken: []
   '/forum/search/{pageNumber}':
     get:
       summary: Search forum Endpoint
@@ -98,7 +100,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './CommonModels.yaml#/components/schemas/SimpleThreadPageDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/SimpleThreadPageDTO
               examples:
                 Page of Simple Thread DTO Example:
                   value:
@@ -158,10 +160,11 @@ paths:
                   value:
                     message: Not Found Error
                     status: 404
-      operationId: get-forum-search
+      operationId: search-threads-using-query
       security:
         - BearerToken: []
       requestBody:
+        required: true
         content:
           application/json:
             schema:
@@ -212,7 +215,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './CommonModels.yaml#/components/schemas/SimpleThreadPageDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/SimpleThreadPageDTO
               examples:
                 Page of Simple Thread DTO Example:
                   value:
@@ -261,7 +264,7 @@ paths:
                   value:
                     message: Authentication Error
                     status: 401
-      operationId: get-forum-newest-pageNumber
+      operationId: get-newest-threads
       description: Endpoint used to get a page of threads sorted by newest elements
       security:
         - BearerToken: []
@@ -363,7 +366,7 @@ paths:
                   value:
                     message: Not Found Error
                     status: 404
-      operationId: get-forum-thread-threadId
+      operationId: get-thread-by-threadId
       description: Endpoint do get a thread by it's Id
       security:
         - BearerToken: []
@@ -397,11 +400,12 @@ paths:
                   value:
                     message: Not Found Error
                     status: 404
-      operationId: get-forum-thread-status
+      operationId: update-user-thread-status
       description: Endpoint used to update the user status on a thread
       security:
         - BearerToken: []
       requestBody:
+        required: true
         content:
           application/json:
             schema:
@@ -434,11 +438,12 @@ paths:
                   value:
                     message: Authentication Error
                     status: 401
-      operationId: get-forum-thread
+      operationId: create-thread
       description: Endpoint used to create a new Thread
       security:
         - BearerToken: []
       requestBody:
+        required: true
         content:
           application/json:
             schema:
@@ -457,7 +462,7 @@ paths:
       tags:
         - thread
       summary: Update thread using it's Id Endpoint
-      operationId: put-forum-thread-threadId
+      operationId: update-thread
       responses:
         '204':
           description: No Content - the thread was successfully updated
@@ -465,6 +470,7 @@ paths:
       security:
         - BearerToken: []
       requestBody:
+        required: true
         content:
           application/json:
             schema:
@@ -481,7 +487,7 @@ paths:
                   tags:
                     - 2
         description: Data used to update a thread
-  '/forum/post/{threadId}/{pageNumber}':
+  '/forum/{threadId}/post/{pageNumber}':
     parameters:
       - schema:
           type: integer
@@ -509,7 +515,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './CommonModels.yaml#/components/schemas/PostPageDTO'
+                $ref: ./CommonModels.yaml#/components/schemas/CompletePostPageDTO
               examples:
                 Page of Posts Example:
                   value:
@@ -550,7 +556,7 @@ paths:
                   value:
                     message: Authentication Error
                     status: 401
-      operationId: get-forum-thread-threadId-pageNumber
+      operationId: get-posts-for-thread-by-threadId
       description: Endpoint to get a post page for a thread
       security:
         - BearerToken: []
@@ -595,11 +601,12 @@ paths:
                   value:
                     message: Not Found Error
                     status: 404
-      operationId: get-forum-post-status
+      operationId: update-user-post-status
       security:
         - BearerToken: []
       description: Endpoint used to update the user status on a post
       requestBody:
+        required: true
         content:
           application/json:
             schema:
@@ -634,9 +641,10 @@ paths:
                   value:
                     message: Authentication Error
                     status: 401
-      operationId: get-forum-thread-threadId-post
+      operationId: create-post
       description: Endpoint used to create a new post and connect it to a selected thread
       requestBody:
+        required: true
         content:
           application/json:
             schema:
@@ -649,11 +657,13 @@ paths:
                   text: Post Text
                   thread: 1
         description: Data used to create a new post
+      security:
+        - BearerToken: []
     put:
       tags:
         - post
       summary: Update existing post Endpoint
-      operationId: put-forum-thread-threadId-post
+      operationId: update-post
       responses:
         '204':
           description: No Content - the post was successfully created
@@ -661,6 +671,7 @@ paths:
       security:
         - BearerToken: []
       requestBody:
+        required: true
         content:
           application/json:
             schema:
@@ -674,6 +685,109 @@ paths:
                   text: Post Text
                   thread: 1
         description: Data used to update the thread
+  '/forum/post/{postId}/{pageNumber}':
+    parameters:
+      - schema:
+          type: integer
+          minimum: 0
+          format: int64
+        name: postId
+        in: path
+        required: true
+        description: Id of the post for which we want the responses
+      - schema:
+          type: integer
+          format: int64
+          minimum: 0
+        name: pageNumber
+        in: path
+        required: true
+        description: Which page is needed
+    get:
+      summary: Get responses for a post Endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK - No problem Occured
+          content:
+            application/json:
+              schema:
+                $ref: ./CommonModels.yaml#/components/schemas/CompletePostPageDTO
+              examples:
+                Successfull Example:
+                  value:
+                    content:
+                      - responses:
+                          content:
+                            - responses: {}
+                              id: 8
+                              title: Post Title
+                              text: Post Text
+                              creation: '2019-08-24'
+                              modification: '2019-08-26'
+                              creator:
+                                userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                                username: Username
+                              nrOfLikes: 6
+                              nrOfDislikes: 1
+                              status: OPEN
+                              userStatus:
+                                id:
+                                  userType: simpleUser
+                                  userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                                  postId: 8
+                                liked: true
+                                disliked: false
+                                reported: false
+                          domainPageType: completePostPage
+                          nrOfElements: 1
+                          pageSize: 1
+                          pageNumber: 0
+                          totalPages: 1
+                          last: true
+                          empty: false
+                        id: 8
+                        title: Post Title
+                        text: Post Text
+                        creation: '2019-08-24'
+                        modification: '2019-08-26'
+                        creator:
+                          userType: simpleUser
+                          userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                          username: Username
+                        nrOfLikes: 6
+                        nrOfDislikes: 1
+                        status: NO_PROBLEM
+                        userStatus:
+                          id:
+                            userType: simpleUser
+                            userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                            postId: 8
+                          liked: true
+                          disliked: false
+                          reported: false
+                    domainPageType: completePostPage
+                    nrOfElements: 1
+                    pageSize: 1
+                    pageNumber: 0
+                    totalPages: 1
+                    last: true
+                    empty: false
+        '401':
+          description: Unauthorized - The user didn't authenticate correctly
+          content:
+            application/json:
+              schema:
+                $ref: ./CommonModels.yaml#/components/schemas/ErrorDTO
+              examples:
+                Authentication Error Example:
+                  value:
+                    message: Authentication Error
+                    status: 401
+      operationId: get-responses-for-post-by-postId
+      description: Endpoint used to get the responses page to a post
+      security:
+        - BearerToken: []
 components:
   securitySchemes:
     BearerToken:
@@ -779,10 +893,7 @@ components:
           minLength: 1
           maxLength: 600
         posts:
-          type: array
-          description: 'First page of the thread''s posts, sorted by date'
-          items:
-            $ref: '#/components/schemas/PostDTO'
+          $ref: ./CommonModels.yaml#/components/schemas/CompletePostPageDTO
       x-examples:
         Complete Thread Example:
           text: Thread Text
@@ -901,12 +1012,12 @@ components:
           category: 1
           tags:
             - 2
-    PostDTO:
-      title: Post DTO
+    SimplePostDTO:
+      title: Simple Post DTO
       type: object
-      description: Class containing all necessery information on a user.
+      description: Class containing basic information on a post.
       x-examples:
-        Post Example:
+        Simple Post Example:
           id: 8
           title: Post Title
           text: Post Text
@@ -917,8 +1028,10 @@ components:
             username: Username
           nrOfLikes: 6
           nrOfDislikes: 1
+          status: NO_PROBLEM
           userStatus:
             id:
+              userType: simpleUser
               userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
               postId: 8
             liked: true
@@ -955,6 +1068,8 @@ components:
           format: int32
           minimum: 0
           description: How many people disliked the post
+        status:
+          $ref: '#/components/schemas/PostStatus'
         userStatus:
           $ref: '#/components/schemas/PostUserStatusDTO'
       required:
@@ -966,6 +1081,67 @@ components:
         - creator
         - nrOfLikes
         - nrOfDislikes
+        - status
+    CompletePostDTO:
+      title: Complete Post DTO
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/SimplePostDTO'
+      properties:
+        responses:
+          $ref: ./CommonModels.yaml#/components/schemas/CompletePostPageDTO
+      x-examples:
+        Complete Post Example:
+          responses:
+            content:
+              - responses: {}
+                id: 8
+                title: Post Title
+                text: Post Text
+                creation: '2019-08-24'
+                modification: '2019-08-26'
+                creator:
+                  userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                  username: Username
+                nrOfLikes: 6
+                nrOfDislikes: 1
+                status: OPEN
+                userStatus:
+                  id:
+                    userType: simpleUser
+                    userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+                    postId: 8
+                  liked: true
+                  disliked: false
+                  reported: false
+            domainPageType: completePostPage
+            nrOfElements: 1
+            pageSize: 1
+            pageNumber: 0
+            totalPages: 1
+            last: true
+            empty: false
+          id: 8
+          title: Post Title
+          text: Post Text
+          creation: '2019-08-24'
+          modification: '2019-08-26'
+          creator:
+            userType: simpleUser
+            userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+            username: Username
+          nrOfLikes: 6
+          nrOfDislikes: 1
+          status: NO_PROBLEM
+          userStatus:
+            id:
+              userType: simpleUser
+              userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
+              postId: 8
+            liked: true
+            disliked: false
+            reported: false
+      description: Class containing all information on a post.
     CreatePostDTO:
       title: Create Post DTO
       type: object
@@ -1048,7 +1224,7 @@ components:
       description: Class containing complete post information with selected Thread Information.
       properties:
         post:
-          $ref: '#/components/schemas/PostDTO'
+          $ref: '#/components/schemas/SimplePostDTO'
         threadInformation:
           type: object
           required:
@@ -1296,6 +1472,16 @@ components:
       description: Enum containing the possible importance levels for tags.
       x-examples:
         Tag Importance Example: LOW
+    PostStatus:
+      type: string
+      title: Post Status
+      enum:
+        - NO_PROBLEM
+        - PENDING
+        - DELETED
+      x-examples:
+        Post Status Example: NO_PROBLEM
+      description: 'Status of a post. If enought people report a post, it will automaticly change to ''PENDING''.'
     Color:
       type: string
       title: Color

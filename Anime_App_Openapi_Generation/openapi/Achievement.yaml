@@ -34,7 +34,7 @@ paths:
                   value:
                     message: Authentication Error
                     status: 401
-      operationId: get-achievements-subscribe
+      operationId: subscribe-to-achievements
       description: Endpoint to get the SseEmitter used to emit achievements
   /achievement/cancel:
     get:
@@ -54,7 +54,7 @@ paths:
                   value:
                     message: Authentication Error
                     status: 401
-      operationId: get-achievement-cancel
+      operationId: cancel-achievement-subscription
       description: Endpoint to cancel user's subscription to the achievement service (delete users SseEmitter)
 components:
   schemas:
@@ -84,12 +84,11 @@ components:
           minLength: 1
           description: Description of the achievement
         icon:
-          type: array
-          minItems: 1
-          description: Byte array containing the icon of the achievement
-          items:
-            type: string
-            format: byte
+          type: string
+          format: byte
+          description: |-
+            The achievement Icon.
+            Causion! The openapi generator creates a byte array in place of a single byte
         points:
           type: integer
           format: int32
