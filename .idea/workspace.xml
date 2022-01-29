@@ -6,13 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9a85f17e-c8b0-481b-a543-783256245f43" name="Changes" comment="Refactor: Updated openapi to use discriminator correctly">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/controllers/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/controllers/TestController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Anime_App_Openapi_Generation/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App_Openapi_Generation/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/Achievement.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/Achievement.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/Anime.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/Anime.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/CommonModels.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/CommonModels.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/Forum.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/Forum.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/User.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/User.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -345,9 +339,9 @@
       <item itemvalue="Gradle.Tests in 'Anime_App_Project.Anilist_GraphQl_Request_Creator.test'" />
       <item itemvalue="Gradle.MediaConnectionBuilderTest.mediaConnectionBuilder_AllParameters_ReturnCorrectString" />
       <item itemvalue="Gradle.StudioConnectionBuilderTest.studioConnectionBuilder_AllParameters_ReturnCorrectString" />
-      <item itemvalue="Spring Boot.AnimeAppApplication" />
-      <item itemvalue="JUnit.All in Anime_App_Project" />
       <item itemvalue="Gradle.Anime_App_Project [deleteDoubleFilesTask]" />
+      <item itemvalue="JUnit.All in Anime_App_Project" />
+      <item itemvalue="Spring Boot.AnimeAppApplication" />
     </list>
     <recent_temporary>
       <list>
@@ -406,7 +400,8 @@
       <workItem from="1642761373998" duration="767000" />
       <workItem from="1642762171687" duration="11088000" />
       <workItem from="1642802129236" duration="6946000" />
-      <workItem from="1642849733295" duration="4500000" />
+      <workItem from="1642849733295" duration="5575000" />
+      <workItem from="1643471973667" duration="2400000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit, added project with 3 modules">
       <created>1641596733768</created>
@@ -639,7 +634,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642799887679</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Refactor: Updated openapi to use discriminator correctly">
+      <created>1642854296044</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1642854296045</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -61,7 +61,7 @@ task generateMetaInformation(type: org.openapitools.generator.gradle.plugin.task
 }
 
 //Go thought every file and generate the data
-task generateYmlFiles() {
+task generateYmlFiles(dependsOn: 'generateMetaInformation') {
     for (Tuple2<String, String> data : [
             new Tuple2<>("CommonModels.yaml", "Common"),
             //This file contains a error that is fix in 'SseEmitter fix' in the spotless task (line 127)
@@ -128,7 +128,7 @@ spotless {
         prettier(['prettier': '2.5.1', 'prettier-plugin-java': '1.6.1'])
                 .config(['parser': 'java', 'tabWidth': 4])
 
-        //Fox for double generated classes (for now - when not needed anymore delete this and the gzdeleteDoubleFiles (line 169))
+        //Fix for double generated classes (for now - when not needed anymore delete this and the gzdeleteDoubleFiles (line 169))
         custom 'Double models fix', { it
                 .replace('ForumCategoryDTO1', 'ForumCategoryDTO')
                 .replace('PostDTO1', 'PostDTO')
@@ -166,7 +166,7 @@ spotless {
 //Delete files that should not exist
 //for now - when not needed anymore delete this and the Double models fix in spotless (line 132)
 //starts with gz to execute after generation but before spotless - for now
-task gzdeleteDoubleFiles(type: Delete) {
+task gzdeleteDoubleFiles(type: Delete, dependsOn: 'generateYmlFiles') {
     delete fileTree(dir: "${buildDir}/generated/src/main/java/anime/app/openapi/model").matching {
         include "**1.java"
     }
