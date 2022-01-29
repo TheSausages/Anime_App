@@ -1,0 +1,69 @@
+version: '3.9'
+
+services:
+  postgresApp:
+    image: postgres:14.1-alpine
+    container_name: App-Database
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgresApp:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: animeApp
+      POSTGRES_USER: appUser
+      POSTGRES_PASSWORD: appPassword1
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -d animeApp -U appUser" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  postgresKeycloak:
+    image: postgres:14.1-alpine
+    container_name: Keycloak-Database
+    restart: always
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgresKeycloak:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloakUser
+      POSTGRES_PASSWORD: keycloakPassword1
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -d keycloak -U keycloakUser" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:15.0.0
+    container_name: Keycloak-Server-Instance
+    depends_on:
+      postgresKeycloak:
+        condition: service_healthy
+    ports:
+      - "8180:8180"
+    command:
+      - "-Djboss.socket.binding.port-offset=100"
+      - "-Dkeycloak.profile.feature.upload_scripts=enabled"
+    volumes:
+      - ../keycloak/realm:/opt/jboss/keycloak/imports
+    environment:
+      KEYCLOAK_IMPORT: /opt/jboss/keycloak/imports/realm-export.json
+      DB_VENDOR: POSTGRES
+      DB_ADDR: postgresKeycloak
+      DB_DATABASE: keycloak
+      DB_USER: keycloakUser
+      DB_PASSWORD: keycloakPassword1
+      #During first starting of the volumes, please use:
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: Password1
+
+
+volumes:
+  postgresKeycloak:
+    driver: local
+  postgresApp:
+    driver: local
