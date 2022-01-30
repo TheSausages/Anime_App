@@ -70,8 +70,14 @@ paths:
                         color: LinkToColor
                       description: Some Description
                       source: ORIGINAL
-                      startDate: 20201010
-                      endDate: 20211010
+                      startDate:
+                        year: 2021
+                        month: 1
+                        day: 18
+                      endDate:
+                        year: 2021
+                        month: 1
+                        day: 18
                       nextAiringEpisode:
                         id: 6325
                         airingAt: 184585
@@ -80,50 +86,51 @@ paths:
                         mediaId: 123987
                       relations:
                         edges:
-                          id: 123
-                          type: MANGA
-                          title:
-                            english: English Title
-                            romaji: Romaji Title
-                            native: Native Title
-                          coverImage:
-                            extraLarge: LinkToExtraLarge
-                            large: LinkToLarge
-                            medium: LinkToMedium
-                            color: LinkToColor
-                          status: FINISHED
-                        id: 7895
-                        relationType: ADAPTATION
+                          - node:
+                              id: 123
+                              type: MANGA
+                              title:
+                                english: English Title
+                                romaji: Romaji Title
+                                native: Native Title
+                              coverImage:
+                                extraLarge: LinkToExtraLarge
+                                large: LinkToLarge
+                                medium: LinkToMedium
+                                color: LinkToColor
+                              status: FINISHED
+                          - id: 7895
+                          - relationType: ADAPTATION
                       characters:
                         edges:
-                          node:
-                            id: 963
-                            image:
-                              large: LinkToLarge
-                              medium: LinkToMedium
-                            name:
-                              first: FirstName
-                              middle: MiddleName
-                              last: LastName
-                              full: FullName
-                              native: NativeName
-                              alternative: AlternativeName
-                              alternativeSpoiler: AlternativeNameWithSpoiler
-                          id: 78965
-                          role: MAIN
-                          name: CharacterName
-                          voiceActors:
-                            id: 78654
-                            name:
-                              first: Kacper
-                              middle: Damian
-                              last: Curys
-                              full: Kacper Damian Curys
-                              native: Kacper Damian Curyś
-                            image:
-                              large: LinkToLarge
-                              medium: LinkToMedium
-                            languageV2: JAPANESE
+                          - node:
+                              id: 963
+                              image:
+                                large: LinkToLarge
+                                medium: LinkToMedium
+                              name:
+                                first: FirstName
+                                middle: MiddleName
+                                last: LastName
+                                full: FullName
+                                native: NativeName
+                                alternative: AlternativeName
+                                alternativeSpoiler: AlternativeNameWithSpoiler
+                            id: 78965
+                            role: MAIN
+                            name: CharacterName
+                            voiceActors:
+                              - id: 78654
+                                name:
+                                  first: Kacper
+                                  middle: Damian
+                                  last: Curys
+                                  full: Kacper Damian Curys
+                                  native: Kacper Damian Curyś
+                                image:
+                                  large: LinkToLarge
+                                  medium: LinkToMedium
+                                languageV2: JAPANESE
                         pageInfo:
                           total: 50
                           perPage: 25
@@ -132,17 +139,17 @@ paths:
                           hasNextPage: true
                       staff:
                         nodes:
-                          name:
-                            first: Kacper
-                            middle: Damian
-                            last: Curys
-                            full: Kacper Damian Curys
-                            native: Kacper Damian Curyś
-                          image:
-                            large: LinkToLarge
-                            medium: LinkToMedium
-                          primaryOccupation:
-                            - Voice Actor
+                          - name:
+                              first: Kacper
+                              middle: Damian
+                              last: Curys
+                              full: Kacper Damian Curys
+                              native: Kacper Damian Curyś
+                            image:
+                              large: LinkToLarge
+                              medium: LinkToMedium
+                            primaryOccupation:
+                              - Voice Actor
                         pageInfo:
                           total: 10
                           perPage: 50
@@ -422,9 +429,8 @@ paths:
                   minNrOfEpisodes: 0
                   maxAverageScore: 50
                   minAverageScore: 80
-                  seasonYear:
-                    season: SPRING
-                    year: 1900
+                  season: SPRING
+                  seasonYear: 1900
                   status: FINISHED
                   format: TV
         description: The request body contains the query used to create an Anilist request.
@@ -561,8 +567,14 @@ components:
               color: LinkToColor
             description: Some Description
             source: ORIGINAL
-            startDate: 20201010
-            endDate: 20211010
+            startDate:
+              year: 2021
+              month: 1
+              day: 18
+            endDate:
+              year: 2021
+              month: 1
+              day: 18
             nextAiringEpisode:
               id: 6325
               airingAt: 184585
@@ -571,50 +583,51 @@ components:
               mediaId: 123987
             relations:
               edges:
-                id: 123
-                type: MANGA
-                title:
-                  english: English Title
-                  romaji: Romaji Title
-                  native: Native Title
-                coverImage:
-                  extraLarge: LinkToExtraLarge
-                  large: LinkToLarge
-                  medium: LinkToMedium
-                  color: LinkToColor
-                status: FINISHED
-              id: 7895
-              relationType: ADAPTATION
+                - node:
+                    id: 123
+                    type: MANGA
+                    title:
+                      english: English Title
+                      romaji: Romaji Title
+                      native: Native Title
+                    coverImage:
+                      extraLarge: LinkToExtraLarge
+                      large: LinkToLarge
+                      medium: LinkToMedium
+                      color: LinkToColor
+                    status: FINISHED
+                - id: 7895
+                - relationType: ADAPTATION
             characters:
               edges:
-                node:
-                  id: 963
-                  image:
-                    large: LinkToLarge
-                    medium: LinkToMedium
-                  name:
-                    first: FirstName
-                    middle: MiddleName
-                    last: LastName
-                    full: FullName
-                    native: NativeName
-                    alternative: AlternativeName
-                    alternativeSpoiler: AlternativeNameWithSpoiler
-                id: 78965
-                role: MAIN
-                name: CharacterName
-                voiceActors:
-                  id: 78654
-                  name:
-                    first: Kacper
-                    middle: Damian
-                    last: Curys
-                    full: Kacper Damian Curys
-                    native: Kacper Damian Curyś
-                  image:
-                    large: LinkToLarge
-                    medium: LinkToMedium
-                  languageV2: JAPANESE
+                - node:
+                    id: 963
+                    image:
+                      large: LinkToLarge
+                      medium: LinkToMedium
+                    name:
+                      first: FirstName
+                      middle: MiddleName
+                      last: LastName
+                      full: FullName
+                      native: NativeName
+                      alternative: AlternativeName
+                      alternativeSpoiler: AlternativeNameWithSpoiler
+                  id: 78965
+                  role: MAIN
+                  name: CharacterName
+                  voiceActors:
+                    - id: 78654
+                      name:
+                        first: Kacper
+                        middle: Damian
+                        last: Curys
+                        full: Kacper Damian Curys
+                        native: Kacper Damian Curyś
+                      image:
+                        large: LinkToLarge
+                        medium: LinkToMedium
+                      languageV2: JAPANESE
               pageInfo:
                 total: 50
                 perPage: 25
@@ -623,17 +636,17 @@ components:
                 hasNextPage: true
             staff:
               nodes:
-                name:
-                  first: Kacper
-                  middle: Damian
-                  last: Curys
-                  full: Kacper Damian Curys
-                  native: Kacper Damian Curyś
-                image:
-                  large: LinkToLarge
-                  medium: LinkToMedium
-                primaryOccupation:
-                  - Voice Actor
+                - name:
+                    first: Kacper
+                    middle: Damian
+                    last: Curys
+                    full: Kacper Damian Curys
+                    native: Kacper Damian Curyś
+                  image:
+                    large: LinkToLarge
+                    medium: LinkToMedium
+                  primaryOccupation:
+                    - Voice Actor
               pageInfo:
                 total: 10
                 perPage: 50
@@ -913,9 +926,8 @@ components:
           minNrOfEpisodes: 0
           maxAverageScore: 50
           minAverageScore: 80
-          seasonYear:
-            season: SPRING
-            year: 1900
+          season: SPRING
+          seasonYear: 1900
           status: FINISHED
           format: TV
       properties:
@@ -960,17 +972,13 @@ components:
           maximum: 100
           format: int32
           description: Min average score of Anilist users that the anime can have
+        season:
+          $ref: '#/components/schemas/AnilistMediaSeason'
         seasonYear:
-          type: object
-          description: What season did the anime air
-          properties:
-            season:
-              $ref: '#/components/schemas/AnilistMediaSeason'
-            year:
-              type: integer
-              format: int32
-              description: The year of the season
-              minimum: 1900
+          description: What year did the anime air
+          type: integer
+          format: int32
+          minimum: 1900
         status:
           $ref: '#/components/schemas/AnilistMediaStatus'
         format:
@@ -1011,8 +1019,14 @@ components:
                 color: LinkToColor
               description: Some Description
               source: ORIGINAL
-              startDate: 20201010
-              endDate: 20211010
+              startDate:
+                year: 2021
+                month: 1
+                day: 18
+              endDate:
+                year: 2021
+                month: 1
+                day: 18
               nextAiringEpisode:
                 id: 6325
                 airingAt: 184585
@@ -1160,8 +1174,14 @@ components:
               color: LinkToColor
             description: Some Description
             source: ORIGINAL
-            startDate: 20201010
-            endDate: 20211010
+            startDate:
+              year: 2021
+              month: 1
+              day: 18
+            endDate:
+              year: 2021
+              month: 1
+              day: 18
             nextAiringEpisode:
               id: 6325
               airingAt: 184585
@@ -1170,50 +1190,51 @@ components:
               mediaId: 123987
             relations:
               edges:
-                id: 123
-                type: MANGA
-                title:
-                  english: English Title
-                  romaji: Romaji Title
-                  native: Native Title
-                coverImage:
-                  extraLarge: LinkToExtraLarge
-                  large: LinkToLarge
-                  medium: LinkToMedium
-                  color: LinkToColor
-                status: FINISHED
-              id: 7895
-              relationType: ADAPTATION
+                - node:
+                    id: 123
+                    type: MANGA
+                    title:
+                      english: English Title
+                      romaji: Romaji Title
+                      native: Native Title
+                    coverImage:
+                      extraLarge: LinkToExtraLarge
+                      large: LinkToLarge
+                      medium: LinkToMedium
+                      color: LinkToColor
+                    status: FINISHED
+                - id: 7895
+                - relationType: ADAPTATION
             characters:
               edges:
-                node:
-                  id: 963
-                  image:
-                    large: LinkToLarge
-                    medium: LinkToMedium
-                  name:
-                    first: FirstName
-                    middle: MiddleName
-                    last: LastName
-                    full: FullName
-                    native: NativeName
-                    alternative: AlternativeName
-                    alternativeSpoiler: AlternativeNameWithSpoiler
-                id: 78965
-                role: MAIN
-                name: CharacterName
-                voiceActors:
-                  id: 78654
-                  name:
-                    first: Kacper
-                    middle: Damian
-                    last: Curys
-                    full: Kacper Damian Curys
-                    native: Kacper Damian Curyś
-                  image:
-                    large: LinkToLarge
-                    medium: LinkToMedium
-                  languageV2: JAPANESE
+                - node:
+                    id: 963
+                    image:
+                      large: LinkToLarge
+                      medium: LinkToMedium
+                    name:
+                      first: FirstName
+                      middle: MiddleName
+                      last: LastName
+                      full: FullName
+                      native: NativeName
+                      alternative: AlternativeName
+                      alternativeSpoiler: AlternativeNameWithSpoiler
+                  id: 78965
+                  role: MAIN
+                  name: CharacterName
+                  voiceActors:
+                    - id: 78654
+                      name:
+                        first: Kacper
+                        middle: Damian
+                        last: Curys
+                        full: Kacper Damian Curys
+                        native: Kacper Damian Curyś
+                      image:
+                        large: LinkToLarge
+                        medium: LinkToMedium
+                      languageV2: JAPANESE
               pageInfo:
                 total: 50
                 perPage: 25
@@ -1222,17 +1243,17 @@ components:
                 hasNextPage: true
             staff:
               nodes:
-                name:
-                  first: Kacper
-                  middle: Damian
-                  last: Curys
-                  full: Kacper Damian Curys
-                  native: Kacper Damian Curyś
-                image:
-                  large: LinkToLarge
-                  medium: LinkToMedium
-                primaryOccupation:
-                  - Voice Actor
+                - name:
+                    first: Kacper
+                    middle: Damian
+                    last: Curys
+                    full: Kacper Damian Curys
+                    native: Kacper Damian Curyś
+                  image:
+                    large: LinkToLarge
+                    medium: LinkToMedium
+                  primaryOccupation:
+                    - Voice Actor
               pageInfo:
                 total: 10
                 perPage: 50
@@ -1337,8 +1358,14 @@ components:
             color: LinkToColor
           description: Some Description
           source: ORIGINAL
-          startDate: 20201010
-          endDate: 20211010
+          startDate:
+            year: 2021
+            month: 1
+            day: 18
+          endDate:
+            year: 2021
+            month: 1
+            day: 18
           nextAiringEpisode:
             id: 6325
             airingAt: 184585
@@ -1347,50 +1374,51 @@ components:
             mediaId: 123987
           relations:
             edges:
-              id: 123
-              type: MANGA
-              title:
-                english: English Title
-                romaji: Romaji Title
-                native: Native Title
-              coverImage:
-                extraLarge: LinkToExtraLarge
-                large: LinkToLarge
-                medium: LinkToMedium
-                color: LinkToColor
-              status: FINISHED
-            id: 7895
-            relationType: ADAPTATION
+              - node:
+                  id: 123
+                  type: MANGA
+                  title:
+                    english: English Title
+                    romaji: Romaji Title
+                    native: Native Title
+                  coverImage:
+                    extraLarge: LinkToExtraLarge
+                    large: LinkToLarge
+                    medium: LinkToMedium
+                    color: LinkToColor
+                  status: FINISHED
+              - id: 7895
+              - relationType: ADAPTATION
           characters:
             edges:
-              node:
-                id: 963
-                image:
-                  large: LinkToLarge
-                  medium: LinkToMedium
-                name:
-                  first: FirstName
-                  middle: MiddleName
-                  last: LastName
-                  full: FullName
-                  native: NativeName
-                  alternative: AlternativeName
-                  alternativeSpoiler: AlternativeNameWithSpoiler
-              id: 78965
-              role: MAIN
-              name: CharacterName
-              voiceActors:
-                id: 78654
-                name:
-                  first: Kacper
-                  middle: Damian
-                  last: Curys
-                  full: Kacper Damian Curys
-                  native: Kacper Damian Curyś
-                image:
-                  large: LinkToLarge
-                  medium: LinkToMedium
-                languageV2: JAPANESE
+              - node:
+                  id: 963
+                  image:
+                    large: LinkToLarge
+                    medium: LinkToMedium
+                  name:
+                    first: FirstName
+                    middle: MiddleName
+                    last: LastName
+                    full: FullName
+                    native: NativeName
+                    alternative: AlternativeName
+                    alternativeSpoiler: AlternativeNameWithSpoiler
+                id: 78965
+                role: MAIN
+                name: CharacterName
+                voiceActors:
+                  - id: 78654
+                    name:
+                      first: Kacper
+                      middle: Damian
+                      last: Curys
+                      full: Kacper Damian Curys
+                      native: Kacper Damian Curyś
+                    image:
+                      large: LinkToLarge
+                      medium: LinkToMedium
+                    languageV2: JAPANESE
             pageInfo:
               total: 50
               perPage: 25
@@ -1399,17 +1427,17 @@ components:
               hasNextPage: true
           staff:
             nodes:
-              name:
-                first: Kacper
-                middle: Damian
-                last: Curys
-                full: Kacper Damian Curys
-                native: Kacper Damian Curyś
-              image:
-                large: LinkToLarge
-                medium: LinkToMedium
-              primaryOccupation:
-                - Voice Actor
+              - name:
+                  first: Kacper
+                  middle: Damian
+                  last: Curys
+                  full: Kacper Damian Curys
+                  native: Kacper Damian Curyś
+                image:
+                  large: LinkToLarge
+                  medium: LinkToMedium
+                primaryOccupation:
+                  - Voice Actor
             pageInfo:
               total: 10
               perPage: 50
@@ -1464,9 +1492,9 @@ components:
         source:
           $ref: '#/components/schemas/AnilistMediaSource'
         startDate:
-          $ref: '#/components/schemas/AnilistFuzzyDateInt'
+          $ref: '#/components/schemas/AnilistDateDTO'
         endDate:
-          $ref: '#/components/schemas/AnilistFuzzyDateInt'
+          $ref: '#/components/schemas/AnilistDateDTO'
         nextAiringEpisode:
           type: object
           description: information on the next airing episode
@@ -1497,130 +1525,155 @@ components:
           description: Information on each relation for the media
           required:
             - edges
-            - id
-            - relationType
           properties:
             edges:
-              type: object
-              description: Information on edges of the relation connection
-              required:
-                - id
-                - type
-                - title
-                - coverImage
-                - status
-              properties:
-                id:
-                  type: integer
-                  format: int32
-                  description: ID of the relation
-                type:
-                  $ref: '#/components/schemas/AnilistMediaType'
-                title:
-                  $ref: '#/components/schemas/AnilistMediaTitle'
-                coverImage:
-                  $ref: '#/components/schemas/AnilistCoverImage'
-                status:
-                  $ref: '#/components/schemas/AnilistMediaStatus'
-            id:
-              type: integer
-              format: int32
-              description: ID of the relation
-            relationType:
-              $ref: '#/components/schemas/AnilistMediaRelation'
+              type: array
+              description: Array of edges
+              items:
+                type: object
+                description: Information on edges of the relation connection
+                properties:
+                  node:
+                    type: object
+                    description: Information on each node
+                    properties:
+                      id:
+                        type: integer
+                        format: int32
+                        description: ID of the relation
+                      type:
+                        $ref: '#/components/schemas/AnilistMediaType'
+                      title:
+                        $ref: '#/components/schemas/AnilistMediaTitle'
+                      coverImage:
+                        $ref: '#/components/schemas/AnilistCoverImage'
+                      status:
+                        $ref: '#/components/schemas/AnilistMediaStatus'
+                    required:
+                      - id
+                      - type
+                      - title
+                      - coverImage
+                      - status
+                  id:
+                    type: integer
+                    format: int32
+                    description: ID of the relation
+                  relationType:
+                    $ref: '#/components/schemas/AnilistMediaRelation'
+                required:
+                  - id
+                  - relationType
         characters:
           type: object
           description: Information on the characters
+          required:
+            - edges
+            - pageInfo
           properties:
             edges:
-              type: object
-              description: Information on edges of the character connection
-              properties:
-                node:
-                  type: object
-                  description: Information on each edge
-                  properties:
-                    id:
-                      type: integer
-                      format: int32
-                      description: ID of the character
-                    image:
-                      $ref: '#/components/schemas/AnilistImage'
-                    name:
+              type: array
+              description: Array of edges
+              items:
+                type: object
+                description: Information on edges of the character connection
+                properties:
+                  node:
+                    type: object
+                    description: Information on each edge
+                    properties:
+                      id:
+                        type: integer
+                        format: int32
+                        description: ID of the character
+                      image:
+                        $ref: '#/components/schemas/AnilistImage'
+                      name:
+                        type: object
+                        properties:
+                          first:
+                            type: string
+                            description: First name of the character
+                          middle:
+                            type: string
+                            description: Middle (second) name of the character
+                          last:
+                            type: string
+                            description: Last name of the character
+                          full:
+                            type: string
+                            description: Full name of the character
+                          native:
+                            type: string
+                            description: Native name of the character
+                        required:
+                          - first
+                          - full
+                  id:
+                    type: integer
+                    format: int32
+                    description: ID of the edge
+                  role:
+                    type: string
+                    enum:
+                      - MAIN
+                      - SUPPORTING
+                      - BACKGROUND
+                    description: Role of the character
+                  name:
+                    type: string
+                    description: Name of the Edge
+                  voiceActors:
+                    type: array
+                    description: Information on the voice actor of the character
+                    items:
                       type: object
                       properties:
-                        first:
+                        id:
+                          type: integer
+                          format: int32
+                          description: ID of the voice actor
+                        name:
+                          $ref: '#/components/schemas/AnilistMediaStaffName'
+                        image:
+                          $ref: '#/components/schemas/AnilistImage'
+                        languageV2:
                           type: string
-                          description: First name of the character
-                        middle:
-                          type: string
-                          description: Middle (second) name of the character
-                        last:
-                          type: string
-                          description: Last name of the character
-                        full:
-                          type: string
-                          description: Full name of the character
-                        native:
-                          type: string
-                          description: Native name of the character
-                        alternative:
-                          type: string
-                          description: Alternative name of the character
-                        alternativeSpoiler:
-                          type: string
-                          description: First name of the character that can contain spoilers
-                      required:
-                        - first
-                        - full
-                id:
-                  type: integer
-                  format: int32
-                  description: ID of the edge
-                role:
-                  type: string
-                  enum:
-                    - MAIN
-                    - SUPPORTING
-                    - BACKGROUND
-                  description: Role of the character
-                name:
-                  type: string
-                  description: Name of the Edge
-                voiceActors:
-                  type: object
-                  description: Information on the voice actor of the character
-                  properties:
-                    id:
-                      type: integer
-                      format: int32
-                      description: ID of the voice actor
-                    name:
-                      $ref: '#/components/schemas/AnilistMediaStaffName'
-                    image:
-                      $ref: '#/components/schemas/AnilistImage'
-                    languageV2:
-                      type: string
-                      description: Language of the voice actor
+                          description: Language of the voice actor
+                required:
+                  - node
+                  - id
+                  - role
+                  - name
+                  - voiceActors
             pageInfo:
               $ref: '#/components/schemas/AnilistPageInfo'
         staff:
           type: object
           description: Information on the media staff members
+          required:
+            - pageInfo
           properties:
             nodes:
-              type: object
-              description: Information on each staff
-              properties:
-                name:
-                  $ref: '#/components/schemas/AnilistMediaStaffName'
-                image:
-                  $ref: '#/components/schemas/AnilistImage'
-                primaryOccupation:
-                  type: array
-                  description: Primary occupation of the staff
-                  items:
-                    type: string
+              type: array
+              description: Array of Staffs
+              items:
+                type: object
+                description: Information on each staff
+                properties:
+                  name:
+                    $ref: '#/components/schemas/AnilistMediaStaffName'
+                  image:
+                    $ref: '#/components/schemas/AnilistImage'
+                  primaryOccupation:
+                    type: array
+                    description: Primary occupation of the staff
+                    items:
+                      type: string
+                required:
+                  - name
+                  - image
+                  - primaryOccupation
             pageInfo:
               $ref: '#/components/schemas/AnilistPageInfo'
       required:
@@ -1675,6 +1728,28 @@ components:
         - id
         - coverImage
         - title
+    AnilistDateDTO:
+      title: Anilist Date DTO
+      type: object
+      properties:
+        year:
+          type: integer
+          format: int32
+          minimum: 1900
+        month:
+          type: integer
+          format: int32
+          minimum: 0
+        day:
+          type: integer
+          format: int32
+          minimum: 0
+      description: Class containing the field containing Date that Anilist returns.
+      x-examples:
+        Anilist Date DTO Example:
+          year: 2021
+          month: 1
+          day: 18
     AnilistMediaFormat:
       type: string
       title: Media Format
@@ -1905,7 +1980,7 @@ components:
         - PREQUEL
         - SEQUEL
         - PARENT
-        - SIDE_STROY
+        - SIDE_STORY
         - CHARACTER
         - SUMMARY
         - ALTERNATIVE

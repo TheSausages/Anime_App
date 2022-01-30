@@ -26,7 +26,7 @@ public class AnimeController implements AnimeApi {
 	 */
 	@Override
 	public ResponseEntity<DetailedAnimeDTO> getAnimeByAnimeId(Long animeId) {
-		return AnimeApi.super.getAnimeByAnimeId(animeId);
+		return ResponseEntity.ok(anilistService.getAnimeById(animeId));
 	}
 
 	/**
@@ -34,7 +34,7 @@ public class AnimeController implements AnimeApi {
 	 */
 	@Override
 	public ResponseEntity<AnilistPageDTO> getTopAnimeOfAllTime(Long pageNumber) {
-		return AnimeApi.super.getTopAnimeOfAllTime(pageNumber);
+		return ResponseEntity.ok(anilistService.getTopAnimeOfAllTime(pageNumber));
 	}
 
 	/**
@@ -50,7 +50,7 @@ public class AnimeController implements AnimeApi {
 	 */
 	@Override
 	public ResponseEntity<AnilistPageDTO> getTopAnimeMovies(Long pageNumber) {
-		return AnimeApi.super.getTopAnimeMovies(pageNumber);
+		return ResponseEntity.ok(anilistService.getTopAnimeMovies(pageNumber));
 	}
 
 	/**
@@ -58,7 +58,7 @@ public class AnimeController implements AnimeApi {
 	 */
 	@Override
 	public ResponseEntity<AnilistPageDTO> searchForAnimeUsingQuery(Long pageNumber, AnimeQueryDTO animeQueryDTO) {
-		return AnimeApi.super.searchForAnimeUsingQuery(pageNumber, animeQueryDTO);
+		return ResponseEntity.ok(anilistService.searchUsingQuery(animeQueryDTO, pageNumber));
 	}
 
 	/**
