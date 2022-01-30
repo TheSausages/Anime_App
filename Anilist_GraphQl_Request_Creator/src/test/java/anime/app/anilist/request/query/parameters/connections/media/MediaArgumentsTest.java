@@ -8,6 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static anime.app.anilist.request.utils.QueryArgumentMatcher.containsAllSetElements;
@@ -52,7 +53,7 @@ class MediaArgumentsTest {
 		void mediaArgumentsBuilder_SortBySingle_ReturnCorrectString() {
 			//given
 			MediaSort[] sorts = new MediaSort[] {MediaSort.ID};
-			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet("sort: " + sorts);
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet("sort: " + Arrays.toString(sorts));
 
 			//when
 			MediaArguments actualArguments = MediaArguments.getMediaArgumentsBuilder()
@@ -71,7 +72,7 @@ class MediaArgumentsTest {
 		void mediaArgumentsBuilder_SortByMany_ReturnCorrectString() {
 			//given
 			MediaSort[] sorts = new MediaSort[] {MediaSort.ID, MediaSort.CHAPTERS};
-			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet("sort: " + sorts);
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet("sort: " + Arrays.toString(sorts));
 
 			//when
 			MediaArguments actualArguments = MediaArguments.getMediaArgumentsBuilder()
@@ -188,7 +189,7 @@ class MediaArgumentsTest {
 			int page  = 1;
 			int perPage = 1;
 			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
-					"sort: " + sorts,
+					"sort: " + Arrays.toString(sorts),
 					"type: " + type.name(),
 					"onList: true",
 					"page: " + page,

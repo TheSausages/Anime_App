@@ -6,6 +6,7 @@ import anime.app.anilist.request.query.parameters.QueryParameterUtils;
 import anime.app.anilist.request.query.parameters.common.CommonParameterFieldNames;
 import lombok.Getter;
 
+import java.util.Arrays;
 import java.util.Set;
 
 @Getter
@@ -29,7 +30,7 @@ public class MediaTrendsArguments {
 		private final Set<ParameterString> trendsArguments = new OverwritingLinkedHashSet<>();
 
 		public MediaTrendsArgumentsBuilder sort(MediaTrendSort... sorts) {
-			trendsArguments.add(QueryParameterUtils.combineIntoStringArgumentNoBracket(CommonParameterFieldNames.SORT, sorts));
+			trendsArguments.add(QueryParameterUtils.combineIntoStringArgumentNoBracket(CommonParameterFieldNames.SORT, Arrays.toString(sorts)));
 			return this;
 		}
 

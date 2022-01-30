@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static anime.app.anilist.request.utils.QueryArgumentMatcher.containsAllSetElements;
@@ -51,7 +52,7 @@ class StaffArgumentsTest {
 			//given
 			StaffSort[] sorts = new StaffSort[] {StaffSort.ID};
 			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
-					"sort: " + sorts
+					"sort: " + Arrays.toString(sorts)
 			);
 
 			//when
@@ -72,7 +73,7 @@ class StaffArgumentsTest {
 			//given
 			StaffSort[] sorts = new StaffSort[] {StaffSort.ID, StaffSort.ID_DESC};
 			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
-					"sort: " + sorts
+					"sort: " + Arrays.toString(sorts)
 			);
 
 			//when
@@ -139,7 +140,7 @@ class StaffArgumentsTest {
 			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
 					"page: " + page,
 					"perPage: " + perPage,
-					"sort: " + sorts
+					"sort: " + Arrays.toString(sorts)
 			);
 
 			//when
