@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "api.default-path",
+      "type": "java.lang.String",
+      "description": "Default path used by all endpoints with the exception of serving static content."
+  }
+] }

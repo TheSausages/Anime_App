@@ -39,6 +39,11 @@ dependencies {
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor:${springVersion}"
     annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
 
+    //Keycloak Dependencies
+    implementation "org.keycloak:keycloak-spring-boot-starter:${keycloakVersion}"
+    implementation "org.keycloak.bom:keycloak-adapter-bom:${keycloakVersion}"
+    implementation "org.keycloak:keycloak-admin-client:${keycloakVersion}"
+
     //Other Non-test Dependencies
     implementation "org.apache.commons:commons-lang3:${commonslang3Version}"
     compileOnly "org.projectlombok:lombok:${lombokVersion}"
