@@ -21,4 +21,14 @@ public abstract class QueryElement {
 	public String toString() {
 		return elementString;
 	}
+
+	protected static Set<String> combineIntoSet(Set<String> existingSet, String... additions) {
+		existingSet.addAll(Set.of(additions));
+		return existingSet;
+	}
+
+	protected static Map<String, Object> combineIntoMap(Map<String, Object> existing, Map<String, Object> additions) {
+		existing.putAll(additions);
+		return existing;
+	}
 }

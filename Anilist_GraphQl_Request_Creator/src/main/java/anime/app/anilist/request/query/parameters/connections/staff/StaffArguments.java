@@ -6,7 +6,6 @@ import anime.app.anilist.request.query.parameters.QueryParameterUtils;
 import anime.app.anilist.request.query.parameters.common.CommonParameterFieldNames;
 import lombok.Getter;
 
-import java.util.Arrays;
 import java.util.Set;
 
 @Getter
@@ -30,7 +29,7 @@ public class StaffArguments {
 		private final Set<ParameterString> staffMediaArguments = new OverwritingLinkedHashSet<>();
 
 		public StaffArgumentsBuilder sort(StaffSort[] sorts) {
-			staffMediaArguments.add(QueryParameterUtils.combineIntoStringArgumentNoBracket(CommonParameterFieldNames.SORT, Arrays.toString(sorts)));
+			staffMediaArguments.add(QueryParameterUtils.combineIntoStringArgumentNoBracket(CommonParameterFieldNames.SORT, sorts));
 			return this;
 		}
 

@@ -6,7 +6,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static anime.app.anilist.request.utils.QueryArgumentMatcher.containsAllSetElements;
@@ -51,7 +50,7 @@ class MediaTrendsArgumentsTest {
 		void mediaTrendsArgumentsBuilder_MediaTrendSortSingle_ReturnCorrectString() {
 			//given
 			MediaTrendSort[] sorts = new MediaTrendSort[] {MediaTrendSort.ID};
-			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet("sort: " + Arrays.toString(sorts));
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet("sort: " + sorts);
 
 			//when
 			MediaTrendsArguments actualArguments = MediaTrendsArguments.getMediaTrendsArgumentsBuilder()
@@ -70,7 +69,7 @@ class MediaTrendsArgumentsTest {
 		void mediaTrendsArgumentsBuilder_MediaTrendSortMany_ReturnCorrectString() {
 			//given
 			MediaTrendSort[] sorts = new MediaTrendSort[] {MediaTrendSort.ID, MediaTrendSort.MEDIA_ID};
-			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet("sort: " + Arrays.toString(sorts));
+			List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet("sort: " + sorts);
 
 			//when
 			MediaTrendsArguments actualArguments = MediaTrendsArguments.getMediaTrendsArgumentsBuilder()
@@ -169,7 +168,7 @@ class MediaTrendsArgumentsTest {
 					"releasing: true",
 					"page: " + page,
 					"perPage: " + perPage,
-					"sort: " + Arrays.toString(sorts)
+					"sort: " + sorts
 			);
 
 			//when

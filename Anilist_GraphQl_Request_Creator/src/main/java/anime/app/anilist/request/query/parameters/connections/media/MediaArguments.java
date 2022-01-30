@@ -8,7 +8,6 @@ import anime.app.anilist.request.query.parameters.media.MediaSort;
 import anime.app.anilist.request.query.parameters.media.MediaType;
 import lombok.Getter;
 
-import java.util.Arrays;
 import java.util.Set;
 
 @Getter
@@ -32,7 +31,7 @@ public class MediaArguments {
 		private final Set<ParameterString> mediaArguments = new OverwritingLinkedHashSet<>();
 
 		public MediaArgumentsBuilder sortBy(MediaSort... sorts) {
-			mediaArguments.add(QueryParameterUtils.combineIntoStringArgumentNoBracket(CommonParameterFieldNames.SORT, Arrays.toString(sorts)));
+			mediaArguments.add(QueryParameterUtils.combineIntoStringArgumentNoBracket(CommonParameterFieldNames.SORT, sorts));
 			return this;
 		}
 

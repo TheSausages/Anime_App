@@ -29,7 +29,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static anime.app.anilist.request.query.media.Field.FIELD_TITLE;
@@ -701,7 +700,7 @@ class FieldTest {
 					.pageInfo(info)
 					.build();
 			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
-					"studios(sort: " + Arrays.toString(sorts) +") " + connection.getStudioConnectionWithoutFieldName()
+					"studios(sort: " + sorts +") " + connection.getStudioConnectionWithoutFieldName()
 			);
 
 			//when
@@ -726,7 +725,7 @@ class FieldTest {
 					.pageInfo(info)
 					.build();
 			List<String> expectedField = TestUtils.buildFieldParameterStringSet(
-					"studios(sort: " + Arrays.toString(sorts) +") " + connection.getStudioConnectionWithoutFieldName()
+					"studios(sort: " + sorts +") " + connection.getStudioConnectionWithoutFieldName()
 			);
 
 			//when
@@ -1047,7 +1046,7 @@ class FieldTest {
 					"relations " + relationConnection.getMediaConnectionWithoutFieldName(),
 					"characters" + characterArguments.getCharacterArgumentsString() + " " + characterConnection.getCharacterConnectionWithoutFieldName(),
 					"staff" + staffArguments.getStaffArgumentsString() + " " + staffConnection.getStaffConnectionWithoutFieldName(),
-					"studios(sort: " + Arrays.toString(sorts) +") " + studioConnection.getStudioConnectionWithoutFieldName(),
+					"studios(sort: " + sorts +") " + studioConnection.getStudioConnectionWithoutFieldName(),
 					"airingSchedule" + airingScheduleArguments.getAiringScheduleArgumentsString() + " " + airingScheduleConnection.getAiringScheduleConnectionWithoutFieldName(),
 					"trends" + trendArguments.getMediaTrendsArgumentsString() + " " + trendConnection.getMediaConnectionWithoutFieldName(),
 					"reviews" + reviewArguments.getReviewArgumentsString() + " " + reviewConnection.getReviewConnectionWithoutFieldName(),

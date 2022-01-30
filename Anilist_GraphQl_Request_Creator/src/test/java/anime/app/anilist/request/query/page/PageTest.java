@@ -63,7 +63,7 @@ class PageTest {
 	}
 
 	@Test
-	void fromMediaAndPageInfo_CorrectData_ThrowException() {
+	void fromMediaAndPageInfo_CorrectData_NoException() {
 		//given
 		int id = 1;
 		int page = 1;
@@ -74,12 +74,12 @@ class PageTest {
 				.build();
 		PageInfo info = PageInfo.getPageInfoBuilder().total().build();
 
-		Map<String, Object> expectedParameters = Map.of("page", page, "perPage", perPage);
+		Map<String, Object> expectedParameters = Map.of("page", page, "perPage", perPage, "id", id);
 		Set<String> expectedQueryParameters = Set.of(
-				"$page: Int", "$perPage: Int"
+				"$page: Int", "$perPage: Int", "$id: Int"
 		);
 		List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
-				"page: $page, perPage: $perPage"
+				"page: $page, perPage: $perPage, id: $id"
 		);
 
 		//when
@@ -127,7 +127,7 @@ class PageTest {
 	}
 
 	@Test
-	void fromMedia_CorrectData_ThrowException() {
+	void fromMedia_CorrectData_NoException() {
 		//given
 		int id = 1;
 		int page = 1;
@@ -137,12 +137,12 @@ class PageTest {
 				.id(id)
 				.build();
 
-		Map<String, Object> expectedParameters = Map.of("page", page, "perPage", perPage);
+		Map<String, Object> expectedParameters = Map.of("page", page, "perPage", perPage, "id", id);
 		Set<String> expectedQueryParameters = Set.of(
-				"$page: Int", "$perPage: Int"
+				"$page: Int", "$perPage: Int", "$id: Int"
 		);
 		List<String> expectedArguments = TestUtils.buildArgumentParameterStringSet(
-				"page: $page, perPage: $perPage"
+				"page: $page, perPage: $perPage, id: $id"
 		);
 
 		//when

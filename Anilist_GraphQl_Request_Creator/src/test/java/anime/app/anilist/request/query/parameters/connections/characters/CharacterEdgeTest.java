@@ -15,7 +15,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static anime.app.anilist.request.query.parameters.connections.characters.CharacterEdge.CHARACTER_EDGE_TITLE;
@@ -242,7 +241,7 @@ class CharacterEdgeTest {
 			StaffSort[] sorts = new StaffSort[] {StaffSort.ID};
 			Staff staff = Staff.getStaffBuilder().id().build();
 			List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
-					"voiceActors(sort: " + Arrays.toString(sorts) + ") " + staff.getStaffWithoutFieldName()
+					"voiceActors(sort: " + sorts + ") " + staff.getStaffWithoutFieldName()
 			);
 
 			//when
@@ -264,7 +263,7 @@ class CharacterEdgeTest {
 			StaffSort[] sorts = new StaffSort[] {StaffSort.ID, StaffSort.ROLE};
 			Staff staff = Staff.getStaffBuilder().id().build();
 			List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
-					"voiceActors(sort: " + Arrays.toString(sorts) + ") " + staff.getStaffWithoutFieldName()
+					"voiceActors(sort: " + sorts + ") " + staff.getStaffWithoutFieldName()
 			);
 
 			//when
@@ -287,7 +286,7 @@ class CharacterEdgeTest {
 			StaffLanguage language = StaffLanguage.ENGLISH;
 			Staff staff = Staff.getStaffBuilder().id().build();
 			List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
-					"voiceActors(language: " + language.name() + ", sort: " + Arrays.toString(sorts) + ") " + staff.getStaffWithoutFieldName()
+					"voiceActors(language: " + language.name() + ", sort: " + sorts + ") " + staff.getStaffWithoutFieldName()
 			);
 
 			//when
@@ -352,7 +351,7 @@ class CharacterEdgeTest {
 			StaffSort[] sorts = new StaffSort[] {StaffSort.ID};
 			StaffRoleType type = StaffRoleType.getStaffRoleTypeBuilder().roleNotes().build();
 			List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
-					"voiceActorsRoles(sort: " + Arrays.toString(sorts) + ") " + type.getStaffRoleTypeStringWithoutFieldName()
+					"voiceActorsRoles(sort: " + sorts + ") " + type.getStaffRoleTypeStringWithoutFieldName()
 			);
 
 			//when
@@ -374,7 +373,7 @@ class CharacterEdgeTest {
 			StaffSort[] sorts = new StaffSort[] {StaffSort.ID, StaffSort.ROLE};
 			StaffRoleType type = StaffRoleType.getStaffRoleTypeBuilder().roleNotes().build();
 			List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
-					"voiceActorsRoles(sort: " + Arrays.toString(sorts) + ") " + type.getStaffRoleTypeStringWithoutFieldName()
+					"voiceActorsRoles(sort: " + sorts + ") " + type.getStaffRoleTypeStringWithoutFieldName()
 			);
 
 			//when
@@ -397,7 +396,7 @@ class CharacterEdgeTest {
 			StaffLanguage language = StaffLanguage.ENGLISH;
 			StaffRoleType type = StaffRoleType.getStaffRoleTypeBuilder().roleNotes().build();
 			List<String> expectedEdge = TestUtils.buildFieldParameterStringSet(
-					"voiceActorsRoles(language: " + language.name() + ", sort: " + Arrays.toString(sorts) + ") " + type.getStaffRoleTypeStringWithoutFieldName()
+					"voiceActorsRoles(language: " + language.name() + ", sort: " + sorts + ") " + type.getStaffRoleTypeStringWithoutFieldName()
 			);
 
 			//when
@@ -429,8 +428,8 @@ class CharacterEdgeTest {
 					"name",
 					"favouriteOrder",
 					QueryParameterUtils.combineIntoStringField(CommonParameterFieldNames.MEDIA, media.getRequestedMediaFields()).getField(),
-					"voiceActors(language: " + language.name() + ", sort: " + Arrays.toString(sorts) + ") " + staff.getStaffWithoutFieldName(),
-					"voiceActorsRoles(language: " + language.name() + ", sort: " + Arrays.toString(sorts) + ") " + type.getStaffRoleTypeStringWithoutFieldName()
+					"voiceActors(language: " + language.name() + ", sort: " + sorts + ") " + staff.getStaffWithoutFieldName(),
+					"voiceActorsRoles(language: " + language.name() + ", sort: " + sorts + ") " + type.getStaffRoleTypeStringWithoutFieldName()
 			);
 
 			//when

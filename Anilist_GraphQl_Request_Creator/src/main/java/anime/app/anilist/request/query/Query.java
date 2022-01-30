@@ -19,7 +19,7 @@ public class Query {
 				.enable(SerializationFeature.INDENT_OUTPUT)
 				.setDefaultPrettyPrinter(new DefaultPrettyPrinter())
 				.registerModule(new JavaTimeModule())
-				.setDateFormat(new SimpleDateFormat("dd.MM.yyyy"));
+				.setDateFormat(new SimpleDateFormat("dd-MM-yyyy"));
 
 	private Query() {
 		throw new UnsupportedOperationException();

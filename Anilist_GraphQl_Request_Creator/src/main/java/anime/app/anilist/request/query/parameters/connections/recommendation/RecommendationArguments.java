@@ -6,7 +6,6 @@ import anime.app.anilist.request.query.parameters.QueryParameterUtils;
 import anime.app.anilist.request.query.parameters.common.CommonParameterFieldNames;
 import lombok.Getter;
 
-import java.util.Arrays;
 import java.util.Set;
 
 @Getter
@@ -30,7 +29,7 @@ public class RecommendationArguments {
 		private final Set<ParameterString> recommendationArgumentsArguments = new OverwritingLinkedHashSet<>();
 
 		public RecommendationArgumentsBuilder sort(RecommendationSort... sorts) {
-			recommendationArgumentsArguments.add(QueryParameterUtils.combineIntoStringArgumentNoBracket(CommonParameterFieldNames.SORT, Arrays.toString(sorts)));
+			recommendationArgumentsArguments.add(QueryParameterUtils.combineIntoStringArgumentNoBracket(CommonParameterFieldNames.SORT, sorts));
 			return this;
 		}
 

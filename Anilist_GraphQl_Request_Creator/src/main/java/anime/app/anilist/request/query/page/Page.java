@@ -32,8 +32,8 @@ public class Page extends QueryElement {
 								info.getPageInfoString()
 						)
 				),
-				Set.of("$page: Int", "$perPage: Int"),
-				Map.of("page", page, "perPage", perPage)
+				combineIntoSet(media.getQueryParameters(), "$page: Int", "$perPage: Int"),
+				combineIntoMap(media.getVariables(), Map.of("page", page, "perPage", perPage))
 		);
 	}
 
@@ -49,8 +49,8 @@ public class Page extends QueryElement {
 						),
 						Set.of(Media.MEDIA_TITLE.toLowerCase(Locale.ROOT) + media.getRequestedMediaFieldsWithArguments())
 				),
-				Set.of("$page: Int", "$perPage: Int"),
-				Map.of("page", page, "perPage", perPage)
+				combineIntoSet(media.getQueryParameters(), "$page: Int", "$perPage: Int"),
+				combineIntoMap(media.getVariables(), Map.of("page", page, "perPage", perPage))
 		);
 	}
 
@@ -65,5 +65,13 @@ public class Page extends QueryElement {
 		Objects.requireNonNull(media, "Media cannot be null");
 
 		return new Page(page, perPage, media);
+	}
+
+	public static Page fromMediaAndPageInfo(long page, int perPage, Media media, PageInfo pageInfo) {
+		return fromMediaAndPageInfo(Math.toIntExact(page), perPage, media, pageInfo);
+	}
+
+	public static Page fromMedia(long page, int perPage, Media media) {
+		return fromMedia(Math.toIntExact(page), perPage, media);
 	}
 }

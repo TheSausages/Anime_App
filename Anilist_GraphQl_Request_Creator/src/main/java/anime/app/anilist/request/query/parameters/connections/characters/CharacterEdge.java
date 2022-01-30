@@ -11,7 +11,6 @@ import anime.app.anilist.request.query.parameters.connections.staff.StaffRoleTyp
 import anime.app.anilist.request.query.parameters.connections.staff.StaffSort;
 import lombok.Getter;
 
-import java.util.Arrays;
 import java.util.Set;
 
 @Getter
@@ -77,7 +76,7 @@ public class CharacterEdge {
 		public CharacterEdgeBuilder voiceActors(Staff staff, StaffSort... staffSort) {
 			characterEdge.add(QueryParameterUtils.combineIntoStringField(
 					"voiceActors",
-					QueryParameterUtils.combineIntoStringArgumentWithBracket(CommonParameterFieldNames.SORT, Arrays.toString(staffSort)),
+					QueryParameterUtils.combineIntoStringArgumentWithBracket(CommonParameterFieldNames.SORT, staffSort),
 					staff.getStaffWithoutFieldName()
 			));
 			return this;
@@ -88,7 +87,7 @@ public class CharacterEdge {
 					"voiceActors",
 					QueryParameterUtils.buildStringArguments(
 							QueryParameterUtils.combineIntoStringArgumentNoBracket("language", language.name()),
-							QueryParameterUtils.combineIntoStringArgumentNoBracket("sort", Arrays.toString(staffSort))
+							QueryParameterUtils.combineIntoStringArgumentNoBracket("sort", staffSort)
 					),
 					staff.getStaffWithoutFieldName()
 			));
@@ -112,7 +111,7 @@ public class CharacterEdge {
 		public CharacterEdgeBuilder voiceActorsRoles(StaffRoleType roleType, StaffSort... staffSort) {
 			characterEdge.add(QueryParameterUtils.combineIntoStringField(
 					"voiceActorsRoles",
-					QueryParameterUtils.combineIntoStringArgumentWithBracket(CommonParameterFieldNames.SORT, Arrays.toString(staffSort)),
+					QueryParameterUtils.combineIntoStringArgumentWithBracket(CommonParameterFieldNames.SORT, staffSort),
 					roleType.getStaffRoleTypeStringWithoutFieldName()
 			));
 			return this;
@@ -123,7 +122,7 @@ public class CharacterEdge {
 					"voiceActorsRoles",
 					QueryParameterUtils.buildStringArguments(
 							QueryParameterUtils.combineIntoStringArgumentNoBracket("language", language.name()),
-							QueryParameterUtils.combineIntoStringArgumentNoBracket("sort", Arrays.toString(staffSort))
+							QueryParameterUtils.combineIntoStringArgumentNoBracket("sort", staffSort)
 					),
 					roleType.getStaffRoleTypeStringWithoutFieldName()
 			));

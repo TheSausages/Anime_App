@@ -27,7 +27,6 @@ import anime.app.anilist.request.query.parameters.media.MediaStreamingEpisodes;
 import anime.app.anilist.request.query.parameters.media.MediaTitle;
 import lombok.Getter;
 
-import java.util.Arrays;
 import java.util.Set;
 
 @Getter
@@ -215,7 +214,7 @@ public class Field {
 		public FieldBuilder studios(StudioConnection studioConnection, StudioSort... sorts) {
 			fieldParameters.add(QueryParameterUtils.combineIntoStringField(
 					"studios",
-					QueryParameterUtils.combineIntoStringArgumentWithBracket("sort",  Arrays.toString(sorts)),
+					QueryParameterUtils.combineIntoStringArgumentWithBracket("sort",  sorts),
 					studioConnection.getStudioConnectionWithoutFieldName()
 			));
 			return this;

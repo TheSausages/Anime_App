@@ -1528,7 +1528,7 @@ class MediaTest {
 		void mediaBuilder_FormatInSingle_ReturnCorrectString() {
 			//given
 			MediaFormat[] format = new MediaFormat[] {MediaFormat.TV};
-			Map<String, Object> expectedParameters = Map.of("format_in", Arrays.toString(format));
+			Map<String, Object> expectedParameters = Map.of("format_in", format);
 			Set<String> expectedQueryParameters = Set.of(
 					"$format_in: [MediaFormat]"
 			);
@@ -1564,7 +1564,7 @@ class MediaTest {
 		void mediaBuilder_FormatInMany_ReturnCorrectString() {
 			//given
 			MediaFormat[] format = new MediaFormat[] {MediaFormat.TV, MediaFormat.OVA};
-			Map<String, Object> expectedParameters = Map.of("format_in", Arrays.toString(format));
+			Map<String, Object> expectedParameters = Map.of("format_in", format);
 			Set<String> expectedQueryParameters = Set.of(
 					"$format_in: [MediaFormat]"
 			);
@@ -1600,7 +1600,7 @@ class MediaTest {
 		void mediaBuilder_FormatNotInSingle_ReturnCorrectString() {
 			//given
 			MediaFormat[] format = new MediaFormat[] {MediaFormat.TV};
-			Map<String, Object> expectedParameters = Map.of("format_not_in", Arrays.toString(format));
+			Map<String, Object> expectedParameters = Map.of("format_not_in", format);
 			Set<String> expectedQueryParameters = Set.of(
 					"$format_not_in: [MediaFormat]"
 			);
@@ -1636,7 +1636,7 @@ class MediaTest {
 		void mediaBuilder_FormatNotInMany_ReturnCorrectString() {
 			//given
 			MediaFormat[] format = new MediaFormat[] {MediaFormat.TV, MediaFormat.OVA};
-			Map<String, Object> expectedParameters = Map.of("format_not_in", Arrays.toString(format));
+			Map<String, Object> expectedParameters = Map.of("format_not_in", format);
 			Set<String> expectedQueryParameters = Set.of(
 					"$format_not_in: [MediaFormat]"
 			);
@@ -1708,7 +1708,7 @@ class MediaTest {
 		void mediaBuilder_StatusInSignle_ReturnCorrectString() {
 			//given
 			MediaStatus[] status = new MediaStatus[] {MediaStatus.FINISHED};
-			Map<String, Object> expectedParameters = Map.of("status_in", Arrays.toString(status));
+			Map<String, Object> expectedParameters = Map.of("status_in", status);
 			Set<String> expectedQueryParameters = Set.of(
 					"$status_in: [MediaStatus]"
 			);
@@ -1744,7 +1744,7 @@ class MediaTest {
 		void mediaBuilder_StatusInManyMany_ReturnCorrectString() {
 			//given
 			MediaStatus[] status = new MediaStatus[] {MediaStatus.FINISHED, MediaStatus.HIATUS};
-			Map<String, Object> expectedParameters = Map.of("status_in", Arrays.toString(status));
+			Map<String, Object> expectedParameters = Map.of("status_in", status);
 			Set<String> expectedQueryParameters = Set.of(
 					"$status_in: [MediaStatus]"
 			);
@@ -1780,7 +1780,7 @@ class MediaTest {
 		void mediaBuilder_StatusNotInSignle_ReturnCorrectString() {
 			//given
 			MediaStatus[] status = new MediaStatus[] {MediaStatus.FINISHED};
-			Map<String, Object> expectedParameters = Map.of("status_not_in", Arrays.toString(status));
+			Map<String, Object> expectedParameters = Map.of("status_not_in", status);
 			Set<String> expectedQueryParameters = Set.of(
 					"$status_not_in: [MediaStatus]"
 			);
@@ -1816,7 +1816,7 @@ class MediaTest {
 		void mediaBuilder_StatusNotInMany_ReturnCorrectString() {
 			//given
 			MediaStatus[] status = new MediaStatus[] {MediaStatus.FINISHED, MediaStatus.CANCELLED};
-			Map<String, Object> expectedParameters = Map.of("status_not_in", Arrays.toString(status));
+			Map<String, Object> expectedParameters = Map.of("status_not_in", status);
 			Set<String> expectedQueryParameters = Set.of(
 					"$status_not_in: [MediaStatus]"
 			);
@@ -2140,7 +2140,7 @@ class MediaTest {
 		void mediaBuilder_GenreInSingle_ReturnCorrectString() {
 			//given
 			MediaGenre[] genre = new MediaGenre[] {MediaGenre.COMEDY};
-			Map<String, Object> expectedParameters = Map.of("genre_in", Arrays.toString(genre));
+			Map<String, Object> expectedParameters = Map.of("genre_in", genre);
 			Set<String> expectedQueryParameters = Set.of(
 					"$genre_in: [String]"
 			);
@@ -2176,7 +2176,7 @@ class MediaTest {
 		void mediaBuilder_GenreInMany_ReturnCorrectString() {
 			//given
 			MediaGenre[] genre = new MediaGenre[] {MediaGenre.COMEDY, MediaGenre.MECHA};
-			Map<String, Object> expectedParameters = Map.of("genre_in", Arrays.toString(genre));
+			Map<String, Object> expectedParameters = Map.of("genre_in", genre);
 			Set<String> expectedQueryParameters = Set.of(
 					"$genre_in: [String]"
 			);
@@ -2212,7 +2212,7 @@ class MediaTest {
 		void mediaBuilder_GenreNotInSingle_ReturnCorrectString() {
 			//given
 			MediaGenre[] genre = new MediaGenre[] {MediaGenre.COMEDY};
-			Map<String, Object> expectedParameters = Map.of("genre_not_in", Arrays.toString(genre));
+			Map<String, Object> expectedParameters = Map.of("genre_not_in", genre);
 			Set<String> expectedQueryParameters = Set.of(
 					"$genre_not_in: [String]"
 			);
@@ -2248,7 +2248,7 @@ class MediaTest {
 		void mediaBuilder_GenreInNotMany_ReturnCorrectString() {
 			//given
 			MediaGenre[] genre = new MediaGenre[] {MediaGenre.COMEDY, MediaGenre.MECHA};
-			Map<String, Object> expectedParameters = Map.of("genre_not_in", Arrays.toString(genre));
+			Map<String, Object> expectedParameters = Map.of("genre_not_in", genre);
 			Set<String> expectedQueryParameters = Set.of(
 					"$genre_not_in: [String]"
 			);
@@ -2284,7 +2284,7 @@ class MediaTest {
 		void mediaBuilder_TagInSingle_ReturnCorrectString() {
 			//given
 			MediaTags[] tags = new MediaTags[] {MediaTags.Meta};
-			Map<String, Object> expectedParameters = Map.of("tag_in", Arrays.toString(tags));
+			Map<String, Object> expectedParameters = Map.of("tag_in", tags);
 			Set<String> expectedQueryParameters = Set.of(
 					"$tag_in: [String]"
 			);
@@ -2320,7 +2320,7 @@ class MediaTest {
 		void mediaBuilder_TagInMany_ReturnCorrectString() {
 			//given
 			MediaTags[] tags = new MediaTags[] {MediaTags.Meta, MediaTags.Go};
-			Map<String, Object> expectedParameters = Map.of("tag_in", Arrays.toString(tags));
+			Map<String, Object> expectedParameters = Map.of("tag_in", tags);
 			Set<String> expectedQueryParameters = Set.of(
 					"$tag_in: [String]"
 			);
@@ -2356,7 +2356,7 @@ class MediaTest {
 		void mediaBuilder_TagNotInSingle_ReturnCorrectString() {
 			//given
 			MediaTags[] tags = new MediaTags[] {MediaTags.Meta};
-			Map<String, Object> expectedParameters = Map.of("tag_not_in", Arrays.toString(tags));
+			Map<String, Object> expectedParameters = Map.of("tag_not_in", tags);
 			Set<String> expectedQueryParameters = Set.of(
 					"$tag_not_in: [String]"
 			);
@@ -2392,7 +2392,7 @@ class MediaTest {
 		void mediaBuilder_TagNotInMany_ReturnCorrectString() {
 			//given
 			MediaTags[] tags = new MediaTags[] {MediaTags.Meta, MediaTags.Go};
-			Map<String, Object> expectedParameters = Map.of("tag_not_in", Arrays.toString(tags));
+			Map<String, Object> expectedParameters = Map.of("tag_not_in", tags);
 			Set<String> expectedQueryParameters = Set.of(
 					"$tag_not_in: [String]"
 			);
@@ -2428,7 +2428,7 @@ class MediaTest {
 		void mediaBuilder_LicensedByInSingle_ReturnCorrectString() {
 			//given
 			String[] licensedBy = new String[] {"CloverWorks"};
-			Map<String, Object> expectedParameters = Map.of("licensedBy_in", Arrays.toString(licensedBy));
+			Map<String, Object> expectedParameters = Map.of("licensedBy_in", licensedBy);
 			Set<String> expectedQueryParameters = Set.of(
 					"$licensedBy_in: [String]"
 			);
@@ -2464,7 +2464,7 @@ class MediaTest {
 		void mediaBuilder_LicensedByInMany_ReturnCorrectString() {
 			//given
 			String[] licensedBy = new String[] {"CloverWorks", "A1-Pictures"};
-			Map<String, Object> expectedParameters = Map.of("licensedBy_in", Arrays.toString(licensedBy));
+			Map<String, Object> expectedParameters = Map.of("licensedBy_in", licensedBy);
 			Set<String> expectedQueryParameters = Set.of(
 					"$licensedBy_in: [String]"
 			);
@@ -2716,7 +2716,7 @@ class MediaTest {
 		void mediaBuilder_SourceInSingle_ReturnCorrectString() {
 			//given
 			MediaSource[] source = new MediaSource[] {MediaSource.LIGHT_NOVEL};
-			Map<String, Object> expectedParameters = Map.of("source_in", Arrays.toString(source));
+			Map<String, Object> expectedParameters = Map.of("source_in", source);
 			Set<String> expectedQueryParameters = Set.of(
 					"$source_in: [MediaSource]"
 			);
@@ -2752,7 +2752,7 @@ class MediaTest {
 		void mediaBuilder_SourceInMany_ReturnCorrectString() {
 			//given
 			MediaSource[] source = new MediaSource[] {MediaSource.LIGHT_NOVEL, MediaSource.ANIME};
-			Map<String, Object> expectedParameters = Map.of("source_in", Arrays.toString(source));
+			Map<String, Object> expectedParameters = Map.of("source_in", source);
 			Set<String> expectedQueryParameters = Set.of(
 					"$source_in: [MediaSource]"
 			);
@@ -2788,7 +2788,7 @@ class MediaTest {
 		void mediaBuilder_SortSingle_ReturnCorrectString() {
 			//given
 			MediaSort[] sorts = new MediaSort[] {MediaSort.ID};
-			Map<String, Object> expectedParameters = Map.of("sort", Arrays.toString(sorts));
+			Map<String, Object> expectedParameters = Map.of("sort", sorts);
 			Set<String> expectedQueryParameters = Set.of(
 					"$sort: [MediaSort]"
 			);
@@ -2824,7 +2824,7 @@ class MediaTest {
 		void mediaBuilder_SortInMany_ReturnCorrectString() {
 			//given
 			MediaSort[] sorts = new MediaSort[] {MediaSort.ID, MediaSort.SCORE};
-			Map<String, Object> expectedParameters = Map.of("sort", Arrays.toString(sorts));
+			Map<String, Object> expectedParameters = Map.of("sort", sorts);
 			Set<String> expectedQueryParameters = Set.of(
 					"$sort: [MediaSort]"
 			);

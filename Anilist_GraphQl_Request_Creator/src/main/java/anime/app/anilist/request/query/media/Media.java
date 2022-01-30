@@ -314,14 +314,14 @@ public class Media extends QueryElement {
 		public MediaArgumentBuilder formatIn(MediaFormat... formats) {
 			mediaParameters.add(ParameterString.fromString("format_in: $format_in"));
 			queryParameters.add(ParameterString.fromString("$format_in: [MediaFormat]"));
-			parametersValue.putIfAbsent("format_in", Arrays.toString(formats));
+			parametersValue.putIfAbsent("format_in", formats);
 			return this;
 		}
 
 		public MediaArgumentBuilder formatNotIn(MediaFormat... formats) {
 			mediaParameters.add(ParameterString.fromString("format_not_in: $format_not_in"));
 			queryParameters.add(ParameterString.fromString("$format_not_in: [MediaFormat]"));
-			parametersValue.putIfAbsent("format_not_in", Arrays.toString(formats));
+			parametersValue.putIfAbsent("format_not_in", formats);
 			return this;
 		}
 
@@ -335,14 +335,14 @@ public class Media extends QueryElement {
 		public MediaArgumentBuilder statusIn(MediaStatus... statuses) {
 			mediaParameters.add(ParameterString.fromString("status_in: $status_in"));
 			queryParameters.add(ParameterString.fromString("$status_in: [MediaStatus]"));
-			parametersValue.putIfAbsent("status_in", Arrays.toString(statuses));
+			parametersValue.putIfAbsent("status_in", statuses);
 			return this;
 		}
 
 		public MediaArgumentBuilder statusNotIn(MediaStatus... statuses) {
 			mediaParameters.add(ParameterString.fromString("status_not_in: $status_not_in"));
 			queryParameters.add(ParameterString.fromString("$status_not_in: [MediaStatus]"));
-			parametersValue.putIfAbsent("status_not_in", Arrays.toString(statuses));
+			parametersValue.putIfAbsent("status_not_in", statuses);
 			return this;
 		}
 
@@ -405,35 +405,35 @@ public class Media extends QueryElement {
 		public MediaArgumentBuilder genreIn(MediaGenre... genres) {
 			mediaParameters.add(ParameterString.fromString("genre_in: $genre_in"));
 			queryParameters.add(ParameterString.fromString("$genre_in: [String]"));
-			parametersValue.putIfAbsent("genre_in", Arrays.toString(genres));
+			parametersValue.putIfAbsent("genre_in", genres);
 			return this;
 		}
 
 		public MediaArgumentBuilder genreNotIn(MediaGenre... genres) {
 			mediaParameters.add(ParameterString.fromString("genre_not_in: $genre_not_in"));
 			queryParameters.add(ParameterString.fromString("$genre_not_in: [String]"));
-			parametersValue.putIfAbsent("genre_not_in", Arrays.toString(genres));
+			parametersValue.putIfAbsent("genre_not_in", genres);
 			return this;
 		}
 
 		public MediaArgumentBuilder tagIn(MediaTags... tags) {
 			mediaParameters.add(ParameterString.fromString("tag_in: $tag_in"));
 			queryParameters.add(ParameterString.fromString("$tag_in: [String]"));
-			parametersValue.putIfAbsent("tag_in", Arrays.toString(tags));
+			parametersValue.putIfAbsent("tag_in", tags);
 			return this;
 		}
 
 		public MediaArgumentBuilder tagNotIn(MediaTags... tags) {
 			mediaParameters.add(ParameterString.fromString("tag_not_in: $tag_not_in"));
 			queryParameters.add(ParameterString.fromString("$tag_not_in: [String]"));
-			parametersValue.putIfAbsent("tag_not_in", Arrays.toString(tags));
+			parametersValue.putIfAbsent("tag_not_in", tags);
 			return this;
 		}
 
 		public MediaArgumentBuilder licensedByIn(String... licensedBys) {
 			mediaParameters.add(ParameterString.fromString("licensedBy_in: $licensedBy_in"));
 			queryParameters.add(ParameterString.fromString("$licensedBy_in: [String]"));
-			parametersValue.putIfAbsent("licensedBy_in", Arrays.toString(licensedBys));
+			parametersValue.putIfAbsent("licensedBy_in", licensedBys);
 			return this;
 		}
 
@@ -482,14 +482,14 @@ public class Media extends QueryElement {
 		public MediaArgumentBuilder sourceIn(MediaSource... source) {
 			mediaParameters.add(ParameterString.fromString("source_in: $source_in"));
 			queryParameters.add(ParameterString.fromString("$source_in: [MediaSource]"));
-			parametersValue.putIfAbsent("source_in", Arrays.toString(source));
+			parametersValue.putIfAbsent("source_in", source);
 			return this;
 		}
 
 		public MediaArgumentBuilder sort(MediaSort... source) {
 			mediaParameters.add(ParameterString.fromString("sort: $sort"));
 			queryParameters.add(ParameterString.fromString("$sort: [MediaSort]"));
-			parametersValue.putIfAbsent("sort", Arrays.toString(source));
+			parametersValue.putIfAbsent("sort", source);
 			return this;
 		}
 
