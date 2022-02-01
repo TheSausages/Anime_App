@@ -3,7 +3,7 @@ version: '3.9'
 services:
   postgresApp:
     image: postgres:14.1-alpine
-    container_name: App-Database
+    container_name: App_Database
     restart: always
     ports:
       - "5432:5432"
@@ -21,7 +21,7 @@ services:
 
   postgresKeycloak:
     image: postgres:14.1-alpine
-    container_name: Keycloak-Database
+    container_name: Keycloak_Database
     restart: always
     ports:
       - "5433:5432"
