@@ -1,5 +1,6 @@
 package anime.app.services.i18n;
 
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -23,15 +24,15 @@ public class I18nService implements I18nServiceInterface {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String getTranslation(String path, Object... parameters) {
-		return source.getMessage(path, parameters, LocaleContextHolder.getLocale());
+	public String getTranslation(@NonNull String path, Object... parameters) {
+		return getTranslation(path, LocaleContextHolder.getLocale(), parameters);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String getTranslation(String path, Locale locale, Object... parameters) {
+	public String getTranslation(@NonNull String path, @NonNull Locale locale, Object... parameters) {
 		return source.getMessage(path, parameters, locale);
 	}
 }

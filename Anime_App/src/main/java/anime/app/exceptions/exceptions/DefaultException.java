@@ -1,6 +1,7 @@
 package anime.app.exceptions.exceptions;
 
 import lombok.Getter;
+import lombok.NonNull;
 
 /**
  * Abstract class for custom errors that don't extend another exception.
@@ -12,7 +13,7 @@ public abstract class DefaultException extends RuntimeException {
 	private final String logMessage;
 	private final String userMessageTranslationKey;
 
-	public DefaultException(String userMessageTranslationKey, String logMessage) {
+	public DefaultException(@NonNull String userMessageTranslationKey, String logMessage) {
 		super(userMessageTranslationKey);
 		this.userMessageTranslationKey = userMessageTranslationKey;
 		this.logMessage = logMessage;
