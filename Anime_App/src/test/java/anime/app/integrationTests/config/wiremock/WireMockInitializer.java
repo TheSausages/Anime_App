@@ -9,8 +9,15 @@ import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.event.ContextClosedEvent;
 
+/**
+ * The address is for anilist is set in property files too!
+ * When changing anything here, check if the property must be changed too.
+ */
 @Getter
 public class WireMockInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
+	//For http://localhost:9090 mock url no path besides / is given
+	public final static String anilistWireMockURL = "/";
+
 	@Override
 	public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
 		if (!configurableApplicationContext.getEnvironment().containsProperty("wire-mock.port")) {
@@ -23,7 +30,6 @@ public class WireMockInitializer implements ApplicationContextInitializer<Config
 				.port(wireMockPort)
 				.extensions(
 						WireMockExtensionSummarizer.getInstance(),
-						WireMockAnimeSearchExtension.getInstance(),
 						WireMockPageExtension.getInstance()
 				)
 				.notifier(new ConsoleNotifier(true))

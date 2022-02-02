@@ -66,7 +66,7 @@ public class WireMockExtensionSummarizer extends ResponseTransformer {
 	@Override
 	public Response transform(Request request, Response response, FileSource files, Parameters parameters) {
 		synchronized (WireMockExtensionSummarizer.class) {
-			//transform th response using each transformer
+			//transform the response using each transformer
 			for (ResponseTransformer transformer : transformers) {
 				response = transformer.transform(request, response, files, parameters);
 			}

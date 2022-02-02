@@ -12,6 +12,7 @@ import org.springframework.web.reactive.function.client.WebClient;
  *     <li>The Anilist web client uses {@link anime.app.configuration.properties.AnilistProperties}</li>
  *     <li>The Keycloak web client uses {@link KeycloakUserServerProperties}</li>
  * </ul>
+ * Besides a basic URL, no other settings are changed.
  */
 @Configuration
 public class WebClientsConfiguration {

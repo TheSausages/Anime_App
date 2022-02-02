@@ -19,6 +19,10 @@ import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.Objects;
 
+/**
+ * Health indicator for the Anilist GraphQl api. Checks its availability using {@link AnilistHealthIndicator#ANILIST_STATUS_QUERY}.
+ * Used in the 'health' actuator endpoint.
+ */
 @Component
 public class AnilistHealthIndicator implements HealthIndicator {
 	private static final BodyInserter<JsonNode, ReactiveHttpOutputMessage> ANILIST_STATUS_QUERY = BodyInserters.fromValue(

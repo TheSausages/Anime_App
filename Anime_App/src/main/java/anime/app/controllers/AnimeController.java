@@ -9,16 +9,21 @@ import anime.app.services.anilist.AnilistServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 
+import javax.validation.Validator;
+
+
 /**
  * Controller for all endpoints connected to anime.
  */
 @RestControllerWithBasePath
 public class AnimeController implements AnimeApi {
 	private final AnilistServiceInterface anilistService;
+	private final Validator validator;
 
 	@Autowired
-	AnimeController(AnilistServiceInterface anilistService) {
+	AnimeController(AnilistServiceInterface anilistService, Validator validator) {
 		this.anilistService = anilistService;
+		this.validator = validator;
 	}
 
 	/**
@@ -26,7 +31,10 @@ public class AnimeController implements AnimeApi {
 	 */
 	@Override
 	public ResponseEntity<DetailedAnimeDTO> getAnimeByAnimeId(Long animeId) {
-		return ResponseEntity.ok(anilistService.getAnimeById(animeId));
+		DetailedAnimeDTO animeInfo = anilistService.getAnimeById(animeId);
+		validator.validate(animeInfo);
+
+		return ResponseEntity.ok(animeInfo);
 	}
 
 	/**
@@ -34,7 +42,10 @@ public class AnimeController implements AnimeApi {
 	 */
 	@Override
 	public ResponseEntity<AnilistPageDTO> getTopAnimeOfAllTime(Long pageNumber) {
-		return ResponseEntity.ok(anilistService.getTopAnimeOfAllTime(pageNumber));
+		AnilistPageDTO pageDTO = anilistService.getTopAnimeOfAllTime(pageNumber);
+		validator.validate(pageDTO);
+
+		return ResponseEntity.ok(pageDTO);
 	}
 
 	/**
@@ -42,7 +53,10 @@ public class AnimeController implements AnimeApi {
 	 */
 	@Override
 	public ResponseEntity<AnilistPageDTO> getTopAiringAnime(Long pageNumber) {
-		return ResponseEntity.ok(anilistService.getTopAiring(pageNumber));
+		AnilistPageDTO pageDTO = anilistService.getTopAiring(pageNumber);
+		validator.validate(pageDTO);
+
+		return ResponseEntity.ok(pageDTO);
 	}
 
 	/**
@@ -50,7 +64,10 @@ public class AnimeController implements AnimeApi {
 	 */
 	@Override
 	public ResponseEntity<AnilistPageDTO> getTopAnimeMovies(Long pageNumber) {
-		return ResponseEntity.ok(anilistService.getTopAnimeMovies(pageNumber));
+		AnilistPageDTO pageDTO = anilistService.getTopAnimeMovies(pageNumber);
+		validator.validate(pageDTO);
+
+		return ResponseEntity.ok(pageDTO);
 	}
 
 	/**
@@ -58,7 +75,10 @@ public class AnimeController implements AnimeApi {
 	 */
 	@Override
 	public ResponseEntity<AnilistPageDTO> searchForAnimeUsingQuery(Long pageNumber, AnimeQueryDTO animeQueryDTO) {
-		return ResponseEntity.ok(anilistService.searchUsingQuery(animeQueryDTO, pageNumber));
+		AnilistPageDTO pageDTO = anilistService.searchUsingQuery(animeQueryDTO, pageNumber);
+		validator.validate(pageDTO);
+
+		return ResponseEntity.ok(pageDTO);
 	}
 
 	/**

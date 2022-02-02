@@ -17,6 +17,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.test.web.servlet.MockMvc;
@@ -92,6 +93,7 @@ import static org.mockito.Mockito.when;
 @Testcontainers
 @ComponentScan(basePackageClasses = { KeycloakSecurityComponents.class, KeycloakSpringBootConfigResolver.class })
 @Sql(scripts = {"classpath:schema.sql", "classpath:data-test.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+@TestPropertySource(locations = "classpath:application-test-withDatabase.properties")
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
 public abstract class BaseIntegrationTest {
 	private final static Slf4jLogConsumer containerLogger = new Slf4jLogConsumer(LoggerFactory.getLogger(BaseIntegrationTest.class));
@@ -155,8 +157,6 @@ public abstract class BaseIntegrationTest {
 	 */
 	@DynamicPropertySource
 	static void registerContainerProperties(DynamicPropertyRegistry registry) {
-		//The anilist api should be set here to the wireMock address
-		registry.add("anilist.apiUrl", () -> "http://localhost:9090");
 		registry.add("keycloak.auth-server-url", keycloak::getAuthServerUrl);
 		registry.add("keycloakrealm.master.url", keycloak::getAuthServerUrl);
 		registry.add("keycloakrealm.userserver.url", () -> String.format("%s/realms/Keycloak_Instance/protocol/openid-connect", keycloak.getAuthServerUrl()));

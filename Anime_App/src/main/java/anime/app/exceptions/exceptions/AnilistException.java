@@ -7,6 +7,7 @@ import java.util.Locale;
 
 /**
  * This exception occurs when a request to the Anilist Api returns an error.
+ * @see anime.app.services.anilist.AnilistService
  */
 @ResponseStatus(HttpStatus.SERVICE_UNAVAILABLE)
 public class AnilistException extends DefaultException {

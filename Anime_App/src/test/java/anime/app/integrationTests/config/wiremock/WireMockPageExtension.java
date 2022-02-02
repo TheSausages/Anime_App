@@ -1,18 +1,14 @@
 package anime.app.integrationTests.config.wiremock;
 
-import anime.app.anilist.request.query.common.QueryElements;
 import anime.app.configuration.beans.ObjectMapperConfiguration;
-import anime.app.integrationTests.config.GraphQlUtils;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.github.tomakehurst.wiremock.common.FileSource;
 import com.github.tomakehurst.wiremock.extension.Parameters;
 import com.github.tomakehurst.wiremock.extension.ResponseTransformer;
 import com.github.tomakehurst.wiremock.http.Request;
 import com.github.tomakehurst.wiremock.http.Response;
 
-import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -65,22 +61,19 @@ public class WireMockPageExtension extends ResponseTransformer {
 
 			JsonNode requestBody = mapper.readTree(request.getBody());
 
-			if (!requestBody.get("variables").asText().contains("page")) {
-				throw new AssertionError("Request body does not have a 'page' element");
+			if (!requestBody.has("query") || requestBody.get("query").asText().isBlank()) {
+				throw new AssertionError("Request body does not have a 'query' element");
 			}
 
-			JsonNode responseBody = mapper.readTree(response.getBody()).get("data").get("Page");
+			if (!requestBody.has("variables") || !requestBody.get("variables").isContainerNode()) {
+				throw new AssertionError("Request body does not have a 'variables' element");
+			}
 
-			Map<String, Object> variables = GraphQlUtils.readStringIntoStringKeyMap(
-					requestBody.get("variables").asText(),
-					mapper);
-			((ObjectNode) responseBody).put("page", mapper.writeValueAsString(variables.get("page")));
+			if (!requestBody.get("query").asText().contains("Page")) {
+				throw new AssertionError("Request body does not have a 'Page' element");
+			}
 
-			return Response.Builder.like(response).but()
-					.body(mapper.writeValueAsString(GraphQlUtils.addElementToCreateGraphQlQueryAnwser(
-							responseBody,
-							QueryElements.Page,
-							mapper))).build();
+			return response;
 		} catch (Exception e) {
 			throw new AssertionError(e.getMessage(), e);
 		}

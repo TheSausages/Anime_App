@@ -1,5 +1,6 @@
 package anime.app.configuration.beans;
 
+import anime.app.utils.SpringBootTestWithoutDatabase;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -7,18 +8,18 @@ import org.junit.jupiter.api.Test;
 import org.keycloak.admin.client.Keycloak;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
 
+import javax.validation.Validator;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTestWithoutDatabase
 class BeanCreationTest {
 
 	private final Keycloak keycloak;
@@ -26,16 +27,32 @@ class BeanCreationTest {
 	private final ObjectMapper mapper;
 	private final WebClient anilistWebClient;
 	private final WebClient keycloakWebClient;
+	private final Validator validator;
 
 	@Autowired
-	BeanCreationTest(Keycloak keycloak, LocaleResolver resolver, ObjectMapper mapper,
+	BeanCreationTest(Keycloak keycloak, LocaleResolver resolver, ObjectMapper mapper, Validator validator,
 	                 @Qualifier(WebClientsConfiguration.anilistWebClientBeanName) WebClient anilistWebClient,
 	                 @Qualifier(WebClientsConfiguration.keycloakWebClientBeanName) WebClient keycloakWebClient) {
 		this.keycloak = keycloak;
 		this.resolver = resolver;
+		this.validator = validator;
 		this.anilistWebClient = anilistWebClient;
 		this.mapper = mapper;
 		this.keycloakWebClient = keycloakWebClient;
+	}
+
+	@Test
+	void validator__CheckIfCorrectBeanCreated() {
+		//given
+
+		//when
+
+		//then
+		assertThat(validator, allOf(
+				notNullValue(),
+				instanceOf(Validator.class),
+				instanceOf(ValidatorConfiguration.ThrowingValidator.class)
+		));
 	}
 
 	@Test
@@ -49,8 +66,6 @@ class BeanCreationTest {
 				notNullValue(),
 				instanceOf(WebClient.class)
 		));
-
-
 	}
 
 	@Test

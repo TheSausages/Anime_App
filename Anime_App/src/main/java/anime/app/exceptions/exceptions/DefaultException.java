@@ -18,4 +18,13 @@ public abstract class DefaultException extends RuntimeException {
 		this.userMessageTranslationKey = userMessageTranslationKey;
 		this.logMessage = logMessage;
 	}
+
+	@Override
+	public String toString() {
+		return "DefaultException {" +
+				"logMessage = " + logMessage +
+				"\n" +
+				"userMessageTranslationKey = " + userMessageTranslationKey +
+				"\n}";
+	}
 }

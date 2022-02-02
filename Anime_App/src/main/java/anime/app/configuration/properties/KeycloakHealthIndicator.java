@@ -9,6 +9,10 @@ import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.stereotype.Component;
 
+/**
+ * Health indicator for the Keycloak server. Checks its availability using the {@link Keycloak} bean.
+ * Used in the 'health' actuator endpoint.
+ */
 @Component
 public class KeycloakHealthIndicator implements HealthIndicator {
 	private final Keycloak keycloak;
