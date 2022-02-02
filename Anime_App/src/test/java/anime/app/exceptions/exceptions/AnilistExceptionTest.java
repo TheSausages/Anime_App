@@ -11,10 +11,28 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class AnilistExceptionTest {
 
 	@Test
-	void animistException_NullTranslationKey_Exception() {
+	void anilistException_NullTranslationKey_Exception() {
 		//given
 		String translationKey = null;
 		Locale originalLocale = Locale.US;
+
+		//when
+		Exception exception = assertThrows(NullPointerException.class, () ->
+				new AnilistException(translationKey, originalLocale)
+		);
+
+		//then
+		assertThat(exception, allOf(
+				notNullValue(),
+				instanceOf(NullPointerException.class)
+		));
+	}
+
+	@Test
+	void anilistException_NullLocale_Exception() {
+		//given
+		String translationKey = "Key";
+		Locale originalLocale = null;
 
 		//when
 		Exception exception = assertThrows(NullPointerException.class, () ->

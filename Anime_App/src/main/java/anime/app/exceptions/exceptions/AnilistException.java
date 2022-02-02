@@ -1,5 +1,6 @@
 package anime.app.exceptions.exceptions;
 
+import lombok.NonNull;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
@@ -14,12 +15,12 @@ public class AnilistException extends DefaultException {
 	private final static String logMessage = "Anilist Exception, no message given";
 	private final Locale originalLocale;
 
-	public AnilistException(String userMessageTranslationKey, Locale originalLocale) {
+	public AnilistException(String userMessageTranslationKey, @NonNull Locale originalLocale) {
 		super(userMessageTranslationKey, logMessage);
 		this.originalLocale = originalLocale;
 	}
 
-	public AnilistException(String userMessageTranslationKey, Locale originalLocale, String logMessage) {
+	public AnilistException(String userMessageTranslationKey, @NonNull Locale originalLocale, String logMessage) {
 		super(userMessageTranslationKey, logMessage);
 		this.originalLocale = originalLocale;
 	}

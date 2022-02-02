@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a85f17e-c8b0-481b-a543-783256245f43" name="Changes" comment="Refactor: enables dynamic log level change">
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/user/Achievement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/user/AchievementIdEnum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/user/User.java" afterDir="false" />
+    <list default="true" id="9a85f17e-c8b0-481b-a543-783256245f43" name="Changes" comment="Addition: added achievements and users classes">
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/ValidationExceptionTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/resources/schema.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/AnilistException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/AnilistException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/AnilistExceptionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/AnilistExceptionTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,8 +56,8 @@
         <option value="Enum" />
         <option value="Interface" />
         <option value="AnnotationType" />
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -132,7 +131,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="jdk.selected.JAVA_MODULE" value="14" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Anime_App/src/test/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15527344" />
@@ -155,10 +154,10 @@
       <recent name="C:\Users\Kacper\IdeaProjects\Anime_App_Project\Anime_App_Openapi_Generation\templates\java" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="anime.app.exceptions.exceptions" />
       <recent name="anime.app.configuration.beans" />
       <recent name="anime.app.services.anilist" />
       <recent name="anime.app.services.i18n" />
-      <recent name="anime.app.exceptions.exceptions" />
       <recent name="anime.app.anilist.request.query.page" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -176,7 +175,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Compound.Run Local">
+  <component name="RunManager" selected="Gradle.Tests in 'Anime_App_Project.Anime_App.test'">
     <configuration name="Run Local With Openapi Generation" type="CompoundRunConfigurationType">
       <toRun name="compose/basic-docker-compose.yml: Compose Deployment" type="docker-deploy" />
       <toRun name="Anime_App_Project With Generation [Anime_App:bootRun]" type="GradleRunConfiguration" />
@@ -473,7 +472,10 @@
       <workItem from="1642849733295" duration="5575000" />
       <workItem from="1643471973667" duration="18543000" />
       <workItem from="1643797295947" duration="25005000" />
-      <workItem from="1643826583212" duration="1045000" />
+      <workItem from="1643826583212" duration="1235000" />
+      <workItem from="1643827857375" duration="26000" />
+      <workItem from="1643827929755" duration="43000" />
+      <workItem from="1643828102595" duration="418000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit, added project with 3 modules">
       <created>1641596733768</created>
@@ -776,7 +778,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643826449351</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Addition: added achievements and users classes">
+      <created>1643827798299</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1643827798299</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -794,7 +803,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactor: small correction in review tests, Addition: added Recommendations" />
     <MESSAGE value="Refactor: Huge update to all classes and tests" />
     <MESSAGE value="Refactor: Updated private static final variables to uppercase (as per convention)" />
     <MESSAGE value="Refactor: Small Update to ParameterString" />
@@ -819,7 +827,8 @@
     <MESSAGE value="Refactor: Cleanup, added throwing validator, added a bit of documentation" />
     <MESSAGE value="Refactor: Added a bit of logging" />
     <MESSAGE value="Refactor: enables dynamic log level change" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor: enables dynamic log level change" />
+    <MESSAGE value="Addition: added achievements and users classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Addition: added achievements and users classes" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
