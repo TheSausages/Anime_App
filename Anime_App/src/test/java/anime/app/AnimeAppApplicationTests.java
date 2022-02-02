@@ -1,12 +1,11 @@
 package anime.app;
 
-import org.junit.jupiter.api.Disabled;
+import anime.app.integrationTests.config.BaseIntegrationTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@Disabled("Until database and keycloak connections are made")
 @SpringBootTest
-class AnimeAppApplicationTests {
+class AnimeAppApplicationTests extends BaseIntegrationTest {
 
 	@Test
 	void contextLoads() {

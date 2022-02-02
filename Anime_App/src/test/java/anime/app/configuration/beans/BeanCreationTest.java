@@ -18,7 +18,7 @@ import java.util.Locale;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class BeanCreationTest {
 
 	private final Keycloak keycloak;
@@ -29,8 +29,8 @@ class BeanCreationTest {
 
 	@Autowired
 	BeanCreationTest(Keycloak keycloak, LocaleResolver resolver, ObjectMapper mapper,
-	                 @Qualifier("anilistWebClient") WebClient anilistWebClient,
-	                 @Qualifier("keycloakWebClient") WebClient keycloakWebClient) {
+	                 @Qualifier(WebClientsConfiguration.anilistWebClientBeanName) WebClient anilistWebClient,
+	                 @Qualifier(WebClientsConfiguration.keycloakWebClientBeanName) WebClient keycloakWebClient) {
 		this.keycloak = keycloak;
 		this.resolver = resolver;
 		this.anilistWebClient = anilistWebClient;

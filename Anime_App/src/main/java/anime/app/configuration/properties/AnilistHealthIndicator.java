@@ -3,6 +3,7 @@ package anime.app.configuration.properties;
 import anime.app.anilist.request.query.Query;
 import anime.app.anilist.request.query.media.Field;
 import anime.app.anilist.request.query.media.Media;
+import anime.app.configuration.beans.WebClientsConfiguration;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -30,7 +31,7 @@ public class AnilistHealthIndicator implements HealthIndicator {
 	private final AnilistProperties anilistProperties;
 
 	@Autowired
-	AnilistHealthIndicator(@Qualifier("anilistWebClient") WebClient anilistWenClient, AnilistProperties anilistProperties) {
+	AnilistHealthIndicator(@Qualifier(WebClientsConfiguration.anilistWebClientBeanName) WebClient anilistWenClient, AnilistProperties anilistProperties) {
 		this.anilistWebClient = anilistWenClient;
 		this.anilistProperties = anilistProperties;
 	}

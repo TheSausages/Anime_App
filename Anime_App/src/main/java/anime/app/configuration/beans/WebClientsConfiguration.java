@@ -15,6 +15,9 @@ import org.springframework.web.reactive.function.client.WebClient;
  */
 @Configuration
 public class WebClientsConfiguration {
+	public final static String anilistWebClientBeanName = "anilistWebClient";
+	public final static String keycloakWebClientBeanName = "keycloakWebClient";
+
 	private final AnilistProperties anilistProperties;
 	private final KeycloakUserServerProperties keycloakProperties;
 
@@ -24,12 +27,12 @@ public class WebClientsConfiguration {
 		this.keycloakProperties = keycloakProperties;
 	}
 
-	@Bean(name = "anilistWebClient")
+	@Bean(name = anilistWebClientBeanName)
 	WebClient anilistWebClient() {
 		return WebClient.create(anilistProperties.getApiUrl());
 	}
 
-	@Bean(name = "keycloakWebClient")
+	@Bean(name = keycloakWebClientBeanName)
 	WebClient keycloakWebClient() {
 		return WebClient.create(keycloakProperties.getUrl());
 	}

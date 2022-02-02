@@ -2,6 +2,16 @@
 <project version="4">
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/Anime_App/src/main/resources/achievements" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Anime_App/src/test/java/anime/app/integrationTests/config/BaseIntegrationTest.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Anime_App/src/test/java/anime/app/integrationTests/config/GraphQlUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Anime_App/src/test/java/anime/app/integrationTests/config/TestConstants.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Anime_App/src/test/java/anime/app/integrationTests/config/keycloakprincipal/ChangePrincipalToUserId.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Anime_App/src/test/java/anime/app/integrationTests/config/keycloakprincipal/KeycloakPrincipalByUserId.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Anime_App/src/test/java/anime/app/integrationTests/config/wiremock/WireMockAnimeSearchExtension.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Anime_App/src/test/java/anime/app/integrationTests/config/wiremock/WireMockExtensionSummarizer.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Anime_App/src/test/java/anime/app/integrationTests/config/wiremock/WireMockInitializer.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Anime_App/src/test/java/anime/app/integrationTests/config/wiremock/WireMockPageExtension.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Anime_App/src/test/resources/data-test.sql" charset="UTF-8" />
     <file url="PROJECT" charset="windows-1250" />
   </component>
 </project>

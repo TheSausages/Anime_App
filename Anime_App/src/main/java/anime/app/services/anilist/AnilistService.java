@@ -18,6 +18,7 @@ import anime.app.anilist.request.query.parameters.fuzzyDate.FuzzyDateField;
 import anime.app.anilist.request.query.parameters.fuzzyDate.FuzzyDateFieldParameter;
 import anime.app.anilist.request.query.parameters.fuzzyDate.FuzzyDateValue;
 import anime.app.anilist.request.query.parameters.media.*;
+import anime.app.configuration.beans.WebClientsConfiguration;
 import anime.app.exceptions.exceptions.AnilistException;
 import anime.app.openapi.model.*;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -44,7 +45,7 @@ import java.util.Objects;
 public class AnilistService implements AnilistServiceInterface {
 	private final WebClient client;
 
-	AnilistService(@Qualifier("anilistWebClient") WebClient anilistWenClient) {
+	AnilistService(@Qualifier(WebClientsConfiguration.anilistWebClientBeanName) WebClient anilistWenClient) {
 		this.client = anilistWenClient;
 	}
 
