@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a85f17e-c8b0-481b-a543-783256245f43" name="Changes" comment="Addition: added database schema and example data">
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/configuration/beans/LocaleResolverConfigurationTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/AnilistExceptionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/i18n/I18nServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/test/resources/application-test.properties" afterDir="false" />
+    <list default="true" id="9a85f17e-c8b0-481b-a543-783256245f43" name="Changes" comment="Refactor: enables dynamic log level change">
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/user/Achievement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/user/AchievementIdEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/user/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/configuration/beans/LocaleResolverConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/configuration/beans/LocaleResolverConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/DefaultException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/DefaultException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/i18n/I18nService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/i18n/I18nService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/resources/schema.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,8 +57,8 @@
         <option value="Enum" />
         <option value="Interface" />
         <option value="AnnotationType" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -98,6 +95,7 @@
     <option name="myId2FirstActivated">
       <map>
         <entry key="JPA Structure" value="true" />
+        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
         <entry key="com.haulmont.jpb.jpaPalette" value="true" />
         <entry key="com.haulmont.jpb.jpaStructure" value="true" />
       </map>
@@ -105,7 +103,8 @@
     <option name="myId2Visible">
       <map>
         <entry key="JPA Structure" value="false" />
-        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
+        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
         <entry key="com.haulmont.jpb.jpaStructure" value="false" />
       </map>
     </option>
@@ -143,10 +142,10 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Kacper\IdeaProjects\Anime_App_Project\Anime_App\src\test\resources" />
+      <recent name="C:\Users\Kacper\IdeaProjects\Anime_App_Project\Anime_App\src\test\java\anime\app\integrationTests\config" />
       <recent name="C:\Users\Kacper\IdeaProjects\Anime_App_Project\docker\compose" />
       <recent name="C:\Users\Kacper\IdeaProjects\Anime_App_Project\docker\keycloak" />
       <recent name="C:\Users\Kacper\IdeaProjects\Anime_App_Project\Anilist_GraphQl_Request_Creator\src\main\java\anime\app\anilist\request\query\parameters\connections" />
-      <recent name="C:\Users\Kacper\IdeaProjects\Anime_App_Project\aaa" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -156,18 +155,18 @@
       <recent name="C:\Users\Kacper\IdeaProjects\Anime_App_Project\Anime_App_Openapi_Generation\templates\java" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="anime.app.configuration.beans" />
+      <recent name="anime.app.services.anilist" />
       <recent name="anime.app.services.i18n" />
       <recent name="anime.app.exceptions.exceptions" />
-      <recent name="anime.app.configuration.beans" />
       <recent name="anime.app.anilist.request.query.page" />
-      <recent name="anime.app.anilist.request.query.parameters" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="anime.app.entities.database.user" />
       <recent name="anime.app.controllers" />
       <recent name="anime.app.anilist.request.query.parameters" />
       <recent name="anime.app.anilist.request.query" />
       <recent name="anime.app.configuration.beans" />
-      <recent name="anime.app.anilist.request.query.parameters.connections.staff" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -177,7 +176,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.Tests in 'Anime_App_Project.Anime_App.test'">
+  <component name="RunManager" selected="Compound.Run Local">
     <configuration name="Run Local With Openapi Generation" type="CompoundRunConfigurationType">
       <toRun name="compose/basic-docker-compose.yml: Compose Deployment" type="docker-deploy" />
       <toRun name="Anime_App_Project With Generation [Anime_App:bootRun]" type="GradleRunConfiguration" />
@@ -188,7 +187,7 @@
       <toRun name="Anime_App_Project [Anime_App:bootRun]" type="GradleRunConfiguration" />
       <method v="2" />
     </configuration>
-    <configuration name="AnilistExceptionTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="AnilistServiceTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -201,7 +200,30 @@
           <list>
             <option value=":Anime_App:test" />
             <option value="--tests" />
-            <option value="&quot;anime.app.exceptions.exceptions.AnilistExceptionTest&quot;" />
+            <option value="&quot;anime.app.services.anilist.AnilistServiceTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="AnimeQueryTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":Anime_App:test" />
+            <option value="--tests" />
+            <option value="&quot;anime.app.services.anilist.AnilistServiceTest$AnilistReturnsPageTests$WithoutErrorTests$AnimeQueryTests&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -279,7 +301,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="BeanCreationTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="BeanCreationTest.validator__CheckIfCorrectBeanCreated" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -292,53 +314,7 @@
           <list>
             <option value=":Anime_App:test" />
             <option value="--tests" />
-            <option value="&quot;anime.app.configuration.beans.BeanCreationTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="I18nServiceTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":Anime_App:test" />
-            <option value="--tests" />
-            <option value="&quot;anime.app.services.i18n.I18nServiceTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="KeycloakConfigurationTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":Anime_App:test" />
-            <option value="--tests" />
-            <option value="&quot;anime.app.configuration.beans.KeycloakConfigurationTest&quot;" />
+            <option value="&quot;anime.app.configuration.beans.BeanCreationTest.validator__CheckIfCorrectBeanCreated&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -360,6 +336,29 @@
         <option name="taskNames">
           <list>
             <option value=":Anime_App:test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="ValidatorConfigurationTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":Anime_App:test" />
+            <option value="--tests" />
+            <option value="&quot;anime.app.configuration.beans.ValidatorConfigurationTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -407,20 +406,20 @@
       <item itemvalue="Gradle.Anime_App_Project [Anime_App:bootRun]" />
       <item itemvalue="Gradle.Anime_App_Project With Generation [Anime_App:bootRun]" />
       <item itemvalue="Gradle.Anime_App_Project [Anime_App_Openapi_Generation:build]" />
-      <item itemvalue="Spring Boot.AnimeAppApplication" />
-      <item itemvalue="Gradle.KeycloakConfigurationTest" />
-      <item itemvalue="Gradle.BeanCreationTest" />
-      <item itemvalue="Gradle.AnilistExceptionTest" />
-      <item itemvalue="Gradle.I18nServiceTest" />
+      <item itemvalue="Gradle.AnilistServiceTest" />
+      <item itemvalue="Gradle.AnimeQueryTests" />
       <item itemvalue="Gradle.Tests in 'Anime_App_Project.Anime_App.test'" />
+      <item itemvalue="Gradle.BeanCreationTest.validator__CheckIfCorrectBeanCreated" />
+      <item itemvalue="Gradle.ValidatorConfigurationTest" />
+      <item itemvalue="Spring Boot.AnimeAppApplication" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.Tests in 'Anime_App_Project.Anime_App.test'" />
-        <item itemvalue="Gradle.I18nServiceTest" />
-        <item itemvalue="Gradle.AnilistExceptionTest" />
-        <item itemvalue="Gradle.BeanCreationTest" />
-        <item itemvalue="Gradle.KeycloakConfigurationTest" />
+        <item itemvalue="Gradle.ValidatorConfigurationTest" />
+        <item itemvalue="Gradle.BeanCreationTest.validator__CheckIfCorrectBeanCreated" />
+        <item itemvalue="Gradle.AnilistServiceTest" />
+        <item itemvalue="Gradle.AnimeQueryTests" />
       </list>
     </recent_temporary>
   </component>
@@ -473,6 +472,8 @@
       <workItem from="1642802129236" duration="6946000" />
       <workItem from="1642849733295" duration="5575000" />
       <workItem from="1643471973667" duration="18543000" />
+      <workItem from="1643797295947" duration="25005000" />
+      <workItem from="1643826583212" duration="1045000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit, added project with 3 modules">
       <created>1641596733768</created>
@@ -733,7 +734,49 @@
       <option name="project" value="LOCAL" />
       <updated>1643753092188</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Addition: started writing tests for components">
+      <created>1643758082527</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1643758082527</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Refactor: typo">
+      <created>1643758137951</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1643758137951</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Addition: added configs for integration tests (ex. contextLoad), added test data">
+      <created>1643802765760</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1643802765760</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Refactor: Cleanup, added throwing validator, added a bit of documentation">
+      <created>1643825587680</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1643825587680</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Refactor: Added a bit of logging">
+      <created>1643825928551</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1643825928551</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Refactor: enables dynamic log level change">
+      <created>1643826449351</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1643826449351</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -751,12 +794,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Addition: added Studio" />
-    <MESSAGE value="Addition: added last studio classes" />
-    <MESSAGE value="Addition: added media trend, Refactor: small name adjustments" />
-    <MESSAGE value="Addition: added api generation for backend with small example" />
-    <MESSAGE value="Addition: added AnilistUser and review" />
-    <MESSAGE value="Refactor: fix for double serialization of discriminator in openapi generator" />
     <MESSAGE value="Refactor: small correction in review tests, Addition: added Recommendations" />
     <MESSAGE value="Refactor: Huge update to all classes and tests" />
     <MESSAGE value="Refactor: Updated private static final variables to uppercase (as per convention)" />
@@ -776,7 +813,13 @@
     <MESSAGE value="Refactor: Small update to build.gradle for openapi module" />
     <MESSAGE value="Refactor: Updated yaml files for fixes and new functionalities" />
     <MESSAGE value="Addition: added database schema and example data" />
-    <option name="LAST_COMMIT_MESSAGE" value="Addition: added database schema and example data" />
+    <MESSAGE value="Addition: started writing tests for components" />
+    <MESSAGE value="Refactor: typo" />
+    <MESSAGE value="Addition: added configs for integration tests (ex. contextLoad), added test data" />
+    <MESSAGE value="Refactor: Cleanup, added throwing validator, added a bit of documentation" />
+    <MESSAGE value="Refactor: Added a bit of logging" />
+    <MESSAGE value="Refactor: enables dynamic log level change" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor: enables dynamic log level change" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">

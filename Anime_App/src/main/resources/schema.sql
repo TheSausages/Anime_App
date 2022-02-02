@@ -16,8 +16,8 @@ drop type if exists posts_status;
 create table users (
     id uuid not null unique primary key,
     username varchar(45) not null unique,
-    watch_time int default 0,
-    achievement_points int default 0
+    watch_time int not null default 0,
+    achievement_points int not null default 0
 );
 comment on table users is 'Table containing basic information on a user. The id is assigned by the keycloak server and copied here.';
 
