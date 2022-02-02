@@ -22,6 +22,7 @@ import anime.app.configuration.beans.WebClientsConfiguration;
 import anime.app.exceptions.exceptions.AnilistException;
 import anime.app.openapi.model.*;
 import com.fasterxml.jackson.databind.JsonNode;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ReactiveHttpOutputMessage;
@@ -42,6 +43,7 @@ import java.util.Objects;
  * Default implementation for the {@link AnilistServiceInterface} interface.
  */
 @Service
+@Log4j2
 public class AnilistService implements AnilistServiceInterface {
 	private final WebClient client;
 
@@ -85,7 +87,11 @@ public class AnilistService implements AnilistServiceInterface {
 					);
 				})
 				.bodyToMono(AnilistResponseDTOPage.class)
-				.flatMap(response -> evaluateResponse(response, originalLocale))
+				.flatMap(response -> evaluateResponse(
+						response,
+						originalLocale,
+						String.format("Successfully requested page %s of top airing anime", pageNumber)
+				))
 				.block()
 				.getData()
 				.getPage();
@@ -126,7 +132,11 @@ public class AnilistService implements AnilistServiceInterface {
 					);
 				})
 				.bodyToMono(AnilistResponseDTOPage.class)
-				.flatMap(response -> evaluateResponse(response, originalLocale))
+				.flatMap(response -> evaluateResponse(
+						response,
+						originalLocale,
+						String.format("Successfully requested page %s of top anime movies", pageNumber)
+				))
 				.block()
 				.getData()
 				.getPage();
@@ -164,7 +174,11 @@ public class AnilistService implements AnilistServiceInterface {
 					);
 				})
 				.bodyToMono(AnilistResponseDTOPage.class)
-				.flatMap(response -> evaluateResponse(response, originalLocale))
+				.flatMap(response -> evaluateResponse(
+						response,
+						originalLocale,
+						String.format("Successfully requested page %s of top anime of all time", pageNumber)
+				))
 				.block()
 				.getData()
 				.getPage();
@@ -263,7 +277,11 @@ public class AnilistService implements AnilistServiceInterface {
 					);
 				})
 				.bodyToMono(AnilistResponseDTOPage.class)
-				.flatMap(response -> evaluateResponse(response, originalLocale))
+				.flatMap(response -> evaluateResponse(
+						response,
+						originalLocale,
+						String.format("Successfully requested page %s using query %s", pageNumber, query)
+				))
 				.block()
 				.getData()
 				.getPage();
@@ -374,7 +392,11 @@ public class AnilistService implements AnilistServiceInterface {
 					);
 				})
 				.bodyToMono(AnilistResponseDTOMedia.class)
-				.flatMap(response -> evaluateResponse(response, originalLocale))
+				.flatMap(response -> evaluateResponse(
+						response,
+						originalLocale,
+						String.format("Successfully requested anime with id %d", id)
+				))
 				.block()
 				.getData()
 				.getMedia();
@@ -391,13 +413,15 @@ public class AnilistService implements AnilistServiceInterface {
 	 * @param <T> The class of the response
 	 * @return If no error occurred, return the response
 	 */
-	private <T> Mono<T> evaluateResponse(T response, Locale originalLocale) {
+	private <T> Mono<T> evaluateResponse(T response, Locale originalLocale, String successLogMessage) {
 		if (Objects.isNull(response)) {
 			return Mono.error(new AnilistException(
 					"anime.anilist-server-no-response",
 					originalLocale
 			));
 		} else {
+			log.info(successLogMessage);
+
 			return Mono.just(response);
 		}
 	}
