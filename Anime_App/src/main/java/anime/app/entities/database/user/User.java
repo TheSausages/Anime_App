@@ -1,5 +1,8 @@
 package anime.app.entities.database.user;
 
+import anime.app.entities.database.anime.AnimeUserInfo;
+import anime.app.entities.database.forum.Post;
+import anime.app.entities.database.forum.Thread;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,6 +32,7 @@ import java.util.UUID;
 public class User {
 	@Id
 	@NotNull(message = "User ID cannot be null")
+	@Column(nullable = false, unique = true)
 	private UUID id;
 
 	@Length(max = 45, message = "Username too long")
@@ -46,6 +50,12 @@ public class User {
 	@PositiveOrZero(message = "Watch time cannot be negative")
 	private int achievementPoints;
 
+	@OneToMany(mappedBy = "creator")
+	private Set<Thread> threads;
+
+	@OneToMany(mappedBy = "creator")
+	private Set<Post> posts;
+
 	@ManyToMany
 	@JoinTable(
 			name = "user_achievements",
@@ -53,4 +63,12 @@ public class User {
 			inverseJoinColumns = {@JoinColumn(name = "achievement_id")}
 	)
 	private Set<Achievement> achievements;
+
+	@OneToMany(
+			mappedBy = "id.user",
+			cascade = CascadeType.ALL,
+			orphanRemoval = true,
+			fetch = FetchType.LAZY
+	)
+	private Set<AnimeUserInfo> animeUserInfo;
 }

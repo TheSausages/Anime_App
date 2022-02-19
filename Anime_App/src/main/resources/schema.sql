@@ -44,7 +44,7 @@ comment on table user_achievements is 'Table creating a many-to-many relationshi
     /* Create tables connected to Anime */
 create table anime (
     id int not null unique primary key check ( id >= 0 ),
-    averageScore numeric(2, 1) not null default 0 check ( averageScore >= 0.0 AND averageScore <= 10.0 ),
+    average_score numeric(2, 1) not null default 0 check ( average_score >= 0.0 AND average_score <= 10.0 ),
     nr_scores int not null default 0 check ( nr_scores >= 0 ),
     nr_favourites int not null default 0 check ( nr_favourites >= 0 ),
     nr_reviews int not null default 0 check ( nr_reviews >= 0 ),
@@ -73,8 +73,8 @@ create table anime_user_infos (
     primary key (user_id, anime_id),
 
     status anime_user_infos_status not null,
-    watch_start date,
-    watch_end date,
+    watch_start date check ( watch_start <= now() OR watch_start is null ),
+    watch_end date check ( watch_end <= now() OR watch_end is null ),
     episodes_seen smallint not null default 0 check ( episodes_seen >= 0 ),
     favourite boolean not null default false,
     grade smallint not null check ( grade > 0 AND grade <= 10 ),
@@ -87,8 +87,8 @@ comment on table anime_user_infos is 'Table used to represent the many-to-many r
     /* Create tables connected to Forum */
 create table forum_categories (
     id smallserial not null unique primary key check ( id >= 0 ),
-    name varchar(45) not null unique,
-    description varchar(150) not null
+    name varchar(45) not null unique check ( trim(name) != '' ),
+    description varchar(150) not null check ( trim(description) != '' )
 );
 comment on table forum_categories is 'Table containing information on a forum category. Each thread can have one category';
 
@@ -97,7 +97,7 @@ create table tags (
     id serial not null unique primary key check ( id >= 0 ),
     name varchar(45) not null check ( trim(name) != '' ),
     importance tags_importance not null default 'LOW',
-    color varchar(18) default 'rgb(166, 166, 166)'
+    color varchar(18) default 'rgb(166, 166, 166)' check ( color ~ '^rgb\(\d{1,3}, \d{1,3}, \d{1,3}\)$' )
 );
 comment on table tags is 'Table containing information on tags a thread can have';
 
@@ -126,8 +126,8 @@ create table thread_user_status (
 
     primary key (user_id, thread_id),
 
-    watched boolean not null default false,
-    blocked boolean not null default false
+    watching boolean not null default false,
+    blocking boolean not null default false
 );
 comment on table thread_user_status is 'Table creating many-to-many relationship between the user and thread tables. Represents a user and his/her relation to a thread';
 
@@ -157,11 +157,13 @@ create table posts (
     creator uuid not null,
     constraint fk_threaduserstatus_user foreign key (creator) references users(id),
     thread int not null check ( thread >= 0 ),
-    constraint fk_threadtags_thread foreign key (thread) references threads(id)
+    constraint fk_threadtags_thread foreign key (thread) references threads(id),
+    answer_to int check ( answer_to >= 0 AND answer_to != id ),
+    constraint fk_postresponses_response foreign key (answer_to) references posts(id)
 );
 comment on table thread_tags is 'Table containing all information on a post';
 
-create table post_responses (
+/*create table post_responses (
     post_id int not null check ( post_id >= 0 ),
     constraint fk_postresponses_post foreign key (post_id) references posts(id),
 
@@ -170,7 +172,7 @@ create table post_responses (
 
     primary key (post_id, response_id)
 );
-comment on table post_responses is 'Table connecting a post with its replies';
+comment on table post_responses is 'Table connecting a post with its replies';*/
 
 create table post_user_status (
     user_id uuid not null,

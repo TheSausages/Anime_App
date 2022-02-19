@@ -25,7 +25,7 @@ import java.util.Set;
 @Entity
 public class Achievement {
 	@Id
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	@PositiveOrZero(message = "Achievement Id cannot be negative")
 	private int id;
 

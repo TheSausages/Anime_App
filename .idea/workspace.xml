@@ -4,11 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a85f17e-c8b0-481b-a543-783256245f43" name="Changes" comment="Addition: added achievements and users classes">
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/ValidationExceptionTest.java" afterDir="false" />
+    <list default="true" id="9a85f17e-c8b0-481b-a543-783256245f43" name="Changes" comment="Refactor: disabled unnecessary spring.jpa.hibernate.ddl-auto property">
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/anime/Anime.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/anime/AnimeUserInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/anime/Review.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/ForumCategory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/Post.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/PostUserStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/Tag.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/Thread.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/ThreadUserStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/security/SecurityConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/AnilistException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/AnilistException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/AnilistExceptionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/AnilistExceptionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/user/Achievement.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/user/Achievement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/resources/data.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/resources/schema.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/resources/data-test.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/resources/data-test.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +56,12 @@
         </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Anime_App_Project" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -54,10 +72,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Interface" />
-        <option value="AnnotationType" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="AnnotationType" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -161,11 +179,11 @@
       <recent name="anime.app.anilist.request.query.page" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="anime.app.entities.database.forum" />
       <recent name="anime.app.entities.database.user" />
       <recent name="anime.app.controllers" />
       <recent name="anime.app.anilist.request.query.parameters" />
       <recent name="anime.app.anilist.request.query" />
-      <recent name="anime.app.configuration.beans" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -175,7 +193,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.Tests in 'Anime_App_Project.Anime_App.test'">
+  <component name="RunManager" selected="Compound.Run Local">
     <configuration name="Run Local With Openapi Generation" type="CompoundRunConfigurationType">
       <toRun name="compose/basic-docker-compose.yml: Compose Deployment" type="docker-deploy" />
       <toRun name="Anime_App_Project With Generation [Anime_App:bootRun]" type="GradleRunConfiguration" />
@@ -475,7 +493,8 @@
       <workItem from="1643826583212" duration="1235000" />
       <workItem from="1643827857375" duration="26000" />
       <workItem from="1643827929755" duration="43000" />
-      <workItem from="1643828102595" duration="418000" />
+      <workItem from="1643828102595" duration="11395000" />
+      <workItem from="1645291103243" duration="1585000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit, added project with 3 modules">
       <created>1641596733768</created>
@@ -785,7 +804,21 @@
       <option name="project" value="LOCAL" />
       <updated>1643827798299</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Refactor: small correction in exception tests and classes">
+      <created>1643828659990</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1643828659990</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Refactor: disabled unnecessary spring.jpa.hibernate.ddl-auto property">
+      <created>1643829022958</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1643829022958</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -803,8 +836,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactor: Huge update to all classes and tests" />
-    <MESSAGE value="Refactor: Updated private static final variables to uppercase (as per convention)" />
     <MESSAGE value="Refactor: Small Update to ParameterString" />
     <MESSAGE value="Refactor: Typo" />
     <MESSAGE value="Refactor: small corrections, Addition: added Field" />
@@ -828,7 +859,9 @@
     <MESSAGE value="Refactor: Added a bit of logging" />
     <MESSAGE value="Refactor: enables dynamic log level change" />
     <MESSAGE value="Addition: added achievements and users classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Addition: added achievements and users classes" />
+    <MESSAGE value="Refactor: small correction in exception tests and classes" />
+    <MESSAGE value="Refactor: disabled unnecessary spring.jpa.hibernate.ddl-auto property" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor: disabled unnecessary spring.jpa.hibernate.ddl-auto property" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">

@@ -55,17 +55,17 @@ Insert into thread_user_status values
 
 Insert into posts values
     (1, 'First Post on the forum!', 'Text of the first post on the forum', false, 'NO_PROBLEM', 13, 16, 0,
-        '2021-09-1 14:10:12', '2021-09-2 18:30:59', '467a809a-d893-48c2-85e2-82f9ce4b1560', 1),
+        '2021-09-1 14:10:12', '2021-09-2 18:30:59', '467a809a-d893-48c2-85e2-82f9ce4b1560', 1, null),
     (2, 'Second Post on the forum!', 'Text of the second post on the forum', false, 'NO_PROBLEM', 2, 1, 0,
-        '2021-09-2 15:34:21', '2021-09-2 15:34:21', 'eabc11d0-e6da-49f8-a6db-6bceb84a06bc', 1),
+        '2021-09-2 15:34:21', '2021-09-2 15:34:21', 'eabc11d0-e6da-49f8-a6db-6bceb84a06bc', 1, null),
     (3, 'Third Post on the forum!', 'Text of the third post on the forum', true, 'NO_PROBLEM', 0, 35, 5,
-        '2021-09-3 16:45:01', '2021-09-3 16:45:01', '467a809a-d893-48c2-85e2-82f9ce4b1560', 1),
+        '2021-09-3 16:45:01', '2021-09-3 16:45:01', '467a809a-d893-48c2-85e2-82f9ce4b1560', 1, null),
     (4, 'Fourth Post on the forum!', 'Text of the fourth post on the forum', false, 'NO_PROBLEM', 10, 5, 2,
-        '2021-09-4 16:45:01', '2021-09-5 16:45:01', 'eabc11d0-e6da-49f8-a6db-6bceb84a06bc', 2),
+        '2021-09-4 16:45:01', '2021-09-5 16:45:01', 'eabc11d0-e6da-49f8-a6db-6bceb84a06bc', 2, null),
     (5, 'Response to the first post!', 'Text of the response to the first post', false, 'NO_PROBLEM', 10, 5, 2,
-        '2021-09-4 16:45:01', '2021-09-4 16:45:01', 'eabc11d0-e6da-49f8-a6db-6bceb84a06bc', 2);
+        '2021-09-4 16:45:01', '2021-09-4 16:45:01', 'eabc11d0-e6da-49f8-a6db-6bceb84a06bc', 2, 1);
 
-Insert into post_responses values (1, 5);
+/*Insert into post_responses values (1, 5);*/
 
 Insert Into post_user_status values
     ('eabc11d0-e6da-49f8-a6db-6bceb84a06bc', 1, true, false, false),
