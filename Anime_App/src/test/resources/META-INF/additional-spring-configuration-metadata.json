@@ -4,10 +4,75 @@
       "name": "api.default-path",
       "type": "java.lang.String",
       "description": "Default path used by all endpoints with the exception of serving static content."
-  },
+    },
     {
       "name": "wire-mock.port",
       "type": "java.lang.String",
       "description": "Port used by the mockWire server used to mock Anilist."
+    },
+    {
+      "name": "keycloakrealm.master.url",
+      "type": "java.lang.String",
+      "description": "URL used by the Keycloak Admin object to connect to the Keycloak instance."
+    },
+    {
+      "name": "keycloakrealm.master.realm",
+      "type": "java.lang.String",
+      "description": "Which realm should the Keycloak Admin object connect to."
+    },
+    {
+      "name": "keycloakrealm.master.client",
+      "type": "java.lang.String",
+      "description": "Which client should the Keycloak Admin object connect to."
+    },
+    {
+      "name": "keycloakrealm.master.clientsecret",
+      "type": "java.lang.String",
+      "description": "Secret of the Keycloak Master Client."
+    },
+    {
+      "name": "keycloakrealm.master.username",
+      "type": "java.lang.String",
+      "description": "Admin username for the selected realm."
+    },
+    {
+      "name": "keycloakrealm.master.password",
+      "type": "java.lang.String",
+      "description": "Admin password for the selected realm."
+    },
+    {
+      "name": "keycloakrealm.userserver.url",
+      "type": "java.lang.String",
+      "description": "URL used by the Keycloak webclient to make requests connected to users."
+    },
+    {
+      "name": "keycloakrealm.userserver.realm",
+      "type": "java.lang.String",
+      "description": "Which realm should the Keycloak webclient connect to."
+    },
+    {
+      "name": "keycloakrealm.userserver.client",
+      "type": "java.lang.String",
+      "description": "Which client should the Keycloak webclient connect to."
+    },
+    {
+      "name": "keycloakrealm.userserver.clientsecret",
+      "type": "java.lang.String",
+      "description": "Secret to the Keycloak User Server Client."
+    },
+    {
+      "name": "keycloakrealm.userserver.scope",
+      "type": "java.lang.String",
+      "description": "Scope used to log in/out the users."
+    },
+    {
+      "name": "keycloakrealm.userserver.granttype.login",
+      "type": "java.lang.String",
+      "description": "Grant type used during log in."
+    },
+    {
+      "name": "keycloakrealm.userserver.granttype.refresh",
+      "type": "java.lang.String",
+      "description": "Grant type used during refreshing the token."
     }
 ] }
