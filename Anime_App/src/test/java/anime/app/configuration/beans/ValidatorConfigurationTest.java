@@ -3,9 +3,7 @@ package anime.app.configuration.beans;
 import anime.app.exceptions.exceptions.ValidationException;
 import anime.app.openapi.model.TagDTO;
 import anime.app.openapi.model.TagImportance;
-import anime.app.utils.SpringBootTestWithoutDatabase;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
@@ -15,15 +13,9 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-@SpringBootTestWithoutDatabase
 class ValidatorConfigurationTest {
 
-	private final Validator validator;
-
-	@Autowired
-	ValidatorConfigurationTest(Validator validator) {
-		this.validator = validator;
-	}
+	Validator validator = ValidatorConfiguration.ValidatorFactory.getNewValidator();
 
 	@Test
 	void validator_ObjectWithViolations_ThrowException() {

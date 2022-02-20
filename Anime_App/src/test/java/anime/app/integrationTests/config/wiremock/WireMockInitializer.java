@@ -26,14 +26,7 @@ public class WireMockInitializer implements ApplicationContextInitializer<Config
 
 		@SuppressWarnings("ConstantConditions")
 		int wireMockPort = configurableApplicationContext.getEnvironment().getProperty("wire-mock.port", int.class);
-		WireMockServer wireMockServer = new WireMockServer(WireMockConfiguration.wireMockConfig()
-				.port(wireMockPort)
-				.extensions(
-						WireMockExtensionSummarizer.getInstance(),
-						WireMockPageExtension.getInstance()
-				)
-				.notifier(new ConsoleNotifier(true))
-		);
+		WireMockServer wireMockServer = WireMockFactory.getDefaultWireMock(wireMockPort);
 
 		wireMockServer.start();
 		configurableApplicationContext.getBeanFactory().registerSingleton("wireMockServer", wireMockServer);
@@ -46,4 +39,16 @@ public class WireMockInitializer implements ApplicationContextInitializer<Config
 
 	}
 
+	public static class WireMockFactory {
+		public static WireMockServer getDefaultWireMock(int port) {
+			return new WireMockServer(WireMockConfiguration.wireMockConfig()
+					.port(port)
+					.extensions(
+							WireMockExtensionSummarizer.getInstance(),
+							WireMockPageExtension.getInstance()
+					)
+					.notifier(new ConsoleNotifier(true))
+			);
+		}
+	}
 }

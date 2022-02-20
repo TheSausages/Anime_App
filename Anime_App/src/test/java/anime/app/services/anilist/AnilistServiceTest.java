@@ -9,7 +9,6 @@ import anime.app.exceptions.exceptions.AnilistException;
 import anime.app.integrationTests.config.wiremock.WireMockInitializer;
 import anime.app.integrationTests.config.wiremock.WireMockPageExtension;
 import anime.app.openapi.model.*;
-import anime.app.utils.SpringBootTestWithoutDatabase;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder;
@@ -20,11 +19,10 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mock.web.MockHttpServletRequest;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -36,28 +34,34 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-@SpringBootTestWithoutDatabase
 //Initialize the wiremock server for Anilist
-@ContextConfiguration(initializers = WireMockInitializer.class)
 class AnilistServiceTest {
 	private final static Locale REQUEST_LOCALE = Locale.ENGLISH;
 
-	private final AnilistService service;
+	WebClient client = WebClient.builder().baseUrl("http://localhost:9090").build();
+
+	AnilistService service = new AnilistService(client);
 
 	//Will be autowired and is required, but without false there is an error
-	@Autowired(required = false)
-	private WireMockServer wireMockServer;
+	static WireMockServer wireMockServer;
+
+	@BeforeAll
+	static void onStartUp() {
+		wireMockServer = WireMockInitializer.WireMockFactory.getDefaultWireMock(9090);
+
+		wireMockServer.start();
+	}
+
+	@AfterAll
+	static void afterAll() {
+		wireMockServer.stop();
+	}
 
 	@BeforeEach
 	public void setUp() {
 		MockHttpServletRequest request = new MockHttpServletRequest();
 		request.setPreferredLocales(List.of(REQUEST_LOCALE));
 		RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
-	}
-
-	@Autowired
-	AnilistServiceTest(AnilistService service) {
-		this.service = service;
 	}
 
 	@Nested

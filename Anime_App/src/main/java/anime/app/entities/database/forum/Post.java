@@ -16,6 +16,9 @@ import javax.validation.constraints.PositiveOrZero;
 import java.time.LocalDateTime;
 import java.util.Set;
 
+/**
+ * Class representing the <i>posts</i> table from the database.
+ */
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder

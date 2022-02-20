@@ -1,6 +1,7 @@
 package anime.app.exceptions;
 
 import anime.app.exceptions.exceptions.AnilistException;
+import anime.app.exceptions.exceptions.AuthenticationException;
 import anime.app.exceptions.exceptions.ValidationException;
 import anime.app.openapi.model.ErrorDTO;
 import anime.app.services.i18n.I18nServiceInterface;
@@ -46,6 +47,22 @@ public class ExceptionControllerAdvice extends ResponseEntityExceptionHandler {
 
 		return ErrorDTO.builder()
 				.status(HttpStatus.SERVICE_UNAVAILABLE.value())
+				.message(i18nService.getTranslation(ex.getUserMessageTranslationKey(), ex.getOriginalLocale()))
+				.build();
+	}
+
+	/**
+	 * Exception handler for {@link anime.app.exceptions.exceptions.AuthenticationException}.
+	 * @param ex The exception
+	 * @return A {@link anime.app.openapi.model.ErrorDTO} with {@link anime.app.exceptions.exceptions.DefaultException#userMessageTranslationKey} translation.
+	 */
+	@ExceptionHandler(AuthenticationException.class)
+	@ResponseStatus(HttpStatus.UNAUTHORIZED)
+	ErrorDTO authorizationExceptionHandler(AuthenticationException ex) {
+		log.error(ex.getLogMessage());
+
+		return ErrorDTO.builder()
+				.status(HttpStatus.UNAUTHORIZED.value())
 				.message(i18nService.getTranslation(ex.getUserMessageTranslationKey(), ex.getOriginalLocale()))
 				.build();
 	}

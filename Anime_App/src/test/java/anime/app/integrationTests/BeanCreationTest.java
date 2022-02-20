@@ -1,6 +1,8 @@
-package anime.app.configuration.beans;
+package anime.app.integrationTests;
 
-import anime.app.utils.SpringBootTestWithoutDatabase;
+import anime.app.configuration.beans.ValidatorConfiguration;
+import anime.app.configuration.beans.WebClientsConfiguration;
+import anime.app.integrationTests.config.BaseIntegrationTest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -19,25 +21,22 @@ import java.util.Locale;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
-@SpringBootTestWithoutDatabase
-class BeanCreationTest {
+class BeanCreationTest extends BaseIntegrationTest {
 
 	private final Keycloak keycloak;
 	private final LocaleResolver resolver;
-	private final ObjectMapper mapper;
 	private final WebClient anilistWebClient;
 	private final WebClient keycloakWebClient;
 	private final Validator validator;
 
 	@Autowired
-	BeanCreationTest(Keycloak keycloak, LocaleResolver resolver, ObjectMapper mapper, Validator validator,
+	BeanCreationTest(Keycloak keycloak, LocaleResolver resolver, Validator validator,
 	                 @Qualifier(WebClientsConfiguration.anilistWebClientBeanName) WebClient anilistWebClient,
 	                 @Qualifier(WebClientsConfiguration.keycloakWebClientBeanName) WebClient keycloakWebClient) {
 		this.keycloak = keycloak;
 		this.resolver = resolver;
 		this.validator = validator;
 		this.anilistWebClient = anilistWebClient;
-		this.mapper = mapper;
 		this.keycloakWebClient = keycloakWebClient;
 	}
 

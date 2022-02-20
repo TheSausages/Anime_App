@@ -5,14 +5,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import dasniko.testcontainers.keycloak.KeycloakContainer;
 import org.hamcrest.Matcher;
 import org.junit.jupiter.api.BeforeEach;
-import org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolver;
-import org.keycloak.adapters.springsecurity.KeycloakSecurityComponents;
-import org.keycloak.adapters.springsecurity.token.KeycloakAuthenticationToken;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.security.test.context.TestSecurityContextHolder;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.DynamicPropertyRegistry;
@@ -37,7 +32,7 @@ import java.util.ListIterator;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasProperty;
 import static org.hamcrest.Matchers.is;
-import static org.mockito.Mockito.when;
+import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 
 /**
  * Integration tests use Mockmvc and {@link com.c4_soft.springaddons.security.oauth2.test.annotations.WithMockAuthentication}
@@ -91,7 +86,6 @@ import static org.mockito.Mockito.when;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles(profiles = "test")
 @Testcontainers
-@ComponentScan(basePackageClasses = { KeycloakSecurityComponents.class, KeycloakSpringBootConfigResolver.class })
 @Sql(scripts = {"classpath:schema.sql", "classpath:data-test.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 @TestPropertySource(locations = "classpath:application-test-withDatabase.properties")
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
@@ -140,7 +134,7 @@ public abstract class BaseIntegrationTest {
 	public void setup() {
 		MockMvc mockMvc = MockMvcBuilders
 				.webAppContextSetup(context)
-				//.apply(springSecurity())
+				.apply(springSecurity())
 				.build();
 
 		this.webTestClient = MockMvcWebTestClient
@@ -173,10 +167,5 @@ public abstract class BaseIntegrationTest {
 			ret = hasProperty(iterator.previous(), ret);
 		}
 		return ret;
-	}
-
-	protected void changeLoggedInUserTo(String userId) {
-		final var auth = (KeycloakAuthenticationToken) TestSecurityContextHolder.getContext().getAuthentication();
-		when(auth.getPrincipal()).thenReturn(userId);
 	}
 }

@@ -17,7 +17,7 @@ paths:
   /auth/login:
     post:
       summary: Login endpoint
-      operationId: login-using-credentials
+      operationId: login
       tags:
         - keycloak
       responses:
@@ -62,7 +62,7 @@ paths:
   /auth/logout:
     post:
       summary: Logout endpoint
-      operationId: logout-using-refresh-token
+      operationId: logout
       tags:
         - keycloak
       responses:

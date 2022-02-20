@@ -27,7 +27,7 @@ public class KeycloakConfiguration {
 				.grantType(OAuth2Constants.PASSWORD)
 				.username(keycloakProperties.getUsername())
 				.password(keycloakProperties.getPassword())
-				.clientId(keycloakProperties.getClientId())
+				.clientId(keycloakProperties.getClient())
 				.clientSecret(keycloakProperties.getClientSecret())
 				.resteasyClient(
 						new ResteasyClientBuilder()

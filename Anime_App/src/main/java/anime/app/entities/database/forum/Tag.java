@@ -13,6 +13,9 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.PositiveOrZero;
 import java.util.Set;
 
+/**
+ * Class representing the <i>tags</i> table from the database.
+ */
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder

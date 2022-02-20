@@ -21,14 +21,13 @@ import anime.app.anilist.request.query.parameters.media.*;
 import anime.app.configuration.beans.WebClientsConfiguration;
 import anime.app.exceptions.exceptions.AnilistException;
 import anime.app.openapi.model.*;
+import anime.app.utils.LocaleUtils;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ReactiveHttpOutputMessage;
 import org.springframework.stereotype.Service;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.reactive.function.BodyInserter;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -58,7 +57,7 @@ public class AnilistService implements AnilistServiceInterface {
 	 */
 	@Override
 	public AnilistPageDTO getTopAiring(long pageNumber) {
-		Locale originalLocale = getCurrentRequestLocale();
+		Locale originalLocale = LocaleUtils.getCurrentRequestLocale();
 
 		Page page = Page.fromMediaAndPageInfo(
 				pageNumber,
@@ -104,7 +103,7 @@ public class AnilistService implements AnilistServiceInterface {
 	 */
 	@Override
 	public AnilistPageDTO getTopAnimeMovies(long pageNumber) {
-		Locale originalLocale = getCurrentRequestLocale();
+		Locale originalLocale = LocaleUtils.getCurrentRequestLocale();
 
 		Page page = Page.fromMediaAndPageInfo(
 				pageNumber,
@@ -147,7 +146,7 @@ public class AnilistService implements AnilistServiceInterface {
 	 */
 	@Override
 	public AnilistPageDTO getTopAnimeOfAllTime(long pageNumber) {
-		Locale originalLocale = getCurrentRequestLocale();
+		Locale originalLocale = LocaleUtils.getCurrentRequestLocale();
 
 		Page page = Page.fromMediaAndPageInfo(
 				pageNumber,
@@ -189,7 +188,7 @@ public class AnilistService implements AnilistServiceInterface {
 	 */
 	@Override
 	public AnilistPageDTO searchUsingQuery(AnimeQueryDTO query, long pageNumber) {
-		Locale originalLocale = getCurrentRequestLocale();
+		Locale originalLocale = LocaleUtils.getCurrentRequestLocale();
 
 		Media.MediaArgumentBuilder media = Media.getMediaArgumentBuilder(defaultBasicField)
 				.type(MediaType.ANIME)
@@ -292,7 +291,7 @@ public class AnilistService implements AnilistServiceInterface {
 	 */
 	@Override
 	public DetailedAnimeDTO getAnimeById(long id) {
-		Locale originalLocale = getCurrentRequestLocale();
+		Locale originalLocale = LocaleUtils.getCurrentRequestLocale();
 
 		Field field = Field.getFieldBuilder()
 				.parameter(BasicQueryParameters.ID)
@@ -424,14 +423,6 @@ public class AnilistService implements AnilistServiceInterface {
 
 			return Mono.just(response);
 		}
-	}
-
-	/**
-	 * Small method to get the Locale of the current Request.
-	 * @return The Locale of the current request
-	 */
-	private Locale getCurrentRequestLocale() {
-		return ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest().getLocale();
 	}
 
 	/**

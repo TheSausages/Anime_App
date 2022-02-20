@@ -12,6 +12,9 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.PositiveOrZero;
 import java.util.Set;
 
+/**
+ * Class representing the <i>forum_categories</i> table from the database.
+ */
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder

@@ -1,10 +1,11 @@
 package anime.app.services.i18n;
 
-import anime.app.utils.SpringBootTestWithoutDatabase;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 
@@ -16,18 +17,14 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doReturn;
 
-@SpringBootTestWithoutDatabase
+@ExtendWith(MockitoExtension.class)
 class I18nServiceTest {
 
-	private final I18nService service;
-
-	@MockBean
+	@Mock
 	MessageSource source;
 
-	@Autowired
-	I18nServiceTest(I18nService i18nService) {
-		this.service = i18nService;
-	}
+	@InjectMocks
+	I18nService service;
 
 	@Test
 	void getTranslation_NullPath_ThrowException() {

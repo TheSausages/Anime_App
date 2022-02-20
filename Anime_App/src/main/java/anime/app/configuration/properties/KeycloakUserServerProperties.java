@@ -11,21 +11,21 @@ import org.springframework.boot.context.properties.ConstructorBinding;
 @ConstructorBinding
 @Getter
 public class KeycloakUserServerProperties {
-	private final String mainRealm;
 	private final String realm;
+	private final String client;
 	private final String url;
 	private final String clientSecret;
 	private final String scope;
 	private final KeycloakGrantType grantType;
 
-	public KeycloakUserServerProperties(String mainRealm,
-	                                    String realm,
+	public KeycloakUserServerProperties(String realm,
+	                                    String client,
 	                                    String url,
 	                                    String clientSecret,
 	                                    String scope,
 	                                    KeycloakGrantType grantType) {
-		this.mainRealm = mainRealm;
 		this.realm = realm;
+		this.client = client;
 		this.url = url;
 		this.clientSecret = clientSecret;
 		this.scope = scope;

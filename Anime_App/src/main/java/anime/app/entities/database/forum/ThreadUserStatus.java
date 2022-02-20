@@ -12,6 +12,9 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * Class representing the <i>thread_user_status</i> table from the database.
+ */
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder

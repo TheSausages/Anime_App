@@ -33,17 +33,17 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-web:${springVersion}"
     implementation "org.springframework.boot:spring-boot-starter-webflux:${springVersion}"
     implementation "org.springframework.boot:spring-boot-starter-actuator:${springVersion}"
+    implementation "org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:${springVersion}"
+    implementation "org.springframework.security:spring-security-oauth2-resource-server:${springResourceServerVersion}"
+    implementation "org.springframework.security:spring-security-oauth2-jose:${springResourceServerVersion}"
     implementation 'org.springdoc:springdoc-openapi-ui:1.6.5'
     implementation "org.projectlombok:lombok:${lombokVersion}"
-    implementation 'org.springframework.boot:spring-boot-starter-security'
 
     //Annotation Processors
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor:${springVersion}"
     annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
 
     //Keycloak Dependencies
-    implementation "org.keycloak:keycloak-spring-boot-starter:${keycloakVersion}"
-    implementation "org.keycloak.bom:keycloak-adapter-bom:${keycloakVersion}"
     implementation "org.keycloak:keycloak-admin-client:${keycloakVersion}"
 
     //Other Non-test Dependencies

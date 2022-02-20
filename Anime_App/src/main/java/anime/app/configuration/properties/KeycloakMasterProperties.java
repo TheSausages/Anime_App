@@ -15,20 +15,20 @@ public class KeycloakMasterProperties {
 	private final String realm;
 	private final String username;
 	private final String password;
-	private final String clientId;
+	private final String client;
 	private final String clientSecret;
 
 	public KeycloakMasterProperties(String url,
 	                                String realm,
 	                                String username,
 	                                String password,
-	                                String clientId,
+	                                String client,
 	                                String clientSecret) {
 		this.url = url;
 		this.realm = realm;
 		this.username = username;
 		this.password = password;
-		this.clientId = clientId;
+		this.client = client;
 		this.clientSecret = clientSecret;
 	}
 }
