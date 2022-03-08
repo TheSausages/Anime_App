@@ -80,10 +80,10 @@ public class AnilistService implements AnilistServiceInterface {
 				.body(buildBodyInsert(page))
 				.retrieve()
 				.onStatus(HttpStatus::isError, ex -> {
-					throw new AnilistException(
-							"anime.anilist-server-no-response",
-							originalLocale
-					);
+					throw AnilistException.builder()
+							.userMessageTranslationKey("anime.anilist-server-no-response")
+							.originalLocale(originalLocale)
+							.build();
 				})
 				.bodyToMono(AnilistResponseDTOPage.class)
 				.flatMap(response -> evaluateResponse(
@@ -125,10 +125,10 @@ public class AnilistService implements AnilistServiceInterface {
 				.body(buildBodyInsert(page))
 				.retrieve()
 				.onStatus(HttpStatus::isError, ex -> {
-					throw new AnilistException(
-							"anime.anilist-server-no-response",
-							originalLocale
-					);
+					throw AnilistException.builder()
+							.userMessageTranslationKey("anime.anilist-server-no-response")
+							.originalLocale(originalLocale)
+							.build();
 				})
 				.bodyToMono(AnilistResponseDTOPage.class)
 				.flatMap(response -> evaluateResponse(
@@ -167,10 +167,10 @@ public class AnilistService implements AnilistServiceInterface {
 				.body(buildBodyInsert(page))
 				.retrieve()
 				.onStatus(HttpStatus::isError, ex -> {
-					throw new AnilistException(
-							"anime.anilist-server-no-response",
-							originalLocale
-					);
+					throw AnilistException.builder()
+							.userMessageTranslationKey("anime.anilist-server-no-response")
+							.originalLocale(originalLocale)
+							.build();
 				})
 				.bodyToMono(AnilistResponseDTOPage.class)
 				.flatMap(response -> evaluateResponse(
@@ -270,10 +270,10 @@ public class AnilistService implements AnilistServiceInterface {
 				.body(buildBodyInsert(page))
 				.retrieve()
 				.onStatus(HttpStatus::isError, ex -> {
-					throw new AnilistException(
-							"anime.anilist-server-no-response",
-							originalLocale
-					);
+					throw AnilistException.builder()
+							.userMessageTranslationKey("anime.anilist-server-no-response")
+							.originalLocale(originalLocale)
+							.build();
 				})
 				.bodyToMono(AnilistResponseDTOPage.class)
 				.flatMap(response -> evaluateResponse(
@@ -384,11 +384,11 @@ public class AnilistService implements AnilistServiceInterface {
 				.body(buildBodyInsert(media))
 				.retrieve()
 				.onStatus(HttpStatus::isError, ex -> {
-					throw new AnilistException(
-							"anime.anilist-server-no-response",
-							originalLocale,
-							ex.body((clientHttpResponse, context) -> clientHttpResponse.getBody().toString())
-					);
+					throw AnilistException.builder()
+							.userMessageTranslationKey("anime.anilist-server-no-response")
+							.originalLocale(originalLocale)
+							.logMessage(ex.body((clientHttpResponse, context) -> clientHttpResponse.getBody().toString()))
+							.build();
 				})
 				.bodyToMono(AnilistResponseDTOMedia.class)
 				.flatMap(response -> evaluateResponse(
@@ -414,10 +414,10 @@ public class AnilistService implements AnilistServiceInterface {
 	 */
 	private <T> Mono<T> evaluateResponse(T response, Locale originalLocale, String successLogMessage) {
 		if (Objects.isNull(response)) {
-			return Mono.error(new AnilistException(
-					"anime.anilist-server-no-response",
-					originalLocale
-			));
+			return Mono.error(AnilistException.builder()
+							.userMessageTranslationKey("anime.anilist-server-no-response")
+							.originalLocale(originalLocale)
+					.build());
 		} else {
 			log.info(successLogMessage);
 

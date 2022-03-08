@@ -360,7 +360,7 @@ class AnilistServiceTest {
 			}
 
 			@Test
-			void getTopAnimeOfAllTime() {
+			void getTopAnimeOfAllTime_400Status_ThrowException() {
 				//given
 				long pageNumber = 1;
 
@@ -390,7 +390,7 @@ class AnilistServiceTest {
 			}
 
 			@Test
-			void searchUsingQuery() {
+			void searchUsingQuery_400Status_ThrowException() {
 				//given
 				long pageNumber = 1;
 				AnimeQueryDTO queryDTO = AnimeQueryDTO.builder()

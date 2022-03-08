@@ -2,6 +2,7 @@ package anime.app.exceptions.exceptions;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
 import java.util.Locale;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -17,7 +18,10 @@ class RegistrationExceptionTest {
 
 		//when
 		Exception exception = assertThrows(NullPointerException.class, () ->
-				new RegistrationException(translationKey, originalLocale)
+				RegistrationException.builder()
+						.userMessageTranslationKey(translationKey)
+						.originalLocale(originalLocale)
+						.build()
 		);
 
 		//then
@@ -35,7 +39,10 @@ class RegistrationExceptionTest {
 
 		//when
 		Exception exception = assertThrows(NullPointerException.class, () ->
-				new RegistrationException(translationKey, originalLocale)
+				RegistrationException.builder()
+						.userMessageTranslationKey(translationKey)
+						.originalLocale(originalLocale)
+						.build()
 		);
 
 		//then
@@ -46,13 +53,16 @@ class RegistrationExceptionTest {
 	}
 
 	@Test
-	void registrationException_NoLogMessage_CorrectExceptionCreation() {
+	void registrationException_NoLogMessageNoParams_CorrectExceptionCreation() {
 		//given
 		String translationKey = "Some key";
 		Locale originalLocale = Locale.US;
 
 		//when
-		RegistrationException exception = new RegistrationException(translationKey, originalLocale);
+		RegistrationException exception = RegistrationException.builder()
+				.userMessageTranslationKey(translationKey)
+				.originalLocale(originalLocale)
+				.build();
 
 		//then
 		assertThat(exception, allOf(
@@ -65,14 +75,49 @@ class RegistrationExceptionTest {
 	}
 
 	@Test
-	void registrationException_WithLogMessage_CorrectExceptionCreation() {
+	void registrationException_NoLogMessageWithParams_CorrectExceptionCreation() {
+		//given
+		String translationKey = "Some key";
+		Locale originalLocale = Locale.US;
+		String param1 = "Param1";
+		int param2 = 1;
+
+		//when
+		RegistrationException exception = RegistrationException.builder()
+				.userMessageTranslationKey(translationKey)
+				.originalLocale(originalLocale)
+				.translationParameter(param2)
+				.translationParameter(param1)
+				.build();
+
+		//then
+		assertThat(exception, allOf(
+				notNullValue(),
+				instanceOf(RegistrationException.class)
+		));
+		assertThat(exception.getUserMessageTranslationKey(), equalTo(translationKey));
+		assertThat(exception.getLogMessage(), equalTo("Registration Exception, no message given"));
+		assertThat(exception.getOriginalLocale(), equalTo(originalLocale));
+		assertThat(exception.getTranslationParameters(), allOf(
+				notNullValue(),
+				instanceOf(List.class),
+				containsInAnyOrder(param2, param1)
+		));
+	}
+
+	@Test
+	void registrationException_WithLogMessageNoParameters_CorrectExceptionCreation() {
 		//given
 		String translationKey = "Some key";
 		Locale originalLocale = Locale.US;
 		String logMessage = "Log Message";
 
 		//when
-		RegistrationException exception = new RegistrationException(translationKey, originalLocale, logMessage);
+		RegistrationException exception = RegistrationException.builder()
+				.userMessageTranslationKey(translationKey)
+				.originalLocale(originalLocale)
+				.logMessage(logMessage)
+				.build();
 
 		//then
 		assertThat(exception, allOf(
@@ -82,5 +127,38 @@ class RegistrationExceptionTest {
 		assertThat(exception.getUserMessageTranslationKey(), equalTo(translationKey));
 		assertThat(exception.getLogMessage(), equalTo(logMessage));
 		assertThat(exception.getOriginalLocale(), equalTo(originalLocale));
+	}
+
+	@Test
+	void registrationException_WithLogMessageWithParameters_CorrectExceptionCreation() {
+		//given
+		String translationKey = "Some key";
+		Locale originalLocale = Locale.US;
+		String logMessage = "Log Message";
+		String param1 = "Param1";
+		int param2 = 1;
+
+		//when
+		RegistrationException exception = RegistrationException.builder()
+				.userMessageTranslationKey(translationKey)
+				.originalLocale(originalLocale)
+				.logMessage(logMessage)
+				.translationParameter(param2)
+				.translationParameter(param1)
+				.build();
+
+		//then
+		assertThat(exception, allOf(
+				notNullValue(),
+				instanceOf(RegistrationException.class)
+		));
+		assertThat(exception.getUserMessageTranslationKey(), equalTo(translationKey));
+		assertThat(exception.getLogMessage(), equalTo(logMessage));
+		assertThat(exception.getOriginalLocale(), equalTo(originalLocale));
+		assertThat(exception.getTranslationParameters(), allOf(
+				notNullValue(),
+				instanceOf(List.class),
+				containsInAnyOrder(param2, param1)
+		));
 	}
 }

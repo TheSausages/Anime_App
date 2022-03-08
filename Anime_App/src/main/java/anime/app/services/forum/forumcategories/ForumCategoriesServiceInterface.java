@@ -1,4 +1,4 @@
-package anime.app.services.forumcategories;
+package anime.app.services.forum.forumcategories;
 
 import anime.app.openapi.model.ForumCategoryDTO;
 

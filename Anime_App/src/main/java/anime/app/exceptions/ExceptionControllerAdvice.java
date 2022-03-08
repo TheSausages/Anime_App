@@ -2,6 +2,7 @@ package anime.app.exceptions;
 
 import anime.app.exceptions.exceptions.AnilistException;
 import anime.app.exceptions.exceptions.AuthenticationException;
+import anime.app.exceptions.exceptions.NotFoundException;
 import anime.app.exceptions.exceptions.ValidationException;
 import anime.app.openapi.model.ErrorDTO;
 import anime.app.services.i18n.I18nServiceInterface;
@@ -47,7 +48,23 @@ public class ExceptionControllerAdvice extends ResponseEntityExceptionHandler {
 
 		return ErrorDTO.builder()
 				.status(HttpStatus.SERVICE_UNAVAILABLE.value())
-				.message(i18nService.getTranslation(ex.getUserMessageTranslationKey(), ex.getOriginalLocale()))
+				.message(i18nService.getTranslation(ex.getUserMessageTranslationKey(), ex.getOriginalLocale(), ex.getTranslationParameters()))
+				.build();
+	}
+
+	/**
+	 * Exception handler for {@link anime.app.exceptions.exceptions.AnilistException}.
+	 * @param ex The exception
+	 * @return A {@link anime.app.openapi.model.ErrorDTO} with {@link anime.app.exceptions.exceptions.DefaultException#userMessageTranslationKey} translation.
+	 */
+	@ExceptionHandler(NotFoundException.class)
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	ErrorDTO notFoundExceptionHandler(NotFoundException ex) {
+		log.error(ex.getLogMessage());
+
+		return ErrorDTO.builder()
+				.status(HttpStatus.NOT_FOUND.value())
+				.message(i18nService.getTranslation(ex.getUserMessageTranslationKey(), ex.getTranslationParameters()))
 				.build();
 	}
 
@@ -63,7 +80,7 @@ public class ExceptionControllerAdvice extends ResponseEntityExceptionHandler {
 
 		return ErrorDTO.builder()
 				.status(HttpStatus.UNAUTHORIZED.value())
-				.message(i18nService.getTranslation(ex.getUserMessageTranslationKey(), ex.getOriginalLocale()))
+				.message(i18nService.getTranslation(ex.getUserMessageTranslationKey(), ex.getOriginalLocale(), ex.getTranslationParameters()))
 				.build();
 	}
 
@@ -79,7 +96,7 @@ public class ExceptionControllerAdvice extends ResponseEntityExceptionHandler {
 
 		return ErrorDTO.builder()
 				.status(HttpStatus.INTERNAL_SERVER_ERROR.value())
-				.message(i18nService.getTranslation(ex.getUserMessageTranslationKey()))
+				.message(i18nService.getTranslation(ex.getUserMessageTranslationKey(), ex.getTranslationParameters()))
 				.build();
 	}
 

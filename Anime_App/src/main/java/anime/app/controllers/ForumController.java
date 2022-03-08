@@ -2,7 +2,7 @@ package anime.app.controllers;
 
 import anime.app.openapi.api.ForumApi;
 import anime.app.openapi.model.ForumCategoryDTO;
-import anime.app.services.forumcategories.ForumCategoriesService;
+import anime.app.services.forum.forumcategories.ForumCategoriesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 

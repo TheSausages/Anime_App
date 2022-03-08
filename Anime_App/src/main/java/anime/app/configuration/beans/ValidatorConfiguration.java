@@ -53,10 +53,10 @@ public class ValidatorConfiguration {
 			Set<ConstraintViolation<T>> constraints = validator.validate(object, groups);
 
 			if (!constraints.isEmpty()) {
-				throw new ValidationException(
-						"general.server-error",
-						"The violations are:" + constraints.toString()
-				);
+				throw ValidationException.builder()
+						.userMessageTranslationKey("general.server-error")
+						.logMessage("The violations are:" + constraints.toString())
+						.build();
 			}
 
 			return constraints;

@@ -1,31 +1,28 @@
 package anime.app.exceptions.exceptions;
 
+import lombok.Builder;
 import lombok.NonNull;
+import lombok.Singular;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import java.util.List;
 import java.util.Locale;
 
 /**
  * This error only occurs during user registration. Should not be used anywhere else!
  */
 @ResponseStatus(HttpStatus.CONFLICT)
-public class RegistrationException extends DefaultException {
+public class RegistrationException extends DefaultLocaleException {
 	private static final String logMessage = "Registration Exception, no message given";
 
-	private final Locale originalLocale;
-
-	public RegistrationException(String userMessageTranslationKey, @NonNull Locale originalLocale) {
-		super(userMessageTranslationKey, logMessage);
-		this.originalLocale = originalLocale;
+	@Builder
+	public RegistrationException(String logMessage, @NonNull String userMessageTranslationKey, @Singular List<Object> translationParameters, @NonNull Locale originalLocale) {
+		super(logMessage, userMessageTranslationKey, translationParameters, originalLocale);
 	}
 
-	public RegistrationException(String userMessageTranslationKey, @NonNull Locale originalLocale, String logMessage) {
-		super(userMessageTranslationKey, logMessage);
-		this.originalLocale = originalLocale;
-	}
-
-	public Locale getOriginalLocale() {
-		return originalLocale;
+	@Override
+	protected String getDefaultLogMessage() {
+		return logMessage;
 	}
 }

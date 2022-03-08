@@ -4,64 +4,40 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a85f17e-c8b0-481b-a543-783256245f43" name="Changes" comment="Addition: switched from Keycloak adapter to native spring security oauth2 support, added authentication and partial registration, added tests, Refactor: small update to test structure">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/Anime_App_Keycloak_Resource_Server/Anime_App_Project.Anime_App_Keycloak_Resource_Server.test.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/controllers/AuthController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/controllers/ForumController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/AuthenticationToken.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/AuthenticationException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/RegistrationException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/repositories/forum/ForumCategoryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/security/SecurityConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/dto/conversion/DTOConversionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/dto/conversion/DTOConversionServiceInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/forumcategories/ForumCategoriesService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/forumcategories/ForumCategoriesServiceInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/keycloak/KeycloakService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/keycloak/KeycloakServiceInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/utils/LocaleUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/AuthenticationExceptionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/RegistrationExceptionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/dto/conversion/DTOConversionServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/forumcategories/ForumCategoriesServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="9a85f17e-c8b0-481b-a543-783256245f43" name="Changes" comment="Addition: forgotten file">
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/DefaultLocaleException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/NotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/repositories/forum/TagRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/forum/tag/TagService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/forum/tag/TagServiceInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/NotFoundExceptionTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/forum/tag/TagServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/configuration/beans/KeycloakConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/configuration/beans/KeycloakConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/configuration/properties/KeycloakMasterProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/configuration/properties/KeycloakMasterProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/configuration/properties/KeycloakUserServerProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/configuration/properties/KeycloakUserServerProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/controllers/AnimeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/controllers/AnimeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/ForumCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/ForumCategory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/Post.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/PostUserStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/PostUserStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/Tag.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/Tag.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/Thread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/Thread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/ThreadUserStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/ThreadUserStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/configuration/beans/ValidatorConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/configuration/beans/ValidatorConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/controllers/ForumController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/controllers/ForumController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/ExceptionControllerAdvice.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/ExceptionControllerAdvice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/AnilistException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/AnilistException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/AuthenticationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/AuthenticationException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/DefaultException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/DefaultException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/RegistrationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/RegistrationException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/ValidationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/ValidationException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/anilist/AnilistService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/anilist/AnilistService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/resources/META-INF/additional-spring-configuration-metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/resources/META-INF/additional-spring-configuration-metadata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/dto/conversion/DTOConversionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/dto/conversion/DTOConversionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/dto/conversion/DTOConversionServiceInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/dto/conversion/DTOConversionServiceInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/forumcategories/ForumCategoriesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/forum/forumcategories/ForumCategoriesService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/forumcategories/ForumCategoriesServiceInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/forum/forumcategories/ForumCategoriesServiceInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/keycloak/KeycloakService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/keycloak/KeycloakService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Anime_App/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Anime_App/src/main/resources/lng.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/resources/lng.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Anime_App/src/main/resources/lng_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/resources/lng_en.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Anime_App/src/main/resources/lng_pl.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/resources/lng_pl.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/configuration/beans/BeanCreationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/integrationTests/BeanCreationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/configuration/beans/ValidatorConfigurationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/configuration/beans/ValidatorConfigurationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/integrationTests/config/BaseIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/integrationTests/config/BaseIntegrationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/integrationTests/config/keycloakprincipal/ChangePrincipalToUserId.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/integrationTests/config/keycloakprincipal/KeycloakPrincipalByUserId.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/integrationTests/config/wiremock/WireMockInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/integrationTests/config/wiremock/WireMockInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/AnilistExceptionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/AnilistExceptionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/AuthenticationExceptionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/AuthenticationExceptionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/RegistrationExceptionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/RegistrationExceptionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/ValidationExceptionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/ValidationExceptionTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/anilist/AnilistServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/anilist/AnilistServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/i18n/I18nServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/i18n/I18nServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/utils/SpringBootTestWithoutDatabase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/resources/META-INF/additional-spring-configuration-metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/resources/META-INF/additional-spring-configuration-metadata.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/resources/application-test-withDatabase.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/resources/application-test-withDatabase.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/resources/application-test-withoutDatabase.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/resources/application-test-withoutDatabase.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/resources/keycloak/realm/realm-export.json" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/resources/keycloak/realm/realm-export.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/User.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/User.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/keycloak/realm/realm-export.json" beforeDir="false" afterPath="$PROJECT_DIR$/docker/keycloak/realm/realm-export.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/forumcategories/ForumCategoriesServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/forum/forumcategories/ForumCategoriesServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,12 +165,16 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="jdk.selected.JAVA_MODULE" value="14" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Anime_App/src/test/resources/keycloak/realm" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15527344" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="spring" />
+    <property name="settings.editor.selected.configurable" value="sshConsole" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -212,11 +192,11 @@
       <recent name="C:\Users\Kacper\IdeaProjects\Anime_App_Project\Anime_App_Openapi_Generation\templates\java" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="anime.app.services.forum.tag" />
+      <recent name="anime.app.exceptions.exceptions" />
       <recent name="anime.app.services.forumcategories" />
       <recent name="anime.app.services.dto.conversion" />
-      <recent name="anime.app.exceptions.exceptions" />
       <recent name="anime.app.configuration.beans" />
-      <recent name="anime.app.services.anilist" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="anime.app.utils" />
@@ -234,37 +214,9 @@
     </option>
   </component>
   <component name="RunManager" selected="Gradle.Tests in 'Anime_App_Project.Anime_App.test'">
-    <configuration name="Run Local With Openapi Generation" type="CompoundRunConfigurationType">
-      <toRun name="compose/basic-docker-compose.yml: Compose Deployment" type="docker-deploy" />
-      <toRun name="Anime_App_Project With Generation [Anime_App:bootRun]" type="GradleRunConfiguration" />
-      <method v="2" />
-    </configuration>
     <configuration name="Run Local" type="CompoundRunConfigurationType">
-      <toRun name="compose/basic-docker-compose.yml: Compose Deployment" type="docker-deploy" />
+      <toRun name="Docker run basic components" type="docker-deploy" />
       <toRun name="Anime_App_Project [Anime_App:bootRun]" type="GradleRunConfiguration" />
-      <method v="2" />
-    </configuration>
-    <configuration name="AnilistServiceTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":Anime_App:test" />
-            <option value="--tests" />
-            <option value="&quot;anime.app.services.anilist.AnilistServiceTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
     <configuration name="Anime_App_Project With Generation [Anime_App:bootRun]" type="GradleRunConfiguration" factoryName="Gradle">
@@ -335,7 +287,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="DTOConversionServiceTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="NotFoundExceptionTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -348,7 +300,7 @@
           <list>
             <option value=":Anime_App:test" />
             <option value="--tests" />
-            <option value="&quot;anime.app.services.dto.conversion.DTOConversionServiceTest&quot;" />
+            <option value="&quot;anime.app.exceptions.exceptions.NotFoundExceptionTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -358,7 +310,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ForumCategoriesServiceTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="TagServiceTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -371,7 +323,53 @@
           <list>
             <option value=":Anime_App:test" />
             <option value="--tests" />
-            <option value="&quot;anime.app.services.forumcategories.ForumCategoriesServiceTest&quot;" />
+            <option value="&quot;anime.app.services.forum.tag.TagServiceTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="TagServiceTest.findById_NoSuchTag_ThrowException" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":Anime_App:test" />
+            <option value="--tests" />
+            <option value="&quot;anime.app.services.forum.tag.TagServiceTest.findById_NoSuchTag_ThrowException&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="TagServiceTest.findById_TagExists_ReturnCorrectTag" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":Anime_App:test" />
+            <option value="--tests" />
+            <option value="&quot;anime.app.services.forum.tag.TagServiceTest.findById_TagExists_ReturnCorrectTag&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -393,29 +391,6 @@
         <option name="taskNames">
           <list>
             <option value=":Anime_App:test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="ValidatorConfigurationTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":Anime_App:test" />
-            <option value="--tests" />
-            <option value="&quot;anime.app.configuration.beans.ValidatorConfigurationTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -448,9 +423,10 @@
       <option name="specificationPath" value="C:\Users\Kacper\IdeaProjects\Anime_App_Project\Anime_App_Openapi_Generation\openapi\Forum.yaml" />
       <method v="2" />
     </configuration>
-    <configuration name="compose/basic-docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
+    <configuration name="Docker run basic components" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
+          <option name="envFilePath" value="" />
           <option name="sourceFilePath" value="docker/compose/basic-docker-compose.yml" />
         </settings>
       </deployment>
@@ -458,25 +434,24 @@
     </configuration>
     <list>
       <item itemvalue="Compound.Run Local" />
-      <item itemvalue="Compound.Run Local With Openapi Generation" />
-      <item itemvalue="Docker.compose/basic-docker-compose.yml: Compose Deployment" />
+      <item itemvalue="Docker.Docker run basic components" />
       <item itemvalue="Gradle.Anime_App_Project [Anime_App:bootRun]" />
       <item itemvalue="Gradle.Anime_App_Project With Generation [Anime_App:bootRun]" />
       <item itemvalue="Gradle.Anime_App_Project [Anime_App_Openapi_Generation:build]" />
       <item itemvalue="Spring Boot.AnimeAppApplication" />
-      <item itemvalue="Gradle.ValidatorConfigurationTest" />
-      <item itemvalue="Gradle.AnilistServiceTest" />
-      <item itemvalue="Gradle.DTOConversionServiceTest" />
+      <item itemvalue="Gradle.NotFoundExceptionTest" />
+      <item itemvalue="Gradle.TagServiceTest" />
+      <item itemvalue="Gradle.TagServiceTest.findById_NoSuchTag_ThrowException" />
+      <item itemvalue="Gradle.TagServiceTest.findById_TagExists_ReturnCorrectTag" />
       <item itemvalue="Gradle.Tests in 'Anime_App_Project.Anime_App.test'" />
-      <item itemvalue="Gradle.ForumCategoriesServiceTest" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.Tests in 'Anime_App_Project.Anime_App.test'" />
-        <item itemvalue="Gradle.ForumCategoriesServiceTest" />
-        <item itemvalue="Gradle.DTOConversionServiceTest" />
-        <item itemvalue="Gradle.AnilistServiceTest" />
-        <item itemvalue="Gradle.ValidatorConfigurationTest" />
+        <item itemvalue="Gradle.TagServiceTest.findById_TagExists_ReturnCorrectTag" />
+        <item itemvalue="Gradle.TagServiceTest" />
+        <item itemvalue="Gradle.TagServiceTest.findById_NoSuchTag_ThrowException" />
+        <item itemvalue="Gradle.NotFoundExceptionTest" />
       </list>
     </recent_temporary>
   </component>
@@ -535,7 +510,14 @@
       <workItem from="1643827929755" duration="43000" />
       <workItem from="1643828102595" duration="11395000" />
       <workItem from="1645291103243" duration="20951000" />
-      <workItem from="1645344572715" duration="33057000" />
+      <workItem from="1645344572715" duration="34271000" />
+      <workItem from="1645387496988" duration="1241000" />
+      <workItem from="1645535111694" duration="719000" />
+      <workItem from="1645551887211" duration="1709000" />
+      <workItem from="1645555695552" duration="128000" />
+      <workItem from="1645555849694" duration="54000" />
+      <workItem from="1645556542097" duration="705000" />
+      <workItem from="1646725659542" duration="15450000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit, added project with 3 modules">
       <created>1641596733768</created>
@@ -866,7 +848,21 @@
       <option name="project" value="LOCAL" />
       <updated>1645292869940</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Addition: switched from Keycloak adapter to native spring security oauth2 support, added authentication and partial registration, added tests, Refactor: small update to test structure">
+      <created>1645387411468</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1645387411468</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Addition: forgotten file">
+      <created>1645387425186</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1645387425186</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -884,7 +880,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactor: small corrections, Addition: added Field" />
     <MESSAGE value="Refactor: updated Media and tests onnected to it" />
     <MESSAGE value="Refactor: changed testing matcher name, Addition: added media and i's test, added Page" />
     <MESSAGE value="Refactor: changed names of important methods, added Page tests" />
@@ -909,7 +904,8 @@
     <MESSAGE value="Refactor: disabled unnecessary spring.jpa.hibernate.ddl-auto property" />
     <MESSAGE value="Addition: added rest of database entities, Refactor: small correction in some classes and files" />
     <MESSAGE value="Addition: switched from Keycloak adapter to native spring security oauth2 support, added authentication and partial registration, added tests, Refactor: small update to test structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="Addition: switched from Keycloak adapter to native spring security oauth2 support, added authentication and partial registration, added tests, Refactor: small update to test structure" />
+    <MESSAGE value="Addition: forgotten file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Addition: forgotten file" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">

@@ -74,8 +74,12 @@ public class KeycloakService implements KeycloakServiceInterface {
 				.bodyToMono(AuthenticationToken.class)
 				.map(dtoConversion::convertToDTO)
 				.doOnSuccess(s -> log.info("Log In was Successful for Username:" + credentials.getUsername()))
-				.onErrorMap(throwable -> new AuthenticationException("authentication.login-not-successful", originalLocale,
-						String.format("Log in was not successful for User %s", credentials.getUsername())))
+				.onErrorMap(throwable ->
+						AuthenticationException.builder()
+								.userMessageTranslationKey("authentication.login-not-successful")
+								.originalLocale(originalLocale)
+								.logMessage(String.format("Log in was not successful for User %s", credentials.getUsername()))
+								.build())
 				.block();
 	}
 
@@ -89,7 +93,11 @@ public class KeycloakService implements KeycloakServiceInterface {
 		if (StringUtils.isBlank(logoutRequestBody.getRefreshToken()) || StringUtils.isBlank(accessToken)) {
 			log.warn("Could not log out - missing information!");
 
-			throw new AuthenticationException("authentication.credentials-wrong-structure", originalLocale, "The credentials had wrong structure");
+			throw AuthenticationException.builder()
+					.userMessageTranslationKey("authentication.credentials-wrong-structure")
+					.originalLocale(originalLocale)
+					.logMessage("The credentials had wrong structure")
+					.build();
 		}
 
 		client
@@ -106,8 +114,12 @@ public class KeycloakService implements KeycloakServiceInterface {
 				.retrieve()
 				.toBodilessEntity()
 				.doOnSuccess(s -> log.info("Logged Out Successfully"))
-				.onErrorMap(throwable -> new AuthenticationException("authentication.logout-not-successful", originalLocale,
-						String.format("Logout was not successful for user %s", "")))//userService.getUsernameOfCurrentUser())))
+				.onErrorMap(throwable ->
+						AuthenticationException.builder()
+								.userMessageTranslationKey("authentication.logout-not-successful")
+								.originalLocale(originalLocale)
+								.logMessage(String.format("Logout was not successful for user %s", ""))//userService.getUsernameOfCurrentUser()))))
+								.build())
 				.block();
 	}
 
@@ -122,8 +134,11 @@ public class KeycloakService implements KeycloakServiceInterface {
 		Locale originalLocale = LocaleUtils.getCurrentRequestLocale();
 
 		if (!registrationBody.getPassword().equals(registrationBody.getMatchingPassword())) {
-			throw new AuthenticationException("authentication.not-matching-passwords", originalLocale,
-					String.format("The Passwords did not match for new user with username %s", registrationBody.getUsername()));
+			throw AuthenticationException.builder()
+					.userMessageTranslationKey("authentication.not-matching-passwords")
+					.originalLocale(originalLocale)
+					.logMessage(String.format("The Passwords did not match for new user with username %s", registrationBody.getUsername()))
+					.build();
 		}
 
 		CredentialRepresentation password = new CredentialRepresentation();
@@ -148,8 +163,11 @@ public class KeycloakService implements KeycloakServiceInterface {
 					.stream().filter(userRep -> userRep.getEmail().equalsIgnoreCase(registrationBody.getEmail())).findAny();
 
 			if (newUser.isEmpty()) {
-				throw new RegistrationException("authentication.after-registration-error", originalLocale,
-						String.format("User %s was register successfully, but couldn't be saved to the database", registrationBody.getUsername()));
+				throw RegistrationException.builder()
+						.userMessageTranslationKey("authentication.after-registration-error")
+						.originalLocale(originalLocale)
+						.logMessage(String.format("User %s was register successfully, but couldn't be saved to the database", registrationBody.getUsername()))
+						.build();
 			}
 
 			//userService.saveUser(new User(newUser.get().getId(), registrationBody.getUsername()));
@@ -163,15 +181,21 @@ public class KeycloakService implements KeycloakServiceInterface {
 		}
 
 		if (response.getStatus() == 409) {
-			throw new RegistrationException("authentication.registration-data-taken", originalLocale,
-					String.format("Data for user was already taken:\n username: %s,\n email: %s",
-							registrationBody.getUsername(),
-							registrationBody.getEmail())
-			);
+			throw RegistrationException.builder()
+					.userMessageTranslationKey("authentication.registration-data-taken")
+					.originalLocale(originalLocale)
+					.logMessage(
+							String.format("Data for user was already taken:\n username: %s,\n email: %s",
+								registrationBody.getUsername(),
+								registrationBody.getEmail()))
+					.build();
 		}
 
-		throw new AuthenticationException("authentication.registration-error", originalLocale,
-				String.format("Registration was not successful for user %s", registrationBody.getUsername()));
+		throw AuthenticationException.builder()
+				.userMessageTranslationKey("authentication.registration-error")
+				.originalLocale(originalLocale)
+				.logMessage(String.format("Registration was not successful for user %s", registrationBody.getUsername()))
+				.build();
 	}
 
 	/**
@@ -195,8 +219,12 @@ public class KeycloakService implements KeycloakServiceInterface {
 				.bodyToMono(AuthenticationToken.class)
 				.map(dtoConversion::convertToDTO)
 				.doOnSuccess(s -> log.info("Tokens has been successful refreshed"))
-				.onErrorMap(throwable -> new AuthenticationException("authentication.tokens-not-refreshed", originalLocale,
-						String.format("The refresh token of user %s did not work", "")))//userService.getUsernameOfCurrentUser())))
+				.onErrorMap(throwable ->
+						AuthenticationException.builder()
+								.userMessageTranslationKey("authentication.tokens-not-refreshed")
+								.originalLocale(originalLocale)
+								.logMessage(String.format("The refresh token of user %s did not work", ""))//userService.getUsernameOfCurrentUser())))
+								.build())
 				.block();
 	}
 }

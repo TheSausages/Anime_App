@@ -1,9 +1,12 @@
 package anime.app.exceptions.exceptions;
 
+import lombok.Builder;
 import lombok.NonNull;
+import lombok.Singular;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -11,21 +14,17 @@ import java.util.Locale;
  * @see anime.app.services.anilist.AnilistService
  */
 @ResponseStatus(HttpStatus.SERVICE_UNAVAILABLE)
-public class AnilistException extends DefaultException {
+public class AnilistException extends DefaultLocaleException {
 	private final static String logMessage = "Anilist Exception, no message given";
-	private final Locale originalLocale;
 
-	public AnilistException(String userMessageTranslationKey, @NonNull Locale originalLocale) {
-		super(userMessageTranslationKey, logMessage);
-		this.originalLocale = originalLocale;
+
+	@Builder
+	public AnilistException(String logMessage, @NonNull String userMessageTranslationKey, @Singular List<Object> translationParameters, @NonNull Locale originalLocale) {
+		super(logMessage, userMessageTranslationKey, translationParameters, originalLocale);
 	}
 
-	public AnilistException(String userMessageTranslationKey, @NonNull Locale originalLocale, String logMessage) {
-		super(userMessageTranslationKey, logMessage);
-		this.originalLocale = originalLocale;
-	}
-
-	public Locale getOriginalLocale() {
-		return originalLocale;
+	@Override
+	protected String getDefaultLogMessage() {
+		return logMessage;
 	}
 }
