@@ -4,40 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a85f17e-c8b0-481b-a543-783256245f43" name="Changes" comment="Addition: forgotten file">
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/DefaultLocaleException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/NotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/repositories/forum/TagRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/forum/tag/TagService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/forum/tag/TagServiceInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/NotFoundExceptionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/forum/tag/TagServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="9a85f17e-c8b0-481b-a543-783256245f43" name="Changes" comment="Refactor: updated error creation by adding builders, Addition: added Tag service and tests">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/configuration/beans/ValidatorConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/configuration/beans/ValidatorConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/controllers/ForumController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/controllers/ForumController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/ExceptionControllerAdvice.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/ExceptionControllerAdvice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/AnilistException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/AnilistException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/AuthenticationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/AuthenticationException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/DefaultException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/DefaultException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/RegistrationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/RegistrationException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/ValidationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/ValidationException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/anilist/AnilistService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/anilist/AnilistService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/dto/conversion/DTOConversionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/dto/conversion/DTOConversionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/dto/conversion/DTOConversionServiceInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/dto/conversion/DTOConversionServiceInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/forumcategories/ForumCategoriesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/forum/forumcategories/ForumCategoriesService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/forumcategories/ForumCategoriesServiceInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/forum/forumcategories/ForumCategoriesServiceInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/keycloak/KeycloakService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/keycloak/KeycloakService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/resources/lng.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/resources/lng.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/resources/lng_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/resources/lng_en.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/resources/lng_pl.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/resources/lng_pl.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/AnilistExceptionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/AnilistExceptionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/AuthenticationExceptionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/AuthenticationExceptionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/RegistrationExceptionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/RegistrationExceptionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/ValidationExceptionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/ValidationExceptionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/anilist/AnilistServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/anilist/AnilistServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/forumcategories/ForumCategoriesServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/forum/forumcategories/ForumCategoriesServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/repositories/forum/TagRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/repositories/forum/TagRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/forum/tag/TagService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/forum/tag/TagService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -438,12 +408,12 @@
       <item itemvalue="Gradle.Anime_App_Project [Anime_App:bootRun]" />
       <item itemvalue="Gradle.Anime_App_Project With Generation [Anime_App:bootRun]" />
       <item itemvalue="Gradle.Anime_App_Project [Anime_App_Openapi_Generation:build]" />
-      <item itemvalue="Spring Boot.AnimeAppApplication" />
       <item itemvalue="Gradle.NotFoundExceptionTest" />
       <item itemvalue="Gradle.TagServiceTest" />
       <item itemvalue="Gradle.TagServiceTest.findById_NoSuchTag_ThrowException" />
       <item itemvalue="Gradle.TagServiceTest.findById_TagExists_ReturnCorrectTag" />
       <item itemvalue="Gradle.Tests in 'Anime_App_Project.Anime_App.test'" />
+      <item itemvalue="Spring Boot.AnimeAppApplication" />
     </list>
     <recent_temporary>
       <list>
@@ -517,14 +487,7 @@
       <workItem from="1645555695552" duration="128000" />
       <workItem from="1645555849694" duration="54000" />
       <workItem from="1645556542097" duration="705000" />
-      <workItem from="1646725659542" duration="15450000" />
-    </task>
-    <task id="LOCAL-00001" summary="Initial commit, added project with 3 modules">
-      <created>1641596733768</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1641596733768</updated>
+      <workItem from="1646725659542" duration="16283000" />
     </task>
     <task id="LOCAL-00002" summary="Refactor: Added some needed files">
       <created>1641597463233</created>
@@ -862,7 +825,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645387425186</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Refactor: updated error creation by adding builders, Addition: added Tag service and tests">
+      <created>1646749870880</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1646749870881</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -880,7 +850,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactor: updated Media and tests onnected to it" />
     <MESSAGE value="Refactor: changed testing matcher name, Addition: added media and i's test, added Page" />
     <MESSAGE value="Refactor: changed names of important methods, added Page tests" />
     <MESSAGE value="Refactor: updated test matchers, so they test better" />
@@ -905,7 +874,8 @@
     <MESSAGE value="Addition: added rest of database entities, Refactor: small correction in some classes and files" />
     <MESSAGE value="Addition: switched from Keycloak adapter to native spring security oauth2 support, added authentication and partial registration, added tests, Refactor: small update to test structure" />
     <MESSAGE value="Addition: forgotten file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Addition: forgotten file" />
+    <MESSAGE value="Refactor: updated error creation by adding builders, Addition: added Tag service and tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor: updated error creation by adding builders, Addition: added Tag service and tests" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">

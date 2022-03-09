@@ -27,6 +27,9 @@ public class TagService implements TagServiceInterface {
         this.conversionService = conversionService;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Set<TagDTO> getAllTags() {
         log.info("Get all tags");
@@ -37,6 +40,9 @@ public class TagService implements TagServiceInterface {
                 .collect(Collectors.toSet());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Tag findById(int id) {
         log.info("Get tag with id: {}", id);
