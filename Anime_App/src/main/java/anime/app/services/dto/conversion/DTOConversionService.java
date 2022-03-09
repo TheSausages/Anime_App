@@ -1,12 +1,10 @@
 package anime.app.services.dto.conversion;
 
 import anime.app.entities.AuthenticationToken;
+import anime.app.entities.database.anime.Anime;
 import anime.app.entities.database.forum.ForumCategory;
 import anime.app.entities.database.forum.Tag;
-import anime.app.openapi.model.AuthenticationTokenDTO;
-import anime.app.openapi.model.ForumCategoryDTO;
-import anime.app.openapi.model.TagDTO;
-import anime.app.openapi.model.TagImportance;
+import anime.app.openapi.model.*;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -54,6 +52,18 @@ public class DTOConversionService implements DTOConversionServiceInterface {
 				.name(tag.getName())
 				.importance(TagImportance.fromValue(tag.getImportance().name()))
 				.color(tag.getColor())
+				.build();
+	}
+
+	@Override
+	public LocalAnimeInformationDTO convertToDTO(Anime anime) {
+		Objects.requireNonNull(anime, "Anime cannot be null");
+
+		return LocalAnimeInformationDTO.builder()
+				.animeId((long) anime.getId())
+				.averageScore(anime.getAverageScore())
+				.nrOfFavourites(anime.getNrOfFavourites())
+				.nrOfReviews(anime.getNrOfReviews())
 				.build();
 	}
 }

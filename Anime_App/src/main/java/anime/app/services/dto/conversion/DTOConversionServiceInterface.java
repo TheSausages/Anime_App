@@ -1,10 +1,12 @@
 package anime.app.services.dto.conversion;
 
 import anime.app.entities.AuthenticationToken;
+import anime.app.entities.database.anime.Anime;
 import anime.app.entities.database.forum.ForumCategory;
 import anime.app.entities.database.forum.Tag;
 import anime.app.openapi.model.AuthenticationTokenDTO;
 import anime.app.openapi.model.ForumCategoryDTO;
+import anime.app.openapi.model.LocalAnimeInformationDTO;
 import anime.app.openapi.model.TagDTO;
 
 /**
@@ -25,4 +27,7 @@ public interface DTOConversionServiceInterface {
 
 	/** Convert a {@link Tag} into it's DTO */
 	TagDTO convertToDTO(Tag tag);
+
+	/** Convert an {@link Anime} into it's DTO */
+	LocalAnimeInformationDTO convertToDTO(Anime anime);
 }

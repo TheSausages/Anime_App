@@ -20,5 +20,12 @@ public interface TagServiceInterface {
      * @param id Id of the searched Tag
      * @return The found tag
      */
-    Tag findById(int id);
+    Tag getTagById(int id);
+
+    /**
+     * Find a forum Tag by its id, and then transform it into it's DTO.
+     * @param id Id of the searched Tag
+     * @return The found tag in DTO form
+     */
+    TagDTO getTagDTOById(int id);
 }

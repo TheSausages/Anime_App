@@ -107,15 +107,13 @@ class TagServiceTest {
     }
 
     @Test
-    void findById_NoSuchTag_ThrowException() {
+    void getTagById_NoSuchTag_ThrowException() {
         //given
         int id = 1;
-
-        //No need for stubbing, because it will return null by default
         doReturn(Optional.empty()).when(tagRepository).findById(id);
 
         //when
-        NotFoundException exception = assertThrows(NotFoundException.class, () -> service.findById(id));
+        NotFoundException exception = assertThrows(NotFoundException.class, () -> service.getTagById(id));
 
         //then
         assertThat(exception, allOf(
@@ -135,7 +133,7 @@ class TagServiceTest {
     }
 
     @Test
-    void findById_TagExists_ReturnCorrectTag() {
+    void getTagById_TagExists_ReturnCorrectTag() {
         //given
         int id = 1;
         Tag expectedTag = Tag.builder()
@@ -147,13 +145,65 @@ class TagServiceTest {
         doReturn(Optional.of(expectedTag)).when(tagRepository).findById(id);
 
         //when
-        Tag actualTag = service.findById(id);
+        Tag actualTag = service.getTagById(id);
 
         //then
         assertThat(actualTag, allOf(
                 notNullValue(),
                 instanceOf(Tag.class),
                 equalTo(expectedTag)
+        ));
+    }
+
+    @Test
+    void getTagDTOById_NoSuchTag_ThrowException() {
+        //given
+        int id = 1;
+
+        //No need for stubbing, because it will return null by default
+        doReturn(Optional.empty()).when(tagRepository).findById(id);
+
+        //when
+        NotFoundException exception = assertThrows(NotFoundException.class, () -> service.getTagDTOById(id));
+
+        //then
+        assertThat(exception, allOf(
+                notNullValue(),
+                instanceOf(NotFoundException.class)
+        ));
+
+        assertThat(exception.getMessage(), allOf(
+                notNullValue(),
+                not(equalToCompressingWhiteSpace(""))
+        ));
+
+        assertThat(exception.getLogMessage(), allOf(
+                notNullValue(),
+                not(equalToCompressingWhiteSpace(""))
+        ));
+    }
+
+    @Test
+    void getTagDTOById_TagExists_ReturnCorrectTag() {
+        //given
+        int id = 1;
+        Tag tag = Tag.builder()
+                .id(id)
+                .name("name")
+                .color("Color")
+                .importance(Tag.TagImportance.HIGH)
+                .build();
+        doReturn(Optional.of(tag)).when(tagRepository).findById(id);
+        TagDTO expectedDTO = conversionService.convertToDTO(tag);
+
+        //when
+        TagDTO actualTagDTO = service.getTagDTOById(id);
+
+        //then
+        assertThat(actualTagDTO, allOf(
+                notNullValue(),
+                instanceOf(TagDTO.class),
+                equalTo(expectedDTO)
         ));
     }
 }

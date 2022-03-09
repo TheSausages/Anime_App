@@ -4,10 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a85f17e-c8b0-481b-a543-783256245f43" name="Changes" comment="Refactor: updated error creation by adding builders, Addition: added Tag service and tests">
+    <list default="true" id="9a85f17e-c8b0-481b-a543-783256245f43" name="Changes" comment="Refactor: added missing docs to tag service and repository">
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/repositories/anime/AnimeRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/anime/anime/AnimeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/anime/anime/AnimeServiceInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/utils/UserAuthorizationUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/anime/anime/AnimeServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/repositories/forum/TagRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/repositories/forum/TagRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/dto/conversion/DTOConversionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/dto/conversion/DTOConversionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/dto/conversion/DTOConversionServiceInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/dto/conversion/DTOConversionServiceInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/forum/tag/TagService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/forum/tag/TagService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/forum/tag/TagServiceInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/forum/tag/TagServiceInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/resources/lng.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/resources/lng.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/resources/lng_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/resources/lng_en.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/resources/lng_pl.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/resources/lng_pl.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/dto/conversion/DTOConversionServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/dto/conversion/DTOConversionServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/forum/tag/TagServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/forum/tag/TagServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,11 +174,11 @@
       <recent name="C:\Users\Kacper\IdeaProjects\Anime_App_Project\Anime_App_Openapi_Generation\templates\java" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="anime.app.services.anime.anime" />
       <recent name="anime.app.services.forum.tag" />
       <recent name="anime.app.exceptions.exceptions" />
       <recent name="anime.app.services.forumcategories" />
       <recent name="anime.app.services.dto.conversion" />
-      <recent name="anime.app.configuration.beans" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="anime.app.utils" />
@@ -187,6 +199,29 @@
     <configuration name="Run Local" type="CompoundRunConfigurationType">
       <toRun name="Docker run basic components" type="docker-deploy" />
       <toRun name="Anime_App_Project [Anime_App:bootRun]" type="GradleRunConfiguration" />
+      <method v="2" />
+    </configuration>
+    <configuration name="AnimeServiceTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":Anime_App:test" />
+            <option value="--tests" />
+            <option value="&quot;anime.app.services.anime.anime.AnimeServiceTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
     <configuration name="Anime_App_Project With Generation [Anime_App:bootRun]" type="GradleRunConfiguration" factoryName="Gradle">
@@ -257,7 +292,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="NotFoundExceptionTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="AuthenticationExceptionTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -270,7 +305,7 @@
           <list>
             <option value=":Anime_App:test" />
             <option value="--tests" />
-            <option value="&quot;anime.app.exceptions.exceptions.NotFoundExceptionTest&quot;" />
+            <option value="&quot;anime.app.exceptions.exceptions.AuthenticationExceptionTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -294,29 +329,6 @@
             <option value=":Anime_App:test" />
             <option value="--tests" />
             <option value="&quot;anime.app.services.forum.tag.TagServiceTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="TagServiceTest.findById_NoSuchTag_ThrowException" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":Anime_App:test" />
-            <option value="--tests" />
-            <option value="&quot;anime.app.services.forum.tag.TagServiceTest.findById_NoSuchTag_ThrowException&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -408,20 +420,20 @@
       <item itemvalue="Gradle.Anime_App_Project [Anime_App:bootRun]" />
       <item itemvalue="Gradle.Anime_App_Project With Generation [Anime_App:bootRun]" />
       <item itemvalue="Gradle.Anime_App_Project [Anime_App_Openapi_Generation:build]" />
-      <item itemvalue="Gradle.NotFoundExceptionTest" />
       <item itemvalue="Gradle.TagServiceTest" />
-      <item itemvalue="Gradle.TagServiceTest.findById_NoSuchTag_ThrowException" />
       <item itemvalue="Gradle.TagServiceTest.findById_TagExists_ReturnCorrectTag" />
       <item itemvalue="Gradle.Tests in 'Anime_App_Project.Anime_App.test'" />
       <item itemvalue="Spring Boot.AnimeAppApplication" />
+      <item itemvalue="Gradle.AuthenticationExceptionTest" />
+      <item itemvalue="Gradle.AnimeServiceTest" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.Tests in 'Anime_App_Project.Anime_App.test'" />
-        <item itemvalue="Gradle.TagServiceTest.findById_TagExists_ReturnCorrectTag" />
+        <item itemvalue="Gradle.AnimeServiceTest" />
         <item itemvalue="Gradle.TagServiceTest" />
-        <item itemvalue="Gradle.TagServiceTest.findById_NoSuchTag_ThrowException" />
-        <item itemvalue="Gradle.NotFoundExceptionTest" />
+        <item itemvalue="Gradle.AuthenticationExceptionTest" />
+        <item itemvalue="Gradle.TagServiceTest.findById_TagExists_ReturnCorrectTag" />
       </list>
     </recent_temporary>
   </component>
@@ -488,13 +500,7 @@
       <workItem from="1645555849694" duration="54000" />
       <workItem from="1645556542097" duration="705000" />
       <workItem from="1646725659542" duration="16283000" />
-    </task>
-    <task id="LOCAL-00002" summary="Refactor: Added some needed files">
-      <created>1641597463233</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1641597463233</updated>
+      <workItem from="1646816829650" duration="4912000" />
     </task>
     <task id="LOCAL-00003" summary="Refactor: Added links to previous Back- and Frontend">
       <created>1641597693064</created>
@@ -832,7 +838,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646749870881</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Refactor: added missing docs to tag service and repository">
+      <created>1646816901725</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1646816901726</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -850,7 +863,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactor: changed testing matcher name, Addition: added media and i's test, added Page" />
     <MESSAGE value="Refactor: changed names of important methods, added Page tests" />
     <MESSAGE value="Refactor: updated test matchers, so they test better" />
     <MESSAGE value="Refactor: updated to current Source version for media" />
@@ -875,7 +887,8 @@
     <MESSAGE value="Addition: switched from Keycloak adapter to native spring security oauth2 support, added authentication and partial registration, added tests, Refactor: small update to test structure" />
     <MESSAGE value="Addition: forgotten file" />
     <MESSAGE value="Refactor: updated error creation by adding builders, Addition: added Tag service and tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor: updated error creation by adding builders, Addition: added Tag service and tests" />
+    <MESSAGE value="Refactor: added missing docs to tag service and repository" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor: added missing docs to tag service and repository" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">

@@ -44,7 +44,7 @@ public class TagService implements TagServiceInterface {
      * {@inheritDoc}
      */
     @Override
-    public Tag findById(int id) {
+    public Tag getTagById(int id) {
         log.info("Get tag with id: {}", id);
 
         return tagRepository.findById(id)
@@ -52,5 +52,13 @@ public class TagService implements TagServiceInterface {
                         .userMessageTranslationKey("forum.tag-not-found")
                         .translationParameter(id)
                         .build());
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public TagDTO getTagDTOById(int id) {
+        return conversionService.convertToDTO(getTagById(id));
     }
 }
