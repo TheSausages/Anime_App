@@ -47,6 +47,7 @@ public class Thread {
 	}
 
 	@Column(nullable = false)
+	@Enumerated(EnumType.STRING)
 	private ThreadStatus status;
 
 	@ColumnDefault("0")

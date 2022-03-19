@@ -69,6 +69,7 @@ public class AnimeUserInfo {
 	}
 
 	@Column(nullable = false)
+	@Enumerated(EnumType.STRING)
 	private AnimeUserStatus status;
 
 	@PastOrPresent

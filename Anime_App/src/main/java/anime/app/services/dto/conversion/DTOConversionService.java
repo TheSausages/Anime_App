@@ -43,6 +43,9 @@ public class DTOConversionService implements DTOConversionServiceInterface {
 				.build();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public TagDTO convertToDTO(Tag tag) {
 		Objects.requireNonNull(tag, "Tag cannot be null");
@@ -55,6 +58,9 @@ public class DTOConversionService implements DTOConversionServiceInterface {
 				.build();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public LocalAnimeInformationDTO convertToDTO(Anime anime) {
 		Objects.requireNonNull(anime, "Anime cannot be null");

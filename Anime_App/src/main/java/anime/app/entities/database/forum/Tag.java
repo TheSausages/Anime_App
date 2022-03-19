@@ -42,6 +42,7 @@ public class Tag {
 	}
 
 	@Column(nullable = false)
+	@Enumerated(EnumType.STRING)
 	private TagImportance importance;
 
 	@Pattern(regexp = "^rgb(\\d{1,3}, \\d{1,3}, \\d{1,3})$")

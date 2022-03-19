@@ -52,6 +52,7 @@ public class Post {
 	}
 
 	@Column(nullable = false)
+	@Enumerated(EnumType.STRING)
 	private PostStatus status;
 
 	@PositiveOrZero

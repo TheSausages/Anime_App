@@ -8,6 +8,7 @@ import anime.app.services.dto.conversion.DTOConversionServiceInterface;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Default implementation for the {@link AnimeServiceInterface} interface.
@@ -28,7 +29,10 @@ public class AnimeService implements AnimeServiceInterface {
      * {@inheritDoc}
      */
     @Override
+    @Transactional(label = "Get an anime by it's id", readOnly = true)
     public Anime getAnimeById(long id) {
+        log.info("Get anime with id: {}", id);
+
         return animeRepository.findById((int) id)
                 .orElseThrow(() -> NotFoundException.builder()
                         .userMessageTranslationKey("anime.no-anime-with-id")
@@ -40,6 +44,7 @@ public class AnimeService implements AnimeServiceInterface {
      * {@inheritDoc}
      */
     @Override
+    @Transactional(label = "Get anime by it's id and transform it into the DTO", readOnly = true)
     public LocalAnimeInformationDTO getAnimeDTOById(long id) {
         return conversionService.convertToDTO(getAnimeById(id));
     }

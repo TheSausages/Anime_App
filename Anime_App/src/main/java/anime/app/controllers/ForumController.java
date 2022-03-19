@@ -2,7 +2,9 @@ package anime.app.controllers;
 
 import anime.app.openapi.api.ForumApi;
 import anime.app.openapi.model.ForumCategoryDTO;
+import anime.app.openapi.model.TagDTO;
 import anime.app.services.forum.forumcategories.ForumCategoriesService;
+import anime.app.services.forum.tag.TagServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 
@@ -15,11 +17,13 @@ import java.util.Set;
 @RestControllerWithBasePath
 public class ForumController implements ForumApi {
 	private final ForumCategoriesService forumCategoriesService;
+	private final TagServiceInterface tagService;
 	private final Validator validator;
 
 	@Autowired
-	ForumController(ForumCategoriesService forumCategoriesService, Validator validator) {
+	ForumController(ForumCategoriesService forumCategoriesService, TagServiceInterface tagService, Validator validator) {
 		this.forumCategoriesService = forumCategoriesService;
+		this.tagService = tagService;
 		this.validator = validator;
 	}
 
@@ -29,5 +33,13 @@ public class ForumController implements ForumApi {
 		validator.validate(categories);
 
 		return ResponseEntity.ok(categories);
+	}
+
+	@Override
+	public ResponseEntity<Set<TagDTO>> getForumTags() {
+		Set<TagDTO> tags = tagService.getAllTags();
+		validator.validate(tags);
+
+		return ResponseEntity.ok(tags);
 	}
 }

@@ -8,6 +8,7 @@ import anime.app.services.dto.conversion.DTOConversionServiceInterface;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -31,6 +32,7 @@ public class TagService implements TagServiceInterface {
      * {@inheritDoc}
      */
     @Override
+    @Transactional(label = "Get all tags", readOnly = true)
     public Set<TagDTO> getAllTags() {
         log.info("Get all tags");
 
@@ -44,6 +46,7 @@ public class TagService implements TagServiceInterface {
      * {@inheritDoc}
      */
     @Override
+    @Transactional(label = "Get tag by it's id", readOnly = true)
     public Tag getTagById(int id) {
         log.info("Get tag with id: {}", id);
 
@@ -58,6 +61,7 @@ public class TagService implements TagServiceInterface {
      * {@inheritDoc}
      */
     @Override
+    @Transactional(label = "Get tag by it's id and transform it into the DTO", readOnly = true)
     public TagDTO getTagDTOById(int id) {
         return conversionService.convertToDTO(getTagById(id));
     }

@@ -4,22 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a85f17e-c8b0-481b-a543-783256245f43" name="Changes" comment="Refactor: added missing docs to tag service and repository">
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/repositories/anime/AnimeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/anime/anime/AnimeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/anime/anime/AnimeServiceInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/utils/UserAuthorizationUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/anime/anime/AnimeServiceTest.java" afterDir="false" />
+    <list default="true" id="9a85f17e-c8b0-481b-a543-783256245f43" name="Changes" comment="Addition: Added anime service and its tests">
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/user/UserServiceInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/controllers/ForumController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/controllers/ForumController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/anime/AnimeUserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/anime/AnimeUserInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/Post.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/Tag.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/Tag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/Thread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/Thread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/anime/anime/AnimeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/anime/anime/AnimeService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/dto/conversion/DTOConversionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/dto/conversion/DTOConversionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/dto/conversion/DTOConversionServiceInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/dto/conversion/DTOConversionServiceInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/forum/forumcategories/ForumCategoriesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/forum/forumcategories/ForumCategoriesService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/forum/tag/TagService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/forum/tag/TagService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/forum/tag/TagServiceInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/forum/tag/TagServiceInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/resources/lng.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/resources/lng.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/resources/lng_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/resources/lng_en.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/resources/lng_pl.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/resources/lng_pl.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/dto/conversion/DTOConversionServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/dto/conversion/DTOConversionServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/forum/tag/TagServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/forum/tag/TagServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,9 +68,10 @@
       <list>
         <option value="Enum" />
         <option value="AnnotationType" />
-        <option value="Interface" />
         <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Kotlin Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -140,6 +138,10 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="postgresql" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -147,7 +149,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="jdk.selected.JAVA_MODULE" value="14" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../kiedyNieMamLapkaZPracy" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -195,7 +197,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.Tests in 'Anime_App_Project.Anime_App.test'">
+  <component name="RunManager" selected="Spring Boot.AnimeAppApplication">
     <configuration name="Run Local" type="CompoundRunConfigurationType">
       <toRun name="Docker run basic components" type="docker-deploy" />
       <toRun name="Anime_App_Project [Anime_App:bootRun]" type="GradleRunConfiguration" />
@@ -423,9 +425,9 @@
       <item itemvalue="Gradle.TagServiceTest" />
       <item itemvalue="Gradle.TagServiceTest.findById_TagExists_ReturnCorrectTag" />
       <item itemvalue="Gradle.Tests in 'Anime_App_Project.Anime_App.test'" />
-      <item itemvalue="Spring Boot.AnimeAppApplication" />
       <item itemvalue="Gradle.AuthenticationExceptionTest" />
       <item itemvalue="Gradle.AnimeServiceTest" />
+      <item itemvalue="Spring Boot.AnimeAppApplication" />
     </list>
     <recent_temporary>
       <list>
@@ -500,14 +502,12 @@
       <workItem from="1645555849694" duration="54000" />
       <workItem from="1645556542097" duration="705000" />
       <workItem from="1646725659542" duration="16283000" />
-      <workItem from="1646816829650" duration="4912000" />
-    </task>
-    <task id="LOCAL-00003" summary="Refactor: Added links to previous Back- and Frontend">
-      <created>1641597693064</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1641597693064</updated>
+      <workItem from="1646816829650" duration="4967000" />
+      <workItem from="1646821864505" duration="17000" />
+      <workItem from="1646851131304" duration="3902000" />
+      <workItem from="1646916218887" duration="784000" />
+      <workItem from="1647011134618" duration="2952000" />
+      <workItem from="1647681021300" duration="4875000" />
     </task>
     <task id="LOCAL-00004" summary="Refactor: Moved important dependencies versions to main build.gradle">
       <created>1641598125167</created>
@@ -845,7 +845,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646816901726</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Addition: Added anime service and its tests">
+      <created>1646821818640</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1646821818640</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -863,7 +870,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactor: changed names of important methods, added Page tests" />
     <MESSAGE value="Refactor: updated test matchers, so they test better" />
     <MESSAGE value="Refactor: updated to current Source version for media" />
     <MESSAGE value="Refactor: updated Anime.yaml file, small correction in pojo.mustache" />
@@ -888,7 +894,8 @@
     <MESSAGE value="Addition: forgotten file" />
     <MESSAGE value="Refactor: updated error creation by adding builders, Addition: added Tag service and tests" />
     <MESSAGE value="Refactor: added missing docs to tag service and repository" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor: added missing docs to tag service and repository" />
+    <MESSAGE value="Addition: Added anime service and its tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Addition: Added anime service and its tests" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
