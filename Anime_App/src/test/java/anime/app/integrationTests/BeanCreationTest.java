@@ -109,7 +109,7 @@ class BeanCreationTest extends BaseIntegrationTest {
 				instanceOf(AcceptHeaderLocaleResolver.class)
 		));
 
-		assertThat(((AcceptHeaderLocaleResolver) resolver).getDefaultLocale(), equalTo(Locale.ENGLISH));
+		assertThat(((AcceptHeaderLocaleResolver) resolver).getDefaultLocale(), equalTo(Locale.UK));
 	}
 
 	@Test

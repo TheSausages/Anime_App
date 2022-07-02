@@ -19,7 +19,7 @@ public class AnilistException extends DefaultLocaleException {
 
 
 	@Builder
-	public AnilistException(String logMessage, @NonNull String userMessageTranslationKey, @Singular List<Object> translationParameters, @NonNull Locale originalLocale) {
+	public AnilistException(String logMessage, @NonNull String userMessageTranslationKey, @Singular List<Object> translationParameters, Locale originalLocale) {
 		super(logMessage, userMessageTranslationKey, translationParameters, originalLocale);
 	}
 

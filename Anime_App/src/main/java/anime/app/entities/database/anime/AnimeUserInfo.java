@@ -34,7 +34,7 @@ public class AnimeUserInfo {
 	@SuperBuilder
 	@NoArgsConstructor
 	@AllArgsConstructor
-	static class AnimeUserInfoId implements Serializable {
+	static public class AnimeUserInfoId implements Serializable {
 		@ManyToOne
 		@JoinColumn(name = "user_id")
 		private User user;
@@ -72,15 +72,15 @@ public class AnimeUserInfo {
 	@Enumerated(EnumType.STRING)
 	private AnimeUserStatus status;
 
-	@PastOrPresent
+	@PastOrPresent(message = "Cannot start watching in the future")
 	private LocalDate watchStart;
 
-	@PastOrPresent
+	@PastOrPresent(message = "Cannot end watching in the future")
 	private LocalDate endStart;
 
 	@Column(nullable = false)
 	@ColumnDefault("0")
-	@PositiveOrZero
+	@PositiveOrZero(message = "Cannot see negative number of episodes")
 	private int episodesSeen;
 
 	@Column(nullable = false)
@@ -88,11 +88,11 @@ public class AnimeUserInfo {
 	private boolean favourite;
 
 	@Column(nullable = false)
-	@Range(max = 10, min = 0)
+	@Range(max = 10, min = 0, message = "Grade can only be between 0 and 10")
 	private int gradle;
 
 	@Column(nullable = false)
-	@PastOrPresent
+	@PastOrPresent(message = "Cannot modify in the future")
 	private LocalDateTime modification;
 
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)

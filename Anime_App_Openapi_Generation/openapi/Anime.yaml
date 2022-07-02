@@ -158,6 +158,7 @@ paths:
                           hasNextPage: false
                     localAnimeInformation:
                       animeId: 165794
+                      title: title
                       averageScore: 8.7
                       nrOfFavourites: 10
                       nrOfReviews: 3
@@ -655,6 +656,7 @@ components:
                 hasNextPage: false
           localAnimeInformation:
             animeId: 165794
+            title: title
             averageScore: 8.7
             nrOfFavourites: 10
             nrOfReviews: 3
@@ -705,6 +707,7 @@ components:
       x-examples:
         Anime Example:
           animeId: 165794
+          title: title
           averageScore: 8.7
           nrOfFavourites: 10
           nrOfReviews: 3
@@ -712,6 +715,10 @@ components:
       properties:
         animeId:
           $ref: '#/components/schemas/AnimeId'
+        title:
+          type: string
+          maximum: 200
+          description: Title of the animation
         averageScore:
           type: number
           minimum: 0
@@ -730,6 +737,7 @@ components:
           description: How many local users reviewed the animation
       required:
         - animeId
+        - title
         - averageScore
         - nrOfFavourites
         - nrOfReviews
@@ -863,11 +871,11 @@ components:
         status:
           type: string
           enum:
-            - No Status
-            - Watching
-            - Completed
-            - Dropped
-            - Plan to Watch
+            - NO_STATUS
+            - WATCHING
+            - COMPLETED
+            - DROPPED
+            - PLAN_TO_WATCH
           description: Current User status on the Anime
         watchStartDate:
           type: string

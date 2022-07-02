@@ -17,7 +17,7 @@ public class RegistrationException extends DefaultLocaleException {
 	private static final String logMessage = "Registration Exception, no message given";
 
 	@Builder
-	public RegistrationException(String logMessage, @NonNull String userMessageTranslationKey, @Singular List<Object> translationParameters, @NonNull Locale originalLocale) {
+	public RegistrationException(String logMessage, @NonNull String userMessageTranslationKey, @Singular List<Object> translationParameters, Locale originalLocale) {
 		super(logMessage, userMessageTranslationKey, translationParameters, originalLocale);
 	}
 

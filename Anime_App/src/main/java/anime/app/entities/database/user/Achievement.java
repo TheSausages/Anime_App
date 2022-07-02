@@ -35,17 +35,17 @@ public class Achievement {
 	private String name;
 
 	@Length(max = 100, message = "Achievement name too long")
-	@ColumnDefault("No description given")
+	@ColumnDefault("No Achievement description given")
 	private String description;
 
-	@Length(max = 200, message = "Achievement path too long")
+	@Length(max = 200, message = "Achievement icon path too long")
 	@Column(nullable = false, unique = true)
-	@NotBlank(message = "Achievement path cannot be blank")
-	private String descriptionPath;
+	@NotBlank(message = "Achievement icon path cannot be blank")
+	private String iconPath;
 
 	@Column(nullable = false)
 	@ColumnDefault("10")
-	@PositiveOrZero(message = "Achievement Id cannot be negative")
+	@PositiveOrZero(message = "Achievement points cannot be negative")
 	private int points;
 
 	@ManyToMany(mappedBy = "achievements")

@@ -32,24 +32,23 @@ class RegistrationExceptionTest {
 	}
 
 	@Test
-	void registrationException_NullLocale_Exception() {
+	void registrationException_NullLocale_CorrectExceptionCreation() {
 		//given
-		String translationKey = "Key";
-		Locale originalLocale = null;
+		String translationKey = "Some key";
 
 		//when
-		Exception exception = assertThrows(NullPointerException.class, () ->
-				RegistrationException.builder()
-						.userMessageTranslationKey(translationKey)
-						.originalLocale(originalLocale)
-						.build()
-		);
+		RegistrationException exception = RegistrationException.builder()
+				.userMessageTranslationKey(translationKey)
+				.build();
 
 		//then
 		assertThat(exception, allOf(
 				notNullValue(),
-				instanceOf(NullPointerException.class)
+				instanceOf(RegistrationException.class)
 		));
+		assertThat(exception.getUserMessageTranslationKey(), equalTo(translationKey));
+		assertThat(exception.getLogMessage(), equalTo("Registration Exception, no message given"));
+		assertThat(exception.getOriginalLocale(), equalTo(Locale.UK));
 	}
 
 	@Test

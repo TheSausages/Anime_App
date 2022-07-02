@@ -4,19 +4,64 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a85f17e-c8b0-481b-a543-783256245f43" name="Changes" comment="Addition: Added anime service and its tests">
+    <list default="true" id="9a85f17e-c8b0-481b-a543-783256245f43" name="Changes" comment="Giant commit:&#10;&#9;Refactor: updated validation messages, small update to exception creation, changed user id from String to UUID, small corrections to field names&#10;&#9;&#10;&#9;Addition: Added user service and tests to it, added achievement icons">
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/repositories/user/AchievementRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/repositories/user/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/icon/IconService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/icon/IconServiceInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/user/UserService.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/user/UserServiceInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/icon/IconServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/user/UserServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/utils/TestUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/test/resources/achievements/Default.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/test/resources/achievements/NrOfPosts-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/test/resources/achievements/NrOfPosts-10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/test/resources/achievements/NrOfPosts-50.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/test/resources/achievements/NrOfReviews-10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/test/resources/achievements/NrOfReviews-50.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/controllers/ForumController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/controllers/ForumController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/configuration/beans/LocaleResolverConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/configuration/beans/LocaleResolverConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/anime/Anime.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/anime/Anime.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/anime/AnimeUserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/anime/AnimeUserInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/anime/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/anime/Review.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/ForumCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/ForumCategory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/Post.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/PostUserStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/PostUserStatus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/Tag.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/Tag.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/Thread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/Thread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/anime/anime/AnimeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/anime/anime/AnimeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/ThreadUserStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/ThreadUserStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/user/Achievement.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/user/Achievement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/AnilistException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/AnilistException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/AuthenticationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/AuthenticationException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/DefaultLocaleException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/DefaultLocaleException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/RegistrationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/RegistrationException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/dto/conversion/DTOConversionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/dto/conversion/DTOConversionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/forum/forumcategories/ForumCategoriesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/forum/forumcategories/ForumCategoriesService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/forum/tag/TagService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/forum/tag/TagService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/dto/conversion/DTOConversionServiceInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/dto/conversion/DTOConversionServiceInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/keycloak/KeycloakService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/keycloak/KeycloakService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/utils/UserAuthorizationUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/utils/UserAuthorizationUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/resources/data.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/resources/lng.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/resources/lng.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/resources/lng_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/resources/lng_en.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/resources/lng_pl.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/resources/lng_pl.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/resources/schema.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/AnilistExceptionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/AnilistExceptionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/AuthenticationExceptionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/AuthenticationExceptionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/RegistrationExceptionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/RegistrationExceptionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/integrationTests/BeanCreationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/integrationTests/BeanCreationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/integrationTests/config/BaseIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/integrationTests/config/BaseIntegrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/anime/anime/AnimeServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/anime/anime/AnimeServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/dto/conversion/DTOConversionServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/dto/conversion/DTOConversionServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/forum/forumcategories/ForumCategoriesServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/forum/forumcategories/ForumCategoriesServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/forum/tag/TagServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/forum/tag/TagServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/resources/application-test-withDatabase.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/resources/application-test-withDatabase.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/resources/application-test-withoutDatabase.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/resources/data-test.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/resources/data-test.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/Anime.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/Anime.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,10 +113,10 @@
       <list>
         <option value="Enum" />
         <option value="AnnotationType" />
-        <option value="Class" />
-        <option value="JUnit5 Test Class" />
         <option value="Kotlin Class" />
         <option value="Interface" />
+        <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -149,7 +194,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="jdk.selected.JAVA_MODULE" value="14" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../kiedyNieMamLapkaZPracy" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Anime_App/src/test/resources" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -158,15 +203,15 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15527344" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="sshConsole" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\programowanie\IntellijIdea\IdeaProjects\Anime_App_Project\Anime_App\src\test\resources" />
       <recent name="C:\Users\Kacper\IdeaProjects\Anime_App_Project\Anime_App\src\test\resources\keycloak\realm" />
       <recent name="C:\Users\Kacper\IdeaProjects\Anime_App_Project\docker\keycloak\realm" />
       <recent name="C:\Users\Kacper\IdeaProjects\Anime_App_Project\Anime_App\src\test\resources" />
       <recent name="C:\Users\Kacper\IdeaProjects\Anime_App_Project\Anime_App\src\test\java\anime\app\integrationTests\config" />
-      <recent name="C:\Users\Kacper\IdeaProjects\Anime_App_Project\docker\compose" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -176,11 +221,11 @@
       <recent name="C:\Users\Kacper\IdeaProjects\Anime_App_Project\Anime_App_Openapi_Generation\templates\java" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="anime.app.services.user" />
+      <recent name="anime.app.services.icon" />
       <recent name="anime.app.services.anime.anime" />
       <recent name="anime.app.services.forum.tag" />
       <recent name="anime.app.exceptions.exceptions" />
-      <recent name="anime.app.services.forumcategories" />
-      <recent name="anime.app.services.dto.conversion" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="anime.app.utils" />
@@ -197,33 +242,10 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.AnimeAppApplication">
+  <component name="RunManager" selected="Compound.Run Local">
     <configuration name="Run Local" type="CompoundRunConfigurationType">
       <toRun name="Docker run basic components" type="docker-deploy" />
       <toRun name="Anime_App_Project [Anime_App:bootRun]" type="GradleRunConfiguration" />
-      <method v="2" />
-    </configuration>
-    <configuration name="AnimeServiceTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":Anime_App:test" />
-            <option value="--tests" />
-            <option value="&quot;anime.app.services.anime.anime.AnimeServiceTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
     <configuration name="Anime_App_Project With Generation [Anime_App:bootRun]" type="GradleRunConfiguration" factoryName="Gradle">
@@ -294,7 +316,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="AuthenticationExceptionTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="GetCurrentUserTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -307,7 +329,7 @@
           <list>
             <option value=":Anime_App:test" />
             <option value="--tests" />
-            <option value="&quot;anime.app.exceptions.exceptions.AuthenticationExceptionTest&quot;" />
+            <option value="&quot;anime.app.services.user.UserServiceTest$GetCurrentUserTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -317,7 +339,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="TagServiceTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="GetUserInformationByIdTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -330,7 +352,7 @@
           <list>
             <option value=":Anime_App:test" />
             <option value="--tests" />
-            <option value="&quot;anime.app.services.forum.tag.TagServiceTest&quot;" />
+            <option value="&quot;anime.app.services.user.UserServiceTest$GetUserInformationByIdTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -340,7 +362,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="TagServiceTest.findById_TagExists_ReturnCorrectTag" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="SaveUserTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -353,7 +375,7 @@
           <list>
             <option value=":Anime_App:test" />
             <option value="--tests" />
-            <option value="&quot;anime.app.services.forum.tag.TagServiceTest.findById_TagExists_ReturnCorrectTag&quot;" />
+            <option value="&quot;anime.app.services.user.UserServiceTest$SaveUserTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -375,6 +397,29 @@
         <option name="taskNames">
           <list>
             <option value=":Anime_App:test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="UserServiceTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":Anime_App:test" />
+            <option value="--tests" />
+            <option value="&quot;anime.app.services.user.UserServiceTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -422,20 +467,20 @@
       <item itemvalue="Gradle.Anime_App_Project [Anime_App:bootRun]" />
       <item itemvalue="Gradle.Anime_App_Project With Generation [Anime_App:bootRun]" />
       <item itemvalue="Gradle.Anime_App_Project [Anime_App_Openapi_Generation:build]" />
-      <item itemvalue="Gradle.TagServiceTest" />
-      <item itemvalue="Gradle.TagServiceTest.findById_TagExists_ReturnCorrectTag" />
-      <item itemvalue="Gradle.Tests in 'Anime_App_Project.Anime_App.test'" />
-      <item itemvalue="Gradle.AuthenticationExceptionTest" />
-      <item itemvalue="Gradle.AnimeServiceTest" />
       <item itemvalue="Spring Boot.AnimeAppApplication" />
+      <item itemvalue="Gradle.GetUserInformationByIdTest" />
+      <item itemvalue="Gradle.GetCurrentUserTest" />
+      <item itemvalue="Gradle.UserServiceTest" />
+      <item itemvalue="Gradle.SaveUserTest" />
+      <item itemvalue="Gradle.Tests in 'Anime_App_Project.Anime_App.test'" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.Tests in 'Anime_App_Project.Anime_App.test'" />
-        <item itemvalue="Gradle.AnimeServiceTest" />
-        <item itemvalue="Gradle.TagServiceTest" />
-        <item itemvalue="Gradle.AuthenticationExceptionTest" />
-        <item itemvalue="Gradle.TagServiceTest.findById_TagExists_ReturnCorrectTag" />
+        <item itemvalue="Gradle.UserServiceTest" />
+        <item itemvalue="Gradle.SaveUserTest" />
+        <item itemvalue="Gradle.GetCurrentUserTest" />
+        <item itemvalue="Gradle.GetUserInformationByIdTest" />
       </list>
     </recent_temporary>
   </component>
@@ -507,14 +552,14 @@
       <workItem from="1646851131304" duration="3902000" />
       <workItem from="1646916218887" duration="784000" />
       <workItem from="1647011134618" duration="2952000" />
-      <workItem from="1647681021300" duration="4875000" />
-    </task>
-    <task id="LOCAL-00004" summary="Refactor: Moved important dependencies versions to main build.gradle">
-      <created>1641598125167</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1641598125167</updated>
+      <workItem from="1647681021300" duration="15491000" />
+      <workItem from="1647765106927" duration="47000" />
+      <workItem from="1647765174942" duration="13427000" />
+      <workItem from="1647812316696" duration="1560000" />
+      <workItem from="1648494912963" duration="5000" />
+      <workItem from="1648996167930" duration="5000" />
+      <workItem from="1656165488105" duration="329000" />
+      <workItem from="1656772810097" duration="8743000" />
     </task>
     <task id="LOCAL-00005" summary="Refactor: added utilities to test and made them more general, Addition: added more classes and tests">
       <created>1641656611846</created>
@@ -852,11 +897,21 @@
       <option name="project" value="LOCAL" />
       <updated>1646821818640</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Refactor: added transactions, small updates">
+      <created>1647686906396</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1647686906396</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="application.properties" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -870,8 +925,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactor: updated test matchers, so they test better" />
-    <MESSAGE value="Refactor: updated to current Source version for media" />
     <MESSAGE value="Refactor: updated Anime.yaml file, small correction in pojo.mustache" />
     <MESSAGE value="Refactor: updated endpoint files" />
     <MESSAGE value="Refactor: small update to existing api files" />
@@ -895,7 +948,9 @@
     <MESSAGE value="Refactor: updated error creation by adding builders, Addition: added Tag service and tests" />
     <MESSAGE value="Refactor: added missing docs to tag service and repository" />
     <MESSAGE value="Addition: Added anime service and its tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Addition: Added anime service and its tests" />
+    <MESSAGE value="Refactor: added transactions, small updates" />
+    <MESSAGE value="Giant commit:&#10;&#9;Refactor: updated validation messages, small update to exception creation, changed user id from String to UUID, small corrections to field names&#10;&#9;&#10;&#9;Addition: Added user service and tests to it, added achievement icons" />
+    <option name="LAST_COMMIT_MESSAGE" value="Giant commit:&#10;&#9;Refactor: updated validation messages, small update to exception creation, changed user id from String to UUID, small corrections to field names&#10;&#9;&#10;&#9;Addition: Added user service and tests to it, added achievement icons" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">

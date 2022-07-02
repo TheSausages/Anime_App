@@ -25,17 +25,17 @@ import java.util.Set;
 public class ForumCategory {
 	@Id
 	@Column(nullable = false, unique = true)
-	@PositiveOrZero(message = "Achievement Id cannot be negative")
+	@PositiveOrZero(message = "Forum Category Id cannot be negative")
 	private int id;
 
-	@Length(max = 45, message = "Name too long")
+	@Length(max = 45, message = "Forum Category name too long")
 	@Column(nullable = false, unique = true)
-	@NotBlank(message = "Username cannot be blank")
+	@NotBlank(message = "Forum Category name cannot be blank")
 	private String name;
 
-	@Length(max = 150, message = "Description too long")
+	@Length(max = 150, message = "Forum Category description too long")
 	@Column(nullable = false, unique = true)
-	@NotBlank(message = "Username cannot be blank")
+	@NotBlank(message = "Forum Category description cannot be blank")
 	private String description;
 
 	@OneToMany(mappedBy = "category")

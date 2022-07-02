@@ -33,24 +33,23 @@ class AnilistExceptionTest {
 	}
 
 	@Test
-	void anilistException_NullLocale_Exception() {
+	void anilistException_NullLocale_CorrectExceptionCreation() {
 		//given
-		String translationKey = "Key";
-		Locale originalLocale = null;
+		String translationKey = "Some key";
 
 		//when
-		Exception exception = assertThrows(NullPointerException.class, () ->
-				AnilistException.builder()
-						.userMessageTranslationKey(translationKey)
-						.originalLocale(originalLocale)
-						.build()
-		);
+		AnilistException exception = AnilistException.builder()
+				.userMessageTranslationKey(translationKey)
+				.build();
 
 		//then
 		assertThat(exception, allOf(
 				notNullValue(),
-				instanceOf(NullPointerException.class)
+				instanceOf(AnilistException.class)
 		));
+		assertThat(exception.getUserMessageTranslationKey(), equalTo(translationKey));
+		assertThat(exception.getLogMessage(), equalTo("Anilist Exception, no message given"));
+		assertThat(exception.getOriginalLocale(), equalTo(Locale.UK));
 	}
 
 	@Test

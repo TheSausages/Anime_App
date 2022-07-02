@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
@@ -26,10 +27,10 @@ import java.util.Set;
 public class Tag {
 	@Id
 	@Column(nullable = false, unique = true)
-	@PositiveOrZero(message = "Achievement Id cannot be negative")
+	@PositiveOrZero(message = "Tag Id cannot be negative")
 	private int id;
 
-	@Length(max = 45, message = "Name too long")
+	@Length(max = 45, message = "Tag name too long")
 	@Column(nullable = false)
 	@NotBlank(message = "Username cannot be blank")
 	private String name;
@@ -45,6 +46,7 @@ public class Tag {
 	@Enumerated(EnumType.STRING)
 	private TagImportance importance;
 
+	@ColumnDefault("rgb(166, 166, 166)")
 	@Pattern(regexp = "^rgb(\\d{1,3}, \\d{1,3}, \\d{1,3})$")
 	private String color;
 

@@ -29,16 +29,16 @@ import java.util.Set;
 public class Thread {
 	@Id
 	@Column(nullable = false, unique = true)
-	@PositiveOrZero(message = "Achievement Id cannot be negative")
+	@PositiveOrZero(message = "Thread Id cannot be negative")
 	private int id;
 
-	@Length(max = 80, message = "Name too long")
+	@Length(max = 80, message = "Thread title too long")
 	@Column(nullable = false)
-	@NotBlank(message = "Username cannot be blank")
-	private String name;
+	@NotBlank(message = "Thread title cannot be blank")
+	private String title;
 
-	@Length(max = 600, message = "Name too long")
-	@ColumnDefault("No description given")
+	@Length(max = 600, message = "Thread name too long")
+	@ColumnDefault("No Thread description given")
 	private String text;
 
 	public enum ThreadStatus {
@@ -51,16 +51,16 @@ public class Thread {
 	private ThreadStatus status;
 
 	@ColumnDefault("0")
-	@PositiveOrZero
+	@PositiveOrZero(message = "Thread nr. of posts cannot be negative")
 	@Column(name = "nr_posts")
 	private int nrOfPosts;
 
 	@Column(nullable = false)
-	@PastOrPresent
+	@PastOrPresent(message = "Thread creation time cannot be negative")
 	private LocalDateTime creation;
 
 	@Column(nullable = false)
-	@PastOrPresent
+	@PastOrPresent(message = "Thread modification time cannot be negative")
 	private LocalDateTime modification;
 
 	@ManyToOne
@@ -86,4 +86,11 @@ public class Thread {
 			fetch = FetchType.LAZY
 	)
 	private Set<Post> posts;
+
+	@OneToMany(
+			mappedBy = "id.thread",
+			cascade = CascadeType.ALL,
+			orphanRemoval = true
+	)
+	private Set<ThreadUserStatus> threadUserStatuses;
 }

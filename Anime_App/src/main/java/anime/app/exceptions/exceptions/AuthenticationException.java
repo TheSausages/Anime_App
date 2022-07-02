@@ -17,7 +17,7 @@ public class AuthenticationException extends DefaultLocaleException {
 	private final static String logMessage = "Authentication Exception, no message given";
 
 	@Builder
-	public AuthenticationException(String logMessage, @NonNull String userMessageTranslationKey, @Singular List<Object> translationParameters, @NonNull Locale originalLocale) {
+	public AuthenticationException(String logMessage, @NonNull String userMessageTranslationKey, @Singular List<Object> translationParameters, Locale originalLocale) {
 		super(logMessage, userMessageTranslationKey, translationParameters, originalLocale);
 	}
 

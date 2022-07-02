@@ -29,16 +29,16 @@ import java.util.Set;
 public class Post {
 	@Id
 	@Column(nullable = false, unique = true)
-	@PositiveOrZero(message = "Achievement Id cannot be negative")
+	@PositiveOrZero(message = "Post Id cannot be negative")
 	private int id;
 
-	@Length(max = 80, message = "Name too long")
+	@Length(max = 80, message = "Post title too long")
 	@Column(nullable = false)
-	@NotBlank(message = "Username cannot be blank")
-	private String name;
+	@NotBlank(message = "Post title cannot be blank")
+	private String title;
 
-	@Length(max = 600, message = "Name too long")
-	@ColumnDefault("No description given")
+	@Length(max = 600, message = "Post text too long")
+	@ColumnDefault("No post description given")
 	private String text;
 
 	@Column(nullable = false)
@@ -55,27 +55,27 @@ public class Post {
 	@Enumerated(EnumType.STRING)
 	private PostStatus status;
 
-	@PositiveOrZero
+	@PositiveOrZero(message = "Nr. of plus cannot be negative")
 	@Column(nullable = false, name = "nr_plus")
 	@ColumnDefault("0")
 	private int nrOfPlus;
 
-	@PositiveOrZero
+	@PositiveOrZero(message = "Nr. of minus cannot be negative")
 	@Column(nullable = false, name = "nr_minus")
 	@ColumnDefault("0")
 	private int nrOfMinus;
 
-	@PositiveOrZero
+	@PositiveOrZero(message = "Nr. of reports cannot be negative")
 	@Column(nullable = false, name = "nr_reports")
 	@ColumnDefault("0")
 	private int nrOfReports;
 
 	@Column(nullable = false)
-	@PastOrPresent
+	@PastOrPresent(message = "Cannot create a post in the future")
 	private LocalDateTime creation;
 
 	@Column(nullable = false)
-	@PastOrPresent
+	@PastOrPresent(message = "Cannot modify a post in the future")
 	private LocalDateTime modification;
 
 	@ManyToOne
@@ -85,6 +85,13 @@ public class Post {
 	@ManyToOne
 	@JoinColumn(name = "thread", nullable = false)
 	private Thread thread;
+
+	@OneToMany(
+			mappedBy = "id.post",
+			cascade = CascadeType.ALL,
+			orphanRemoval = true
+	)
+	private Set<PostUserStatus> postUserStatuses;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "answer_to")

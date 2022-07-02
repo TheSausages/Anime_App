@@ -44,6 +44,7 @@ comment on table user_achievements is 'Table creating a many-to-many relationshi
     /* Create tables connected to Anime */
 create table anime (
     id int not null unique primary key check ( id >= 0 ),
+    title varchar(200) not null check ( trim(title) != '' ),
     average_score numeric(2, 1) not null default 0 check ( average_score >= 0.0 AND average_score <= 10.0 ),
     nr_scores int not null default 0 check ( nr_scores >= 0 ),
     nr_favourites int not null default 0 check ( nr_favourites >= 0 ),

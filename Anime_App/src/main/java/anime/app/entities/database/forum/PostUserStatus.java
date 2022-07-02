@@ -29,7 +29,7 @@ public class PostUserStatus {
 	@SuperBuilder
 	@NoArgsConstructor
 	@AllArgsConstructor
-	static class PostUserStatusId implements Serializable {
+	static public class PostUserStatusId implements Serializable {
 		@ManyToOne
 		@JoinColumn(name = "user_id")
 		private User user;

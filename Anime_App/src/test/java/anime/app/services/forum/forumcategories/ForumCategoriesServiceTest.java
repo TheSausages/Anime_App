@@ -4,6 +4,7 @@ import anime.app.entities.database.forum.ForumCategory;
 import anime.app.openapi.model.ForumCategoryDTO;
 import anime.app.repositories.forum.ForumCategoryRepository;
 import anime.app.services.dto.conversion.DTOConversionService;
+import anime.app.services.icon.IconService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -17,7 +18,7 @@ import java.util.Set;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class ForumCategoriesServiceTest {
@@ -25,8 +26,11 @@ class ForumCategoriesServiceTest {
 	@Mock
 	ForumCategoryRepository forumCategoryRepository;
 
+	@Mock
+	IconService iconService;
+
 	@Spy
-	DTOConversionService conversionService = new DTOConversionService();
+	DTOConversionService conversionService = new DTOConversionService(iconService);
 
 	@InjectMocks
 	ForumCategoriesService categoriesService;
@@ -69,6 +73,9 @@ class ForumCategoriesServiceTest {
 				instanceOf(Set.class),
 				containsInAnyOrder(categoryDTO)
 		));
+
+		// One time in given section, once in test
+		verify(conversionService, times(2)).convertToDTO(category);
 	}
 
 	@Test
@@ -98,5 +105,9 @@ class ForumCategoriesServiceTest {
 				instanceOf(Set.class),
 				containsInAnyOrder(firstCategoryDTO, secondCategoryDTO)
 		));
+
+		// One time in given section, once in test
+		verify(conversionService, times(2)).convertToDTO(firstCategory);
+		verify(conversionService, times(2)).convertToDTO(secondCategory);
 	}
 }

@@ -1,11 +1,11 @@
 package anime.app.utils;
 
 import anime.app.exceptions.exceptions.AuthenticationException;
-import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.util.Objects;
+import java.util.UUID;
 
 /**
  * Small utility class containing methods connected to User Authorization.
@@ -29,7 +29,6 @@ public interface UserAuthorizationUtils {
         if (!checkIfLoggedIn())
             throw AuthenticationException.builder()
                     .userMessageTranslationKey("authentication.authentication-needed")
-                    .originalLocale(LocaleContextHolder.getLocale())
                     .build();
     }
 
@@ -39,9 +38,9 @@ public interface UserAuthorizationUtils {
      * @see #checkIfLoggedInOrThrow()
      * @return Id of the currently authenticated user in form of UUID
      */
-    static String getIdOfCurrentUser() {
+    static UUID getIdOfCurrentUser() {
         checkIfLoggedInOrThrow();
 
-        return SecurityContextHolder.getContext().getAuthentication().getName();
+        return UUID.fromString(SecurityContextHolder.getContext().getAuthentication().getName());
     }
 }

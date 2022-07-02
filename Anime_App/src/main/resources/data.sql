@@ -20,9 +20,9 @@ Insert into reviews values
     (2, 'Second Test Review', 'Second Test Review Text', 0, 8, 1);
 
 Insert Into anime values
-    (127720, 9.0, 1, 0, 1, 25),
-    (129874, 5.0, 1, 1, 1, 10),
-    (133965, 0.0, 0, 0, 0, 22);
+    (127720, 'Mushoku Tensei: Isekai Ittara Honki Dasu Part 2', 9.0, 1, 0, 1, 25),
+    (129874, 'Kimetsu no Yaiba: Mugen Ressha-hen (TV)', 5.0, 1, 1, 1, 10),
+    (133965, 'Komi-san wa, Komyushou desu.', 0.0, 0, 0, 0, 22);
 
 Insert into anime_user_infos values
     ('467a809a-d893-48c2-85e2-82f9ce4b1560', 127720, 'WATCHING', '2021-10-10',

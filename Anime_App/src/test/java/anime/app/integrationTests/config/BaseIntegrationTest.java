@@ -37,51 +37,6 @@ import static org.springframework.security.test.web.servlet.setup.SecurityMockMv
 /**
  * Integration tests use Mockmvc and {@link com.c4_soft.springaddons.security.oauth2.test.annotations.WithMockAuthentication}
  * to simulate a logged-in user. The Keycloak container is used to test keycloak service.
- *
- * Example integration test:
- * <pre>{@code
- *      public class IntTest extends BaseIntegrationTest {
- *         @Test
- *         @KeycloakPrincipalByUserId("SomeStringValue")
- *         public void test() {
- *             //given
- *
- *             //when
- *             WebTestClient.ResponseSpec spec = webTestClient
- *             		.get()
- *             	    .uri("/uri")
- *             	    .exchange()
- *             (Note! dont use the authorization header here)
- *
- *             //then
- *             ...
- *         }
- *         ...
- *     }
- * }</pre>
- *
- * Example integration test when the user needs to be set inside the test:
- * <pre>{@code
- *      public class IntTest extends BaseIntegrationTest {
- *         @Test
- *         @WithMockAuthentication(authType = KeycloakAuthenticationToken.class)
- *         public void test() {
- *             //given
- *             changeLoggedInUserTo("userId");
- *
- *             //when
- *             WebTestClient.ResponseSpec spec = webTestClient
- *             		.get()
- *             	    .uri("/uri")
- *             	    .exchange()
- *             (Note! dont use the authorization header here)
- *
- *             //then
- *             ...
- *         }
- *         ...
- *     }
- * }</pre>
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles(profiles = "test")

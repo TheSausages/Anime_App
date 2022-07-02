@@ -20,7 +20,7 @@ public class LocaleResolverConfiguration {
 	@Bean
 	LocaleResolver customLocaleResolver() {
 		AcceptHeaderLocaleResolver resolver = new AcceptHeaderLocaleResolver();
-		resolver.setDefaultLocale(Locale.ENGLISH);
+		resolver.setDefaultLocale(Locale.UK);
 
 		return resolver;
 	}

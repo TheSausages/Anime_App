@@ -32,24 +32,23 @@ class AuthenticationExceptionTest {
 	}
 
 	@Test
-	void authenticationException_NullLocale_Exception() {
+	void authenticationException_NullLocale_CorrectExceptionCreation() {
 		//given
-		String translationKey = "Key";
-		Locale originalLocale = null;
+		String translationKey = "Some key";
 
 		//when
-		Exception exception = assertThrows(NullPointerException.class, () ->
-				AuthenticationException.builder()
-						.userMessageTranslationKey(translationKey)
-						.originalLocale(originalLocale)
-						.build()
-		);
+		AuthenticationException exception = AuthenticationException.builder()
+				.userMessageTranslationKey(translationKey)
+				.build();
 
 		//then
 		assertThat(exception, allOf(
 				notNullValue(),
-				instanceOf(NullPointerException.class)
+				instanceOf(AuthenticationException.class)
 		));
+		assertThat(exception.getUserMessageTranslationKey(), equalTo(translationKey));
+		assertThat(exception.getLogMessage(), equalTo("Authentication Exception, no message given"));
+		assertThat(exception.getOriginalLocale(), equalTo(Locale.UK));
 	}
 
 	@Test

@@ -2,7 +2,9 @@ package anime.app.entities.database.user;
 
 import anime.app.entities.database.anime.AnimeUserInfo;
 import anime.app.entities.database.forum.Post;
+import anime.app.entities.database.forum.PostUserStatus;
 import anime.app.entities.database.forum.Thread;
+import anime.app.entities.database.forum.ThreadUserStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -47,7 +49,7 @@ public class User {
 
 	@ColumnDefault("0")
 	@Column(nullable = false)
-	@PositiveOrZero(message = "Watch time cannot be negative")
+	@PositiveOrZero(message = "Achievement points cannot be negative")
 	private int achievementPoints;
 
 	@OneToMany(mappedBy = "creator")
@@ -71,4 +73,19 @@ public class User {
 			fetch = FetchType.LAZY
 	)
 	private Set<AnimeUserInfo> animeUserInfo;
+
+	@OneToMany(
+			mappedBy = "id.user",
+			cascade = CascadeType.ALL,
+			orphanRemoval = true,
+			fetch = FetchType.LAZY
+	)
+	private Set<ThreadUserStatus> threadUserStatuses;
+
+	@OneToMany(
+			mappedBy = "id.user",
+			cascade = CascadeType.ALL,
+			orphanRemoval = true
+	)
+	private Set<PostUserStatus> postUserStatuses;
 }

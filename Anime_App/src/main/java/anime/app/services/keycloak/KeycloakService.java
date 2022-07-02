@@ -2,6 +2,7 @@ package anime.app.services.keycloak;
 
 import anime.app.configuration.properties.KeycloakUserServerProperties;
 import anime.app.entities.AuthenticationToken;
+import anime.app.entities.database.user.User;
 import anime.app.exceptions.exceptions.AuthenticationException;
 import anime.app.exceptions.exceptions.RegistrationException;
 import anime.app.openapi.model.AuthenticationTokenDTO;
@@ -9,6 +10,7 @@ import anime.app.openapi.model.LoginCredentialsDTO;
 import anime.app.openapi.model.RefreshTokenDTO;
 import anime.app.openapi.model.RegistrationBodyDTO;
 import anime.app.services.dto.conversion.DTOConversionServiceInterface;
+import anime.app.services.user.UserServiceInterface;
 import anime.app.utils.LocaleUtils;
 import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.StringUtils;
@@ -26,6 +28,7 @@ import javax.ws.rs.core.Response;
 import java.util.Collections;
 import java.util.Locale;
 import java.util.Optional;
+import java.util.UUID;
 
 /**
  * Default implementation for the {@link KeycloakServiceInterface} interface.
@@ -35,7 +38,7 @@ import java.util.Optional;
 public class KeycloakService implements KeycloakServiceInterface {
 	private final WebClient client;
 	private final Keycloak keycloak;
-	//private final UserServiceInterface userService;
+	private final UserServiceInterface userService;
 	private final DTOConversionServiceInterface dtoConversion;
 	private final KeycloakUserServerProperties keycloakProperties;
 
@@ -43,11 +46,11 @@ public class KeycloakService implements KeycloakServiceInterface {
 	KeycloakService(KeycloakUserServerProperties keycloakProperties,
 	                @Qualifier("keycloakWebClient") WebClient client,
 	                Keycloak keycloak,
-	                //UserServiceInterface userService,
+	                UserServiceInterface userService,
 	                DTOConversionServiceInterface dtoConversion) {
 		this.client = client;
 		this.keycloak = keycloak;
-		//this.userService = userService;
+		this.userService = userService;
 		this.dtoConversion = dtoConversion;
 		this.keycloakProperties = keycloakProperties;
 	}
@@ -170,7 +173,9 @@ public class KeycloakService implements KeycloakServiceInterface {
 						.build();
 			}
 
-			//userService.saveUser(new User(newUser.get().getId(), registrationBody.getUsername()));
+			UserRepresentation createdUser = newUser.get();
+
+			userService.saveUser(User.builder().id(UUID.fromString(createdUser.getId())).username(createdUser.getUsername()).build());
 
 			LoginCredentialsDTO login = LoginCredentialsDTO.builder()
 					.username(registrationBody.getUsername())
