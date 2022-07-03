@@ -1,7 +1,7 @@
 package anime.app.services.user;
 
 import anime.app.entities.database.user.User;
-import anime.app.exceptions.exceptions.AuthenticationException;
+import anime.app.exceptions.exceptions.NotFoundException;
 import anime.app.openapi.model.CompleteUserDTO;
 import anime.app.repositories.user.UserRepository;
 import anime.app.services.dto.conversion.DTOConversionServiceInterface;
@@ -51,7 +51,7 @@ public class UserService implements UserServiceInterface {
     @Transactional(label = "Get a user using it's id", readOnly = true)
     public User getUser(@NonNull UUID userId) {
         return userRepository.findById(userId)
-                .orElseThrow(() -> AuthenticationException.builder()
+                .orElseThrow(() -> NotFoundException.builder()
                         .userMessageTranslationKey("user.user-not-found")
                         .translationParameter(userId)
                         .logMessage("User with id " + userId + "could not be found in the database")

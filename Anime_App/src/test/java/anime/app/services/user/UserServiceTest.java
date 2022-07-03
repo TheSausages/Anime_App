@@ -2,6 +2,7 @@ package anime.app.services.user;
 
 import anime.app.entities.database.user.User;
 import anime.app.exceptions.exceptions.AuthenticationException;
+import anime.app.exceptions.exceptions.NotFoundException;
 import anime.app.openapi.model.CompleteUserDTO;
 import anime.app.repositories.user.UserRepository;
 import anime.app.services.dto.conversion.DTOConversionService;
@@ -140,12 +141,12 @@ class UserServiceTest {
             doReturn(Optional.empty()).when(userRepository).findById(userId);
 
             //when
-            AuthenticationException exception = assertThrows(AuthenticationException.class, () -> userService.getUserInformationById(userId));
+            NotFoundException exception = assertThrows(NotFoundException.class, () -> userService.getUserInformationById(userId));
 
             //then
             assertThat(exception, allOf(
                     notNullValue(),
-                    instanceOf(AuthenticationException.class)
+                    instanceOf(NotFoundException.class)
             ));
 
             verify(conversionService, times(0)).convertToDTO(ArgumentMatchers.any(User.class));
@@ -261,12 +262,12 @@ class UserServiceTest {
             doReturn(Optional.empty()).when(userRepository).findById(userId);
 
             //when
-            AuthenticationException exception = assertThrows(AuthenticationException.class, () -> userService.getUserInformationById(userId));
+            NotFoundException exception = assertThrows(NotFoundException.class, () -> userService.getUserInformationById(userId));
 
             //then
             assertThat(exception, allOf(
                     notNullValue(),
-                    instanceOf(AuthenticationException.class)
+                    instanceOf(NotFoundException.class)
             ));
         }
 

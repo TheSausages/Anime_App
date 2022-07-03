@@ -17,6 +17,8 @@ components:
         Error Example:
           message: Error Message
           status: 503
+          timeStamp: '2019-08-24T14:15:22Z'
+          code: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
       properties:
         message:
           type: string
@@ -24,9 +26,19 @@ components:
         status:
           type: integer
           description: The Error status
+        timeStamp:
+          type: string
+          format: date-time
+          description: When did the error occur
+        code:
+          type: string
+          format: uuid
+          description: Unique code for each error occurence, make's it easier to search in logs
       required:
         - message
         - status
+        - timeStamp
+        - code
     SimpleUserDTO:
       title: Simple User DTO
       type: object

@@ -4,15 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a85f17e-c8b0-481b-a543-783256245f43" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="9a85f17e-c8b0-481b-a543-783256245f43" name="Changes" comment="Addition: added timestamp and unique error code to ErrorDTO and to Logging">
+      <change afterPath="$PROJECT_DIR$/Anime App.postman_collection.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/utils/ErrorUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/controllers/AnimeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/controllers/AnimeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/controllers/ForumController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/controllers/ForumController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/anime/AnimeUserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/anime/AnimeUserInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/dto/conversion/DTOConversionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/dto/conversion/DTOConversionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/dto/conversion/DTOConversionServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/dto/conversion/DTOConversionServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/ExceptionControllerAdvice.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/ExceptionControllerAdvice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/DefaultException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/DefaultException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/user/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/user/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/user/UserServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/Achievement.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/Achievement.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/Anime.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/Anime.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/CommonModels.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/CommonModels.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/Forum.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/Forum.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/User.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/User.yaml" afterDir="false" />
@@ -69,9 +70,9 @@
         <option value="Enum" />
         <option value="AnnotationType" />
         <option value="Kotlin Class" />
-        <option value="Interface" />
         <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -197,7 +198,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.Tests in 'Anime_App_Project.Anime_App.test'">
+  <component name="RunManager" selected="Compound.Run Local">
     <configuration name="Run Local" type="CompoundRunConfigurationType">
       <toRun name="Docker run basic components" type="docker-deploy" />
       <toRun name="Anime_App_Project [Anime_App:bootRun]" type="GradleRunConfiguration" />
@@ -515,14 +516,7 @@
       <workItem from="1648996167930" duration="5000" />
       <workItem from="1656165488105" duration="329000" />
       <workItem from="1656772810097" duration="9111000" />
-      <workItem from="1656850002778" duration="5205000" />
-    </task>
-    <task id="LOCAL-00006" summary="Refactor: added requirement for non-null schedule in AiringScheduleEdge">
-      <created>1641657021622</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1641657021622</updated>
+      <workItem from="1656850002778" duration="8529000" />
     </task>
     <task id="LOCAL-00007" summary="Addition: added Character and its tests, Refactor: Updated TestUtils method and all of its callings">
       <created>1641739847485</created>
@@ -860,7 +854,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656781697827</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="Addition: added user controller, added postman test collection&#10;Refactor: added discriminator to Posts, added discriminator setting in DTO conversion">
+      <created>1656855598693</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1656855598694</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -881,8 +882,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactor: updated Anime.yaml file, small correction in pojo.mustache" />
-    <MESSAGE value="Refactor: updated endpoint files" />
     <MESSAGE value="Refactor: small update to existing api files" />
     <MESSAGE value="Refactor: Updated openapi for more endpoints" />
     <MESSAGE value="Refactor: Updated openapi to use discriminator correctly" />
@@ -906,7 +905,9 @@
     <MESSAGE value="Addition: Added anime service and its tests" />
     <MESSAGE value="Refactor: added transactions, small updates" />
     <MESSAGE value="Giant commit:&#10;&#9;Refactor: updated validation messages, small update to exception creation, changed user id from String to UUID, small corrections to field names&#10;&#9;&#10;&#9;Addition: Added user service and tests to it, added achievement icons" />
-    <option name="LAST_COMMIT_MESSAGE" value="Giant commit:&#10;&#9;Refactor: updated validation messages, small update to exception creation, changed user id from String to UUID, small corrections to field names&#10;&#9;&#10;&#9;Addition: Added user service and tests to it, added achievement icons" />
+    <MESSAGE value="Addition: added user controller, added postman test collection&#10;Refactor: added discriminator to Posts, added discriminator setting in DTO conversion" />
+    <MESSAGE value="Addition: added timestamp and unique error code to ErrorDTO and to Logging" />
+    <option name="LAST_COMMIT_MESSAGE" value="Addition: added timestamp and unique error code to ErrorDTO and to Logging" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">

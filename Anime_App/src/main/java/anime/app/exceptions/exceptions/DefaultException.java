@@ -1,12 +1,15 @@
 package anime.app.exceptions.exceptions;
 
+import anime.app.utils.ErrorUtils;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Singular;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 /**
  * Class for custom errors that don't extend another exception. The {@link lombok.experimental.SuperBuilder} annotation cannot be used because
@@ -17,6 +20,8 @@ import java.util.Objects;
 @Getter
 public class DefaultException extends RuntimeException {
 	private final String logMessage;
+	private final UUID generatedErrorCode = UUID.randomUUID();
+	private final LocalDateTime errorOccurrenceTime = LocalDateTime.now();
 
 	@NonNull
 	private final String userMessageTranslationKey;
@@ -30,6 +35,10 @@ public class DefaultException extends RuntimeException {
 		this.userMessageTranslationKey = userMessageTranslationKey;
 		this.translationParameters = translationParameters;
 		this.logMessage = Objects.isNull(logMessage) ? getDefaultLogMessage() : logMessage;
+	}
+
+	public String getCompleteLogMessage() {
+		return ErrorUtils.getErrorMessage(Objects.isNull(logMessage) ? getDefaultLogMessage() : logMessage, errorOccurrenceTime, generatedErrorCode);
 	}
 
 	/**
