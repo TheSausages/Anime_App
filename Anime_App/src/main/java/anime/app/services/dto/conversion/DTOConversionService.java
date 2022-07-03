@@ -51,12 +51,15 @@ public class DTOConversionService implements DTOConversionServiceInterface {
 	public AchievementDTO convertToDTO(Achievement achievement) {
 		Objects.requireNonNull(achievement, "Achievement cannot be null");
 
+		long nrOfUsers = Objects.isNull(achievement.getUsers()) ? 0 : achievement.getUsers().size();
+
 		return AchievementDTO.builder()
 				.id((long) achievement.getId())
 				.name(achievement.getName())
 				.description(achievement.getDescription())
 				.icon(iconService.getAchievementIcon(achievement))
 				.points(achievement.getPoints())
+				.nrOfUsersPosses(nrOfUsers)
 				.build();
 	}
 
@@ -70,6 +73,7 @@ public class DTOConversionService implements DTOConversionServiceInterface {
 		return SimpleUserDTO.builder()
 				.userId(user.getId())
 				.username(user.getUsername())
+				.userType(SimpleUserDTO.UserTypeEnum.SIMPLEUSER)
 				.build();
 	}
 
@@ -83,6 +87,7 @@ public class DTOConversionService implements DTOConversionServiceInterface {
 		return CompleteUserDTO.builder()
 				.userId(user.getId())
 				.username(user.getUsername())
+				.userType(SimpleUserDTO.UserTypeEnum.COMPLETEUSER)
 				.threads(user.getThreads()
 						.stream()
 						.limit(6)
@@ -139,11 +144,11 @@ public class DTOConversionService implements DTOConversionServiceInterface {
 				.id(convertToDTO(animeUserInfo.getId()))
 				.status(LocalUserAnimeInformationDTO.StatusEnum.fromValue(animeUserInfo.getStatus().name()))
 				.watchStartDate(animeUserInfo.getWatchStart())
-				.watchEndDate(animeUserInfo.getEndStart())
+				.watchEndDate(animeUserInfo.getWatchEnd())
 				.nrOfEpisodesSeen(animeUserInfo.getEpisodesSeen())
 				.isFavourite(animeUserInfo.isFavourite())
 				.modification(animeUserInfo.getModification())
-				.grade(animeUserInfo.getGradle())
+				.grade(animeUserInfo.getGrade())
 				.review(convertToSimpleDTO(animeUserInfo.getReview()))
 				.build();
 	}
@@ -170,6 +175,7 @@ public class DTOConversionService implements DTOConversionServiceInterface {
 
 		return LocalSimpleAnimeReviewDTO.builder()
 				.id((long) review.getId())
+				.reviewType(LocalSimpleAnimeReviewDTO.ReviewTypeEnum.SIMPLEREVIEW)
 				.title(review.getTitle())
 				.text(review.getText())
 				.nrOfUpvotes(review.getNrOfPlus())
@@ -187,6 +193,7 @@ public class DTOConversionService implements DTOConversionServiceInterface {
 
 		return LocalDetailedAnimeReviewDTO.builder()
 				.id((long) review.getId())
+				.reviewType(LocalSimpleAnimeReviewDTO.ReviewTypeEnum.DETAILEDREVIEW)
 				.title(review.getTitle())
 				.text(review.getText())
 				.nrOfUpvotes(review.getNrOfPlus())
@@ -270,6 +277,7 @@ public class DTOConversionService implements DTOConversionServiceInterface {
 
 		return SimplePostDTO.builder()
 				.id((long) post.getId())
+				.postComplexityType(SimplePostDTO.PostComplexityTypeEnum.SIMPLEPOST)
 				.title(post.getTitle())
 				.text(post.getText())
 				.creation(post.getCreation().toLocalDate())
@@ -335,6 +343,7 @@ public class DTOConversionService implements DTOConversionServiceInterface {
 		return SimpleThreadDTO.builder()
 				.id((long) thread.getId())
 				.title(thread.getTitle())
+				.threadComplexityType(SimpleThreadDTO.ThreadComplexityTypeEnum.SIMPLETHREAD)
 				.nrOfPosts(thread.getNrOfPosts())
 				.status(ThreadStatus.fromValue(thread.getStatus().name()))
 				.creation(thread.getCreation())

@@ -26,3 +26,6 @@ hs_err_pid*
 !gradle-wrapper.jar
 
 .gradle/*
+
+# Ignore workspace file
+.idea/workspace.xml

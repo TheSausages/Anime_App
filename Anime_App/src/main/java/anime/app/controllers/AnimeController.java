@@ -32,7 +32,7 @@ public class AnimeController implements AnimeApi {
 	@Override
 	public ResponseEntity<DetailedAnimeDTO> getAnimeByAnimeId(Long animeId) {
 		DetailedAnimeDTO animeInfo = anilistService.getAnimeById(animeId);
-		//Until all elements are added to the response in the service
+		//TODO Until all elements are added to the response in the service
 		//validator.validate(animeInfo);
 
 		return ResponseEntity.ok(animeInfo);
@@ -87,6 +87,7 @@ public class AnimeController implements AnimeApi {
 	 */
 	@Override
 	public ResponseEntity<LocalUserAnimeInformationDTO> updateUserAnimeInformation(LocalUserAnimeInformationDTO localUserAnimeInformationDTO) {
+		//TODO update when all is finished
 		return AnimeApi.super.updateUserAnimeInformation(localUserAnimeInformationDTO);
 	}
 }

@@ -4,64 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a85f17e-c8b0-481b-a543-783256245f43" name="Changes" comment="Giant commit:&#10;&#9;Refactor: updated validation messages, small update to exception creation, changed user id from String to UUID, small corrections to field names&#10;&#9;&#10;&#9;Addition: Added user service and tests to it, added achievement icons">
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/repositories/user/AchievementRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/repositories/user/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/icon/IconService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/icon/IconServiceInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/user/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/user/UserServiceInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/icon/IconServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/user/UserServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/utils/TestUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/test/resources/achievements/Default.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/test/resources/achievements/NrOfPosts-1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/test/resources/achievements/NrOfPosts-10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/test/resources/achievements/NrOfPosts-50.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/test/resources/achievements/NrOfReviews-10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anime_App/src/test/resources/achievements/NrOfReviews-50.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="9a85f17e-c8b0-481b-a543-783256245f43" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/configuration/beans/LocaleResolverConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/configuration/beans/LocaleResolverConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/anime/Anime.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/anime/Anime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/controllers/AnimeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/controllers/AnimeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/controllers/ForumController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/controllers/ForumController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/anime/AnimeUserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/anime/AnimeUserInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/anime/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/anime/Review.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/ForumCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/ForumCategory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/Post.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/PostUserStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/PostUserStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/Tag.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/Tag.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/Thread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/Thread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/ThreadUserStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/forum/ThreadUserStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/user/Achievement.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/user/Achievement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/entities/database/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/AnilistException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/AnilistException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/AuthenticationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/AuthenticationException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/DefaultLocaleException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/DefaultLocaleException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/RegistrationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/exceptions/exceptions/RegistrationException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/dto/conversion/DTOConversionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/dto/conversion/DTOConversionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/dto/conversion/DTOConversionServiceInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/dto/conversion/DTOConversionServiceInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/keycloak/KeycloakService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/services/keycloak/KeycloakService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/utils/UserAuthorizationUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/java/anime/app/utils/UserAuthorizationUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/resources/data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/resources/lng.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/resources/lng.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/resources/lng_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/resources/lng_en.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/resources/lng_pl.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/resources/lng_pl.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/main/resources/schema.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/AnilistExceptionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/AnilistExceptionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/AuthenticationExceptionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/AuthenticationExceptionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/RegistrationExceptionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/exceptions/exceptions/RegistrationExceptionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/integrationTests/BeanCreationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/integrationTests/BeanCreationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/integrationTests/config/BaseIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/integrationTests/config/BaseIntegrationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/anime/anime/AnimeServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/anime/anime/AnimeServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/dto/conversion/DTOConversionServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/dto/conversion/DTOConversionServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/forum/forumcategories/ForumCategoriesServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/forum/forumcategories/ForumCategoriesServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/forum/tag/TagServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/java/anime/app/services/forum/tag/TagServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/resources/application-test-withDatabase.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/resources/application-test-withDatabase.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/resources/application-test-withoutDatabase.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App/src/test/resources/data-test.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App/src/test/resources/data-test.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/Anime.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/Anime.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/CommonModels.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/CommonModels.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/Forum.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/Forum.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/User.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Anime_App_Openapi_Generation/openapi/User.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -203,7 +158,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15527344" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.CommitDialog" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -242,7 +197,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Compound.Run Local">
+  <component name="RunManager" selected="Gradle.Tests in 'Anime_App_Project.Anime_App.test'">
     <configuration name="Run Local" type="CompoundRunConfigurationType">
       <toRun name="Docker run basic components" type="docker-deploy" />
       <toRun name="Anime_App_Project [Anime_App:bootRun]" type="GradleRunConfiguration" />
@@ -442,14 +397,14 @@
       <option name="customJreEnabled" value="false" />
       <option name="customTemplatesPath" value="" />
       <option name="enableDebugLogging" value="false" />
-      <option name="generateToPath" value="C:\Users\Kacper\IdeaProjects\Anime_App_Project\gen" />
+      <option name="generateToPath" value="D:\programowanie\IntellijIdea\IdeaProjects\Anime_App_Project\gen" />
       <option name="generationParameters">
         <list />
       </option>
       <option name="generatorPath" value="https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/5.0.0/openapi-generator-cli-5.0.0.jar" />
       <option name="jdkPath" value="" />
       <option name="language" value="java" />
-      <option name="specificationPath" value="C:\Users\Kacper\IdeaProjects\Anime_App_Project\Anime_App_Openapi_Generation\openapi\Forum.yaml" />
+      <option name="specificationPath" value="D:\programowanie\IntellijIdea\IdeaProjects\Anime_App_Project\Anime_App_Openapi_Generation\openapi\Forum.yaml" />
       <method v="2" />
     </configuration>
     <configuration name="Docker run basic components" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
@@ -467,12 +422,12 @@
       <item itemvalue="Gradle.Anime_App_Project [Anime_App:bootRun]" />
       <item itemvalue="Gradle.Anime_App_Project With Generation [Anime_App:bootRun]" />
       <item itemvalue="Gradle.Anime_App_Project [Anime_App_Openapi_Generation:build]" />
-      <item itemvalue="Spring Boot.AnimeAppApplication" />
       <item itemvalue="Gradle.GetUserInformationByIdTest" />
       <item itemvalue="Gradle.GetCurrentUserTest" />
       <item itemvalue="Gradle.UserServiceTest" />
       <item itemvalue="Gradle.SaveUserTest" />
       <item itemvalue="Gradle.Tests in 'Anime_App_Project.Anime_App.test'" />
+      <item itemvalue="Spring Boot.AnimeAppApplication" />
     </list>
     <recent_temporary>
       <list>
@@ -559,14 +514,8 @@
       <workItem from="1648494912963" duration="5000" />
       <workItem from="1648996167930" duration="5000" />
       <workItem from="1656165488105" duration="329000" />
-      <workItem from="1656772810097" duration="8743000" />
-    </task>
-    <task id="LOCAL-00005" summary="Refactor: added utilities to test and made them more general, Addition: added more classes and tests">
-      <created>1641656611846</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1641656611846</updated>
+      <workItem from="1656772810097" duration="9111000" />
+      <workItem from="1656850002778" duration="5205000" />
     </task>
     <task id="LOCAL-00006" summary="Refactor: added requirement for non-null schedule in AiringScheduleEdge">
       <created>1641657021622</created>
@@ -904,7 +853,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647686906396</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Giant commit:&#10;&#9;Refactor: updated validation messages, small update to exception creation, changed user id from String to UUID, small corrections to field names&#10;&#9;&#10;&#9;Addition: Added user service and tests to it, added achievement icons">
+      <created>1656781697826</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1656781697827</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

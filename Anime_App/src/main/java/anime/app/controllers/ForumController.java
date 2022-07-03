@@ -42,4 +42,6 @@ public class ForumController implements ForumApi {
 
 		return ResponseEntity.ok(tags);
 	}
+
+	//TODO add threads and posts itp
 }

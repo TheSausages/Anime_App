@@ -522,6 +522,7 @@ paths:
                     domainPageType: postPage
                     content:
                       - id: 8
+                        postComplexityType: completePost
                         title: Post Title
                         text: Post Text
                         creation: '2019-08-24'
@@ -720,6 +721,7 @@ paths:
                       - responses:
                           content:
                             - responses: {}
+                              postComplexityType: completePost
                               id: 8
                               title: Post Title
                               text: Post Text
@@ -900,6 +902,7 @@ components:
           posts:
             - content:
                 - id: 8
+                  postComplexityType: completePost
                   title: Post Title
                   text: Post Text
                   creation: '2019-08-24'
@@ -1018,6 +1021,7 @@ components:
       description: Class containing basic information on a post.
       x-examples:
         Simple Post Example:
+          postComplexityType: simplePost
           id: 8
           title: Post Title
           text: Post Text
@@ -1037,7 +1041,18 @@ components:
             liked: true
             disliked: false
             reported: false
+      discriminator:
+        propertyName: postComplexityType
+        mapping:
+          simplePost: '#/components/schemas/SimplePostDTO'
+          completePost: '#/components/schemas/CompletePostDTO'
       properties:
+        postComplexityType:
+          type: string
+          enum:
+            - simplePost
+            - completePost
+          description: Discriminator for the Post DTO
         id:
           $ref: '#/components/schemas/PostId'
         title:
@@ -1095,6 +1110,7 @@ components:
           responses:
             content:
               - responses: {}
+                postComplexityType: completePost
                 id: 8
                 title: Post Title
                 text: Post Text
@@ -1201,6 +1217,7 @@ components:
       x-examples:
         Post With Thread Information Example:
           post:
+            postComplexityType: simplePost
             id: 8
             title: Post Title
             text: Post Text

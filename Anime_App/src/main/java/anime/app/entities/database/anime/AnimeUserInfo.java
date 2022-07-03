@@ -76,7 +76,7 @@ public class AnimeUserInfo {
 	private LocalDate watchStart;
 
 	@PastOrPresent(message = "Cannot end watching in the future")
-	private LocalDate endStart;
+	private LocalDate watchEnd;
 
 	@Column(nullable = false)
 	@ColumnDefault("0")
@@ -89,7 +89,7 @@ public class AnimeUserInfo {
 
 	@Column(nullable = false)
 	@Range(max = 10, min = 0, message = "Grade can only be between 0 and 10")
-	private int gradle;
+	private int grade;
 
 	@Column(nullable = false)
 	@PastOrPresent(message = "Cannot modify in the future")

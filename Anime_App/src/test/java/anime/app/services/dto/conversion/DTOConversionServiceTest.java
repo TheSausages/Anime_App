@@ -129,6 +129,7 @@ class DTOConversionServiceTest {
 						.description(achievement.getDescription())
 						.icon(icon)
 						.points(achievement.getPoints())
+						.nrOfUsersPosses(0L)
 						.build();
 				doReturn(icon).when(iconService).getAchievementIcon(achievement);
 
@@ -160,6 +161,7 @@ class DTOConversionServiceTest {
 						.description(achievement.getDescription())
 						.icon(icon)
 						.points(achievement.getPoints())
+						.nrOfUsersPosses(0L)
 						.build();
 				doReturn(icon).when(iconService).getAchievementIcon(achievement);
 
@@ -205,6 +207,7 @@ class DTOConversionServiceTest {
 				SimpleUserDTO expectedDTO = SimpleUserDTO.builder()
 						.userId(user.getId())
 						.username(user.getUsername())
+						.userType(SimpleUserDTO.UserTypeEnum.SIMPLEUSER)
 						.build();
 
 				//when
@@ -314,10 +317,10 @@ class DTOConversionServiceTest {
 								.build())
 						.status(AnimeUserInfo.AnimeUserStatus.DROPPED)
 						.watchStart(time.toLocalDate())
-						.endStart(time.toLocalDate())
+						.watchEnd(time.toLocalDate())
 						.episodesSeen(1)
 						.favourite(false)
-						.gradle(7)
+						.grade(7)
 						.modification(time)
 						.review(Review.builder()
 								.id(1)
@@ -338,6 +341,7 @@ class DTOConversionServiceTest {
 				CompleteUserDTO expectedDTO = CompleteUserDTO.builder()
 						.userId(userId)
 						.username("username")
+						.userType(SimpleUserDTO.UserTypeEnum.COMPLETEUSER)
 						.threads(Set.of(dtoConversionService.convertToSimpleDTO(thread, userId)))
 						.achievements(Set.of(dtoConversionService.convertToDTO(achievement)))
 						.posts(Set.of(dtoConversionService.convertToDTOWithAdditionalInfo(post, userId)))
@@ -445,10 +449,10 @@ class DTOConversionServiceTest {
 								.build())
 						.status(AnimeUserInfo.AnimeUserStatus.DROPPED)
 						.watchStart(time.toLocalDate())
-						.endStart(time.toLocalDate())
+						.watchEnd(time.toLocalDate())
 						.episodesSeen(0)
 						.favourite(false)
-						.gradle(0)
+						.grade(0)
 						.modification(time)
 						.build();
 				Review review = Review.builder()
@@ -465,11 +469,11 @@ class DTOConversionServiceTest {
 						.id(dtoConversionService.convertToDTO(info.getId()))
 						.status(LocalUserAnimeInformationDTO.StatusEnum.fromValue(info.getStatus().name()))
 						.watchStartDate(info.getWatchStart())
-						.watchEndDate(info.getEndStart())
+						.watchEndDate(info.getWatchEnd())
 						.nrOfEpisodesSeen(info.getEpisodesSeen())
 						.isFavourite(info.isFavourite())
 						.modification(info.getModification())
-						.grade(info.getGradle())
+						.grade(info.getGrade())
 						.review(dtoConversionService.convertToSimpleDTO(info.getReview()))
 						.build();
 
@@ -564,6 +568,7 @@ class DTOConversionServiceTest {
 						.build();
 				LocalSimpleAnimeReviewDTO expectedDTO = LocalSimpleAnimeReviewDTO.builder()
 						.id((long) review.getId())
+						.reviewType(LocalSimpleAnimeReviewDTO.ReviewTypeEnum.SIMPLEREVIEW)
 						.title(review.getTitle())
 						.text(review.getText())
 						.nrOfUpvotes(review.getNrOfPlus())
@@ -619,6 +624,7 @@ class DTOConversionServiceTest {
 						.build();
 				LocalDetailedAnimeReviewDTO expectedDTO = LocalDetailedAnimeReviewDTO.builder()
 						.id((long) review.getId())
+						.reviewType(LocalSimpleAnimeReviewDTO.ReviewTypeEnum.DETAILEDREVIEW)
 						.title(review.getTitle())
 						.text(review.getText())
 						.nrOfUpvotes(review.getNrOfPlus())
@@ -810,6 +816,7 @@ class DTOConversionServiceTest {
 				PostWithThreadInformationDTO expectedDTO = PostWithThreadInformationDTO.builder()
 						.post(SimplePostDTO.builder()
 								.id((long) post.getId())
+								.postComplexityType(SimplePostDTO.PostComplexityTypeEnum.SIMPLEPOST)
 								.title(post.getTitle())
 								.text(post.getText())
 								.creation(post.getModification().toLocalDate())
@@ -902,6 +909,7 @@ class DTOConversionServiceTest {
 						.build();
 				SimplePostDTO expectedDTO = SimplePostDTO.builder()
 						.id((long) post.getId())
+						.postComplexityType(SimplePostDTO.PostComplexityTypeEnum.SIMPLEPOST)
 						.title(post.getTitle())
 						.text(post.getText())
 						.creation(post.getModification().toLocalDate())
@@ -1093,6 +1101,7 @@ class DTOConversionServiceTest {
 						.build();
 				SimpleThreadDTO expectedDTO = SimpleThreadDTO.builder()
 						.id((long) thread.getId())
+						.threadComplexityType(SimpleThreadDTO.ThreadComplexityTypeEnum.SIMPLETHREAD)
 						.title(thread.getTitle())
 						.nrOfPosts(thread.getNrOfPosts())
 						.status(ThreadStatus.fromValue(thread.getStatus().name()))

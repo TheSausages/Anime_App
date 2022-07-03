@@ -179,8 +179,6 @@ components:
       title: User ID
       format: uuid
       description: 'User ID, same as in Keycloak'
-      minLength: 36
-      maxLength: 36
       x-examples:
         User Id Example: 497f6eca-6276-4993-bfeb-53cbbbba6f08
     DomainPageDTO:
@@ -310,6 +308,7 @@ components:
           domainPageType: simplePostPage
           content:
             - id: 8
+              postComplexityType: simplePost
               title: Post Title
               text: Post Text
               creation: '2019-08-24'
