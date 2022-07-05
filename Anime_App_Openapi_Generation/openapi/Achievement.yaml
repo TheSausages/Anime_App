@@ -34,7 +34,7 @@ paths:
                   value:
                     message: Authentication Error
                     status: 401
-                    timeStamp: '2019-08-24T14:15:22Z'
+                    timestamp: '2019-08-24T14:15:22Z'
                     code: 2c4a230c-5085-4924-a3e1-25fb4fc5965
       operationId: subscribe-to-achievements
       description: Endpoint to get the SseEmitter used to emit achievements
@@ -56,7 +56,7 @@ paths:
                   value:
                     message: Authentication Error
                     status: 401
-                    timeStamp: '2019-08-24T14:15:22Z'
+                    timestamp: '2019-08-24T14:15:22Z'
                     code: 2c4a230c-5085-4924-a3e1-25fb4fc5965
       operationId: cancel-achievement-subscription
       description: Endpoint to cancel user's subscription to the achievement service (delete users SseEmitter)

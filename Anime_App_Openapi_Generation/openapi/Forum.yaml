@@ -53,7 +53,7 @@ paths:
                   value:
                     message: Authentication Error
                     status: 401
-                    timeStamp: '2019-08-24T14:15:22Z'
+                    timestamp: '2019-08-24T14:15:22Z'
                     code: 2c4a230c-5085-4924-a3e1-25fb4fc5965
       operationId: get-forum-tags
       description: Endpoint used to get all tags from the database.
@@ -87,7 +87,7 @@ paths:
                   value:
                     message: Authentication Error
                     status: 401
-                    timeStamp: '2019-08-24T14:15:22Z'
+                    timestamp: '2019-08-24T14:15:22Z'
                     code: 2c4a230c-5085-4924-a3e1-25fb4fc5965
       operationId: get-forum-categories
       description: Endpoint used to get all forum categories from the database.
@@ -153,7 +153,7 @@ paths:
                   value:
                     message: Authentication Error
                     status: 401
-                    timeStamp: '2019-08-24T14:15:22Z'
+                    timestamp: '2019-08-24T14:15:22Z'
                     code: 2c4a230c-5085-4924-a3e1-25fb4fc5965
         '404':
           description: Not Found - One of the tags or the category was not found
@@ -166,7 +166,7 @@ paths:
                   value:
                     message: Not Found Error
                     status: 404
-                    timeStamp: '2019-08-24T14:15:22Z'
+                    timestamp: '2019-08-24T14:15:22Z'
                     code: 2c4a230c-5085-4924-a3e1-25fb4fc5965
       operationId: search-threads-using-query
       security:
@@ -272,7 +272,7 @@ paths:
                   value:
                     message: Authentication Error
                     status: 401
-                    timeStamp: '2019-08-24T14:15:22Z'
+                    timestamp: '2019-08-24T14:15:22Z'
                     code: 2c4a230c-5085-4924-a3e1-25fb4fc5965
       operationId: get-newest-threads
       description: Endpoint used to get a page of threads sorted by newest elements
@@ -365,7 +365,7 @@ paths:
                   value:
                     message: Authentication Error
                     status: 401
-                    timeStamp: '2019-08-24T14:15:22Z'
+                    timestamp: '2019-08-24T14:15:22Z'
                     code: 2c4a230c-5085-4924-a3e1-25fb4fc5965
         '404':
           description: Not Found - the thread was not found
@@ -378,7 +378,7 @@ paths:
                   value:
                     message: Not Found Error
                     status: 404
-                    timeStamp: '2019-08-24T14:15:22Z'
+                    timestamp: '2019-08-24T14:15:22Z'
                     code: 2c4a230c-5085-4924-a3e1-25fb4fc5965
       operationId: get-thread-by-threadId
       description: Endpoint do get a thread by it's Id
@@ -403,7 +403,7 @@ paths:
                   value:
                     message: Authentication Error
                     status: 401
-                    timeStamp: '2019-08-24T14:15:22Z'
+                    timestamp: '2019-08-24T14:15:22Z'
                     code: 2c4a230c-5085-4924-a3e1-25fb4fc5965
         '404':
           description: Not Found - The thread could not be found
@@ -416,7 +416,7 @@ paths:
                   value:
                     message: Not Found Error
                     status: 404
-                    timeStamp: '2019-08-24T14:15:22Z'
+                    timestamp: '2019-08-24T14:15:22Z'
                     code: 2c4a230c-5085-4924-a3e1-25fb4fc5965
       operationId: update-user-thread-status
       description: Endpoint used to update the user status on a thread
@@ -456,7 +456,7 @@ paths:
                   value:
                     message: Authentication Error
                     status: 401
-                    timeStamp: '2019-08-24T14:15:22Z'
+                    timestamp: '2019-08-24T14:15:22Z'
                     code: 2c4a230c-5085-4924-a3e1-25fb4fc5965
       operationId: create-thread
       description: Endpoint used to create a new Thread
@@ -577,7 +577,7 @@ paths:
                   value:
                     message: Authentication Error
                     status: 401
-                    timeStamp: '2019-08-24T14:15:22Z'
+                    timestamp: '2019-08-24T14:15:22Z'
                     code: 2c4a230c-5085-4924-a3e1-25fb4fc5965
       operationId: get-posts-for-thread-by-threadId
       description: Endpoint to get a post page for a thread
@@ -602,7 +602,7 @@ paths:
                   value:
                     message: bad Request Error
                     status: 400
-                    timeStamp: '2019-08-24T14:15:22Z'
+                    timestamp: '2019-08-24T14:15:22Z'
                     code: 2c4a230c-5085-4924-a3e1-25fb4fc5965
         '401':
           description: 'Unauthorized - The user didn''t authenticate correctly, or the post belongs to another user'
@@ -615,7 +615,7 @@ paths:
                   value:
                     message: Authentication Error
                     status: 401
-                    timeStamp: '2019-08-24T14:15:22Z'
+                    timestamp: '2019-08-24T14:15:22Z'
                     code: 2c4a230c-5085-4924-a3e1-25fb4fc5965
         '404':
           description: Not Found - The post could not be found
@@ -628,7 +628,7 @@ paths:
                   value:
                     message: Not Found Error
                     status: 404
-                    timeStamp: '2019-08-24T14:15:22Z'
+                    timestamp: '2019-08-24T14:15:22Z'
                     code: 2c4a230c-5085-4924-a3e1-25fb4fc5965
       operationId: update-user-post-status
       security:
@@ -670,7 +670,7 @@ paths:
                   value:
                     message: Authentication Error
                     status: 401
-                    timeStamp: '2019-08-24T14:15:22Z'
+                    timestamp: '2019-08-24T14:15:22Z'
                     code: 2c4a230c-5085-4924-a3e1-25fb4fc5965
       operationId: create-post
       description: Endpoint used to create a new post and connect it to a selected thread
@@ -816,7 +816,7 @@ paths:
                   value:
                     message: Authentication Error
                     status: 401
-                    timeStamp: '2019-08-24T14:15:22Z'
+                    timestamp: '2019-08-24T14:15:22Z'
                     code: 2c4a230c-5085-4924-a3e1-25fb4fc5965
       operationId: get-responses-for-post-by-postId
       description: Endpoint used to get the responses page to a post

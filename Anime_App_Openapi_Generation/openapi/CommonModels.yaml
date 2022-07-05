@@ -17,7 +17,7 @@ components:
         Error Example:
           message: Error Message
           status: 503
-          timeStamp: '2019-08-24T14:15:22Z'
+          timestamp: '2019-08-24T14:15:22Z'
           code: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
       properties:
         message:
@@ -26,7 +26,7 @@ components:
         status:
           type: integer
           description: The Error status
-        timeStamp:
+        timestamp:
           type: string
           format: date-time
           description: When did the error occur
@@ -37,7 +37,7 @@ components:
       required:
         - message
         - status
-        - timeStamp
+        - timestamp
         - code
     SimpleUserDTO:
       title: Simple User DTO

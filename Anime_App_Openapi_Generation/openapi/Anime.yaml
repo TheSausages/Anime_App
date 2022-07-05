@@ -200,7 +200,7 @@ paths:
                   value:
                     message: Anilist Error Message
                     status: 503
-                    timeStamp: '2019-08-24T14:15:22Z'
+                    timestamp: '2019-08-24T14:15:22Z'
                     code: 2c4a230c-5085-4924-a3e1-25fb4fc5965
       operationId: get-anime-by-animeId
       description: Get detailed information on a selected Anime using it's Anilist ID.
@@ -258,7 +258,7 @@ paths:
                   value:
                     message: Anilist Error Message
                     status: 503
-                    timeStamp: '2019-08-24T14:15:22Z'
+                    timestamp: '2019-08-24T14:15:22Z'
                     code: 2c4a230c-5085-4924-a3e1-25fb4fc5965
       operationId: get-top-anime-of-all-time
       description: Get a page of Anime from the top Anime of all time ranking.
@@ -295,7 +295,7 @@ paths:
                   value:
                     message: Anilist Error Message
                     status: 503
-                    timeStamp: '2019-08-24T14:15:22Z'
+                    timestamp: '2019-08-24T14:15:22Z'
                     code: 2c4a230c-5085-4924-a3e1-25fb4fc5965
       operationId: get-top-airing-anime
       description: Get a page of Anime from the top airing Anime ranking.
@@ -352,7 +352,7 @@ paths:
                   value:
                     message: Anilist Error Message
                     status: 503
-                    timeStamp: '2019-08-24T14:15:22Z'
+                    timestamp: '2019-08-24T14:15:22Z'
                     code: 2c4a230c-5085-4924-a3e1-25fb4fc5965
       operationId: get-top-anime-movies
       description: Get a page of Anime from the top Anime Movies of all time ranking.
@@ -409,7 +409,7 @@ paths:
                   value:
                     message: Unproccessable Entity Error Message
                     status: 422
-                    timeStamp: '2019-08-24T14:15:22Z'
+                    timestamp: '2019-08-24T14:15:22Z'
                     code: 2c4a230c-5085-4924-a3e1-25fb4fc5965
         '503':
           description: Service Unavailable - the Anilist service returned an error or didn't return anything.
@@ -422,7 +422,7 @@ paths:
                   value:
                     message: Anilist Error Message
                     status: 503
-                    timeStamp: '2019-08-24T14:15:22Z'
+                    timestamp: '2019-08-24T14:15:22Z'
                     code: 2c4a230c-5085-4924-a3e1-25fb4fc5965
       requestBody:
         required: true
@@ -494,7 +494,7 @@ paths:
                   value:
                     message: Authentication Error
                     status: 401
-                    timeStamp: '2019-08-24T14:15:22Z'
+                    timestamp: '2019-08-24T14:15:22Z'
                     code: 2c4a230c-5085-4924-a3e1-25fb4fc5965
         '409':
           description: Conflict - User tried to update the data of another User
@@ -507,7 +507,7 @@ paths:
                   value:
                     message: Conflict Error
                     status: 409
-                    timeStamp: '2019-08-24T14:15:22Z'
+                    timestamp: '2019-08-24T14:15:22Z'
                     code: 2c4a230c-5085-4924-a3e1-25fb4fc5965
         '422':
           description: Unprocessable Entity - Some error was found in the DTO. Ex. The review text is too long.
@@ -520,7 +520,7 @@ paths:
                   value:
                     message: Unprocessable Entity Error
                     status: 422
-                    timeStamp: '2019-08-24T14:15:22Z'
+                    timestamp: '2019-08-24T14:15:22Z'
                     code: 2c4a230c-5085-4924-a3e1-25fb4fc5965
       requestBody:
         required: true

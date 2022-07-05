@@ -45,7 +45,7 @@ paths:
                   value:
                     message: Credentials not correct
                     status: 401
-                    timeStamp: '2019-08-24T14:15:22Z'
+                    timestamp: '2019-08-24T14:15:22Z'
                     code: 2c4a230c-5085-4924-a3e1-25fb4fc5965
       requestBody:
         required: true
@@ -81,7 +81,7 @@ paths:
                   value:
                     message: Authentication Error
                     status: 401
-                    timeStamp: '2019-08-24T14:15:22Z'
+                    timestamp: '2019-08-24T14:15:22Z'
                     code: 2c4a230c-5085-4924-a3e1-25fb4fc5965
         '422':
           description: Unprocessable Entity - One/Both of the tokens are unprocessable (ex. are empty)
@@ -94,7 +94,7 @@ paths:
                   value:
                     message: Authentication Error
                     status: 401
-                    timeStamp: '2019-08-24T14:15:22Z'
+                    timestamp: '2019-08-24T14:15:22Z'
                     code: 2c4a230c-5085-4924-a3e1-25fb4fc5965
       requestBody:
         required: true
@@ -149,7 +149,7 @@ paths:
                   value:
                     message: Authentication Error
                     status: 401
-                    timeStamp: '2019-08-24T14:15:22Z'
+                    timestamp: '2019-08-24T14:15:22Z'
                     code: 2c4a230c-5085-4924-a3e1-25fb4fc5965
       description: Endpoint used to refresh users access tokens
       security:
@@ -196,7 +196,7 @@ paths:
                   value:
                     message: Error Message
                     status: 409
-                    timeStamp: '2019-08-24T14:15:22Z'
+                    timestamp: '2019-08-24T14:15:22Z'
                     code: 2c4a230c-5085-4924-a3e1-25fb4fc5965
         '422':
           description: Unprocessable Entity - The passwords did not match
@@ -209,7 +209,7 @@ paths:
                   value:
                     message: Error Message
                     status: 422
-                    timeStamp: '2019-08-24T14:15:22Z'
+                    timestamp: '2019-08-24T14:15:22Z'
                     code: 2c4a230c-5085-4924-a3e1-25fb4fc5965
         '500':
           description: 'Internal Server Error - The user was correctly created in Keycloak, but not in local Database or some other error occurred.'
@@ -222,13 +222,13 @@ paths:
                   value:
                     message: registration Error Message
                     status: 500
-                    timeStamp: '2019-08-24T14:15:22Z'
+                    timestamp: '2019-08-24T14:15:22Z'
                     code: 2c4a230c-5085-4924-a3e1-25fb4fc5965
                 Other Error Example:
                   value:
                     message: Some Other Error Example
                     status: 500
-                    timeStamp: '2019-08-24T14:15:22Z'
+                    timestamp: '2019-08-24T14:15:22Z'
                     code: 2c4a230c-5085-4924-a3e1-25fb4fc5965
       description: Endpoint used to register a new user in both the keycloak and local service
       requestBody:
@@ -359,7 +359,7 @@ paths:
                   value:
                     message: Not Found Error
                     status: 404
-                    timeStamp: '2019-08-24T14:15:22Z'
+                    timestamp: '2019-08-24T14:15:22Z'
                     code: 2c4a230c-5085-4924-a3e1-25fb4fc5965
       operationId: get-user-profile-by-userId
       description: Endpoint used to get a complete user profile using their ID.
@@ -469,7 +469,7 @@ paths:
                   value:
                     message: Authentication Error
                     status: 401
-                    timeStamp: '2019-08-24T14:15:22Z'
+                    timestamp: '2019-08-24T14:15:22Z'
                     code: 2c4a230c-5085-4924-a3e1-25fb4fc5965
       operationId: get-current-user-profile
       description: Endpoint to get the authenticated profile information

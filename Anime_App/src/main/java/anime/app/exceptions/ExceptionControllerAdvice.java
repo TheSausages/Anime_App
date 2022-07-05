@@ -52,7 +52,7 @@ public class ExceptionControllerAdvice extends ResponseEntityExceptionHandler {
 		return ErrorDTO.builder()
 				.status(HttpStatus.SERVICE_UNAVAILABLE.value())
 				.message(i18nService.getTranslation(ex.getUserMessageTranslationKey(), ex.getOriginalLocale(), ex.getTranslationParameters()))
-				.timeStamp(ex.getErrorOccurrenceTime())
+				.timestamp(ex.getErrorOccurrenceTime())
 				.code(ex.getGeneratedErrorCode())
 				.build();
 	}
@@ -70,7 +70,7 @@ public class ExceptionControllerAdvice extends ResponseEntityExceptionHandler {
 		return ErrorDTO.builder()
 				.status(HttpStatus.NOT_FOUND.value())
 				.message(i18nService.getTranslation(ex.getUserMessageTranslationKey(), ex.getTranslationParameters()))
-				.timeStamp(ex.getErrorOccurrenceTime())
+				.timestamp(ex.getErrorOccurrenceTime())
 				.code(ex.getGeneratedErrorCode())
 				.build();
 	}
@@ -88,7 +88,7 @@ public class ExceptionControllerAdvice extends ResponseEntityExceptionHandler {
 		return ErrorDTO.builder()
 				.status(HttpStatus.UNAUTHORIZED.value())
 				.message(i18nService.getTranslation(ex.getUserMessageTranslationKey(), ex.getOriginalLocale(), ex.getTranslationParameters()))
-				.timeStamp(ex.getErrorOccurrenceTime())
+				.timestamp(ex.getErrorOccurrenceTime())
 				.code(ex.getGeneratedErrorCode())
 				.build();
 	}
@@ -106,7 +106,7 @@ public class ExceptionControllerAdvice extends ResponseEntityExceptionHandler {
 		return ErrorDTO.builder()
 				.status(HttpStatus.INTERNAL_SERVER_ERROR.value())
 				.message(i18nService.getTranslation(ex.getUserMessageTranslationKey(), ex.getTranslationParameters()))
-				.timeStamp(ex.getErrorOccurrenceTime())
+				.timestamp(ex.getErrorOccurrenceTime())
 				.code(ex.getGeneratedErrorCode())
 				.build();
 	}
@@ -133,7 +133,7 @@ public class ExceptionControllerAdvice extends ResponseEntityExceptionHandler {
 				ErrorDTO.builder()
 						.status(HttpStatus.UNPROCESSABLE_ENTITY.value())
 						.message(i18nService.getTranslation("general.an-error-occurred"))
-						.timeStamp(errorOccurrenceTime)
+						.timestamp(errorOccurrenceTime)
 						.code(errorCode)
 						.build(),
 				headers,
@@ -163,7 +163,7 @@ public class ExceptionControllerAdvice extends ResponseEntityExceptionHandler {
 				ErrorDTO.builder()
 						.status(status.value())
 						.message(i18nService.getTranslation("general.an-error-occurred"))
-						.timeStamp(errorOccurrenceTime)
+						.timestamp(errorOccurrenceTime)
 						.code(errorCode)
 						.build(),
 				headers,
