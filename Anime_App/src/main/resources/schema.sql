@@ -59,11 +59,11 @@ create table reviews (
     text varchar(300) default 'No text given',
     nr_helpful int not null default 0 check ( nr_helpful >= 0 ),
     nr_plus int not null default 0 check ( nr_plus >= 0 ),
-    nr_minus int not null default 0 check ( nr_minus >= 0 )
+    nr_minus int not null default 0 check ( nr_minus >= 0 ),
+    modification timestamp not null default now()
 );
 comment on table reviews is 'Table containing a review on an Anime written by a user';
 
-create type anime_user_infos_status as enum ('NO_STATUS', 'WATCHING', 'COMPLETED', 'DROPPED', 'PLAN_TO_WATCH');
 create table anime_user_infos (
     user_id uuid not null,
     constraint fk_animeuserinfos_user foreign key (user_id) references users(id),
@@ -73,13 +73,13 @@ create table anime_user_infos (
 
     primary key (user_id, anime_id),
 
-    status anime_user_infos_status not null,
+    status varchar(15) not null CHECK ( status IN ('NO_STATUS', 'WATCHING', 'COMPLETED', 'DROPPED', 'PLAN_TO_WATCH') ),
     watch_start date check ( watch_start <= now() OR watch_start is null ),
     watch_end date check ( watch_end <= now() OR watch_end is null ),
     episodes_seen smallint not null default 0 check ( episodes_seen >= 0 ),
     favourite boolean not null default false,
-    grade smallint not null check ( grade > 0 AND grade <= 10 ),
-    modification timestamp not null default current_timestamp check ( modification <= current_timestamp ),
+    grade smallint not null check ( grade >= 0 AND grade <= 10 ),
+    modification timestamp not null default now(),
     review int unique check ( review >= 0 ),
     constraint fk_animeuserinfos_review foreign key (review) references reviews(id)
 );
@@ -93,24 +93,22 @@ create table forum_categories (
 );
 comment on table forum_categories is 'Table containing information on a forum category. Each thread can have one category';
 
-create type tags_importance as enum ('LOW', 'MEDIUM', 'HIGH', 'ADMIN');
 create table tags (
     id serial not null unique primary key check ( id >= 0 ),
     name varchar(45) not null check ( trim(name) != '' ),
-    importance tags_importance not null default 'LOW',
+    importance varchar(10) not null default 'LOW' check ( importance IN ('LOW', 'MEDIUM', 'HIGH', 'ADMIN') ),
     color varchar(18) default 'rgb(166, 166, 166)' check ( color ~ '^rgb\(\d{1,3}, \d{1,3}, \d{1,3}\)$' )
 );
 comment on table tags is 'Table containing information on tags a thread can have';
 
-create type threads_status as enum ('OPEN', 'CLOSED');
 create table threads (
     id serial not null unique primary key check ( id >= 0 ),
     title varchar(80) not null check ( trim(title) != '' ),
     text varchar(600) default 'No description given',
-    status threads_status not null default 'OPEN',
+    status varchar(10) not null default 'OPEN' check ( status IN ('OPEN', 'CLOSED') ),
     nr_posts smallint default 0 check ( nr_posts >= 0 ),
     creation timestamp not null default now() check ( creation <= now() ),
-    modification timestamp not null default now() check ( creation <= now() ),
+    modification timestamp not null default now(),
     category smallint not null,
     constraint fk_threads_category foreign key (category) references forum_categories(id),
     creator uuid not null,
@@ -143,18 +141,17 @@ create table thread_tags (
 );
 comment on table thread_tags is 'Table creating many-to-many relationship between the threads and tags tables. Represents a thread and its tags';
 
-create type posts_status as enum ('NO_PROBLEM', 'PENDING', 'DELETED');
 create table posts (
     id serial not null unique primary key check ( id >= 0 ),
     title varchar(80) not null check ( trim(title) != '' ),
     text varchar(600) default 'No description given',
     blocked boolean not null default false,
-    status posts_status not null default 'NO_PROBLEM',
+    status varchar(10) not null default 'NO_PROBLEM' check ( status IN ('NO_PROBLEM', 'PENDING', 'DELETED') ),
     nr_plus int not null default 0 check ( nr_plus >= 0 ),
     nr_minus int not null default 0 check ( nr_minus >= 0 ),
     nr_reports int not null default 0 check ( nr_reports >= 0 ),
-    creation timestamp not null default now() check ( creation <= now() ),
-    modification timestamp not null default now() check ( creation <= now() ),
+    creation timestamp not null default now(),
+    modification timestamp not null default now(),
     creator uuid not null,
     constraint fk_threaduserstatus_user foreign key (creator) references users(id),
     thread int not null check ( thread >= 0 ),

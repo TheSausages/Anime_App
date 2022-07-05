@@ -170,6 +170,7 @@ paths:
                         nrOfUpvotes: 10
                         nrOfDownvotes: 3
                         nrOfHelpfull: 8
+                        modification: '2019-08-24T14:15:22Z'
                     localUserAnimeInformation:
                       id:
                         userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
@@ -189,6 +190,7 @@ paths:
                         nrOfUpvotes: 10
                         nrOfDownvotes: 3
                         nrOfHelpfull: 8
+                        modification: '2019-08-24T14:15:22Z'
         '503':
           description: Service Unavailable - the Anilist service returned an error or didn't return anything.
           content:
@@ -483,6 +485,7 @@ paths:
                       nrOfUpvotes: 10
                       nrOfDownvotes: 3
                       nrOfHelpfull: 8
+                      modification: '2019-08-24T14:15:22Z'
         '401':
           description: Unauthorized - The user didn't authenticate correctly
           content:
@@ -549,6 +552,7 @@ paths:
                     nrOfUpvotes: 10
                     nrOfDownvotes: 3
                     nrOfHelpfull: 8
+                    modification: '2019-08-24T14:15:22Z'
         description: The DTO contains information on an Anime by a local user.
       description: Get a page of Anime that meet the condiitons in the query.
       parameters: []
@@ -685,6 +689,7 @@ components:
               nrOfUpvotes: 10
               nrOfDownvotes: 3
               nrOfHelpfull: 8
+              modification: '2019-08-24T14:15:22Z'
           localUserAnimeInformation:
             id:
               userId: 2c4a230c-5085-4924-a3e1-25fb4fc5965b
@@ -703,6 +708,7 @@ components:
               nrOfUpvotes: 10
               nrOfDownvotes: 3
               nrOfHelpfull: 8
+              modification: '2019-08-24T14:15:22Z'
       properties:
         externalInformation:
           $ref: '#/components/schemas/DetailedAnilistAnimeInformationDTO'
@@ -772,6 +778,7 @@ components:
           nrOfUpvotes: 10
           nrOfDownvotes: 3
           nrOfHelpfull: 8
+          modification: '2019-08-24T14:15:22Z'
       discriminator:
         propertyName: reviewType
         mapping:
@@ -814,6 +821,10 @@ components:
           format: int32
           minimum: 0
           description: How many people found the review helpfull
+        modification:
+          type: string
+          format: date-time
+          description: When was the Review last modified
       required:
         - reviewType
         - id
@@ -822,6 +833,7 @@ components:
         - nrOfUpvotes
         - nrOfDownvotes
         - nrOfHelpfull
+        - modification
     LocalDetailedAnimeReviewDTO:
       allOf:
         - $ref: '#/components/schemas/LocalSimpleAnimeReviewDTO'
@@ -847,6 +859,7 @@ components:
           nrOfUpvotes: 10
           nrOfDownvotes: 3
           nrOfHelpfull: 8
+          modification: '2019-08-24T14:15:22Z'
           animeId: 789541
           animeTitle: Anime Title
       title: Local Detailed Anime Review DTO
@@ -873,6 +886,7 @@ components:
             nrOfUpvotes: 10
             nrOfDownvotes: 3
             nrOfHelpfull: 8
+            modification: '2019-08-24T14:15:22Z'
       description: User's information on a selected Anime.
       properties:
         id:
@@ -1575,21 +1589,12 @@ components:
                         $ref: '#/components/schemas/AnilistCoverImage'
                       status:
                         $ref: '#/components/schemas/AnilistMediaStatus'
-                    required:
-                      - id
-                      - type
-                      - title
-                      - coverImage
-                      - status
                   id:
                     type: integer
                     format: int32
                     description: ID of the relation
                   relationType:
                     $ref: '#/components/schemas/AnilistMediaRelation'
-                required:
-                  - id
-                  - relationType
         characters:
           type: object
           description: Information on the characters
@@ -1666,12 +1671,6 @@ components:
                         languageV2:
                           type: string
                           description: Language of the voice actor
-                required:
-                  - node
-                  - id
-                  - role
-                  - name
-                  - voiceActors
             pageInfo:
               $ref: '#/components/schemas/AnilistPageInfo'
         staff:
@@ -1696,10 +1695,6 @@ components:
                     description: Primary occupation of the staff
                     items:
                       type: string
-                required:
-                  - name
-                  - image
-                  - primaryOccupation
             pageInfo:
               $ref: '#/components/schemas/AnilistPageInfo'
       required:
@@ -1721,7 +1716,6 @@ components:
         - source
         - startDate
         - endDate
-        - nextAiringEpisode
         - relations
         - characters
         - staff
@@ -1979,25 +1973,18 @@ components:
         first:
           type: string
           description: First name
-          minLength: 1
         middle:
           type: string
           description: Middle (second) name
         last:
           type: string
           description: Last name
-          minLength: 1
         full:
           type: string
           description: Full name
-          minLength: 1
         native:
           type: string
           description: The name in native letters
-      required:
-        - first
-        - last
-        - full
     AnilistMediaRelation:
       type: string
       title: Media Relation

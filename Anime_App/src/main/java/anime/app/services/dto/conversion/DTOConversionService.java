@@ -181,6 +181,7 @@ public class DTOConversionService implements DTOConversionServiceInterface {
 				.nrOfUpvotes(review.getNrOfPlus())
 				.nrOfDownvotes(review.getNrOfMinus())
 				.nrOfHelpfull(review.getNrOfHelpful())
+				.modification(review.getModification())
 				.build();
 	}
 
@@ -199,6 +200,7 @@ public class DTOConversionService implements DTOConversionServiceInterface {
 				.nrOfUpvotes(review.getNrOfPlus())
 				.nrOfDownvotes(review.getNrOfMinus())
 				.nrOfHelpfull(review.getNrOfHelpful())
+				.modification(review.getModification())
 				.animeId((long) review.getAnimeUserInfo().getId().getAnime().getId())
 				.animeTitle(review.getAnimeUserInfo().getId().getAnime().getTitle())
 				.build();

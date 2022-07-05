@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
@@ -70,10 +72,12 @@ public class Post {
 	@ColumnDefault("0")
 	private int nrOfReports;
 
+	@CreationTimestamp
 	@Column(nullable = false)
 	@PastOrPresent(message = "Cannot create a post in the future")
 	private LocalDateTime creation;
 
+	@UpdateTimestamp
 	@Column(nullable = false)
 	@PastOrPresent(message = "Cannot modify a post in the future")
 	private LocalDateTime modification;

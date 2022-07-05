@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
@@ -91,6 +92,7 @@ public class AnimeUserInfo {
 	@Range(max = 10, min = 0, message = "Grade can only be between 0 and 10")
 	private int grade;
 
+	@UpdateTimestamp
 	@Column(nullable = false)
 	@PastOrPresent(message = "Cannot modify in the future")
 	private LocalDateTime modification;

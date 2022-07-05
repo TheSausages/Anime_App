@@ -18,7 +18,7 @@ public interface UserAuthorizationUtils {
     static boolean checkIfLoggedIn() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        return Objects.nonNull(authentication) && authentication.isAuthenticated();
+        return Objects.nonNull(authentication) && authentication.isAuthenticated() && !"anonymousUser".equalsIgnoreCase(authentication.getName());
     }
 
     /**

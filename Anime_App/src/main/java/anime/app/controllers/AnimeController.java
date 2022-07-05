@@ -6,6 +6,7 @@ import anime.app.openapi.model.AnimeQueryDTO;
 import anime.app.openapi.model.DetailedAnimeDTO;
 import anime.app.openapi.model.LocalUserAnimeInformationDTO;
 import anime.app.services.anilist.AnilistServiceInterface;
+import anime.app.services.anime.animeuserinfo.AnimeUserServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 
@@ -18,12 +19,14 @@ import javax.validation.Validator;
 @RestControllerWithBasePath
 public class AnimeController implements AnimeApi {
 	private final AnilistServiceInterface anilistService;
+	private final AnimeUserServiceInterface animeUserService;
 	private final Validator validator;
 
 	@Autowired
-	AnimeController(AnilistServiceInterface anilistService, Validator validator) {
+	AnimeController(AnilistServiceInterface anilistService, Validator validator, AnimeUserServiceInterface animeUserService) {
 		this.anilistService = anilistService;
 		this.validator = validator;
+		this.animeUserService = animeUserService;
 	}
 
 	/**
@@ -32,8 +35,7 @@ public class AnimeController implements AnimeApi {
 	@Override
 	public ResponseEntity<DetailedAnimeDTO> getAnimeByAnimeId(Long animeId) {
 		DetailedAnimeDTO animeInfo = anilistService.getAnimeById(animeId);
-		//TODO Until all elements are added to the response in the service
-		//validator.validate(animeInfo);
+		validator.validate(animeInfo);
 
 		return ResponseEntity.ok(animeInfo);
 	}
@@ -87,7 +89,9 @@ public class AnimeController implements AnimeApi {
 	 */
 	@Override
 	public ResponseEntity<LocalUserAnimeInformationDTO> updateUserAnimeInformation(LocalUserAnimeInformationDTO localUserAnimeInformationDTO) {
-		//TODO update when all is finished
-		return AnimeApi.super.updateUserAnimeInformation(localUserAnimeInformationDTO);
+		LocalUserAnimeInformationDTO updatedInfo = animeUserService.updateCurrentUserAnimeInfo(localUserAnimeInformationDTO);
+		validator.validate(updatedInfo);
+
+		return ResponseEntity.ok(updatedInfo);
 	}
 }

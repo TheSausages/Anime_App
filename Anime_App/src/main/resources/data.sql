@@ -16,8 +16,8 @@ Insert into user_achievements values
     (4, '467a809a-d893-48c2-85e2-82f9ce4b1560');
 
 Insert into reviews values
-    (1, 'First Test Review', 'First Test Review Text', 8, 3, 2),
-    (2, 'Second Test Review', 'Second Test Review Text', 0, 8, 1);
+    (1, 'First Test Review', 'First Test Review Text', 8, 3, 2, '2021-10-11 00:00:00'),
+    (2, 'Second Test Review', 'Second Test Review Text', 0, 8, 1, '2021-10-10 00:00:00');
 
 Insert Into anime values
     (127720, 'Mushoku Tensei: Isekai Ittara Honki Dasu Part 2', 9.0, 1, 0, 1, 25),

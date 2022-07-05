@@ -6,11 +6,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.PositiveOrZero;
+import java.time.LocalDateTime;
 
 /**
  * Class representing the <i>review</i> table from the database.
@@ -51,6 +54,11 @@ public class Review {
 	@Column(nullable = false, name = "nr_minus")
 	@ColumnDefault("0")
 	private int nrOfMinus;
+
+	@UpdateTimestamp
+	@Column(nullable = false)
+	@PastOrPresent(message = "Cannot modify in the future")
+	private LocalDateTime modification;
 
 	@OneToOne(mappedBy = "review")
 	private AnimeUserInfo animeUserInfo;

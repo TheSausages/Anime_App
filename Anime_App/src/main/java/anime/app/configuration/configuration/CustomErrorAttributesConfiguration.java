@@ -9,6 +9,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.WebRequest;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.Map;
 import java.util.UUID;
 
@@ -35,7 +37,10 @@ public class CustomErrorAttributesConfiguration extends DefaultErrorAttributes {
 				errorInformation.get("error")
 		);
 		UUID errorCode = UUID.randomUUID();
-		LocalDateTime timeStamp = LocalDateTime.parse((String) errorInformation.get("timestamp"));
+		Date date = (Date) errorInformation.get("timestamp");
+		LocalDateTime timeStamp = date.toInstant()
+				.atZone(ZoneId.systemDefault())
+				.toLocalDateTime();
 
 		log.error(ErrorUtils.getErrorMessage(errorMessage, timeStamp, errorCode));
 

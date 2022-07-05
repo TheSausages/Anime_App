@@ -48,4 +48,14 @@ public class AnimeService implements AnimeServiceInterface {
     public LocalAnimeInformationDTO getAnimeDTOById(long id) {
         return conversionService.convertToDTO(getAnimeById(id));
     }
+
+    @Override
+    public void saveAnimeIfNotExist(Anime anime) {
+        if (!animeRepository.existsById(anime.getId())) {
+            log.info("Save a new Anime with id: " + anime.getId());
+
+            animeRepository.save(anime);
+        }
+
+    }
 }

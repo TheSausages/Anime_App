@@ -470,7 +470,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/api/anime/124194",
+									"raw": "http://localhost:8080/api/anime/127720",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -479,7 +479,7 @@
 									"path": [
 										"api",
 										"anime",
-										"124194"
+										"127720"
 									]
 								}
 							},
@@ -1311,6 +1311,91 @@
 									"});"
 								]
 							}
+						}
+					]
+				},
+				{
+					"name": "Anime",
+					"item": [
+						{
+							"name": "Update user's anime information",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"\r",
+											"var oldUserAnimeInfoRequest = {\r",
+											"    url: \"http://localhost:8080/api/anime/127720\",\r",
+											"    method: \"GET\",\r",
+											"    header: {\r",
+											"        'Content-Type': 'application/json',\r",
+											"        'Authorization': \"Bearer \" + pm.variables.get(\"Access_Token\")\r",
+											"    }\r",
+											"}\r",
+											"\r",
+											"pm.sendRequest(oldUserAnimeInfoRequest, function (err, response) {\r",
+											"    var jsonData = response.json();\r",
+											"\r",
+											"    pm.variables.set(\"infoDate\", jsonData.localUserAnimeInformation.modification)\r",
+											"    pm.variables.set(\"reviewDate\", jsonData.localUserAnimeInformation.review.modification)\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Info and Review Modification date is updated\", function () {\r",
+											"    let responseB = pm.response.json();\r",
+											"\r",
+											"    pm.expect(Date.parse(responseB.modification)).to.be.above(Date.parse(pm.variables.get(\"infoDate\")));\r",
+											"    pm.expect(Date.parse(responseB.review.modification)).to.be.above(Date.parse(pm.variables.get(\"reviewDate\")));\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Access_Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": {\r\n        \"userId\": \"467a809a-d893-48c2-85e2-82f9ce4b1560\",\r\n        \"animeId\": \"127720\"\r\n    },\r\n    \"status\": \"WATCHING\",\r\n    \"watchStartDate\": \"2022-07-01\",\r\n    \"watchEndDate\": \"2021-07-05\",\r\n    \"nrOfEpisodesSeen\": 5,\r\n    \"isFavourite\": true,\r\n    \"modification\": \"2021-10-11T00:00:00\",\r\n    \"grade\": 9,\r\n    \"review\": {\r\n        \"reviewType\": \"simpleReview\",\r\n        \"id\": 1,\r\n        \"title\": \"First Test Reviewaaa\",\r\n        \"text\": \"First Test Review Text\",\r\n        \"nrOfUpvotes\": 3,\r\n        \"nrOfDownvotes\": 2,\r\n        \"nrOfHelpfull\": 8,\r\n        \"modification\": \"2021-10-11T00:00:00\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/anime/userInformation",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"anime",
+										"userInformation"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				}

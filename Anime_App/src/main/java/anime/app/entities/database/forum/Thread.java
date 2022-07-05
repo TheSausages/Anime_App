@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
@@ -55,10 +57,12 @@ public class Thread {
 	@Column(name = "nr_posts")
 	private int nrOfPosts;
 
+	@CreationTimestamp
 	@Column(nullable = false)
 	@PastOrPresent(message = "Thread creation time cannot be negative")
 	private LocalDateTime creation;
 
+	@UpdateTimestamp
 	@Column(nullable = false)
 	@PastOrPresent(message = "Thread modification time cannot be negative")
 	private LocalDateTime modification;

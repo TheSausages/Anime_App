@@ -66,4 +66,37 @@ public class Anime {
 			fetch = FetchType.LAZY
 	)
 	private Set<AnimeUserInfo> animeUserInfos;
+
+	/**
+	 * Method used to update the average for a new score. used only when a user didn't have another score - if he did,
+	 * please use {@link Anime#updateAverageForUpdatedScore}.
+	 * @param grade the new grade
+	 */
+	public void updateAverageForNewScore(int grade) {
+		nrOfScores++;
+
+		//https://stackoverflow.com/questions/12636613/how-to-calculate-moving-average-without-keeping-the-count-and-data-total
+		averageScore = (averageScore * ((double) (nrOfScores - 1)) / nrOfScores) + ((double) grade / nrOfScores);
+	}
+
+	/**
+	 * Method used to update the average score when a previous one exists. This will create an APROXIMATION, so we don't
+	 * iterate all scores each time.
+	 * @param newGrade The new grade
+	 * @param oldGrade The old grade
+	 */
+	public void updateAverageForUpdatedScore(int newGrade, int oldGrade) {
+		if (newGrade != oldGrade) {
+			if (nrOfScores <= 1) {
+				// If there is only 1 score, just update the value
+				averageScore = newGrade;
+			} else {
+				// If there are more, remove the old one and update with new one
+				int nrOfScoresMinus1 = nrOfScores - 1;
+				double averageWithoutOldScore = ((averageScore * nrOfScoresMinus1) - oldGrade) / (nrOfScoresMinus1 - 1);
+
+				averageScore = (averageWithoutOldScore * ((double) (nrOfScores - 1)) / nrOfScores) + ((double) newGrade / nrOfScores);
+			}
+		}
+	}
 }

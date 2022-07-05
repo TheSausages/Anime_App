@@ -299,6 +299,7 @@ paths:
                           nrOfUpvotes: 10
                           nrOfDownvotes: 3
                           nrOfHelpfull: 8
+                          modification: '2019-08-24T14:15:22Z'
                     threads:
                       - threadComplexityType: simpleThread
                         id: 8
@@ -409,6 +410,7 @@ paths:
                           nrOfUpvotes: 10
                           nrOfDownvotes: 3
                           nrOfHelpfull: 8
+                          modification: '2019-08-24T14:15:22Z'
                     threads:
                       - threadComplexityType: simpleThread
                         id: 7

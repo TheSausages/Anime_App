@@ -19,9 +19,13 @@ import anime.app.anilist.request.query.parameters.fuzzyDate.FuzzyDateFieldParame
 import anime.app.anilist.request.query.parameters.fuzzyDate.FuzzyDateValue;
 import anime.app.anilist.request.query.parameters.media.*;
 import anime.app.configuration.beans.WebClientsConfiguration;
+import anime.app.entities.database.anime.Anime;
 import anime.app.exceptions.exceptions.AnilistException;
 import anime.app.openapi.model.*;
+import anime.app.services.anime.anime.AnimeServiceInterface;
+import anime.app.services.anime.animeuserinfo.AnimeUserServiceInterface;
 import anime.app.utils.LocaleUtils;
+import anime.app.utils.UserAuthorizationUtils;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -45,9 +49,14 @@ import java.util.Objects;
 @Log4j2
 public class AnilistService implements AnilistServiceInterface {
 	private final WebClient client;
+	private final AnimeServiceInterface animeService;
+	private final AnimeUserServiceInterface animeUserService;
 
-	AnilistService(@Qualifier(WebClientsConfiguration.anilistWebClientBeanName) WebClient anilistWenClient) {
+	AnilistService(@Qualifier(WebClientsConfiguration.anilistWebClientBeanName) WebClient anilistWenClient,
+				   AnimeServiceInterface animeService, AnimeUserServiceInterface animeUserService) {
 		this.client = anilistWenClient;
+		this.animeService = animeService;
+		this.animeUserService = animeUserService;
 	}
 
 	/**
@@ -400,9 +409,25 @@ public class AnilistService implements AnilistServiceInterface {
 				.getData()
 				.getMedia();
 
-		return DetailedAnimeDTO.builder()
+		// If an object with this ID doesn't exist, save it to have the correct average episode duration later
+		animeService.saveAnimeIfNotExist(
+				Anime.builder()
+						.id(anilistInfo.getId())
+						.title(getFirstAvailableTitle(anilistInfo.getTitle()))
+						.averageEpisodeLength(anilistInfo.getDuration())
+						.build());
+
+		DetailedAnimeDTO detailedAnimeDTO = DetailedAnimeDTO.builder()
 				.externalInformation(anilistInfo)
+				.localAnimeInformation(animeService.getAnimeDTOById(id))
+				.localAnimeReviews(animeUserService.get5LatestReviewsForAnime(id))
 				.build();
+
+		if (UserAuthorizationUtils.checkIfLoggedIn()) {
+			detailedAnimeDTO.setLocalUserAnimeInformation(animeUserService.getCurrentUserAnimeInfo(id));
+		}
+
+		return detailedAnimeDTO;
 	}
 
 	/**
@@ -432,5 +457,21 @@ public class AnilistService implements AnilistServiceInterface {
 	 */
 	private BodyInserter<JsonNode, ReactiveHttpOutputMessage> buildBodyInsert(QueryElement element) {
 		return BodyInserters.fromValue(Query.buildQuery(element));
+	}
+
+	private String getFirstAvailableTitle(AnilistMediaTitle mediaTitle) {
+		if (Objects.nonNull(mediaTitle.getEnglish()) && !mediaTitle.getEnglish().isBlank()) {
+			return mediaTitle.getEnglish();
+		}
+
+		if (Objects.nonNull(mediaTitle.getRomaji()) && !mediaTitle.getRomaji().isBlank()) {
+			return mediaTitle.getRomaji();
+		}
+
+		if (Objects.nonNull(mediaTitle.getNative()) && !mediaTitle.getNative().isBlank()) {
+			return mediaTitle.getNative();
+		}
+
+		return "No Title could be found";
 	}
 }

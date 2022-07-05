@@ -20,4 +20,10 @@ public interface AnimeServiceInterface {
      * @return Local information on an Anime in DTO form
      */
     LocalAnimeInformationDTO getAnimeDTOById(long id);
+
+    /**
+     * Save a new Anime object.
+     * @param anime New object to be saved
+     */
+    void saveAnimeIfNotExist(Anime anime);
 }
