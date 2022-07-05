@@ -9,6 +9,7 @@ import anime.app.services.anime.anime.AnimeServiceInterface;
 import anime.app.services.user.UserServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Objects;
 
@@ -55,6 +56,7 @@ public class DTODeconversionService implements DTODeconversionServiceInterface {
     }
 
     @Override
+    @Transactional(label = "Get Anime User Info ID using both id's to find the necessery elements", readOnly = true)
     public AnimeUserInfo.AnimeUserInfoId convertFromDTO(LocalUserAnimeInformationDTOId localUserAnimeInformationDTOId) {
         return AnimeUserInfo.AnimeUserInfoId.builder()
                 .user(userService.getUser(localUserAnimeInformationDTOId.getUserId()))
