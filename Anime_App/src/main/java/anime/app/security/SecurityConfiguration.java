@@ -55,7 +55,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 					.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 					.and()
 				.authorizeRequests()
-					.mvcMatchers(addDefaultPath("/auth/login"), addDefaultPath("/anime/**"), addDefaultPath("/user/**")).permitAll()
+					.mvcMatchers(addDefaultPath("/auth/login"), addDefaultPath("/auth/register"), addDefaultPath("/anime/**"), addDefaultPath("/user/**")).permitAll()
 					.mvcMatchers(addDefaultPath("/**")).authenticated()
 					.anyRequest().authenticated()
 					.and()

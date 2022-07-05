@@ -159,7 +159,7 @@ public class KeycloakService implements KeycloakServiceInterface {
 				.users().create(user);
 
 		if (response.getStatus() > 100 && response.getStatus() < 300) {
-			log.info("Registration was successful. Attempt login for user: {}", registrationBody.getUsername());
+			log.info(String.format("Registration for %s in Keycloak was successfully, attempt to save in local database", registrationBody.getUsername()));
 
 			Optional<UserRepresentation> newUser = keycloak.realm(keycloakProperties.getRealm())
 					.users().search(registrationBody.getUsername())
@@ -176,6 +176,8 @@ public class KeycloakService implements KeycloakServiceInterface {
 			UserRepresentation createdUser = newUser.get();
 
 			userService.saveUser(User.builder().id(UUID.fromString(createdUser.getId())).username(createdUser.getUsername()).build());
+
+			log.info("Registration was successful. Attempt login for user: {}", registrationBody.getUsername());
 
 			LoginCredentialsDTO login = LoginCredentialsDTO.builder()
 					.username(registrationBody.getUsername())
