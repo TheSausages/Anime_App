@@ -16,6 +16,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.PositiveOrZero;
 import java.time.LocalDateTime;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -103,4 +104,42 @@ public class Post {
 
 	@OneToMany(mappedBy = "postWithResponses")
 	private Set<Post> subCategories;
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Post)) return false;
+
+		Post post = (Post) o;
+
+		if (id != post.id) return false;
+		if (blocked != post.blocked) return false;
+		if (nrOfPlus != post.nrOfPlus) return false;
+		if (nrOfMinus != post.nrOfMinus) return false;
+		if (nrOfReports != post.nrOfReports) return false;
+		if (!title.equals(post.title)) return false;
+		if (!Objects.equals(text, post.text)) return false;
+		if (status != post.status) return false;
+		if (!Objects.equals(creation, post.creation)) return false;
+		if (!Objects.equals(modification, post.modification)) return false;
+		if (!creator.equals(post.creator)) return false;
+		return thread.equals(post.thread);
+	}
+
+	@Override
+	public int hashCode() {
+		int result = id;
+		result = 31 * result + title.hashCode();
+		result = 31 * result + (text != null ? text.hashCode() : 0);
+		result = 31 * result + (blocked ? 1 : 0);
+		result = 31 * result + status.hashCode();
+		result = 31 * result + nrOfPlus;
+		result = 31 * result + nrOfMinus;
+		result = 31 * result + nrOfReports;
+		result = 31 * result + (creation != null ? creation.hashCode() : 0);
+		result = 31 * result + (modification != null ? modification.hashCode() : 0);
+		result = 31 * result + creator.hashCode();
+		result = 31 * result + thread.hashCode();
+		return result;
+	}
 }

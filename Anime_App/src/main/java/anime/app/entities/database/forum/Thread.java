@@ -16,6 +16,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.PositiveOrZero;
 import java.time.LocalDateTime;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -97,4 +98,37 @@ public class Thread {
 			orphanRemoval = true
 	)
 	private Set<ThreadUserStatus> threadUserStatuses;
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Thread)) return false;
+
+		Thread thread = (Thread) o;
+
+		if (id != thread.id) return false;
+		if (nrOfPosts != thread.nrOfPosts) return false;
+		if (title != null ? !title.equals(thread.title) : thread.title != null) return false;
+		if (text != null ? !text.equals(thread.text) : thread.text != null) return false;
+		if (status != thread.status) return false;
+		if (!Objects.equals(creation, thread.creation)) return false;
+		if (!Objects.equals(modification, thread.modification))
+			return false;
+		if (!Objects.equals(category, thread.category)) return false;
+		return Objects.equals(creator, thread.creator);
+	}
+
+	@Override
+	public int hashCode() {
+		int result = id;
+		result = 31 * result + (title != null ? title.hashCode() : 0);
+		result = 31 * result + (text != null ? text.hashCode() : 0);
+		result = 31 * result + (status != null ? status.hashCode() : 0);
+		result = 31 * result + nrOfPosts;
+		result = 31 * result + (creation != null ? creation.hashCode() : 0);
+		result = 31 * result + (modification != null ? modification.hashCode() : 0);
+		result = 31 * result + (category != null ? category.hashCode() : 0);
+		result = 31 * result + (creator != null ? creator.hashCode() : 0);
+		return result;
+	}
 }

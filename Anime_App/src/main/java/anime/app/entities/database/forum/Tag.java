@@ -12,6 +12,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.PositiveOrZero;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -52,4 +53,26 @@ public class Tag {
 
 	@ManyToMany(mappedBy = "tags")
 	private Set<Thread> threads;
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Tag)) return false;
+
+		Tag tag = (Tag) o;
+
+		if (id != tag.id) return false;
+		if (!name.equals(tag.name)) return false;
+		if (importance != tag.importance) return false;
+		return Objects.equals(color, tag.color);
+	}
+
+	@Override
+	public int hashCode() {
+		int result = id;
+		result = 31 * result + name.hashCode();
+		result = 31 * result + importance.hashCode();
+		result = 31 * result + (color != null ? color.hashCode() : 0);
+		return result;
+	}
 }

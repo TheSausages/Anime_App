@@ -14,6 +14,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.PositiveOrZero;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 /**
  * Class representing the <i>review</i> table from the database.
@@ -62,4 +63,32 @@ public class Review {
 
 	@OneToOne(mappedBy = "review")
 	private AnimeUserInfo animeUserInfo;
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Review)) return false;
+
+		Review review = (Review) o;
+
+		if (id != review.id) return false;
+		if (nrOfHelpful != review.nrOfHelpful) return false;
+		if (nrOfPlus != review.nrOfPlus) return false;
+		if (nrOfMinus != review.nrOfMinus) return false;
+		if (!title.equals(review.title)) return false;
+		if (!Objects.equals(text, review.text)) return false;
+		return Objects.equals(modification, review.modification);
+	}
+
+	@Override
+	public int hashCode() {
+		int result = id;
+		result = 31 * result + title.hashCode();
+		result = 31 * result + (text != null ? text.hashCode() : 0);
+		result = 31 * result + nrOfHelpful;
+		result = 31 * result + nrOfPlus;
+		result = 31 * result + nrOfMinus;
+		result = 31 * result + (modification != null ? modification.hashCode() : 0);
+		return result;
+	}
 }

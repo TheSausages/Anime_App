@@ -50,4 +50,28 @@ public class Achievement {
 
 	@ManyToMany(mappedBy = "achievements")
 	private Set<User> users;
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Achievement)) return false;
+
+		Achievement that = (Achievement) o;
+
+		if (id != that.id) return false;
+		if (points != that.points) return false;
+		if (!name.equals(that.name)) return false;
+		if (description != null ? !description.equals(that.description) : that.description != null) return false;
+		return iconPath.equals(that.iconPath);
+	}
+
+	@Override
+	public int hashCode() {
+		int result = id;
+		result = 31 * result + name.hashCode();
+		result = 31 * result + (description != null ? description.hashCode() : 0);
+		result = 31 * result + iconPath.hashCode();
+		result = 31 * result + points;
+		return result;
+	}
 }

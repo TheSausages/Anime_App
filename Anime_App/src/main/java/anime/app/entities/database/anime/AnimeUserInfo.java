@@ -88,9 +88,8 @@ public class AnimeUserInfo {
 	@ColumnDefault("false")
 	private boolean favourite;
 
-	@Column(nullable = false)
 	@Range(max = 10, min = 0, message = "Grade can only be between 0 and 10")
-	private int grade;
+	private Integer grade;
 
 	@UpdateTimestamp
 	@Column(nullable = false)
@@ -100,4 +99,36 @@ public class AnimeUserInfo {
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	@JoinColumn(name = "review")
 	private Review review;
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof AnimeUserInfo)) return false;
+
+		AnimeUserInfo that = (AnimeUserInfo) o;
+
+		if (episodesSeen != that.episodesSeen) return false;
+		if (favourite != that.favourite) return false;
+		if (!id.equals(that.id)) return false;
+		if (status != that.status) return false;
+		if (!Objects.equals(watchStart, that.watchStart)) return false;
+		if (!Objects.equals(watchEnd, that.watchEnd)) return false;
+		if (!Objects.equals(grade, that.grade)) return false;
+		if (!Objects.equals(modification, that.modification)) return false;
+		return Objects.equals(review, that.review);
+	}
+
+	@Override
+	public int hashCode() {
+		int result = id.hashCode();
+		result = 31 * result + status.hashCode();
+		result = 31 * result + (watchStart != null ? watchStart.hashCode() : 0);
+		result = 31 * result + (watchEnd != null ? watchEnd.hashCode() : 0);
+		result = 31 * result + episodesSeen;
+		result = 31 * result + (favourite ? 1 : 0);
+		result = 31 * result + (grade != null ? grade.hashCode() : 0);
+		result = 31 * result + (modification != null ? modification.hashCode() : 0);
+		result = 31 * result + (review != null ? review.hashCode() : 0);
+		return result;
+	}
 }

@@ -88,4 +88,34 @@ public class User {
 			orphanRemoval = true
 	)
 	private Set<PostUserStatus> postUserStatuses;
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof User)) return false;
+
+		User user = (User) o;
+
+		if (watchTime != user.watchTime) return false;
+		if (achievementPoints != user.achievementPoints) return false;
+		if (!id.equals(user.id)) return false;
+		return username.equals(user.username);
+
+		// we don't check any of the relations, because all of them use a compose key, and need to check the user
+	}
+
+	@Override
+	public int hashCode() {
+		int result = id.hashCode();
+		result = 31 * result + username.hashCode();
+		result = 31 * result + watchTime;
+		result = 31 * result + achievementPoints;
+		result = 31 * result + (threads != null ? threads.hashCode() : 0);
+		result = 31 * result + (posts != null ? posts.hashCode() : 0);
+		result = 31 * result + (achievements != null ? achievements.hashCode() : 0);
+		result = 31 * result + (animeUserInfo != null ? animeUserInfo.hashCode() : 0);
+		result = 31 * result + (threadUserStatuses != null ? threadUserStatuses.hashCode() : 0);
+		result = 31 * result + (postUserStatuses != null ? postUserStatuses.hashCode() : 0);
+		return result;
+	}
 }

@@ -40,4 +40,24 @@ public class ForumCategory {
 
 	@OneToMany(mappedBy = "category")
 	private Set<Thread> threads;
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof ForumCategory)) return false;
+
+		ForumCategory that = (ForumCategory) o;
+
+		if (id != that.id) return false;
+		if (!name.equals(that.name)) return false;
+		return description.equals(that.description);
+	}
+
+	@Override
+	public int hashCode() {
+		int result = id;
+		result = 31 * result + name.hashCode();
+		result = 31 * result + description.hashCode();
+		return result;
+	}
 }

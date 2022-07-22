@@ -11,6 +11,7 @@ import org.hibernate.validator.constraints.Length;
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.PositiveOrZero;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -72,11 +73,13 @@ public class Anime {
 	 * please use {@link Anime#updateAverageForUpdatedScore}.
 	 * @param grade the new grade
 	 */
-	public void updateAverageForNewScore(int grade) {
-		nrOfScores++;
+	public void updateAverageForNewScore(Integer grade) {
+		if (Objects.nonNull(grade)) {
+			nrOfScores++;
 
-		//https://stackoverflow.com/questions/12636613/how-to-calculate-moving-average-without-keeping-the-count-and-data-total
-		averageScore = (averageScore * ((double) (nrOfScores - 1)) / nrOfScores) + ((double) grade / nrOfScores);
+			//https://stackoverflow.com/questions/12636613/how-to-calculate-moving-average-without-keeping-the-count-and-data-total
+			averageScore = (averageScore * ((double) (nrOfScores - 1)) / nrOfScores) + ((double) grade / nrOfScores);
+		}
 	}
 
 	/**
@@ -85,18 +88,53 @@ public class Anime {
 	 * @param newGrade The new grade
 	 * @param oldGrade The old grade
 	 */
-	public void updateAverageForUpdatedScore(int newGrade, int oldGrade) {
-		if (newGrade != oldGrade) {
-			if (nrOfScores <= 1) {
-				// If there is only 1 score, just update the value
-				averageScore = newGrade;
-			} else {
-				// If there are more, remove the old one and update with new one
-				int nrOfScoresMinus1 = nrOfScores - 1;
-				double averageWithoutOldScore = ((averageScore * nrOfScoresMinus1) - oldGrade) / (nrOfScoresMinus1 - 1);
+	public void updateAverageForUpdatedScore(Integer newGrade, Integer oldGrade) {
+		if (Objects.nonNull(newGrade)) {
+			if (!newGrade.equals(oldGrade)) {
+				if (nrOfScores <= 1) {
+					// If there is only 1 score, just update the value
+					averageScore = newGrade;
+				} else {
+					if (Objects.nonNull(oldGrade)) {
+						// If there are more, remove the old one and update with new one
+						int nrOfScoresMinus1 = nrOfScores - 1;
+						double averageWithoutOldScore = ((averageScore * nrOfScoresMinus1) - oldGrade) / (nrOfScoresMinus1 - 1);
 
-				averageScore = (averageWithoutOldScore * ((double) (nrOfScores - 1)) / nrOfScores) + ((double) newGrade / nrOfScores);
+						averageScore = (averageWithoutOldScore * ((double) (nrOfScores - 1)) / nrOfScores) + ((double) newGrade / nrOfScores);
+					}
+				}
 			}
 		}
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Anime)) return false;
+
+		Anime anime = (Anime) o;
+
+		if (id != anime.id) return false;
+		if (Double.compare(anime.averageScore, averageScore) != 0) return false;
+		if (nrOfScores != anime.nrOfScores) return false;
+		if (nrOfFavourites != anime.nrOfFavourites) return false;
+		if (nrOfReviews != anime.nrOfReviews) return false;
+		if (averageEpisodeLength != anime.averageEpisodeLength) return false;
+		return title.equals(anime.title);
+	}
+
+	@Override
+	public int hashCode() {
+		int result;
+		long temp;
+		result = id;
+		result = 31 * result + title.hashCode();
+		temp = Double.doubleToLongBits(averageScore);
+		result = 31 * result + (int) (temp ^ (temp >>> 32));
+		result = 31 * result + nrOfScores;
+		result = 31 * result + nrOfFavourites;
+		result = 31 * result + nrOfReviews;
+		result = 31 * result + averageEpisodeLength;
+		return result;
 	}
 }

@@ -62,4 +62,24 @@ public class ThreadUserStatus {
 	@Column(nullable = false)
 	@ColumnDefault("false")
 	private boolean blocking;
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof ThreadUserStatus)) return false;
+
+		ThreadUserStatus that = (ThreadUserStatus) o;
+
+		if (watching != that.watching) return false;
+		if (blocking != that.blocking) return false;
+		return id.equals(that.id);
+	}
+
+	@Override
+	public int hashCode() {
+		int result = id.hashCode();
+		result = 31 * result + (watching ? 1 : 0);
+		result = 31 * result + (blocking ? 1 : 0);
+		return result;
+	}
 }

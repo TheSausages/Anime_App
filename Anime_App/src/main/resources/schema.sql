@@ -78,7 +78,7 @@ create table anime_user_infos (
     watch_end date check ( watch_end <= now() OR watch_end is null ),
     episodes_seen smallint not null default 0 check ( episodes_seen >= 0 ),
     favourite boolean not null default false,
-    grade smallint not null check ( grade >= 0 AND grade <= 10 ),
+    grade smallint check ( grade >= 0 AND grade <= 10 ),
     modification timestamp not null default now(),
     review int unique check ( review >= 0 ),
     constraint fk_animeuserinfos_review foreign key (review) references reviews(id)

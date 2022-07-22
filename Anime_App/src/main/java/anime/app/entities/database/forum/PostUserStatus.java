@@ -66,4 +66,26 @@ public class PostUserStatus {
 	@Column(nullable = false)
 	@ColumnDefault("false")
 	private boolean reported;
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof PostUserStatus)) return false;
+
+		PostUserStatus that = (PostUserStatus) o;
+
+		if (liked != that.liked) return false;
+		if (disliked != that.disliked) return false;
+		if (reported != that.reported) return false;
+		return id.equals(that.id);
+	}
+
+	@Override
+	public int hashCode() {
+		int result = id.hashCode();
+		result = 31 * result + (liked ? 1 : 0);
+		result = 31 * result + (disliked ? 1 : 0);
+		result = 31 * result + (reported ? 1 : 0);
+		return result;
+	}
 }
