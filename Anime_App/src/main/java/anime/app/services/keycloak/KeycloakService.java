@@ -155,47 +155,46 @@ public class KeycloakService implements KeycloakServiceInterface {
 		user.setEmail(registrationBody.getEmail());
 		user.setCredentials(Collections.singletonList(password));
 
-		Response response = keycloak.realm(keycloakProperties.getRealm())
-				.users().create(user);
+		try(Response response = keycloak.realm(keycloakProperties.getRealm()).users().create(user)) {
+			if (response.getStatus() > 100 && response.getStatus() < 300) {
+				log.info(String.format("Registration for %s in Keycloak was successfully, attempt to save in local database", registrationBody.getUsername()));
 
-		if (response.getStatus() > 100 && response.getStatus() < 300) {
-			log.info(String.format("Registration for %s in Keycloak was successfully, attempt to save in local database", registrationBody.getUsername()));
+				Optional<UserRepresentation> newUser = keycloak.realm(keycloakProperties.getRealm())
+						.users().search(registrationBody.getUsername())
+						.stream().filter(userRep -> userRep.getEmail().equalsIgnoreCase(registrationBody.getEmail())).findAny();
 
-			Optional<UserRepresentation> newUser = keycloak.realm(keycloakProperties.getRealm())
-					.users().search(registrationBody.getUsername())
-					.stream().filter(userRep -> userRep.getEmail().equalsIgnoreCase(registrationBody.getEmail())).findAny();
+				if (newUser.isEmpty()) {
+					throw RegistrationException.builder()
+							.userMessageTranslationKey("authentication.after-registration-error")
+							.originalLocale(originalLocale)
+							.logMessage(String.format("User %s was register successfully, but couldn't be saved to the database", registrationBody.getUsername()))
+							.build();
+				}
 
-			if (newUser.isEmpty()) {
-				throw RegistrationException.builder()
-						.userMessageTranslationKey("authentication.after-registration-error")
-						.originalLocale(originalLocale)
-						.logMessage(String.format("User %s was register successfully, but couldn't be saved to the database", registrationBody.getUsername()))
+				UserRepresentation createdUser = newUser.get();
+
+				userService.saveUser(User.builder().id(UUID.fromString(createdUser.getId())).username(createdUser.getUsername()).build());
+
+				log.info("Registration was successful. Attempt login for user: {}", registrationBody.getUsername());
+
+				LoginCredentialsDTO login = LoginCredentialsDTO.builder()
+						.username(registrationBody.getUsername())
+						.password(registrationBody.getPassword())
 						.build();
+
+				return login(login);
 			}
 
-			UserRepresentation createdUser = newUser.get();
-
-			userService.saveUser(User.builder().id(UUID.fromString(createdUser.getId())).username(createdUser.getUsername()).build());
-
-			log.info("Registration was successful. Attempt login for user: {}", registrationBody.getUsername());
-
-			LoginCredentialsDTO login = LoginCredentialsDTO.builder()
-					.username(registrationBody.getUsername())
-					.password(registrationBody.getPassword())
-					.build();
-
-			return login(login);
-		}
-
-		if (response.getStatus() == 409) {
-			throw RegistrationException.builder()
-					.userMessageTranslationKey("authentication.registration-data-taken")
-					.originalLocale(originalLocale)
-					.logMessage(
-							String.format("Data for user was already taken:\n username: %s,\n email: %s",
-								registrationBody.getUsername(),
-								registrationBody.getEmail()))
-					.build();
+			if (response.getStatus() == 409) {
+				throw RegistrationException.builder()
+						.userMessageTranslationKey("authentication.registration-data-taken")
+						.originalLocale(originalLocale)
+						.logMessage(
+								String.format("Data for user was already taken:\n username: %s,\n email: %s",
+										registrationBody.getUsername(),
+										registrationBody.getEmail()))
+						.build();
+			}
 		}
 
 		throw AuthenticationException.builder()

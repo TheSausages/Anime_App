@@ -5,7 +5,16 @@ Rewrite of my Bachelor's Degree Application
 
 [link to Backend here](https://github.com/TheSausages/Anime_Web_Application-Backend "Backend")
 
-### WHat to write about later
+### When starting on a new machine
+1) install docker, node itp. (write what later)
+2) run [basic-docker-compose](docker/compose/basic-docker-compose.yml)
+3) open [keycloak admin console](http://127.0.0.1:8180/auth/)
+4) log into administation console using *admin* and *Password1*
+5) go into *Clients* -> *Default_User_Server* -> *Credentials* and regenerate the key
+6) paste the key into *keycloakrealm.userserver.clientsecret* in [app properties](Anime_App/src/main/resources/application.properties)
+7) do the same for *admin-cli* instead of *Default_User_Server* (use *keycloakrealm.master.clientsecret*)
+
+### What to write about later
 - enums in the database are done using varrach + check - this is because the driver does not work with enum Types saved in string form
 
 ### Small TODO
