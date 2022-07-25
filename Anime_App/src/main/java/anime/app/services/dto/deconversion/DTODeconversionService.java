@@ -22,7 +22,7 @@ public class DTODeconversionService implements DTODeconversionServiceInterface {
     private final UserServiceInterface userService;
 
     @Autowired
-    DTODeconversionService(AnimeServiceInterface animeService, UserServiceInterface userService) {
+    public DTODeconversionService(AnimeServiceInterface animeService, UserServiceInterface userService) {
         this.animeService = animeService;
         this.userService = userService;
     }
@@ -34,12 +34,16 @@ public class DTODeconversionService implements DTODeconversionServiceInterface {
      */
     @Override
     public AnimeUserInfo convertFromDTO(LocalUserAnimeInformationDTO animeUserInfoDTO) {
+        Objects.requireNonNull(animeUserInfoDTO, "Anime User Data cannot be null");
+
+        int episodesSeen = Objects.isNull(animeUserInfoDTO.getNrOfEpisodesSeen()) ? 0 : animeUserInfoDTO.getNrOfEpisodesSeen();
+
         AnimeUserInfo info = AnimeUserInfo.builder()
                 .id(convertFromDTO(animeUserInfoDTO.getId()))
                 .status(AnimeUserInfo.AnimeUserStatus.valueOf(animeUserInfoDTO.getStatus().name()))
                 .watchStart(animeUserInfoDTO.getWatchStartDate())
                 .watchEnd(animeUserInfoDTO.getWatchEndDate())
-                .episodesSeen(animeUserInfoDTO.getNrOfEpisodesSeen())
+                .episodesSeen(episodesSeen)
                 .favourite(animeUserInfoDTO.getIsFavourite())
                 .grade(animeUserInfoDTO.getGrade())
                 .modification(animeUserInfoDTO.getModification())
@@ -55,6 +59,9 @@ public class DTODeconversionService implements DTODeconversionServiceInterface {
         return info;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional(label = "Get Anime User Info ID using both id's to find the necessery elements", readOnly = true)
     public AnimeUserInfo.AnimeUserInfoId convertFromDTO(LocalUserAnimeInformationDTOId localUserAnimeInformationDTOId) {
@@ -71,13 +78,19 @@ public class DTODeconversionService implements DTODeconversionServiceInterface {
      */
     @Override
     public Review convertFromDTO(LocalSimpleAnimeReviewDTO reviewDTO) {
+        Objects.requireNonNull(reviewDTO, "Review cannot be null");
+
+        int nrOfHelpfull = Objects.nonNull(reviewDTO.getNrOfHelpfull()) ? reviewDTO.getNrOfHelpfull() : 0;
+        int nrOfDownvotes = Objects.nonNull(reviewDTO.getNrOfDownvotes()) ? reviewDTO.getNrOfDownvotes() : 0;
+        int nrOfUpvotes = Objects.nonNull(reviewDTO.getNrOfUpvotes()) ? reviewDTO.getNrOfUpvotes() : 0;
+
         return Review.builder()
                 .id(Math.toIntExact(reviewDTO.getId()))
                 .title(reviewDTO.getTitle())
                 .text(reviewDTO.getText())
-                .nrOfHelpful(reviewDTO.getNrOfHelpfull())
-                .nrOfPlus(reviewDTO.getNrOfUpvotes())
-                .nrOfMinus(reviewDTO.getNrOfDownvotes())
+                .nrOfHelpful(nrOfHelpfull)
+                .nrOfPlus(nrOfUpvotes)
+                .nrOfMinus(nrOfDownvotes)
                 .modification(reviewDTO.getModification())
                 .build();
     }

@@ -22,3 +22,4 @@ Rewrite of my Bachelor's Degree Application
 - add ci/cd pipeline to github actions (https://github.blog/2022-02-02-build-ci-cd-pipeline-github-actions-four-steps/)
 - For date and datetime fields, save timezone information (or use instant and add timezone in front)
 - (Think about) Change entities to use a long as IDs
+- think about equals and hashcode for database entities ([https://stackoverflow.com/questions/5031614/the-jpa-hashcode-equals-dilemma/5729992#5729992](https://stackoverflow.com/questions/5031614/the-jpa-hashcode-equals-dilemma/5729992#5729992))

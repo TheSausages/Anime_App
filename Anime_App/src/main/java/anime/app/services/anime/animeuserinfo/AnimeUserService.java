@@ -54,13 +54,13 @@ public class AnimeUserService implements AnimeUserServiceInterface {
     public LocalUserAnimeInformationDTO getCurrentUserAnimeInfo(long animeId) {
         UserAuthorizationUtils.checkIfLoggedInOrThrow();
 
-        log.info("Get user anime information for a user with id: " + animeId);
-
         AnimeUserInfo.AnimeUserInfoId id = AnimeUserInfo.AnimeUserInfoId
                 .builder()
                 .user(userService.getCurrentUser())
                 .anime(animeService.getAnimeById(animeId))
                 .build();
+
+        log.info("Get user anime information for a user with id: " + animeId);
 
         return dtoConversionService.convertToDTO(
                 animeUserInfoRepository.findById(id)
@@ -72,7 +72,7 @@ public class AnimeUserService implements AnimeUserServiceInterface {
     }
 
     @Override
-    @Transactional(label = "Get user anime info for the current user using tha anime's id")
+    @Transactional(label = "Update anime user info for the current user")
     public LocalUserAnimeInformationDTO updateCurrentUserAnimeInfo(LocalUserAnimeInformationDTO animeUserInfoDTO) {
         UserAuthorizationUtils.checkIfLoggedInOrThrow();
 
@@ -92,7 +92,19 @@ public class AnimeUserService implements AnimeUserServiceInterface {
                     int newWatchTime = animeUserInfoDTO.getNrOfEpisodesSeen() * anime.getAverageEpisodeLength();
                     currentUser.setWatchTime(currentUser.getWatchTime() + newWatchTime - oldWatchTime);
 
-                    anime.updateAverageForUpdatedScore(animeUserInfoDTO.getGrade(), currentAnimeUserInfo.getGrade());
+                    if (Objects.nonNull(currentAnimeUserInfo.getGrade())) {
+                        anime.updateAverageForUpdatedScore(animeUserInfoDTO.getGrade(), currentAnimeUserInfo.getGrade());
+                    } else {
+                        anime.updateAverageForNewScore(animeUserInfoDTO.getGrade());
+                    }
+
+                    if (currentAnimeUserInfo.isFavourite() != animeUserInfoDTO.getIsFavourite()) {
+                        if (currentAnimeUserInfo.isFavourite()) {
+                            anime.decrementFavourites();
+                        } else {
+                            anime.incrementFavourites();
+                        }
+                    }
 
                     return dtoDeconversionService.convertFromDTO(animeUserInfoDTO);
                 })
@@ -101,6 +113,10 @@ public class AnimeUserService implements AnimeUserServiceInterface {
                     currentUser.setWatchTime(currentUser.getWatchTime() + newWatchTime);
 
                     anime.updateAverageForNewScore(animeUserInfoDTO.getGrade());
+
+                    if (animeUserInfoDTO.getIsFavourite()) {
+                        anime.incrementFavourites();
+                    }
 
                     return dtoDeconversionService.convertFromDTO(animeUserInfoDTO);
                 });
@@ -117,7 +133,7 @@ public class AnimeUserService implements AnimeUserServiceInterface {
         return animeUserInfoRepository.findTop5ByReviewIsNotNullAndId_Anime_IdIsOrderByReview_ModificationDesc((int) animeId)
                 .stream()
                 .map(AnimeUserInfo::getReview)
-                .map(dtoConversionService::convertToDTO)
+                .map(dtoConversionService::convertToSimpleDTO)
                 .collect(Collectors.toList());
     }
 }

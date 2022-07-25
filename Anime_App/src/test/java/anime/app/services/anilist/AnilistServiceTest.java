@@ -9,6 +9,8 @@ import anime.app.exceptions.exceptions.AnilistException;
 import anime.app.integrationTests.config.wiremock.WireMockInitializer;
 import anime.app.integrationTests.config.wiremock.WireMockPageExtension;
 import anime.app.openapi.model.*;
+import anime.app.services.anime.anime.AnimeService;
+import anime.app.services.anime.animeuserinfo.AnimeUserService;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder;
@@ -19,6 +21,7 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.mockito.Mock;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -40,7 +43,13 @@ class AnilistServiceTest {
 
 	WebClient client = WebClient.builder().baseUrl("http://localhost:9090").build();
 
-	AnilistService service = new AnilistService(client);
+	@Mock
+	AnimeService animeService;
+
+	@Mock
+	AnimeUserService animeUserService;
+
+	AnilistService service = new AnilistService(client, animeService, animeUserService);
 
 	//Will be autowired and is required, but without false there is an error
 	static WireMockServer wireMockServer;

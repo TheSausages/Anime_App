@@ -140,6 +140,8 @@ public class DTOConversionService implements DTOConversionServiceInterface {
 	public LocalUserAnimeInformationDTO convertToDTO(AnimeUserInfo animeUserInfo) {
 		Objects.requireNonNull(animeUserInfo, "Anime cannot be null");
 
+		LocalSimpleAnimeReviewDTO reviewDTO = Objects.isNull(animeUserInfo.getReview()) ? null : convertToSimpleDTO(animeUserInfo.getReview());
+
 		return LocalUserAnimeInformationDTO.builder()
 				.id(convertToDTO(animeUserInfo.getId()))
 				.status(LocalUserAnimeInformationDTO.StatusEnum.fromValue(animeUserInfo.getStatus().name()))
@@ -149,7 +151,7 @@ public class DTOConversionService implements DTOConversionServiceInterface {
 				.isFavourite(animeUserInfo.isFavourite())
 				.modification(animeUserInfo.getModification())
 				.grade(animeUserInfo.getGrade())
-				.review(convertToSimpleDTO(animeUserInfo.getReview()))
+				.review(reviewDTO)
 				.build();
 	}
 

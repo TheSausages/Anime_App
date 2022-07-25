@@ -68,6 +68,14 @@ public class Anime {
 	)
 	private Set<AnimeUserInfo> animeUserInfos;
 
+	public void incrementFavourites() {
+		nrOfFavourites++;
+	}
+
+	public void decrementFavourites() {
+		nrOfFavourites--;
+	}
+
 	/**
 	 * Method used to update the average for a new score. used only when a user didn't have another score - if he did,
 	 * please use {@link Anime#updateAverageForUpdatedScore}.
@@ -89,19 +97,17 @@ public class Anime {
 	 * @param oldGrade The old grade
 	 */
 	public void updateAverageForUpdatedScore(Integer newGrade, Integer oldGrade) {
-		if (Objects.nonNull(newGrade)) {
-			if (!newGrade.equals(oldGrade)) {
-				if (nrOfScores <= 1) {
-					// If there is only 1 score, just update the value
-					averageScore = newGrade;
-				} else {
-					if (Objects.nonNull(oldGrade)) {
-						// If there are more, remove the old one and update with new one
-						int nrOfScoresMinus1 = nrOfScores - 1;
-						double averageWithoutOldScore = ((averageScore * nrOfScoresMinus1) - oldGrade) / (nrOfScoresMinus1 - 1);
+		if (Objects.nonNull(newGrade) && !newGrade.equals(oldGrade)) {
+			if (nrOfScores <= 1) {
+				// If there is only 1 score, just update the value
+				averageScore = newGrade;
+			} else {
+				if (Objects.nonNull(oldGrade)) {
+					// If there are more, remove the old one and update with new one
+					int nrOfScoresMinus1 = nrOfScores - 1;
+					double averageWithoutOldScore = ((averageScore * nrOfScoresMinus1) - oldGrade) / (nrOfScoresMinus1 - 1);
 
-						averageScore = (averageWithoutOldScore * ((double) (nrOfScores - 1)) / nrOfScores) + ((double) newGrade / nrOfScores);
-					}
+					averageScore = (averageWithoutOldScore * ((double) (nrOfScores - 1)) / nrOfScores) + ((double) newGrade / nrOfScores);
 				}
 			}
 		}
