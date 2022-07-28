@@ -27,6 +27,8 @@ public class AnimeService implements AnimeServiceInterface {
 
     /**
      * {@inheritDoc}
+     *
+     * @throws NotFoundException When the given Anime doesn't exist in the database
      */
     @Override
     @Transactional(label = "Get an anime by it's id", readOnly = true)
@@ -42,6 +44,8 @@ public class AnimeService implements AnimeServiceInterface {
 
     /**
      * {@inheritDoc}
+     *
+     * @throws NotFoundException through {@link AnimeService#getAnimeById(long)}
      */
     @Override
     @Transactional(label = "Get anime by it's id and transform it into the DTO", readOnly = true)
@@ -49,13 +53,34 @@ public class AnimeService implements AnimeServiceInterface {
         return conversionService.convertToDTO(getAnimeById(id));
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public void saveAnimeIfNotExist(Anime anime) {
-        if (!animeRepository.existsById(anime.getId())) {
-            log.info("Save a new Anime with id: " + anime.getId());
+    public void updateDataForAnime(Anime anime) {
+        if (!animeRepository.existsByAnilistData(anime)) {
+            animeRepository.save(
+                    animeRepository.findById(anime.getId())
+                            .map(existing -> {
+                                existing.setTitle(anime.getTitle());
 
-            animeRepository.save(anime);
+                                if (existing.getAverageEpisodeLength() != anime.getAverageEpisodeLength()) {
+                                    // In this situation, we also need to update the watch time for the user
+                                    existing.getAnimeUserInfos().forEach(info -> {
+                                        int oldWatchTime = info.getEpisodesSeen() * existing.getAverageEpisodeLength();
+                                        int newWatchTime = info.getEpisodesSeen() * anime.getAverageEpisodeLength();
+                                        info.getId().getUser().setWatchTime(info.getId().getUser().getWatchTime() + newWatchTime - oldWatchTime);
+                                    });
+
+                                    existing.setAverageEpisodeLength(anime.getAverageEpisodeLength());
+                                }
+
+                                log.info("Update data for existing Anime");
+
+                                return existing;
+                            })
+                            .orElse(anime)
+            );
         }
-
     }
 }

@@ -6,6 +6,11 @@
       "description": "Default path used by all endpoints with the exception of serving static content."
     },
     {
+      "name": "achievements.default-icon-path",
+      "type": "java.lang.String",
+      "description": "Path to the default image for an Achievement Icon. Must exist."
+    },
+    {
       "name": "wire-mock.port",
       "type": "java.lang.String",
       "description": "Port used by the mockWire server used to mock Anilist."

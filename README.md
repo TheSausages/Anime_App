@@ -23,3 +23,5 @@ Rewrite of my Bachelor's Degree Application
 - For date and datetime fields, save timezone information (or use instant and add timezone in front)
 - (Think about) Change entities to use a long as IDs
 - think about equals and hashcode for database entities ([https://stackoverflow.com/questions/5031614/the-jpa-hashcode-equals-dilemma/5729992#5729992](https://stackoverflow.com/questions/5031614/the-jpa-hashcode-equals-dilemma/5729992#5729992))
+- Think how to update Anime data (ex. average episode duration time) from time to time (every x request, or every day on a given hour etc.)
+- Create pages + endpoint for getting all threads/posts/achievements etc. for a given user

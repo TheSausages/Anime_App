@@ -13,7 +13,7 @@ import java.util.List;
  */
 @ResponseStatus(HttpStatus.CONFLICT)
 public class DataConflictException extends DefaultException {
-    private final static String logMessage = "Object not found in the database, no message given";
+    private final static String logMessage = "Some conflict found in data, no message given";
 
     @Builder
     public DataConflictException(String logMessage, @NonNull String userMessageTranslationKey, @Singular List<Object> translationParameters) {

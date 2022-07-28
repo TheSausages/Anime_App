@@ -49,6 +49,12 @@ public class AnimeUserService implements AnimeUserServiceInterface {
         this.userService = userService;
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     * @throws anime.app.exceptions.exceptions.AuthenticationException through {@link UserAuthorizationUtils#checkIfLoggedInOrThrow()}
+     * @throws anime.app.exceptions.exceptions.NotFoundException When a given Anime doesn't exist
+     */
     @Override
     @Transactional(label = "Get user anime info for the current user using tha anime's id", readOnly = true)
     public LocalUserAnimeInformationDTO getCurrentUserAnimeInfo(long animeId) {
@@ -66,11 +72,19 @@ public class AnimeUserService implements AnimeUserServiceInterface {
                 animeUserInfoRepository.findById(id)
                         .orElseGet(() -> AnimeUserInfo.builder()
                                 .id(id)
+                                .status(AnimeUserInfo.AnimeUserStatus.NO_STATUS)
                                 .modification(LocalDateTime.now())
                                 .build())
         );
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     * @throws anime.app.exceptions.exceptions.AuthenticationException through {@link UserAuthorizationUtils#checkIfLoggedInOrThrow()}
+     * @throws anime.app.exceptions.exceptions.NotFoundException through {@link anime.app.services.anime.anime.AnimeService#getAnimeById(long)}
+     * @throws DataConflictException When the current User tries to update someone else data
+     */
     @Override
     @Transactional(label = "Update anime user info for the current user")
     public LocalUserAnimeInformationDTO updateCurrentUserAnimeInfo(LocalUserAnimeInformationDTO animeUserInfoDTO) {
@@ -121,15 +135,22 @@ public class AnimeUserService implements AnimeUserServiceInterface {
                     return dtoDeconversionService.convertFromDTO(animeUserInfoDTO);
                 });
 
+        log.info("Update Users with id {} anime user info", currentUser.getId());
+
         // SaveAndFlush to get updated modification dates
         AnimeUserInfo upd = animeUserInfoRepository.saveAndFlush(updatedAnimeUserInfo);
 
         return dtoConversionService.convertToDTO(upd);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional(label = "Get 5 latest anime reviews using tha anime's id", readOnly = true)
     public List<LocalSimpleAnimeReviewDTO> get5LatestReviewsForAnime(long animeId) {
+        log.info("Get 5 latest reviews for Anime with id: {}", animeId);
+
         return animeUserInfoRepository.findTop5ByReviewIsNotNullAndId_Anime_IdIsOrderByReview_ModificationDesc((int) animeId)
                 .stream()
                 .map(AnimeUserInfo::getReview)

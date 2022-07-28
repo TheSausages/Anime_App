@@ -5,6 +5,8 @@ import anime.app.entities.database.anime.AnimeUserInfo;
 import anime.app.entities.database.anime.Review;
 import anime.app.entities.database.user.User;
 import anime.app.exceptions.exceptions.AuthenticationException;
+import anime.app.exceptions.exceptions.DataConflictException;
+import anime.app.exceptions.exceptions.NotFoundException;
 import anime.app.openapi.model.LocalSimpleAnimeReviewDTO;
 import anime.app.openapi.model.LocalUserAnimeInformationDTO;
 import anime.app.openapi.model.LocalUserAnimeInformationDTOId;
@@ -27,6 +29,7 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 
+import static anime.app.utils.AdditionalVerificationModes.once;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -81,6 +84,36 @@ class AnimeUserServiceTest {
         }
 
         @Test
+        void getCurrentUserAnimeInfo_UserLoggedInAnimeDoesntExist_ThrowException() {
+            //given
+            long animeId = 1;
+            doThrow(
+                    NotFoundException.builder()
+                            .userMessageTranslationKey("Some Key")
+                            .build()
+            ).when(animeService).getAnimeById(animeId);
+
+            UUID userId = UUID.randomUUID();
+            User user = User.builder()
+                    .id(userId)
+                    .username("Some Username")
+                    .build();
+            doReturn(user).when(userService).getCurrentUser();
+
+            try(MockedStatic<UserAuthorizationUtils> mockedUtils = Mockito.mockStatic(UserAuthorizationUtils.class)) {
+
+                //when
+                NotFoundException exception = assertThrows(NotFoundException.class, () -> animeUserService.getCurrentUserAnimeInfo(animeId));
+
+                //then
+                assertThat(exception, allOf(
+                        notNullValue(),
+                        instanceOf(NotFoundException.class)
+                ));
+            }
+        }
+
+        @Test
         void getCurrentUserAnimeInfo_UserLoggedIn_ReturnCorrectData() {
             //given
             long animeId = 1;
@@ -128,7 +161,7 @@ class AnimeUserServiceTest {
                         equalTo(expectedResult)
                 ));
 
-                verify(animeUserInfoRepository, times(1)).findById(any());
+                verify(animeUserInfoRepository, once()).findById(any());
             }
         }
     }
@@ -166,6 +199,98 @@ class AnimeUserServiceTest {
                 assertThat(exception, allOf(
                         notNullValue(),
                         instanceOf(AuthenticationException.class)
+                ));
+            }
+        }
+
+        @Test
+        void updateCurrentUserAnimeInfo_CorrectUpdatingInfoAnimeDoesntExistUserLoggedIn_ThrowException() {
+            //given
+            long animeId = 1;
+            doThrow(
+                    NotFoundException.builder()
+                            .userMessageTranslationKey("Some Key")
+                            .build()
+            ).when(animeService).getAnimeById(animeId);
+
+            UUID userId = UUID.randomUUID();
+            User user = User.builder()
+                    .id(userId)
+                    .username("Some Username")
+                    .build();
+            doReturn(user).when(userService).getCurrentUser();
+
+            LocalUserAnimeInformationDTOId updatingInfoDTOId = LocalUserAnimeInformationDTOId.builder()
+                    .animeId(animeId)
+                    .userId(userId)
+                    .build();
+            LocalUserAnimeInformationDTO updatingInfoDTO = LocalUserAnimeInformationDTO.builder()
+                    .id(updatingInfoDTOId)
+                    .status(LocalUserAnimeInformationDTO.StatusEnum.COMPLETED)
+                    .nrOfEpisodesSeen(12)
+                    .isFavourite(true)
+                    .grade(8)
+                    .modification(LocalDateTime.now())
+                    .watchStartDate(LocalDate.now().minus(5, ChronoUnit.DAYS))
+                    .watchEndDate(LocalDate.now())
+                    .build();
+
+            //when
+            try(MockedStatic<UserAuthorizationUtils> mockedUtils = Mockito.mockStatic(UserAuthorizationUtils.class)) {
+                mockedUtils.when(UserAuthorizationUtils::getIdOfCurrentUser).thenReturn(userId);
+
+                //when
+                NotFoundException exception = assertThrows(NotFoundException.class, () -> animeUserService.updateCurrentUserAnimeInfo(updatingInfoDTO));
+
+                //then
+                assertThat(exception, allOf(
+                        notNullValue(),
+                        instanceOf(NotFoundException.class)
+                ));
+            }
+        }
+
+        @Test
+        void updateCurrentUserAnimeInfo_CorrectUpdatingInfoDifferentThanCurrentUserUserLoggedIn_ReturnCorrectData() {
+            //given
+            long animeId = 1;
+
+            User currentUser = User.builder()
+                    .id(UUID.randomUUID())
+                    .username("Some Username")
+                    .build();
+            User infoUser = User.builder()
+                    .id(UUID.randomUUID())
+                    .username("Some Username")
+                    .build();
+            doReturn(currentUser).when(userService).getCurrentUser();
+
+            LocalUserAnimeInformationDTOId updatingInfoDTOId = LocalUserAnimeInformationDTOId.builder()
+                    .animeId(animeId)
+                    .userId(infoUser.getId())
+                    .build();
+            LocalUserAnimeInformationDTO updatingInfoDTO = LocalUserAnimeInformationDTO.builder()
+                    .id(updatingInfoDTOId)
+                    .status(LocalUserAnimeInformationDTO.StatusEnum.COMPLETED)
+                    .nrOfEpisodesSeen(12)
+                    .isFavourite(true)
+                    .grade(8)
+                    .modification(LocalDateTime.now())
+                    .watchStartDate(LocalDate.now().minus(5, ChronoUnit.DAYS))
+                    .watchEndDate(LocalDate.now())
+                    .build();
+
+            //when
+            try(MockedStatic<UserAuthorizationUtils> mockedUtils = Mockito.mockStatic(UserAuthorizationUtils.class)) {
+                mockedUtils.when(UserAuthorizationUtils::getIdOfCurrentUser).thenReturn(currentUser.getId());
+
+                //when
+                DataConflictException exception = assertThrows(DataConflictException.class, () -> animeUserService.updateCurrentUserAnimeInfo(updatingInfoDTO));
+
+                //then
+                assertThat(exception, allOf(
+                        notNullValue(),
+                        instanceOf(DataConflictException.class)
                 ));
             }
         }
@@ -241,7 +366,7 @@ class AnimeUserServiceTest {
                 assertThat(anime.getNrOfScores(), equalTo(1));
                 assertThat(anime.getNrOfFavourites(), equalTo(1));
 
-                verify(animeUserInfoRepository, times(1)).findById(any());
+                verify(animeUserInfoRepository, once()).findById(any());
             }
         }
 
@@ -329,7 +454,7 @@ class AnimeUserServiceTest {
                 assertThat(anime.getNrOfScores(), equalTo(2));
                 assertThat(anime.getNrOfFavourites(), equalTo(1));
 
-                verify(animeUserInfoRepository, times(1)).findById(any());
+                verify(animeUserInfoRepository, once()).findById(any());
             }
         }
     }

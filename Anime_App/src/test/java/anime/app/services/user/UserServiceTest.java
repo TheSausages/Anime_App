@@ -18,10 +18,13 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Optional;
 import java.util.UUID;
 
+import static anime.app.utils.AdditionalVerificationModes.once;
+import static anime.app.utils.AdditionalVerificationModes.twice;
 import static java.util.Collections.emptySet;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -73,7 +76,32 @@ class UserServiceTest {
                 ));
 
                 // One time in given section, once in test
-                verify(conversionService, times(2)).convertToDTO(user);
+                verify(conversionService, twice()).convertToDTO(user);
+                verify(userRepository, once()).findById(any());
+            }
+        }
+
+        @Test
+        void getCurrentUserInformation_UserLoggedInButNotInDatabase_ReturnCorrectData() {
+            //given
+            UUID userId = UUID.randomUUID();
+            doReturn(Optional.empty()).when(userRepository).findById(userId);
+
+
+            try(MockedStatic<UserAuthorizationUtils> mockedUtils = Mockito.mockStatic(UserAuthorizationUtils.class)) {
+                mockedUtils.when(UserAuthorizationUtils::getIdOfCurrentUser).thenReturn(userId);
+
+                //when
+                NotFoundException exception = assertThrows(NotFoundException.class, () -> userService.getCurrentUserInformation());
+
+                //then
+                assertThat(exception, allOf(
+                        notNullValue(),
+                        instanceOf(NotFoundException.class)
+                ));
+
+                verify(conversionService, never()).convertToDTO(ArgumentMatchers.any(User.class));
+                verify(userRepository, once()).findById(any());
             }
         }
 
@@ -97,7 +125,8 @@ class UserServiceTest {
                         instanceOf(AuthenticationException.class)
                 ));
 
-                verify(conversionService, times(0)).convertToDTO(ArgumentMatchers.any(User.class));
+                verify(conversionService, never()).convertToDTO(ArgumentMatchers.any(User.class));
+                verify(userRepository, never()).findById(any());
             }
         }
     }
@@ -131,7 +160,8 @@ class UserServiceTest {
                     equalTo(expectedDTO)
             ));
 
-            verify(conversionService, times(2)).convertToDTO(user);
+            verify(conversionService, twice()).convertToDTO(user);
+            verify(userRepository, once()).findById(any());
         }
 
         @Test
@@ -149,7 +179,7 @@ class UserServiceTest {
                     instanceOf(NotFoundException.class)
             ));
 
-            verify(conversionService, times(0)).convertToDTO(ArgumentMatchers.any(User.class));
+            verify(conversionService, never()).convertToDTO(ArgumentMatchers.any(User.class));
         }
 
         @Test
@@ -166,7 +196,7 @@ class UserServiceTest {
                     instanceOf(NullPointerException.class)
             ));
 
-            verify(conversionService, times(0)).convertToDTO(ArgumentMatchers.any(User.class));
+            verify(conversionService, never()).convertToDTO(ArgumentMatchers.any(User.class));
         }
     }
 
@@ -200,6 +230,30 @@ class UserServiceTest {
                         instanceOf(User.class),
                         equalTo(expectedUser)
                 ));
+
+                verify(userRepository, once()).findById(any());
+            }
+        }
+
+        @Test
+        void getCurrentUser_UserExistsButNotInDatabase_ReturnCorrectData() {
+            //given
+            UUID userId = UUID.randomUUID();
+            doReturn(Optional.empty()).when(userRepository).findById(userId);
+
+            try(MockedStatic<UserAuthorizationUtils> mockedUtils = Mockito.mockStatic(UserAuthorizationUtils.class)) {
+                mockedUtils.when(UserAuthorizationUtils::getIdOfCurrentUser).thenReturn(userId);
+
+                //when
+                NotFoundException exception = assertThrows(NotFoundException.class, () -> userService.getCurrentUser());
+
+                //then
+                assertThat(exception, allOf(
+                        notNullValue(),
+                        instanceOf(NotFoundException.class)
+                ));
+
+                verify(conversionService, never()).convertToDTO((User) any());
             }
         }
 
@@ -222,6 +276,8 @@ class UserServiceTest {
                         notNullValue(),
                         instanceOf(AuthenticationException.class)
                 ));
+
+                verify(conversionService, never()).convertToDTO((User) any());
             }
         }
     }
@@ -253,6 +309,8 @@ class UserServiceTest {
                     instanceOf(User.class),
                     equalTo(expectedUser)
             ));
+
+            verify(userRepository, once()).findById(any());
         }
 
         @Test
@@ -269,6 +327,8 @@ class UserServiceTest {
                     notNullValue(),
                     instanceOf(NotFoundException.class)
             ));
+
+            verify(conversionService, never()).convertToDTO((User) any());
         }
 
         @Test
@@ -320,6 +380,8 @@ class UserServiceTest {
                     instanceOf(User.class),
                     equalTo(expectedUser)
             ));
+
+            verify(userRepository, once()).save(any());
         }
     }
 }

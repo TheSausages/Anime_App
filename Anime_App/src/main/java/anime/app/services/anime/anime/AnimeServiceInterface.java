@@ -22,8 +22,10 @@ public interface AnimeServiceInterface {
     LocalAnimeInformationDTO getAnimeDTOById(long id);
 
     /**
-     * Save a new Anime object.
-     * @param anime New object to be saved
+     * If a given Anime object doesn't exist, save it to the database.
+     * If it exists, check if it needs to be updated, and do it if necessary.
+     * The following fields are used to check for updates: ID, Average Episode Length, Title.
+     * @param anime Object to be checked and/or saved
      */
-    void saveAnimeIfNotExist(Anime anime);
+    void updateDataForAnime(Anime anime);
 }

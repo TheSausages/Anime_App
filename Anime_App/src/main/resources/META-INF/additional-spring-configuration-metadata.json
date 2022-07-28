@@ -6,6 +6,11 @@
       "description": "Default path used by all endpoints with the exception of serving static content."
     },
     {
+      "name": "achievements.default-icon-path",
+      "type": "java.lang.String",
+      "description": "Path to the default image for an Achievement Icon. Must exist."
+    },
+    {
       "name": "keycloakrealm.master.url",
       "type": "java.lang.String",
       "description": "URL used by the Keycloak Admin object to connect to the Keycloak instance."

@@ -6,6 +6,7 @@ import anime.app.repositories.user.AchievementRepository;
 import lombok.extern.log4j.Log4j2;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.BeanInitializationException;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -18,12 +19,10 @@ import java.util.Objects;
 @Log4j2
 @Service
 public class IconService implements IconServiceInterface {
-    private final static String defaultAchievementIconPath = "achievements/Default.png";
-
     private final AchievementRepository achievementRepository;
     private final byte[] defaultAchievementIcon;
 
-    IconService(AchievementRepository achievementRepository) {
+    IconService(AchievementRepository achievementRepository, @Value("${achievements.default-icon-path}") String defaultAchievementIconPath) {
         this.achievementRepository = achievementRepository;
 
         try (InputStream stream = this.getClass().getClassLoader().getResourceAsStream(defaultAchievementIconPath)) {

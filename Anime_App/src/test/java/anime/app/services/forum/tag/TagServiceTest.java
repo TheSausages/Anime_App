@@ -20,9 +20,12 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
+import static anime.app.utils.AdditionalVerificationModes.once;
+import static anime.app.utils.AdditionalVerificationModes.twice;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -58,6 +61,8 @@ class TagServiceTest {
                     instanceOf(Set.class),
                     emptyIterable()
             ));
+
+            verify(conversionService, never()).convertToDTO((Tag) any());
         }
 
         @Test
@@ -84,7 +89,7 @@ class TagServiceTest {
             ));
 
             // One time in given section, once in test
-            verify(conversionService, times(2)).convertToDTO(tag);
+            verify(conversionService, twice()).convertToDTO(tag);
         }
 
         @Test
@@ -118,8 +123,8 @@ class TagServiceTest {
             ));
 
             // One time in given section, once in test
-            verify(conversionService, times(2)).convertToDTO(firstTag);
-            verify(conversionService, times(2)).convertToDTO(secondTag);
+            verify(conversionService, twice()).convertToDTO(firstTag);
+            verify(conversionService, twice()).convertToDTO(secondTag);
         }
     }
 
@@ -173,6 +178,8 @@ class TagServiceTest {
                     instanceOf(Tag.class),
                     equalTo(expectedTag)
             ));
+
+            verify(tagRepository, once()).findById(any());
         }
     }
 
@@ -231,7 +238,8 @@ class TagServiceTest {
             ));
 
             // One time in given section, once in test
-            verify(conversionService, times(2)).convertToDTO(tag);
+            verify(conversionService, twice()).convertToDTO(tag);
+            verify(tagRepository, once()).findById(any());
         }
     }
 }

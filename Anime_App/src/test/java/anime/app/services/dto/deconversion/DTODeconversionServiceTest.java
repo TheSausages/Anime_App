@@ -13,16 +13,21 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
+import static anime.app.utils.AdditionalVerificationModes.once;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class DTODeconversionServiceTest {
@@ -33,6 +38,7 @@ class DTODeconversionServiceTest {
     @Mock
     UserService userService;
 
+    @Spy
     @InjectMocks
     DTODeconversionService dtoDeconversionService;
 
@@ -100,6 +106,88 @@ class DTODeconversionServiceTest {
                     instanceOf(AnimeUserInfo.class),
                     equalTo(expectedAnimeUserInfo)
             ));
+
+            verify(dtoDeconversionService, never()).convertFromDTO((LocalSimpleAnimeReviewDTO) ArgumentMatchers.any());
+        }
+
+        @Test
+        void convertToDTO_CorrectFullLocalAnimeUserInfo_ReturnDTO() {
+            //given
+            long animeId = 1L;
+            Anime anime = Anime.builder()
+                    .id(Math.toIntExact(animeId))
+                    .title("Some Title")
+                    .build();
+            doReturn(anime).when(animeService).getAnimeById(animeId);
+
+            UUID userId = UUID.randomUUID();
+            User user = User.builder()
+                    .id(userId)
+                    .username("Some Username")
+                    .build();
+            doReturn(user).when(userService).getUser(userId);
+
+            LocalDate testDate = LocalDate.now();
+            LocalDateTime modificationTime = LocalDateTime.now();
+            LocalUserAnimeInformationDTO info = LocalUserAnimeInformationDTO.builder()
+                    .id(LocalUserAnimeInformationDTOId.builder()
+                            .animeId(animeId)
+                            .userId(userId)
+                            .build())
+                    .status(LocalUserAnimeInformationDTO.StatusEnum.NO_STATUS)
+                    .isFavourite(false)
+                    .watchStartDate(testDate)
+                    .watchEndDate(testDate)
+                    .nrOfEpisodesSeen(1)
+                    .grade(5)
+                    .modification(modificationTime)
+                    .review(LocalSimpleAnimeReviewDTO.builder()
+                            .id(1L)
+                            .title("Title")
+                            .text("Text")
+                            .nrOfDownvotes(0)
+                            .nrOfHelpfull(0)
+                            .nrOfUpvotes(0)
+                            .modification(modificationTime)
+                            .reviewType(LocalSimpleAnimeReviewDTO.ReviewTypeEnum.SIMPLEREVIEW)
+                            .build())
+                    .build();
+
+            AnimeUserInfo expectedAnimeUserInfo = AnimeUserInfo.builder()
+                    .id(AnimeUserInfo.AnimeUserInfoId.builder()
+                            .user(user)
+                            .anime(anime)
+                            .build())
+                    .status(AnimeUserInfo.AnimeUserStatus.NO_STATUS)
+                    .favourite(false)
+                    .watchStart(testDate)
+                    .watchEnd(testDate)
+                    .modification(modificationTime)
+                    .episodesSeen(1)
+                    .grade(5)
+                    .build();
+            expectedAnimeUserInfo.setReview(Review.builder()
+                    .id(1)
+                    .title("Title")
+                    .text("Text")
+                    .nrOfMinus(0)
+                    .nrOfHelpful(0)
+                    .nrOfPlus(0)
+                    .modification(modificationTime)
+                    .animeUserInfo(expectedAnimeUserInfo)
+                    .build());
+
+            //when
+            AnimeUserInfo actualAnimeUserInfo = dtoDeconversionService.convertFromDTO(info);
+
+            //then
+            assertThat(actualAnimeUserInfo, allOf(
+                    notNullValue(),
+                    instanceOf(AnimeUserInfo.class),
+                    equalTo(expectedAnimeUserInfo)
+            ));
+
+            verify(dtoDeconversionService, once()).convertFromDTO((LocalSimpleAnimeReviewDTO) ArgumentMatchers.any());
         }
     }
 

@@ -50,6 +50,8 @@ public class UserService implements UserServiceInterface {
     @Override
     @Transactional(label = "Get a user using it's id", readOnly = true)
     public User getUser(@NonNull UUID userId) {
+        log.info("Get user with id: " + userId);
+
         return userRepository.findById(userId)
                 .orElseThrow(() -> NotFoundException.builder()
                         .userMessageTranslationKey("user.user-not-found")

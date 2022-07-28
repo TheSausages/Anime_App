@@ -264,7 +264,8 @@ public class DTOConversionService implements DTOConversionServiceInterface {
 		Objects.requireNonNull(post, "Post cannot be null");
 		Objects.requireNonNull(userId, "User id cannot be null");
 
-		PostUserStatusDTO status = post.getPostUserStatuses()
+		PostUserStatusDTO status = Objects.nonNull(post.getPostUserStatuses()) ?
+				post.getPostUserStatuses()
 						.stream()
 						.filter(st -> st.getId().getUser().getId().equals(userId))
 						.findFirst()
@@ -277,7 +278,17 @@ public class DTOConversionService implements DTOConversionServiceInterface {
 								.liked(false)
 								.disliked(false)
 								.reported(false)
-								.build());
+								.build())
+				:
+				PostUserStatusDTO.builder()
+						.id(PostUserStatusDTOId.builder()
+								.postId((long) post.getId())
+								.userId(userId)
+								.build())
+						.liked(false)
+						.disliked(false)
+						.reported(false)
+						.build();
 
 		return SimplePostDTO.builder()
 				.id((long) post.getId())
@@ -330,19 +341,29 @@ public class DTOConversionService implements DTOConversionServiceInterface {
 		Objects.requireNonNull(thread, "Thread cannot be null");
 		Objects.requireNonNull(userId, "User id cannot be null");
 
-		ThreadUserStatusDTO status = thread.getThreadUserStatuses()
-				.stream()
-				.filter(st -> st.getId().getUser().getId().equals(userId))
-				.findFirst()
-				.map(this::convertToDTO)
-				.orElse(ThreadUserStatusDTO.builder()
+		ThreadUserStatusDTO status = Objects.nonNull(thread.getThreadUserStatuses()) ?
+				thread.getThreadUserStatuses()
+						.stream()
+						.filter(st -> st.getId().getUser().getId().equals(userId))
+						.findFirst()
+						.map(this::convertToDTO)
+						.orElse(ThreadUserStatusDTO.builder()
+								.id(ThreadUserStatusDTOId.builder()
+										.threadId((long) thread.getId())
+										.userId(userId)
+										.build())
+								.watching(false)
+								.blocked(false)
+								.build())
+				:
+				ThreadUserStatusDTO.builder()
 						.id(ThreadUserStatusDTOId.builder()
 								.threadId((long) thread.getId())
 								.userId(userId)
 								.build())
 						.watching(false)
 						.blocked(false)
-						.build());
+						.build();
 
 		return SimpleThreadDTO.builder()
 				.id((long) thread.getId())

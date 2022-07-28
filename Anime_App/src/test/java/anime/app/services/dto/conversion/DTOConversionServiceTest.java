@@ -13,21 +13,32 @@ import anime.app.utils.TestUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
+import java.util.stream.Stream;
 
+import static anime.app.utils.AdditionalVerificationModes.once;
+import static anime.app.utils.AdditionalVerificationModes.twice;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class DTOConversionServiceTest {
@@ -35,6 +46,7 @@ class DTOConversionServiceTest {
 	@Mock
 	IconService iconService;
 
+	@Spy
 	@InjectMocks
 	DTOConversionService dtoConversionService;
 
@@ -142,10 +154,45 @@ class DTOConversionServiceTest {
 						instanceOf(AchievementDTO.class),
 						equalTo(expectedDTO)
 				));
+
+				verify(iconService, once()).getAchievementIcon(ArgumentMatchers.any());
 			}
 
 			@Test
-			void convertToDTO_CorrectAchievementValidPath_ReturnDTO() throws IOException {
+			void convertToDTO_CorrectAchievementWithoutDescriptionValidPath_ReturnDTO() throws IOException {
+				//given
+				byte[] icon = TestUtils.getIcon("achievements/NrOfReviews-10.png");
+				Achievement achievement = Achievement.builder()
+						.id(2)
+						.name("name")
+						.iconPath("achievements/NrOfReviews-10.png")
+						.points(10)
+						.users(Set.of(User.builder().build()))
+						.build();
+				AchievementDTO expectedDTO = AchievementDTO.builder()
+						.id((long) achievement.getId())
+						.name(achievement.getName())
+						.icon(icon)
+						.points(achievement.getPoints())
+						.nrOfUsersPosses(1L)
+						.build();
+				doReturn(icon).when(iconService).getAchievementIcon(achievement);
+
+				//when
+				AchievementDTO actualDTO = dtoConversionService.convertToDTO(achievement);
+
+				//then
+				assertThat(actualDTO, allOf(
+						notNullValue(),
+						instanceOf(AchievementDTO.class),
+						equalTo(expectedDTO)
+				));
+
+				verify(iconService, once()).getAchievementIcon(ArgumentMatchers.any());
+			}
+
+			@Test
+			void convertToDTO_CorrectAchievementWithDescriptionValidPath_ReturnDTO() throws IOException {
 				//given
 				byte[] icon = TestUtils.getIcon("achievements/NrOfReviews-10.png");
 				Achievement achievement = Achievement.builder()
@@ -174,6 +221,8 @@ class DTOConversionServiceTest {
 						instanceOf(AchievementDTO.class),
 						equalTo(expectedDTO)
 				));
+
+				verify(iconService, once()).getAchievementIcon(ArgumentMatchers.any());
 			}
 		}
 
@@ -239,7 +288,10 @@ class DTOConversionServiceTest {
 			}
 
 			@Test
-			void convertToDTO_CorrectUser_ThrowException() throws IOException {
+			void convertToDTO_CorrectUser_ReturnCorrectData() throws IOException {
+				// Because all Collections are processed in the same way, we use this test to check
+				// empty, single and many element collections
+
 				//given
 				byte[] icon = TestUtils.getIcon("achievements/NrOfReviews-10.png");
 				Achievement achievement = Achievement.builder()
@@ -250,11 +302,13 @@ class DTOConversionServiceTest {
 						.points(15)
 						.build();
 				doReturn(icon).when(iconService).getAchievementIcon(achievement);
+
 				LocalDateTime time = LocalDateTime.now();
 				User creator = User.builder()
 						.id(UUID.randomUUID())
 						.username("creator")
 						.build();
+
 				UUID userId = UUID.randomUUID();
 				Thread thread = Thread.builder()
 						.id(1)
@@ -285,7 +339,7 @@ class DTOConversionServiceTest {
 								.watching(false)
 								.build()))
 						.build();
-				Post post = Post.builder()
+				Post firstPost = Post.builder()
 						.id(1)
 						.title("title")
 						.text("text")
@@ -310,33 +364,38 @@ class DTOConversionServiceTest {
 										.build()
 						))
 						.build();
-				AnimeUserInfo info = AnimeUserInfo.builder()
-						.id(AnimeUserInfo.AnimeUserInfoId.builder()
-								.user(User.builder().id(userId).build())
-								.anime(Anime.builder().id(1).build())
-								.build())
-						.status(AnimeUserInfo.AnimeUserStatus.DROPPED)
-						.watchStart(time.toLocalDate())
-						.watchEnd(time.toLocalDate())
-						.episodesSeen(1)
-						.favourite(false)
-						.grade(7)
+				Post secondPost = Post.builder()
+						.id(2)
+						.title("title 2")
+						.text("text 2")
+						.blocked(true)
+						.status(Post.PostStatus.DELETED)
+						.nrOfPlus(1)
+						.nrOfMinus(10)
+						.nrOfReports(1)
+						.creation(time)
 						.modification(time)
-						.review(Review.builder()
-								.id(1)
-								.text("text")
-								.nrOfPlus(1)
-								.nrOfMinus(1)
-								.nrOfHelpful(1)
-								.build())
+						.creator(creator)
+						.thread(thread)
+						.postUserStatuses(Set.of(
+								PostUserStatus.builder()
+										.id(PostUserStatus.PostUserStatusId.builder()
+												.user(User.builder().id(userId).build())
+												.post(Post.builder().id(1).build())
+												.build())
+										.liked(false)
+										.disliked(true)
+										.reported(false)
+										.build()
+						))
 						.build();
 				User user = User.builder()
 						.id(userId)
 						.username("username")
 						.threads(Set.of(thread))
 						.achievements(Set.of(achievement))
-						.posts(Set.of(post))
-						.animeUserInfo(Set.of(info))
+						.posts(Set.of(firstPost, secondPost))
+						.animeUserInfo(Collections.emptySet())
 						.build();
 				CompleteUserDTO expectedDTO = CompleteUserDTO.builder()
 						.userId(userId)
@@ -344,8 +403,8 @@ class DTOConversionServiceTest {
 						.userType(SimpleUserDTO.UserTypeEnum.COMPLETEUSER)
 						.threads(Set.of(dtoConversionService.convertToSimpleDTO(thread, userId)))
 						.achievements(Set.of(dtoConversionService.convertToDTO(achievement)))
-						.posts(Set.of(dtoConversionService.convertToDTOWithAdditionalInfo(post, userId)))
-						.animeInfos(Set.of(dtoConversionService.convertToDTO(info)))
+						.posts(Set.of(dtoConversionService.convertToDTOWithAdditionalInfo(firstPost, userId), dtoConversionService.convertToDTOWithAdditionalInfo(secondPost, userId)))
+						.animeInfos(Collections.emptySet())
 						.build();
 
 				//when
@@ -357,6 +416,12 @@ class DTOConversionServiceTest {
 						instanceOf(CompleteUserDTO.class),
 						equalTo(expectedDTO)
 				));
+
+				// twice in test, once in given
+				verify(dtoConversionService, times(4)).convertToDTOWithAdditionalInfo(ArgumentMatchers.any(), ArgumentMatchers.any());
+				verify(dtoConversionService, twice()).convertToSimpleDTO((Thread) ArgumentMatchers.any(), ArgumentMatchers.any());
+				verify(dtoConversionService, twice()).convertToDTO((Achievement) ArgumentMatchers.any());
+				verify(dtoConversionService, never()).convertToDTO((AnimeUserInfo) ArgumentMatchers.any());
 			}
 		}
 	}
@@ -417,6 +482,7 @@ class DTOConversionServiceTest {
 			}
 		}
 
+		@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 		@Nested
 		@DisplayName("Anime User Info")
 		class AnimeUserInfoTest {
@@ -437,8 +503,42 @@ class DTOConversionServiceTest {
 				));
 			}
 
+			@ParameterizedTest(name = "Convert a partially complete, but correct, anime user info, test {index}: {argumentsWithNames}")
+			@MethodSource("infos")
+			void convertToDTO_CorrectPartialInfo_ReturnDTO(AnimeUserInfo parameter, LocalUserAnimeInformationDTO expectedResult) {
+				//given
+				Anime anime = Anime.builder()
+						.id(1)
+						.title("Some Title")
+						.build();
+				User user = User.builder()
+						.id(UUID.randomUUID())
+						.username("Username")
+						.build();
+				expectedResult.setId(LocalUserAnimeInformationDTOId.builder()
+						.animeId((long) anime.getId())
+						.userId(user.getId())
+						.build()
+				);
+				parameter.setId(AnimeUserInfo.AnimeUserInfoId.builder()
+						.anime(anime)
+						.user(user)
+						.build()
+				);
+
+				//when
+				LocalUserAnimeInformationDTO actualResult = dtoConversionService.convertToDTO(parameter);
+
+				//then
+				assertThat(actualResult, allOf(
+						notNullValue(),
+						instanceOf(LocalUserAnimeInformationDTO.class),
+						equalTo(expectedResult)
+				));
+			}
+
 			@Test
-			void convertToDTO_CorrectInfo_ReturnDTO() {
+			void convertToDTO_CorrectFullInfo_ReturnDTO() {
 				//given
 				UUID userId = UUID.randomUUID();
 				LocalDateTime time = LocalDateTime.now();
@@ -486,6 +586,120 @@ class DTOConversionServiceTest {
 						instanceOf(LocalUserAnimeInformationDTO.class),
 						equalTo(expectedDTO)
 				));
+
+				verify(dtoConversionService, twice()).convertToSimpleDTO((Review) ArgumentMatchers.any());
+			}
+
+			Stream<Arguments> infos() {
+				LocalDate testDate = LocalDate.now();
+				LocalDateTime testTime = LocalDateTime.now();
+
+				return Stream.of(
+						Arguments.of(
+								AnimeUserInfo.builder()
+										.status(AnimeUserInfo.AnimeUserStatus.COMPLETED)
+										.build(),
+								LocalUserAnimeInformationDTO.builder()
+										.status(LocalUserAnimeInformationDTO.StatusEnum.COMPLETED)
+										.nrOfEpisodesSeen(0)
+										.isFavourite(false)
+										.build()
+						),
+						Arguments.of(
+								AnimeUserInfo.builder()
+										.watchStart(testDate)
+										.status(AnimeUserInfo.AnimeUserStatus.NO_STATUS)
+										.build(),
+								LocalUserAnimeInformationDTO.builder()
+										.status(LocalUserAnimeInformationDTO.StatusEnum.NO_STATUS)
+										.watchStartDate(testDate)
+										.nrOfEpisodesSeen(0)
+										.isFavourite(false)
+										.build()
+						),
+						Arguments.of(
+								AnimeUserInfo.builder()
+										.watchEnd(testDate)
+										.status(AnimeUserInfo.AnimeUserStatus.NO_STATUS)
+										.build(),
+								LocalUserAnimeInformationDTO.builder()
+										.status(LocalUserAnimeInformationDTO.StatusEnum.NO_STATUS)
+										.watchEndDate(testDate)
+										.nrOfEpisodesSeen(0)
+										.isFavourite(false)
+										.build()
+						),
+						Arguments.of(
+								AnimeUserInfo.builder()
+										.episodesSeen(2)
+										.status(AnimeUserInfo.AnimeUserStatus.NO_STATUS)
+										.build(),
+								LocalUserAnimeInformationDTO.builder()
+										.status(LocalUserAnimeInformationDTO.StatusEnum.NO_STATUS)
+										.nrOfEpisodesSeen(2)
+										.isFavourite(false)
+										.build()
+						),
+						Arguments.of(
+								AnimeUserInfo.builder()
+										.favourite(true)
+										.status(AnimeUserInfo.AnimeUserStatus.NO_STATUS)
+										.build(),
+								LocalUserAnimeInformationDTO.builder()
+										.status(LocalUserAnimeInformationDTO.StatusEnum.NO_STATUS)
+										.nrOfEpisodesSeen(0)
+										.isFavourite(true)
+										.build()
+						),
+						Arguments.of(
+								AnimeUserInfo.builder()
+										.grade(6)
+										.status(AnimeUserInfo.AnimeUserStatus.NO_STATUS)
+										.build(),
+								LocalUserAnimeInformationDTO.builder()
+										.status(LocalUserAnimeInformationDTO.StatusEnum.NO_STATUS)
+										.grade(6)
+										.nrOfEpisodesSeen(0)
+										.isFavourite(false)
+										.build()
+						),
+						Arguments.of(
+								AnimeUserInfo.builder()
+										.modification(testTime)
+										.status(AnimeUserInfo.AnimeUserStatus.NO_STATUS)
+										.build(),
+								LocalUserAnimeInformationDTO.builder()
+										.status(LocalUserAnimeInformationDTO.StatusEnum.NO_STATUS)
+										.modification(testTime)
+										.nrOfEpisodesSeen(0)
+										.isFavourite(false)
+										.build()
+						),
+						Arguments.of(
+								AnimeUserInfo.builder()
+										.review(Review.builder()
+												.id(1)
+												.title("Title")
+												.text("Text")
+												.build())
+										.status(AnimeUserInfo.AnimeUserStatus.NO_STATUS)
+										.build(),
+								LocalUserAnimeInformationDTO.builder()
+										.status(LocalUserAnimeInformationDTO.StatusEnum.NO_STATUS)
+										.review(LocalSimpleAnimeReviewDTO.builder()
+												.id(1L)
+												.title("Title")
+												.text("Text")
+												.reviewType(LocalSimpleAnimeReviewDTO.ReviewTypeEnum.SIMPLEREVIEW)
+												.nrOfUpvotes(0)
+												.nrOfHelpfull(0)
+												.nrOfDownvotes(0)
+												.build())
+										.nrOfEpisodesSeen(0)
+										.isFavourite(false)
+										.build()
+						)
+				);
 			}
 		}
 
@@ -555,9 +769,38 @@ class DTOConversionServiceTest {
 			}
 
 			@Test
+			void convertToSimpleDTO_CorrectReviewNoText_ReturnDTO() {
+				//given
+				Review review = Review.builder()
+						.id(1)
+						.title("title")
+						.nrOfHelpful(1)
+						.nrOfMinus(1)
+						.nrOfPlus(1)
+						.build();
+				LocalSimpleAnimeReviewDTO expectedDTO = LocalSimpleAnimeReviewDTO.builder()
+						.id((long) review.getId())
+						.reviewType(LocalSimpleAnimeReviewDTO.ReviewTypeEnum.SIMPLEREVIEW)
+						.title(review.getTitle())
+						.nrOfUpvotes(review.getNrOfPlus())
+						.nrOfHelpfull(review.getNrOfHelpful())
+						.nrOfDownvotes(review.getNrOfMinus())
+						.build();
+
+				//when
+				LocalSimpleAnimeReviewDTO actualDTO = dtoConversionService.convertToSimpleDTO(review);
+
+				//then
+				assertThat(actualDTO, allOf(
+						notNullValue(),
+						instanceOf(LocalSimpleAnimeReviewDTO.class),
+						equalTo(expectedDTO)
+				));
+			}
+
+			@Test
 			void convertToSimpleDTO_CorrectReview_ReturnDTO() {
 				//given
-				UUID userId = UUID.randomUUID();
 				Review review = Review.builder()
 						.id(1)
 						.title("title")
@@ -601,6 +844,45 @@ class DTOConversionServiceTest {
 				assertThat(exception, allOf(
 						notNullValue(),
 						instanceOf(NullPointerException.class)
+				));
+			}
+
+			@Test
+			void convertToDTO_CorrectReviewNoText_ReturnDTO() {
+				//given
+				UUID userId = UUID.randomUUID();
+				Review review = Review.builder()
+						.id(1)
+						.title("title")
+						.nrOfHelpful(1)
+						.nrOfMinus(1)
+						.nrOfPlus(1)
+						.animeUserInfo(AnimeUserInfo.builder()
+								.id(AnimeUserInfo.AnimeUserInfoId.builder()
+										.anime(Anime.builder().id(1).title("title").build())
+										.user(User.builder().id(userId).build())
+										.build())
+								.build())
+						.build();
+				LocalDetailedAnimeReviewDTO expectedDTO = LocalDetailedAnimeReviewDTO.builder()
+						.id((long) review.getId())
+						.reviewType(LocalSimpleAnimeReviewDTO.ReviewTypeEnum.DETAILEDREVIEW)
+						.title(review.getTitle())
+						.nrOfUpvotes(review.getNrOfPlus())
+						.nrOfHelpfull(review.getNrOfHelpful())
+						.nrOfDownvotes(review.getNrOfMinus())
+						.animeId(1L)
+						.animeTitle("title")
+						.build();
+
+				//when
+				LocalDetailedAnimeReviewDTO actualDTO = dtoConversionService.convertToDTO(review);
+
+				//then
+				assertThat(actualDTO, allOf(
+						notNullValue(),
+						instanceOf(LocalDetailedAnimeReviewDTO.class),
+						equalTo(expectedDTO)
 				));
 			}
 
@@ -720,6 +1002,31 @@ class DTOConversionServiceTest {
 			}
 
 			@Test
+			void convertToDTO_CorrectTagNoColor_ReturnDTO() {
+				//given
+				Tag tag = Tag.builder()
+						.id(1)
+						.name("name")
+						.importance(Tag.TagImportance.HIGH)
+						.build();
+				TagDTO expectedTagDTO = TagDTO.builder()
+						.id((long) tag.getId())
+						.name(tag.getName())
+						.importance(TagImportance.fromValue(tag.getImportance().name()))
+						.build();
+
+				//when
+				TagDTO actualTagDTO = dtoConversionService.convertToDTO(tag);
+
+				//then
+				assertThat(actualTagDTO, allOf(
+						notNullValue(),
+						instanceOf(TagDTO.class),
+						equalTo(expectedTagDTO)
+				));
+			}
+
+			@Test
 			void convertToDTO_CorrectTag_ReturnDTO() {
 				//given
 				Tag tag = Tag.builder()
@@ -773,6 +1080,64 @@ class DTOConversionServiceTest {
 				//given
 				Post post = Post.builder().build();
 				UUID userId = null;
+
+				//when
+				Exception exception = assertThrows(NullPointerException.class, () ->
+						dtoConversionService.convertToDTOWithAdditionalInfo(post, userId)
+				);
+
+				//then
+				assertThat(exception, allOf(
+						notNullValue(),
+						instanceOf(NullPointerException.class)
+				));
+			}
+
+			@Test
+			void convertToDTOWithAdditionalInfo_PostWithNoThread_ThrowException() {
+				//given
+				LocalDateTime time = LocalDateTime.now();
+				UUID userId = UUID.randomUUID();
+				User user = User.builder().id(userId).build();
+				PostUserStatus status = PostUserStatus.builder()
+						.id(PostUserStatus.PostUserStatusId.builder()
+								.post(Post.builder().id(1).build())
+								.user(user)
+								.build())
+						.build();
+				Post post = Post.builder()
+						.id(1)
+						.title("title")
+						.text("text")
+						.blocked(false)
+						.status(Post.PostStatus.PENDING)
+						.nrOfPlus(1)
+						.nrOfMinus(1)
+						.nrOfReports(5)
+						.creation(time)
+						.modification(time)
+						.creator(user)
+						.postUserStatuses(Set.of(status))
+						.build();
+				PostWithThreadInformationDTO expectedDTO = PostWithThreadInformationDTO.builder()
+						.post(SimplePostDTO.builder()
+								.id((long) post.getId())
+								.postComplexityType(SimplePostDTO.PostComplexityTypeEnum.SIMPLEPOST)
+								.title(post.getTitle())
+								.text(post.getText())
+								.creation(post.getModification().toLocalDate())
+								.modification(post.getModification().toLocalDate())
+								.creator(dtoConversionService.convertToSimpleDTO(user))
+								.nrOfLikes(post.getNrOfPlus())
+								.nrOfDislikes(post.getNrOfMinus())
+								.status(PostStatus.fromValue(post.getStatus().name()))
+								.userStatus(dtoConversionService.convertToDTO(status))
+								.build())
+						.threadInformation(PostWithThreadInformationDTOThreadInformation.builder()
+								.id(1L)
+								.title("title")
+								.build())
+						.build();
 
 				//when
 				Exception exception = assertThrows(NullPointerException.class, () ->
@@ -842,6 +1207,8 @@ class DTOConversionServiceTest {
 						instanceOf(PostWithThreadInformationDTO.class),
 						equalTo(expectedDTO)
 				));
+
+				verify(dtoConversionService, twice()).convertToDTO((PostUserStatus) ArgumentMatchers.any());
 			}
 
 			@Test
@@ -878,6 +1245,175 @@ class DTOConversionServiceTest {
 						notNullValue(),
 						instanceOf(NullPointerException.class)
 				));
+			}
+
+			@Test
+			void convertToSimpleDTO_CorrectPostNoText_ReturnDTO() {
+				//given
+				LocalDateTime time = LocalDateTime.now();
+				UUID userId = UUID.randomUUID();
+				User user = User.builder().id(userId).build();
+				PostUserStatus status = PostUserStatus.builder()
+						.id(PostUserStatus.PostUserStatusId.builder()
+								.post(Post.builder().id(1).build())
+								.user(user)
+								.build())
+						.build();
+				Post post = Post.builder()
+						.id(1)
+						.title("title")
+						.blocked(false)
+						.status(Post.PostStatus.PENDING)
+						.nrOfPlus(1)
+						.nrOfMinus(1)
+						.nrOfReports(5)
+						.creation(time)
+						.modification(time)
+						.creator(user)
+						.postUserStatuses(Set.of(status))
+						.thread(Thread.builder().id(1).title("title").build())
+						.build();
+				SimplePostDTO expectedDTO = SimplePostDTO.builder()
+						.id((long) post.getId())
+						.postComplexityType(SimplePostDTO.PostComplexityTypeEnum.SIMPLEPOST)
+						.title(post.getTitle())
+						.creation(post.getModification().toLocalDate())
+						.modification(post.getModification().toLocalDate())
+						.creator(dtoConversionService.convertToSimpleDTO(user))
+						.nrOfLikes(post.getNrOfPlus())
+						.nrOfDislikes(post.getNrOfMinus())
+						.status(PostStatus.fromValue(post.getStatus().name()))
+						.userStatus(dtoConversionService.convertToDTO(status))
+						.build();
+
+				//when
+				SimplePostDTO actualDTO = dtoConversionService.convertToSimpleDTO(post, userId);
+
+				//then
+				assertThat(actualDTO, allOf(
+						notNullValue(),
+						instanceOf(SimplePostDTO.class),
+						equalTo(expectedDTO)
+				));
+
+				verify(dtoConversionService, twice()).convertToDTO((PostUserStatus) ArgumentMatchers.any());
+			}
+
+			@Test
+			void convertToSimpleDTO_CorrectPostNoPostUserStatus_ReturnDTO() {
+				//given
+				LocalDateTime time = LocalDateTime.now();
+				UUID userId = UUID.randomUUID();
+				User user = User.builder().id(userId).build();
+				Post post = Post.builder()
+						.id(1)
+						.title("title")
+						.blocked(false)
+						.status(Post.PostStatus.PENDING)
+						.nrOfPlus(1)
+						.nrOfMinus(1)
+						.nrOfReports(5)
+						.creation(time)
+						.modification(time)
+						.creator(user)
+						.thread(Thread.builder().id(1).title("title").build())
+						.build();
+				SimplePostDTO expectedDTO = SimplePostDTO.builder()
+						.id((long) post.getId())
+						.postComplexityType(SimplePostDTO.PostComplexityTypeEnum.SIMPLEPOST)
+						.title(post.getTitle())
+						.creation(post.getModification().toLocalDate())
+						.modification(post.getModification().toLocalDate())
+						.creator(dtoConversionService.convertToSimpleDTO(user))
+						.nrOfLikes(post.getNrOfPlus())
+						.nrOfDislikes(post.getNrOfMinus())
+						.status(PostStatus.fromValue(post.getStatus().name()))
+						.userStatus(PostUserStatusDTO.builder()
+								.id(PostUserStatusDTOId.builder()
+										.postId((long) post.getId())
+										.userId(user.getId())
+										.build())
+								.reported(false)
+								.disliked(false)
+								.liked(false)
+								.build())
+						.build();
+
+				//when
+				SimplePostDTO actualDTO = dtoConversionService.convertToSimpleDTO(post, userId);
+
+				//then
+				assertThat(actualDTO, allOf(
+						notNullValue(),
+						instanceOf(SimplePostDTO.class),
+						equalTo(expectedDTO)
+				));
+
+				verify(dtoConversionService, never()).convertToDTO((PostUserStatus) ArgumentMatchers.any());
+			}
+
+			@Test
+			void convertToSimpleDTO_CorrectPostNoPostUserStatusForUser_ReturnDTO() {
+				//given
+				LocalDateTime time = LocalDateTime.now();
+				UUID testingUserId = UUID.randomUUID();
+				User postUser = User.builder().id(testingUserId).build();
+				PostUserStatus status = PostUserStatus.builder()
+						.id(PostUserStatus.PostUserStatusId.builder()
+								.post(Post.builder().id(1).build())
+								.user(postUser)
+								.build())
+						.reported(true)
+						.disliked(true)
+						.build();
+				Post post = Post.builder()
+						.id(1)
+						.title("title")
+						.text("text")
+						.blocked(false)
+						.status(Post.PostStatus.PENDING)
+						.nrOfPlus(1)
+						.nrOfMinus(1)
+						.nrOfReports(5)
+						.creation(time)
+						.modification(time)
+						.creator(postUser)
+						.postUserStatuses(Set.of(status))
+						.thread(Thread.builder().id(1).title("title").build())
+						.build();
+				SimplePostDTO expectedDTO = SimplePostDTO.builder()
+						.id((long) post.getId())
+						.postComplexityType(SimplePostDTO.PostComplexityTypeEnum.SIMPLEPOST)
+						.title(post.getTitle())
+						.text(post.getText())
+						.creation(post.getModification().toLocalDate())
+						.modification(post.getModification().toLocalDate())
+						.creator(dtoConversionService.convertToSimpleDTO(postUser))
+						.nrOfLikes(post.getNrOfPlus())
+						.nrOfDislikes(post.getNrOfMinus())
+						.status(PostStatus.fromValue(post.getStatus().name()))
+						.userStatus(PostUserStatusDTO.builder()
+								.id(PostUserStatusDTOId.builder()
+										.postId((long) post.getId())
+										.userId(postUser.getId())
+										.build())
+								.reported(true)
+								.disliked(true)
+								.liked(false)
+								.build())
+						.build();
+
+				//when
+				SimplePostDTO actualDTO = dtoConversionService.convertToSimpleDTO(post, testingUserId);
+
+				//then
+				assertThat(actualDTO, allOf(
+						notNullValue(),
+						instanceOf(SimplePostDTO.class),
+						equalTo(expectedDTO)
+				));
+
+				verify(dtoConversionService, once()).convertToDTO((PostUserStatus) ArgumentMatchers.any());
 			}
 
 			@Test
@@ -930,6 +1466,8 @@ class DTOConversionServiceTest {
 						instanceOf(SimplePostDTO.class),
 						equalTo(expectedDTO)
 				));
+
+				verify(dtoConversionService, twice()).convertToDTO((PostUserStatus) ArgumentMatchers.any());
 			}
 
 			@Test
@@ -1026,7 +1564,7 @@ class DTOConversionServiceTest {
 		@DisplayName("Thread")
 		class ThreadTests {
 			@Test
-			void convertToSimpleDTO_NullPost_ThrowException() {
+			void convertToSimpleDTO_NullThread_ThrowException() {
 				//given
 				Thread thread = null;
 				UUID userId = UUID.randomUUID();
@@ -1062,7 +1600,147 @@ class DTOConversionServiceTest {
 			}
 
 			@Test
-			void convertToSimpleDTO_CorrectPost_ReturnDTO() {
+			void convertToSimpleDTO_CorrectThreadNoPostUserStatus_ReturnDTO() {
+				//given
+				LocalDateTime time = LocalDateTime.now();
+				UUID userId = UUID.randomUUID();
+				User user = User.builder().id(userId).username("Username").build();
+				ForumCategory category = ForumCategory.builder()
+						.id(1)
+						.name("name")
+						.description("description")
+						.build();
+				Tag tag = Tag.builder()
+						.id(1)
+						.name("name")
+						.importance(Tag.TagImportance.HIGH)
+						.color("rgb(0, 183, 255)")
+						.build();
+				Thread thread = Thread.builder()
+						.id(1)
+						.title("title")
+						.text("text")
+						.status(Thread.ThreadStatus.CLOSED)
+						.nrOfPosts(1)
+						.creation(time)
+						.modification(time)
+						.creator(user)
+						.category(category)
+						.tags(Set.of(tag))
+						.build();
+				SimpleThreadDTO expectedDTO = SimpleThreadDTO.builder()
+						.id((long) thread.getId())
+						.threadComplexityType(SimpleThreadDTO.ThreadComplexityTypeEnum.SIMPLETHREAD)
+						.title(thread.getTitle())
+						.nrOfPosts(thread.getNrOfPosts())
+						.status(ThreadStatus.fromValue(thread.getStatus().name()))
+						.creation(thread.getCreation())
+						.modification(thread.getModification())
+						.creator(dtoConversionService.convertToSimpleDTO(user))
+						.category(dtoConversionService.convertToDTO(category))
+						.tags(List.of(dtoConversionService.convertToDTO(tag)))
+						.userStatus(
+								ThreadUserStatusDTO.builder()
+										.id(ThreadUserStatusDTOId.builder()
+												.threadId(1L)
+												.userId(userId)
+												.build())
+										.watching(false)
+										.blocked(false)
+										.build()
+						)
+						.build();
+
+				//when
+				SimpleThreadDTO actualDTO = dtoConversionService.convertToSimpleDTO(thread, userId);
+
+				//then
+				assertThat(actualDTO, allOf(
+						notNullValue(),
+						instanceOf(SimpleThreadDTO.class),
+						equalTo(expectedDTO)
+				));
+
+				verify(dtoConversionService, never()).convertToDTO((ThreadUserStatus) ArgumentMatchers.any());
+				verify(dtoConversionService, twice()).convertToDTO((Tag) ArgumentMatchers.any());
+			}
+
+			@Test
+			void convertToSimpleDTO_CorrectThreadNoPostUserStatusForUser_ReturnDTO() {
+				//given
+				LocalDateTime time = LocalDateTime.now();
+				UUID userId = UUID.randomUUID();
+				User user = User.builder().id(userId).username("Username").build();
+				ForumCategory category = ForumCategory.builder()
+						.id(1)
+						.name("name")
+						.description("description")
+						.build();
+				Tag tag = Tag.builder()
+						.id(1)
+						.name("name")
+						.importance(Tag.TagImportance.HIGH)
+						.color("rgb(0, 183, 255)")
+						.build();
+				ThreadUserStatus status = ThreadUserStatus.builder()
+						.id(ThreadUserStatus.ThreadUserStatusId.builder()
+								.user(User.builder().id(UUID.randomUUID()).username("Username2").build())
+								.thread(Thread.builder().id(1).build())
+								.build())
+						.watching(true)
+						.blocking(false)
+						.build();
+				Thread thread = Thread.builder()
+						.id(1)
+						.title("title")
+						.text("text")
+						.status(Thread.ThreadStatus.CLOSED)
+						.nrOfPosts(1)
+						.creation(time)
+						.modification(time)
+						.creator(user)
+						.category(category)
+						.tags(Set.of(tag))
+						.build();
+				SimpleThreadDTO expectedDTO = SimpleThreadDTO.builder()
+						.id((long) thread.getId())
+						.threadComplexityType(SimpleThreadDTO.ThreadComplexityTypeEnum.SIMPLETHREAD)
+						.title(thread.getTitle())
+						.nrOfPosts(thread.getNrOfPosts())
+						.status(ThreadStatus.fromValue(thread.getStatus().name()))
+						.creation(thread.getCreation())
+						.modification(thread.getModification())
+						.creator(dtoConversionService.convertToSimpleDTO(user))
+						.category(dtoConversionService.convertToDTO(category))
+						.tags(List.of(dtoConversionService.convertToDTO(tag)))
+						.userStatus(
+								ThreadUserStatusDTO.builder()
+										.id(ThreadUserStatusDTOId.builder()
+												.threadId(1L)
+												.userId(userId)
+												.build())
+										.watching(false)
+										.blocked(false)
+										.build()
+						)
+						.build();
+
+				//when
+				SimpleThreadDTO actualDTO = dtoConversionService.convertToSimpleDTO(thread, userId);
+
+				//then
+				assertThat(actualDTO, allOf(
+						notNullValue(),
+						instanceOf(SimpleThreadDTO.class),
+						equalTo(expectedDTO)
+				));
+
+				verify(dtoConversionService, never()).convertToDTO((ThreadUserStatus) ArgumentMatchers.any());
+				verify(dtoConversionService, twice()).convertToDTO((Tag) ArgumentMatchers.any());
+			}
+
+			@Test
+			void convertToSimpleDTO_CorrectThread_ReturnDTO() {
 				//given
 				LocalDateTime time = LocalDateTime.now();
 				UUID userId = UUID.randomUUID();
@@ -1122,6 +1800,9 @@ class DTOConversionServiceTest {
 						instanceOf(SimpleThreadDTO.class),
 						equalTo(expectedDTO)
 				));
+
+				verify(dtoConversionService, twice()).convertToDTO((ThreadUserStatus) ArgumentMatchers.any());
+				verify(dtoConversionService, twice()).convertToDTO((Tag) ArgumentMatchers.any());
 			}
 
 			@Test

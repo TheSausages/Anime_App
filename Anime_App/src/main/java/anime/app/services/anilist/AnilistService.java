@@ -63,6 +63,8 @@ public class AnilistService implements AnilistServiceInterface {
 	 * {@inheritDoc}
 	 *
 	 * This implementation sorts the Anime from the most popular to least.
+	 *
+	 * @throws AnilistException When Anilist Server responds with an error
 	 */
 	@Override
 	public AnilistPageDTO getTopAiring(long pageNumber) {
@@ -109,6 +111,8 @@ public class AnilistService implements AnilistServiceInterface {
 	 * {@inheritDoc}
 	 *
 	 * This implementation sorts the Anime Movies by score (from highest to lowest).
+	 *
+	 * @throws AnilistException When Anilist Server responds with an error
 	 */
 	@Override
 	public AnilistPageDTO getTopAnimeMovies(long pageNumber) {
@@ -152,6 +156,8 @@ public class AnilistService implements AnilistServiceInterface {
 
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @throws AnilistException When Anilist Server responds with an error
 	 */
 	@Override
 	public AnilistPageDTO getTopAnimeOfAllTime(long pageNumber) {
@@ -194,6 +200,8 @@ public class AnilistService implements AnilistServiceInterface {
 
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @throws AnilistException When Anilist Server responds with an error
 	 */
 	@Override
 	public AnilistPageDTO searchUsingQuery(AnimeQueryDTO query, long pageNumber) {
@@ -297,6 +305,8 @@ public class AnilistService implements AnilistServiceInterface {
 
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @throws AnilistException When Anilist Server responds with an error
 	 */
 	@Override
 	public DetailedAnimeDTO getAnimeById(long id) {
@@ -410,7 +420,7 @@ public class AnilistService implements AnilistServiceInterface {
 				.getMedia();
 
 		// If an object with this ID doesn't exist, save it to have the correct average episode duration later
-		animeService.saveAnimeIfNotExist(
+		animeService.updateDataForAnime(
 				Anime.builder()
 						.id(anilistInfo.getId())
 						.title(getFirstAvailableTitle(anilistInfo.getTitle()))
@@ -436,6 +446,7 @@ public class AnilistService implements AnilistServiceInterface {
 	 * @param originalLocale The Locale of the original request
 	 * @param <T> The class of the response
 	 * @return If no error occurred, return the response
+	 * @throws AnilistException If the response is null
 	 */
 	private <T> Mono<T> evaluateResponse(T response, Locale originalLocale, String successLogMessage) {
 		if (Objects.isNull(response)) {
@@ -459,6 +470,19 @@ public class AnilistService implements AnilistServiceInterface {
 		return BodyInserters.fromValue(Query.buildQuery(element));
 	}
 
+	/**
+	 * Small method to return the first available title from Anilist.
+	 * If no title is available, return a default text in English.
+	 * <br>
+	 * Titles will be checked in the given order:
+	 * <ol>
+	 *     <li>English</li>
+	 *     <li>Romaji (Japanese in Latin)</li>
+	 *     <li>Japanese</li>
+	 * </ol>
+	 * @param mediaTitle Title of a given Anime
+	 * @return First available title, or default text
+	 */
 	private String getFirstAvailableTitle(AnilistMediaTitle mediaTitle) {
 		if (Objects.nonNull(mediaTitle.getEnglish()) && !mediaTitle.getEnglish().isBlank()) {
 			return mediaTitle.getEnglish();

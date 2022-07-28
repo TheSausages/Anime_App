@@ -21,7 +21,7 @@ import java.util.Locale;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
-class BeanCreationTest extends BaseIntegrationTest {
+class ConfigurationBeanCreationTest extends BaseIntegrationTest {
 
 	private final Keycloak keycloak;
 	private final LocaleResolver resolver;
@@ -30,9 +30,9 @@ class BeanCreationTest extends BaseIntegrationTest {
 	private final Validator validator;
 
 	@Autowired
-	BeanCreationTest(Keycloak keycloak, LocaleResolver resolver, Validator validator,
-	                 @Qualifier(WebClientsConfiguration.anilistWebClientBeanName) WebClient anilistWebClient,
-	                 @Qualifier(WebClientsConfiguration.keycloakWebClientBeanName) WebClient keycloakWebClient) {
+	ConfigurationBeanCreationTest(Keycloak keycloak, LocaleResolver resolver, Validator validator,
+								  @Qualifier(WebClientsConfiguration.anilistWebClientBeanName) WebClient anilistWebClient,
+								  @Qualifier(WebClientsConfiguration.keycloakWebClientBeanName) WebClient keycloakWebClient) {
 		this.keycloak = keycloak;
 		this.resolver = resolver;
 		this.validator = validator;

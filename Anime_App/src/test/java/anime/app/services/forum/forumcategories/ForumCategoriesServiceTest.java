@@ -16,8 +16,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
+import static anime.app.utils.AdditionalVerificationModes.twice;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
+import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -50,6 +52,8 @@ class ForumCategoriesServiceTest {
 				instanceOf(Set.class),
 				emptyIterable()
 		));
+
+		verify(conversionService, never()).convertToDTO((ForumCategory) any());
 	}
 
 	@Test
@@ -75,7 +79,7 @@ class ForumCategoriesServiceTest {
 		));
 
 		// One time in given section, once in test
-		verify(conversionService, times(2)).convertToDTO(category);
+		verify(conversionService, twice()).convertToDTO(category);
 	}
 
 	@Test
@@ -107,7 +111,7 @@ class ForumCategoriesServiceTest {
 		));
 
 		// One time in given section, once in test
-		verify(conversionService, times(2)).convertToDTO(firstCategory);
-		verify(conversionService, times(2)).convertToDTO(secondCategory);
+		verify(conversionService, twice()).convertToDTO(firstCategory);
+		verify(conversionService, twice()).convertToDTO(secondCategory);
 	}
 }
